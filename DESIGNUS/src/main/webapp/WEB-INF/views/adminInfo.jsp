@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>이수원팀장</h1>
+<h1>adminInfo.jsp</h1>
 </body>
 </html>
