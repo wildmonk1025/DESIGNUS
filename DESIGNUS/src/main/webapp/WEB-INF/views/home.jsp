@@ -85,7 +85,7 @@
 		</div>
 	</div>
 	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>
+		<jsp:include page="footer.jsp"></jsp:include></div>-
 
 </body>
 </html>
