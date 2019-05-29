@@ -98,11 +98,14 @@ div {
 }
 </style>
 <meta charset="UTF-8">
+
 </head>
 <body>
 	<div id="header">
 		<div id="logo">
-			<img src="./logo.png" width="150px" height="80px" />
+			<img src="./images/logo.png" width="250px" height="80px" />
+			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 		</div>
 		<div id="search">
 			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
@@ -111,7 +114,7 @@ div {
 		<div id="loginwriter">
 			<div id="mypageimg"></div>
 			<div id="msg">
-				<img src="../msg.png" width="40px" height="40px" />
+				<img src="./images/writer.png" width="40px" height="40px" />
 			</div>
 			<div id="loginmsg">로그인</div>
 		</div>
