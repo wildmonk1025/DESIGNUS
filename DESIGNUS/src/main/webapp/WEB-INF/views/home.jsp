@@ -7,8 +7,56 @@
 <style>
 #mainheader {
 	border: 1px solid black;
-	width: 1500px;
+	width: 1510px;
+	height: 170px;
+}
+
+#homeMain {
+	border: 1px solid black;
+	width: 1510px;
+	height: 500px;;
+}
+
+#revauctionbtn, #auctionbtn {
+	background-color: orange;
+	width: 150px;
+	height: 30px;
+	color: white;
+	float: right;
+}
+
+#coklist {
+	width: 1000px;
+	height: 150px;
+	float: left;
+	display: block;
+}
+
+#bestlist {
+	width: 1000px;
+	height: 150px;
+	float: left;
+	display: block;
+}
+
+#list {
+	width: 1100px;
 	height: 400px;
+	float: left;
+	margin: 50px;
+}
+
+#text1 {
+	width: 400px;
+	height: 30px;
+	float: left;
+}
+
+#text2 {
+	margin-top: 30px;
+	width: 400px;
+	height: 30px;
+	float: left;
 }
 </style>
 <title>Home</title>
@@ -18,9 +66,18 @@
 		<jsp:include page="main.jsp" />
 	</div>
 
-	<h1>Hello world!</h1>
-	<h1>집에가고 싶다</h1>
-	<h2>나도 가고싶다.!</h2>
-	<P>The time on the server is ${serverTime}.</P>
+	<div id="homeMain">
+		<button id="revauctionbtn">제작의뢰 요청하기</button>
+		<button id="auctionbtn">출품등록하기</button>
+		<br> <br>
+		<div id="list">
+			<div id="text1" align="center">오늘의 추천 작품</div>
+			<div id="coklist"></div>
+			<br> <br>
+			<div id="text2" align="center">베스트 상품</div>
+			<div id="bestlist"></div>
+		</div>
+	</div>
+
 </body>
 </html>
