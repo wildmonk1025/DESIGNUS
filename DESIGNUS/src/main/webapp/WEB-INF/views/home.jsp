@@ -7,14 +7,14 @@
 <style>
 #mainheader {
 	border: 1px solid black;
-	width: 1510px;
+	width: 1520px;
 	height: 170px;
 }
 
 #homeMain {
 	border: 1px solid black;
-	width: 1510px;
-	height: 500px;;
+	width: 1520px;
+	height: 600px;
 }
 
 #revauctionbtn, #auctionbtn {
@@ -58,6 +58,12 @@
 	height: 30px;
 	float: left;
 }
+
+#footercheck {
+	border: 1px solid black;
+	width: 1510px;
+	height: 400px;
+}
 </style>
 <title>Home</title>
 </head>
@@ -78,6 +84,8 @@
 			<div id="bestlist"></div>
 		</div>
 	</div>
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include></div>-
 
 </body>
 </html>
