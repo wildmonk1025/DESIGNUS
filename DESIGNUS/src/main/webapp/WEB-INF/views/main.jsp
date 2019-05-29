@@ -101,7 +101,7 @@ div {
 <body>
 	<div id="header">
 		<div id="logo">
-			<img src="/logo.png" width="150px" height="80px">
+			<img src="./logo.png" width="150px" height="80px">
 		</div>
 		<div id="search">
 			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
