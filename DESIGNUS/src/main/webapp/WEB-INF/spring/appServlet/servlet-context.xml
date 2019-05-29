@@ -20,10 +20,10 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/images/**" location="/WEB-INF/views/images/" />
-	<resources mapping="/css/**" location="/WEB-INF/views/css/" />
-	<resources mapping="/js/**" location="/WEB-INF/views/js/" />
+	<resources mapping="/resources/**" location="./resources/" />
+	<resources mapping="/images/**" location="/resources/images/" />
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/js/**" location="/resources/js/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -77,17 +77,5 @@
          <beans:property name="maxInMemorySize" value="10000000"/><!-- 약 10메가 -->
        </beans:bean>
        <!-- Session Interceptor(가로채기) -->
-       <interceptors>
-          <interceptor>
-          <!-- mapping의 모든 요청은 Controller에 도착하기전에 가로챈다. -->
-            <mapping path="/*"/>
-            <!-- exclude-mapping의 요청은 가로채지 않는다. -->
-            <exclude-mapping path="/"/>
-            <exclude-mapping path="/access"/>
-            <exclude-mapping path="/joinFrm"/>
-            <exclude-mapping path="/memberInsert"/>
-            <exclude-mapping path="/boardList"/>
-           <beans:bean class="com.designus.www.userClass.SessionTnterceptor"/>
-          </interceptor>
-       </interceptors>
+       
 </beans:beans>

@@ -36,13 +36,13 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping(value = "/norJoinFrm", method = RequestMethod.GET)
-	public ModelAndView norJoinFrm() {
-		mav.setViewName("norJoinFrm");
-		return mav;
+	public String norJoinFrm() {
+		
+		return "norjoinFrm";
 	}
 	@RequestMapping(value = "/wriJoinFrm", method = RequestMethod.GET)
-	public ModelAndView wriJoinFrm() {
-		mav.setViewName("wriJoinFrm");
-		return mav;
+	public String wriJoinFrm() {
+		
+		return "wrijoinFrm";
 	}
 }

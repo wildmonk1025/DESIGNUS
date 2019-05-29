@@ -11,25 +11,26 @@ div {
 
 #header {
 	padding: 3px;
-	width: 1500px;
+	width: 1510px;
 	height: 100px;
 	float: left;
 }
 
 #logo {
-	padding: 3px;
+	padding: 5px;
 	width: 270px;
 	height: 80px;
 	float: left;
 }
 
 #search {
-	padding-left: 150px; padding-top : 20px;
 	margin-left: 100px;
-	width: 580px;
+	padding-left: 120px;
+	padding-right: 120px;
+	padding-top: 20px;
+	width: 570px;
 	height: 80px;
 	float: left;
-	padding-top: 20px
 }
 
 #loginwriter {
@@ -49,7 +50,7 @@ div {
 #searchtxt {
 	margin: 50px, 20px;
 	width: 300px;
-	height: 25px;
+	height: 30px;
 	align: center;
 }
 
@@ -98,11 +99,14 @@ div {
 }
 </style>
 <meta charset="UTF-8">
+
 </head>
 <body>
 	<div id="header">
 		<div id="logo">
-			<img src="./logo.png" width="150px" height="80px" />
+			<img src="./images/logo.png" width="250px" height="80px" />
+			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 		</div>
 		<div id="search">
 			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
@@ -111,7 +115,7 @@ div {
 		<div id="loginwriter">
 			<div id="mypageimg"></div>
 			<div id="msg">
-				<img src="../msg.png" width="40px" height="40px" />
+				<img src="./images/writer.png" width="40px" height="40px" />
 			</div>
 			<div id="loginmsg">로그인</div>
 		</div>
