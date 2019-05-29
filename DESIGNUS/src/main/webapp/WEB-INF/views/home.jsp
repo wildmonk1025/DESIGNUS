@@ -7,13 +7,13 @@
 <style>
 #mainheader {
 	border: 1px solid black;
-	width: 1510px;
+	width: 1520px;
 	height: 170px;
 }
 
 #homeMain {
 	border: 1px solid black;
-	width: 1510px;
+	width: 1520px;
 	height: 600px;
 }
 
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>
+		<jsp:include page="footer.jsp"></jsp:include></div>-
 
 </body>
 </html>
