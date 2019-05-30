@@ -88,7 +88,22 @@
             top: 50px;
             
         }   
-    a{color:red;}
+        a{color: red}
+        #lightbox {
+
+position: absolute;
+top: 0;
+left: 30%;
+width: 1000px;
+height:800px;
+margin-left: -200px;
+background: #fff;
+z-index: 1001;
+display: none;
+border: 1px solid orange;
+}
+
+
 </style>
 
 </head>
@@ -104,9 +119,9 @@
         </div>
 	<div id="notice" >
 		<h2>제작의뢰내역</h2>
-		<hr>
+        <hr>
 	</div>
-    <div id="info">
+   <div id="info">
        <table width="1000">
         <tr><td><h3>내역</h3></td></tr>
            <tr><td style="font-size: 30px"><a href="">제작의뢰 내역</a></td></tr>
@@ -121,28 +136,68 @@
            <tr><td style="font-size: 30px">회원탈퇴 신청</td></tr>
            <tr><td style="font-size: 30px">작가전환 신청</td></tr>
        </table>
-    </div>          
+    </div>           
     
     <div id="renking">
           <h1>의뢰내역</h1>
         <div  class="bt01">
-        <button><h2>요청</h2></button><br>
-        <button><h2>취소</h2></button></div>
+        <a href="javascript:lightbox('요청 AJAX')"><h2>요청</h2></a><br>
+        <a href=""><h2>취소</h2></a></div>
         
     </div>
     <div id="auction">
         <h1>의뢰내역</h1>
-        <div class="bt01"><button><h2>요청</h2></button><br>
-            <button><h2>취소</h2></button></div> 
+        <div class="bt01">
+            <a href="javascript:lightbox('요청 AJAX')">><h2>요청</h2></a><br>
+        <a href=""><h2>취소</h2></a></div> 
     </div>
     <div id="spon">
         <h1>의뢰내역</h1>
         <div  class="bt01">
-        <button><h2>요청</h2></button><br>
-        <button><h2>취소</h2></button></div>
+        <a href="javascript:lightbox('요청 AJAX')"><h2>요청</h2></a><br>
+        <a href=""><h2>취소</h2></a></div>
     </div>
-      
+      <div id="lightbox">
+</div>
+<div id="lightbox-shadow" >
+</div>
 	</form>
         </div> 
 </body>
+<script type="text/javascript">
+
+
+
+function lightbox(insertContent, ajaxContentUrl){
+$('#lightbox').empty();
+if(insertContent != null){
+
+$('#lightbox').append(insertContent);
+
+}
+if(ajaxContentUrl != null){
+$('#lightbox').append('<p class="loading">Loading...</p>');
+$.ajax({
+type: 'GET',
+url: ajaxContentUrl,
+success:function(data){
+$('#lightbox').empty();
+$('#lightbox').append(data);
+},
+error:function(){
+alert('AJAX Failure!');
+}
+});
+}
+$('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
+$('#lightbox').show();
+$('#lightbox-shadow').show();
+}
+function closeLightbox(){
+$('#lightbox').hide();
+$('#lightbox-shadow').hide();
+$('#lightbox').empty();
+}
+
+</script>
 </html>
