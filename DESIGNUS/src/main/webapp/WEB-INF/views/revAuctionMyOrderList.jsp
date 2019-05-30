@@ -88,7 +88,7 @@
             top: 50px;
             
         }   
-    
+    a{color:red;}
 </style>
 
 </head>
@@ -104,14 +104,15 @@
         </div>
 	<div id="notice" >
 		<h2>제작의뢰내역</h2>
+		<hr>
 	</div>
-   <div id="info">
+    <div id="info">
        <table width="1000">
         <tr><td><h3>내역</h3></td></tr>
-           <tr><td style="font-size: 30px">제작의뢰 내역</td></tr>
+           <tr><td style="font-size: 30px"><a href="">제작의뢰 내역</a></td></tr>
            <tr><td style="font-size: 30px">제작의뢰 접수내역</td></tr>
-           <tr><td style="font-size: 30px">의뢰접수내역</td></tr>
-           <tr><td style="font-size: 30px">판매 내역</td></tr>
+           <tr><td style="font-size: 30px">출품작 구매 내역</td></tr>
+           <tr><td style="font-size: 30px">출품작 판매 내역</td></tr>
            <tr><td style="font-size: 30px">꿍 내역</td></tr>
            <tr><td style="font-size: 30px">출품</td></tr>
            <tr><td style="font-size: 30px">제작</td></tr>
@@ -120,7 +121,7 @@
            <tr><td style="font-size: 30px">회원탈퇴 신청</td></tr>
            <tr><td style="font-size: 30px">작가전환 신청</td></tr>
        </table>
-    </div>      
+    </div>          
     
     <div id="renking">
           <h1>의뢰내역</h1>

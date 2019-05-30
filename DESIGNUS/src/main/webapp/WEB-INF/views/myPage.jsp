@@ -123,19 +123,19 @@
    <div id="info">
        <table width="1000">
         <tr><td><h3>내역</h3></td></tr>
-           <tr><td style="font-size: 30px">경매낙찰내역</td></tr>
-           <tr><td style="font-size: 30px">제작의뢰내역</td></tr>
-           <tr><td style="font-size: 30px">의뢰접수내역</td></tr>
-           <tr><td style="font-size: 30px">판매내역</td></tr>
-           <tr><td style="font-size: 30px">꿍내역</td></tr>
+           <tr><td style="font-size: 30px">제작의뢰 내역</td></tr>
+           <tr><td style="font-size: 30px">제작의뢰 접수내역</td></tr>
+           <tr><td style="font-size: 30px">출품작 구매 내역</td></tr>
+           <tr><td style="font-size: 30px">출품작 판매 내역</td></tr>
+           <tr><td style="font-size: 30px">꿍 내역</td></tr>
            <tr><td style="font-size: 30px">출품</td></tr>
            <tr><td style="font-size: 30px">제작</td></tr>
            <tr><td style="font-size: 30px">후원</td></tr>
-           <tr><td style="font-size: 30px">개인정보수정</td></tr>
-           <tr><td style="font-size: 30px">회원탈퇴신청</td></tr>
-           <tr><td style="font-size: 30px">작가전환신청</td></tr>
+           <tr><td style="font-size: 30px">개인정보 수정</td></tr>
+           <tr><td style="font-size: 30px">회원탈퇴 신청</td></tr>
+           <tr><td style="font-size: 30px">작가전환 신청</td></tr>
        </table>
-    </div>      
+    </div>            
     
     <div id="renking">
           <h1>랭킹</h1>  
