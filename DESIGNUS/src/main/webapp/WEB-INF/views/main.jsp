@@ -70,6 +70,7 @@ div {
 }
 
 #submenu {
+	margin-left: 100px;
 	width: 150px;
 	float: left;
 	height: 50px;
