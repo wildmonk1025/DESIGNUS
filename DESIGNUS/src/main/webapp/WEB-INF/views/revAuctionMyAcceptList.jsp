@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <style type="text/css">
+            div {
+            margin: auto;
+        }
         #one{
             position: relative;
             width: 100%;
@@ -103,7 +106,83 @@ display: none;
 border: 1px solid orange;
 }
 
+button {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  overflow: hidden;
+  min-width: 96px;
+  line-height: 46px;
+  padding: 0 24px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px #154c86;
+  background-color: #247edd;
+  background-clip: padding-box;
+  border: 1px solid;
+  border-color: #1c65b2 #18589c #18589c;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+ #lightbox {
+            border: 1px solid orange;
+            position: absolute;
+            top: 200px;
+            left: 600px;
+            width: 800px;
+            height: 700px;
+            margin: auto;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            background-color: orange;
+            text-align: center;
+        }
 
+        #lightbox-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8000px;
+            height: 8000px;
+            background: #000;
+            opacity: 1;
+            z-index: 1000;
+            display: none;
+        }
+        #lightbox1 {
+            border: 1px solid orange;
+            position: absolute;
+            top: 200px;
+            left: 600px;
+            width: 800px;
+            height: 700px;
+            margin: auto;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            background-color: orange;
+            text-align: center;
+        }
+
+        #lightbox-shadow1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8000px;
+            height: 8000px;
+            background: #000;
+            opacity: 1;
+            z-index: 1000;
+            display: none;
+        } 
 </style>
 
 </head>
@@ -111,7 +190,7 @@ border: 1px solid orange;
 
 <body>
     <div id="one">
-	<form action="">
+	
     
     <div id="main">
         <h1>메인!</h1>
@@ -154,50 +233,37 @@ border: 1px solid orange;
     <div id="spon">
         <h1>의뢰내역</h1>
         <div  class="bt01">
-        <a href="javascript:lightbox('요청 AJAX')"><h2>요청</h2></a><br>
-        <a href=""><h2>취소</h2></a></div>
-    </div>
+         <button id="action">의뢰인배송정보</button><br><br>
+        <button id="delivery">배송 보내기 </button></div></div>
+        <div id="lightbox-shadow" >
       <div id="lightbox">
+           <h1>의뢰인 배송정보</h1><hr>
+            <button>확인</button>
+            <button type="button" onclick="location.href='revAuctionMyAcceptList.html' ">취소</button>
+
+
 </div>
-<div id="lightbox-shadow" >
+	</div>
+        <div id="lightbox-shadow1" >
+        <div id="lightbox1">
+           <h1>운송장 입력</h1><hr>
+            <button>확인</button>
+            <button type="button" onclick="location.href='revAuctionMyAcceptList.html' ">취소</button>
+
+
 </div>
-	</form>
-        </div> 
+	</div>
+        </div>
+    
 </body>
 <script type="text/javascript">
-
-
-
-function lightbox(insertContent, ajaxContentUrl){
-$('#lightbox').empty();
-if(insertContent != null){
-
-$('#lightbox').append(insertContent);
-
-}
-if(ajaxContentUrl != null){
-$('#lightbox').append('<p class="loading">Loading...</p>');
-$.ajax({
-type: 'GET',
-url: ajaxContentUrl,
-success:function(data){
-$('#lightbox').empty();
-$('#lightbox').append(data);
-},
-error:function(){
-alert('AJAX Failure!');
-}
-});
-}
-$('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
-$('#lightbox').show();
-$('#lightbox-shadow').show();
-}
-function closeLightbox(){
-$('#lightbox').hide();
-$('#lightbox-shadow').hide();
-$('#lightbox').empty();
-}
-
+  $("#action").click(function() {
+       $('#lightbox-shadow').css("display","inline")
+       $('#lightbox').css("display","inline")
+    });
+  $("#delivery").click(function() {
+       $('#lightbox-shadow1').css("display","inline")
+       $('#lightbox1').css("display","inline")
+    }); 
 </script>
 </html>
