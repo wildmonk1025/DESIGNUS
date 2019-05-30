@@ -11,25 +11,26 @@ div {
 
 #header {
 	padding: 3px;
-	width: 1500px;
+	width: 1510px;
 	height: 100px;
 	float: left;
 }
 
 #logo {
-	padding: 3px;
+	padding: 5px;
 	width: 270px;
 	height: 80px;
 	float: left;
 }
 
 #search {
-	padding-left: 150px; padding-top : 20px;
 	margin-left: 100px;
-	width: 580px;
+	padding-left: 120px;
+	padding-right: 120px;
+	padding-top: 20px;
+	width: 570px;
 	height: 80px;
 	float: left;
-	padding-top: 20px
 }
 
 #loginwriter {
@@ -49,7 +50,7 @@ div {
 #searchtxt {
 	margin: 50px, 20px;
 	width: 300px;
-	height: 25px;
+	height: 30px;
 	align: center;
 }
 
