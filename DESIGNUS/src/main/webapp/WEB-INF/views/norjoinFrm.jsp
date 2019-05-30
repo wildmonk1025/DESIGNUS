@@ -47,6 +47,7 @@
 .btz2 {
 	position: relative;
 	top: 20px;
+	left: 120px;
 	width: 300px;
 	height: 40
 }
@@ -54,15 +55,30 @@
 #norjoinFrm2 {
 	position: relative;
 	top: 50px;
-	left: 400px;
+	left: 300px;
 }
 
-#email, #email2, #emailList {
+#mb_email{
 	font-size: 15;
-	width: 200;
+	width: 200px;
 	height: 40;
+	position: relative;
+	left: -98px;
 }
-
+#mb_email2 {
+	font-size: 15;
+	width: 200px;
+	height: 40;
+	position: relative;
+	right: 175px;
+}
+#emailList {
+	font-size: 15;
+	width: 100px;
+	height: 40;
+	position: relative;
+	right: 175px;
+}
 #Echeck {
 	width: 100;
 	height: 40;
@@ -70,13 +86,29 @@
 	top: 10px;
 	left: 450px;
 }
+#null{
+	position:absolute;
+	font-size:15px;
+	width: 20px;
+	top:360px;
+	left: 715px;
+	
+}
+#i2{
+ position: relative;
+	top: 10px;
+	left: 150px;
+}
+
 </style>
 </head>
 <body>
 	<div id="join">
+	<div id="null">@</div>
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
 		<form action="memberapply" name="memberapplyFrm" method="post">
+
 			<table id="norjoinFrm">
 				<tr>
 					<th>아이디</th>
@@ -103,23 +135,23 @@
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input class="memberN" type="text" name="mb_pwcheck"></td>
+					<td><input id="mb_birth" class="memberN" type="text" name="mb_birth"></td>
 				</tr>
 				<tr>
 					<th>프로필 사진</th>
-					<td><input class="memberN" type="file" name="mb_filse"></td>
+					<td><input id="mb_profile" class="memberN" type="file" name="mb_profile"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input class="memberN" type="text" name="mb_pwcheck"></td>
+					<td><input id="mb_address" class="memberN" type="text" name="mb_address"></td>
 				</tr>
 			</table>
 			<table id="norjoinFrm2">
+
 				<tr>
 					<th>이메일</th>
-					<td><input id="email" type="text" name="mb_pwcheck"
-						id="mb_pwcheck">@<input id="email2" type="text"
-						name="mb_pwcheck" id="mb_pwcheck"></td>
+					<td><input id="mb_email" type="text" name="mb_email"></td>
+					<td><input id="mb_email2" type="text" name="mb_email2"></td>
 					<td><select id="emailList" class="Data">
 							<option value="1">직접입력</option>
 							<option value="naver">naver.com</option>
@@ -131,17 +163,23 @@
 				<tr>
 					<td><input id="Echeck" type="button" value="이메일 인증"
 						onclick="emailcheck()"></td>
-					<td><input id="joinhidden" type="hidden"></td>	
+					<td><input id="joinhidden" type="hidden"></td>
+				</tr>
+				<tr>
+					<td id="i2"><input id="che" type="checkbox">전체동의<br> <input
+						class="i1" type="checkbox">이용약관(필수)<br> <input
+						class="i1" type="checkbox">개인정보 수집 및 이용(필수)<br> <input
+						class="i1" type="checkbox">개인정보 수집 및 이용(선택)<br></td>
+				</tr>
+				<tr>
+					<td>
+						<button class="btz2">회원가입</button>
+						</td>
+						<td> 
+						<input class="btz2" type="reset" value="취소">
+					   </td>
 				</tr>
 			</table>
-			<div id="memberS">
-				<input id="che" type="checkbox">전체동의<br> <input
-					class="i1" type="checkbox">이용약관(필수)<br> <input
-					class="i1" type="checkbox">개인정보 수집 및 이용(필수)<br> <input
-					class="i1" type="checkbox">개인정보 수집 및 이용(선택)<br> <input
-					class="btz2" type="button" value="회원가입"> <input
-					class="btz2" type="reset" value="취소">
-			</div>
 		</form>
 	</div>
 </body>
