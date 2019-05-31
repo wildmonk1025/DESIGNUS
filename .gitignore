@@ -98,3 +98,12 @@ hs_err_pid*
 # End of https://www.gitignore.io/api/java,eclipse
 /target/
 ../target
+DESIGNUS/target/classes/com/designus/www/dao/mapper/auction_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/admin_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/mypage_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/common_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/writer_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/revauction_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/sponsor_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/servicecenter_mapper.xml
+DESIGNUS/target/classes/com/designus/www/dao/mapper/board_mapper.xml

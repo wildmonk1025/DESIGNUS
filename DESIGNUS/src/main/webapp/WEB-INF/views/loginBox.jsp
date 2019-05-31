@@ -10,30 +10,30 @@
 	width: 250px;
 	height: 100px;
 	position: relative;
-	top: 260px;
-	left: 840px;
+	top: 150px;
+	left: 580px;
 }
 
 #login {
 	position: relative;
-	top: 300px;
-	left: 750px;
-	font-size: 25px;
+	top: 150px;
+	left: 580px;
+	font-size: 20px;
 }
 
 #mb_id {
-	width: 400;
-	height: 40;
+	width: 200px;
+	height: 40px;
 }
 
 #mb_pw {
-	width: 400;
-	height: 40;
+	width: 200px;
+	height: 40px;
 }
 
 #logcheck {
 	position: relative;
-	top: 5px;
+	top: 10px;
 	left: 230px;
 }
 
