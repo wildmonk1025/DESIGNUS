@@ -53,7 +53,7 @@
 		<beans:property name="mapperLocations"
 			value="classpath:com/**/mapper/*.xml" />
 	</beans:bean>
-	<!-- DAO using 최종 -->
+	<!-- DAO using 최종 : ImemberDao-->
 	<beans:bean id="mDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -61,6 +61,80 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.ImemberDao" />
 	</beans:bean>
+	<!-- DAO using 최종 : IcommonDao-->
+	<beans:bean id="cDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IcommonDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IauctionDao-->
+	<beans:bean id="aDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IauctionDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IadminDao-->
+	<beans:bean id="qDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IadminDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : ImypageDao-->
+	<beans:bean id="pDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.ImypageDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IRevAuctionDao-->
+	<beans:bean id="rDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IRevAuctionDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IServiceCenterDao-->
+	<beans:bean id="hDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IServiceCenterDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IsponsorDao-->
+	<beans:bean id="sDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IsponsorDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IwriterDao-->
+	<beans:bean id="wDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IwriterDao" />
+	</beans:bean>
+	<!-- DAO using 최종 : IboardDao-->
+	<beans:bean id="bDao"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<beans:property name="mapperInterface"
+			value="com.designus.www.dao.IboardDao" />
+	</beans:bean>
+	
+	
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />

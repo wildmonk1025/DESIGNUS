@@ -45,7 +45,7 @@
             height: 150px;
         }
 
-        #freeboard1 {
+        #noticeboard1 {
             position: absolute;
             width: 1000px;
             height: 100px;
@@ -54,7 +54,7 @@
             display: inherit;
         }
 
-        #freeboard2 {
+        #noticeboard2 {
             border: 1px solid black;
             position: absolute;
             width: 1000px;
@@ -128,7 +128,7 @@
     <div id="homeMain">
         <button id="revauctionbtn" class="btn">제작의뢰 요청하기</button>
         <button id="auctionbtn" class="btn">출품등록하기</button>
-        <div id="freeboard1">
+        <div id="noticeboard1">
             <button class="btn2">자유게시판</button> 
             <button class="btn2">이용후기</button> 
             <button class="btn2" style="background-color: orange">공지사항</button>
@@ -144,7 +144,7 @@
             </form>
             <button id="btn5" class="btn3">글작성</button>
         </div>
-        <div id="freeboard2">
+        <div id="noticeboard2">
             <table style="text-align: center">
                 <tr>
                     <th style="width: 100; height: 50">번호</th>
