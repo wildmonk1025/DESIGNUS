@@ -107,7 +107,7 @@
 	<div id="null">@</div>
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
-		<form action="memberapply" name="memberapplyFrm" method="post">
+		<form action="memberapply" name="memberapplyFrm" method="post" enctype="multipart/form-data">
 
 			<table id="norjoinFrm">
 				<tr>
@@ -139,7 +139,7 @@
 				</tr>
 				<tr>
 					<th>프로필 사진</th>
-					<td><input id="mb_profile" class="memberN" type="file" name="mb_profile"></td>
+					<td><input id="mb_profile" class="memberN" type="file" name="mb_profile" multiple></td>
 				</tr>
 				<tr>
 					<th>주소</th>
@@ -183,4 +183,7 @@
 		</form>
 	</div>
 </body>
+<script>
+
+</script>
 </html>

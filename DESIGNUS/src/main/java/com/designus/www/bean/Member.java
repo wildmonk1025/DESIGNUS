@@ -1,5 +1,12 @@
 package com.designus.www.bean;
 
+import org.apache.ibatis.type.Alias;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Alias("member")
+@Setter @Getter
 public class Member {
 	String mb_id;
 	String mb_pw;
