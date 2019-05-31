@@ -96,7 +96,6 @@
 </body>
 <script>
     var x="";
-    var y="";
     $("#declareinfo").addClass(function(){
         for(var j=0;j<10;j++) {
             x+="<tr><td>일반</td><td>번호</td><td>제목</td><td>피해자ID</td><td>피의자ID</td>"

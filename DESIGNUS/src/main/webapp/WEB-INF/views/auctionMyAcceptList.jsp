@@ -212,18 +212,15 @@ button {
                     </tr>
                     <tr>
                         <td style="font-size: 30px"><a href="">출품작 판매 내역</a></td>
+                    </tr> 
+                    <tr>
+                        <td style="font-size: 30px">후원진행 내역</td>
+                    </tr> 
+                    <tr>
+                        <td style="font-size: 30px">후원요청 내역</td>
                     </tr>
                     <tr>
                         <td style="font-size: 30px">꿍 내역</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 30px">출품</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 30px">제작</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 30px">후원</td>
                     </tr>
                     <tr>
                         <td style="font-size: 30px">개인정보 수정</td>
