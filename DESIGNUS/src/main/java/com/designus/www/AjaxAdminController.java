@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AjaxAdminController {
-	/*
-	 * @RequestMapping() public String norJoinFrm() {
-	 * 
-	 * return "norjoinFrm"; }
-	 */
-	//dddddsswwwwdsdwe
+	  @RequestMapping() public String norJoinFrm() {
+	  return "norjoinFrm";
+	  }
+	 
 }
