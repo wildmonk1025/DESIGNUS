@@ -10,4 +10,5 @@ public class AjaxAuctionController {
 	 * 
 	 * return "norjoinFrm"; }
 	 */
+	//testtest
 }
