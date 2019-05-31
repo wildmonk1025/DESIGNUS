@@ -130,11 +130,7 @@
             </div>
             <div id="info">
                 <table width="1000">
-                    <tr>
-                        <td>
-                            <h3>내역</h3>
-                        </td>
-                    </tr>
+                   
                     <tr>
                         <td style="font-size: 30px">제작의뢰 내역</td>
                     </tr>
