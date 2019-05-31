@@ -31,14 +31,13 @@
         }
 
         #info {
-            border: 1px solid orange;
+          border: 1px solid orange;
             position: absolute;
             width: 300px;
             height: 600px;
             text-align: left;
             left: 183px;
-            top: 200px;
-
+            top: 600px;
 
         }
 
@@ -231,7 +230,30 @@
             background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
             background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
         }
+         #point {
+            border: 1px solid orange;
+            position: absolute;
+            width: 300px;
+            height: 80px;
+            text-align: left;
+            left: 190px;
+            top: 510px;
 
+            font-size: 20px;
+        }
+
+        #img {
+            border: 1px solid orange;
+            position: absolute;
+            width: 300px;
+            height: 310px;
+            text-align: left;
+            left: 190px;
+            top: 190px;
+
+            font-size: 20px;
+
+        }
     </style>
 
 </head>
@@ -251,11 +273,7 @@
         </div>
         <div id="info">
             <table width="1000">
-                <tr>
-                    <td>
-                        <h3>내역</h3>
-                    </td>
-                </tr>
+               
                 <tr>
                     <td style="font-size: 30px">제작의뢰 내역</td>
                 </tr>
@@ -312,6 +330,12 @@
             <h1>완료</h1>
         </div>
     </div>
+     <div id="point">
+                <h1>포인트:</h1>
+            </div>
+            <div id="img">
+                <h1>프로필사진</h1>
+            </div>
     <div id="lightbox-shadow">
 
         <div id="lightbox">

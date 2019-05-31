@@ -32,8 +32,29 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
 		return "home";
+	}
+
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+	  return "home";
+	  }
+	 
+	@RequestMapping(value = "/logingo", method = RequestMethod.GET)
+	public String logingo() {
+		
+		return "loginBox";
+	}
+	@RequestMapping(value = "/servicecenter", method = RequestMethod.GET)
+	public String servicecenter() {
+		
+		return "sc_Question";
+	}
+	@RequestMapping(value = "/bestwriter", method = RequestMethod.GET)
+	public String bestwriter() {
+		
+		return "popularWriterFrm";
 	}
 	@RequestMapping(value = "/norJoinFrm", method = RequestMethod.GET)
 	public String norJoinFrm() {

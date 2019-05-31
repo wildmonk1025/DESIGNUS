@@ -2,240 +2,261 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
+<meta charset="UTF-8">
+<title>제작의뢰 상세보기</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style>
+hr {
+	width: 1200px;
+}
+
+div {
+	margin: auto;
+}
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
 
-#homeMain {
-	border: 1px solid black;
-	width: 1520px;
-	height: auto;
-	display: inline-block;
+#revauctionreadmain {
+	padding: 40px;
+	margin-top: 30px;
+	width: 1200px;
+	height: 1000px;
+	border: 1px solid orange;
 }
 
-.btn {
-	background-color: orange;
-	width: 150px;
+#revareadimgdiv {
+	border: 1px solid red;
+	width: 20%;
+	height: 300px;
+	float: left;
+}
+
+#revareadtitlediv {
+	border: 1px solid red;
+	margin-left: 40px;
+	width: 50%;
+	padding: 30px;
+	padding-right: 0px;
+	height: 240px;
+	float: left;
+}
+
+#revareadcate {
+	border: 1px solid blue;
+	width: 100%;
 	height: 30px;
-	color: white;
-	float: right;
+	text-align: center;
+	padding-top: 10px;
 }
 
-#coklist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#bestlist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
-}
-
-#reviewRead1 {
-	position: relative;
-	float: left;
-	width: 1000px;
-	height: 100px;
-	top: 50px;
-	left: 50px;
-}
-
-#reviewRead2 {
-	position: relative;
-	float: left;
-	width: 1000px;
-	height: 50px;
-	top: 50px;
-	left: 50px;
-}
-
-#reviewRead3 {
-	position: relative;
-	float: left;
-	width: 1000px;
-	height: auto;
-	top: 60px;
-	left: 50px;
-}
-
-#reviewRead4 {
-	position: relative;
-	float: left;
-	width: 1000px;
-	height: 40px;
-	top: 60px;
-	left: 50px;
-}
-
-#reviewRead5 {
-	position: relative;
-	float: left;
-	width: 1000px;
-	top: 60px;
-	left: 50px;
-}
-
-#reviewRead6 {
-	position: relative;
-	float: left;
-	width: 1000px;
-	height: 50px;
-	top: 60px;
-	left: 50px;
-}
-
-.btn2 {
-	width: 150px;
-	height: 98px;
-	background-color: white;
-}
-
-.btn3 {
-	position: relative;
-	height: 40px;
-	top: 28px;
-	left: 387px;
-}
-
-.btn4 {
-	position: relative;
-	height: 40px;
-	float: right;
-	right: 20px;
-	bottom: 15px;
-}
-
-.btn5 {
-	position: relative;
-	width: 100px;
-	height: 50px;
-	float: right;
-	bottom: 21px;
-}
-
-#tableLine {
-	border-bottom: 0.5px solid orange;
-	border-top: 0.5px solid orange;
-}
-
-input {
-	width: 70px;
-}
-
-.clear {
-	width: 1000px;
-	height: 70px;
-	clear: both;
-}
-
-.test {
-	border: 1px solid black;
-	position: relative;
-	width: 920px;
-	height: 200px;
-	top: 20px;
-	left: 20px;
+#revareadimg {
+	margin: 30px;
 	padding: 20px;
+	border: 1px solid blue;
+	width: 60%;
+	height: 50%
+}
+
+#revasubmitbtn {
+	border: 1px solid red;
+	margin-left: 40px;
+	width: 20%;
+	height: 300px;
+	float: left;
+}
+
+#revsubmitbtn {
+	background-color: coral;
+	width: 120px;
+	height: 120px;
+	float: left;
+	margin-top: 150px;
+	color: white;
+	border-radius: 15px;
+}
+
+#revareadtitle {
+	border: 1px solid blue;
+	width: 400px;
+	height: 50px;
+	float: left;
+}
+
+#bracketlistgo {
+	border: 1px solid blue;
+	width: 150px;
+	padding-top: 15px;
+	height: 35px;
+	float: left;
+	color: red;
+}
+
+#revareadcontents {
+	margin-top: 70px;
+	width: 550px;
+	border: 1px solid blue;
+	height: 90px;
+}
+
+#revauctiontime {
+	margin-top: 20px;
+	width: 50% px;
+	height: 70px;
+	border: 1px solid red;
+}
+
+#revacontentswriter {
+	border: 1px solid red;
+	margin-top: 30;
+	float: left;
+	width: 1150px;
+}
+
+#revawriter {
+	overflow: auto;
+	margin: 20px;
+	border: 1px solid blue;
+}
+
+#writername {
+	margin-left: 30px;
+	font-size: 20px;
+}
+
+.tablewritercontents>td {
+	text-align: center;
+	width: 200px;
+}
+
+#readcontents {
+	width: 80%;
+	float: left;
+}
+
+#readpcontents {
+	font-size: 20px
+}
+
+#revadesign {
+	padding: 30px;
+	border: 1px solid red;
+	width: 1100px;
+	height: 100px;
+}
+
+#revadesingdown {
+	border: 1px solid orange;
+	width: 400px;
+	height: 80px;
+	float: right;
+}
+
+#prevacontents {
+	font-size: 20px;
 }
 </style>
-<title>Home</title>
 </head>
-
 <body>
 	<div id="mainheader">
-		<jsp:include page="main.jsp" />
+		<!--<jsp:include page="main.jsp"/>-->
 	</div>
-
-	<div id="homeMain">
-		<button id="revauctionbtn" class="btn">제작의뢰 요청하기</button>
-		<button id="auctionbtn" class="btn">출품등록하기</button>
-		<div id="reviewRead1">
-			<button class="btn2">자유게시판</button>
-			<button style="background-color: orange" class="btn2">이용후기</button>
-			<button class="btn2">공지사항</button>
-			<input type="button" class="btn3" value="수정"> <input
-				type="button" class="btn3" value="삭제">
+	<div id="revauctionreadmain">
+		<div id="revareadimgdiv">
+			<div id="revareadcate">카테고리 표시</div>
+			<div id="revareadimg">여기에 이미지</div>
 		</div>
-		<div id="reviewRead2">
-			<table style="text-align: center" id="tableLine">
-				<tr>
-					<th style="width: 100; height: 50">1</th>
-					<th style="width: 500">게시판 이용수칙(필독)</th>
-					<th style="width: 125">Lee수원</th>
-					<th style="width: 125">2018-12-26</th>
-					<th style="width: 75">542</th>
-					<th style="width: 75">5429</th>
-				</tr>
-			</table>
+		<div id="revareadtitlediv">
+			<div id="revareadtitle" style="font-size: 30px;">여기에 상품 이름</div>
+			<div id="bracketlistgo">꿍누르기♥</div>
+			<div id="revareadcontents">
+				<table>
+					<tr>
+						<td>작성자</td>
+						<td>아이디</td>
+					</tr>
+					<tr>
+						<td>수량</td>
+						<td>1EA(짝/켤레/쌍)</td>
+						<td style="color: gray; font-size: 10px;">수량은 1개로 고정입니다.</td>
+					</tr>
+					<tr>
+						<td colspan="2">회원님이 낙찰한 금액</td>
+						<td>0원</td>
+					</tr>
+				</table>
+				<div id="revauctiontime">경매 남은 시간 표시</div>
+			</div>
 		</div>
-		<div id="reviewRead3">
-			<div class="test">사진</div>
-			<div class="test">글</div>
-
-			<div class="clear"></div>
-
+		<div id="revasubmitbtn">
+			<button id="revsubmitbtn">
+				작가 의뢰 접수 <br> 및 견적서 첨부
+			</button>
 		</div>
-		<div id="reviewRead4">
-			<input type="button" class="btn4" value="목록보기"> <input
-				type="button" style="background-color: orange" class="btn4"
-				value="추천하기">
+		<div id="revacontentswriter">
+			<p id="writername">작가 접수내역</p>
+			<div id="revawriter">
+				<table class="tablewritercontents">
+					<tr>
+						<td align="center" style="width: 200px">작가</td>
+						<td style="width: 100px"><button id="select">의뢰결정</button></td>
+						<td style="width: 200px">의뢰 접수 금액: 0원</td>
+						<td colspan="2" style="width: 700px; text-align: right;">견적서
+							<button id="writerselect">다운로드</button>
+						</td>
+
+					</tr>
+
+					<tr>
+						<td align="center" style="width: 200px">작가</td>
+						<td style="width: 100px"><button id="select">의뢰결정</button></td>
+						<td style="width: 200px">의뢰 접수 금액: 0원</td>
+						<td colspan="2" style="width: 700px; text-align: right;">견적서
+							<button id="writerselect">다운로드</button>
+						</td>
+
+					</tr>
+					<tr>
+						<td align="center" style="width: 200px">작가</td>
+						<td style="width: 100px"><button id="select">의뢰결정</button></td>
+						<td style="width: 200px">의뢰 접수 금액: 0원</td>
+						<td colspan="2" style="width: 700px; text-align: right;">견적서
+							<button id="writerselect">다운로드</button>
+						</td>
+
+					</tr>
+				</table>
+			</div>
 		</div>
-		<div id="reviewRead5">
-			<table style="text-align: center;">
-				<tr>
-					<td style="width: 110">1</td>
-					<td style="width: 550; text-align: left">나 오십인데 내 동년배들 다 디자이너스
-						쓴다</td>
-					<td style="width: 130">정병남</td>
-					<td style="width: 180">2019-05-31</td>
-				</tr>
-				<tr>
-					<td style="width: 110">2</td>
-					<td style="width: 550; text-align: left">스윽 까보니 바밤바</td>
-					<td style="width: 130">조용환</td>
-					<td style="width: 180">2019-05-31</td>
-				</tr>
-			</table>
-			<div class="clear"></div>
+		<div id="readcontents">
+			<p id="readpcontents">작가님 요청사항</p>
+			<hr />
+			<div id="revadesign">
+				제작 의뢰 도안(첨부파일)
+				<div id="revadesingdown">
+					도안.pdf<br> 도안.pdf
+				</div>
+			</div>
+			<div id="revareaddesigncontents">
+				<p id="prevacontents">작성예시 및 유의사항
+				<p>
+				<p>
+					유의사항-- <br>1. 작가님에게 정확한 정보전달을 위해서 간단한 설명 및 도안을 자세히 올려주시기 바랍니다.
+					<br> 2. 욕설, 비방 및 의뢰사항과 관련없는 글에 대해서는 삭제 및 계정 제재대상이 될 수 있으니
+					유의합니다.<br> 3. 기타 등등..<br>
+					<br>작성예시-- <br> 1. 사이즈는 (W)30mm X (H)20mm X (D)15mm 로 제작
+					부탁합니다. <br> 2. 바닥 재질은 구리로 제작 하였으면 하며, 구리 수급 및 가공이 어려울 경우 나무로
+					만들어도 무관합니다. <br> 3. 첨부된 도안에서 플라스틱은 유광으로 제작해야합니다. <br> 4.
+					색상은 RGB색상표 기준으로 도안에 첨부 하였습니다.
+				</p>
+			</div>
 		</div>
-		<div id="reviewRead6">
-			<form>
-				<input type="text"
-					style="width: 900; height: 50; float: left; font-size: 20"
-					placeholder="여기에 댓글을 입력해주세요"><br>
-				<button class="btn5">댓글쓰기</button>
-			</form>
-
-		</div>
-
-
-
-		<div class="clear"></div>
-
 	</div>
-
-
-
-
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
-
-	</div>
-
 </body>
 </html>
