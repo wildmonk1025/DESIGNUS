@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AdminController {
-	@RequestMapping()
-	public String norJoinFrm() {
-		
-		return "norjoinFrm";
-	}
+	/*
+	 * @RequestMapping() public String norJoinFrm() {
+	 * 
+	 * return "norjoinFrm"; }
+	 */
 }

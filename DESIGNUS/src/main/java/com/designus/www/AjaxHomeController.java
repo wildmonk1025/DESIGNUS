@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AjaxHomeController {
 	
-	@RequestMapping()
-	public String norJoinFrm() {
-		
-		return "norjoinFrm";
-	}
+	/*
+	 * @RequestMapping() public String norJoinFrm() {
+	 * 
+	 * return "norjoinFrm"; }
+	 */
 }
