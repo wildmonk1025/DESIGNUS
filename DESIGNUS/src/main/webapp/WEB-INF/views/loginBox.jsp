@@ -22,12 +22,12 @@
 }
 
 #mb_id {
-	width: 300;
+	width: 400;
 	height: 40;
 }
 
 #mb_pw {
-	width: 300;
+	width: 400;
 	height: 40;
 }
 
@@ -65,7 +65,7 @@
 </style>
 </head>
 <body>
-	<a href="home"><img id="logoimg" src="img/logo"></a>
+	<a href="home"><img id="logoimg" src="./images/logo.png"></a>
 
 	<form action="login" name="loginFrm" method="post">
 		<div id="login">
