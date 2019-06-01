@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.UploadFile;
+
 @Service
 public class MemberMM {
 	@Autowired
@@ -20,42 +21,41 @@ public class MemberMM {
 	private ModelAndView mav;
 	@Autowired
 	private UploadFile upload;
-	
+	Member mb;
 	public ModelAndView memberapply(MultipartHttpServletRequest multi) {
-		
-		  mav=new ModelAndView(); 
-		  String view=null;
-		  String mb_id=multi.getParameter("mb_id");
-		  String mb_pw=multi.getParameter("mb_pw");
-		  String mb_name=multi.getParameter("mb_name");
-		  String mb_birth=multi.getParameter("mb_birth");
-		  String mb_address=multi.getParameter("mb_address");
-		  String mb_email=multi.getParameter("mb_email");
 
-		  Member mb=new Member();
-		  
-		  System.out.println("mb_id="+mb_id);
-		  System.out.println("mb_pw="+mb_id);
-		  System.out.println("mb_name="+mb_name);
-		  System.out.println("mb_birth="+mb_birth);
-		  System.out.println("mb_address="+mb_address);
-		  System.out.println("mb_email="+mb_email);
+		mav = new ModelAndView();
+		String view = null;
+		String mb_id = multi.getParameter("mb_id");
+		String mb_pw = multi.getParameter("mb_pw");
+		String mb_name = multi.getParameter("mb_name");
+		String mb_birth = multi.getParameter("mb_birth");
+		String mb_address = multi.getParameter("mb_address");
+		String mb_email = multi.getParameter("mb_email");
 
-		  mb.setMb_id(mb_id);
-		  mb.setMb_name(mb_name);
-		  mb.setMb_birth(mb_birth);
-		  mb.setMb_address(mb_address);
-		  mb.setMb_email(mb_email);
-		  mb.setMb_id(mb_id);
-		  BCryptPasswordEncoder pwdEncoder=new BCryptPasswordEncoder();
-		  mb.setMb_pw(pwdEncoder.encode(mb_pw));
-		boolean f = upload.fileUp(multi,mb);
-		  if(f){ 
-			  view="loginBox"; 
-			  mav.addObject("check",1); 
-			  }else { view="norjoinFrm"; }
-		  mav.setViewName(view);
 		
+		
+		
+
+		System.out.println("mb_id=" + mb_id);
+		System.out.println("mb_pw=" + mb_id);
+		System.out.println("mb_name=" + mb_name);
+		System.out.println("mb_birth=" + mb_birth);
+		System.out.println("mb_address=" + mb_address);
+		System.out.println("mb_email=" + mb_email);
+
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		// mb.setMb_pw(pwdEncoder.encode(mb_pw));
+		
+		boolean f = upload.fileUp(multi, mb);
+		if (f) {
+			view = "loginBox";
+			mav.addObject("check", 1);
+		} else {
+			view = "norjoinFrm";
+		}
+		mav.setViewName(view);
+
 		return mav;
 	}
 

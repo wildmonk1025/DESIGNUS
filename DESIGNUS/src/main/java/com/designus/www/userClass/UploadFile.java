@@ -29,10 +29,7 @@ public class UploadFile {
 	@Autowired
 	private ImemberDao bDao;
 	 public boolean fileUp(MultipartHttpServletRequest multi, Member mb){
-		 System.out.println("ddddddsss"+multi.getMultipartContentType("mb_profile").length());
-		 System.out.println("dddddd"+multi.getFile("mb_profile"));
-		 
-			System.out.println("fileUp");
+		 System.out.println("fileUp");
 			//1.이클립스의 물리적 저장경로 찾기
 			String root=multi.getSession().getServletContext().getRealPath("/");
 			System.out.println("root="+root);
@@ -45,10 +42,8 @@ public class UploadFile {
 			//3.파일을 가져오기-파일태그 이름들 반환
 			Iterator<String> files=multi.getFileNames(); //파일업로드 2개이상일때
 			
-			System.out.println("files::"+files);
-			
-			Map<String,Member> fMap=new HashMap<String, Member>();
-			fMap.put("mb", mb);
+			Map<String,String> fMap=new HashMap<String, String>();
+			//fMap.put("bnum", String.valueOf(bnum));
 			boolean f=false;
 			while(files.hasNext()){
 				String fileTagName=files.next();
@@ -66,7 +61,7 @@ public class UploadFile {
 				
 				try {
 					mf.transferTo(new File(path+sysFileName));
-					f=bDao.fileInsert(fMap);
+					//f=bDao.fileInsert(fMap);
 				}catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
