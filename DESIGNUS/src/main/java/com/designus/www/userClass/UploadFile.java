@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
+import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 @Component
 public class UploadFile {
@@ -28,48 +28,49 @@ public class UploadFile {
 	//String fullPath="D:/Work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SpringMVC-Board/resources/upload";
 	@Autowired
 	private ImemberDao bDao;
-	 public boolean fileUp(MultipartHttpServletRequest multi, int bnum){
-	      System.out.println("fileUp");
-	      //1.이클립스의 물리적 저장경로 찾기
-	      String root=multi.getSession().getServletContext().getRealPath("/");
-	      System.out.println("root="+root);
-	      String path=root+"resources/upload/";
-	      //2.폴더 생성을 꼭 할것...
-	      File dir=new File(path);
-	      if(!dir.isDirectory()){  //upload폴더 없다면
-	         dir.mkdirs();  //upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
-	      }
-	      //3.파일을 가져오기-파일태그 이름들 반환
-	      //Iterator<String> files=multi.getFileNames(); //파일태그가 2개이상일때
-	      //List<MultipartFile> file = multi.getFiles("b_files");
-	      List<MultipartFile> file = multi.getFiles("files");
-	      Map<String,String> fMap=new HashMap<String, String>();
-	      fMap.put("bnum", String.valueOf(bnum));
-	      boolean f=false;
-	      for(int i=0;i<file.size();i++){
-	         //파일 메모리에 저장
-	         MultipartFile mf = file.get(i); //실제 업로드될 파일
-	         String oriFileName = file.get(i).getOriginalFilename();  //a.txt
-	         fMap.put("oriFileName", oriFileName);
-	         //4.시스템파일이름 생성  a.txt  ==>112323242424.txt
-	         String sysFileName=System.currentTimeMillis()+"."
-	               +oriFileName.substring(oriFileName.lastIndexOf(".")+1);
-	         fMap.put("sysFileName", sysFileName);
-	         
-	         //5.메모리->실제 파일 업로드
-	         
-	         try {
-	            mf.transferTo(new File(path+sysFileName));
-	            //f=bDao.fileInsert(fMap);
-	         }catch (IOException e) {
-	            e.printStackTrace();
-	         }
-	      } //for End
-	      
-	      if(f)
-	         return true;
-	      return false;
-	   }
+	 public boolean fileUp(MultipartHttpServletRequest multi, Member mb){
+		 System.out.println("fileUp");
+			//1.이클립스의 물리적 저장경로 찾기
+			String root=multi.getSession().getServletContext().getRealPath("/");
+			System.out.println("root="+root);
+			String path=root+"resources/upload/";
+			//2.폴더 생성을 꼭 할것...
+			File dir=new File(path);
+			if(!dir.isDirectory()){  //upload폴더 없다면
+				dir.mkdir();  //upload폴더 생성
+			}
+			//3.파일을 가져오기-파일태그 이름들 반환
+			Iterator<String> files=multi.getFileNames(); //파일업로드 2개이상일때
+			
+			Map<String,String> fMap=new HashMap<String, String>();
+			//fMap.put("bnum", String.valueOf(bnum));
+			boolean f=false;
+			while(files.hasNext()){
+				String fileTagName=files.next();
+				System.out.println("fileTag="+fileTagName);  
+				//파일 메모리에 저장
+				MultipartFile mf=multi.getFile(fileTagName); //실제파일
+				String oriFileName=mf.getOriginalFilename();  //a.txt
+				fMap.put("oriFileName", oriFileName);
+				//4.시스템파일이름 생성  a.txt  ==>112323242424.txt
+				String sysFileName=System.currentTimeMillis()+"."
+						+oriFileName.substring(oriFileName.lastIndexOf(".")+1);
+				fMap.put("sysFileName", sysFileName);
+				
+				//5.메모리->실제 파일 업로드
+				
+				try {
+					mf.transferTo(new File(path+sysFileName));
+					//f=bDao.fileInsert(fMap);
+				}catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} //while End
+			if(f)
+				return true;
+			return false;
+		}
 	
 	//파일 다운로드
 		public void download(String fullPath, 

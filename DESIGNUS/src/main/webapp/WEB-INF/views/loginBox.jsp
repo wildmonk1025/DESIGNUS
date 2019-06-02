@@ -10,42 +10,42 @@
 	width: 250px;
 	height: 100px;
 	position: relative;
-	top: 260px;
-	left: 840px;
+	top: 150px;
+	left: 620px;
 }
 
 #login {
 	position: relative;
-	top: 300px;
-	left: 750px;
-	font-size: 25px;
+	top: 150px;
+	left: 580px;
+	font-size: 20px;
 }
 
 #mb_id {
-	width: 400;
-	height: 40;
+	width: 250px;
+	height: 40px;
 }
 
 #mb_pw {
-	width: 400;
-	height: 40;
+	width: 250px;
+	height: 40px;
 }
 
 #logcheck {
 	position: relative;
-	top: 5px;
-	left: 230px;
+	top: 10px;
+	left: 220px;
 }
 
 #mfind {
 	position: relative;
-	top: 5px;
-	left: 90px;
+	top: 15px;
+	left: 100px;
 }
 
 #loginbtz {
 	position: relative;
-	top: 10px;
+	top: 25px;
 	left: 20px;
 }
 
@@ -57,8 +57,8 @@
 
 #haha {
 	position: relative;
-	top: 300px;
-	left: 920px;
+	top: 200px;
+	left: 750px;
 	font-size: 25px;
 	/*text-decoration: none;*/
 }
