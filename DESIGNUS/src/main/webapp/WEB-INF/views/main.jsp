@@ -222,9 +222,11 @@
             <div id="msg">
                 <img src="./images/writer.png" width="40px" height="40px" />
             </div>
-            <div id="loginmsg"><a href="logingo">로그인</a><br>id:${id}<br>등급:${grade}</div>
+            <div id="loginmsg"><a href="logingo">로그인</a><br>id:${id}<br>등급:${grade}
+            </div>
         </div>
     </div>
+    
     <div id="category" >
         <div id="subcategory" align="center" class="menu-item">
             <h4><a href="#"><h2>三</h2></a></h4>
