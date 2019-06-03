@@ -61,7 +61,7 @@ public class HomeController {
 
 		return "sc_Question";
 	}
-
+	
 	@RequestMapping(value = "/bestwriter", method = RequestMethod.GET)
 	public String bestwriter() {
 
