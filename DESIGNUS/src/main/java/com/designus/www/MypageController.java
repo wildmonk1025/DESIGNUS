@@ -21,9 +21,30 @@ public class MypageController {
 
 	@RequestMapping(value = "/historylist", method = RequestMethod.GET)
 	public ModelAndView historylist(String list) {
-		mav = new ModelAndView();
-         mav= pm.historylist(list);
+		System.out.println("ddd="+list);
+        mav= pm.historylist(list);
+        System.out.println("view="+mav.getViewName());
 		return mav;
 	}
-
+	@RequestMapping(value = "/privacyedit", method = RequestMethod.GET)
+	public ModelAndView privacyedit() {
+		
+        mav= pm.privacyedit();
+        
+		return mav;
+	}
+	@RequestMapping(value = "/memberout", method = RequestMethod.GET)
+	public ModelAndView memberout() {
+		
+        mav= pm.memberout();
+        
+		return mav;
+	}
+	@RequestMapping(value = "/nortowri", method = RequestMethod.GET)
+	public ModelAndView nortowri() {
+		
+        mav= pm.nortowri();
+        
+		return mav;
+	}
 }
