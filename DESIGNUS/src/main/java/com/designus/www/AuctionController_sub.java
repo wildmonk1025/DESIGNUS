@@ -17,8 +17,8 @@ public class AuctionController_sub {
 		
 		ModelAndView mav;
 		
-		@Autowired
-		private RevAuctionMM ram;
+	/* @Autowired */
+	/* private RevAuctionMM ram; */
 		
 		
 		@RequestMapping(value = "/revauctionWrite", method = RequestMethod.GET)
