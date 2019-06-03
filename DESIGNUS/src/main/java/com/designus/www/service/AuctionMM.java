@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
@@ -19,21 +20,17 @@ public class AuctionMM {
 	
 	private ModelAndView mav;
 
-	public ModelAndView AuctionWrite(Auction au) {
+	public ModelAndView AuctionWrite(MultipartHttpServletRequest multi) {
 		mav=new ModelAndView();
+		String id = (String)session.getAttribute("id");
 		String view=null;
 		
 		/*
-		 * if(aDao.getAuctionWriteInsert(au)) { view ="auctionList"; } else { view
-		 * ="auctionWrite"; }
-		 */
-		System.out.println("id = "+au.getAu_mbid_w());
-		System.out.println("title = "+au.getAu_title());
-		System.out.println("cgcode = "+au.getAu_cgcode());
-		System.out.println("qty = "+au.getAu_qty());
-		System.out.println("minprice = "+au.getAu_minprice());
-		System.out.println("inPrice = "+au.getAu_inprice());
-		System.out.println("contents = "+au.getAu_contents());
+		  if(aDao.getAuctionWriteInsert(au)) { 
+		  view = "auctionList"; 
+		  } else { 
+		  view = "auctionWrite"; }
+		*/
 		
 		
 		mav.setViewName(view);

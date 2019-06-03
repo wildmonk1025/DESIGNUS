@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
@@ -26,10 +27,11 @@ public class AuctionController {
 		
 		return "sponsor";
 	}	
+	
 	@RequestMapping(value = "/auctionWrite" )
-	public ModelAndView auctionWrite(Auction au) {
+	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
 		
-		mav = aum.AuctionWrite(au);
+		mav = aum.AuctionWrite(multi);
 			
 		return mav;
 	}

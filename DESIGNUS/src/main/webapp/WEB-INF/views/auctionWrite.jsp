@@ -147,12 +147,12 @@ textarea {
 		</button>
 		<div id="list">
 			<h3 style="color: orange;">출품 등록</h3>
-			<form action="auctionWrite" method="post">
+			<form action="auctionWrite" name="auctionWriteFrm" method="post" enctype="multipart/form-data">
 				<table id="mainTable">
 					<tr>
 						<th style="height: 55px; width: 80px;">작가 아이디</th>
 						<td style="width: 330px;"><input type="text"
-							readonly="readonly" value="ID" class="ipt" name="au_mbid_w"></td>
+							readonly="readonly" value="${id}" class="ipt" name="au_mbid_w"></td>
 					</tr>
 					<tr>
 						<th>제품명</th>
