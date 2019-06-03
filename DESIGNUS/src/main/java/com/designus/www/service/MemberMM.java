@@ -84,11 +84,11 @@ public class MemberMM {
 				
 				view="redirect:home";
 			}else {
-				view="logingo";
+				view="loginBox";
 				mav.addObject("ckeck" ,2);
 			}
 		}else {
-			view="logingo";
+			view="loginBox";
 			mav.addObject("ckeck" ,2);
 		}
 		mav.setViewName(view);

@@ -48,8 +48,6 @@ public class MypageMM {
 	public ModelAndView privacyedit() {
 		mav = new ModelAndView();
 		String view=null;
-		// String id=session.getAttribute("id").toString();
-		session.setAttribute("id", "koer45");
 		String id = session.getAttribute("id").toString();
 		Member mb = new Member();
 		
@@ -67,16 +65,16 @@ public class MypageMM {
 
 	public ModelAndView memberout() {
 		mav = new ModelAndView();
-		// String id=session.getAttribute("id").toString();
-		mav.addObject("id", "koer45");
+		 String id=session.getAttribute("id").toString();
+		mav.addObject("id", id);
 		mav.setViewName("memberDelete");
 		return mav;
 	}
 
 	public ModelAndView nortowri() {
 		mav = new ModelAndView();
-		// String id=session.getAttribute("id").toString();
-		mav.addObject("id", "koer45");
+		String id=session.getAttribute("id").toString();
+		mav.addObject("id", id);
 		mav.setViewName("memberTransform");
 		return mav;
 	}
