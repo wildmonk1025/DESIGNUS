@@ -148,7 +148,7 @@
 			</table>
 			<div id="phtDiv">
 				<div id="photo">
-					
+					사진뜨자
 				</div>
 				<div id="File">
 					<input type="file">
