@@ -79,30 +79,36 @@ public class MypageMM {
 		return mav;
 	}
 
-	public ModelAndView memberrevise(MultipartHttpServletRequest multi) {
+	public ModelAndView memberrevise(MultipartHttpServletRequest multi, String kind) {
 		mav = new ModelAndView();
 		String view = null;
+		kind="M";
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		String id = session.getAttribute("id").toString();
 		String pw = (multi.getParameter("mb_pw"));
 		String address = (multi.getParameter("mb_address"));
 		String email = (multi.getParameter("mb_email"));
+		String profile = multi.getParameter("mb_profile");
+		System.out.println("id"+id);
+		System.out.println("id"+pw);
+		System.out.println("id"+address);
+		System.out.println("id"+email);
 		Member mb = new Member();
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
 		mb.setMb_id(id);
 		mb.setMb_address(address);
 		mb.setMb_email(email);
-		
+		mb.setMb_profile(profile);
 		boolean f = false;
 		if (check == 1) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
 			// 이클립스 서버에 파일을 업로드 한 후,
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
-			f = upload.fileUp(multi, mb);
+			f = upload.fileUp(multi, mb,kind);
 			if (f) {
 				System.out.println("일단 여기까지는 된건데....");
-				view = "myPage";
+				view = "redirect:myPage";
 			} else {
 				System.out.println("인설트 실패인데....");
 				view = "memberEdit";
