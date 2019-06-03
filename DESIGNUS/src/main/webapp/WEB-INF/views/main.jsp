@@ -161,7 +161,7 @@
 
 
         .menu-item:hover ul {
-            height: 310px;
+            height: 340px;
             width: 200px;
             position: absolute;
             top:162px;
@@ -230,16 +230,17 @@
             <h4><a href="#"><h2>三</h2></a></h4>
             <nav>
                 <ul>
-                    <li class="li1"><a href="#">귀걸이,반지,목걸이</a></li>
-                    <li class="li1"><a href="#">디저트,베이커리,떡</a></li>
-                    <li class="li1"><a href="#">향수,화장품</a></li>
-                    <li class="li1"><a href="#">인형, 장난감</a></li>
-                    <li class="li1"><a href="#">반려동물 용품</a></li>
-                    <li class="li1"><a href="#">페인팅, 캐리커쳐 캘리</a></li>
+                    <li class="li1"><a href="#">귀금속 공예</a></li>
+                    <li class="li1"><a href="#">원목 공예</a></li>
+                    <li class="li1"><a href="#">종이 공예</a></li>
+                    <li class="li1"><a href="#">가죽 공예</a></li>
+                    <li class="li1"><a href="#">천 공예</a></li>
+                    <li class="li1"><a href="#">플라스틱 공예</a></li>
                     <li class="li1"><a href="#">도자기</a></li>
-                    <li class="li1"><a href="#">전자기기</a></li>
-                    <li class="li1"><a href="#">유아용품</a></li>
-                    <li class="li1"><a href="#">수제화,운동화,구두</a></li>
+                    <li class="li1"><a href="#">가공식품</a></li>
+                    <li class="li1"><a href="#">휴대폰 악세서리</a></li>
+                    <li class="li1"><a href="#">패인팅,캐리커쳐,캘리</a></li>
+                    <li class="li1"><a href="#">유아 용품</a></li>
                 </ul>
             </nav>
         </div>
