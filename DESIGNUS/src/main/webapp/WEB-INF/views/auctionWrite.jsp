@@ -66,13 +66,15 @@
 		border: 0.1px solid gray;
 	}
 	#mainTable{
+		margin-left:50px;
 		float:left;
 		width:450px;
 		border-bottom: 0.5px solid orange;
 		border-top: 0.5px solid orange;
 	}
 	#phtDiv{
-		display:block;
+		margin-left:50px;
+		float:left;
 		border: 1px solid black;
 		position:relative;
 		width: 400px;
@@ -94,6 +96,14 @@
 		height: 50px;
 		font-size: 16px;
 	}
+	#contents{
+		margin-left:50px;
+		float:left;
+		border: 1px solid black;
+		position:relative;
+		width: 400px;
+		height: 380px;
+	}
 	
 </style>
 </head>
@@ -108,6 +118,7 @@
 		<button id="auctionbtn" class="btn1"><a href="auctionWrite">출품등록하기</a></button>
 		<div id="list">
 			<h3 style="color: orange;">출품 등록</h3>
+			<form>
 			<table id="mainTable">
 				<tr>
 					<th style="height: 55px; width: 80px;">작가 아이디</th>
@@ -151,10 +162,15 @@
 					사진뜨자
 				</div>
 				<div id="File">
-					<input type="file">
+					<input type="file" name="file">
 				</div>
+				
+			</div>
+			<div id="contents">
+				<textarea></textarea>
 			</div>
 			
+			</form>
 		</div>
 		
 		
