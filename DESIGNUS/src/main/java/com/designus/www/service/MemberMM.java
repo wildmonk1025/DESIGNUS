@@ -50,5 +50,33 @@ public class MemberMM {
 			mav.setViewName(view);
 		return mav;
 	}
+	public ModelAndView memberAccess(Member mb) {
+		
+		mav=new ModelAndView();
+		String  view=null;
+		
+		BCryptPasswordEncoder pwdEncoder= new BCryptPasswordEncoder();
+		
+		String pwdEncode=mDao.getSecurityPwd(mb.getMb_id());
+		
+		if(pwdEncode!=null) {
+			if(pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
+				session.setAttribute("id", mb.getMb_id());
+				session.setAttribute("grade", mb.getMb_grade());
+				mb=mDao.getMemberInfo(mb.getMb_id());
+				/* session.setAttribute("mb", mb); */
+				
+				view="redirect:home";
+			}else {
+				view="logingo";
+				mav.addObject("ckeck" ,2);
+			}
+		}else {
+			view="logingo";
+			mav.addObject("ckeck" ,2);
+		}
+		mav.setViewName(view);
+		return mav;
+	}
 
 }

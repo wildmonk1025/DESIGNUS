@@ -103,4 +103,16 @@ public class HomeController {
 
 		return "myPage";
 	}
+     @RequestMapping(value = "/access", method = RequestMethod.POST)
+ 	public ModelAndView access(Member mb) {
+ 		mav=mm.memberAccess(mb);
+ 		System.out.println(mb.getMb_id());
+ 		System.out.println(mb.getMb_pw());
+ 		return mav;
+ 	}
+     @RequestMapping(value="/login",method=RequestMethod.GET)
+     public String login() {
+
+ 		return "loginBox";
+ 	}
 }
