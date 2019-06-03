@@ -105,7 +105,7 @@
 </head>
 <body>
 	<div id="join">
-	<div id="null">@</div>
+
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
 		<form action="memberapply" name="memberapplyFrm" method="post" enctype="multipart/form-data">
