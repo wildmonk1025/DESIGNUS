@@ -469,8 +469,8 @@
                 <tr>
                     <td>프로필 사진</td>
                     <td><input id="mb_profile" class="memberN" type="file" name="mb_profile"
-                         onchange="fileChk(this)"multiple>
-                         <input type="hidden" id="fileCheck" value="0" name="fileCheck"></td>
+                         value="${mb.mb_profile}" onchange="fileChk(this)"multiple>
+                         <input type="hidden" id="fileCheck" value="1" name="fileCheck"></td>
                 </tr>
 
                 <tr>
