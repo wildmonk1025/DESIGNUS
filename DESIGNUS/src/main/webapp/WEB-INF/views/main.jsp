@@ -2,121 +2,207 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
     <style>
         div {
-	margin: auto;
-}
-
-    #hrmain{
-        width:1500px;
-        margin-top: -2px;
-    }
-#header {
-	padding: 3px;
-	width: 1510px;
-	height: 100px;
-	float: left;
-    z-index: 1;
-}
-
-#logo {
-	padding: 5px;
-	width: 270px;
-	height: 80px;
-	float: left;
-}
-
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
-
-#loginwriter {
-	padding: 3px;
-	padding-top: 20px;
-	width: 300px;
-	height: 80px;
-	float: right;
-}
-
-#category {
-	float: left;
-	width: 1500px;
-	height: 40px;
-     border-top:1px solid black;
-    border-bottom:1px solid black;
-}
-
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	text-align: center;
-}
-
-#subcategory {
-	width: 40px;
-	height: 40px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
-	float: left;
-    z-index: -1;
-}
-
-#menu {
-	float: left;
-	width: 1300px;
-	height: 40px;
-
-   
-}
-
-        .a{
-                display:table-cell; 
-
-    vertical-align:middle
+            margin: auto;
+            border: 1px solid orange;
         }
-#submenu {
-	margin-left: 100px;
-	width: 150px;
-	float: left;
-	height: 50px;
-	text-align: center;
-	font-size: 18px;
-}
 
-#msg {
-	width: 50px;
-	height: 50px;
-	margin-left: 10px;
-	float: left;
-}
+        #header {
+            padding: 3px;
+            width: 1510px;
+            height: 100px;
+            float: left;
+        }
 
-#mypageimg {
-	float: left;
-	width: 50px;
-	height: 50px;
-	margin-left: 5px;
-}
+        #logo {
+            padding: 5px;
+            width: 270px;
+            height: 80px;
+            float: left;
+        }
 
-#loginmsg {
-	float: left;
-	width: 130px;
-	height: 50px;
-	margin-left: 10px;
-}
+        #search {
+            margin-left: 100px;
+            padding-left: 120px;
+            padding-right: 120px;
+            padding-top: 20px;
+            width: 570px;
+            height: 80px;
+            float: left;
+        }
+
+        #loginwriter {
+            padding: 3px;
+            padding-top: 20px;
+            width: 300px;
+            height: 80px;
+            float: right;
+        }
+
+        #category {
+            float: left;
+            width: 1500px;
+            height: 50px;
+        }
+
+        #searchtxt {
+            margin: 50px, 20px;
+            width: 300px;
+            height: 30px;
+            align: center;
+        }
+
+        #subcategory {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            color: white;
+            font-size: 30px;
+            float: left;
+        }
+
+        #menu {
+            float: left;
+            width: 1400px;
+            height: 50px
+        }
+
+        #submenu {
+            margin-left: 100px;
+            width: 150px;
+            float: left;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        #msg {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            float: left;
+        }
+
+        #mypageimg {
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-left: 5px;
+        }
+
+        #loginmsg {
+            float: left;
+            width: 130px;
+            height: 50px;
+            margin-left: 10px;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
        
-</style>
 
+        nav {
+            font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 50px auto;
+            width: 200px;
+            -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item {
+            background: #fff;
+            width: 200px;
+        }
+
+        /*Menu Header Styles*/
+        .menu-item h4 {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 7px 12px;
+
+
+
+        }
+
+
+
+
+        /*ul Styles*/
+        .menu-item ul {
+            background: orange;
+            font-size: 13px;
+            line-height: 30px;
+            height: 0px;
+            list-style-type: none;
+            overflow: hidden;
+            padding: 0px;
+            width: 200px;
+            position: absolute;
+            top:162px;
+
+            /*Animation*/
+            -webkit-transition: height 1s ease;
+            -moz-transition: height 1s ease;
+            -o-transition: height 1s ease;
+            -ms-transition: height 1s ease;
+            transition: height 1s ease;
+        }
+
+
+        .menu-item:hover ul {
+            height: 310px;
+            width: 200px;
+            position: absolute;
+            top:162px;
+            -webkit-transition: height 1s ease;
+            -moz-transition: height 1s ease;
+            -o-transition: height 1s ease;
+            -ms-transition: height 1s ease;
+            transition: height 1s ease;
+        }
+
+     
+
+        /*li Styles*/
+        .menu-item li {
+            border-bottom: 1px solid #eee;
+        }
+
+
+
+        a:active {
+            text-decoration: none;
+            color: #646464;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #646464;
+        }
+
+        a:link {
+            text-decoration: none;
+            color: #646464;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #646464;
+        }
+       
+    </style>
+    <meta charset="UTF-8">
 
 </head>
 
@@ -132,27 +218,39 @@
             <button id="searchbtn">검색</button>
         </div>
         <div id="loginwriter">
-            <div id="mypageimg"></div>
+            <div id="mypageimg"><a href="myPage">마이페이지</a></div>
             <div id="msg">
                 <img src="./images/writer.png" width="40px" height="40px" />
             </div>
             <div id="loginmsg"><a href="logingo">로그인</a></div>
         </div>
     </div>
-
-    <div id="category">
-        <div id="subcategory" align="center">三</div>
+    <div id="category" >
+        <div id="subcategory" align="center" class="menu-item">
+            <h4><a href="#"><h2>三</h2></a></h4>
+            <nav>
+                <ul>
+                    <li class="li1"><a href="#">귀걸이,반지,목걸이</a></li>
+                    <li class="li1"><a href="#">디저트,베이커리,떡</a></li>
+                    <li class="li1"><a href="#">향수,화장품</a></li>
+                    <li class="li1"><a href="#">인형, 장난감</a></li>
+                    <li class="li1"><a href="#">반려동물 용품</a></li>
+                    <li class="li1"><a href="#">페인팅, 캐리커쳐 캘리</a></li>
+                    <li class="li1"><a href="#">도자기</a></li>
+                    <li class="li1"><a href="#">전자기기</a></li>
+                    <li class="li1"><a href="#">유아용품</a></li>
+                    <li class="li1"><a href="#">수제화,운동화,구두</a></li>
+                </ul>
+            </nav>
+        </div>
         <div id="menu">
             <div id="submenu"><a href="sponsor">후원</a></div>
             <div id="submenu"><a href="boardlist">게시판</a></div>
             <div id="submenu"><a href="bestwriter">인기작가</a></div>
             <div id="submenu"><a href="servicecenter">고객센터</a></div>
         </div>
-
     </div>
 </body>
 <script>
 
-</script>
-
-</html>
+</script></html>
