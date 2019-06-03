@@ -31,7 +31,7 @@ public class AuctionController_sub {
 		@RequestMapping(value = "/revauctionsubmit", method = RequestMethod.POST)
 		public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
 			mav = new ModelAndView();
-			mav = ram.revAuctionSubmit(multi);
+		/* mav = ram.revAuctionSubmit(multi); */
 			return mav;
 		}
 		

@@ -24,7 +24,14 @@ public class AuctionMM {
 		mav=new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view=null;
+		String title = multi.getParameter("au_title");
+		String cgcode = multi.getParameter("au_cgcode");
+		int qty = Integer.parseInt(multi.getParameter("au_qty"));
+		int minprice = Integer.parseInt(multi.getParameter("au_minprice"));
+		int inprice = Integer.parseInt(multi.getParameter("au_inprice"));
+		String contents = multi.getParameter("au_contents");
 		
+		Auction au = new Auction();
 		/*
 		  if(aDao.getAuctionWriteInsert(au)) { 
 		  view = "auctionList"; 
