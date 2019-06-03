@@ -108,41 +108,49 @@ select {
 	<div id="revauctionmain">
 		<div id="revauctiontop">제작의뢰 페이지</div>
 		<div id="revamiddle">
-			<input type="button" id="lock" name="revaradio" value="비공개" /> <input
-				type="button" id="unlock" name="revaradio" value="공개" />
+			<input type="button" id="lock" name="ra_oc" value="비공개" />
+			<input type="button" id="unlock" name="ra_oc" value="공개" />
 		</div>
 		<div id="revauctionlock">
 
-			<form action="" id="revauction">
+			<form action="revauctionsubmit" id="revauction" method="post" enctype="multipart/form-data">
 				<table class="revauctable">
 					<tr align="center">
 						<td>요청 제목</td>
-						<td><input type="text" id="reva_Ltitle" name="reva_Ltitle">
+						<td><input type="text" id="reva_Ltitle" name="ra_title">
 						</td>
 					</tr>
 					<tr>
 						<td align="center">카테고리</td>
-						<td><select id="reva_Lcate" name="reva_Lcate">
+						<td><select id="reva_Lcate" name="ra_cgcode">
 								<option selected>선택</option>
-								<option>악세사리</option>
-								<option>양초</option>
-								<option>기타</option>
-								<option>등등</option>
+								<option value="100">귀금속 공예</option>
+								<option value="110">원목 공예</option>
+								<option value="120">종이 공예</option>
+								<option value="130">가죽 공예</option>
+								<option value="140">천 공예</option>
+								<option value="150">플라스틱 공예</option>
+								<option value="160">도자기 공예</option>
+								<option value="170">가공 식품</option>
+								<option value="180">휴대폰 액세서리</option>
+								<option value="190">페인팅,캐리커쳐,캘리</option>
+								<option value="200">유아 용품</option>
+								
 						</select></td>
 					</tr>
 					<tr align="center">
 						<td>대표이미지</td>
-						<td><input type="file" id="reva_Limg" name="reva_Limg">
+						<td><input type="file" id="reva_Limg" name="ra_image">
 						</td>
 					</tr>
 					<tr align="center">
 						<td>제작사항</td>
-						<td><input type="file" id="reva_Lfile" name="reva_Lfile">
+						<td><input type="file" id="reva_Lfile" name="ra_file">
 						</td>
 					</tr>
 					<tr align="center">
 						<td>작가</td>
-						<td><input type="text" id="reva_Lmade" name="reva_Lmade"
+						<td><input type="text" id="reva_Lmade" name="ra_mbid_w"
 							placeholder="검색어를 입력해주세요."></td>
 					</tr>
 					<tr align="center">
@@ -157,7 +165,7 @@ select {
 					</tr>
 
 				</table>
-				<textarea id="reva_contents" cols="30" rows="10"
+				<textarea id="reva_contents" cols="30" rows="10" name="ra_contents"
 					style="width: 700; height: 150" placeholder="작가에게 전달할 말을 적어주세요"></textarea>
 
 				<br>
@@ -169,32 +177,38 @@ select {
 			</form>
 		</div>
 		<div id="revauctionunlock">
-
-			<form action="" id="revauction">
+			<form action="revauctionsubmit" id="revauction">
 				<table class="revauctable">
 					<tr align="center">
 						<td>요청 제목</td>
-						<td><input type="text" id="reva_title" name="reva_title">
+						<td><input type="text" id="reva_title" name="ra_title">
 						</td>
 					</tr>
 					<tr>
 						<td align="center">카테고리</td>
-						<td><select id="reva_cate" name="reva_cate">
+						<td><select id="reva_Lcate" name="ra_cgcode">
 								<option selected>선택</option>
-								<option>악세사리</option>
-								<option>양초</option>
-								<option>기타</option>
-								<option>등등</option>
+								<option value="100">귀금속 공예</option>
+								<option value="110">원목 공예</option>
+								<option value="120">종이 공예</option>
+								<option value="130">가죽 공예</option>
+								<option value="140">천 공예</option>
+								<option value="150">플라스틱 공예</option>
+								<option value="160">도자기 공예</option>
+								<option value="170">가공 식품</option>
+								<option value="180">휴대폰 액세서리</option>
+								<option value="190">페인팅,캐리커쳐,캘리</option>
+								<option value="200">유아 용품</option>
 						</select></td>
 					</tr>
 					<tr align="center">
 						<td>대표이미지</td>
-						<td><input type="file" id="reva_img" name="reva_img">
+						<td><input type="file" id="reva_img" name="ra_image">
 						</td>
 					</tr>
 					<tr align="center">
 						<td>제작사항</td>
-						<td><input type="file" id="reva_file" name="reva_file">
+						<td><input type="file" id="reva_file" name="ra_file">
 						</td>
 					</tr>
 					<tr align="center">
@@ -209,13 +223,13 @@ select {
 					</tr>
 
 				</table>
-				<textarea id="reva_contents" cols="30" rows="10"
+				<textarea id="reva_contents" cols="30" rows="10" name="ra_contents"
 					style="width: 700; height: 150" placeholder="그 외 제작사항을 적어주세요."></textarea>
 
 				<br>
 				<div id="btn">
 					<button id="submit">제출하기</button>
-					<button id="back">돌아가기</button>
+					<input type="button" id="back" onclick="location.href='boardList'" value="돌아가기">
 				</div>
 
 			</form>
