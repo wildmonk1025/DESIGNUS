@@ -6,9 +6,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
-
 @Alias("member")
 @Getter @Setter
 public class Member {
@@ -22,6 +19,4 @@ public class Member {
 	int    mb_point;
 	String mb_grade;
 	int    mb_ccnt;
-	
-	
 }
