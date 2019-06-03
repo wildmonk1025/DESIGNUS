@@ -15,7 +15,7 @@
 #homeMain {
 	border: 1px solid black;
 	width: 1520px;
-	height: 800px;
+	height: 700px;
 }
 
 .btn {
@@ -43,14 +43,14 @@
 #footercheck {
 	border: 1px solid black;
 	width: 1520px;
-	height: 100px;
+	height: 200px;
 }
 #titleAndbtn{
     position: relative;
     top: 50px;
-    left: 50px;
+    left: 30px;
     width: 1300px;
-    height: 60px;
+    height: 40px;
     font-size: 20px;
     color: orange;
     }
@@ -61,7 +61,7 @@
         border: 1px solid red;
         position: relative;
         top: 50px;
-        left: 50px;
+        left: 10px;
         width: 1300px;
         height: 500px;
         overflow-y:scroll;
