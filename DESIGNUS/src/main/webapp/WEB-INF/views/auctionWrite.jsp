@@ -5,121 +5,175 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <div id="main">
-       <h1>header</h1>
-    </div>
 <style>
-    #main{
-        width: 1520px;
-        height: 170px;
-        border: 1px solid black;
-    }
-    #WriteIntext{
-        position: absolute;
-        left: 200px;
-        top: 230px;
-        width: 600px;
-        height: 210px;
-        border: 1px solid black;
-    }
-    #WriteInimg{
-        position: absolute;
-        left: 200px;
-        top: 465px;
-        width: 603px;
-        height: 200px;
-    }
-    .a1{
-        border: 1px solid black;
-        width: 90px;
-        height: 35px;
-    }
-    .a2{
-        border: 1px solid black;
-        width: 200px;
-    }
-    input{
-        width: 200px;
-        height: 35px;
-        font-size: 17px;
-    }
-    select{
-        width: 200px;
-        height: 35px;
-        font-size: 17px;
-    }
-    #parts1{
-        border: 1px solid black;
-        position: absolute;
-        width: 300px;
-        height: 150px;
-        text-align: center;
-    }
-    #parts2{
-        border: 1px solid black;
-        position: absolute;
-        width: 295px;
-        height: 198px;
-        right: 0px;
-        text-align: center;
-    }
-    #parts3{
-        border: 1px solid black;
-        position: absolute;
-        width: 300px;
-        height: 45px;
-        bottom: 0px;
-        left: 0px;
-    }
-    button{
-        width: 95px;
-        height: 40px;
-        background-color: yellow;
-        border: none;
-    }
-    #WriteInbtn{
-        border: 1px solid black;
-        position: absolute;
-        top: 675px;
-        left: 600px;
-        width: 200px;
-        height: 60px;
-    }
+	#mainheader {
+	border: 1px solid black;
+	width: 1520px;
+	height: 170px;
+	}
+
+	#homeMain {
+	border: 1px solid black;
+	width: 1520px;
+	height: 600px;
+	}
+
+	.btn1 {
+	background-color: orange;
+	width: 150px;
+	height: 30px;
+	color: white;
+	float: right;
+	}
+
+	#coklist {
+	width: 1000px;
+	height: 150px;
+	float: left;
+	display: block;
+	}
+
+	#bestlist {
+	width: 1000px;
+	height: 150px;
+	float: left;
+	display: block;
+	}
+
+	#list {
+	width: 1420px;
+	height: 480px;
+	float: left;
+	margin: 50px;
+	display: inline-block;
+	}
+
+	#footercheck {
+	border: 1px solid black;
+	width: 1520px;
+	height: 150px;
+	}
+	.ipt{
+		font-size:18px;
+		border: 0.1 solid gray;
+		height: 55px;
+		width: 99%;
+		text-align: center;
+	}
+	select{
+		width: 100%;
+		height: 55px;
+		border: 0.1px solid gray;
+	}
+	#mainTable{
+		float:left;
+		width:450px;
+		border-bottom: 0.5px solid orange;
+		border-top: 0.5px solid orange;
+	}
+	#phtDiv{
+		display:block;
+		border: 1px solid black;
+		position:relative;
+		width: 400px;
+		height: 380px;
+	}
+	
+	#File{
+		border: 1px solid black;
+		width: 400px;
+		height: 50px;
+	}
+	#photo{
+		border: 1px soild black;
+		width: 400px; 
+		height: 330px;
+	}
+	input[type="file"]{
+		width: 400px;
+		height: 50px;
+		font-size: 16px;
+	}
+	
 </style>
 </head>
 
 <body>
-<div id = "WriteIntext">
-    <h2>&emsp;출품등록</h2>
-    <table>
-        <tr>
-            <td class="a1">작가아이디</td><td class="a2">아이디</td><td class="a1">제품명</td><input type="text">
-        </tr>
-        <tr>
-            <td class="a1">수량</td><td><input type="number"></td><td class="a1">제품종류</td>
-            <td>
-                <select>
-                    <option>선택해주세요</option>
-                    <option>귀금속</option>
-                    <option>목공예</option>
-                    <option>금속</option>
-                    <option>기타 등등.</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <th class="a1">입찰가격</th><th><input type="number"></th><th class="a1">즉시구매가</th><th><input type="number"></th>
-        </tr>
-    </table>
-</div>
-<div id = "WriteInimg">
-    <div id="parts1">사진등록 (최소4장) 대표사진으로 첫번째 업로드한 사진이 등록됩니다.</div>
-    <div id="parts2">출품 상품 설명</div>
-    <div id="parts3"><input type="text" readonly ><button>파일첨부</button></div>
-</div>
-<div id = "WriteInbtn">
-    <button>출품하기</button>&nbsp;<button>돌아가기</button>
-</div>
-    
+	<div id="mainheader">
+		<jsp:include page="main.jsp" />
+	</div>
+
+	<div id="homeMain">
+		<button id="revauctionbtn" class="btn1">제작의뢰 요청하기</button>
+		<button id="auctionbtn" class="btn1"><a href="auctionWrite">출품등록하기</a></button>
+		<div id="list">
+			<h3 style="color: orange;">출품 등록</h3>
+			<table id="mainTable">
+				<tr>
+					<th style="height: 55px; width: 80px;">작가 아이디</th>
+					<td style="width: 330px;"><input type="text" readonly="readonly" value="ID" class="ipt"></td>
+				</tr>
+				<tr>
+					<th>수량</th>
+					<td><input type="number" min="1" max="99" class="ipt"></td>
+				</tr>
+				<tr>
+					<th>제품명</th>
+					<td><input type="text" class="ipt" maxlength="20"></td>
+				</tr>
+				<tr>
+					<th style="height: 50px; width: 100px;">제품종류</th>
+					<td>
+						<select>
+							<option>선택해주세요</option>
+							<option>나무</option>
+							<option>금속</option>
+							<option>귀금속</option>
+							<option>종이</option>
+							<option>가죽</option>
+							<option>천</option>
+							<option>플라스틱</option>
+							<option>도자기</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>입찰시작가격</th>
+					<td><input type="number" min="1" class="ipt"></td>
+				</tr>
+				<tr>
+					<th>즉시구매가</th>
+					<td><input type="number" min="1" class="ipt"></td>
+				</tr>
+			</table>
+			<div id="phtDiv">
+				<div id="photo">
+					
+				</div>
+				<div id="File">
+					<input type="file">
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include></div>
+
 </body>
+<script>
+	/*	숫자 천단위 마다 콤마 찍는 소스 
+	
+	<input type="number" min="1" class="ipt" onkeyup="numberWithCommas(this.vale)">
+	function numberWithCommas(x) {
+		x = x.replace(/[^0-9]/g,'');
+		x = x.replace(/,/g/'');
+		$(".ipt").val(x.replace(/\B(?=(\d{3})+(?!\d))/g,","));
+	} 
+	*/
+
+</script>
 </html>

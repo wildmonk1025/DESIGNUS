@@ -30,6 +30,7 @@
 	height: 150px;
 	float: left;
 	display: block;
+	border: 1px solid orange;
 }
 
 #bestlist {
@@ -37,6 +38,7 @@
 	height: 150px;
 	float: left;
 	display: block;
+	border: 1px solid orange;
 }
 
 #list {
@@ -44,12 +46,14 @@
 	height: 400px;
 	float: left;
 	margin: 50px;
+	border: 1px solid orange;
 }
 
 #text1 {
 	width: 400px;
 	height: 30px;
 	float: left;
+	border: 1px solid orange;
 }
 
 #text2 {
@@ -57,12 +61,13 @@
 	width: 400px;
 	height: 30px;
 	float: left;
+	border: 1px solid orange;
 }
 
 #footercheck {
 	border: 1px solid black;
 	width: 1510px;
-	height: 400px;
+	height: 200px;
 }
 </style>
 <title>Home</title>
@@ -74,7 +79,7 @@
 
 	<div id="homeMain">
 		<button id="revauctionbtn">제작의뢰 요청하기</button>
-		<button id="auctionbtn">출품등록하기</button>
+		<button id="auctionbtn"><a href="auctionWrite">출품등록하기</a></button>
 		<br> <br>
 		<div id="list">
 			<div id="text1" align="center">오늘의 추천 작품</div>
@@ -85,7 +90,8 @@
 		</div>
 	</div>
 	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>-
+		<jsp:include page="footer.jsp"></jsp:include></div>
+	-
 
 </body>
 </html>
