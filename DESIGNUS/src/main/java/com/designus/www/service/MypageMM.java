@@ -87,6 +87,10 @@ public class MypageMM {
 		String pw = (multi.getParameter("mb_pw"));
 		String address = (multi.getParameter("mb_address"));
 		String email = (multi.getParameter("mb_email"));
+		System.out.println("id"+id);
+		System.out.println("id"+pw);
+		System.out.println("id"+address);
+		System.out.println("id"+email);
 		Member mb = new Member();
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
@@ -102,7 +106,7 @@ public class MypageMM {
 			f = upload.fileUp(multi, mb);
 			if (f) {
 				System.out.println("일단 여기까지는 된건데....");
-				view = "myPage";
+				view = "redirect:myPage";
 			} else {
 				System.out.println("인설트 실패인데....");
 				view = "memberEdit";
