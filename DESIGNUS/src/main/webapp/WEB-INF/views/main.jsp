@@ -2,18 +2,24 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-div {
+    <meta charset="UTF-8">
+    <style>
+        div {
 	margin: auto;
-	border: 1px solid orange;
 }
 
+    #hrmain{
+        width:1500px;
+        margin-top: -2px;
+    }
 #header {
 	padding: 3px;
 	width: 1510px;
 	height: 100px;
 	float: left;
+    z-index: 1;
 }
 
 #logo {
@@ -44,31 +50,41 @@ div {
 #category {
 	float: left;
 	width: 1500px;
-	height: 50px;
+	height: 40px;
+     border-top:1px solid black;
+    border-bottom:1px solid black;
 }
 
 #searchtxt {
 	margin: 50px, 20px;
 	width: 300px;
 	height: 30px;
-	align: center;
+	text-align: center;
 }
 
 #subcategory {
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	background-color: orange;
 	color: white;
 	font-size: 30px;
 	float: left;
+    z-index: -1;
 }
 
 #menu {
 	float: left;
-	width: 1400px;
-	height: 50px
+	width: 1300px;
+	height: 40px;
+
+   
 }
 
+        .a{
+                display:table-cell; 
+
+    vertical-align:middle
+        }
 #submenu {
 	margin-left: 100px;
 	width: 150px;
@@ -98,40 +114,45 @@ div {
 	height: 50px;
 	margin-left: 10px;
 }
+       
 </style>
-<meta charset="UTF-8">
+
 
 </head>
+
 <body>
-	<div id="header">
-		<div id="logo">
-			<a href="home"><img src="./images/logo.png" width="250px" height="80px" /></a>
-			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
-			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
-		</div>
-		<div id="search">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
-			<button id="searchbtn">검색</button>
-		</div>
-		<div id="loginwriter">
-			<div id="mypageimg"></div>
-			<div id="msg">
-				<img src="./images/writer.png" width="40px" height="40px" />
-			</div>
-			<div id="loginmsg"><a href="logingo">로그인</a></div>
-		</div>
-	</div>
-	<div id="category">
-		<div id="subcategory" align="center">三</div>
-		<div id="menu">
-			<div id="submenu"><a href="sponsor">후원</a></div>
-			<div id="submenu"><a href="boardlist">게시판</a></div>
-			<div id="submenu"><a href="bestwriter">인기작가</a></div>
-			<div id="submenu"><a href="servicecenter">고객센터</a></div>
-		</div>
-	</div>
+    <div id="header">
+        <div id="logo">
+            <a href="home"><img src="./images/logo.png" width="250px" height="80px" /></a>
+            <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+            <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+        </div>
+        <div id="search">
+            <input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
+            <button id="searchbtn">검색</button>
+        </div>
+        <div id="loginwriter">
+            <div id="mypageimg"></div>
+            <div id="msg">
+                <img src="./images/writer.png" width="40px" height="40px" />
+            </div>
+            <div id="loginmsg"><a href="logingo">로그인</a></div>
+        </div>
+    </div>
+
+    <div id="category">
+        <div id="subcategory" align="center">三</div>
+        <div id="menu">
+            <div id="submenu"><a href="sponsor">후원</a></div>
+            <div id="submenu"><a href="boardlist">게시판</a></div>
+            <div id="submenu"><a href="bestwriter">인기작가</a></div>
+            <div id="submenu"><a href="servicecenter">고객센터</a></div>
+        </div>
+
+    </div>
 </body>
-<script >
+<script>
 
 </script>
+
 </html>
