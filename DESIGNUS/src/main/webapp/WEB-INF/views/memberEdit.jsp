@@ -4,6 +4,7 @@
 <html>
 
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <style>
@@ -446,7 +447,7 @@
                 </tr>
                 <tr>
                     <td> 비밀번호 </td>
-                    <td> <input type="password" /> </td>
+                    <td> <input type="password" name="mb_pw" id="mb_pw" value="${mb.mb_pw}"> </td>
                 </tr>
                 <tr>
                     <td> 비밀번호 확인 </td>
@@ -455,7 +456,7 @@
                 <tr>
                     <td> 주소 </td>
                     <td>
-                        <input type="text" />
+                        <input type="text" name="mb_address" id="mb_address" value="${mb.mb_address}"/>
                         <input type="button" value="주소찾기" />
                     </td>
                 </tr>
@@ -467,29 +468,15 @@
                 </tr>
                 <tr>
                     <td>프로필 사진</td>
-                    <td><input id="mb_profile" class="memberN" type="file" name="mb_profile"></td>
-                </tr>
-                <tr>
-                    <td> 휴대폰 </td>
-                    <td>
-                        <input type="radio" name="phone" /> SKT
-                        <input type="radio" name="phone" /> KT
-                        <input type="radio" name="phone" /> LGU+
-                        <br />
-                        <select>
-                            <option> 010 </option>
-                            <option> 011 </option>
-                            <option> 016 </option>
-                            <option> 018 </option>
-                        </select>
-                        <input type="text" size="6" /> - <input type="text" size="6" />
-                    </td>
+                    <td><input id="mb_profile" class="memberN" type="file" name="mb_profile"
+                         onchange="fileChk(this)"multiple>
+                         <input type="hidden" id="fileCheck" value="0" name="fileCheck"></td>
                 </tr>
 
                 <tr>
                     <td> 이메일 </td>
                     <td>
-                        <input type="text" /> @ <input type="text" /> &nbsp;&nbsp;
+                        <input type="text" name="mb_email" id="mb_email" value="${mb.mb_email}"/> @ <input type="text" /> &nbsp;&nbsp;
                         <select>
                             <option> 직접입력 </option>
                             <option> naver.com </option>
@@ -498,19 +485,27 @@
                         </select>
                     </td>
                 </tr>
-         
+         <tr>
+                    <td>  <button class="btn1">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                    <td>
+                        <button class="btn1" type="button" onclick="location.href='mypage' ">돌아가기</button>
+                    </td>
+                </tr>
         </table>
    </form>
-        <div id="btn1"><br><br><br>
-            <button>수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
-        </div>
     </div>
-
-
-
-
-
 </body>
+<script>
+function fileChk(elem) {
+	console.dir(elem);
+	if(elem.value==""){
+		console.log("empty"); 
+		$('#fileCheck').val(0); //파일 첨부 안했음
+	}else{
+		console.log("Notempty")
+		$('#fileCheck').val(1);//파일 첨부 했음
+	}
+}
 
+</script>
 </html>

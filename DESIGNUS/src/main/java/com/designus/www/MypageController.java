@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.service.MemberMM;
@@ -45,6 +46,15 @@ public class MypageController {
 		
         mav= pm.nortowri();
         
+		return mav;
+	}
+	@RequestMapping(value = "/memberrevise", method = RequestMethod.POST)
+	public ModelAndView memberrevise(MultipartHttpServletRequest multi) {
+		  mav = new ModelAndView();
+		  System.out.println("id="+multi.getParameter("mb_pw"));
+		  System.out.println("address="+multi.getParameter("mb_address"));
+          //mav= pm.memberrevise(multi);
+          mav.setViewName("memberEdit");
 		return mav;
 	}
 }

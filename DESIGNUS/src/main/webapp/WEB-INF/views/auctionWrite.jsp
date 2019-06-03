@@ -147,42 +147,45 @@ textarea {
 		</button>
 		<div id="list">
 			<h3 style="color: orange;">출품 등록</h3>
-			<form action="auctionFrm">
+			<form action="auctionWrite" name="auctionWriteFrm" method="post" enctype="multipart/form-data">
 				<table id="mainTable">
 					<tr>
 						<th style="height: 55px; width: 80px;">작가 아이디</th>
 						<td style="width: 330px;"><input type="text"
-							readonly="readonly" value="ID" class="ipt"></td>
-					</tr>
-					<tr>
-						<th>수량</th>
-						<td><input type="number" min="1" max="99" class="ipt"></td>
+							readonly="readonly" value="${id}" class="ipt" name="au_mbid_w"></td>
 					</tr>
 					<tr>
 						<th>제품명</th>
-						<td><input type="text" class="ipt" maxlength="20"></td>
+						<td><input type="text" class="ipt" maxlength="20" name="au_title"></td>
+					</tr>
+					<tr>
+						<th>수량</th>
+						<td><input type="number" min="1" max="99" class="ipt" name="au_qty"></td>
 					</tr>
 					<tr>
 						<th style="height: 50px; width: 100px;">제품종류</th>
-						<td><select>
+						<td><select name="au_cgcode" id="cgcode">
 								<option>선택해주세요</option>
-								<option>나무</option>
-								<option>금속</option>
-								<option>귀금속</option>
-								<option>종이</option>
-								<option>가죽</option>
-								<option>천</option>
-								<option>플라스틱</option>
-								<option>도자기</option>
+								<option value="100">1.귀금속 공예</option>
+								<option value="110">2.원목 공예</option>
+								<option value="120">3.종이 공예</option>
+								<option value="130">4.가죽 공예</option>
+								<option value="140">5.천 공예</option>
+								<option value="150">6.플라스틱 공예</option>
+								<option value="160">7.도자기 공예</option>
+								<option value="170">8.가공 식품</option>
+								<option value="180">9.휴대폰 액세서리</option>
+								<option value="190">10.패인팅,캐리커쳐,캘리</option>
+								<option value="200">11.유아 용품</option>
 						</select></td>
 					</tr>
 					<tr>
 						<th>입찰시작가격</th>
-						<td><input type="number" min="1" class="ipt"></td>
+						<td><input type="number" min="1" class="ipt" name="au_minprice"></td>
 					</tr>
 					<tr>
 						<th>즉시구매가</th>
-						<td><input type="number" min="1" class="ipt"></td>
+						<td><input type="number" min="1" class="ipt" name="au_inprice"></td>
 					</tr>
 				</table>
 				<div id="phtDiv">
@@ -193,13 +196,14 @@ textarea {
 					
 
 					<div id="attachFileDiv">
-						<input type="file" name="files" id="imgIn" value=""> 
+						<input type="file" name="aui_imgSysName" id="imgIn"
+						 value="" onchange="fileChk(this)"multiple> 
 						<input type="button" value="추가" id="addBtn" onclick="attachFile.add()">
 					</div>
 
 				</div>
 				<div id="contents">
-					<textarea placeholder=" 이곳에 작품 설명을 적어주세요 "></textarea>
+					<textarea placeholder=" 이곳에 작품 설명을 적어주세요 " name="au_contents" id="contents"></textarea>
 				</div>
 				<input type="submit" value="출품하기">
 				<button><a href="home">돌아가기</a></button>
@@ -287,7 +291,10 @@ textarea {
 				$("#addBtn").css("pointer-events","none");
 			}
 		});
-	
+	$("#cgcode").click(function() {	
+		console.log($("#cgcode").val());
+	});
+
 	
 </script>
 </html>

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,13 +24,26 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
+import com.designus.www.dao.ImypageDao;
 @Component
 public class UploadFile {
 	//파일 업로드 메소드	
 	//String fullPath="D:/Work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SpringMVC-Board/resources/upload";
 	@Autowired
 	private ImemberDao mDao;
+	@Autowired
+	private ImypageDao pDao;
+	@Autowired
+	private HttpSession session;
 	public boolean fileUp(MultipartHttpServletRequest multi, Member mb) {
+		   System.out.println("id="+mb.getMb_id());
+		   System.out.println("pw="+mb.getMb_pw());
+		  System.out.println("name="+mb.getMb_name());
+		  System.out.println("birth="+mb.getMb_birth());
+		  System.out.println("address="+mb.getMb_address());
+		  System.out.println("email="+mb.getMb_email());
+		  
+		  String id = session.getAttribute("id").toString();
 		   System.out.println("fileUp");
 		      //1.이클립스의 물리적 저장경로 찾기
 		      String root=multi.getSession().getServletContext().getRealPath("/");
@@ -48,27 +62,7 @@ public class UploadFile {
 		      //fMap.put("bnum", String.valueOf(bnum));
 		      boolean f=false;
 		      
-		      String  id=(multi.getParameter("mb_id"));
-				String  pw=(multi.getParameter("mb_pw"));
-				String  name=(multi.getParameter("mb_name"));
-				String  birth=(multi.getParameter("mb_birth"));
-				String  address=(multi.getParameter("mb_address"));
-				String  email=(multi.getParameter("mb_email"));
-				
-				System.out.println("id="+id);
-				System.out.println("pw="+pw);
-				System.out.println("name="+name);
-				System.out.println("birth="+birth);
-				System.out.println("address="+address);
-				System.out.println("email="+email);
-				
-				BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-				 mb.setMb_pw(pwdEncoder.encode(pw));
-				 mb.setMb_id(id);
-				 mb.setMb_address(address);
-				 mb.setMb_name(name);
-				 mb.setMb_birth(birth);
-				 mb.setMb_email(email);
+		     
 		         //파일 메모리에 저장
 		         MultipartFile mf = file; //실제 업로드될 파일
 		         String oriFileName = file.getOriginalFilename();  //a.txt
@@ -80,10 +74,14 @@ public class UploadFile {
 		        System.out.println("ori="+oriFileName);
 				
 		         //5.메모리->실제 파일 업로드
-		         
+		        
 		         try {
 		            mf.transferTo(new File(path+sysFileName));
+		            if(id==null) {
 		           f=mDao.memberapplyInsert(mb);
+		            }else {
+		            	f=pDao.memberreviseupdate(mb);
+		            }
 		         }catch (IOException e) {
 		            e.printStackTrace();
 		         }

@@ -209,7 +209,7 @@
 <body>
     <div id="header">
         <div id="logo">
-            <a href="home"><img src="./images/logo.png" width="250px" height="80px" /></a>
+            <a href="home"><img src="./images/logo.png" width="250px" height="80px"/></a>
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
         </div>
