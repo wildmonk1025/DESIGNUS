@@ -79,7 +79,7 @@
 
 	<div id="homeMain">
 		<button id="revauctionbtn">제작의뢰 요청하기</button>
-		<button id="auctionbtn">출품등록하기</button>
+		<button id="auctionbtn"><a href="auctionWrite">출품등록하기</a></button>
 		<br> <br>
 		<div id="list">
 			<div id="text1" align="center">오늘의 추천 작품</div>
