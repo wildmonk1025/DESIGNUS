@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+div {
+	margin: auto;
+}
+
 #logoimg {
 	width: 250px;
 	height: 100px;
