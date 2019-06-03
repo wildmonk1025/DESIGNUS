@@ -218,7 +218,7 @@
             <button id="searchbtn">검색</button>
         </div>
         <div id="loginwriter">
-            <div id="mypageimg"><a href="myPage">마이페이지</a></div>
+            <div id="mypageimg"><a href="mypage">마이페이지</a></div>
             <div id="msg">
                 <img src="./images/writer.png" width="40px" height="40px" />
             </div>

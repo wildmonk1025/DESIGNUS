@@ -20,9 +20,9 @@ public class MemberMM {
 	private HttpSession session;
 	private ModelAndView mav;
 	@Autowired
-	private UploadFile upload;
+	private com.designus.www.userClass.UploadFile upload;
 	public ModelAndView memberapply(MultipartHttpServletRequest multi) {
-
+		 System.out.println("여기까지는 온것 같고2...");
 		mav = new ModelAndView();
 		String view = null;
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));

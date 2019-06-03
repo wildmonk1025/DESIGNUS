@@ -105,7 +105,7 @@
 </head>
 <body>
 	<div id="join">
-	<div id="null">@</div>
+
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
 		<form action="memberapply" name="memberapplyFrm" method="post" enctype="multipart/form-data">
@@ -154,14 +154,7 @@
 				<tr>
 					<th>이메일</th>
 					<td><input id="mb_email" type="text" name="mb_email"></td>
-					<td><input id="mb_email2" type="text" name="mb_email2"></td>
-					<td><select id="emailList" class="Data">
-							<option value="1">직접입력</option>
-							<option value="naver">naver.com</option>
-							<option value="daum">daum.net</option>
-							<option value="google">google.com</option>
-					</select></td>
-
+					
 				</tr>
 				<tr>
 					<td><input id="Echeck" type="button" value="이메일 인증"

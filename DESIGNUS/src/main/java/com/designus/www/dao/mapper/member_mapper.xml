@@ -7,7 +7,6 @@
 
   <insert id="memberapplyInsert" parameterType="member">
          INSERT INTO MEMBER VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'N',DEFAULT)
-      </insert>   
+      </insert>
       
-       
 </mapper>
