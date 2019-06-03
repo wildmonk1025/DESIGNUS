@@ -12,8 +12,6 @@ import com.designus.www.bean.Member;
 //@Repository
 public interface ImemberDao {
 
-	boolean fileInsert(Map<String, String> fMap);
-
 	boolean memberapplyInsert(Member mb);
   
   
