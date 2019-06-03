@@ -147,7 +147,7 @@ textarea {
 		</button>
 		<div id="list">
 			<h3 style="color: orange;">출품 등록</h3>
-			<form action="auctionWrite" name="auctionWriteFrm" method="post" enctype="multipart/form-data">
+			<form action="auctionWriteSubmit" name="auctionWriteFrm" method="post" enctype="multipart/form-data">
 				<table id="mainTable">
 					<tr>
 						<th style="height: 55px; width: 80px;">작가 아이디</th>
