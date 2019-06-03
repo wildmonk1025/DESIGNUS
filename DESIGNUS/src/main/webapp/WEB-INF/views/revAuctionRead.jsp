@@ -9,10 +9,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style>
-hr {
-	width: 1200px;
-}
-
 div {
 	margin: auto;
 }
@@ -161,8 +157,43 @@ div {
 #prevacontents {
 	font-size: 20px;
 }
+
+#lightboxshadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3000px;
+	height: 3000px;
+	background: #000;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 1000;
+	display: none;
+}
+
+#lightboxrevauction {
+	background-color: orange;
+	border: 1px solid white;
+	left: 15%;
+	top: 5%;
+	padding: 50px;
+	text-align: center;
+	width: 500px;
+	height: 500px;
+	opacity: 100;
+	position: absolute;
+	z-index: 1010;
+	display: none;
+}
+
+#revamn {
+	border: 1px solid white;
+	margin-top: 40px;
+	text-align: center;
+	width: 400px
+}
 </style>
 </head>
+
 <body>
 	<div id="mainheader">
 		<!--<jsp:include page="main.jsp"/>-->
@@ -236,7 +267,7 @@ div {
 		</div>
 		<div id="readcontents">
 			<p id="readpcontents">작가님 요청사항</p>
-			<hr />
+			<hr style="width: 1200px">
 			<div id="revadesign">
 				제작 의뢰 도안(첨부파일)
 				<div id="revadesingdown">
@@ -258,5 +289,50 @@ div {
 			</div>
 		</div>
 	</div>
+	<div id="lightboxshadow">
+		<div id="lightboxrevauction">
+			<p>의뢰 접수 및 견적서 첨부</p>
+			<hr style="color: black;">
+			<div id="revamn">
+				<form>
+
+					<table>
+						<tr style="width: 400px;">
+							<td>의뢰접수금액</td>
+							<td><input type="text" id="revamoney" name="revamoney"></td>
+						</tr>
+						<tr>
+							<td>견적서 첨부</td>
+							<td><input type="file" id="revafiley" name="revafiley"></td>
+						</tr>
+						<tr>
+							<td>제작소요기간</td>
+							<td><input type="text" id="revadate" name="revadate">일</td>
+						</tr>
+
+
+
+					</table>
+					<button id="meneyapply">전송</button>
+
+					<button id="meneycancle">취소</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
+<script>
+	$("#revsubmitbtn").click(function() {
+		$('#lightboxshadow').css("display", "block")
+		$('#lightboxrevauction').css("display", "block")
+	});
+	$("#lightboxshadow").click(function() {
+		$('#lightboxshadow').css("display", "none")
+		$('#lightboxrevauction').css("display", "none")
+	});
+	$("#meneycancle").click(function() {
+		$('#lightboxshadow').css("display", "none")
+		$('#lightboxrevauction').css("display", "none")
+	});
+</script>
 </html>
