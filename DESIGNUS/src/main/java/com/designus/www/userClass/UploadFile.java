@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,12 +24,17 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
+import com.designus.www.dao.ImypageDao;
 @Component
 public class UploadFile {
 	//파일 업로드 메소드	
 	//String fullPath="D:/Work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SpringMVC-Board/resources/upload";
 	@Autowired
 	private ImemberDao mDao;
+	@Autowired
+	private ImypageDao pDao;
+	@Autowired
+	private HttpSession session;
 	public boolean fileUp(MultipartHttpServletRequest multi, Member mb) {
 		   System.out.println("id="+mb.getMb_id());
 		   System.out.println("pw="+mb.getMb_pw());
@@ -36,6 +42,8 @@ public class UploadFile {
 		  System.out.println("birth="+mb.getMb_birth());
 		  System.out.println("address="+mb.getMb_address());
 		  System.out.println("email="+mb.getMb_email());
+		  
+		  String id = session.getAttribute("id").toString();
 		   System.out.println("fileUp");
 		      //1.이클립스의 물리적 저장경로 찾기
 		      String root=multi.getSession().getServletContext().getRealPath("/");
@@ -69,7 +77,11 @@ public class UploadFile {
 		        
 		         try {
 		            mf.transferTo(new File(path+sysFileName));
+		            if(id==null) {
 		           f=mDao.memberapplyInsert(mb);
+		            }else {
+		            	f=pDao.memberreviseupdate(mb);
+		            }
 		         }catch (IOException e) {
 		            e.printStackTrace();
 		         }

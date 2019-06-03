@@ -13,6 +13,8 @@ import com.designus.www.bean.Member;
 public interface ImypageDao {
 
 	Member privacyeditSelect(String id);
+
+	boolean memberreviseupdate(Member mb);
   
   
 }
