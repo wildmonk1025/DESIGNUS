@@ -451,7 +451,7 @@ a:hover {
 		<h3>
 			안내 사항을 모두 확인하였으며, 이에 동의합니다.<input type="checkbox">
 		</h3>
-		<button id="btz2" >수정하기</button>
+		<button id="btz2" onclick="">수정하기</button>
 		<button type="button" onclick="location.href='myPage.html' " id="btn2">돌아가기</button>
 	</div>
 
