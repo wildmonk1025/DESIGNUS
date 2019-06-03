@@ -2,13 +2,13 @@ package com.designus.www.bean;
 
 import org.apache.ibatis.type.Alias;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 
 
 @Alias("member")
-@Setter @Getter
+@Data
 public class Member {
 	String mb_id;
 	String mb_pw;
@@ -20,5 +20,6 @@ public class Member {
 	int    mb_point;
 	String mb_grade;
 	int    mb_ccnt;
+	
 	
 }
