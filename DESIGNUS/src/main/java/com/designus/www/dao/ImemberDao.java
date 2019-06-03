@@ -13,6 +13,8 @@ import com.designus.www.bean.Member;
 public interface ImemberDao {
 
 	boolean fileInsert(Map<String, String> fMap);
+
+	boolean memberapplyInsert(Member mb);
   
   
 }

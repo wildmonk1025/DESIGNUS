@@ -21,34 +21,33 @@ public class MemberMM {
 	private ModelAndView mav;
 	@Autowired
 	private UploadFile upload;
-	Member mb;
 	public ModelAndView memberapply(MultipartHttpServletRequest multi) {
 
 		mav = new ModelAndView();
 		String view = null;
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
-		String mb_id = multi.getParameter("mb_id");
-		String mb_pw = multi.getParameter("mb_pw");
-		String mb_name = multi.getParameter("mb_name");
-		String mb_birth = multi.getParameter("mb_birth");
-		String mb_address = multi.getParameter("mb_address");
-		String mb_email = multi.getParameter("mb_email");
-
 		
+          Member mb=new Member();
 		
-
-		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		 mb.setMb_pw(pwdEncoder.encode(mb_pw));
-		
-		boolean f = upload.fileUp(multi,mb);
-		if (f) {
-			view = "loginBox";
-			mav.addObject("check", 1);
-		} else {
-			view = "norjoinFrm";
-		}
-		mav.setViewName(view);
-
+		 boolean f = false;
+			if (check == 1) { // 첨부된 파일이 있다면....
+				// upload=new UploadFile(); //프로토타입
+				// 이클립스 서버에 파일을 업로드 한 후,
+				// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+				f = upload.fileUp(multi,mb);
+				if (f) {
+					System.out.println("일단 여기까지는 된건데....");
+					view = "loginBox";
+				}else {
+					System.out.println("인설트 실패인데....");
+					view = "norjoinFrm";
+				}
+			}else {
+				System.out.println("파일이 없다는건데....");
+				view = "norjoinFrm";
+			}
+			System.out.println(view);
+			mav.setViewName(view);
 		return mav;
 	}
 
