@@ -8,6 +8,8 @@
       SELECT * FROM MB WHERE MB_ID=#{id}  
       </select>   
      
-      
+     <update id="memberreviseupdate" parameterType="member">
+      UPDATE MB SET MB_PW =#{mb_pw},MB_ADDRESS=#{mb_address},MB_PROFILE=#{},MB_EMAIL=#{mb_profile} WHERE MB_ID=#{mb_id}
+     </update> 
        
 </mapper>

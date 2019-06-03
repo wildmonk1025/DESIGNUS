@@ -2,6 +2,12 @@ package com.designus.www.bean;
 
 import java.security.Timestamp;
 
+import org.apache.ibatis.type.Alias;
+
+import lombok.Data;
+
+@Alias("ra")
+@Data
 public class RevAuction {
 	int    ra_num;
 	String ra_mbid;
@@ -11,4 +17,5 @@ public class RevAuction {
 	String ra_file;
 	String ra_oc;
 	Timestamp ra_date;
+	String ra_contents;
 }
