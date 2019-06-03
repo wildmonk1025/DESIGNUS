@@ -64,13 +64,13 @@
 #footercheck {
 	border: 1px solid black;
 	width: 1510px;
-	height: 400px;
+	height: 200px;
 }
 </style>
 </head>
 <body>
 <div id="mainheader">
-		<jsp:include page="main.jsp" />
+		<jsp:include page="main.jsp"/>
 	</div>
 
 	<div id="homeMain">
@@ -84,7 +84,7 @@
 		</div>
 	</div>
 	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>-
+		<jsp:include page="footer.jsp"></jsp:include></div>
 
 </body>
 </html>
