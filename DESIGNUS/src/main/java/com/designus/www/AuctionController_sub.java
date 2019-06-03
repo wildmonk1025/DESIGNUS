@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.board.www.dao.service.BoardManagement;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.service.RevAuctionMM;
 
