@@ -122,16 +122,14 @@ textarea {
 #pht1 {
 	float: left;
 	width: 398px;
-	height: 260px;
+	height: 190px;
 }
 
 
 #addBtn {
 	width: 100%;
 }
-#imgIn{
-	height: 50px;
-}
+
 
 
 </style>
@@ -203,7 +201,8 @@ textarea {
 				<div id="contents">
 					<textarea placeholder=" 이곳에 작품 설명을 적어주세요 "></textarea>
 				</div>
-
+				<input type="submit" value="출품하기">
+				<button><a href="home">돌아가기</a></button>
 			</form>
 		</div>
 
@@ -224,6 +223,7 @@ textarea {
 
 			var div = document.createElement('div');
 			div.style.marginTop = '3px';
+			div.style.height = '70px';
 			div.id = 'file' + o.idx;
 
 			var file = document.all ? document.createElement('<input name="files">') : document.createElement('input');
