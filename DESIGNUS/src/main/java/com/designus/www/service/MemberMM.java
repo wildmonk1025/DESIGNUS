@@ -26,6 +26,7 @@ public class MemberMM {
 
 		mav = new ModelAndView();
 		String view = null;
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		String mb_id = multi.getParameter("mb_id");
 		String mb_pw = multi.getParameter("mb_pw");
 		String mb_name = multi.getParameter("mb_name");
@@ -35,19 +36,11 @@ public class MemberMM {
 
 		
 		
-		
-
-		System.out.println("mb_id=" + mb_id);
-		System.out.println("mb_pw=" + mb_id);
-		System.out.println("mb_name=" + mb_name);
-		System.out.println("mb_birth=" + mb_birth);
-		System.out.println("mb_address=" + mb_address);
-		System.out.println("mb_email=" + mb_email);
 
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		// mb.setMb_pw(pwdEncoder.encode(mb_pw));
+		 mb.setMb_pw(pwdEncoder.encode(mb_pw));
 		
-		boolean f = upload.fileUp(multi, mb);
+		boolean f = upload.fileUp(multi,mb);
 		if (f) {
 			view = "loginBox";
 			mav.addObject("check", 1);

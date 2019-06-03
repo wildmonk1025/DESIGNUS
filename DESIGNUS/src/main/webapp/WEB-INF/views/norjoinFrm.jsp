@@ -176,7 +176,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button class="btz2">회원가입</button>
+							<td><input class="btz2" type="submit" value="회원가입"></td> 
 						</td>
 						<td> 
 						<input class="btz2" type="reset" value="취소">

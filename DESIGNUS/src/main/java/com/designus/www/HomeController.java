@@ -94,8 +94,7 @@ public class HomeController {
 	}
 	@RequestMapping(value="/memberapply",method=RequestMethod.POST)
      public ModelAndView memberapply(MultipartHttpServletRequest multi) {
-      System.out.println("id="+multi.getFile("mb_profile"));
-      System.out.println("id11="+multi.getParameter("mb_id"));
+    
         mav=mm.memberapply(multi);
 		return mav;
 	}
