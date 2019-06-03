@@ -87,8 +87,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value="/joinfrm",method=RequestMethod.GET)
-
-	public String joinfrm() {
+      public String joinfrm() {
 
 		return "joinFrm";
 	}
@@ -98,5 +97,10 @@ public class HomeController {
       mav = new ModelAndView();
       mav=mm.memberapply(multi);
 		return mav;
+	}
+     @RequestMapping(value="/mypage",method=RequestMethod.GET)
+    public String mypage() {
+
+		return "myPage";
 	}
 }
