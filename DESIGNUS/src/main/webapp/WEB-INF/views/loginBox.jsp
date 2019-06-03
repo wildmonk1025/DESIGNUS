@@ -32,15 +32,11 @@ div {
 }
 
 #logcheck {
-	top: 10px;
-}
-
-#mfind {
-	top: 15px;
+	margin-top: 10px;
 }
 
 #loginbtz {
-	top: 25px;
+	margin-top: 25px;
 }
 
 .btz {
