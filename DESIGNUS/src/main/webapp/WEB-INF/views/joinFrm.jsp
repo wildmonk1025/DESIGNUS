@@ -50,22 +50,29 @@
       left: 95px;
       top: 40px;
     }
+    #full{
+      position: relative;
+      left: -260px;
+      top: -100px;
+    }
 </style>
 
 </head>
 <body>
+<div id="full">
 	<form action="norJoinFrm" method="get">
 		<div id="joinimg">
-		   <img class="img" src="images/normal.png" /><br/><br/>
+		   <img class="img" src="./images/normal.png" /><br/><br/>
 			<button id="joinbtz">일반 회원</button>
 		</div>
 	</form>
 	<form action="wriJoinFrm" method="get">
 		<div id="joinimg2">
-		 <img class="img" src="images/writer.png" /><br/><br/>
+		 <img class="img" src="./images/writer.png" /><br/><br/>
 			<button id="joinbtz2">작가 회원</button>
 		</div>
 	</form>
+	</div>
 </body>
 
 </html>

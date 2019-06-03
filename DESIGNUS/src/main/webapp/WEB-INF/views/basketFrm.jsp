@@ -47,7 +47,6 @@
             position: absolute;
             width: 1520px;
             height: 170px;
-            border: 1px solid orange;
             left: 183px;
             text-align: center;
         }
@@ -64,32 +63,7 @@
         }
 
 
-        button {
-            display: inline-block;
-            vertical-align: top;
-            position: relative;
-            overflow: hidden;
-            min-width: 96px;
-            line-height: 46px;
-            padding: 0 24px;
-            font-size: 14px;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            text-shadow: 0 1px #154c86;
-            background-color: #247edd;
-            background-clip: padding-box;
-            border: 1px solid;
-            border-color: #1c65b2 #18589c #18589c;
-            border-radius: 4px;
-            -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
-            box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
-            background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-            background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-            background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-        }
-
+      
         #spon1 {
 
             position: absolute;
@@ -198,14 +172,14 @@
         .page {
             color: blue;
         }
-         #point {
+          #point {
             border: 1px solid orange;
             position: absolute;
             width: 300px;
             height: 80px;
             text-align: left;
             left: 183px;
-            top: 510px;
+            top: 500px;
 
             font-size: 20px;
         }
@@ -222,6 +196,99 @@
             font-size: 20px;
 
         }
+        a:active{text-decoration: none; color:#646464;}
+        a:visited{text-decoration: none;color:#646464;}
+        a:link {text-decoration: none;color:#646464;}
+        a:hover{text-decoration: none;color:#646464;}
+               #header {
+	padding: 3px;
+	width: 1510px;
+	height: 100px;
+	float: left;
+}
+
+#logo {
+	padding: 5px;
+	width: 270px;
+	height: 80px;
+	float: left;
+}
+
+#search {
+	margin-left: 100px;
+	padding-left: 120px;
+	padding-right: 120px;
+	padding-top: 20px;
+	width: 570px;
+	height: 80px;
+	float: left;
+}
+
+#loginwriter {
+	padding: 3px;
+	padding-top: 20px;
+	width: 300px;
+	height: 80px;
+	float: right;
+}
+
+#category {
+	float: left;
+	width: 1500px;
+	height: 50px;
+}
+
+#searchtxt {
+	margin: 50px, 20px;
+	width: 300px;
+	height: 30px;
+	align: center;
+}
+
+#subcategory {
+	width: 50px;
+	height: 50px;
+	background-color: orange;
+	color: white;
+	font-size: 30px;
+	float: left;
+}
+
+#menu {
+	float: left;
+	width: 1400px;
+	height: 50px
+}
+
+#submenu {
+	margin-left: 100px;
+	width: 150px;
+	float: left;
+	height: 50px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#msg {
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	float: left;
+}
+
+#mypageimg {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-left: 5px;
+}
+
+#loginmsg {
+	float: left;
+	width: 130px;
+	height: 50px;
+	margin-left: 10px;
+}
     </style>
 
 </head>
@@ -230,9 +297,34 @@
 <body>
     <div id="one">
 
-
-        <div id="main">
-            <h1>메인!</h1>
+<div id="main">
+            <div id="header">
+		<div id="logo">
+			<a href="home"><img src="./images/logo.png" width="250px" height="80px" /></a>
+			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+		</div>
+		<div id="search">
+			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
+			<button id="searchbtn">검색</button>
+		</div>
+		<div id="loginwriter">
+			<div id="mypageimg"></div>
+			<div id="msg">
+				<img src="./images/writer.png" width="40px" height="40px" />
+			</div>
+			<div id="loginmsg"><a href="logingo">로그인</a></div>
+		</div>
+	</div>
+	<div id="category">
+		<div id="subcategory" align="center">三</div>
+		<div id="menu">
+			<div id="submenu"><a href="sponsor">후원</a></div>
+			<div id="submenu"><a href="boardlist">게시판</a></div>
+			<div id="submenu"><a href="bestwriter">인기작가</a></div>
+			<div id="submenu"><a href="servicecenter">고객센터</a></div>
+		</div>
+	</div>
 
         </div>
         <div id="notice">
@@ -241,36 +333,36 @@
         </div>
         <div id="info">
             <table width="1000">
-                
+
                 <tr>
-                    <td style="font-size: 30px">제작의뢰 내역</td>
+                    <td style="font-size: 30px"><a href="revAuctionMyOrderList.html">제작의뢰 내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">제작의뢰 접수내역</td>
+                    <td style="font-size: 30px"><a href="revAuctionMyAcceptList.html">제작의뢰 접수내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">출품작 구매 내역</td>
+                    <td style="font-size: 30px"><a href="auctionMyOrderList.html">출품작 구매 내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">출품작 판매 내역</td>
+                    <td style="font-size: 30px"><a href="auctionMyAcceptList.html">출품작 판매 내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">후원진행 내역</td>
+                    <td style="font-size: 30px"><a href="fundingAcceptList.html">후원진행 내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">후원요청 내역</td>
+                    <td style="font-size: 30px"><a href="fundingOrderList.html">후원요청 내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px"><a href="">꿍 내역</a></td>
+                    <td style="font-size: 30px"><a href="basketFrm.html">꿍 내역</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">개인정보 수정</td>
+                    <td style="font-size: 30px"><a href="memberEdit.html">개인정보 수정</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">회원탈퇴 신청</td>
+                    <td style="font-size: 30px"><a href="memberDelete.html">회원탈퇴 신청</a></td>
                 </tr>
                 <tr>
-                    <td style="font-size: 30px">작가전환 신청</td>
+                    <td style="font-size: 30px"><a href="memberTransform.html">작가전환 신청</a></td>
                 </tr>
             </table>
         </div>
