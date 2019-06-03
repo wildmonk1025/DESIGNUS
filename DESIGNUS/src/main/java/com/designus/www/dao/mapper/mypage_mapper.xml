@@ -4,7 +4,9 @@
 
 <mapper namespace="com.designus.www.dao.ImypageDao">  
      
-      
+   <select id="privacyeditSelect" parameterType="String" resultType="member">
+      SELECT * FROM MB WHERE MB_ID=#{id}  
+      </select>   
      
       
        

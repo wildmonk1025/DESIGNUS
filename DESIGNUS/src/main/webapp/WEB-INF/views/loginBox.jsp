@@ -71,7 +71,7 @@ div {
 <body>
 	<a href="home"><img id="logoimg" src="./images/logo.png"></a>
 
-	<form action="login" name="loginFrm" method="post">
+	<form action="access" name="loginFrm" method="post">
 		<div id="login">
 			<table id="idpw">
 				<tr>
@@ -96,4 +96,16 @@ div {
 	</form>
 	<a id="haha" href="joinfrm">회원가입</a>
 </body>
+<script type="text/javascript">
+window.onload=function(){
+	var chk=${ckeck};
+	if(chk==1){
+		alert("회원가입 성공!")
+	}
+	if(chk==2){
+		alert("로그인 실패")
+	}
+}
+</script>
+
 </html>
