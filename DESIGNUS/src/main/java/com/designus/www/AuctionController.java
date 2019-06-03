@@ -11,9 +11,11 @@ public class AuctionController {
 		
 		return "sponsor";
 	}	
+
 	@RequestMapping(value = "/auctionWrite", method = RequestMethod.GET)
-		public String auctionWrite() {
-			
-			return "auctionWrite";
-	}
+	public String auctionWrite() {
+		
+		return "auctionWrite";
+	}	
+	
 }
