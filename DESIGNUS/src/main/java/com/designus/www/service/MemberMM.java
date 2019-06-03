@@ -28,15 +28,13 @@ public class MemberMM {
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		
           Member mb=new Member();
-          String  id=(multi.getParameter("mb_id"));
-			String  pw=(multi.getParameter("mb_pw"));
-			String  name=(multi.getParameter("mb_name"));
-			String  birth=(multi.getParameter("mb_birth"));
-			String  address=(multi.getParameter("mb_address"));
-			String  email=(multi.getParameter("mb_email"));
-			
-			
-			
+          String id=(multi.getParameter("mb_id"));
+			String pw=(multi.getParameter("mb_pw"));
+			String name=(multi.getParameter("mb_name"));
+			String birth=(multi.getParameter("mb_birth"));
+			String address=(multi.getParameter("mb_address"));
+			String email=(multi.getParameter("mb_email"));
+				
 			BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 			 mb.setMb_pw(pwdEncoder.encode(pw));
 			 mb.setMb_id(id);
