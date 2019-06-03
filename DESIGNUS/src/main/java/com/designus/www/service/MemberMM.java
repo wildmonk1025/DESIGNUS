@@ -28,22 +28,6 @@ public class MemberMM {
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		
           Member mb=new Member();
-          String  id=(multi.getParameter("mb_id"));
-			String  pw=(multi.getParameter("mb_pw"));
-			String  name=(multi.getParameter("mb_name"));
-			String  birth=(multi.getParameter("mb_birth"));
-			String  address=(multi.getParameter("mb_address"));
-			String  email=(multi.getParameter("mb_email"));
-			
-			
-			
-			BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-			 mb.setMb_pw(pwdEncoder.encode(pw));
-			 mb.setMb_id(id);
-			 mb.setMb_address(address);
-			 mb.setMb_name(name);
-			 mb.setMb_birth(birth);
-			 mb.setMb_email(email);
 		
 		 boolean f = false;
 			if (check == 1) { // 첨부된 파일이 있다면....
@@ -84,11 +68,11 @@ public class MemberMM {
 				System.out.println("grede="+mb.getMb_grade());
 				view="redirect:home";
 			}else {
-				view="loginBox";
+				view="logingo";
 				mav.addObject("ckeck" ,2);
 			}
 		}else {
-			view="loginBox";
+			view="logingo";
 			mav.addObject("ckeck" ,2);
 		}
 		mav.setViewName(view);
