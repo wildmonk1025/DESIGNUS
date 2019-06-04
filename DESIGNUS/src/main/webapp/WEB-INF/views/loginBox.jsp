@@ -71,7 +71,7 @@ div {
 <body>
 	<a href="home"><img id="logoimg" src="./images/logo.png"></a>
 
-	<form action="access" name="loginFrm" method="post">
+	<form action="login" name="loginFrm" method="post">
 		<div id="login">
 			<table id="idpw">
 				<tr>

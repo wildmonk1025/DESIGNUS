@@ -63,7 +63,7 @@ public class MemberMM {
 			mav.setViewName(view);
 		return mav;
 	}
-	public ModelAndView memberAccess(Member mb) {
+	public ModelAndView login(Member mb) {
 		
 		mav=new ModelAndView();
 		String  view=null;
