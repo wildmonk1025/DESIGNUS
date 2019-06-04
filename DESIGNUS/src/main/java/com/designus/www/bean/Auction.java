@@ -3,9 +3,6 @@ package com.designus.www.bean;
 import java.security.Timestamp;
 
 import org.apache.ibatis.type.Alias;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.designus.www.service.AuctionMM;
 
 import lombok.Data;
 
