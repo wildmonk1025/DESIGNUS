@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.text.DateFormat;
+import java.text.DateFormat; 
 import java.util.Date;
 import java.util.Locale;
 
@@ -116,11 +116,7 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping(value="/category",method=RequestMethod.GET)
-	public String category() {
-		
-		return "loginBox";
-	}
+
 
 	/*
 	 * @RequestMapping(value="/joinPost",method=RequestMethod.GET) public String
