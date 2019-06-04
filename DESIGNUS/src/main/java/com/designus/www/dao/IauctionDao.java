@@ -12,7 +12,8 @@ import com.designus.www.bean.Auction;
 //@Repository
 public interface IauctionDao {
 
-	/* boolean getAuctionWriteInsert(Auction au); */
+	boolean getAuctionWriteInsert(Auction au);
+
   
   
 }
