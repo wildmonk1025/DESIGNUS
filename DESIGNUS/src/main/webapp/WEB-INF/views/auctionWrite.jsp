@@ -12,6 +12,7 @@
 	height: 170px;
 }
 
+
 #homeMain {
 	border: 1px solid black;
 	width: 1520px;
@@ -105,7 +106,7 @@ input[type="file"] {
 }
 
 #contents {
-	margin-left: 50px;
+	margin-left :25px;
 	float: left;
 	position: relative;
 	width: 400px;
