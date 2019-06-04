@@ -5,7 +5,7 @@
 <mapper namespace="com.designus.www.dao.IauctionDao">
 
 	<insert id="getAuctionWriteInsert" parameterType="auction">
-		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT);
+		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT)
 	</insert>
 
 

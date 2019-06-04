@@ -44,6 +44,14 @@ public class AuctionController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/auctionList" )
+	public ModelAndView auctionauctionList() {
+		mav = new ModelAndView();
+		
+		
+		return mav;
+	}
+	
 	
 	
 }
