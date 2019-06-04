@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -36,6 +35,8 @@ public class UploadFile {
 	private IRevAuctionDao rDao;
 	@Autowired
 	private HttpSession session;
+	
+	int iii;
 
 	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, String kind) {
 		System.out.println("id=" + mb.getMb_id());
@@ -94,8 +95,8 @@ public class UploadFile {
 			return true;
 		return false;
 	}
-	
-	public boolean fileUp2(MultipartHttpServletRequest multi,RevAuction ra) {
+
+	public int fileUp2(MultipartHttpServletRequest multi,RevAuction ra) {
 		System.out.println("multi 파라미터만 받는 fileUp");
 		//1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
@@ -139,23 +140,27 @@ public class UploadFile {
 		System.out.println("최종확인="+ra.getRa_image());
 		System.out.println("최종확인="+ra.getRa_file());
 		System.out.println("최종확인="+ra.getRa_contents());
+		System.out.println("최종확인="+ra.getRa_oc());
 		
-		boolean flag = false;
 		try {
 			mf.transferTo(new File(path + sysFileName));
 			mf2.transferTo(new File(path + sysFileName));
 			System.out.println("인서트 진행합니다~");
-			flag = rDao.revAuctionSubmitInsert(ra);
-			System.out.println("sql이상없음");
-		} catch (IOException e) {
+			int flag = rDao.revAuctionSubmitInsert(ra);
+			
+			//for End
+			if (flag!=0) {
+				iii=1;
+				}
+			else
+				iii=0;
+		}
+		catch(IOException e)
+	{
 			e.printStackTrace();
 			System.out.println("캐치로 왔땀");
-		}
-		//for End
-	if (flag) {
-		return true;
-		}
-		return false;
+	}
+		return iii;
 	}
 
 	//파일 다운로드

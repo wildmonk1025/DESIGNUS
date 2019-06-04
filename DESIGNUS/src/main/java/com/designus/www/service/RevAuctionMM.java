@@ -53,10 +53,10 @@ public class RevAuctionMM {
 		//boolean b = bDao.raInsert(ra);
 		//ra.setB_num(bDao.getraNum());
 		//raFile 등록을 위해 DB에서 글번호가져옴
-		boolean f = false;
+		
 		upload = new UploadFile();
-		f = upload.fileUp2(multi, ra);
-			if (f) {
+		int f = upload.fileUp2(multi, ra);
+			if (f!=0) {
 				//글쓰기 성공 view = "redirect:boardList";
 				view = "home";
 			} else {

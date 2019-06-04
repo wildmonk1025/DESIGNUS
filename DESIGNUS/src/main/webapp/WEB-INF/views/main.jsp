@@ -224,7 +224,7 @@
             <div id="msg">
                 <img src="./images/writer.png" width="40px" height="40px" />
             </div>
-            <div id="loginmsg"><a href="logingo">로그인</a><br>id:${id}<br>등급:${grade1}</div>
+            <div id="loginmsg"><a href="logingo">로그인</a><br>id:${id}<br>등급:${grade}</div>
         </div>
     </div>
     <div id="category" >
@@ -255,8 +255,10 @@
     </div>
 </body>
 <script>
-console.log(${id});
-console.log(${grade1});
+window.onload = function() {	
+	console.log(${id});
+	console.log(${grade});
+}
 
 
 </script></html>
