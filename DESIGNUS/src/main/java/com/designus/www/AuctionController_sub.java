@@ -1,5 +1,7 @@
 package com.designus.www;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ public class AuctionController_sub {
 	ModelAndView mav;
 
 	@Autowired
-	private RevAuctionMM ramM;
+	private RevAuctionMM ram;
 
 	@RequestMapping(value = "/revauctionWrite", method = RequestMethod.GET)
 	public ModelAndView revAuctionWrite() {
@@ -27,15 +29,16 @@ public class AuctionController_sub {
 		return mav;
 	}
 
-	@RequestMapping(value = "/revauctionsubmit")
+	@RequestMapping(value = "/revauctionsubmit", method = RequestMethod.POST)
 	public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
-		mav = new ModelAndView();
-		String x = multi.getParameter("ra_image");
-		String y = multi.getParameter("ra_file");
-		System.out.println("controller단="+x);
-		System.out.println(y);
+		Iterator<String> ite = multi.getFileNames();
+		int i = 1;
+		while(ite.hasNext()) {
+			System.out.println(i+". "+ite.next());
+			i++;
+		}
 		
-		mav = ramM.revAuctionSubmit(multi);
+		mav = ram.revAuctionSubmit(multi);
 		return mav;
 	}
 }
