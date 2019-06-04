@@ -49,11 +49,11 @@ public class MypageController {
 		return mav;
 	}
 	@RequestMapping(value = "/memberrevise", method = RequestMethod.POST)
-	public ModelAndView memberrevise(MultipartHttpServletRequest multi) {
+	public ModelAndView memberrevise(MultipartHttpServletRequest multi,String kind) {
 		  mav = new ModelAndView();
 		  System.out.println("id="+multi.getParameter("mb_pw"));
 		  System.out.println("address="+multi.getParameter("mb_address"));
-          mav= pm.memberrevise(multi);
+          mav= pm.memberrevise(multi,kind);
           mav.setViewName("memberEdit");
 		return mav;
 	}

@@ -37,13 +37,14 @@ public class UploadFile {
 	@Autowired
 	private HttpSession session;
 
-	public boolean fileUp(MultipartHttpServletRequest multi, Member mb) {
+	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, String kind) {
 		System.out.println("id=" + mb.getMb_id());
 		System.out.println("pw=" + mb.getMb_pw());
 		System.out.println("name=" + mb.getMb_name());
 		System.out.println("birth=" + mb.getMb_birth());
 		System.out.println("address=" + mb.getMb_address());
 		System.out.println("email=" + mb.getMb_email());
+		System.out.println("mb_profile=" + mb.getMb_profile());
 
 		System.out.println("fileUp");
 		//1.이클립스의 물리적 저장경로 찾기
@@ -79,8 +80,7 @@ public class UploadFile {
 		 */
 		try {
 			mf.transferTo(new File(path + sysFileName));
-			if (session.getAttribute("id").toString() == null) {
-
+			if (kind.equals("A")) {
 				f = mDao.memberapplyInsert(mb);
 			} else {
 				f = pDao.memberreviseupdate(mb);

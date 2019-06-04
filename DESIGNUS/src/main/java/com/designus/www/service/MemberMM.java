@@ -21,20 +21,33 @@ public class MemberMM {
 	private ModelAndView mav;
 	@Autowired
 	private com.designus.www.userClass.UploadFile upload;
-	public ModelAndView memberapply(MultipartHttpServletRequest multi) {
+	public ModelAndView memberapply(MultipartHttpServletRequest multi, String kind) {
 		 System.out.println("여기까지는 온것 같고2...");
 		mav = new ModelAndView();
+		kind="A";
 		String view = null;
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		String id=multi.getParameter("mb_id");
+		String pw=multi.getParameter("mb_pw");
+		String name=multi.getParameter("mb_name");
+		String birth=multi.getParameter("mb_birth");
+		String address=multi.getParameter("mb_address");
+		String email=multi.getParameter("mb_email");
 		
           Member mb=new Member();
-		
+	      mb.setMb_id(id);
+	      mb.setMb_birth(birth);
+	      mb.setMb_name(name);
+	      mb.setMb_address(address);
+	      mb.setMb_email(email);
+	      BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+			 mb.setMb_pw(pwdEncoder.encode(pw));
 		 boolean f = false;
 			if (check == 1) { // 첨부된 파일이 있다면....
 				// upload=new UploadFile(); //프로토타입
 				// 이클립스 서버에 파일을 업로드 한 후,
 				// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
-				f = upload.fileUp(multi,mb);
+				f = upload.fileUp(multi,mb,kind);
 				if (f) {
 					System.out.println("일단 여기까지는 된건데....");
 					view = "loginBox";
@@ -68,11 +81,11 @@ public class MemberMM {
 				System.out.println("grede="+mb.getMb_grade());
 				view="redirect:home";
 			}else {
-				view="logingo";
+				view="loginBox";
 				mav.addObject("ckeck" ,2);
 			}
 		}else {
-			view="logingo";
+			view="loginBox";
 			mav.addObject("ckeck" ,2);
 		}
 		mav.setViewName(view);

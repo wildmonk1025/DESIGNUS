@@ -20,7 +20,7 @@ public class AuctionMM {
 	
 	private ModelAndView mav;
 
-	public ModelAndView AuctionWrite(MultipartHttpServletRequest multi) {
+	public ModelAndView auctionWriteSubmit(MultipartHttpServletRequest multi) {
 		mav=new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view=null;
@@ -30,6 +30,14 @@ public class AuctionMM {
 		int minprice = Integer.parseInt(multi.getParameter("au_minprice"));
 		int inprice = Integer.parseInt(multi.getParameter("au_inprice"));
 		String contents = multi.getParameter("au_contents");
+		
+		System.out.println("id ="+multi.getParameter("au_mbid_w"));
+		System.out.println("title ="+multi.getParameter("au_title"));
+		System.out.println("cgcode ="+Integer.parseInt(multi.getParameter("au_cgcode")));
+		System.out.println("qty ="+Integer.parseInt(multi.getParameter("au_qty")));
+		System.out.println("minprice ="+Integer.parseInt(multi.getParameter("au_minprice")));
+		System.out.println("inprice ="+Integer.parseInt(multi.getParameter("au_inprice")));
+		System.out.println("contents ="+multi.getParameter("au_contents"));
 		
 		Auction au = new Auction();
 		/*

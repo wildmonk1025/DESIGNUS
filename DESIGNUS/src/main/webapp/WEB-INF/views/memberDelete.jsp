@@ -1,231 +1,288 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <style>
-        #join {
-            position: absolute;
-            top: 500px;
-            left: 200px;
-        }
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#mainheader {
+	border: 1px solid black;
+	width: 1520px;
+	height: 170px;
+}
+#articleView_layer {
+	display: none;
+	position: fixed;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%
+}
 
-        #logoimg {
-            width: 250px;
-            height: 100px;
-            position: relative;
-            top: 40px;
-            left: 500px;
-        }
+#articleView_layer.open {
+	display: block;
+	color: red
+}
 
-        #norjoinFrm {
-            position: relative;
-            top: 50px;
-            left: 400px;
-        }
+#articleView_layer #bg_layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .5;
+	filter: alpha(opacity = 50);
+	z-index: 100
+}
 
-        .memberN {
-            font-size: 15;
-            height: 40;
-        }
+#contents_layer {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	width: 400px;
+	height: 400px;
+	margin: -150px 0 0 -194px;
+	padding: 28px 28px 0 28px;
+	border: 2px solid #555;
+	background: #fff;
+	font-size: 12px;
+	z-index: 200;
+	color: #767676;
+	line-height: normal;
+	white-space: normal;
+	overflow: scroll
+}
 
-        #btz {
-            position: relative;
-            width: 70;
-            height: 40;
-        }
+#join {
+	position: absolute;
+	top: 500px;
+	left: 200px;
+}
 
-        #memberS {
-            position: relative;
-            top: 80px;
-            left: 400px;
-        }
+#logoimg {
+	width: 250px;
+	height: 100px;
+	position: relative;
+	top: 40px;
+	left: 500px;
+}
 
-        .btz2 {
-            position: relative;
-            top: 20px;
-            left: 120px;
-            width: 300px;
-            height: 40
-        }
+#norjoinFrm {
+	position: relative;
+	top: 50px;
+	left: 400px;
+}
 
-        #norjoinFrm2 {
-            position: relative;
-            top: 50px;
-            left: 300px;
-        }
+.memberN {
+	font-size: 15;
+	height: 40;
+}
 
-        #mb_email {
-            font-size: 15;
-            width: 200px;
-            height: 40;
-            position: relative;
-            left: -98px;
-        }
+#btz {
+	position: relative;
+	width: 70;
+	height: 40;
+}
 
-        #mb_email2 {
-            font-size: 15;
-            width: 200px;
-            height: 40;
-            position: relative;
-            right: 175px;
-        }
+#memberS {
+	position: relative;
+	top: 80px;
+	left: 400px;
+}
 
-        #emailList {
-            font-size: 15;
-            width: 100px;
-            height: 40;
-            position: relative;
-            right: 175px;
-        }
+.btz2 {
+	position: relative;
+	top: 20px;
+	left: 120px;
+	width: 300px;
+	height: 40
+}
 
-        #Echeck {
-            width: 100;
-            height: 40;
-            position: relative;
-            top: 10px;
-            left: 450px;
-        }
+#norjoinFrm2 {
+	position: relative;
+	top: 50px;
+	left: 300px;
+}
 
-        #null {
-            position: absolute;
-            font-size: 15px;
-            width: 20px;
-            top: 360px;
-            left: 715px;
+#mb_email {
+	font-size: 15;
+	width: 200px;
+	height: 40;
+	position: relative;
+	left: -98px;
+}
 
-        }
+#mb_email2 {
+	font-size: 15;
+	width: 200px;
+	height: 40;
+	position: relative;
+	right: 175px;
+}
 
-        #i2 {
-            position: relative;
-            top: 10px;
-            left: 150px;
-        }
+#emailList {
+	font-size: 15;
+	width: 100px;
+	height: 40;
+	position: relative;
+	right: 175px;
+}
 
-          #point {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 80px;
-            text-align: left;
-            left: 183px;
-            top: 500px;
+#Echeck {
+	width: 100;
+	height: 40;
+	position: relative;
+	top: 10px;
+	left: 450px;
+}
 
-            font-size: 20px;
-        }
+#null {
+	position: absolute;
+	font-size: 15px;
+	width: 20px;
+	top: 360px;
+	left: 715px;
+}
 
-        #img {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 310px;
-            text-align: left;
-            left: 183px;
-            top: 180px;
+#i2 {
+	position: relative;
+	top: 10px;
+	left: 150px;
+}
 
-            font-size: 20px;
+#point {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 80px;
+	text-align: left;
+	left: 183px;
+	top: 500px;
+	font-size: 20px;
+}
 
-        }
+#img {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 310px;
+	text-align: left;
+	left: 183px;
+	top: 180px;
+	font-size: 20px;
+}
 
-        #one {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
+#one {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
 
-        div {
-            margin: auto;
-        }
+div {
+	margin: auto;
+}
 
-        #notice {
-            background-color: orange;
-            border: 1px solid orange;
-            position: absolute;
-            width: 1100px;
-            height: 60px;
-            text-align: center;
-            left: 603px;
-            top: 180px;
-            font-size: 100%
-        }
+#notice {
+	background-color: orange;
+	border: 1px solid orange;
+	position: absolute;
+	width: 1100px;
+	height: 60px;
+	text-align: center;
+	left: 603px;
+	top: 180px;
+	font-size: 100%
+}
 
-        #info {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 600px;
-            text-align: left;
-            left: 183px;
-            top: 600px;
+#info {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 600px;
+	text-align: left;
+	left: 183px;
+	top: 600px;
+}
 
-        }
+#main {
+	position: absolute;
+	width: 1520px;
+	height: 170px;
+	left: 183px;
+	text-align: center;
+}
 
+.bt01 {
+	position: absolute;
+	right: 100px;
+	top: 50px;
+}
 
+a {
+	color: red
+}
 
-        #main {
-            position: absolute;
-            width: 1520px;
-            height: 170px;
-            left: 183px;
-            text-align: center;
-        }
+#spon {
+	border: 1px solid orange;
+	width: 1100px;
+	height: 700px;
+	left: 611px;
+	position: absolute;
+	top: 275px;
+}
 
-        .bt01 {
-            position: absolute;
-            right: 100px;
-            top: 50px;
+#ckbox {
+	align-content: center;
+	width: 600px;
+	height: 70px;
+	left: 850px;
+	position: absolute;
+	top: 985px;
+}
 
-        }
+#pp {
+	color: red;
+}
 
-        a {
-            color: red
-        }
+#btn1 {
+	text-align: center;
+}
 
+#h1 {
+	font-size: 70px;
+}
 
-      
+#btn2 {
+	left: 250px;
+}
 
-        #spon {
+a:active {
+	text-decoration: none;
+	color: #646464;
+}
 
+a:visited {
+	text-decoration: none;
+	color: #646464;
+}
 
-            border: 1px solid orange;
-            width: 1100px;
-            height: 700px;
-            left: 611px;
-            position: absolute;
-            top: 275px;
-           
-        }
-        #ckbox{
-            align-content: center;
-            width: 600px;
-            height: 70px;
-            left: 850px;
-            position: absolute;
-            top: 985px;
-        }
-        #pp {
-            color: red;
-        }
+a:link {
+	text-decoration: none;
+	color: #646464;
+}
 
-        #btn1 {
-            text-align: center;
+a:hover {
+	text-decoration: none;
+	color: #646464;
+}
 
-        }
-
-        #h1{
-            font-size: 70px;
-        }
-        #btn2{
-            left: 250px;
-        }
-        a:active{text-decoration: none; color:#646464;}
-        a:visited{text-decoration: none;color:#646464;}
-        a:link {text-decoration: none;color:#646464;}
-        a:hover{text-decoration: none;color:#646464;}
-               #header {
+#header {
 	padding: 3px;
 	width: 1510px;
 	height: 100px;
@@ -314,106 +371,105 @@
 	height: 50px;
 	margin-left: 10px;
 }
-    </style>
+</style>
 </head>
 
 <body>
-    <div id="one">
+	<div id="one">
+
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
+
+		<div id="notice">
+			<h2>회원탈퇴 신청</h2>
+			<hr>
+		</div>
+		<div id="info">
+			<table width="1000">
+
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰
+							내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰
+							접수내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=auc">출품작
+							구매 내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=aucre">출품작
+							판매 내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=spon">후원진행
+							내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=sponre">후원요청
+							내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="historylist?list=basket">꿍
+							내역</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
+				</tr>
+				<tr>
+					<td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
+				</tr>
+			</table>
+		</div>
 
 
-        <div id="main">
-            <div id="header">
-		<div id="logo">
-			<a href="home"><img src="./images/logo.png" width="250px" height="80px" /></a>
-			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
-			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
+		<div id="point">
+			<h1>포인트:</h1>
 		</div>
-		<div id="search">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
-			<button id="searchbtn">검색</button>
-		</div>
-		<div id="loginwriter">
-			<div id="mypageimg"></div>
-			<div id="msg">
-				<img src="./images/writer.png" width="40px" height="40px" />
-			</div>
-			<div id="loginmsg"><a href="logingo">로그인</a></div>
+		<div id="img">
+			<h1>프로필사진</h1>
 		</div>
 	</div>
-	<div id="category">
-		<div id="subcategory" align="center">三</div>
-		<div id="menu">
-			<div id="submenu"><a href="sponsor">후원</a></div>
-			<div id="submenu"><a href="boardlist">게시판</a></div>
-			<div id="submenu"><a href="bestwriter">인기작가</a></div>
-			<div id="submenu"><a href="servicecenter">고객센터</a></div>
+
+	<div id="spon">
+
+
+		<div id="btn1">
+			<br> <br> <br> <br> <br> <br> <br>
+			<br> <br> <br> <br>
+			<h1 id="h1">회원탈퇴시 주의사항</h1>
 		</div>
 	</div>
 
-        </div>
-        <div id="notice">
-            <h2>회원탈퇴 신청</h2>
-            <hr>
-        </div>
-        <div id="info">
-           <table width="1000">
+	<div id="ckbox">
+		<h3>
+			안내 사항을 모두 확인하였으며, 이에 동의합니다.<input type="checkbox">
+		</h3>
+		<button id="btz2" onclick="">수정하기</button>
+		<button type="button" onclick="location.href='myPage.html' " id="btn2">돌아가기</button>
+	</div>
 
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰 접수내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=auc">출품작 구매 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=aucre">출품작 판매 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=spon">후원진행 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=sponre">후원요청 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=basket">꿍 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
-                </tr>
-            </table>
-        </div>
-
-
-        <div id="point">
-            <h1>포인트:</h1>
-        </div>
-        <div id="img">
-            <h1>프로필사진</h1>
-        </div>
-    </div>
-
-    <div id="spon">
-
-
-        <div id="btn1"><br><br><br><br><br><br><br><br><br><br><br>
-            <h1 id="h1">회원탈퇴시 주의사항</h1>
-        </div>
-    </div>
-    
-    <div id="ckbox"><h3>안내 사항을 모두 확인하였으며, 이에 동의합니다.<input type="checkbox"></h3><button>수정하기</button>
-            <button type="button" onclick="location.href='myPage.html' " id="btn2">돌아가기</button></div>
-
-
-
-
+	<div id="articleView_layer">
+		<div id="bg_layer"></div>
+		<div id="contents_layer"></div>
+	</div>
 </body>
 
+<script>
+	$('#btz2').click(
+			function() {
+				$('#articleView_layer').css("dispaly", "inline");
+				$('#bg_layer').html(
+						'<input type="text" name ="mb_pw" id="mb_pw">'
+								+ '<a href="withdrawalconfirm>탈퇴하기<a>"');
+			});
+</script>
 </html>
+
+
