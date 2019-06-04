@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <style>
         div {
             margin: auto;
@@ -224,7 +227,10 @@
             <div id="msg">
                 <img src="./images/writer.png" width="40px" height="40px" />
             </div>
-            <div id="loginmsg"><a href="logingo">로그인</a><br>id:${id}<br>등급:${grade1}</div>
+            <div id="loginmsg"><a href="logingo">로그인</a>
+            <form id="logout" action="logout" method="post">
+		<a href="javascript:logout()">로그아웃</a>
+	</form><br>id:${id}<br>등급:${grade1}</div>
         </div>
     </div>
     <div id="category" >
@@ -255,8 +261,9 @@
     </div>
 </body>
 <script>
-console.log(${id});
-console.log(${grade1});
+function logout(){
+	$('#logout').submit();
+}
 
 
 </script></html>
