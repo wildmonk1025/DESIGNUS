@@ -257,6 +257,7 @@
             <div id="submenu"><a href="boardlist">게시판</a></div>
             <div id="submenu"><a href="bestwriter">인기작가</a></div>
             <div id="submenu"><a href="servicecenter">고객센터</a></div>
+         	
         </div>
     </div>
 </body>
