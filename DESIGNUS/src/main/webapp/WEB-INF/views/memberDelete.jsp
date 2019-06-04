@@ -38,7 +38,7 @@
 	background: #000;
 	opacity: .5;
 	filter: alpha(opacity = 50);
-	z-index: 100
+	z-index: 101;
 }
 
 #contents_layer {
@@ -381,6 +381,7 @@ a:hover {
 	top: 350px;
 	left: 850px;
 	font-size: 18px;
+	z-index: 202;
 }
 /* #mb_pw{
  width: 100px;
@@ -471,12 +472,13 @@ a:hover {
 	</div>
 
 	<div id="articleView_layer">
-	<input type="password" name="mb_pw" id="mb_pw">
+		<input type="password" name="mb_pw" id="mb_pw">
 		 <a id="Delecheck" href="withdrawalconfirm">탈퇴하기</a>
 		<div id="bg_layer">
 		</div>
 		<div id="contents_layer"></div>
 	</div>
+	
 </body>
 
 <script>
