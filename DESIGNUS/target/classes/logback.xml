@@ -6,8 +6,7 @@
 </encoder>
 </appender>
 <logger name="com.board.lee" level="trace"/>
-<!-- Å×ÀÌºí¿¡ °á°ú¸¦ Ãâ·ÂÇÏ±â À§ÇØ¼­ info ´ë½Å trace ¼³Á¤ -->
-<logger name="jdbc.resultsettable" level="info"/><!-- 오라클 테이블 select 등등 -->
+<logger name="jdbc.resultsettable" level="trace"/><!-- 오라클 테이블 select 등등 -->
 <logger name="jdbc.audit" level="off"/>
 <logger name="jdbc.resultset" level="off"/> <!-- 결과를 가져옴 -->
 <logger name="jdbc.sqlonly" level="info"/>

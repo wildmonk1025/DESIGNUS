@@ -92,10 +92,11 @@ public class HomeController {
 		return "joinFrm";
 	}
 	@RequestMapping(value="/memberapply",method=RequestMethod.POST)
-     public ModelAndView memberapply(MultipartHttpServletRequest multi) {
+     public ModelAndView memberapply(MultipartHttpServletRequest multi,String kind) {
       System.out.println("여기까지는 온것 같고..."+multi.getFileNames());
       mav = new ModelAndView();
-      mav=mm.memberapply(multi);
+      
+      mav=mm.memberapply(multi,kind);
 		return mav;
 	}
      @RequestMapping(value="/mypage",method=RequestMethod.GET)
@@ -103,4 +104,15 @@ public class HomeController {
 
 		return "myPage";
 	}
+     @RequestMapping(value = "/access", method = RequestMethod.POST)
+ 	public ModelAndView access(Member mb) {
+ 		mav=mm.memberAccess(mb);
+ 		
+ 		return mav;
+ 	}
+     @RequestMapping(value="/login",method=RequestMethod.GET)
+     public String login() {
+
+ 		return "loginBox";
+ 	}
 }
