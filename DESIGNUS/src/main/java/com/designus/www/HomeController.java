@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -26,10 +27,10 @@ import com.designus.www.service.MemberMM;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-    @Autowired
+	@Autowired
 	private MemberMM mm;
-    @Autowired
-    HttpSession session;
+	@Autowired
+	HttpSession session;
 	ModelAndView mav;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -61,7 +62,7 @@ public class HomeController {
 
 		return "sc_Question";
 	}
-	
+
 	@RequestMapping(value = "/bestwriter", method = RequestMethod.GET)
 	public String bestwriter() {
 
@@ -82,37 +83,48 @@ public class HomeController {
 
 	@RequestMapping(value = "/memberfind", method = RequestMethod.GET)
 	public String memberfind() {
-		
+
 		return "memberFind";
 	}
 
-	@RequestMapping(value="/joinfrm",method=RequestMethod.GET)
-      public String joinfrm() {
+	@RequestMapping(value = "/joinfrm", method = RequestMethod.GET)
+	public String joinfrm() {
 
 		return "joinFrm";
 	}
-	@RequestMapping(value="/memberapply",method=RequestMethod.POST)
-     public ModelAndView memberapply(MultipartHttpServletRequest multi,String kind) {
-      System.out.println("여기까지는 온것 같고..."+multi.getFileNames());
-      mav = new ModelAndView();
-      
-      mav=mm.memberapply(multi,kind);
+
+	@RequestMapping(value = "/memberapply", method = RequestMethod.POST)
+	public ModelAndView memberapply(MultipartHttpServletRequest multi, String kind) {
+		System.out.println("여기까지는 온것 같고..." + multi.getFileNames());
+		mav = new ModelAndView();
+
+		mav = mm.memberapply(multi, kind);
 		return mav;
 	}
-     @RequestMapping(value="/mypage",method=RequestMethod.GET)
-    public String mypage() {
+
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String mypage() {
 
 		return "myPage";
 	}
-     @RequestMapping(value = "/access", method = RequestMethod.POST)
- 	public ModelAndView access(Member mb) {
- 		mav=mm.memberAccess(mb);
- 		
- 		return mav;
- 	}
-     @RequestMapping(value="/login",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/access", method = RequestMethod.POST)
+	public ModelAndView access(Member mb) {
+		mav = mm.memberAccess(mb);
+
+		return mav;
+	}
+
+	@RequestMapping(value="/login",method=RequestMethod.GET)
      public String login() {
 
  		return "loginBox";
  	}
+
+	/*
+	 * @RequestMapping(value="/joinPost",method=RequestMethod.GET) public String
+	 * joinPost(@ModelAttribute("uVO") UserVO uVO) throws Exception) { //이메일 발송 관련
+	 * url return "loginBox"; }
+	 */
+     
 }
