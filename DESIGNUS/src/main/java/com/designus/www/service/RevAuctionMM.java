@@ -13,11 +13,10 @@ import com.designus.www.userClass.UploadFile;
 @Service
 public class RevAuctionMM {
 
-	/*
-	 * @Autowired private UploadFile upload;
-	 */
 	@Autowired
 	HttpSession session;
+	@Autowired
+	private UploadFile upload;
 
 	ModelAndView mav;
 
@@ -55,7 +54,7 @@ public class RevAuctionMM {
 		//ra.setB_num(bDao.getraNum());
 		//raFile 등록을 위해 DB에서 글번호가져옴
 		boolean f = false;
-		UploadFile upload = new UploadFile();
+		upload = new UploadFile();
 		f = upload.fileUp2(multi, ra);
 			if (f) {
 				//글쓰기 성공 view = "redirect:boardList";
