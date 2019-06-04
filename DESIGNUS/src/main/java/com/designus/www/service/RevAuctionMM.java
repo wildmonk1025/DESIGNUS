@@ -3,12 +3,14 @@ package com.designus.www.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.RevAuction;
 import com.designus.www.userClass.UploadFile;
 
+@Service
 public class RevAuctionMM {
 
 	/*
@@ -31,6 +33,14 @@ public class RevAuctionMM {
 		String ra_file = multi.getParameter("ra_file");
 		String ra_oc = multi.getParameter("ra_oc");
 		
+		System.out.println(ra_mbid);
+		System.out.println(ra_title);
+		System.out.println(ra_contents);
+		System.out.println(ra_cgcode);
+		System.out.println(ra_image);
+		System.out.println(ra_file);
+		System.out.println(ra_oc);
+		
 		if(ra_oc.equals("비공개")) {
 			ra_oc="C";
 		} else
@@ -52,7 +62,7 @@ public class RevAuctionMM {
 		//raFile 등록을 위해 DB에서 글번호가져옴
 		boolean f = false;
 		UploadFile upload = new UploadFile();
-		f =upload.fileUp(multi);
+		f = upload.fileUp(multi);
 			if (f) {
 				//글쓰기 성공 view = "redirect:boardList";
 				view = "home";

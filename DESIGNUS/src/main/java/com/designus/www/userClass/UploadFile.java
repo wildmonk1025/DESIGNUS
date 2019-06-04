@@ -116,7 +116,6 @@ public class UploadFile {
 		//List<MultipartFile> file = multi.getFiles("b_files");
 		MultipartFile file = multi.getFile("ra_image");
 		MultipartFile file2 = multi.getFile("ra_file");
-		//fMap.put("bnum", String.valueOf(bnum));
 		boolean f = false;
 
 		//파일 메모리에 저장
@@ -139,7 +138,7 @@ public class UploadFile {
 		
 		try {
 			mf.transferTo(new File(path + sysFileName));
-			mf2.transferTo(new File(path +sysFileName));
+			mf2.transferTo(new File(path + sysFileName));
 			System.out.println("인서트 진행합니다~");
 			f = rDao.revAuctionSubmitInsert(ra);
 		} catch (IOException e) {
