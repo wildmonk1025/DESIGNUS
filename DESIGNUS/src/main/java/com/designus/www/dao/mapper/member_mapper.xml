@@ -4,28 +4,27 @@
 
 <mapper namespace="com.designus.www.dao.ImemberDao">
 
-<!-- 	<resultMap type="member" id="member">
-		<result property="mb_id" column="MB_ID" />
-		<result property="mb_pw" column="MB_PW" />
-		<result property="mb_name" column="MB_NAME" />
-		<result property="mb_brith" column="MB_BIRTH" />
-		<result property="mb_profile" column="MB_PROFILE" />
-		<result property="mb_address" column="MB_ADDRESS" />
-		<result property="mb_email" column="MB_EMAIL" />
-		<result property="mb_point" column="MB_POINT" />
-		<result property="mb_grade" column="MB_GRADE" />
-		<result property="mb_ccnt" column="MB_CCNT" />
-
-	</resultMap>
- -->
+	<!-- <resultMap type="member" id="member"> <result property="mb_id" column="MB_ID" 
+		/> <result property="mb_pw" column="MB_PW" /> <result property="mb_name" 
+		column="MB_NAME" /> <result property="mb_brith" column="MB_BIRTH" /> <result 
+		property="mb_profile" column="MB_PROFILE" /> <result property="mb_address" 
+		column="MB_ADDRESS" /> <result property="mb_email" column="MB_EMAIL" /> <result 
+		property="mb_point" column="MB_POINT" /> <result property="mb_grade" column="MB_GRADE" 
+		/> <result property="mb_ccnt" column="MB_CCNT" /> </resultMap> -->
 	<insert id="memberapplyInsert" parameterType="member">
 		INSERT INTO MEMBER
 		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'N',DEFAULT)
 	</insert>
-	<select id="getSecurityPwd" parameterType="String" resultType="String">
+	<insert id="wrimajorInsert" parameterType="major">
+		INSERT INTO MAJOR
+		VALUES(#{mj_id},#{mj_cg_code},#{mj_portf},#{mj_contents},#{mj_like})
+	</insert>
+	<select id="getSecurityPwd" parameterType="String"
+		resultType="String">
 		SELECT MB_PW FROM MB WHERE MB_ID=#{mb_id}
 	</select>
-	<select id="getMemberInfo" parameterType="String" resultType="member">
+	<select id="getMemberInfo" parameterType="String"
+		resultType="member">
 		SELECT * FROM MB WHERE MB_ID=#{mb_id}
 	</select>
 </mapper>
