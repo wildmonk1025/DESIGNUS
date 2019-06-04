@@ -17,10 +17,10 @@ public class AuctionController_sub {
 	 * @Autowired private CommonMM cm;
 	 */
 
-	ModelAndView mav;
 
 	@Autowired
 	private RevAuctionMM ram;
+	ModelAndView mav;
 
 	@RequestMapping(value = "/revauctionWrite", method = RequestMethod.GET)
 	public ModelAndView revAuctionWrite() {
@@ -31,12 +31,6 @@ public class AuctionController_sub {
 
 	@RequestMapping(value = "/revauctionsubmit", method = RequestMethod.POST)
 	public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
-		Iterator<String> ite = multi.getFileNames();
-		int i = 1;
-		while(ite.hasNext()) {
-			System.out.println(i+". "+ite.next());
-			i++;
-		}
 		mav = ram.revAuctionSubmit(multi);
 		return mav;
 	}

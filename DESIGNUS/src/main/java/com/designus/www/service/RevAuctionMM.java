@@ -28,13 +28,7 @@ public class RevAuctionMM {
 		String ra_title = multi.getParameter("ra_title");
 		String ra_contents = multi.getParameter("ra_contents");
 		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
-		//String ra_oc = multi.getParameter("ra_oc");
-		
-		System.out.println(ra_mbid);
-		System.out.println(ra_title);
-		System.out.println(ra_contents);
-		System.out.println(ra_cgcode);
-		//System.out.println(ra_oc);
+		String ra_oc = "O";
 		
 //		if(ra_oc.equals("비공개")) {
 //			ra_oc="C";
@@ -43,20 +37,17 @@ public class RevAuctionMM {
 //			System.out.println("공개/비공개 여부를 확인해야합니다.");
 			
 		RevAuction ra = new RevAuction();
-
 		ra.setRa_mbid(ra_mbid);
 		ra.setRa_title(ra_title);
 		ra.setRa_contents(ra_contents);
 		ra.setRa_cgcode(ra_cgcode);
-		ra.setRa_oc("O");
+		ra.setRa_oc(ra_oc);
 		
 		//boolean b = bDao.raInsert(ra);
 		//ra.setB_num(bDao.getraNum());
 		//raFile 등록을 위해 DB에서 글번호가져옴
 		
-		upload = new UploadFile();
-		int f = upload.fileUp2(multi, ra);
-			if (f!=0) {
+			if (upload.fileUp(multi,ra)!=0) {
 				//글쓰기 성공 view = "redirect:boardList";
 				view = "home";
 			} else {
