@@ -260,5 +260,14 @@
 		$layerWindow.removeClass('open');
 
 	});//function End
+	$(document).keydown(function(event) {
+		console.log(event);
+		if(event.keyCode != 27) return;
+		if($layerWindow.hasClass('open')){
+		      $layerWindow.removeClass('open');
+		      
+		   }
+		   
+		});
 </script>
 </html>
