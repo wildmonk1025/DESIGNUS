@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.text.DateFormat; 
+import java.text.DateFormat;  
 import java.util.Date;
 import java.util.Locale;
 
@@ -109,10 +109,16 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView access(Member mb) {
+	public ModelAndView login(Member mb) {
 		mav = mm.login(mb);
 
 		return mav;
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout() {
+		session.invalidate();
+		
+		return "home";
 	}
 
 	
