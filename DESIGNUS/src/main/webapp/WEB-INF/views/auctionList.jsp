@@ -136,8 +136,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 	
-	var cgcode = 0;
-	
+	var x=request.getParameter("cgcode");
+	console.log(x);
 	
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");

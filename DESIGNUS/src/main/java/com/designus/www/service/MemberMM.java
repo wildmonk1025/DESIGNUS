@@ -23,7 +23,7 @@ public class MemberMM {
 	@Autowired
 	private com.designus.www.userClass.UploadFile upload;
 
-	public ModelAndView wrimemberapply(MultipartHttpServletRequest multi, String kind) {
+	public ModelAndView wriapply(MultipartHttpServletRequest multi, String kind) {
 		System.out.println("작가 회원가입");
 		mav = new ModelAndView();
 		kind = "A";
@@ -48,8 +48,8 @@ public class MemberMM {
 		mb.setMb_address(address);
 		mb.setMb_email(email);
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		mb.setMb_pw(pwdEncoder.encode(pw));//암호화
-		
+		mb.setMb_pw(pwdEncoder.encode(pw));// 암호화
+
 		Major mj = new Major();
 		mj.setMj_id(wriid);
 		mj.setMj_portf(wriport);
@@ -64,14 +64,14 @@ public class MemberMM {
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
 			f = upload.fileUp(multi, mb, kind);
 			if (f) {
-				System.out.println("일단 여기까지는 된건데....");
+				System.out.println("작가회원 신청");
 				view = "loginBox";
 			} else {
-				System.out.println("인설트 실패인데....");
+				System.out.println("인설트 안 됐대용");
 				view = "wrijoinFrm";
 			}
 		} else {
-			System.out.println("파일이 없다는건데....");
+			System.out.println("포트폴리오 썼니");
 			view = "wrijoinFrm";
 		}
 		System.out.println(view);

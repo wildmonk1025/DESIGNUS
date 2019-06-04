@@ -57,4 +57,10 @@ public class MypageController {
           mav.setViewName("memberEdit");
 		return mav;
 	}
+	@RequestMapping(value = "/withdrawalconfirm",produces="application/json;charset=utf8")
+	public String withdrawalconfirm(String pw) {
+		  System.out.println("pw"+pw);
+		  //String json=pm.withdrawalconfirm(pw);
+		return "json";
+	}
 }

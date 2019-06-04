@@ -24,10 +24,10 @@
 	height: 100%
 }
 
-#articleView_layer.open {
+ #articleView_layer.open {
 	display: block;
 	color: red
-}
+} 
 
 #articleView_layer #bg_layer {
 	position: absolute;
@@ -38,15 +38,15 @@
 	background: #000;
 	opacity: .5;
 	filter: alpha(opacity = 50);
-	z-index: 100
+	z-index: 101;
 }
 
 #contents_layer {
 	position: absolute;
 	top: 40%;
 	left: 40%;
-	width: 400px;
-	height: 400px;
+	width: 600px;
+	height: 600px;
 	margin: -150px 0 0 -194px;
 	padding: 28px 28px 0 28px;
 	border: 2px solid #555;
@@ -374,6 +374,27 @@ a:hover {
 	height: 50px;
 	margin-left: 10px;
 }
+#mb_pw,#Delecheck{
+ border : 1px solid black;
+   color : black;
+  position: relative;
+	top: 350px;
+	left: 850px;
+	font-size: 25px;
+	z-index: 202;
+}
+p{
+color : black;
+  position: relative;
+	top: 350px;
+	left: 850px;
+	font-size: 25px;
+	z-index: 202;
+}
+/* #mb_pw{
+ width: 100px;
+ height: 50px;
+} */
 </style>
 </head>
 
@@ -454,24 +475,50 @@ a:hover {
 		<h3>
 			안내 사항을 모두 확인하였으며, 이에 동의합니다.<input type="checkbox">
 		</h3>
-		<button id="btz2" onclick="">수정하기</button>
+		<button id="btz2" onclick="MemberDelete()">수정하기</button>
 		<button type="button" onclick="location.href='myPage.html' " id="btn2">돌아가기</button>
 	</div>
 
 	<div id="articleView_layer">
-		<div id="bg_layer"></div>
+	<p>정말로 탈퇴하시겠습니까?</p><br/>
+	<p>정말 탈퇴를 원하시면 <br/>현재 사용중인 비밀번호를 입력해주세요.</p>
+		<input type="password" name="mb_pw" id="mb_pw">
+		 <a id="Delecheck" href="AjmemberDelete('withdrawalconfirm','mb_pw')">탈퇴하기</a>
+		<div id="bg_layer">
+		</div>
 		<div id="contents_layer"></div>
 	</div>
+	
 </body>
 
 <script>
-	$('#btz2').click(
-			function() {
-				$('#articleView_layer').css("dispaly", "inline");
-				$('#bg_layer').html(
-						'<input type="text" name ="mb_pw" id="mb_pw">'
-								+ '<a href="withdrawalconfirm>탈퇴하기<a>"');
-			});
+function MemberDelete() {
+	$('#articleView_layer').addClass('open');
+      //$("#articleView_layer").css('display','inline');
+      //$('#bg_layer').html('<input type="password" name="mb_pw" id="mb_pw">')
+}
+//ModalBox 해제
+var $layerWindow= $('#articleView_layer');
+$layerWindow.find('#bg_layer').on('mousedown',function(event){
+	console.log(event);
+	$layerWindow.removeClass('open');
+	
+});//function End
+function AjmemberDelete(url,data) {
+	$.ajax({
+		type:'post',
+		url :url,
+		data:data,
+		dataType:'json',
+		success:function(data){
+			consol.log(data);
+		},
+		error:function(error){
+			console.log(error);
+		}
+	});
+	
+}
 </script>
 </html>
 
