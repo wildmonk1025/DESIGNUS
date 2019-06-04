@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <style>
         div {
             margin: auto;
@@ -149,7 +152,7 @@
             padding: 0px;
             width: 200px;
             position: absolute;
-            top:162px;
+            top:162px;\
 
             /*Animation*/
             -webkit-transition: height 1s ease;
@@ -165,6 +168,7 @@
             width: 200px;
             position: absolute;
             top:162px;
+            z-index:1002;
             -webkit-transition: height 1s ease;
             -moz-transition: height 1s ease;
             -o-transition: height 1s ease;
@@ -213,6 +217,7 @@
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
         </div>
+   
         <div id="search">
             <input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
             <button id="searchbtn">검색</button>
@@ -222,7 +227,10 @@
             <div id="msg">
                 <img src="./images/writer.png" width="40px" height="40px" />
             </div>
-            <div id="loginmsg"><a href="logingo">로그인</a><br>id:${id}<br>등급:${grade}</div>
+            <div id="loginmsg"><a href="logingo">로그인</a>
+            <form id="logout" action="logout" method="post">
+		<a href="javascript:logout()">로그아웃</a>
+	</form><br>id:${id}<br>등급:${grade}</div>
         </div>
     </div>
     <div id="category" >
@@ -230,17 +238,17 @@
             <h4><a href="#"><h2>三</h2></a></h4>
             <nav>
                 <ul>
-                    <li class="li1"><a href="#">귀금속 공예</a></li>
-                    <li class="li1"><a href="#">원목 공예</a></li>
-                    <li class="li1"><a href="#">종이 공예</a></li>
-                    <li class="li1"><a href="#">가죽 공예</a></li>
-                    <li class="li1"><a href="#">천 공예</a></li>
-                    <li class="li1"><a href="#">플라스틱 공예</a></li>
-                    <li class="li1"><a href="#">도자기</a></li>
-                    <li class="li1"><a href="#">가공식품</a></li>
-                    <li class="li1"><a href="#">휴대폰 악세서리</a></li>
-                    <li class="li1"><a href="#">패인팅,캐리커쳐,캘리</a></li>
-                    <li class="li1"><a href="#">유아 용품</a></li>
+                    <li class="li1" value="100"><a href="#">귀금속 공예</a></li>
+                    <li class="li1" value="110"><a href="#">원목 공예</a></li>
+                    <li class="li1" value="120"><a href="#">종이 공예</a></li>
+                    <li class="li1" value="130"><a href="#">가죽 공예</a></li>
+                    <li class="li1" value="140"><a href="#">천 공예</a></li>
+                    <li class="li1" value="150"><a href="#">플라스틱 공예</a></li>
+                    <li class="li1" value="160"><a href="#">도자기</a></li>
+                    <li class="li1" value="170"><a href="#">가공식품</a></li>
+                    <li class="li1" value="180"><a href="#">휴대폰 악세서리</a></li>
+                    <li class="li1" value="190"><a href="#">패인팅,캐리커쳐,캘리</a></li>
+                    <li class="li1" value="200"><a href="#">유아 용품</a></li>
                 </ul>
             </nav>
         </div>
@@ -253,5 +261,9 @@
     </div>
 </body>
 <script>
+function logout(){
+	$('#logout').submit();
+}
+
 
 </script></html>

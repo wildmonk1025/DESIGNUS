@@ -29,10 +29,26 @@ public class AuctionController {
 	}	
 	
 	@RequestMapping(value = "/auctionWrite" )
-	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
-		
-		mav = aum.AuctionWrite(multi);
+	public ModelAndView auctionWrite() {
+		mav = new ModelAndView();
 			
+		return mav;
+	}
+	
+	@RequestMapping(value = "/auctionWriteSubmit" )
+	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
+		mav = new ModelAndView();
+		mav = aum.auctionWriteSubmit(multi);
+		
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/auctionList" )
+	public ModelAndView auctionauctionList() {
+		mav = new ModelAndView();
+		
+		
 		return mav;
 	}
 	

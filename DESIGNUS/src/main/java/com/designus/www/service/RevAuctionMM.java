@@ -3,43 +3,66 @@ package com.designus.www.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.RevAuction;
+import com.designus.www.userClass.UploadFile;
 
+@Service
 public class RevAuctionMM {
 
-	/*
-	 * @Autowired private UploadFile upload;
-	 */
 	@Autowired
 	HttpSession session;
+	@Autowired
+	private UploadFile upload;
 
 	ModelAndView mav;
 
-	/*
-	 * public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
-	 * 
-	 * mav = new ModelAndView(); String id = session.getAttribute("id").toString();
-	 * String view = null;
-	 * 
-	 * String ra_title = multi.getParameter("b_title"); String contents =
-	 * multi.getParameter("b_contents"); int check =
-	 * Integer.parseInt(multi.getParameter("fileCheck"));
-	 * 
-	 * RevAuction ra = new RevAuction();
-	 * 
-	 * ra.setRa_title(ra_title); ra.setRa_ ra.setB_mid(id); boolean b =
-	 * bDao.raInsert(ra); //ra.setB_num(bDao.getraNum()); //raFile 등록을 위해 DB에서 글번호
-	 * 가져옴 boolean f = false; if (check == 1) { //UploadFile upload = new
-	 * UploadFile(); //프로토타입 //서버에 파일을 업로드 한 후, //오리지널 파일명, 시스템파일명을 리턴 후 맵에 저장 f =
-	 * upload.fileUp(multi, ra.getB_num()); }
-	 * 
-	 * if (b && f) { //글쓰기 성공 view = "redirect:boardList"; } else { view
-	 * ="writeFrm"; }
-	 * 
-	 * mav.setViewName(view); return mav; }
-	 */
+	public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
+		String view = null;
+		mav = new ModelAndView();
+		
+		String ra_mbid = session.getAttribute("id").toString();
+		String ra_title = multi.getParameter("ra_title");
+		String ra_contents = multi.getParameter("ra_contents");
+		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
+		//String ra_oc = multi.getParameter("ra_oc");
+		
+		System.out.println(ra_mbid);
+		System.out.println(ra_title);
+		System.out.println(ra_contents);
+		System.out.println(ra_cgcode);
+		//System.out.println(ra_oc);
+		
+//		if(ra_oc.equals("비공개")) {
+//			ra_oc="C";
+//		} else
+//			ra_oc="O";
+//			System.out.println("공개/비공개 여부를 확인해야합니다.");
+			
+		RevAuction ra = new RevAuction();
 
-}
+		ra.setRa_mbid(ra_mbid);
+		ra.setRa_title(ra_title);
+		ra.setRa_contents(ra_contents);
+		ra.setRa_cgcode(ra_cgcode);
+		ra.setRa_oc("O");
+		
+		//boolean b = bDao.raInsert(ra);
+		//ra.setB_num(bDao.getraNum());
+		//raFile 등록을 위해 DB에서 글번호가져옴
+		
+		upload = new UploadFile();
+		int f = upload.fileUp2(multi, ra);
+			if (f!=0) {
+				//글쓰기 성공 view = "redirect:boardList";
+				view = "home";
+			} else {
+				view = "revAuctionWrite";
+			}
+			mav.setViewName(view);
+			return mav;
+		}
+	}

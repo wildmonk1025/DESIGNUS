@@ -156,27 +156,30 @@
 	left: 150px;
 }
 
-#point {
-	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 80px;
-	text-align: left;
-	left: 183px;
-	top: 500px;
-	font-size: 20px;
-}
+  #point {
+            border: 1px solid orange;
+            position: absolute;
+            width: 300px;
+            height: 80px;
+            text-align: left;
+            left: 190px;
+            top: 508px;
 
-#img {
-	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 310px;
-	text-align: left;
-	left: 183px;
-	top: 180px;
-	font-size: 20px;
-}
+            font-size: 20px;
+        }
+
+        #img {
+            border: 1px solid orange;
+            position: absolute;
+            width: 300px;
+            height: 310px;
+            text-align: left;
+            left: 190px;
+            top: 188px;
+
+            font-size: 20px;
+
+        }
 
 #one {
 	position: relative;
@@ -195,7 +198,7 @@ div {
 	width: 1100px;
 	height: 60px;
 	text-align: center;
-	left: 603px;
+	left: 611px;
 	top: 180px;
 	font-size: 100%
 }
@@ -206,7 +209,7 @@ div {
 	width: 300px;
 	height: 600px;
 	text-align: left;
-	left: 183px;
+	left: 190px;
 	top: 600px;
 }
 

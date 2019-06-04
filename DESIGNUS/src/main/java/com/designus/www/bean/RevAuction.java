@@ -1,12 +1,12 @@
 package com.designus.www.bean;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
 
-@Alias("ra")
+@Alias("revauction")
 @Data
 public class RevAuction {
 	int    ra_num;
