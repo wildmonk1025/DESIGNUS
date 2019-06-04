@@ -96,8 +96,8 @@ public class UploadFile {
 		return false;
 	}
 
-	public int fileUp2(MultipartHttpServletRequest multi,RevAuction ra) {
-		System.out.println("multi 파라미터만 받는 fileUp");
+	public int fileUp(MultipartHttpServletRequest multi,RevAuction ra) {
+		System.out.println("multi 파라미터와 ra받는 fileUp");
 		//1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
@@ -110,15 +110,11 @@ public class UploadFile {
 		//3.파일을 가져오기-파일태그 이름들 반환
 		//String files=multi.getFileNames(); //파일태그가 2개이상일때
 		//List<MultipartFile> file = multi.getFiles("b_files");
-		MultipartFile file = multi.getFile("ra_image");
-		MultipartFile file2 = multi.getFile("ra_file");
+		MultipartFile ra_image = multi.getFile("ra_image");
+		MultipartFile ra_file = multi.getFile("ra_file");
 		
-
-		//파일 메모리에 저장
-		MultipartFile mf = file; //실제 업로드될 파일
-		MultipartFile mf2 = file2;
-		String oriFileName = file.getOriginalFilename(); //a.txt
-		String oriFileName2 = file2.getOriginalFilename();
+		String oriFileName = ra_image.getOriginalFilename(); //a.txt
+		String oriFileName2 = ra_file.getOriginalFilename();
 		//4.시스템파일이름 생성  a.txt  ==>112323242424.txt
 		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
 		String sysFileName2 = System.currentTimeMillis()+"_1." + oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
@@ -142,24 +138,24 @@ public class UploadFile {
 		System.out.println("최종확인="+ra.getRa_contents());
 		System.out.println("최종확인="+ra.getRa_oc());
 		
-		try {
-			mf.transferTo(new File(path + sysFileName));
-			mf2.transferTo(new File(path + sysFileName));
-			System.out.println("인서트 진행합니다~");
-			int flag = rDao.revAuctionSubmitInsert(ra);
+			try {
+				ra_image.transferTo(new File(path + sysFileName));
+				ra_file.transferTo(new File(path + sysFileName));
+				System.out.println("인서트 진행합니다~");
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
+			int flag = rDao.revAuctionSubmitInsert(ra);
 			//for End
 			if (flag!=0) {
 				iii=1;
 				}
 			else
 				iii=0;
-		}
-		catch(IOException e)
-	{
-			e.printStackTrace();
-			System.out.println("캐치로 왔땀");
-	}
+
 		return iii;
 	}
 

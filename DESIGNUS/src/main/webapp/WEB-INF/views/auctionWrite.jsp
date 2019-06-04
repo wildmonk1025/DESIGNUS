@@ -142,7 +142,9 @@ textarea {
 	</div>
 
 	<div id="homeMain">
-		<button id="revauctionbtn" class="btn1">제작의뢰 요청하기</button>
+		<button id="revauctionbtn" class="btn1">
+			<a href="revauctionWrite">제작의뢰 요청하기</a>
+			</button>
 		<button id="auctionbtn" class="btn1">
 			<a href="auctionWrite">출품등록하기</a>
 		</button>
