@@ -232,17 +232,17 @@
             <h4><a href="#"><h2>三</h2></a></h4>
             <nav>
                 <ul>
-                    <li class="li1" value="100"><a href="#">귀금속 공예</a></li>
-                    <li class="li1" value="110"><a href="#">원목 공예</a></li>
-                    <li class="li1" value="120"><a href="#">종이 공예</a></li>
-                    <li class="li1" value="130"><a href="#">가죽 공예</a></li>
-                    <li class="li1" value="140"><a href="#">천 공예</a></li>
-                    <li class="li1" value="150"><a href="#">플라스틱 공예</a></li>
-                    <li class="li1" value="160"><a href="#">도자기</a></li>
-                    <li class="li1" value="170"><a href="#">가공식품</a></li>
-                    <li class="li1" value="180"><a href="#">휴대폰 악세서리</a></li>
-                    <li class="li1" value="190"><a href="#">패인팅,캐리커쳐,캘리</a></li>
-                    <li class="li1" value="200"><a href="#">유아 용품</a></li>
+                    <li class="li1"><a href="auctionList">귀금속 공예</a></li>
+                    <li class="li1"><a href="auctionList">원목 공예</a></li>
+                    <li class="li1"><a href="auctionList">종이 공예</a></li>
+                    <li class="li1"><a href="auctionList">가죽 공예</a></li>
+                    <li class="li1"><a href="auctionList">천 공예</a></li>
+                    <li class="li1"><a href="auctionList">플라스틱 공예</a></li>
+                    <li class="li1"><a href="auctionList">도자기</a></li>
+                    <li class="li1"><a href="auctionList">가공식품</a></li>
+                    <li class="li1"><a href="auctionList">휴대폰 악세서리</a></li>
+                    <li class="li1"><a href="auctionList">패인팅,캐리커쳐,캘리</a></li>
+                    <li class="li1"><a href="auctionList">유아 용품</a></li>
                 </ul>
             </nav>
         </div>

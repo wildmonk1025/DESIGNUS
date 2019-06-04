@@ -115,10 +115,9 @@
 		<div id="List">
 			<button id="Lbtn1" class="btn2">제작의뢰 리스트</button>
 			<button id="Lbtn2" class="btn2">출품 리스트</button>
-			 공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]
+			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
 			제작의뢰 리스트
-			
 			</div>
 			<div id="ListView2">
 			출품리스트
@@ -136,6 +135,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+	
+	var cgcode = 0;
+	
+	
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");
 		$("#ListView2").css("display", "none");
@@ -146,21 +149,21 @@
 		$("#ListView2").css("display", "inline");
 	});
 	
+	 
+$(".li1").click(function() {	
 	$.ajax({
-		type:"POST",
+		type:"GET",
 		url:"main", 
-	/* 	data:{cgcode}, */
+		data:cgcode,
 		success:function(data){ 
-			$("#subcategory").val();
+			console.log(data);
 		},
 		error:function(error){
 			alert(error);
 		}
 	}); //ajax End
+});
 	
-	$("li").click(function() {	
-		console.log($("li").val());
-	});
 	
 </script>
 </html>
