@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.text.DateFormat;
+import java.text.DateFormat; 
 import java.util.Date;
 import java.util.Locale;
 
@@ -108,18 +108,15 @@ public class HomeController {
 		return "myPage";
 	}
 
-	@RequestMapping(value = "/access", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView access(Member mb) {
-		mav = mm.memberAccess(mb);
+		mav = mm.login(mb);
 
 		return mav;
 	}
 
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-     public String login() {
+	
 
- 		return "loginBox";
- 	}
 
 	/*
 	 * @RequestMapping(value="/joinPost",method=RequestMethod.GET) public String

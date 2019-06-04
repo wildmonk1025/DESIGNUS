@@ -6,11 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -99,8 +95,7 @@ public class UploadFile {
 		return false;
 	}
 	
-	public boolean fileUp(MultipartHttpServletRequest multi) {
-		RevAuction ra = new RevAuction();
+	public boolean fileUp2(MultipartHttpServletRequest multi,RevAuction ra) {
 		System.out.println("multi 파라미터만 받는 fileUp");
 		//1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
@@ -116,20 +111,21 @@ public class UploadFile {
 		//List<MultipartFile> file = multi.getFiles("b_files");
 		MultipartFile file = multi.getFile("ra_image");
 		MultipartFile file2 = multi.getFile("ra_file");
-		//fMap.put("bnum", String.valueOf(bnum));
-		boolean f = false;
+		
 
 		//파일 메모리에 저장
 		MultipartFile mf = file; //실제 업로드될 파일
 		MultipartFile mf2 = file2;
 		String oriFileName = file.getOriginalFilename(); //a.txt
 		String oriFileName2 = file2.getOriginalFilename();
-		ra.setRa_image(oriFileName);
-		ra.setRa_file(oriFileName2);
 		//4.시스템파일이름 생성  a.txt  ==>112323242424.txt
 		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+		String sysFileName2 = System.currentTimeMillis()+"_1." + oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
 		System.out.println("ori=" + oriFileName);
 		System.out.println("sys=" + sysFileName);
+		
+		ra.setRa_image(sysFileName);
+		ra.setRa_file(sysFileName2);
 
 		//5.메모리->실제 파일 업로드
 		/*
@@ -137,18 +133,28 @@ public class UploadFile {
 		 * System.out.println("세션 확인");
 		 */
 		
+		System.out.println("최종확인="+ra.getRa_mbid());
+		System.out.println("최종확인="+ra.getRa_title());
+		System.out.println("최종확인="+ra.getRa_cgcode());
+		System.out.println("최종확인="+ra.getRa_image());
+		System.out.println("최종확인="+ra.getRa_file());
+		System.out.println("최종확인="+ra.getRa_contents());
+		
+		boolean flag = false;
 		try {
 			mf.transferTo(new File(path + sysFileName));
-			mf2.transferTo(new File(path +sysFileName));
+			mf2.transferTo(new File(path + sysFileName));
 			System.out.println("인서트 진행합니다~");
-			f = rDao.revAuctionSubmitInsert(ra);
+			flag = rDao.revAuctionSubmitInsert(ra);
+			System.out.println("sql이상없음");
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("캐치로 왔땀");
 		}
 		//for End
-
-		if (f)
-			return true;
+	if (flag) {
+		return true;
+		}
 		return false;
 	}
 

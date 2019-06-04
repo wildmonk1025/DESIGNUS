@@ -2,12 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.designus.www.dao.IRevAuctionDao">  
-     
-      
-     <insert id="revAuctionSubmitInsert" parameterType="ra">
-		INSERT INTO RA VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},#{ra_cgcode},#{ra_image},#{ra_file},'O',DEFAULT,#{ra_contents})
+<mapper namespace="com.designus.www.dao.IRevAuctionDao">
+	<insert id="revAuctionSubmitInsert" parameterType="revauction">
+		INSERT INTO RA
+		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},#{ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},default,#{ra_contents})
 	</insert>
-      
-       
+
+
 </mapper>
