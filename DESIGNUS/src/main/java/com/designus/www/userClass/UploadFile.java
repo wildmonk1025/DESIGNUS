@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -36,8 +36,6 @@ public class UploadFile {
 	@Autowired
 	private HttpSession session;
 	
-	int iii;
-
 	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, String kind) {
 		System.out.println("id=" + mb.getMb_id());
 		System.out.println("pw=" + mb.getMb_pw());
@@ -109,20 +107,31 @@ public class UploadFile {
 		}
 		//3.파일을 가져오기-파일태그 이름들 반환
 		//String files=multi.getFileNames(); //파일태그가 2개이상일때
-		//List<MultipartFile> file = multi.getFiles("b_files");
-		MultipartFile ra_image = multi.getFile("ra_image");
-		MultipartFile ra_file = multi.getFile("ra_file");
+		//List<MultipartFile> file = multi.getFiles("files"); //★★★AJAX로 할 경우 이걸로 사용
+		//List<MultipartFile> file = multi.getFiles("b_files"); //★★★form태그로 할 경우 이걸로 사용
 		
-		String oriFileName = ra_image.getOriginalFilename(); //a.txt
-		String oriFileName2 = ra_file.getOriginalFilename();
+		MultipartFile file1 = multi.getFile("ra_image");
+		MultipartFile file2 = multi.getFile("ra_file");
+		//files.add(0, multi.getFile("ra_image"));
+		//files.add(1, multi.getFile("ra_file"));
+		
+		
+		String oriFileName1 = file1.getOriginalFilename();
+		String oriFileName2 = file2.getOriginalFilename();
+		
+		System.out.println(oriFileName1);
+		System.out.println(oriFileName2);
+		
 		//4.시스템파일이름 생성  a.txt  ==>112323242424.txt
-		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
-		String sysFileName2 = System.currentTimeMillis()+"_1." + oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
-		System.out.println("ori=" + oriFileName);
-		System.out.println("sys=" + sysFileName);
+		String sysFileName1 = (System.currentTimeMillis()+1) + "." + oriFileName1.substring(oriFileName1.lastIndexOf(".") + 1);
+		String sysFileName2 = (System.currentTimeMillis()+2) + "." + oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
 		
-		ra.setRa_image(sysFileName);
+		ra.setRa_image(sysFileName1);
 		ra.setRa_file(sysFileName2);
+		
+		System.out.println("sys=" + sysFileName1);
+		System.out.println("sys=" + sysFileName2);
+		
 
 		//5.메모리->실제 파일 업로드
 		/*
@@ -130,18 +139,10 @@ public class UploadFile {
 		 * System.out.println("세션 확인");
 		 */
 		
-		System.out.println("최종확인="+ra.getRa_mbid());
-		System.out.println("최종확인="+ra.getRa_title());
-		System.out.println("최종확인="+ra.getRa_cgcode());
-		System.out.println("최종확인="+ra.getRa_image());
-		System.out.println("최종확인="+ra.getRa_file());
-		System.out.println("최종확인="+ra.getRa_contents());
-		System.out.println("최종확인="+ra.getRa_oc());
-		
 			try {
-				ra_image.transferTo(new File(path + sysFileName));
-				ra_file.transferTo(new File(path + sysFileName));
-				System.out.println("인서트 진행합니다~");
+				file1.transferTo(new File(path + sysFileName1));
+				file2.transferTo(new File(path + sysFileName2));
+				System.out.println("PC로컬경로에 파일 업로드 완료");
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -149,14 +150,11 @@ public class UploadFile {
 			}
 			
 			int flag = rDao.revAuctionSubmitInsert(ra);
-			//for End
-			if (flag!=0) {
-				iii=1;
-				}
-			else
-				iii=0;
-
-		return iii;
+			//flag는 원래 insert여부를 확인하기 위함 이였으나, 게시한 글 번호를 selectKey로 반환하기 위한 겸용으로 사용하였다.
+			//System.out.println("ra_num값="+ra.getRa_num());
+			flag = ra.getRa_num();
+			
+		return flag;
 	}
 
 	//파일 다운로드

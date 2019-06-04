@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -32,6 +33,13 @@ public class AuctionController_sub {
 	@RequestMapping(value = "/revauctionsubmit", method = RequestMethod.POST)
 	public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
 		mav = ram.revAuctionSubmit(multi);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/revauctionread/{ra_num}", method = RequestMethod.POST)
+	public ModelAndView revAuctionRead(@PathVariable int ra_num) {
+		mav = new ModelAndView();
+		mav = ram.revAuctionRead(ra_num);
 		return mav;
 	}
 }
