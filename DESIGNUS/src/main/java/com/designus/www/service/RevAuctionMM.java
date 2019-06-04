@@ -30,13 +30,13 @@ public class RevAuctionMM {
 		String ra_image = multi.getParameter("ra_image");
 		String ra_file = multi.getParameter("ra_file");
 		String ra_oc = multi.getParameter("ra_oc");
-		if(ra_oc.equals("공개")) {
-			ra_oc="O";
-		} else if(ra_oc.equals("비공개")) {
+		
+		if(ra_oc.equals("비공개")) {
 			ra_oc="C";
 		} else
+			ra_oc="O";
 			System.out.println("공개/비공개 여부를 확인해야합니다.");
-				
+			
 		RevAuction ra = new RevAuction();
 
 		ra.setRa_mbid(ra_mbid);

@@ -114,19 +114,22 @@ public class UploadFile {
 		//3.파일을 가져오기-파일태그 이름들 반환
 		//String files=multi.getFileNames(); //파일태그가 2개이상일때
 		//List<MultipartFile> file = multi.getFiles("b_files");
-		MultipartFile file = multi.getFile("mb_profile");
-
+		MultipartFile file = multi.getFile("ra_image");
+		MultipartFile file2 = multi.getFile("ra_file");
 		//fMap.put("bnum", String.valueOf(bnum));
 		boolean f = false;
 
 		//파일 메모리에 저장
 		MultipartFile mf = file; //실제 업로드될 파일
+		MultipartFile mf2 = file2;
 		String oriFileName = file.getOriginalFilename(); //a.txt
-		ra.setRa_file(oriFileName);
+		String oriFileName2 = file2.getOriginalFilename();
+		ra.setRa_image(oriFileName);
+		ra.setRa_file(oriFileName2);
 		//4.시스템파일이름 생성  a.txt  ==>112323242424.txt
 		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
-		System.out.println("sys=" + sysFileName);
 		System.out.println("ori=" + oriFileName);
+		System.out.println("sys=" + sysFileName);
 
 		//5.메모리->실제 파일 업로드
 		/*
@@ -136,8 +139,9 @@ public class UploadFile {
 		
 		try {
 			mf.transferTo(new File(path + sysFileName));
+			mf2.transferTo(new File(path +sysFileName));
 			System.out.println("인서트 진행합니다~");
-				f = rDao.revAuctionSubmitInsert(ra);
+			f = rDao.revAuctionSubmitInsert(ra);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
