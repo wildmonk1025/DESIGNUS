@@ -230,7 +230,7 @@
             <div id="loginmsg"><a href="logingo">로그인</a>
             <form id="logout" action="logout" method="post">
 		<a href="javascript:logout()">로그아웃</a>
-	</form><br>id:${id}<br>등급:${grade1}</div>
+	</form><br>id:${id}<br>등급:${grade}</div>
         </div>
     </div>
     <div id="category" >
