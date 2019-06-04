@@ -1,5 +1,7 @@
 package com.designus.www.bean;
 
+import java.sql.Timestamp;
+
 import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
@@ -14,5 +16,6 @@ public class RevAuction {
 	String ra_image;
 	String ra_file;
 	String ra_oc;
+	Timestamp ra_date;
 	String ra_contents;
 }

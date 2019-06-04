@@ -6,9 +6,6 @@ import com.designus.www.bean.Member;
 
 public class CommonMM {
 
-	/*
-	 * public ModelAndView category(String string) { // TODO Auto-generated method
-	 * stub return null; }
-	 */
+
 
 }
