@@ -177,7 +177,7 @@ select {
 			</form>
 		</div>
 		<div id="revauctionunlock">
-			<form action="revauctionsubmit" id="revauction">
+			<form action="revauctionsubmit" id="revauction" method="post" enctype="multipart/form-data">
 				<table class="revauctable">
 					<tr align="center">
 						<td>요청 제목</td>

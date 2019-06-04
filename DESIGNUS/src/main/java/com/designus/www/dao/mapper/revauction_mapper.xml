@@ -5,7 +5,9 @@
 <mapper namespace="com.designus.www.dao.IRevAuctionDao">  
      
       
-     
+     <insert id="revAuctionSubmitInsert" parameterType="ra">
+		INSERT INTO RA VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},#{ra_cgcode},#{ra_image},#{ra_file},'O',DEFAULT,#{ra_contents})
+	</insert>
       
        
 </mapper>

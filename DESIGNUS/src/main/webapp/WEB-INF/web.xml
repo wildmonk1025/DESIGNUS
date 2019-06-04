@@ -33,7 +33,14 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-
+	<!--  메일 ㄱ인증 관련 -->
+<!-- <servlet>
+<servlet-name>action</servlet-name>
+<servlet-class>org.sprinfframework.web.servlet.DispatcherServlet</servlet-class>
+<init-param>
+<param-name>contextConfigLocation</param-name>
+<param-value>/WEB-INF/spring/root-context.xml</param-value></init-param>
+</servlet> -->
 
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>

@@ -36,7 +36,7 @@
             width: 300px;
             height: 600px;
             text-align: left;
-            left: 183px;
+            left: 190px;
             top: 600px;
 
 
@@ -82,18 +82,18 @@
             position: absolute;
             width: 1520px;
             height: 170px;
-            left: 183px;
+            left: 190px;
             text-align: center;
         }
 
-        #point {
+         #point {
             border: 1px solid orange;
             position: absolute;
             width: 300px;
             height: 80px;
             text-align: left;
-            left: 183px;
-            top: 510px;
+            left: 190px;
+            top: 508px;
 
             font-size: 20px;
         }
@@ -104,31 +104,8 @@
             width: 300px;
             height: 310px;
             text-align: left;
-            left: 183px;
-            top: 180px;
-
-            font-size: 20px;
-
-        }#point {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 80px;
-            text-align: left;
-            left: 183px;
-            top: 500px;
-
-            font-size: 20px;
-        }
-
-        #img {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 310px;
-            text-align: left;
-            left: 183px;
-            top: 180px;
+            left: 190px;
+            top: 188px;
 
             font-size: 20px;
 
@@ -226,45 +203,21 @@
 	height: 50px;
 	margin-left: 10px;
 }
+#mainheader {
+   border: 1px solid black;
+   width: 1520px;
+   height: 170px;
+}
     </style>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-    <div id="one">
-        <form action="">
-
-          <div id="main">
-            <div id="header">
-		<div id="logo">
-			<a href="home"><img src="./images/logo.png" width="250px" height="80px" /></a>
-			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
-			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
-		</div>
-		<div id="search">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
-			<button id="searchbtn">검색</button>
-		</div>
-		<div id="loginwriter">
-			<div id="mypageimg"></div>
-			<div id="msg">
-				<img src="./images/writer.png" width="40px" height="40px" />
-			</div>
-			<div id="loginmsg"><a href="logingo">로그인</a></div>
-		</div>
-	</div>
-	<div id="category">
-		<div id="subcategory" align="center">三</div>
-		<div id="menu">
-			<div id="submenu"><a href="sponsor">후원</a></div>
-			<div id="submenu"><a href="boardlist">게시판</a></div>
-			<div id="submenu"><a href="bestwriter">인기작가</a></div>
-			<div id="submenu"><a href="servicecenter">고객센터</a></div>
-		</div>
-	</div>
-
-        </div>
+ <div id="mainheader">
+      <jsp:include page="main.jsp" />
+   </div>
+    
             <div id="notice">
                 <h2>알림</h2>
             </div>
