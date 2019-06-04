@@ -149,7 +149,7 @@
 	$.ajax({
 		type:"POST",
 		url:"main", 
-		datat:{cgcode},
+	/* 	data:{cgcode}, */
 		success:function(data){ 
 			$("#subcategory").val();
 		},
@@ -158,6 +158,9 @@
 		}
 	}); //ajax End
 	
+	$("li").click(function() {	
+		console.log($("li").val());
+	});
 	
 </script>
 </html>
