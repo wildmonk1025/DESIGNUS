@@ -48,7 +48,6 @@ public class AuctionController {
 	@RequestMapping(value = "/auctionList" )
 	public ModelAndView auctionList() {
 		mav = new ModelAndView();
-		
 		return mav;
 	}
 	
