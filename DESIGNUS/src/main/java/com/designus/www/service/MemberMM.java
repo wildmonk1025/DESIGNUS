@@ -79,6 +79,7 @@ public class MemberMM {
 				mb=mDao.getMemberInfo(mb.getMb_id());
 				/* session.setAttribute("mb", mb); */
 				System.out.println("grede="+mb.getMb_grade());
+				System.out.println("id="+mb.getMb_id());
 				view="redirect:home";
 			}else {
 				view="loginBox";
