@@ -58,13 +58,14 @@
 	left: 300px;
 }
 
-#mb_email{
+#mb_email {
 	font-size: 15;
 	width: 200px;
 	height: 40;
 	position: relative;
 	left: -98px;
 }
+
 #mb_email2 {
 	font-size: 15;
 	width: 200px;
@@ -72,6 +73,7 @@
 	position: relative;
 	right: 175px;
 }
+
 #emailList {
 	font-size: 15;
 	width: 100px;
@@ -79,6 +81,7 @@
 	position: relative;
 	right: 175px;
 }
+
 #Echeck {
 	width: 100;
 	height: 40;
@@ -86,24 +89,25 @@
 	top: 10px;
 	left: 450px;
 }
-#null{
-	position:absolute;
-	font-size:15px;
+
+#null {
+	position: absolute;
+	font-size: 15px;
 	width: 20px;
-	top:410px;
+	top: 410px;
 	left: 715px;
-	
 }
-#i2{
- position: relative;
+
+#i2 {
+	position: relative;
 	top: 10px;
 	left: 150px;
 }
 </style>
 </head>
 <body>
-<div id="join">
-	<div id="null">@</div>
+	<div id="join">
+		<div id="null">@</div>
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
 		<form action="memberapply" name="memberapplyFrm" method="post">
@@ -134,15 +138,16 @@
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input id="mb_birth" class="memberN" type="text" name="mb_birth"></td>
+					<td><input id="mb_birth" class="memberN" type="text"
+						name="mb_birth"></td>
 				</tr>
 				<tr>
 					<th>프로필 사진</th>
 					<td><input class="memberN" type="file" name="mb_profile"></td>
 				</tr>
 				<tr>
-				<th>전공</th>
-				<td><select id="cata" class="Data">
+					<th>전공</th>
+					<td><select id="cata" class="Data">
 							<option value="1">전공선택</option>
 							<option value="naver">귀금속</option>
 							<option value="daum">도예</option>
@@ -155,21 +160,21 @@
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input id="mb_address" class="memberN" type="text" name="mb_address"></td>
+					<td><input id="mb_address" class="memberN" type="text"
+						name="mb_address"></td>
 				</tr>
 			</table>
 			<table id="norjoinFrm2">
 
 				<tr>
 					<th>이메일</th>
-					<td><input id="mb_email" type="text" name="mb_email"></td>
-					<td><input id="mb_email2" type="text" nname="mb_email2" ></td>
-					<td><select id="emailList" class="Data">
+					<td><input id="mb_email" type="email" name="mb_email"></td>
+					<!-- 	<td><select id="emailList" class="Data">
 							<option value="1">직접입력</option>
 							<option value="naver">naver.com</option>
 							<option value="daum">daum.net</option>
 							<option value="google">google.com</option>
-					</select></td>
+					</select></td> -->
 
 				</tr>
 				<tr>
@@ -178,18 +183,16 @@
 					<td><input id="joinhidden" type="hidden"></td>
 				</tr>
 				<tr>
-					<td id="i2"><input id="che" type="checkbox">전체동의<br> <input
-						class="i1" type="checkbox">이용약관(필수)<br> <input
+					<td id="i2"><input id="che" type="checkbox">전체동의<br>
+						<input class="i1" type="checkbox">이용약관(필수)<br> <input
 						class="i1" type="checkbox">개인정보 수집 및 이용(필수)<br> <input
 						class="i1" type="checkbox">개인정보 수집 및 이용(선택)<br></td>
 				</tr>
 				<tr>
 					<td>
 						<button class="btz2">회원가입</button>
-						</td>
-						<td> 
-						<input class="btz2" type="reset" value="취소">
-					   </td>
+					</td>
+					<td><input class="btz2" type="reset" value="취소"></td>
 				</tr>
 			</table>
 		</form>
