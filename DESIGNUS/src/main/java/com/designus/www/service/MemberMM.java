@@ -95,13 +95,5 @@ public class MemberMM {
 		return mav;
 	}
 
-	public static void mailcreate(Member m) throws Exception {
-		ImemberDao.Mambercreate(m);
-		
-		String authkey = new TempKey().getKey(50, false);
-
-		ImemberDao.updateAuthkey(m);
-		m.setAuthKey(authkey);
-	}
-
+	
 }
