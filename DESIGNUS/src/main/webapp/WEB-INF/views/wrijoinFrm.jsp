@@ -110,9 +110,9 @@
 		<div id="null">@</div>
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
-		<form action="memberapply" name="memberapplyFrm" method="post">
+		<form action="wriapply" name="wrimemberapplyFrm" method="post">
 
-			<table id="norjoinFrm">
+			<table id="wrijoinFrm">
 				<tr>
 					<th>아이디</th>
 					<td><input class="memberN" type="text" name="mb_id" id="mb_id"></td>
@@ -143,20 +143,25 @@
 				</tr>
 				<tr>
 					<th>프로필 사진</th>
-					<td><input class="memberN" type="file" name="mb_profile"></td>
+					<td><input id="mb_profile" class="memberN" type="file"
+						name="mb_profile" onchange="fileChk(this)" multiple> <input
+						type="hidden" id="fileCheck" value="0" name="fileCheck"></td>
 				</tr>
 				<tr>
 					<th>전공</th>
 					<td><select id="cata" class="Data">
-							<option value="1">전공선택</option>
-							<option value="naver">귀금속</option>
-							<option value="daum">도예</option>
-							<option value="google">가죽</option>
+							<option value="전공선택">전공선택</option>
+							<option value="귀금속">귀금속</option>
+							<option value="도예">도예</option>
+							<option value="가죽">가죽</option>
 					</select></td>
 				</tr>
 				<tr>
 					<th>포트폴리오</th>
-					<td><input class="memberN" type="file" name="mb_filse"></td>
+					<td>
+					<td><input id="mb_profile" class="memberN" type="file"
+						name="mb_profile" onchange="fileChk(this)" value="4" multiple>
+						<input type="hidden" id="fileCheck" value="3" name="fileCheck"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
@@ -198,4 +203,28 @@
 		</form>
 	</div>
 </body>
+<script>
+function fileChk(elem) {
+	console.dir(elem);
+	if(elem.value==""){
+		console.log("empty"); 
+		$('#fileCheck').val(0); //파일 첨부 안했음
+		focus();
+	}else{
+		console.log("Notempty");
+		$('#fileCheck').val(1);//파일 첨부 했음
+	};
+	function fileChk2(elem) {
+		console.dir(elem);
+		if(elem.value==""){
+			console.log("empty"); 
+			$('#fileCheck').val(3); //파일 첨부 안했음
+			focus();
+			
+		}else{
+			console.log("Notempty");
+			$('#fileCheck').val(4);//파일 첨부 했음
+		};
+	
+	</script>
 </html>

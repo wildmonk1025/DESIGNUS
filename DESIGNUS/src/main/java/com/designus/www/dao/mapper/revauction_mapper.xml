@@ -3,9 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.designus.www.dao.IRevAuctionDao">
-	<insert id="revAuctionSubmitInsert" parameterType="revauction">
+<!-- 	<insert id="revAuctionSubmitInsert" parameterType="revauction">
+		INSERT INTO RA 
+		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},${ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},DEFAULT,#{ra_contents})
+	</insert> -->
+	
+	<!-- useGeneratedKeys = "true"(자동증가값을 얻을때) -->
+	<!-- KeyProperty = "b_num"(필드명) : MySQL은 명시해줘야함. -->
+	<insert id="revAuctionSubmitInsert" parameterType="revauction" useGeneratedKeys="true" keyProperty="ra_num">
+		<selectKey keyProperty = "ra_num" resultType="int" order="AFTER">
+			SELECT RA_SEQ.CURRVAL FROM DUAL
+		</selectKey>
 		INSERT INTO RA 
 		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},${ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},DEFAULT,#{ra_contents})
 	</insert>
-
+	
 </mapper>
