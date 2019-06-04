@@ -37,7 +37,6 @@ public class AuctionController_sub {
 			System.out.println(i+". "+ite.next());
 			i++;
 		}
-		
 		mav = ram.revAuctionSubmit(multi);
 		return mav;
 	}

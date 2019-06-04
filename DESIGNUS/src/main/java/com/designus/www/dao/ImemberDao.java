@@ -16,6 +16,10 @@ public interface ImemberDao {
 
 	Member getMemberInfo(String mb_id);
 
+	static void Mambercreate(Member m) {
+		
+	}
+
 
 
   
