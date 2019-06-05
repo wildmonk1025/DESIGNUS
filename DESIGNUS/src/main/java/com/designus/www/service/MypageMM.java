@@ -124,24 +124,25 @@ public class MypageMM {
 		return mav;
 	}
 
-	public String withdrawalconfirm(String pw) {
+	public ModelAndView withdrawalconfirm(Member mb) {
+		mav=new ModelAndView();
+		String view=null;
 		String id=session.getAttribute("id").toString();
-		String json = null;
 		BCryptPasswordEncoder pwdEncoder=new BCryptPasswordEncoder();
 		String pwdEncode=pDao.withdrawalconfirmselect(id);
 		
 		if(pwdEncode != null) {
-			if(pwdEncoder.matches(pw, pwdEncode)) {
-		       if(pDao.withdrawalconfirmInsert(id,pw)) {
+			if(pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
+		       if(pDao.withdrawalconfirmInsert(id,mb.getMb_pw())){
 		    	   pDao.withdrawalconfirmDelete(id);
-		    	   json = new Gson().toJson(rList);
-					System.out.println("json=" + json);
+		    	   session.invalidate();
+		    	   view="home";
 		       }else {
-		    	   json=null;
+		    	   view="memberDelete";
 		       }
 			}
 		}
-		
-		return json;
+		mav.setViewName(view);
+		return mav;
 	}
 }
