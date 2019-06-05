@@ -163,7 +163,8 @@ public class MypageMM {
 		return mav;
 	}
 
-	public boolean nortowriapply(MultipartHttpServletRequest multi) {
+	public ModelAndView nortowriapply(MultipartHttpServletRequest multi) {
+		mav=new ModelAndView();
 		String id=session.getAttribute("id").toString();
 		int cate= Integer.parseInt(multi.getParameter("mj_cg_code"));
 		String conten=multi.getParameter("mj_contents");
@@ -175,6 +176,6 @@ public class MypageMM {
 		mj.setMj_contents(conten);
 		
 		
-		return false;
+		return mav;
 	}
 }
