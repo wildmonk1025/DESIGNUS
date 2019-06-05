@@ -58,11 +58,11 @@ public class MemberMM {
 		mj.setMj_like(wriLike);
 
 		boolean f = false;
-		if (check == 1) { // 첨부된 파일이 있다면....
+		if (check == 1 && check == 4) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
 			// 이클립스 서버에 파일을 업로드 한 후,
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
-			f = upload.fileUp(multi, mb, kind);
+			f = upload.fileUp(multi, mb, mj, kind);
 			if (f) {
 				System.out.println("작가회원 신청");
 				view = "loginBox";
