@@ -114,29 +114,15 @@
 			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
 			<c:forEach var="ra" items="${raList}">
-			<table>
-				<tr>
-					<th>NUM</th><td>${ra.ra_num }</td>
-				</tr>
-				<tr>
-					<th>ID</th><td>${ra.ra_mbid }</td>
-				</tr>
-				<tr>
-					<th>TITLE</th><td>${ra.ra_title }</td>
-				</tr>
-				<tr>
-					<th>CGCODE</th><td>${ra.ra_cgcode }</td>
-				</tr>
-				<tr>
-					<th>NUM</th><td>${ra.num }</td>
-				</tr>
-				<tr>
-					<th>NUM</th><td>${ra.num }</td>
-				</tr>
-				<tr>
-					<th>NUM</th><td>${ra.num }</td>
-				</tr>
-			</table>
+				<% int i = 0; %>
+				<div>
+					<div id="list<%=i%>">
+						${ra.ra_num } ${ra.ra_mbid } ${ra.ra_title } <br>
+						${ra.ra_cgcode } ${ra.ra_image } ${ra.ra_file } <br>
+						${ra.ra_oc } ${ra.ra_date } ${ra.ra_contents }
+					</div>
+				</div>
+				<% i++; %>
 			</c:forEach>
 			</div>
 			<div id="ListView2">
