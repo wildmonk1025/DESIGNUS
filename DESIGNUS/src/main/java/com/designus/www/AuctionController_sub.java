@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.RevAuction;
 import com.designus.www.service.RevAuctionMM;
 
 @Controller
@@ -36,7 +37,7 @@ public class AuctionController_sub {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/revauctionread", method = RequestMethod.GET)
+	@RequestMapping(value = "/revauctionread")
 	public ModelAndView revAuctionRead(int ra_num) {
 		///{ra_num}
 		//@PathVariable
