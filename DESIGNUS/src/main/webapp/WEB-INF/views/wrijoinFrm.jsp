@@ -119,7 +119,9 @@
 				<tr>
 					<th>아이디</th>
 					<td><input class="memberN" type="text" name="mb_id" id="mb_id"></td>
-					<td><input id="btz" type="button" value="중복확인"></td>
+					<td><input id="idcheckbtz" type="button" value="중복확인"
+						onclick="check1()"><input type="hidden" name="checkid"
+						value="0"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -230,5 +232,17 @@
 			$('#fileCheck2').val(4);//파일 첨부 했음
 		}
 	}
+/* 	$(document).ready(function(){
+		$('#idcheckbtz').on('click',function(){
+			$.ajax({
+				type:'POST',
+				url:'/HomeControllerjy/memberidfind'
+				data:{
+					
+				}})
+		})}
+	}) */
+	
+	
 </script>
 </html>

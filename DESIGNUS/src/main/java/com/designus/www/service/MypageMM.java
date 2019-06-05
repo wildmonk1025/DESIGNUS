@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
@@ -125,7 +127,7 @@ public class MypageMM {
 
 		return mav;
 	}
-
+	@Transactional
 	public ModelAndView withdrawalconfirm(Member mb) {
 		mav=new ModelAndView();
 		
@@ -159,5 +161,20 @@ public class MypageMM {
 		}
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public boolean nortowriapply(MultipartHttpServletRequest multi) {
+		String id=session.getAttribute("id").toString();
+		int cate= Integer.parseInt(multi.getParameter("mj_cg_code"));
+		String conten=multi.getParameter("mj_contents");
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		System.out.println("vvv"+check);
+		Major mj=new Major();
+		mj.setMj_id(id);
+		mj.setMj_cg_code(cate);
+		mj.setMj_contents(conten);
+		
+		
+		return false;
 	}
 }
