@@ -64,4 +64,13 @@ public class MypageController {
 		  mav=pm.withdrawalconfirm(mb);
 		return mav;
 	}
+	@RequestMapping(value = "/nortowriapply",method = RequestMethod.POST)
+	
+	public ModelAndView nortowriapply(MultipartHttpServletRequest multi) {
+		System.out.println("r_bnum"+multi.getParameter("mj_cg_code"));
+		System.out.println("r_contents"+multi.getParameter("mj_contents"));
+		mav=new ModelAndView();
+		   mav=pm.nortowriapply(multi);
+		return mav;
+	}
 }

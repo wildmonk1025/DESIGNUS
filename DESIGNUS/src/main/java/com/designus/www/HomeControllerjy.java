@@ -100,6 +100,14 @@ public class HomeControllerjy {
 	}
 
 	/*
+	 * @RequestMapping(value = "/memberidfind", method = RequestMethod.POST) public
+	 * ModelAndView memberidfind(MultipartHttpServletRequest multi, String kind) {
+	 * System.out.println("아이디 찾기");
+	 * 
+	 * mav = mm.memberidfind(multi, kind); return mav; }
+	 */
+
+	/*
 	 * @RequestMapping(value = "/mypage", method = RequestMethod.GET) public String
 	 * mypage() {
 	 * 

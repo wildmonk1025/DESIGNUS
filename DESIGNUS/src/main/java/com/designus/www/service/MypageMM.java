@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
@@ -125,7 +127,7 @@ public class MypageMM {
 
 		return mav;
 	}
-
+	@Transactional
 	public ModelAndView withdrawalconfirm(Member mb) {
 		mav=new ModelAndView();
 		
@@ -156,6 +158,32 @@ public class MypageMM {
 				System.out.println("이쪽으로 오는건가...??");
 				
 			}
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView nortowriapply(MultipartHttpServletRequest multi) {
+		mav=new ModelAndView();
+		String view=null;
+		
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		
+		
+		boolean f = false;
+		if (check == 1) { // 첨부된 파일이 있다면....
+			// upload=new UploadFile(); //프로토타입
+			// 이클립스 서버에 파일을 업로드 한 후,
+			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+			f = upload.swfileUp(multi);
+			if (f) {
+				view = "redirect:boardList";
+			}
+		}
+		if (b) { // 글쓰기 성공
+			view = "redirect:boardList";
+		} else {
+			view = "writeFrm";
 		}
 		mav.setViewName(view);
 		return mav;
