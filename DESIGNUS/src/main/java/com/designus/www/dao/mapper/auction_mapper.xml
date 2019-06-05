@@ -8,7 +8,9 @@
 		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT)
 	</insert>
 
-
+	<select id="getAuctionListSelect" parameterType="auction" resultType="String">
+		SELECT * FROM AU WHERE AU_CGCODE = ${au_cgcode}
+	</select>
 
 
 

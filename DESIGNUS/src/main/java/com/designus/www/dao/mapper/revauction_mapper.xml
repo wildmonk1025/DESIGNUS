@@ -18,4 +18,10 @@
 		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},${ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},DEFAULT,#{ra_contents})
 	</insert>
 	
+	<select id="getRevAuctionListSelect" parameterType="revauction" resultType="String">
+		SELECT * FROM RA WHERE RA_CGCODE = ${ra_cgcode}
+	</select>
+		
+	
+	
 </mapper>

@@ -20,6 +20,6 @@ public class Auction {
 	String au_contents;
 	Timestamp au_date;
 	String aui_imgSysName;
-	
+	int au_count;
 	
 }
