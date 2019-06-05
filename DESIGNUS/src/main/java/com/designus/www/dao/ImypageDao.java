@@ -23,6 +23,8 @@ public interface ImypageDao {
 	Member withdrawalconfirmselect2(String mb_id);
 
 	boolean withdrawalconfirmInsert(Member mmd);
+
+	boolean nortowriapplyInsert(Map<String, String> fMap);
   
   
 }

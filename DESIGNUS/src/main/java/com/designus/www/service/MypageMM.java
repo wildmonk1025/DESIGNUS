@@ -165,17 +165,27 @@ public class MypageMM {
 
 	public ModelAndView nortowriapply(MultipartHttpServletRequest multi) {
 		mav=new ModelAndView();
-		String id=session.getAttribute("id").toString();
-		int cate= Integer.parseInt(multi.getParameter("mj_cg_code"));
-		String conten=multi.getParameter("mj_contents");
+		String view=null;
+		
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
-		System.out.println("vvv"+check);
-		Major mj=new Major();
-		mj.setMj_id(id);
-		mj.setMj_cg_code(cate);
-		mj.setMj_contents(conten);
 		
 		
+		boolean f = false;
+		if (check == 1) { // 첨부된 파일이 있다면....
+			// upload=new UploadFile(); //프로토타입
+			// 이클립스 서버에 파일을 업로드 한 후,
+			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+			f = upload.swfileUp(multi);
+			if (f) {
+				view = "redirect:boardList";
+			}
+		}
+		if (b) { // 글쓰기 성공
+			view = "redirect:boardList";
+		} else {
+			view = "writeFrm";
+		}
+		mav.setViewName(view);
 		return mav;
 	}
 }

@@ -71,7 +71,6 @@ public class MypageController {
 		System.out.println("r_contents"+multi.getParameter("mj_contents"));
 		mav=new ModelAndView();
 		   mav=pm.nortowriapply(multi);
-		return mav; //jackson:Map-->json으로 변환
-		//{'rList',rList} ---> {"rList":[],[],[]}
+		return mav;
 	}
 }
