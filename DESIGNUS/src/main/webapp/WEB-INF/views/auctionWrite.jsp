@@ -142,12 +142,6 @@ textarea {
 	</div>
 
 	<div id="homeMain">
-		<button id="revauctionbtn" class="btn1">
-			<a href="revauctionWrite">제작의뢰 요청하기</a>
-			</button>
-		<button id="auctionbtn" class="btn1">
-			<a href="auctionWrite">출품등록하기</a>
-		</button>
 		<div id="list">
 			<h3 style="color: orange;">출품 등록</h3>
 			<form action="auctionWriteSubmit" name="auctionWriteFrm" method="post" enctype="multipart/form-data">
