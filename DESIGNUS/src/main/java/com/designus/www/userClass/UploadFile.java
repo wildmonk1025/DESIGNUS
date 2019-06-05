@@ -192,7 +192,7 @@ public class UploadFile {
 		is.close();
 	}
 
-	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, Major mj, String kind) {
+	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, String kind, Major mj) {
 		// Member
 		System.out.println("id=" + mb.getMb_id());
 		System.out.println("pw=" + mb.getMb_pw());
