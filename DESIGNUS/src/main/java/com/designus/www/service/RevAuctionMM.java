@@ -66,25 +66,29 @@ public class RevAuctionMM {
 
 	public ModelAndView revAuctionRead(int ra_num) {
 		//mav.addObject("ra_num", ra_num);
+		mav = new ModelAndView();
 		String view = null;
 		RevAuction ra = new RevAuction();
 		ra = rDao.revAuctionReadSelect(ra_num);
-		
-		System.out.println("ra_num="+ra.getRa_num());
-		System.out.println("ra_mbid="+ra.getRa_mbid());
-		System.out.println("ra_title="+ra.getRa_title());
-		System.out.println("ra_cgcode="+ra.getRa_cgcode());
-		System.out.println("ra_image="+ra.getRa_image());
-		System.out.println("ra_file="+ra.getRa_file());
-		System.out.println("ra_oc="+ra.getRa_oc());
-		System.out.println("ra_date="+ra.getRa_date());
-		System.out.println("ra_contents="+ra.getRa_contents());
-		
-		mav.addObject("raInfo",ra);
-		if(ra!=null) {
+
+		System.out.println("ra_num=" + ra.getRa_num());
+		System.out.println("ra_mbid=" + ra.getRa_mbid());
+		System.out.println("ra_title=" + ra.getRa_title());
+		System.out.println("ra_cgcode=" + ra.getRa_cgcode());
+		System.out.println("ra_image=" + ra.getRa_image());
+		System.out.println("ra_file=" + ra.getRa_file());
+		System.out.println("ra_oc=" + ra.getRa_oc());
+		System.out.println("ra_date=" + ra.getRa_date());
+		System.out.println("ra_contents=" + ra.getRa_contents());
+
+		mav.addObject("raInfo", ra);
+		if (ra_num == ra.getRa_num()) {
 			view = "revAuctionRead";
-		}
-			mav.setViewName(view);
+			mav.addObject("ra_num", ra_num);
+		} else
+			mav.addObject("ra_num", "잘못된 접근입니다."); //ra_num과 일치하는 상세정보가 맞는지 확인
+			view = "home";
+		mav.setViewName(view);
 		return mav;
 	}
 

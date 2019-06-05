@@ -40,8 +40,7 @@ public class AuctionController_sub {
 	public ModelAndView revAuctionRead(int ra_num) {
 		///{ra_num}
 		//@PathVariable
-		mav = new ModelAndView();
-		//mav = ram.revAuctionRead(ra_num);
+		mav = ram.revAuctionRead(ra_num);
 		return mav;
 		}
 }

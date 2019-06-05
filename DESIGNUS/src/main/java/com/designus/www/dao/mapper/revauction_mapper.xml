@@ -22,7 +22,7 @@
 		SELECT * FROM RA WHERE RA_CGCODE = ${ra_cgcode}
 	</select>
 		
-	<select id="revAuctionReadSelect" parameterType="Integer" resultType="revauction">
+	<select id="revAuctionReadSelect" parameterType="int" resultType="revauction">
 		SELECT * FROM RA WHERE RA_NUM = ${ra_num}
 	</select>
 
