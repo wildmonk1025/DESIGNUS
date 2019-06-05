@@ -4,6 +4,7 @@
 <%@ page session="false"%>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 #mainheader {
 	border: 1px solid black;
@@ -84,13 +85,39 @@
 			<div id="text1" align="center">오늘의 추천 작품</div>
 			<div id="coklist"></div>
 			<br> <br>
-			<div id="text2" align="center">베스트 상품</div>
+			<div id="text2" align="center" onclick="Ajbest()">베스트 상품</div>
 			<div id="bestlist"></div>
 		</div>
 	</div>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include></div>
-	-
+	
 
 </body>
+<script>
+//var rList = ${rList}
+function Ajbest() {
+	$.ajax({
+		url : 'bestajax',
+		type: 'post',
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i=0; i<3; i++){
+				result+=data[i].au_mbid_w+"<br>"+data[i].au_num+"<br>"
+				+data[i].au_contents+"<br>"+data[i].au_count+"<br>"
+				}
+			$("#bestlist").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+}
+</script>
 </html>

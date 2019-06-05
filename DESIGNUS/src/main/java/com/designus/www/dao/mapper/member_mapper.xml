@@ -21,7 +21,7 @@
 	</insert>
 	<insert id="wrimajorInsert" parameterType="major">
 		INSERT INTO MAJOR
-		VALUES(#{mj_id},#{mj_cg_code},#{mj_portf},#{mj_contents},#{mj_like})
+		VALUES(#{mj_id},${mj_cg_code},#{mj_portf},'0',0)
 	</insert>
 	<select id="getSecurityPwd" parameterType="String"
 		resultType="String">

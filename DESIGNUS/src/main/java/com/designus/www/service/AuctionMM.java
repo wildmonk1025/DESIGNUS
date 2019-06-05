@@ -16,13 +16,12 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 
 @Service
-
 public class AuctionMM {
 	@Autowired
 	private IauctionDao aDao;
 	
 	@Autowired
-	private IRevAuctionDao raDao;
+	private IRevAuctionDao rDao;
 	
 	@Autowired
     private HttpSession session;
@@ -87,7 +86,7 @@ public class AuctionMM {
 		rau.setRa_cgcode(cgcode);
 		
 		auList = aDao.getAuctionListSelect(au);
-		raList = raDao.getRevAuctionListSelect(rau);
+		raList = rDao.getRevAuctionListSelect(rau);
 		//
 		
 		mav.addObject("auList",auList);
@@ -96,8 +95,15 @@ public class AuctionMM {
 		
 		view="auctionList";
 		
-		
+		mav.setViewName(view);
 		return mav;
+	}
+
+
+	public ModelAndView auctionRead(int num) {
+		
+		
+		return null;
 	}
 	
 

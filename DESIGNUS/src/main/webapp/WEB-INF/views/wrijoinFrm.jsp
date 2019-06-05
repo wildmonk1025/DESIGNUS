@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -117,7 +119,9 @@
 				<tr>
 					<th>아이디</th>
 					<td><input class="memberN" type="text" name="mb_id" id="mb_id"></td>
-					<td><input id="btz" type="button" value="중복확인"></td>
+					<td><input id="idcheckbtz" type="button" value="중복확인"
+						onclick="check1()"><input type="hidden" name="checkid"
+						value="0"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -150,19 +154,19 @@
 				</tr>
 				<tr>
 					<th>전공</th>
-					<td><select id="cata" class="Data">
-							<option value="전공선택">전공선택</option>
-							<option value="귀금속">귀금속</option>
-							<option value="도예">도예</option>
-							<option value="가죽">가죽</option>
+					<td><select id="mj_cg_code" name="mj_cg_code" class="memberN">
+							<option value="100">전공선택</option>
+							<option value="110">귀금속</option>
+							<option value="120">도예</option>
+							<option value="130">가죽</option>
 					</select></td>
 				</tr>
 				<tr>
 					<th>포트폴리오</th>
 					<td>
-					<td><input id="mb_profile" class="memberN" type="file"
-						name="mb_profile" onchange="fileChk(this)" value="4"> <input
-						type="hidden" id="fileCheck" value="3" name="fileCheck"></td>
+					<td><input id="mj_portf" class="memberN" type="file"
+						name="mj_portf" onchange="fileChk2(this)" value="4"> <input
+						type="hidden" id="fileCheck2" value="3" name="fileCheck2"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
@@ -205,28 +209,40 @@
 	</div>
 </body>
 <script>
-function fileChk(elem) {
-	console.dir(elem);
-	if(elem.value==""){
-		console.log("empty"); 
-		$('#fileCheck').val(0); //파일 첨부 안했음
-		focus();
-	}else{
-		console.log("Notempty");
-		$('#fileCheck').val(1);//파일 첨부 했음
-	};
+	function fileChk(elem) {
+		console.dir(elem);
+		if (elem.value == "") {
+			console.log("empty");
+			$('#fileCheck').val(0); //파일 첨부 안했음
+			focus();
+		} else {
+			console.log("Notempty");
+			$('#fileCheck').val(1);//파일 첨부 했음
+		}
+	}
 	function fileChk2(elem) {
 		console.dir(elem);
-		if(elem.value==""){
-			console.log("wriempty"); 
-			$('#fileCheck').val(3); //파일 첨부 안했음
+		if (elem.value == "") {
+			console.log("wriempty");
+			$('#fileCheck2').val(3); //파일 첨부 안했음
 			focus();
-			
-		}else{
+
+		} else {
 			console.log("wriNotempty");
-			$('#fileCheck').val(4);//파일 첨부 했음
+			$('#fileCheck2').val(4);//파일 첨부 했음
 		}
-	};
+	}
+/* 	$(document).ready(function(){
+		$('#idcheckbtz').on('click',function(){
+			$.ajax({
+				type:'POST',
+				url:'/HomeControllerjy/memberidfind'
+				data:{
+					
+				}})
+		})}
+	}) */
 	
-	</script>
+	
+</script>
 </html>
