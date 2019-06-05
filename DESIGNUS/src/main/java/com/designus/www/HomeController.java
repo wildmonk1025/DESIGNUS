@@ -103,8 +103,8 @@ public class HomeController {
 	}
 	
 	/*
-	 * @RequestMapping(value = "/wrimemberapply", method = RequestMethod.POST)
-	 * public ModelAndView wrimemberapply(MultipartHttpServletRequest multi, String
+	 * @RequestMapping(value = "/wriapply", method = RequestMethod.POST)
+	 * public ModelAndView wriapply(MultipartHttpServletRequest multi, String
 	 * kind) { System.out.println("작가회원가입" + multi.getFileNames()); mav = new
 	 * ModelAndView();
 	 * 

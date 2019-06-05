@@ -26,7 +26,7 @@ public class MemberMM {
 	public ModelAndView wriapply(MultipartHttpServletRequest multi, String kind) {
 		System.out.println("작가 회원가입");
 		mav = new ModelAndView();
-		kind = "A";
+		kind = "S";
 		String view = null;
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		String id = multi.getParameter("mb_id");
