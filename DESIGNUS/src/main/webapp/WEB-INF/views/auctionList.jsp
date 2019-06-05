@@ -185,7 +185,7 @@
 			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
 			<c:forEach var="ra" items="${raList}">
-				<div class="raListFrm">
+				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 					<div class="raListImg">
 						<img src="./images/${ra.ra_image }.png" />
 					</div>
@@ -204,7 +204,7 @@
 			</div>
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
-				<div class="auListFrm">
+				<div class="auListFrm" onclick="location.href='revauctionread?ra_num=${au.au_num}'">
 					<div class="auListImg">
 						<img src="./images/logo.png" />
 					</div>
@@ -247,9 +247,6 @@
 		$("#ListView2").css("display", "inline");
 	});
 	
-	$(".raListFrm").click(function() {
-		location.href="revauctionread?ra_num="+x+"";
-	});
 	
 	
 </script>
