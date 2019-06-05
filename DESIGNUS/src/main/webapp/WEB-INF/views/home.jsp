@@ -84,13 +84,15 @@
 			<div id="text1" align="center">오늘의 추천 작품</div>
 			<div id="coklist"></div>
 			<br> <br>
-			<div id="text2" align="center">베스트 상품</div>
+			<div id="text2" align="center"><form action="bestajax">베스트 상품</form>
+			${aList}
+			</div>
 			<div id="bestlist"></div>
 		</div>
 	</div>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include></div>
-	-
+	
 
 </body>
 </html>
