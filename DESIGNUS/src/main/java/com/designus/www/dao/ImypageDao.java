@@ -15,6 +15,12 @@ public interface ImypageDao {
 	Member privacyeditSelect(String id);
 
 	boolean memberreviseupdate(Member mb);
+
+	String withdrawalconfirmselect(String id);
+
+	boolean withdrawalconfirmInsert(String id, String pw);
+
+	void withdrawalconfirmDelete(String id);
   
   
 }
