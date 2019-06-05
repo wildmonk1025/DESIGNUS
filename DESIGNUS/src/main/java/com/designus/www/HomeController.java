@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Member;
+import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
 
 /**
@@ -29,10 +30,11 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private MemberMM mm;
+	private CommonMM cm;
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
-
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -141,7 +143,13 @@ public class HomeController {
 	}
 
 	
-
+	@RequestMapping(value = "/bestajax", method = RequestMethod.GET)
+	public ModelAndView bestajax() {
+		mav = new ModelAndView();
+		mav = cm.bestajax();
+		
+		return mav;
+	}
 
 	/*
 	 * @RequestMapping(value="/joinPost",method=RequestMethod.GET) public String

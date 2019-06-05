@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.designus.www.dao.IcommonDao">  
-     
-      
-     
-      
-       
+<mapper namespace="com.designus.www.dao.IcommonDao">
+
+
+	<select id="bestajax" parameterType="String" resultType="String">
+		SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC;
+	</select>
+
+
 </mapper>

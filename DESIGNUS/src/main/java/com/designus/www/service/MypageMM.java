@@ -1,5 +1,7 @@
 package com.designus.www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,20 +128,33 @@ public class MypageMM {
 
 	public ModelAndView withdrawalconfirm(Member mb) {
 		mav=new ModelAndView();
+		
 		String view=null;
 		String id=session.getAttribute("id").toString();
+		mb.setMb_id(id);
 		BCryptPasswordEncoder pwdEncoder=new BCryptPasswordEncoder();
-		String pwdEncode=pDao.withdrawalconfirmselect(id);
+		System.out.println("idididi"+mb.getMb_id());
+		String pwdEncode=pDao.withdrawalconfirmselect(mb.getMb_id());
+		
+		System.out.println("dddddddd"+ mb.getMb_pw());
 		
 		if(pwdEncode != null) {
+			System.out.println("일단 아이디는 가져 왔고 된거고...");
+			System.out.println("111111111"+pwdEncoder.matches(mb.getMb_pw(), pwdEncode));
 			if(pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
-		       if(pDao.withdrawalconfirmInsert(id,mb.getMb_pw())){
-		    	   pDao.withdrawalconfirmDelete(id);
+				System.out.println("일단 복호화는 된거고...");
+				Member mmd=pDao.withdrawalconfirmselect2(mb.getMb_id());
+		       if(pDao.withdrawalconfirmInsert(mmd)){
+		    	   System.out.println("인설트까지는 된건데.....");
+		    	   pDao.withdrawalconfirmDelete(mb);
 		    	   session.invalidate();
 		    	   view="home";
 		       }else {
 		    	   view="memberDelete";
 		       }
+			}else {
+				System.out.println("이쪽으로 오는건가...??");
+				
 			}
 		}
 		mav.setViewName(view);
