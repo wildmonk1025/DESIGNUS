@@ -160,8 +160,8 @@
 					<th>포트폴리오</th>
 					<td>
 					<td><input id="mb_profile" class="memberN" type="file"
-						name="mb_profile" onchange="fileChk(this)" value="4" multiple>
-						<input type="hidden" id="fileCheck" value="3" name="fileCheck"></td>
+						name="mb_profile" onchange="fileChk(this)" value="4"> <input
+						type="hidden" id="fileCheck" value="3" name="fileCheck"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
@@ -217,14 +217,15 @@ function fileChk(elem) {
 	function fileChk2(elem) {
 		console.dir(elem);
 		if(elem.value==""){
-			console.log("empty"); 
+			console.log("wriempty"); 
 			$('#fileCheck').val(3); //파일 첨부 안했음
 			focus();
 			
 		}else{
-			console.log("Notempty");
+			console.log("wriNotempty");
 			$('#fileCheck').val(4);//파일 첨부 했음
-		};
+		}
+	};
 	
 	</script>
 </html>

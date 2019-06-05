@@ -17,13 +17,6 @@
             height: 700px;
         }
 
-        .btn {
-            background-color: orange;
-            width: 150px;
-            height: 30px;
-            color: white;
-            float: right;
-        }
 
         #coklist {
             width: 1000px;
@@ -127,8 +120,6 @@
     </div>
 
     <div id="homeMain">
-        <button id="revauctionbtn" class="btn">제작의뢰 요청하기</button>
-        <button id="auctionbtn" class="btn">출품등록하기</button>
         <div id="reviewboard1">
             <button class="btn2">자유게시판</button> 
             <button class="btn2" style="background-color: orange">이용후기</button> 
