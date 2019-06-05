@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 
 //import org.springframework.stereotype.Repository;
@@ -24,7 +25,9 @@ public interface ImypageDao {
 
 	boolean withdrawalconfirmInsert(Member mmd);
 
-	boolean nortowriapplyInsert(Map<String, String> fMap);
+	boolean nortowriapplyInsert(Major mj);
+
+	boolean nortowriapplyupdate(String mj_id);
   
   
 }

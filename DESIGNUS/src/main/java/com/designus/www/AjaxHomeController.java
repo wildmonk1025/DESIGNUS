@@ -39,7 +39,7 @@ public class AjaxHomeController {
 		System.out.println("이거는??????");
 		return aa;	
 	} 
-	@RequestMapping(value = "/imgjax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
+	@RequestMapping(value = "/imgajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
 	public String imgInsert() {
 		System.out.println("dd");
 		String aa = cm.imgajax();
