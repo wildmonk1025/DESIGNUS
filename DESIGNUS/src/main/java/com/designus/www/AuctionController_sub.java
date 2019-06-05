@@ -39,9 +39,9 @@ public class AuctionController_sub {
 	@RequestMapping(value = "/revauctionread", method = RequestMethod.GET)
 	public ModelAndView revAuctionRead(int ra_num) {
 		///{ra_num}
-		//@PathVariable 
+		//@PathVariable
 		mav = new ModelAndView();
-		mav = ram.revAuctionRead(ra_num);
+		//mav = ram.revAuctionRead(ra_num);
 		return mav;
 		}
 }

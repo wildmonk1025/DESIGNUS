@@ -16,7 +16,6 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 
 @Service
-
 public class AuctionMM {
 	@Autowired
 	private IauctionDao aDao;
