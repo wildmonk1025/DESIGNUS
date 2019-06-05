@@ -14,7 +14,7 @@ public interface IcommonDao {
 
 
 
-	List<Auction> getbestInfo(Auction au);
+	List<Auction> getbestInfo();
 
 
 

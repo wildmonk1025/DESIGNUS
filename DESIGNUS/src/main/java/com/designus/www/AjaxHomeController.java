@@ -1,13 +1,33 @@
 package com.designus.www;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import com.designus.www.bean.Auction;
+import com.designus.www.service.CommonMM;
+
+@RestController
 public class AjaxHomeController {
-	/*
-	 * @RequestMapping() public String norJoinFrm() { return "norjoinFrm"; }
-	 */
-	 
+	
+	@Autowired
+	private CommonMM cm;
+	
+	ModelAndView mav;
+	@RequestMapping(value = "/bestajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
+	public String replyInsert() {
+		System.out.println("dd");
+		  String aa = cm.bestajax();
+		  System.out.println("cm="+cm.bestajax());
+		  System.out.println("aList="+aa);
+		  System.out.println("이거는??????");
+		return aa;	
+	} 
 }
