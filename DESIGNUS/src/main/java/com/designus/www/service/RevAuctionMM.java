@@ -37,6 +37,7 @@ public class RevAuctionMM {
 //			System.out.println("공개/비공개 여부를 확인해야합니다.");
 			
 		RevAuction ra = new RevAuction();
+		ra.setRa_num(0);
 		ra.setRa_mbid(ra_mbid);
 		ra.setRa_title(ra_title);
 		ra.setRa_contents(ra_contents);
@@ -47,13 +48,22 @@ public class RevAuctionMM {
 		//ra.setB_num(bDao.getraNum());
 		//raFile 등록을 위해 DB에서 글번호가져옴
 		
-			if (upload.fileUp(multi,ra)!=0) {
+		int currval = upload.fileUp(multi, ra);
+			if (currval!=0) {
 				//글쓰기 성공 view = "redirect:boardList";
-				view = "home";
-			} else {
+				mav.addObject("ra_num", currval);
+				view = "/revAuctionRead"+"/{"+currval+"}";
+			} else if(currval==0){
 				view = "revAuctionWrite";
 			}
 			mav.setViewName(view);
 			return mav;
 		}
+
+	public ModelAndView revAuctionRead(int ra_num) {
+		System.out.println("revAuctionRead의 ra_num="+ra_num);
+		mav.addObject("confirm", ra_num);
+		mav.setViewName("revAuctionRead");
+		return mav;
+	}
 	}

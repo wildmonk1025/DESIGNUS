@@ -60,7 +60,8 @@ public class AuctionMM {
 		if(aDao.getAuctionWriteInsert(au)) { 
 		  view = "auctionList"; 
 		  } else { 
-		  view = "auctionWrite"; }
+		  view = "auctionWrite";
+		  }
 		
 		
 		

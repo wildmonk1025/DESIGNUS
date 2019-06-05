@@ -45,8 +45,8 @@
 	position: absolute;
 	top: 40%;
 	left: 40%;
-	width: 400px;
-	height: 400px;
+	width: 600px;
+	height: 600px;
 	margin: -150px 0 0 -194px;
 	padding: 28px 28px 0 28px;
 	border: 2px solid #555;
@@ -380,7 +380,15 @@ a:hover {
   position: relative;
 	top: 350px;
 	left: 850px;
-	font-size: 18px;
+	font-size: 25px;
+	z-index: 202;
+}
+p{
+color : black;
+  position: relative;
+	top: 350px;
+	left: 850px;
+	font-size: 25px;
 	z-index: 202;
 }
 /* #mb_pw{
@@ -472,8 +480,10 @@ a:hover {
 	</div>
 
 	<div id="articleView_layer">
+	<p>정말로 탈퇴하시겠습니까?</p><br/>
+	<p>정말 탈퇴를 원하시면 <br/>현재 사용중인 비밀번호를 입력해주세요.</p>
 		<input type="password" name="mb_pw" id="mb_pw">
-		 <a id="Delecheck" href="withdrawalconfirm">탈퇴하기</a>
+		 <a id="Delecheck" href="AjmemberDelete('withdrawalconfirm','mb_pw')">탈퇴하기</a>
 		<div id="bg_layer">
 		</div>
 		<div id="contents_layer"></div>
@@ -494,6 +504,21 @@ $layerWindow.find('#bg_layer').on('mousedown',function(event){
 	$layerWindow.removeClass('open');
 	
 });//function End
+function AjmemberDelete(url,data) {
+	$.ajax({
+		type:'post',
+		url :url,
+		data:data,
+		dataType:'json',
+		success:function(data){
+			consol.log(data);
+		},
+		error:function(error){
+			console.log(error);
+		}
+	});
+	
+}
 </script>
 </html>
 

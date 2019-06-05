@@ -86,6 +86,16 @@ public class HomeController {
 
 		return "memberFind";
 	}
+	@RequestMapping(value = "/revauctionwrite", method = RequestMethod.GET)
+	public String revauctionwrite() {
+		
+		return "revauctionwrite";
+	}
+	@RequestMapping(value = "/auctionwrite", method = RequestMethod.GET)
+	public String auctionwrite() {
+		
+		return "auctionwrite";
+	}
 
 	@RequestMapping(value = "/joinfrm", method = RequestMethod.GET)
 	public String joinfrm() {
