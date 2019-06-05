@@ -12,7 +12,10 @@ import com.designus.www.bean.Auction;
 //@Repository
 public interface IcommonDao {
 
-	Auction getbestInfo(String au_mbid_w);
+
+
+	List<Auction> getbestInfo(Auction au);
+
 
 
   

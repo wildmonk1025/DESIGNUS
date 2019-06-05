@@ -133,12 +133,11 @@ public class MemberMM {
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 
 		String pwdEncode = mDao.getSecurityPwd(mb.getMb_id());
-
 		if (pwdEncode != null) {
 			if (pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
+				mb = mDao.getMemberInfo(mb.getMb_id());
 				session.setAttribute("id", mb.getMb_id());
 				session.setAttribute("grade", mb.getMb_grade());
-				mb = mDao.getMemberInfo(mb.getMb_id());
 				/* session.setAttribute("mb", mb); */
 				System.out.println("grede=" + mb.getMb_grade());
 				System.out.println("id=" + mb.getMb_id());
