@@ -43,4 +43,22 @@ public class CommonMM {
 			System.out.println("여기는??");
 		return jsonObj;
 	}
+	public String newajax() {
+	       List<Auction> rList=cDao.getnewInfo();
+	         System.out.println("이거는되나");
+			Gson gs=new Gson();
+			String jsonObj=gs.toJson(rList);
+			System.out.println(jsonObj);
+			System.out.println("여기는??");
+		return jsonObj;
+	}
+	public String imgajax() {
+		List<Auction> rList=cDao.getimgInfo();
+        System.out.println("이거는되나");
+		Gson gs=new Gson();
+		String jsonObj=gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+	return jsonObj;
+	}
 }

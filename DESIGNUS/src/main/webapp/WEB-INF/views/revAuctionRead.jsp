@@ -8,6 +8,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+
 div {
 	margin: auto;
 }
@@ -19,10 +20,9 @@ div {
 }
 
 #revauctionreadmain {
-	padding: 40px;
 	margin-top: 30px;
-	width: 1200px;
-	height: 1000px;
+	width: 1520px;
+	height: auto;
 	border: 1px solid orange;
 }
 
@@ -195,7 +195,7 @@ div {
 
 <body>
 	<div id="mainheader">
-		<!--<jsp:include page="main.jsp"/>-->
+		<jsp:include page="main.jsp"/>
 	</div>
 	<div id="revauctionreadmain">
 		<div id="revareadimgdiv">
