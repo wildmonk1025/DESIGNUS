@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,18 +107,37 @@
 	</div>
 
 	<div id="homeMain">
-		<button id="revauctionbtn" class="btn1">
-		<a href="revauctionWrite">제작의뢰 요청하기</a>
-		</button>
-		<button id="auctionbtn" class="btn1">
-			<a href="auctionWrite">출품등록하기</a>
-		</button>
+		
 		<div id="List">
 			<button id="Lbtn1" class="btn2">제작의뢰 리스트</button>
 			<button id="Lbtn2" class="btn2">출품 리스트</button>
 			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
-			${raList}
+			<c:forEach var="ra" items="${raList}">
+			<table>
+				<tr>
+					<th>NUM</th><td>${ra.ra_num }</td>
+				</tr>
+				<tr>
+					<th>ID</th><td>${ra.ra_mbid }</td>
+				</tr>
+				<tr>
+					<th>TITLE</th><td>${ra.ra_title }</td>
+				</tr>
+				<tr>
+					<th>CGCODE</th><td>${ra.ra_cgcode }</td>
+				</tr>
+				<tr>
+					<th>NUM</th><td>${ra.num }</td>
+				</tr>
+				<tr>
+					<th>NUM</th><td>${ra.num }</td>
+				</tr>
+				<tr>
+					<th>NUM</th><td>${ra.num }</td>
+				</tr>
+			</table>
+			</c:forEach>
 			</div>
 			<div id="ListView2">
 			${auList}
@@ -134,7 +154,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	
 	
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");

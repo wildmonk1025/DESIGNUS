@@ -22,7 +22,7 @@ public class AuctionMM {
 	private IauctionDao aDao;
 	
 	@Autowired
-	private IRevAuctionDao raDao;
+	private IRevAuctionDao rDao;
 	
 	@Autowired
     private HttpSession session;
@@ -87,7 +87,7 @@ public class AuctionMM {
 		rau.setRa_cgcode(cgcode);
 		
 		auList = aDao.getAuctionListSelect(au);
-		raList = raDao.getRevAuctionListSelect(rau);
+		raList = rDao.getRevAuctionListSelect(rau);
 		//
 		
 		mav.addObject("auList",auList);
@@ -96,7 +96,7 @@ public class AuctionMM {
 		
 		view="auctionList";
 		
-		
+		mav.setViewName(view);
 		return mav;
 	}
 	
