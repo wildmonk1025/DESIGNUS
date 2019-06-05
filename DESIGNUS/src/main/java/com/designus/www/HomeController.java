@@ -49,8 +49,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home() {
-		return "home";
+	public ModelAndView home() {
+		mav=new ModelAndView();
+		mav.setViewName("home");
+		return mav;
 	}
 
 	@RequestMapping(value = "/logingo", method = RequestMethod.GET)
@@ -143,13 +145,12 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping(value = "/bestajax", method = RequestMethod.GET)
-	public ModelAndView bestajax() {
-		mav = new ModelAndView();
-		mav = cm.bestajax();
-		
-		return mav;
-	}
+	/*
+	 * @RequestMapping(value = "/bestajax") public ModelAndView bestajax() { mav =
+	 * new ModelAndView(); mav = cm.bestajax();
+	 * 
+	 * return mav; }
+	 */
 
 	/*
 	 * @RequestMapping(value="/joinPost",method=RequestMethod.GET) public String

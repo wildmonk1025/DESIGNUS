@@ -5,8 +5,8 @@
 <mapper namespace="com.designus.www.dao.IcommonDao">
 
 
-	<select id="bestajax" parameterType="String" resultType="String">
-		SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC;
+	<select id="getbestInfo" parameterType="auction" resultType="auction">
+		SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
 	</select>
 
 
