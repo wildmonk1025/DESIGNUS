@@ -480,10 +480,12 @@ color : black;
 	</div>
 
 	<div id="articleView_layer">
+	<form action="withdrawalconfirm" method="POST">
 	<p>정말로 탈퇴하시겠습니까?</p><br/>
 	<p>정말 탈퇴를 원하시면 <br/>현재 사용중인 비밀번호를 입력해주세요.</p>
 		<input type="password" name="mb_pw" id="mb_pw">
-		 <a id="Delecheck" href="AjmemberDelete('withdrawalconfirm','mb_pw')">탈퇴하기</a>
+		 <button id="Delecheck">탈퇴하기</button>
+		 </form>
 		<div id="bg_layer">
 		</div>
 		<div id="contents_layer"></div>
@@ -504,21 +506,7 @@ $layerWindow.find('#bg_layer').on('mousedown',function(event){
 	$layerWindow.removeClass('open');
 	
 });//function End
-function AjmemberDelete(url,data) {
-	$.ajax({
-		type:'post',
-		url :url,
-		data:data,
-		dataType:'json',
-		success:function(data){
-			consol.log(data);
-		},
-		error:function(error){
-			console.log(error);
-		}
-	});
-	
-}
+
 </script>
 </html>
 
