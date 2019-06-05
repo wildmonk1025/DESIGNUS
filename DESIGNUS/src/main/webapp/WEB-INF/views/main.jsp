@@ -263,6 +263,7 @@
             <div id="submenu"><a href="boardlist">게시판</a></div>
             <div id="submenu"><a href="bestwriter">인기작가</a></div>
             <div id="submenu"><a href="servicecenter">고객센터</a></div>
+         	
         </div>
     </div>
     <button id="revauctionbtn"><a href="revauctionWrite">제작의뢰 요청하기</a></button>
