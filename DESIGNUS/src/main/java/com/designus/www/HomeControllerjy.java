@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.text.DateFormat;  
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -33,77 +33,66 @@ public class HomeControllerjy {
 	HttpSession session;
 	ModelAndView mav;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	/*
+	 * @RequestMapping(value = "/", method = RequestMethod.GET) public String
+	 * home(Locale locale, Model model) {
+	 * logger.info("Welcome home! The client locale is {}.", locale);
+	 * 
+	 * Date date = new Date(); DateFormat dateFormat =
+	 * DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+	 * 
+	 * String formattedDate = dateFormat.format(date);
+	 * 
+	 * model.addAttribute("serverTime", formattedDate); return "home"; }
+	 * 
+	 * @RequestMapping(value = "/home", method = RequestMethod.GET) public String
+	 * home() { return "home"; }
+	 * 
+	 * @RequestMapping(value = "/logingo", method = RequestMethod.GET) public String
+	 * logingo() {
+	 * 
+	 * return "loginBox"; }
+	 * 
+	 * @RequestMapping(value = "/servicecenter", method = RequestMethod.GET) public
+	 * String servicecenter() {
+	 * 
+	 * return "sc_Question"; }
+	 * 
+	 * @RequestMapping(value = "/bestwriter", method = RequestMethod.GET) public
+	 * String bestwriter() {
+	 * 
+	 * return "popularWriterFrm"; }
+	 * 
+	 * @RequestMapping(value = "/norJoinFrm", method = RequestMethod.GET) public
+	 * String norJoinFrm() {
+	 * 
+	 * return "norjoinFrm"; }
+	 * 
+	 * @RequestMapping(value = "/wriJoinFrm", method = RequestMethod.GET) public
+	 * String wriJoinFrm() {
+	 * 
+	 * return "wrijoinFrm"; }
+	 * 
+	 * @RequestMapping(value = "/memberfind", method = RequestMethod.GET) public
+	 * String memberfind() {
+	 * 
+	 * return "memberFind"; }
+	 * 
+	 * @RequestMapping(value = "/joinfrm", method = RequestMethod.GET) public String
+	 * joinfrm() {
+	 * 
+	 * return "joinFrm"; }
+	 * 
+	 * @RequestMapping(value = "/memberapply", method = RequestMethod.POST) public
+	 * ModelAndView memberapply(MultipartHttpServletRequest multi, String kind) {
+	 * System.out.println("여기까지는 온것 같고..." + multi.getFileNames()); mav = new
+	 * ModelAndView();
+	 * 
+	 * mav = mm.memberapply(multi, kind); return mav; }
+	 */
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-		return "home";
-	}
-
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home() {
-		return "home";
-	}
-
-	@RequestMapping(value = "/logingo", method = RequestMethod.GET)
-	public String logingo() {
-
-		return "loginBox";
-	}
-
-	@RequestMapping(value = "/servicecenter", method = RequestMethod.GET)
-	public String servicecenter() {
-
-		return "sc_Question";
-	}
-
-	@RequestMapping(value = "/bestwriter", method = RequestMethod.GET)
-	public String bestwriter() {
-
-		return "popularWriterFrm";
-	}
-
-	@RequestMapping(value = "/norJoinFrm", method = RequestMethod.GET)
-	public String norJoinFrm() {
-
-		return "norjoinFrm";
-	}
-
-	@RequestMapping(value = "/wriJoinFrm", method = RequestMethod.GET)
-	public String wriJoinFrm() {
-
-		return "wrijoinFrm";
-	}
-
-	@RequestMapping(value = "/memberfind", method = RequestMethod.GET)
-	public String memberfind() {
-
-		return "memberFind";
-	}
-
-	@RequestMapping(value = "/joinfrm", method = RequestMethod.GET)
-	public String joinfrm() {
-
-		return "joinFrm";
-	}
-
-	@RequestMapping(value = "/memberapply", method = RequestMethod.POST)
-	public ModelAndView memberapply(MultipartHttpServletRequest multi, String kind) {
-		System.out.println("여기까지는 온것 같고..." + multi.getFileNames());
-		mav = new ModelAndView();
-
-		mav = mm.memberapply(multi, kind);
-		return mav;
-	}
-	
-	@RequestMapping(value = "/wrimemberapply", method = RequestMethod.POST)
-	public ModelAndView wrimemberapply(MultipartHttpServletRequest multi, String kind) {
+	@RequestMapping(value = "/wriapply", method = RequestMethod.POST)
+	public ModelAndView wriapply(MultipartHttpServletRequest multi, String kind) {
 		System.out.println("작가회원가입" + multi.getFileNames());
 		mav = new ModelAndView();
 
@@ -111,32 +100,27 @@ public class HomeControllerjy {
 		return mav;
 	}
 
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage() {
-
-		return "myPage";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(Member mb) {
-		mav = mm.login(mb);
-
-		return mav;
-	}
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logout() {
-		session.invalidate();
-		
-		return "home";
-	}
-
-	
-
+	/*
+	 * @RequestMapping(value = "/mypage", method = RequestMethod.GET) public String
+	 * mypage() {
+	 * 
+	 * return "myPage"; }
+	 * 
+	 * @RequestMapping(value = "/login", method = RequestMethod.POST) public
+	 * ModelAndView login(Member mb) { mav = mm.login(mb);
+	 * 
+	 * return mav; }
+	 * 
+	 * @RequestMapping(value = "/logout", method = RequestMethod.POST) public String
+	 * logout() { session.invalidate();
+	 * 
+	 * return "home"; }
+	 */
 
 	/*
 	 * @RequestMapping(value="/joinPost",method=RequestMethod.GET) public String
 	 * joinPost(@ModelAttribute("uVO") UserVO uVO) throws Exception) { //이메일 발송 관련
 	 * url return "loginBox"; }
 	 */
-     
+
 }
