@@ -35,11 +35,19 @@ public class AuctionController_sub {
 		mav = ram.revAuctionSubmit(multi);
 		return mav;
 	}
+	@RequestMapping(value = "/revauctionlist", method = RequestMethod.POST)
+	public ModelAndView revAuctionList(int cg) {
+		mav = new ModelAndView();
+		mav = ram.revAuctionList(cg);
+		return mav;
+		}
 	
-	@RequestMapping(value = "/revauctionread/{ra_num}", method = RequestMethod.POST)
-	public ModelAndView revAuctionRead(@PathVariable int ra_num) {
+	@RequestMapping(value = "/revauctionread", method = RequestMethod.GET)
+	public ModelAndView revAuctionRead(int ra_num) {
+		///{ra_num}
+		//@PathVariable 
 		mav = new ModelAndView();
 		mav = ram.revAuctionRead(ra_num);
 		return mav;
-	}
+		}
 }

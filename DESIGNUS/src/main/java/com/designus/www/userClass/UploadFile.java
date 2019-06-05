@@ -38,7 +38,8 @@ public class UploadFile {
 	@Autowired
 	private HttpSession session;
 
-	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, Major mj, String kind) {
+	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, String kind) {
+		// Member
 		System.out.println("id=" + mb.getMb_id());
 		System.out.println("pw=" + mb.getMb_pw());
 		System.out.println("name=" + mb.getMb_name());
@@ -46,6 +47,7 @@ public class UploadFile {
 		System.out.println("address=" + mb.getMb_address());
 		System.out.println("email=" + mb.getMb_email());
 		System.out.println("mb_profile=" + mb.getMb_profile());
+		// Major
 
 		System.out.println("fileUp");
 		// 1.이클립스의 물리적 저장경로 찾기
@@ -85,13 +87,6 @@ public class UploadFile {
 				f = mDao.memberapplyInsert(mb);
 			} else {
 				f = pDao.memberreviseupdate(mb);
-			}
-			if (kind.equals("S")) {
-				// boolean a=회원테이블 인솔트
-				boolean a = mDao.memberapplyInsert(mb);
-				if (a) {
-					f = mDao.wrimajorInsert(mj);
-				}
 			}
 
 		} catch (IOException e) {
@@ -197,4 +192,77 @@ public class UploadFile {
 		is.close();
 	}
 
+	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, Major mj, String kind) {
+		// Member
+		System.out.println("id=" + mb.getMb_id());
+		System.out.println("pw=" + mb.getMb_pw());
+		System.out.println("name=" + mb.getMb_name());
+		System.out.println("birth=" + mb.getMb_birth());
+		System.out.println("address=" + mb.getMb_address());
+		System.out.println("email=" + mb.getMb_email());
+		System.out.println("mb_profile=" + mb.getMb_profile());
+		// Major
+		System.out.println("mjid=" + mj.getMj_id());
+		System.out.println("mjcate=" + mj.getMj_cg_code());
+		System.out.println("mjport=" + mj.getMj_portf());
+		System.out.println("mjlike=" + mj.getMj_like());
+		System.out.println("mjcontents=" + mj.getMj_contents());
+
+		System.out.println("fileUp");
+		// 1.이클립스의 물리적 저장경로 찾기
+		String root = multi.getSession().getServletContext().getRealPath("/");
+		System.out.println("root=" + root);
+		String path = root + "resources/upload/";
+		// 2.폴더 생성을 꼭 할것...
+		File dir = new File(path);
+		if (!dir.isDirectory()) { // upload폴더 없다면
+			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
+		}
+		// 3.파일을 가져오기-파일태그 이름들 반환
+		// String files=multi.getFileNames(); //파일태그가 2개이상일때
+		// List<MultipartFile> file = multi.getFiles("b_files");
+		MultipartFile file = multi.getFile("mb_profile");
+		/* MultipartFile file2 = multi.getFile("mj_port"); */
+
+		// fMap.put("bnum", String.valueOf(bnum));
+		boolean f = false;
+
+		// 파일 메모리에 저장
+		MultipartFile mf = file; // 실제 업로드될 파일
+		String oriFileName = file.getOriginalFilename(); // a.txt
+		mb.setMb_profile(oriFileName);
+		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
+		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+		System.out.println("sys=" + sysFileName);
+		System.out.println("ori=" + oriFileName);
+
+		// 5.메모리->실제 파일 업로드
+		/*
+		 * System.out.println(session.getAttribute("id").toString());
+		 * System.out.println("세션 확인");
+		 */
+		try {
+			mf.transferTo(new File(path + sysFileName));
+			if (kind.equals("S")) {
+				f = mDao.wrimemberapplyInsert(mb);
+			} else {
+				f = pDao.memberreviseupdate(mb);
+			}
+			if (kind.equals("S")) {
+				// boolean a=회원테이블 인솔트
+				boolean a = mDao.memberapplyInsert(mb);
+				if (a) {
+					f = mDao.wrimajorInsert(mj);
+				}
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// for End
+
+		if (f)
+			return true;
+		return false;
+	}
 }

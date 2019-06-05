@@ -10,6 +10,8 @@ public interface ImemberDao {
 
 	boolean memberapplyInsert(Member mb);
 
+	boolean wrimemberapplyInsert(Member mb);
+
 	boolean wrimajorInsert(Major mj);
 
 	String getSecurityPwd(String mb_id);
