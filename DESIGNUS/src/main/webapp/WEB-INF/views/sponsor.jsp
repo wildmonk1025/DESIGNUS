@@ -75,8 +75,6 @@
 	</div>
 
 	<div id="homeMain">
-		<button id="revauctionbtn" class="btn">제작의뢰 요청하기</button>
-		<button id="auctionbtn" class="btn">출품등록하기</button>
         <div id="titleAndbtn">
             지금 후원 가능한 작품
             <button id="btn1" class="btn">후원상품등록</button>
