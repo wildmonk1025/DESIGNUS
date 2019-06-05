@@ -338,5 +338,6 @@ div {
 	$(document).ready(function() {
 		alert("제작의뢰 리스트 시퀀스 "+chk+"번 글 입니다.");
 	});
+
 </script>
 </html>
