@@ -204,7 +204,13 @@
             text-decoration: none;
             color: #646464;
         }
-       
+       #revauctionbtn, #auctionbtn {
+	background-color: orange;
+	width: 150px;
+	height: 30px;
+	color: white;
+	float: right;
+}
     </style>
     <meta charset="UTF-8">
 
@@ -260,6 +266,8 @@
          	
         </div>
     </div>
+    <button id="revauctionbtn"><a href="revauctionWrite">제작의뢰 요청하기</a></button>
+		<button id="auctionbtn"><a href="auctionWrite">출품등록하기</a></button>
 </body>
 <script>
 function logout(){

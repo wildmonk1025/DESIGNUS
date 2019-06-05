@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
+import com.google.gson.Gson;
 
 @Service
 public class MypageMM {
@@ -105,7 +106,7 @@ public class MypageMM {
 			// upload=new UploadFile(); //프로토타입
 			// 이클립스 서버에 파일을 업로드 한 후,
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
-			f = upload.fileUp(multi, mb,kind);
+			f = upload.fileUp(multi, mb, kind);
 			if (f) {
 				System.out.println("일단 여기까지는 된건데....");
 				view = "redirect:myPage";
@@ -120,6 +121,28 @@ public class MypageMM {
 		System.out.println(view);
 		mav.setViewName(view);
 
+		return mav;
+	}
+
+	public ModelAndView withdrawalconfirm(Member mb) {
+		mav=new ModelAndView();
+		String view=null;
+		String id=session.getAttribute("id").toString();
+		BCryptPasswordEncoder pwdEncoder=new BCryptPasswordEncoder();
+		String pwdEncode=pDao.withdrawalconfirmselect(id);
+		
+		if(pwdEncode != null) {
+			if(pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
+		       if(pDao.withdrawalconfirmInsert(id,mb.getMb_pw())){
+		    	   pDao.withdrawalconfirmDelete(id);
+		    	   session.invalidate();
+		    	   view="home";
+		       }else {
+		    	   view="memberDelete";
+		       }
+			}
+		}
+		mav.setViewName(view);
 		return mav;
 	}
 }

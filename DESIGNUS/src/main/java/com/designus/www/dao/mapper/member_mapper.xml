@@ -15,6 +15,10 @@
 		INSERT INTO MEMBER
 		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'N',DEFAULT)
 	</insert>
+	<insert id="wrimemberapplyInsert" parameterType="member">
+		INSERT INTO MEMBER
+		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'S',DEFAULT)
+	</insert>
 	<insert id="wrimajorInsert" parameterType="major">
 		INSERT INTO MAJOR
 		VALUES(#{mj_id},#{mj_cg_code},#{mj_portf},#{mj_contents},#{mj_like})

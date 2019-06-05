@@ -86,6 +86,16 @@ public class HomeController {
 
 		return "memberFind";
 	}
+	@RequestMapping(value = "/revauctionwrite", method = RequestMethod.GET)
+	public String revauctionwrite() {
+		
+		return "revauctionwrite";
+	}
+	@RequestMapping(value = "/auctionwrite", method = RequestMethod.GET)
+	public String auctionwrite() {
+		
+		return "auctionwrite";
+	}
 
 	@RequestMapping(value = "/joinfrm", method = RequestMethod.GET)
 	public String joinfrm() {
@@ -102,14 +112,14 @@ public class HomeController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/wrimemberapply", method = RequestMethod.POST)
-	public ModelAndView wrimemberapply(MultipartHttpServletRequest multi, String kind) {
-		System.out.println("작가회원가입" + multi.getFileNames());
-		mav = new ModelAndView();
-
-		mav = mm.wriapply(multi, kind);
-		return mav;
-	}
+	/*
+	 * @RequestMapping(value = "/wriapply", method = RequestMethod.POST)
+	 * public ModelAndView wriapply(MultipartHttpServletRequest multi, String
+	 * kind) { System.out.println("작가회원가입" + multi.getFileNames()); mav = new
+	 * ModelAndView();
+	 * 
+	 * mav = mm.wriapply(multi, kind); return mav; }
+	 */
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage() {
