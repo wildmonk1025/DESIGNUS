@@ -22,8 +22,8 @@
 		SELECT * FROM RA WHERE RA_CGCODE = ${ra_cgcode}
 	</select>
 		
-	<select id="revAuctionReadSelect" parameterType="ra_num" resultType="revauction">
-		SELECT * FROM RA WHERE RA_NUM=${ra_num}
+	<select id="revAuctionReadSelect" parameterType="Integer" resultType="revauction">
+		SELECT * FROM RA WHERE RA_NUM = ${ra_num}
 	</select>
 
 </mapper>
