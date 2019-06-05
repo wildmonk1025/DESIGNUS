@@ -98,6 +98,13 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+
+	public ModelAndView auctionRead(int num) {
+		
+		
+		return null;
+	}
 	
 
 }

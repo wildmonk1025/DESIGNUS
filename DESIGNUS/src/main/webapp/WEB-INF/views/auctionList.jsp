@@ -98,6 +98,77 @@
 	width: 1480px;
 	height: 480px;
 }
+
+.raListFrm{
+	display:inline-block;
+	border:1px solid red;
+	width: 487px;
+	height: 150px;
+}
+.raListImg{
+	float: left;
+	border: 1px solid blue;
+	height: 149px;
+	width: 150px;
+}
+.raListTitle{
+	float: left;
+	border: 1px solid gray;
+	width: 333px;
+	height: 30px;	
+	font-size: 20px;
+	text-align: center;
+}
+.raListPrice{
+	float: left;
+	border: 1px solid black;
+	width: 333px;
+	height: 65px;
+}
+.raListDate{
+	float: left;
+	border: 1px solid green;
+	width: 333px;
+	height: 49px;
+	font-size: 20px;
+	color: red;
+}
+
+.auListFrm{
+	display:inline-block;
+	border:1px solid red;
+	width: 487px;
+	height: 150px;
+}
+.auListImg{
+	float: left;
+	border: 1px solid blue;
+	height: 149px;
+	width: 150px;
+}
+.auListTitle{
+	float: left;
+	border: 1px solid gray;
+	width: 333px;
+	height: 30px;	
+	font-size: 20px;
+	text-align: center;
+}
+.auListPrice{
+	float: left;
+	border: 1px solid black;
+	width: 333px;
+	height: 65px;
+}
+.auListDate{
+	float: left;
+	border: 1px solid green;
+	width: 333px;
+	height: 49px;
+	font-size: 20px;
+	color: red;
+}
+
 </style>
 </head>
 
@@ -114,19 +185,43 @@
 			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
 			<c:forEach var="ra" items="${raList}">
-				<% int i = 0; %>
-				<div>
-					<div id="list<%=i%>">
-						${ra.ra_num } ${ra.ra_mbid } ${ra.ra_title } <br>
-						${ra.ra_cgcode } ${ra.ra_image } ${ra.ra_file } <br>
-						${ra.ra_oc } ${ra.ra_date } ${ra.ra_contents }
+				<div class="raListFrm">
+					<div class="raListImg">
+						<img src="./images/${ra.ra_image }.png" />
 					</div>
-				</div>
-				<% i++; %>
+					<div class="raListTitle">
+						${ra.ra_title }
+					</div>
+					<div class="raListPrice">
+						경매최저가 : el로 가져와      <br>
+						경매최고가 : el로 가져와
+					</div>
+					<div class="raListDate">
+						마감시간 : ${ra.ra_date}
+					</div>
+					</div>
 			</c:forEach>
 			</div>
 			<div id="ListView2">
-			${auList}
+			<c:forEach var="au" items="${auList}">
+				<div class="auListFrm">
+					<div class="auListImg">
+						<img src="./images/logo.png" />
+					</div>
+					<div class="auListTitle">
+						${au.au_title }
+					</div>
+					<div class="auListPrice">
+						수	   량 : ${au.au_qty }			<br>
+						경매최저가 : ${au.au_minprice}     <br>
+						경매최고가 : el로 가져와
+					</div>
+					<div class="auListDate">
+						마감시간 :  ${au.au_date }
+					</div>
+					
+					</div>
+			</c:forEach>
 			</div>
 
 		</div>
@@ -135,7 +230,8 @@
 
 	</div>
 	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -151,8 +247,9 @@
 		$("#ListView2").css("display", "inline");
 	});
 	
-	 
-
+	$(".raListFrm").click(function() {
+		location.href="revauctionread?ra_num="+x+"";
+	});
 	
 	
 </script>

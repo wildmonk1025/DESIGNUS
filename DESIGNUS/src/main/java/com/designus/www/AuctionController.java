@@ -46,6 +46,14 @@ public class AuctionController {
 		
 		return mav;
 	}
+
+	@RequestMapping(value = "/auctionRead" )
+	public ModelAndView auctionRead(int num) {
+		mav = new ModelAndView();
+		
+		mav = aum.auctionRead(num);
+		return mav;
+	}
 	
 	
 }
