@@ -190,10 +190,10 @@ a {
 #ckbox {
 	align-content: center;
 	width: 600px;
-	height: 70px;
-	left: 850px;
+	height: 40px;
+	left: 300px;
 	position: absolute;
-	top: 985px;
+	top: 785px;
 }
 
 #pp {
@@ -448,14 +448,16 @@ a:hover {
 					</tr>
 
 				</table>
+				<div id="ckbox">
+					<button>전환신청</button>
+					<input type="button" id="btz2" value="취소">
+					
+				</div>
 			</form>
 		</div>
 	</div>
 
-	<div id="ckbox">
-		<button>전환신청</button>
-		<button type="button" id="btn2">취소</button>
-	</div>
+
 
 
 

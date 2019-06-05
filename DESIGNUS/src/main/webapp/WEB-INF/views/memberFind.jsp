@@ -367,21 +367,17 @@ button {
 	$("#revauctionbtn").click(function() {
 		$("#list").css("display", "block");
 		$("#pwlist").css("display", "none");
+	});
 	$("#auctionbtn").click(function() {
 		$("#list").css("display", "none");
 		$("#pwlist").css("display", "block");
-	});
+	});//end Hbutton
+
 	var $layerWindow = $('#articleView_layer');
 	$layerWindow.find('#bg_layer').on('mousedown', function(event) {
 		$layerWindow.removeClass('open');
 	});//function End
-	 $(document).keydown(function(event) {
-		console.log(event);
-		if(event.keyCode != 27) return;
-		if($layerWindow.hasClass('open')){
-		      $layerWindow.removeClass('open');	      
-		   } 
-		}) 
+ 
 		
 	
 </script>
