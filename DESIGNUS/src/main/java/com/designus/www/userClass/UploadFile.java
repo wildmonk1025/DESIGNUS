@@ -206,35 +206,46 @@ public class UploadFile {
 		System.out.println("mjcate=" + mj.getMj_cg_code());
 		System.out.println("mjport=" + mj.getMj_portf());
 		System.out.println("mjlike=" + mj.getMj_like());
-		System.out.println("mjcontents=" + mj.getMj_contents());
+		/* System.out.println("mjcontents=" + mj.getMj_contents()); */
 
 		System.out.println("fileUp");
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
 		String path = root + "resources/upload/";
+		String path2 = root + "resources/port/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
+		File dir2 = new File(path2);
 		if (!dir.isDirectory()) { // upload폴더 없다면
 			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
+		}
+		if (!dir2.isDirectory()) {
+			dir2.mkdirs();
 		}
 		// 3.파일을 가져오기-파일태그 이름들 반환
 		// String files=multi.getFileNames(); //파일태그가 2개이상일때
 		// List<MultipartFile> file = multi.getFiles("b_files");
 		MultipartFile file = multi.getFile("mb_profile");
-		/* MultipartFile file2 = multi.getFile("mj_port"); */
+		MultipartFile file2 = multi.getFile("mj_portf");
 
 		// fMap.put("bnum", String.valueOf(bnum));
 		boolean f = false;
 
 		// 파일 메모리에 저장
-		MultipartFile mf = file; // 실제 업로드될 파일
+		// MultipartFile mf = file; // 실제 업로드될 파일
 		String oriFileName = file.getOriginalFilename(); // a.txt
+		String oriFileName2 = file2.getOriginalFilename();
 		mb.setMb_profile(oriFileName);
+		mj.setMj_portf(oriFileName2);
 		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
 		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+		String sysFileName2 = System.currentTimeMillis() + "."
+				+ oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
 		System.out.println("sys=" + sysFileName);
 		System.out.println("ori=" + oriFileName);
+		System.out.println("sys2=" + sysFileName2);
+		System.out.println("ori2=" + oriFileName2);
 
 		// 5.메모리->실제 파일 업로드
 		/*
@@ -242,21 +253,22 @@ public class UploadFile {
 		 * System.out.println("세션 확인");
 		 */
 		try {
-			mf.transferTo(new File(path + sysFileName));
+			file.transferTo(new File(path + sysFileName));
+			file2.transferTo(new File(path2 + sysFileName2));
 			if (kind.equals("S")) {
+				System.out.println("일로 넘어오나?");
 				f = mDao.wrimemberapplyInsert(mb);
-			} else {
-				f = pDao.memberreviseupdate(mb);
-			}
-			if (kind.equals("S")) {
-				// boolean a=회원테이블 인솔트
-				boolean a = mDao.memberapplyInsert(mb);
-				if (a) {
+				if (f) {
+					System.out.println("major테이블에 추가한다");
 					f = mDao.wrimajorInsert(mj);
 				}
+			} else {
+				System.out.println("넘어오나봐");
+				f = pDao.memberreviseupdate(mb);
 			}
 
 		} catch (IOException e) {
+			System.out.println("님 코드 다 망했어");
 			e.printStackTrace();
 		}
 		// for End

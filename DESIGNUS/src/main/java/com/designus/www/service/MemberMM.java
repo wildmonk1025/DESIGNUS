@@ -19,7 +19,8 @@ public class MemberMM {
 	private ImemberDao mDao;
 	@Autowired
 	private HttpSession session;
-	private ModelAndView mav;
+	
+	ModelAndView mav;
 	@Autowired
 	private com.designus.www.userClass.UploadFile upload;
 
@@ -29,17 +30,18 @@ public class MemberMM {
 		kind = "S";
 		String view = null;
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		int check2 = Integer.parseInt(multi.getParameter("fileCheck2"));
 		String id = multi.getParameter("mb_id");
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
 		String address = multi.getParameter("mb_address");
 		String email = multi.getParameter("mb_email");
-		String wriid = multi.getParameter("mj_id");
+		String wriid = multi.getParameter("mb_id");
 		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
 		String wriport = multi.getParameter("mj_portf");
-		String wricon = multi.getParameter("mj_contents");
-		int wriLike = Integer.parseInt(multi.getParameter("mj_like"));
+		/* String wricon = multi.getParameter("mj_contents"); */
+		/* int wriLike = Integer.parseInt(multi.getParameter("mj_like")); */
 
 		Member mb = new Member();
 		mb.setMb_id(id);
@@ -52,13 +54,12 @@ public class MemberMM {
 
 		Major mj = new Major();
 		mj.setMj_id(wriid);
-		mj.setMj_portf(wriport);
 		mj.setMj_cg_code(wricate);
-		mj.setMj_contents(wricon);
-		mj.setMj_like(wriLike);
+		/* mj.setMj_contents(wricon); */
+		/* mj.setMj_like(wriLike); */
 
 		boolean f = false;
-		if (check == 1 && check == 4) { // 첨부된 파일이 있다면....
+		if (check == 1 && check2 == 4) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
 			// 이클립스 서버에 파일을 업로드 한 후,
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
