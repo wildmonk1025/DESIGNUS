@@ -12,5 +12,17 @@
       UPDATE MB SET MB_PW =#{mb_pw},MB_ADDRESS=#{mb_address},MB_PROFILE=#{mb_profile},MB_EMAIL=#{mb_email} 
       WHERE MB_ID=#{mb_id}
      </update> 
-       
+       <select id="withdrawalconfirmselect" parameterType="String" resultType="String">
+         SELECT MB_PW FROM MB WHERE MB_ID=#{id}  
+      </select> 
+        <select id="withdrawalconfirmselect2" parameterType="String" resultType="member">
+         SELECT * FROM MB WHERE MB_ID=#{id}  
+      </select> 
+      <insert id="withdrawalconfirmInsert" parameterType="member">
+		INSERT INTO WITHDRAWAL
+		VALUES(#{mb_id},#{mb_name},#{mb_birth},#{mb_email},DEFAULT)
+	</insert>
+	<delete id="withdrawalconfirmDelete" parameterType="member">
+	 DELETE FROM MB WHERE MB_ID=#{mb_id}
+	</delete>
 </mapper>
