@@ -16,6 +16,6 @@ public class RevAuction {
 	String ra_image;
 	String ra_file;
 	String ra_oc;
-	Timestamp ra_date;
+	String ra_date;
 	String ra_contents;
 }

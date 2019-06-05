@@ -18,8 +18,7 @@ public class Auction {
 	int    au_minprice;
 	int    au_inprice;
 	String au_contents;
-	Timestamp au_date;
+	String au_date;
 	String aui_imgSysName;
-	
-	
+	int au_count;
 }

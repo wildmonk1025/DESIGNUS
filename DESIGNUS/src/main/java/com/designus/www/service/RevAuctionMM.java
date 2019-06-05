@@ -61,12 +61,6 @@ public class RevAuctionMM {
 		return mav;
 	}
 
-	public ModelAndView revAuctionList(int cg) {
-		
-		mav.setViewName("revAuctionRead");
-		return mav;
-	}
-
 	public ModelAndView revAuctionRead(int ra_num) {
 		mav.addObject("ra_num", ra_num);
 		mav.setViewName("revAuctionRead");

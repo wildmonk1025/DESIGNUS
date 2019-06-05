@@ -1,5 +1,7 @@
 package com.designus.www.dao;
 
+import java.util.List;
+
 import com.designus.www.bean.RevAuction;
 
 //import org.springframework.stereotype.Repository;
@@ -7,5 +9,7 @@ import com.designus.www.bean.RevAuction;
 public interface IRevAuctionDao {
 
 	int revAuctionSubmitInsert(RevAuction ra);
+
+	List<RevAuction> getRevAuctionListSelect(RevAuction rau);
   
 }
