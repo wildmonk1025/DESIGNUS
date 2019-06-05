@@ -19,85 +19,66 @@ div {
 	height: 170px;
 }
 
-#revauctionreadmain {
-	margin-top: 30px;
+#middle {
+	margin-top: 50px;
 	width: 1520px;
 	height: auto;
-	border: 1px solid orange;
-}
-
-#revareadimgdiv {
-	border: 1px solid red;
-	width: 20%;
-	height: 300px;
-	float: left;
-}
-
-#revareadtitlediv {
-	border: 1px solid red;
-	margin-left: 40px;
-	width: 50%;
-	padding: 30px;
-	padding-right: 0px;
-	height: 240px;
-	float: left;
-}
-
-#revareadcate {
 	border: 1px solid blue;
-	width: 100%;
-	height: 30px;
+}
+
+#middle_img {
+	float: left;
+	border: 1px solid red;
+	width: 300px;
+	height: 300px;
 	text-align: center;
-	padding-top: 10px;
 }
 
-#revareadimg {
-	margin: 30px;
-	padding: 20px;
+#middle_img_lv1 {
+	padding: 5px;
 	border: 1px solid blue;
-	width: 60%;
-	height: 50%
-}
-
-#revasubmitbtn {
-	border: 1px solid red;
-	margin-left: 40px;
-	width: 20%;
-	height: 300px;
-	float: left;
-}
-
-#revsubmitbtn {
-	background-color: coral;
-	width: 120px;
-	height: 120px;
-	float: left;
-	margin-top: 150px;
-	color: white;
-	border-radius: 15px;
-}
-
-#revareadtitle {
-	border: 1px solid blue;
-	width: 400px;
-	height: 50px;
-	float: left;
-}
-
-#bracketlistgo {
-	border: 1px solid blue;
-	width: 150px;
-	padding-top: 15px;
+	width: 260px;
 	height: 35px;
+}
+
+#middle_img_lv2 {
+	padding: 5px;
+	border: 1px solid blue;
+	width: 260px;
+	height: 230px;
+	margin-top: 5px;
+}
+
+#middle_contents1 {
 	float: left;
+	border: 1px solid red;
+	width: 900px;
+	height: 300px;
+	text-align: center;
+}
+
+#middle_contents1_lv1 {
+	border: 1px solid blue;
+	width: 850px;
+	height: 60px;
+	font-size: 30px;
+}
+
+#middle_contents1_lv2 {
+	border: 1px solid green;
+	width: 150px;
+	height: 58px;
+	font-size: 20px;
+	float: right;
 	color: red;
 }
 
-#revareadcontents {
-	margin-top: 70px;
-	width: 550px;
+#middle_contents1_lv3 {
 	border: 1px solid blue;
-	height: 90px;
+	width: 850px;
+	height: 140px;
+	font-size: 20px;
+	text-align: right;
 }
 
 #revauctiontime {
@@ -124,7 +105,23 @@ div {
 	margin-left: 30px;
 	font-size: 20px;
 }
+#revasubmitbtn {
+	border: 1px solid red;
+	margin-left: 40px;
+	width: 20%;
+	height: 300px;
+	float: left;
+}
 
+#revsubmitbtn {
+	background-color: coral;
+	width: 120px;
+	height: 120px;
+	float: left;
+	margin-top: 150px;
+	color: white;
+	border-radius: 15px;
+}
 .tablewritercontents>td {
 	text-align: center;
 	width: 200px;
@@ -197,28 +194,32 @@ div {
 	<div id="mainheader">
 		<jsp:include page="main.jsp"/>
 	</div>
-	<div id="revauctionreadmain">
-		<div id="revareadimgdiv">
-			<div id="revareadcate">카테고리 표시</div>
-			<div id="revareadimg">여기에 이미지</div>
+	<div id="middle">
+		<!-- div 카테고리와 이미지 -->
+		<div id="middle_img">
+			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
+			<div id="middle_img_lv2">여기에 이미지</div>
 		</div>
-		<div id="revareadtitlediv">
-			<div id="revareadtitle" style="font-size: 30px;">여기에 상품 이름</div>
-			<div id="bracketlistgo">꿍누르기♥</div>
-			<div id="revareadcontents">
-				<table>
+		
+		<div id="middle_contents1">
+			<div id="middle_contents1_lv1">여기에 상품 이름
+			<div id="middle_contents1_lv2">꿍누르기♥</div>
+			</div>
+			<div id="middle_contents1_lv3">
+				<table style="margin: 10px 0px 0px 10px; line-height: 200%">
 					<tr>
-						<td>작성자</td>
-						<td>아이디</td>
+						<th>작성자 :</th>
+						<td>${raInfo.ra_mbid} 님</td>
+						<td></td>
 					</tr>
 					<tr>
-						<td>수량</td>
+						<th>수량 :</th>
 						<td>1EA(짝/켤레/쌍)</td>
-						<td style="color: gray; font-size: 10px;">수량은 1개로 고정입니다.</td>
+						<td style="color: gray; font-size: 11px;">제작의뢰 수량은 DEFAULT 1개 입니다.</td>
 					</tr>
 					<tr>
-						<td colspan="2">회원님이 낙찰한 금액</td>
-						<td>0원</td>
+						<th>회원님이 낙찰한 금액 :</th>
+						<td colspan="2"><div id="tender_result">0원</div></td>
 					</tr>
 				</table>
 				<div id="revauctiontime">경매 남은 시간 표시</div>
