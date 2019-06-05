@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.RevAuction;
+import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.userClass.UploadFile;
 
 @Service
@@ -15,6 +16,8 @@ public class RevAuctionMM {
 
 	@Autowired
 	HttpSession session;
+	@Autowired
+	private IRevAuctionDao rDao;
 	@Autowired
 	private UploadFile upload;
 
@@ -62,8 +65,26 @@ public class RevAuctionMM {
 	}
 
 	public ModelAndView revAuctionRead(int ra_num) {
-		mav.addObject("ra_num", ra_num);
-		mav.setViewName("revAuctionRead");
+		//mav.addObject("ra_num", ra_num);
+		String view = null;
+		RevAuction ra = new RevAuction();
+		ra = rDao.revAuctionReadSelect(ra_num);
+		
+		System.out.println("ra_num="+ra.getRa_num());
+		System.out.println("ra_mbid="+ra.getRa_mbid());
+		System.out.println("ra_title="+ra.getRa_title());
+		System.out.println("ra_cgcode="+ra.getRa_cgcode());
+		System.out.println("ra_image="+ra.getRa_image());
+		System.out.println("ra_file="+ra.getRa_file());
+		System.out.println("ra_oc="+ra.getRa_oc());
+		System.out.println("ra_date="+ra.getRa_date());
+		System.out.println("ra_contents="+ra.getRa_contents());
+		
+		mav.addObject("raInfo",ra);
+		if(ra!=null) {
+			view = "revAuctionRead";
+		}
+			mav.setViewName(view);
 		return mav;
 	}
 

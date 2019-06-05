@@ -11,5 +11,8 @@ public interface IRevAuctionDao {
 	int revAuctionSubmitInsert(RevAuction ra);
 
 	List<RevAuction> getRevAuctionListSelect(RevAuction rau);
+
+	RevAuction revAuctionReadSelect(int ra_num);
+
   
 }
