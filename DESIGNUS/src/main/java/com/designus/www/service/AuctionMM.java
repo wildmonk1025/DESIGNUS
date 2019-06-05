@@ -1,16 +1,18 @@
 package com.designus.www.service;
 
-import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.RevAuction;
+import com.designus.www.bean.revAuctionProgress;
+import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 
 @Service
@@ -18,6 +20,10 @@ import com.designus.www.dao.IauctionDao;
 public class AuctionMM {
 	@Autowired
 	private IauctionDao aDao;
+	
+	@Autowired
+	private IRevAuctionDao raDao;
+	
 	@Autowired
     private HttpSession session;
 	
@@ -66,6 +72,27 @@ public class AuctionMM {
 		
 		
 		mav.setViewName(view);
+		return mav;
+	}
+
+
+	public ModelAndView auctionList(int cgcode) {
+		mav=new ModelAndView();
+		String view="null";
+		List<Auction> auList = null;
+		List<RevAuction> raList = null;
+		Auction au = new Auction();
+		RevAuction rau = new RevAuction();
+		au.setAu_cgcode(cgcode);
+		rau.setRa_cgcode(cgcode);
+		
+		auList = aDao.getAuctionListSelect(au);
+		raList = raDao.getRevAuctionListSelect(rau);
+		mav.addObject("auList",auList);
+		//mav.addObject("paging", getPaging(num));
+		view="auctionList";
+		
+		
 		return mav;
 	}
 	
