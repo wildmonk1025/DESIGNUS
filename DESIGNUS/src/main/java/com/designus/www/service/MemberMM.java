@@ -100,7 +100,9 @@ public class MemberMM {
 		mb.setMb_email(email);
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
+		
 		boolean f = false;
+		
 		if (check == 1) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
 			// 이클립스 서버에 파일을 업로드 한 후,
