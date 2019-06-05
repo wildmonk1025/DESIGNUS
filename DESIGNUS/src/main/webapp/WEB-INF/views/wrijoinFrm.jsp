@@ -224,7 +224,7 @@ function fileChk(elem) {
 		}else{
 			console.log("Notempty");
 			$('#fileCheck').val(4);//파일 첨부 했음
-		};
+		}
 	
 	</script>
 </html>

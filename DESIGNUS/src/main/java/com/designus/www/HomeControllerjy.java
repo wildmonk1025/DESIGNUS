@@ -24,9 +24,9 @@ import com.designus.www.service.MemberMM;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class HomeControllerjy {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeControllerjy.class);
 	@Autowired
 	private MemberMM mm;
 	@Autowired
@@ -102,14 +102,14 @@ public class HomeController {
 		return mav;
 	}
 	
-	/*
-	 * @RequestMapping(value = "/wrimemberapply", method = RequestMethod.POST)
-	 * public ModelAndView wrimemberapply(MultipartHttpServletRequest multi, String
-	 * kind) { System.out.println("작가회원가입" + multi.getFileNames()); mav = new
-	 * ModelAndView();
-	 * 
-	 * mav = mm.wriapply(multi, kind); return mav; }
-	 */
+	@RequestMapping(value = "/wrimemberapply", method = RequestMethod.POST)
+	public ModelAndView wrimemberapply(MultipartHttpServletRequest multi, String kind) {
+		System.out.println("작가회원가입" + multi.getFileNames());
+		mav = new ModelAndView();
+
+		mav = mm.wriapply(multi, kind);
+		return mav;
+	}
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage() {
