@@ -8,6 +8,12 @@
 	<select id="getbestInfo" parameterType="auction" resultType="auction">
 		SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
 	</select>
+	<select id="getnewInfo" parameterType="auction" resultType="auction">
+		SELECT * FROM AU_BEST ORDER BY AU_DATE DESC
+	</select>
+	<select id="getimgInfo" parameterType="auction" resultType="auction">
+		SELECT * FROM AU_BEST ORDER BY AU_DATE DESC
+	</select>
 
 
 </mapper>
