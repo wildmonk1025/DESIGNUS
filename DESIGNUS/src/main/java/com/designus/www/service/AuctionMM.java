@@ -88,8 +88,12 @@ public class AuctionMM {
 		
 		auList = aDao.getAuctionListSelect(au);
 		raList = raDao.getRevAuctionListSelect(rau);
+		//
+		
 		mav.addObject("auList",auList);
+		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
+		
 		view="auctionList";
 		
 		

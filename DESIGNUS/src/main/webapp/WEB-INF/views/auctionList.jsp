@@ -117,11 +117,10 @@
 			<button id="Lbtn2" class="btn2">출품 리스트</button>
 			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
-			제작의뢰 리스트 
+			${raList}
 			</div>
 			<div id="ListView2">
-			출품리스트
-			
+			${auList}
 			</div>
 
 		</div>
