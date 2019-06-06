@@ -11,7 +11,7 @@ public interface IRevAuctionDao {
 
 	List<RevAuction> getRevAuctionListSelect(RevAuction rau);
 
-	RevAuction revAuctionReadSelect(int ra_num);
+	RevAuction revAuctionReadSelect(RevAuction ra_num);
 
   
 }

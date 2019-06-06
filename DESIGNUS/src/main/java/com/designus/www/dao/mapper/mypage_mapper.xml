@@ -25,4 +25,10 @@
 	<delete id="withdrawalconfirmDelete" parameterType="member">
 	 DELETE FROM MB WHERE MB_ID=#{mb_id}
 	</delete>
+	<insert id="nortowriapplyInsert" parameterType="major">
+         INSERT INTO MAJOR VALUES(#{mj_id},#{mj_cg_code},#{mj_portf},#{mj_contents},DEFAULT)
+	</insert>
+	<update id="nortowriapplyupdate" parameterType="member">
+      UPDATE MB SET MB_GRADE='X' WHERE MB_ID=#{mj_id}
+     </update>
 </mapper>

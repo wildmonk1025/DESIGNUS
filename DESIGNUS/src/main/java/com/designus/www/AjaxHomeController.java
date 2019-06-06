@@ -30,4 +30,22 @@ public class AjaxHomeController {
 		  System.out.println("이거는??????");
 		return aa;	
 	} 
+	@RequestMapping(value = "/newajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
+	public String replyInsert1() {
+		System.out.println("dd");
+		String aa = cm.newajax();
+		System.out.println("cm="+cm.newajax());
+		System.out.println("aList="+aa);
+		System.out.println("이거는??????");
+		return aa;	
+	} 
+	@RequestMapping(value = "/imgajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
+	public String imgInsert() {
+		System.out.println("dd");
+		String aa = cm.imgajax();
+		System.out.println("cm="+cm.imgajax());
+		System.out.println("aList="+aa);
+		System.out.println("이거는??????");
+		return aa;	
+	} 
 }
