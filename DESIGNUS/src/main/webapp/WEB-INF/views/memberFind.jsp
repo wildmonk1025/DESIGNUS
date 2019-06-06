@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디, 비밀번호 찾기 페이지</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -289,18 +289,18 @@ button:hover {
 					<table>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="mb_name"></td>
+							<td><input type="text" id="mb_name" name="mb_name" value="123"></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="mb_email"></td>
+							<td><input type="text" id="mb_email" name="mb_email" value="321"></td>
 							<td><input id="btz2" type="button" value="이메일 인증"
 								onclick="emailcheck()"></td>
 						</tr>
 					</table>
 				</div>
 				<div id="text2" align="center">
-					<button id="idf" onclick="AjId('mb_email')">아이디 찾기</button>
+					<button id="idf" onclick="AjId()">아이디 찾기</button>
 				</div>
 				<div id="idfindd">
 					회원님의 아이디는
@@ -319,15 +319,15 @@ button:hover {
 					<table>
 						<tr>
 							<th>아이디</th>
-							<td><input type="text" name="mb_id"></td>
+							<td><input type="text" name="mb_id" id="mb_pwid"></td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="mb_name"></td>
+							<td><input type="text" name="mb_name" id="mb_pwname"></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="mb_email"></td>
+							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
 							<td><input id="btz" type="button" value="이메일 인증"
 								onclick="emailcheck()"></td>
 						</tr>
@@ -352,31 +352,35 @@ button:hover {
 		<div id="contents_layer"></div>
 	</div>
 </body>
-<script>
-	$('#idf').click(function() {
-		$("#text1").css("display", "block");
-		$("#idf").css("display", "none");
-		$('#idfindd').css("display", "block");
-	});
-	function AjId(mb_email) {
+<script>	
+	function AjId() {
+	var mb_email = $("#mb_email").val();
+	var mb_name = $("#mb_name").val();
+	console.log(mb_email);
+	console.log(mb_name);
 		$.ajax({
-			url:'memberidfind',
-			type:'post',
-		datatype:'json',
-		data:{email:mb_email},
-		 contentType : "application/x-www-form-urlencoded; charset=utf-8", 
-			success:function(data){
-				
-				
-			}error : function(request, status, error) {
-	            alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
-			});//ajax end 
-	       }//AjIdEnd
- 
-		
-
-		//ajax 실행문 작성
+			url : 'memberidfind',
+			type : 'POST',
+			datatype : 'json',
+			data : {
+				email : mb_email,
+				name : mb_name
+			},
+			success : function(data) {
+				$('#idf').click(function() {
+					$("#text1").css("display", "block");
+					$("#idf").css("display", "none");
+					$('#idfindd').css("display", "block");
+				});
+			},
+			error : function(error) {
+				alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
+			}//AjIdEnd
+		});//ajax end 
 	}
+
+	//ajax 실행문 작성
+
 	function Aj(id) {
 		$('#articleView_layer').addClass('open');
 
