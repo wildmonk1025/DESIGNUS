@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -345,17 +346,15 @@
             </table>
         </div>
         <div id="spon1">
-            <button id="Lbtn1"> 출품 꿍리스트</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="Lbtn2"> 제작의뢰 꿍리스트</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="Lbtn3"> 후원 꿍리스트</button>
+            <button id="Lbtn1" onclick="Aucbtn()"> 출품 꿍리스트</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="Lbtn2" onclick="ReAucbtn()"> 제작의뢰 꿍리스트</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="Lbtn3" onclick="sponbtn()"> 후원 꿍리스트</button>
         </div>
         <div id="list">
             <div id="ListView1">
                 출품 꿍리스트
-                <div class="lv1">출품상품1</div>
-                <div class="lv2">출품상품2</div>
-                <div class="lv3">출품상품3</div>
-                <div class="lv4">출품상품4</div>
+                <div id="cnfvna" class="lv1">${lbauc}</div>
+                
                 <div class="lv5">페이징<br>
                     <h3 class="page">[1][2][3][4][5].....[45]</h3>
                 </div>
@@ -363,23 +362,20 @@
             </div>
             <div id="ListView2">
                 제작의뢰 꿍리스트
-                <div class="lv1">제작의뢰상품1</div>
-                <div class="lv2">제작의뢰상품2</div>
-                <div class="lv3">제작의뢰상품3</div>
-                <div class="lv4">제작의뢰상품4</div>
+                <div id="wpwkr" class="lv1"></div>
+            
+               
                 <div class="lv5">페이징<br>
-                    <h3 calss="page">[1][2][3][4][5].....[45]</h3>
+                    <h3 class="page">[1][2][3][4][5].....[45]</h3>
                 </div>
                 <div class="lv6"><button type="button" onclick="location.href='myPage.html' ">돌아가기</button></div>
             </div>
             <div id="ListView3">
                 후원꿍리스트
-                <div class="lv1">후원상품1</div>
-                <div class="lv2">후원상품2</div>
-                <div class="lv3">후원상품3</div>
-                <div class="lv4">후원상품4</div>
+                <div id="gndnjs" class="lv1">44</div>
+               
                 <div class="lv5">페이징<br>
-                    <h3 calss="page">[1][2][3][4][5].....[45]</h3>
+                    <h3 class="page">[1][2][3][4][5].....[45]</h3>
                 </div>
                 <div class="lv6"><button type="button" onclick="location.href='myPage.html' ">돌아가기</button></div>
             </div>
@@ -390,27 +386,130 @@
             <div id="img">
                 <h1>프로필사진</h1>
             </div>
-    </div>
+  
 
 
 
 </body>
 <script type="text/javascript">
-    $("#Lbtn1").click(function() {
+ 
+ var btn1=$("#Lbtn1");
+ var btn2=$("#Lbtn2");
+ var btn3=$("#Lbtn3");
+
+ function Aucbtn() {
+	 
+	  $("#ListView1").css("display", "inline");
+      $("#ListView2").css("display", "none");
+      $("#ListView3").css("display", "none");
+     
+      $.ajax({
+  		url: "ajax/lbauc",
+  		type:"post",
+  	    processData : false,
+  	    dataType:"json",//생략가능
+  	    success:function(data){
+  	    
+  	    	console.log(data);
+  	    	//console.log(data[0][0].aui_img);
+  	    	console.log(data[0].aui_img);
+  	    	var rList='';
+			for(key in data){
+					rList+="<a href='auctionread?ab_aunum="+data[key].ab_aunum+"'>"
+							+data[key].aui_img+"</a>"
+					       +'상품 이름 : '+data[key].au_title+"<br/>";
+			}
+			$('#cnfvna').html(rList);
+  	    	
+  	    },
+  	    error:function(error){
+  	    	alert('에러');
+  	    	console.log(error);
+  	    }
+  		 
+  	 });
+}
+ function ReAucbtn() {
+	 $("#ListView1").css("display", "none");
+     $("#ListView2").css("display", "inline");
+     $("#ListView3").css("display", "none");
+     $.ajax({
+   		url: "ajax/lbrev",
+   		type:"post",
+   	    processData : false,
+   	    dataType:"json",//생략가능
+   	    success:function(data){
+   	    
+   	    	console.log(data);
+   	    	//console.log(data[0][0].aui_img);
+   	    	console.log(data[0].aui_img);
+   	    	var rList2='';
+ 			for(key in data){
+ 					rList2+="<a href='auctionread?rab_ranum="+data[key].rab_ranum+"'>"
+ 							+data[key].ra_image+"</a>"
+ 					       +'상품 이름 : '+data[key].ra_title+"<br/>";
+ 			}
+ 			$('#wpwkr').html(rList2);
+   	    	
+   	    },
+   	    error:function(error){
+   	    	alert('에러');
+   	    	console.log(error);
+   	    }
+   		 
+   	 });
+}
+ function sponbtn() {
+	 
+     $("#ListView1").css("display", "none");
+     $("#ListView2").css("display", "none");
+     $("#ListView3").css("display", "inline");
+     $.ajax({
+   		url: "ajax/lbspon",
+   		type:"post",
+   	    processData : false,
+   	    dataType:"json",//생략가능
+   	    success:function(data){
+   	    
+   	    	console.log(data);
+   	    	//console.log(data[0][0].aui_img);
+   	    	console.log(data[0].aui_img);
+   	    	var rList3='';
+ 			for(key in data){
+ 					rList3+="<a href='auctionread?sb_ssnum="+data[key].sb_ssnum+"'>"
+ 							+data[key].ssi_img+"</a>"
+ 					       +'상품 이름 : '+data[key].ss_title+"<br/>";
+ 			}
+ 			$('#gndnjs').html(rList3);
+   	    	
+   	    },
+   	    error:function(error){
+   	    	alert('에러');
+   	    	console.log(error);
+   	    }
+   		 
+   	 });
+}
+    
+    /*$("#Lbtn1").click(function() {
         $("#ListView1").css("display", "inline");
         $("#ListView2").css("display", "none");
         $("#ListView3").css("display", "none");
+     
+    });*/
 
-    });
-
-    $("#Lbtn2").click(function() {
+    /*$("#Lbtn2").click(function() {
+    	 
         $("#ListView1").css("display", "none");
         $("#ListView2").css("display", "inline");
         $("#ListView3").css("display", "none");
-    });
-    $("#Lbtn3").click(function() {
+        
+    });*/
+    /*$("#Lbtn3").click(function() {
+    	 
         $("#ListView1").css("display", "none");
         $("#ListView2").css("display", "none");
         $("#ListView3").css("display", "inline");
-    });
+        
+    });*/
 </script></html>

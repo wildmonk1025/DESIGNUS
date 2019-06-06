@@ -23,54 +23,69 @@ public class MypageController {
 
 	@RequestMapping(value = "/historylist", method = RequestMethod.GET)
 	public ModelAndView historylist(String list) {
-		System.out.println("ddd="+list);
-        mav= pm.historylist(list);
-        System.out.println("view="+mav.getViewName());
+		System.out.println("ddd=" + list);
+		mav = pm.historylist(list);
+		System.out.println("view=" + mav.getViewName());
 		return mav;
 	}
+
 	@RequestMapping(value = "/privacyedit", method = RequestMethod.GET)
 	public ModelAndView privacyedit() {
-		
-        mav= pm.privacyedit();
-        
+
+		mav = pm.privacyedit();
+
 		return mav;
 	}
+
 	@RequestMapping(value = "/memberout", method = RequestMethod.GET)
 	public ModelAndView memberout() {
-		
-        mav= pm.memberout();
-        
+
+		mav = pm.memberout();
+
 		return mav;
 	}
+
 	@RequestMapping(value = "/nortowri", method = RequestMethod.GET)
 	public ModelAndView nortowri() {
-		
-        mav= pm.nortowri();
-        
+
+		mav = pm.nortowri();
+
 		return mav;
 	}
+
 	@RequestMapping(value = "/memberrevise", method = RequestMethod.POST)
-	public ModelAndView memberrevise(MultipartHttpServletRequest multi,String kind) {
-		  mav = new ModelAndView();
-		  System.out.println("id="+multi.getParameter("mb_pw"));
-		  System.out.println("address="+multi.getParameter("mb_address"));
-          mav= pm.memberrevise(multi,kind);
-          mav.setViewName("memberEdit");
+	public ModelAndView memberrevise(MultipartHttpServletRequest multi, String kind) {
+		mav = new ModelAndView();
+		System.out.println("id=" + multi.getParameter("mb_pw"));
+		System.out.println("address=" + multi.getParameter("mb_address"));
+		mav = pm.memberrevise(multi, kind);
+		mav.setViewName("memberEdit");
 		return mav;
 	}
-	@RequestMapping(value = "/withdrawalconfirm",method = RequestMethod.POST)
+
+	@RequestMapping(value = "/withdrawalconfirm", method = RequestMethod.POST)
 	public ModelAndView withdrawalconfirm(Member mb) {
-		  mav=new ModelAndView();
-		  mav=pm.withdrawalconfirm(mb);
+		mav = new ModelAndView();
+		mav = pm.withdrawalconfirm(mb);
 		return mav;
 	}
-	@RequestMapping(value = "/nortowriapply",method = RequestMethod.POST)
-	
+
+	@RequestMapping(value = "/nortowriapply", method = RequestMethod.POST)
+
 	public ModelAndView nortowriapply(MultipartHttpServletRequest multi) {
-		System.out.println("r_bnum"+multi.getParameter("mj_cg_code"));
-		System.out.println("r_contents"+multi.getParameter("mj_contents"));
-		mav=new ModelAndView();
-		   mav=pm.nortowriapply(multi);
+		System.out.println("r_bnum" + multi.getParameter("mj_cg_code"));
+		System.out.println("r_contents" + multi.getParameter("mj_contents"));
+		mav = new ModelAndView();
+		mav = pm.nortowriapply(multi);
+		return mav;
+	}
+
+	@RequestMapping(value = "/basketFrm", method = RequestMethod.POST)
+
+	public ModelAndView basketFrm(Integer pageNum) {
+		
+		mav = new ModelAndView();
+		 mav=pm.basketFrm(pageNum);
 		return mav;
 	}
 }
