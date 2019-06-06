@@ -100,10 +100,22 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionRead(int num) {
+	public ModelAndView auctionRead(int au_num) {
+		mav=new ModelAndView();
+		String view = null;
+		List<Auction> audList = null;
+		Auction au = new Auction();
+		au.setAu_num(au_num);
 		
+		audList = aDao.getAuctionReadSelect(au);
 		
-		return null;
+		mav.addObject("audList",audList);
+		
+		view = "auctionRead";
+		
+		mav.setViewName(view);
+		
+		return mav;
 	}
 	
 

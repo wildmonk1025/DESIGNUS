@@ -13,6 +13,8 @@ public interface IauctionDao {
 
 	List<Auction> getAuctionListSelect(Auction au);
 
+	List<Auction> getAuctionReadSelect(Auction au);
+
   
   
 }

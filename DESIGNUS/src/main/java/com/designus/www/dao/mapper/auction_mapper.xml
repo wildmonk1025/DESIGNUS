@@ -12,6 +12,10 @@
 		SELECT * FROM AU WHERE AU_CGCODE = ${au_cgcode}
 	</select>
 
+	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
+		SELECT * FROM AU WHERE AU_NUM = ${au_num}
+	</select>
+
 
 
 </mapper>
