@@ -158,13 +158,13 @@
 	float: left;
 	border: 1px solid black;
 	width: 333px;
-	height: 65px;
+	height: 85px;
 }
 .auListDate{
 	float: left;
 	border: 1px solid green;
 	width: 333px;
-	height: 49px;
+	height: 28px;
 	font-size: 20px;
 	color: red;
 }
@@ -213,7 +213,8 @@
 					</div>
 					<div class="auListPrice">
 						수	   량 : ${au.au_qty }			<br>
-						경매최저가 : ${au.au_minprice}     <br>
+						경매시작가 : ${au.au_minprice}     <br>
+						즉시구매가 : ${au.au_inprice}     <br>
 						경매최고가 : el로 가져와
 					</div>
 					<div class="auListDate">
