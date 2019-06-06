@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디, 비밀번호 찾기 페이지</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -60,6 +60,10 @@ button {
 		Strength=3);
 }
 
+button:hover {
+	color: white;
+}
+
 #text1 {
 	width: 330px;
 	height: 100px;
@@ -68,16 +72,17 @@ button {
 }
 
 #pwtext1 {
-	float: left;
-	top: 30px;
-	left: 100px;
+	width: 330px;
+	height: 100px;
+	text-align: center;
+	display: block;
 }
 
 #pwlist {
-	width: 600px;
-	height: 250px;
+	text-align: center;
+	width: 400px;
+	height: 130px;
 	display: none;
-	border: 1px solid black;
 }
 
 #list {
@@ -104,15 +109,6 @@ button {
 #pwf {
 	width: 250;
 	height: 40;
-}
-
-#idhome {
-	
-}
-
-#pwhome {
-	top: 140;
-	left: 247px;
 }
 
 #articleView_layer #bg_layer {
@@ -154,7 +150,8 @@ button {
 
 #idfindd {
 	display: none;
-	font-size: 35px;
+	font-size: 25px;
+	margin: auto;
 }
 
 #findcheckmain {
@@ -256,6 +253,13 @@ button {
 	text-align: center;
 }
 
+#pwtext2 {
+	width: 400px;
+	height: 50px;
+	display: block;
+	text-align: center;
+}
+
 #revauctionbtn:hover {
 	color: white;
 }
@@ -266,8 +270,7 @@ button {
 
 #btz2:hover {
 	color: white;
-} 
-
+}
 </style>
 </head>
 <body>
@@ -275,37 +278,40 @@ button {
 		<div id="logoimgdiv">
 			<a href="home"><img id="logoimg" src="img/logo"></a>
 		</div>
-		<div id="full">
-			<div id="idfind">
-				<div id="buttondiv">
-					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
-					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+		<div id="idfind">
+			<div id="buttondiv">
+				<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
+				<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+			</div>
+			<br> <br>
+			<div id="list">
+				<div id="text1" align="center">
+					<table>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" id="mb_name" name="mb_name" value="123"></td>
+						</tr>
+						<tr>
+							<th>이메일</th>
+							<td><input type="text" id="mb_email" name="mb_email" value="321"></td>
+							<td><input id="btz2" type="button" value="이메일 인증"
+								onclick="emailcheck()"></td>
+						</tr>
+					</table>
 				</div>
-				<br> <br>
-				<div id="list">
-					<div id="text1" align="center">
-						<table>
-							<tr>
-								<th>이름</th>
-								<td><input type="text" name="mb_name"></td>
-							</tr>
-							<tr>
-								<th>이메일</th>
-								<td><input type="text" name="mb_email"></td>
-								<td><input id="btz2" type="button" value="이메일 인증"
-									onclick="emailcheck()"></td>
-							</tr>
-						</table>
-					</div>
-					<div id="text2" align="center">
-						<button id="idf" onclick="AjId('mb_email')">아이디 찾기</button>
-					</div>
-					<div id="bestlist">
-						<a id="idhome" href="home">홈으로가기</a>
-					</div>
+				<div id="text2" align="center">
+					<button id="idf" onclick="AjId()">아이디 찾기</button>
+				</div>
+				<div id="idfindd">
+					회원님의 아이디는
+					<!--이엘문 찍기-->
+				</div>
+				<div id="bestlist">
+					<a id="idhome" href="home">홈으로가기</a>
 				</div>
 			</div>
 		</div>
+
 
 		<div id="pwfindcheckmain">
 			<div id="pwlist">
@@ -313,22 +319,22 @@ button {
 					<table>
 						<tr>
 							<th>아이디</th>
-							<td><input type="text" name="mb_id"></td>
+							<td><input type="text" name="mb_id" id="mb_pwid"></td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="mb_name"></td>
+							<td><input type="text" name="mb_name" id="mb_pwname"></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="mb_email"></td>
+							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
 							<td><input id="btz" type="button" value="이메일 인증"
 								onclick="emailcheck()"></td>
 						</tr>
 					</table>
 				</div>
 				<div id="pwtext2" align="center">
-					<button id="pwf" onclick="Aj('mb_id')">비밀번호 찾기</button>
+					<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
 				</div>
 				<div id="pwbestlist">
 					<a id="pwhome" href="home">홈으로가기</a>
@@ -338,10 +344,7 @@ button {
 
 	</div>
 	<!--아이디 명시-->
-	<div id="idfindd">
-		회원님의 아이디는
-		<!--이엘문 찍기-->
-	</div>
+
 
 	<!--새로운 비밀번호 입력 표시 라이트 박스 창-->
 	<div id="articleView_layer">
@@ -349,21 +352,40 @@ button {
 		<div id="contents_layer"></div>
 	</div>
 </body>
-<script>
-	$('#idf').click(function() {
-		$("#text1").css("display", "none");
-		$("#idf").css("display", "none");
-		$('#idfindd').css("display", "block");
-	});
-/* 	function Aj(email) {
-
-		//ajax 실행문 작성
+<script>	
+	function AjId() {
+	var mb_email = $("#mb_email").val();
+	var mb_name = $("#mb_name").val();
+	console.log(mb_email);
+	console.log(mb_name);
+		$.ajax({
+			url : 'memberidfind',
+			type : 'POST',
+			datatype : 'json',
+			data : {
+				email : mb_email,
+				name : mb_name
+			},
+			success : function(data) {
+				$('#idf').click(function() {
+					$("#text1").css("display", "block");
+					$("#idf").css("display", "none");
+					$('#idfindd').css("display", "block");
+				});
+			},
+			error : function(error) {
+				alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
+			}//AjIdEnd
+		});//ajax end 
 	}
+
+	//ajax 실행문 작성
+
 	function Aj(id) {
 		$('#articleView_layer').addClass('open');
-		//ajax 실행문 작성
+
 	}
- */
+
 	$("#revauctionbtn").click(function() {
 		$("#list").css("display", "block");
 		$("#pwlist").css("display", "none");
@@ -377,8 +399,5 @@ button {
 	$layerWindow.find('#bg_layer').on('mousedown', function(event) {
 		$layerWindow.removeClass('open');
 	});//function End
- 
-		
-	
 </script>
 </html>
