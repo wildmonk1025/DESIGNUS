@@ -12,10 +12,13 @@
 		SELECT * FROM AU_BEST ORDER BY AU_DATE DESC
 	</select>
 	<select id="getimgInfo" parameterType="auction" resultType="auction">
-		SELECT AUI_NUM, AUI_IMG FROM AUI  JOIN(SELECT AU_NUM FROM 
-                        AU WHERE AU_NUM=${au_num}) AU
-                        ON AUI_NUM=AU_NUM;
+
+            SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
+                        
 	</select>
 
 
 </mapper>
+<!-- 		SELECT AUI_NUM, AUI_IMG FROM AUI  JOIN(SELECT AU_NUM FROM 
+                        AU WHERE AU_NUM=${au_num}) AU
+                        ON AUI_NUM=AU_NUM -->
