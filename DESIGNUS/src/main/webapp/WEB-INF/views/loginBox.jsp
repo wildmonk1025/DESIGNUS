@@ -10,6 +10,10 @@ div {
 	margin: auto;
 }
 
+text {
+	font-size: 17px;
+}
+
 #logoimg {
 	width: 250px;
 	height: 80px;
