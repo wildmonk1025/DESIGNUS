@@ -4,6 +4,7 @@
 <%@ page session="false"%>
 <html>
 <head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 #mainheader {
@@ -90,9 +91,10 @@
 		<br> <br>
 		<div id="list">
 			<div id="text1" align="center" onclick="Ajbest1()">오늘의 추천 작품</div>
-			<div id="coklist"onclick="Ajbest2()" ></div>
+			<div id="coklist" ></div>
 			<br> <br>
 			<div id="text2" align="center" onclick="Ajbest()">베스트 상품</div>
+			<div id="text2" align="center" onclick="Ajbest2()">제발되라</div>
 			<div id="bestlist"></div>
 		</div>
 	</div>
@@ -167,10 +169,10 @@ function Ajbest2() {
 			for(var i=0; i<3; i++){
 				result+=
 					"<div class='best'>"+"작가아이디:"
-					   +data[i].aui_num+"<br>"
-					   +data[i].aui_img+"<br>"
+					   +data[i].au_mbid_w+"<br>"+"상품번호:"+data[i].au_num+"<br>"
+				+"상품설명:"+data[i].au_contents+"<br>"+"추천수:"+data[i].au_count+"<br>"
 				+"</div>"}
-			$("#coklist").html(result);
+			$("#bestlist").html(result);
 		},
 	error:function(error){
 		console.log("실패");
