@@ -154,6 +154,11 @@ public class MemberMM {
 		return mav;
 	}
 
+	public String memberidfind() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

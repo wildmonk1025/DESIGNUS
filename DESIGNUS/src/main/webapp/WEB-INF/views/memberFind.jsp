@@ -60,6 +60,10 @@ button {
 		Strength=3);
 }
 
+button:hover {
+	color: white;
+}
+
 #text1 {
 	width: 330px;
 	height: 100px;
@@ -78,6 +82,7 @@ button {
 	text-align: center;
 	width: 400px;
 	height: 130px;
+	display: none;
 }
 
 #list {
@@ -145,7 +150,8 @@ button {
 
 #idfindd {
 	display: none;
-	font-size: 35px;
+	font-size: 25px;
+	margin: auto;
 }
 
 #findcheckmain {
@@ -272,73 +278,73 @@ button {
 		<div id="logoimgdiv">
 			<a href="home"><img id="logoimg" src="img/logo"></a>
 		</div>
-		<div id="full">
-			<div id="idfind">
-				<div id="buttondiv">
-					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
-					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+		<div id="idfind">
+			<div id="buttondiv">
+				<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
+				<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+			</div>
+			<br> <br>
+			<div id="list">
+				<div id="text1" align="center">
+					<table>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" name="mb_name"></td>
+						</tr>
+						<tr>
+							<th>이메일</th>
+							<td><input type="text" name="mb_email"></td>
+							<td><input id="btz2" type="button" value="이메일 인증"
+								onclick="emailcheck()"></td>
+						</tr>
+					</table>
 				</div>
-				<br> <br>
-				<div id="list">
-					<div id="text1" align="center">
-						<table>
-							<tr>
-								<th>이름</th>
-								<td><input type="text" name="mb_name"></td>
-							</tr>
-							<tr>
-								<th>이메일</th>
-								<td><input type="text" name="mb_email"></td>
-								<td><input id="btz2" type="button" value="이메일 인증"
-									onclick="emailcheck()"></td>
-							</tr>
-						</table>
-					</div>
-					<div id="text2" align="center">
-						<button id="idf" onclick="AjId('mb_email')">아이디 찾기</button>
-					</div>
-					<div id="bestlist">
-						<a id="idhome" href="home">홈으로가기</a>
-					</div>
+				<div id="text2" align="center">
+					<button id="idf" onclick="AjId('mb_email')">아이디 찾기</button>
+				</div>
+				<div id="idfindd">
+					회원님의 아이디는
+					<!--이엘문 찍기-->
+				</div>
+				<div id="bestlist">
+					<a id="idhome" href="home">홈으로가기</a>
 				</div>
 			</div>
 		</div>
 
-		<!-- <div id="pwfindcheckmain"> -->
-		<div id="pwlist">
-			<div id="pwtext1" align="center">
-				<table>
-					<tr>
-						<th>아이디</th>
-						<td><input type="text" name="mb_id"></td>
-					</tr>
-					<tr>
-						<th>이름</th>
-						<td><input type="text" name="mb_name"></td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td><input type="text" name="mb_email"></td>
-						<td><input id="btz" type="button" value="이메일 인증"
-							onclick="emailcheck()"></td>
-					</tr>
-				</table>
-			</div>
-			<div id="pwtext2" align="center">
-				<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
-			</div>
-			<div id="pwbestlist">
-				<a id="pwhome" href="home">홈으로가기</a>
+
+		<div id="pwfindcheckmain">
+			<div id="pwlist">
+				<div id="pwtext1" align="center">
+					<table>
+						<tr>
+							<th>아이디</th>
+							<td><input type="text" name="mb_id"></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" name="mb_name"></td>
+						</tr>
+						<tr>
+							<th>이메일</th>
+							<td><input type="text" name="mb_email"></td>
+							<td><input id="btz" type="button" value="이메일 인증"
+								onclick="emailcheck()"></td>
+						</tr>
+					</table>
+				</div>
+				<div id="pwtext2" align="center">
+					<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
+				</div>
+				<div id="pwbestlist">
+					<a id="pwhome" href="home">홈으로가기</a>
+				</div>
 			</div>
 		</div>
+
 	</div>
-
-	<!-- </div> -->
 	<!--아이디 명시-->
-	<div id="idfindd">
-		회원님의 아이디는
-		<!--이엘문 찍기-->
-	</div>
+
 
 	<!--새로운 비밀번호 입력 표시 라이트 박스 창-->
 	<div id="articleView_layer">
@@ -348,19 +354,34 @@ button {
 </body>
 <script>
 	$('#idf').click(function() {
-		$("#text1").css("display", "none");
+		$("#text1").css("display", "block");
 		$("#idf").css("display", "none");
 		$('#idfindd').css("display", "block");
 	});
-	/* 	function Aj(email) {
+	function AjId(mb_email) {
+		$.ajax({
+			url:'memberidfind',
+			type:'post',
+		datatype:'json',
+		data:{email:mb_email},
+		 contentType : "application/x-www-form-urlencoded; charset=utf-8", 
+			success:function(data){
+				
+				
+			}error : function(request, status, error) {
+	            alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
+			});//ajax end 
+	       }//AjIdEnd
+ 
+		
 
-	 //ajax 실행문 작성
-	 }
-	 function Aj(id) {
-	 $('#articleView_layer').addClass('open');
-	 //ajax 실행문 작성
-	 }
-	 */
+		//ajax 실행문 작성
+	}
+	function Aj(id) {
+		$('#articleView_layer').addClass('open');
+
+	}
+
 	$("#revauctionbtn").click(function() {
 		$("#list").css("display", "block");
 		$("#pwlist").css("display", "none");
