@@ -68,16 +68,16 @@ button {
 }
 
 #pwtext1 {
-	float: left;
-	top: 30px;
-	left: 100px;
+	width: 330px;
+	height: 100px;
+	text-align: center;
+	display: block;
 }
 
 #pwlist {
-	width: 600px;
-	height: 250px;
-	display: none;
-	border: 1px solid black;
+	text-align: center;
+	width: 400px;
+	height: 130px;
 }
 
 #list {
@@ -104,15 +104,6 @@ button {
 #pwf {
 	width: 250;
 	height: 40;
-}
-
-#idhome {
-	
-}
-
-#pwhome {
-	top: 140;
-	left: 247px;
 }
 
 #articleView_layer #bg_layer {
@@ -256,6 +247,13 @@ button {
 	text-align: center;
 }
 
+#pwtext2 {
+	width: 400px;
+	height: 50px;
+	display: block;
+	text-align: center;
+}
+
 #revauctionbtn:hover {
 	color: white;
 }
@@ -266,8 +264,7 @@ button {
 
 #btz2:hover {
 	color: white;
-} 
-
+}
 </style>
 </head>
 <body>
@@ -307,36 +304,36 @@ button {
 			</div>
 		</div>
 
-		<div id="pwfindcheckmain">
-			<div id="pwlist">
-				<div id="pwtext1" align="center">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><input type="text" name="mb_id"></td>
-						</tr>
-						<tr>
-							<th>이름</th>
-							<td><input type="text" name="mb_name"></td>
-						</tr>
-						<tr>
-							<th>이메일</th>
-							<td><input type="text" name="mb_email"></td>
-							<td><input id="btz" type="button" value="이메일 인증"
-								onclick="emailcheck()"></td>
-						</tr>
-					</table>
-				</div>
-				<div id="pwtext2" align="center">
-					<button id="pwf" onclick="Aj('mb_id')">비밀번호 찾기</button>
-				</div>
-				<div id="pwbestlist">
-					<a id="pwhome" href="home">홈으로가기</a>
-				</div>
+		<!-- <div id="pwfindcheckmain"> -->
+		<div id="pwlist">
+			<div id="pwtext1" align="center">
+				<table>
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" name="mb_id"></td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td><input type="text" name="mb_name"></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input type="text" name="mb_email"></td>
+						<td><input id="btz" type="button" value="이메일 인증"
+							onclick="emailcheck()"></td>
+					</tr>
+				</table>
+			</div>
+			<div id="pwtext2" align="center">
+				<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
+			</div>
+			<div id="pwbestlist">
+				<a id="pwhome" href="home">홈으로가기</a>
 			</div>
 		</div>
-
 	</div>
+
+	<!-- </div> -->
 	<!--아이디 명시-->
 	<div id="idfindd">
 		회원님의 아이디는
@@ -355,15 +352,15 @@ button {
 		$("#idf").css("display", "none");
 		$('#idfindd').css("display", "block");
 	});
-/* 	function Aj(email) {
+	/* 	function Aj(email) {
 
-		//ajax 실행문 작성
-	}
-	function Aj(id) {
-		$('#articleView_layer').addClass('open');
-		//ajax 실행문 작성
-	}
- */
+	 //ajax 실행문 작성
+	 }
+	 function Aj(id) {
+	 $('#articleView_layer').addClass('open');
+	 //ajax 실행문 작성
+	 }
+	 */
 	$("#revauctionbtn").click(function() {
 		$("#list").css("display", "block");
 		$("#pwlist").css("display", "none");
@@ -377,8 +374,5 @@ button {
 	$layerWindow.find('#bg_layer').on('mousedown', function(event) {
 		$layerWindow.removeClass('open');
 	});//function End
- 
-		
-	
 </script>
 </html>
