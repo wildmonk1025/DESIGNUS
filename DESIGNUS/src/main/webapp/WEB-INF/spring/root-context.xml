@@ -23,7 +23,7 @@
     <property name="javaMailSender" ref="javaMailSender" />
 </bean>
 <bean class="com.designus.www.MailController">
-    <property name="userService" ref="userService" /><!--  -->
+    <property name="userService" ref="userService" />
     <property name="mailService" ref="mailService" />
 </bean> -->
 
