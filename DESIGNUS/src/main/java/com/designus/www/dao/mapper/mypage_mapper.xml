@@ -63,10 +63,10 @@
    select * from(
     select rownum AS RN,AB_AUNUM,AB_MBID,AUI_IMG,AU_TITLE from IA
        where AB_MBID=#{id} and rownum<=#{num}*5
-     ) where rn>=#{num}*5-4;
+     ) where rn>=#{num}*5-4
   ]]>
 	</select>
-	<select id="getBoardCount" parameterType="String" resultType="basket">
+	<select id="getBoardCount" parameterType="String" resultType="Integer">
 		select count(*) from IA where AB_MBID=#{id}
 	</select>
 </mapper>

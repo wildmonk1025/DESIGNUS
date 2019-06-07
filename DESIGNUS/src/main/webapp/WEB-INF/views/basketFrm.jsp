@@ -353,11 +353,17 @@
         <div id="list">
             <div id="ListView1">
                 출품 꿍리스트
-                <div id="cnfvna" class="lv1">${lbauc}</div>
-                
-                <div class="lv5">페이징<br>
-                    <h3 class="page">[1][2][3][4][5].....[45]</h3>
+                <div id="cnfvna" class="lv1">
+                <c:forEach var="board" items="${bList}">
+				${board.au_title}
+				<a href='#' onclick="articleView(${board.ab_aunum})">${board.aui_img}</a>
+				${board.ab_mbid}
+		</c:forEach>
                 </div>
+                
+                <div class="lv5">${paging}</div><br>
+             
+                
                 <div class="lv6"><button type="button" onclick="location.href='myPage.html' ">돌아가기</button></div>
             </div>
             <div id="ListView2">

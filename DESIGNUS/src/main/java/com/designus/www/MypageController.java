@@ -80,10 +80,10 @@ public class MypageController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/basketFrm", method = RequestMethod.POST)
+	@RequestMapping(value = "/basketFrm", method = RequestMethod.GET)
 
 	public ModelAndView basketFrm(Integer pageNum) {
-		
+		System.out.println("여기로 와야 하는데....");
 		mav = new ModelAndView();
 		 mav=pm.basketFrm(pageNum);
 		return mav;

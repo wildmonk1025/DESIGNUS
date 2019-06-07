@@ -36,7 +36,7 @@ public interface ImypageDao {
 
 	List<Basket> basketSponsorselect(String id);
 
-	List<Basket> basketFrmSelect(@Param("num") int num,@Param("is") String id);
+	List<Basket> basketFrmSelect(@Param("num") int num,@Param("id") String id);
 
 	int getBoardCount(String id);
   
