@@ -1,5 +1,7 @@
 package com.designus.www.dao;
 
+import java.util.Map;
+
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 
@@ -17,5 +19,7 @@ public interface ImemberDao {
 	String getSecurityPwd(String mb_id);
 
 	Member getMemberInfo(String mb_id);
+
+	int memberlapcheck(String mbid);
 
 }

@@ -32,9 +32,10 @@ public class MypageMM {
 		mav = new ModelAndView();
 
 		String view = null;
-		List<Basket> lbauc = null;
-		List<Basket> lbrev = null;
-		List<Basket> lbspon = null;
+		/*
+		 * List<Basket> lbauc = null; List<Basket> lbrev = null; List<Basket> lbspon =
+		 * null;
+		 */
 
 		System.out.println("sddd:" + list);
 		if (list.equals("rev")) {
@@ -250,6 +251,8 @@ public class MypageMM {
 		List<Basket> bList = null;
 		String id=session.getAttribute("id").toString();
 		int num = (pageNum == null) ? 1 : pageNum;
+		System.out.println("id="+id);
+		System.out.println("num="+num);
 		bList = pDao.basketFrmSelect(num,id);
 		mav.addObject("bList", bList);
 		mav.addObject("paging", getPaging(num));// 현재 페이지 번호 ${paging}
@@ -263,6 +266,7 @@ public class MypageMM {
 
 	private Object getPaging(int pageNum) {
 		String id=session.getAttribute("id").toString();
+		System.out.println("dddddddd="+id);
 		int maxNum = pDao.getBoardCount(id); // 전체 글의 개수
 		int listCount = 5; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수

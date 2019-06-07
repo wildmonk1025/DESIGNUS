@@ -8,6 +8,20 @@
 		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT)
 	</insert>
 
+	<insert id="getAuctionBasketInsert" parameterType="basket">
+		INSERT INTO AUCTION_BASKET VALUES(${ab_aunum},#{ab_mbid})
+	</insert>
+	
+	<delete id="getAuctionBasketDelete" parameterType="basket">
+		DELETE FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
+	</delete>
+		
+	<select id="getAuctionBasketSelect" parameterType="basket" resultType="Integer">
+		SELECT NVL(max(ab_aunum),0)FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
+	</select>	
+	
+	
+
 	<select id="getAuctionListSelect" parameterType="auction" resultType="auction">
 		SELECT * FROM AU WHERE AU_CGCODE = ${au_cgcode}
 	</select>

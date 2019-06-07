@@ -18,4 +18,6 @@ public class RevAuction {
 	String ra_oc;
 	String ra_date;
 	String ra_contents;
+	String ra_max;
+	String ra_min;
 }
