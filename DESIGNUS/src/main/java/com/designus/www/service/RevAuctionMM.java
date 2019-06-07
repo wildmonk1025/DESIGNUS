@@ -1,5 +1,7 @@
 package com.designus.www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
+import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 @Service
 public class RevAuctionMM {
@@ -111,6 +115,19 @@ public class RevAuctionMM {
 			view = "auctionRead";
 		}	
 		return number;
+	}
+	
+	public String revAuctionAjax(RevAuctionTender rat_ranum) {
+		String jsonStr = null;
+		List<RevAuctionTender> tList = rDao.revAuctionAjaxSelect(rat_ranum);
+		System.out.println(tList.get(0));
+		if(tList.size()>0) {
+			jsonStr = new Gson().toJson(tList);			
+		} else {
+			jsonStr = "입찰내역이 없습니다.";
+		}
+		
+		return jsonStr;
 	}
 
 }

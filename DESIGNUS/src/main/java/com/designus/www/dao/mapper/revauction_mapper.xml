@@ -49,6 +49,9 @@
 	<select id="getrevAuctionBasketSelect" parameterType="basket" resultType="Integer">
 		SELECT NVL(max(rab_ranum),0)FROM REVAUCTION_BASKET WHERE RAB_RANUM = ${rab_ranum} AND RAB_MBID = #{rab_mbid}
 	</select>
-
+	
+	<select id="revAuctionAjaxSelect" parameterType="revauctiontender" resultType="revauctiontender">
+		SELECT * FROM RAT WHERE RAT_NUM = ${rat_ranum}
+	</select>
 
 </mapper>
