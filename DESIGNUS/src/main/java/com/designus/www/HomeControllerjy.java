@@ -106,7 +106,6 @@ public class HomeControllerjy {
 	 * 
 	 * mav = mm.memberidfind(multi, kind); return mav; }
 	 */
-
 	/*
 	 * @RequestMapping(value = "/mypage", method = RequestMethod.GET) public String
 	 * mypage() {
