@@ -90,8 +90,22 @@ public class AuctionMM {
 		
 		auList = aDao.getAuctionListSelect(au);
 		raList = rDao.getRevAuctionListSelect(rau);
-		//
 		
+	      for (int i = 0; i < raList.size(); i++) {
+	          //int ra_num=raList.get(i).getRa_num();
+	          String y = rDao.setRevAuctionTenderMinValue(raList.get(i));
+	          String y2 = rDao.setRevAuctionTenderMaxValue(raList.get(i));
+	          {
+	             if (y != null)
+	                raList.get(i).setRa_min(y);
+	             else
+	                raList.get(i).setRa_min("-");
+	             if (y2 != null)
+	                raList.get(i).setRa_max(y2);
+	             else
+	                raList.get(i).setRa_max("-");
+	          }
+	       }
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
@@ -106,22 +120,31 @@ public class AuctionMM {
 	public ModelAndView auctionRead(int au_num) {
 		mav=new ModelAndView();
 		String view = null;
+		String id = (String)session.getAttribute("id");
 		List<Auction> audList = null;
+		int nb = 1;
 		Auction au = new Auction();
+		Basket bk = new Basket();
+		bk.setAb_mbid(id);
 		au.setAu_num(au_num);
-		
+		bk.setAb_aunum(au_num);
 		audList = aDao.getAuctionReadSelect(au);
-		
+		nb = aDao.getAuctionBasketSelect(bk);
+		System.out.println("nb ="+nb);
+		bk.setAb_aunum(nb);
+
+		System.out.println("number ="+bk.getAb_aunum());
 		mav.addObject("audList",audList);
-		
-		view = "auctionRead";
+		mav.addObject("nb",bk.getAb_aunum());
+		mav.addObject("nb2",nb);
 		mav.addObject("au_num",au_num);
+		view = "auctionRead";
 		mav.setViewName(view);
 		
 		return mav;
 	}
 
-
+/*  아마 필요 없을듯 한 코드 ajax 로 해결함
 	public ModelAndView shopbasket(int ab_aunum) {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
@@ -146,8 +169,26 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
-
-
+*/
 	
-
-}
+	public int basketSelect(int num) {
+		String id = (String)session.getAttribute("id");
+		String view = null;
+		Basket bk = new Basket();
+		bk.setAb_aunum(num);
+		bk.setAb_mbid(id);
+		
+		mav.addObject("num",num);
+		
+		int number = aDao.getAuctionBasketSelect(bk);
+		
+		if(number == 0) {
+			aDao.getAuctionBasketInsert(bk);
+			view = "auctionRead";
+		} 
+		if(number > 0) {
+			aDao.getAuctionBasketDelete(bk);
+			view = "auctionRead";
+		}	
+		return number;
+	}}

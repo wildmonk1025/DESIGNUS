@@ -51,10 +51,10 @@ public class AuctionController {
 	public ModelAndView auctionRead(int au_num) {
 		mav = new ModelAndView();
 		mav = aum.auctionRead(au_num);
-		
 		return mav;
 	}
 	
+	/*  ajax 로 해서 필요 없을듯한 코드
 	@RequestMapping(value = "/shopbasket" )
 	public ModelAndView shopbasket(int ab_aunum) {
 		mav = new ModelAndView();
@@ -62,6 +62,6 @@ public class AuctionController {
 		
 		return mav;
 	}
-	
+	*/
 	
 }

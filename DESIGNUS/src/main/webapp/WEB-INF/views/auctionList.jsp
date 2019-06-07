@@ -193,8 +193,8 @@
 						${ra.ra_title }
 					</div>
 					<div class="raListPrice">
-						경매최저가 : el로 가져와      <br>
-						경매최고가 : el로 가져와
+						<p>경매최저가 : ${ra.ra_min }</p>
+						<p>경매최고가 : ${ra.ra_max }</p>
 					</div>
 					<div class="raListDate">
 						마감시간 : ${ra.ra_date}

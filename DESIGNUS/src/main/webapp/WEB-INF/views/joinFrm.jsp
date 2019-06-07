@@ -37,18 +37,12 @@
     }
      #joinbtz2{
         font-size: 45px;
-        position: relative;
-        top: 35px;
-        left: 95px;
         border: none;
         background: none;  
     }
     .img{
       width: 200px;
       height: 100px;
-      position: relative;
-      left: 95px;
-      top: 40px;
     }
     #full{
       position: relative;

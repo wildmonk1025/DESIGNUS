@@ -26,4 +26,29 @@
 		SELECT * FROM RA WHERE RA_NUM = ${ra_num}
 	</select>
 
+	<select id="setRevAuctionTenderMinValue" parameterType="revauction" resultType="String">
+		<![CDATA[
+		SELECT MIN(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num} AND RAT_PRICE>0
+		]]>
+	</select>
+	
+	<select id="setRevAuctionTenderMaxValue" parameterType="revauction" resultType="String">
+		<![CDATA[
+		SELECT MAX(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num}
+		]]>
+	</select>
+
+	<insert id="getrevAuctionBasketInsert" parameterType="basket">
+		INSERT INTO REVAUCTION_BASKET VALUES(${rab_ranum},#{rab_mbid})
+	</insert>
+	
+	<delete id="getrevAuctionBasketDelete" parameterType="basket">
+		DELETE FROM REVAUCTION_BASKET WHERE RAB_RANUM = ${rab_ranum} AND RAB_MBID = #{rab_mbid}
+	</delete>
+		
+	<select id="getrevAuctionBasketSelect" parameterType="basket" resultType="Integer">
+		SELECT NVL(max(rab_ranum),0)FROM REVAUCTION_BASKET WHERE RAB_RANUM = ${rab_ranum} AND RAB_MBID = #{rab_mbid}
+	</select>
+
+
 </mapper>

@@ -1,25 +1,36 @@
 package com.designus.www;
 
-import java.text.DateFormat;  
+import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Member;
+import com.designus.www.dao.ImemberDao;
 import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
+import com.designus.www.userClass.MemberServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -32,9 +43,11 @@ public class HomeController {
 	private MemberMM mm;
 	private CommonMM cm;
 	@Autowired
+	private ImemberDao mDao;
+	@Autowired
 	HttpSession session;
 	ModelAndView mav;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -50,7 +63,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home() {
-		mav=new ModelAndView();
+		mav = new ModelAndView();
 		mav.setViewName("home");
 		return mav;
 	}
@@ -90,14 +103,16 @@ public class HomeController {
 
 		return "memberFind";
 	}
+
 	@RequestMapping(value = "/revauctionwrite", method = RequestMethod.GET)
 	public String revauctionwrite() {
-		
+
 		return "revauctionwrite";
 	}
+
 	@RequestMapping(value = "/auctionwrite", method = RequestMethod.GET)
 	public String auctionwrite() {
-		
+
 		return "auctionwrite";
 	}
 
@@ -115,11 +130,11 @@ public class HomeController {
 		mav = mm.memberapply(multi, kind);
 		return mav;
 	}
-	
+
 	/*
-	 * @RequestMapping(value = "/wriapply", method = RequestMethod.POST)
-	 * public ModelAndView wriapply(MultipartHttpServletRequest multi, String
-	 * kind) { System.out.println("작가회원가입" + multi.getFileNames()); mav = new
+	 * @RequestMapping(value = "/wriapply", method = RequestMethod.POST) public
+	 * ModelAndView wriapply(MultipartHttpServletRequest multi, String kind) {
+	 * System.out.println("작가회원가입" + multi.getFileNames()); mav = new
 	 * ModelAndView();
 	 * 
 	 * mav = mm.wriapply(multi, kind); return mav; }
@@ -137,14 +152,28 @@ public class HomeController {
 
 		return mav;
 	}
+
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout() {
 		session.invalidate();
-		
+
 		return "home";
 	}
 
-	
+	@ResponseBody
+	@RequestMapping(value = "/memberlapcheck", method = RequestMethod.POST)
+	public Map<Object, Object> memberlapcheck(@RequestBody String mbid) {
+		int count = 0;
+		System.out.println("돌아가고는 있나");
+		System.out.println("아이디?=" + mbid);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+
+		count = mDao.memberlapcheck(mbid);
+		map.put("cnt", count);
+
+		return map;
+	}
+
 	/*
 	 * @RequestMapping(value = "/bestajax") public ModelAndView bestajax() { mav =
 	 * new ModelAndView(); mav = cm.bestajax();
@@ -157,5 +186,5 @@ public class HomeController {
 	 * joinPost(@ModelAttribute("uVO") UserVO uVO) throws Exception) { //이메일 발송 관련
 	 * url return "loginBox"; }
 	 */
-     
+
 }
