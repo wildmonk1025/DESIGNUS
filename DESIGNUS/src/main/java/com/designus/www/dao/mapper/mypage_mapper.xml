@@ -57,16 +57,48 @@
 		SELECT * FROM ISP
 		WHERE B.SB_MBID=#{id}
 	</select>
-	<select id="basketFrmSelect"  resultType="basket">
+	<select id="basketFrmSelect" resultType="basket">
 		
       <![CDATA[
    select * from(
-    select rownum AS RN,AB_AUNUM,AB_MBID,AUI_IMG,AU_TITLE from IA
+    select rownum AS RN,AB_AUNUM,AB_MBID,AUI_IMG,AU_TITLE,
+    ROW_NUMBER() OVER(PARTITION BY AB_AUNUM ORDER BY AB_AUNUM DESC) AS RankNo
+     from IA
        where AB_MBID=#{id} and rownum<=#{num}*5
+     ) where rn>=#{num}*5-4 AND RankNo=1
+  ]]>
+
+	</select>
+	<select id="basketFrmRSelect" resultType="basket">
+		
+      <![CDATA[
+      select * from(
+   select rownum AS RN,RAB_RANUM,RAB_MBID,RA_IMAGE,RA_TITLE from IV
+       where RAB_MBID=#{id} and rownum<=#{num}*5
      ) where rn>=#{num}*5-4
   ]]>
 	</select>
-	<select id="getBoardCount" parameterType="String" resultType="Integer">
+	<select id="basketFrmSSelect" resultType="basket">
+		
+      <![CDATA[
+    select * from(
+    select rownum AS RN,SB_SSNUM,SB_MBID,SSI_IMG,SS_TITLE,
+    ROW_NUMBER() OVER(PARTITION BY SB_SSNUM ORDER BY SB_SSNUM DESC) AS RankNo from ISP
+       where SB_MBID=#{id} and rownum<=#{num}*5
+     ) where rn>=#{num}*5-4 AND RankNo=1
+  ]]>
+
+	</select>
+	<select id="getBoardCount" parameterType="String"
+		resultType="Integer">
 		select count(*) from IA where AB_MBID=#{id}
+	</select>
+	<select id="getrevCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from IV where RAB_MBID=#{id}
+	</select>
+	<select id="getsponCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from IV where SB_MBID=#{id}
 	</select>
 </mapper>
