@@ -20,6 +20,6 @@ public interface ImemberDao {
 
 	Member getMemberInfo(String mb_id);
 
-	int memberlapcheck(Member mb);
+	int memberlapcheck(String mbid);
 
 }

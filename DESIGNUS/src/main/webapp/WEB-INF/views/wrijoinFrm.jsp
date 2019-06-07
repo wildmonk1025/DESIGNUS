@@ -232,17 +232,44 @@
 			$('#fileCheck2').val(4);//파일 첨부 했음
 		}
 	}
-/* 	$(document).ready(function(){
-		$('#idcheckbtz').on('click',function(){
+	/* 	$(document).ready(function(){
+	 $('#idcheckbtz').on('click',function(){
+	 $.ajax({
+	 type:'POST',
+	 url:'/HomeControllerjy/memberidfind'
+	 data:{
+	
+	 }})
+	 })}
+	 }) */
+	var idck = 0;
+	$(function() {
+		$('#btz').click(function() {
+			var mbid = $("#mb_id").val();
 			$.ajax({
-				type:'POST',
-				url:'/HomeControllerjy/memberidfind'
-				data:{
-					
-				}})
-		})}
-	}) */
-	
-	
+				async : true,
+				type : 'post',
+				data : mbid,
+				url : "memberlapcheck",
+				dataType : "json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					if (data.cnt > 0) {
+						alert("아이디가 존재합니다.");
+						$("#idChk").val("Y");
+						$("#mb_id").focus();
+					} else {
+						alert("사용가능한 아이디래용.");
+						$("#idChk").val("N");
+						//아이디가 중복하지 않으면 idck=1
+						idck = 1;
+					}
+				},
+				error : function(error) {
+					alert("error:" + error);
+				}
+			});
+		});
+	});
 </script>
 </html>
