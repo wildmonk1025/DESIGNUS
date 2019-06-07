@@ -17,29 +17,32 @@ import com.designus.www.service.MypageMM;
 public class AjaxMypageController {
 	@Autowired
 	private MypageMM pm;
-	@RequestMapping(value = "ajax/lbauc",produces="application/json;charset=utf8")
-	//json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
+
+	@RequestMapping(value = "ajax/lbauc", produces = "application/json;charset=utf8")
+	// json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
 	public String lbauc() {
 		System.out.println("컨트롤러 왔다 소리 질러~~~");
-		
-		String aa=pm.lbauc();
+
+		String aa = pm.lbauc();
 		return aa;
 	}
-	@RequestMapping(value = "ajax/lbrev",produces="application/json;charset=utf8")
-	//json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
+
+	@RequestMapping(value = "ajax/lbrev", produces = "application/json;charset=utf8")
+	// json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
 	public String lbrev() {
 		System.out.println("컨트롤러 왔다 소리 질러~~~");
-		
-		String cc=pm.lbrev();
+
+		String cc = pm.lbrev();
 		return cc;
 	}
-	@RequestMapping(value = "ajax/lbspon",produces="application/json;charset=utf8")
-	//json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
+
+	@RequestMapping(value = "ajax/lbspon", produces = "application/json;charset=utf8")
+	// json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
 	public String lbspon() {
 		System.out.println("컨트롤러 왔다 소리 질러~~~");
-		
-		String bb=pm.lbspon();
+
+		String bb = pm.lbspon();
 		return bb;
 	}
-	
+
 }
