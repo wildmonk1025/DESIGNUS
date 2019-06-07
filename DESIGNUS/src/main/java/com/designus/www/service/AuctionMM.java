@@ -90,8 +90,23 @@ public class AuctionMM {
 		
 		auList = aDao.getAuctionListSelect(au);
 		raList = rDao.getRevAuctionListSelect(rau);
-		//
 		
+	      for (int i = 0; i < raList.size(); i++) {
+	          //int ra_num=raList.get(i).getRa_num();
+	          String y = rDao.setRevAuctionTenderMinValue(raList.get(i));
+	          String y2 = rDao.setRevAuctionTenderMaxValue(raList.get(i));
+	          {
+	             if (y != null)
+	                raList.get(i).setRa_min(y);
+	             else
+	                raList.get(i).setRa_min("-");
+	             if (y2 != null)
+	                raList.get(i).setRa_max(y2);
+	             else
+	                raList.get(i).setRa_max("-");
+	          }
+	          
+	       }
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
@@ -103,20 +118,26 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionRead(int au_num,int nb) {
+	public ModelAndView auctionRead(int au_num) {
 		mav=new ModelAndView();
 		String view = null;
+		String id = (String)session.getAttribute("id");
 		List<Auction> audList = null;
-		int numb = 0;
+		int nb = 1;
 		Auction au = new Auction();
 		Basket bk = new Basket();
+		bk.setAb_mbid(id);
 		au.setAu_num(au_num);
-		bk.setAb_aunum(nb);
+		bk.setAb_aunum(au_num);
 		audList = aDao.getAuctionReadSelect(au);
-		numb = aDao.getAuctionBasketSelect(bk);
-		System.out.println("number ="+nb);
+		nb = aDao.getAuctionBasketSelect(bk);
+		System.out.println("nb ="+nb);
+		bk.setAb_aunum(nb);
+
+		System.out.println("number ="+bk.getAb_aunum());
 		mav.addObject("audList",audList);
-		mav.addObject("nb",numb);
+		mav.addObject("nb",bk.getAb_aunum());
+		mav.addObject("nb2",nb);
 		mav.addObject("au_num",au_num);
 		view = "auctionRead";
 		mav.setViewName(view);

@@ -48,11 +48,9 @@ public class AuctionController {
 	}
 
 	@RequestMapping(value = "/auctionRead" )
-	public ModelAndView auctionRead(int au_num,int nb) {
+	public ModelAndView auctionRead(int au_num) {
 		mav = new ModelAndView();
-		System.out.println("여기 오냐??1");
-		mav = aum.auctionRead(au_num,nb);
-		System.out.println("여기 오냐??2");
+		mav = aum.auctionRead(au_num);
 		return mav;
 	}
 	

@@ -16,7 +16,7 @@
 		DELETE FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
 	</delete>
 		
-	<select id="getAuctionBasketSelect" parameterType="basket" resultType="integer">
+	<select id="getAuctionBasketSelect" parameterType="basket" resultType="Integer">
 		SELECT NVL(max(ab_aunum),0)FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
 	</select>	
 	

@@ -220,14 +220,12 @@
 				<div id="middle_contents1_lv1">
 					여기에 상품 이름
 					<div id="middle_contents1_lv2">
-						<%-- <form action="shopbasket?ab_aunum=${au_num}" method="post"> --%>
 							<div id="peek1">
-								<input type="submit" value="<%-- ${au_num} --%>찜함" class="subtn">
+								<input type="submit" value="꿍누르기♥" class="subtn">
 							</div>
 							<div id="peek2">
-								<input type="submit" value="<%-- ${au_num} --%>찜안함" class="subtn">
+								<input type="submit" value="꿍누르기♡" class="subtn">
 							</div>
-						<!-- </form> -->
 					</div>
 				</div>
 				<div id="middle_contents1_lv3">
@@ -246,7 +244,7 @@
 						</tr>
 						<tr>
 							<th>즉시구매가격 :</th>
-							<td colspan="2"><div id="tender_result">0원</div></td>
+							<td colspan="2"><dWiv id="tender_result">0원</div></td>
 						</tr>
 					</table>
 					<div id="auctiontime">경매 남은 시간 표시</div>
@@ -279,14 +277,13 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	console.log(${number});
-	if(${number} > 0){
-		$("#peek1").css("display", "none");
-		$("#peek2").css("display", "inline");
-	}
-	if(${number} == 0){
+	if(${nb} > 0){
 		$("#peek2").css("display", "none");
 		$("#peek1").css("display", "inline");
+	}
+	if(${nb} == 0){
+		$("#peek1").css("display", "none");
+		$("#peek2").css("display", "inline");
 	}
 
 

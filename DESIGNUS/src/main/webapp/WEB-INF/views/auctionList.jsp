@@ -193,8 +193,8 @@
 						${ra.ra_title }
 					</div>
 					<div class="raListPrice">
-						경매최저가 : el로 가져와      <br>
-						경매최고가 : el로 가져와
+						<p>경매최저가 : ${ra.ra_min }</p>
+						<p>경매최고가 : ${ra.ra_max }</p>
 					</div>
 					<div class="raListDate">
 						마감시간 : ${ra.ra_date}
@@ -204,7 +204,7 @@
 			</div>
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
-				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}&number=${nb.ab_aunum}'">
+				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
 						<img src="./images/logo.png" />
 					</div>
@@ -237,8 +237,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	console.log(1,${numb});
-	console.log(2,${numb.ab_aunum});
 	
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");
