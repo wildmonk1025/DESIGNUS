@@ -120,11 +120,15 @@
 					<th>아이디</th>
 					<td><input class="memberN" type="text" name="mb_id" id="mb_id"></td>
 					<td><input id="btz" type="button" value="중복확인"></td>
+					<td><input type="hidden" id="idChk" value="N" /></td>
+					<!-- ID체크 했는지 안 했는지 -->
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td><input class="memberN" type="password" name="mb_pw"
 						id="mb_pw"></td>
+
+
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
@@ -177,7 +181,6 @@
 				<tr>
 					<td>
 					<td><input class="btz2" type="submit" value="회원가입"></td>
-					</td>
 					<td><input class="btz2" type="reset" value="취소"></td>
 				</tr>
 			</table>
@@ -201,18 +204,21 @@
 		$('#btz').click(function() {
 			var mbid = $("#mb_id").val();
 			$.ajax({
-				async : true, //동기화
+				async : true,
 				type : 'post',
 				data : mbid,
-				url : "/memberlapcheck",
-				dataType : "Json",
+				url : "memberlapcheck",
+				dataType : "json",
 				contentType : "application/json; charset=UTF-8",
 				success : function(data) {
 					if (data.cnt > 0) {
-						alert("존재하는 아이디 입니다.");
+						alert("아이디가 존재합니다.");
+						$("#idChk").val("Y");
 						$("#mb_id").focus();
 					} else {
-						alert("사용가능한 아이디입니다.");
+						alert("사용가능한 아이디래용.");
+						$("#idChk").val("N");
+						//아이디가 중복하지 않으면 idck=1
 						idck = 1;
 					}
 				},

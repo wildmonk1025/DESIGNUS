@@ -162,25 +162,16 @@ public class HomeController {
 
 	@ResponseBody
 	@RequestMapping(value = "/memberlapcheck", method = RequestMethod.POST)
-	public void memberlapcheck(HttpServletRequest req, HttpServletResponse res, ModelMap model) throws Exception {
-		/* int count = 0; */
+	public Map<Object, Object> memberlapcheck(@RequestBody String mbid) {
+		int count = 0;
+		System.out.println("돌아가고는 있나");
+		System.out.println("아이디?=" + mbid);
+		Map<Object, Object> map = new HashMap<Object, Object>();
 
-		PrintWriter out = res.getWriter();
+		count = mDao.memberlapcheck(mbid);
+		map.put("cnt", count);
 
-		try {
-			String mb_id = (req.getParameter("mb_id") == null) ? "" : String.valueOf(req.getParameter("mb_id"));
-
-			Member mb = new Member();
-			mb.setMb_id(mb_id.trim());
-			int chkPoint = mDao.memberlapcheck(mb);
-
-			out.print(chkPoint);
-			out.flush();
-			out.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			out.print("1");
-		}
+		return map;
 	}
 
 	/*

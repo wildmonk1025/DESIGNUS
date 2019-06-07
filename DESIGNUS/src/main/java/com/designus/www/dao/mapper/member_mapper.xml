@@ -34,6 +34,6 @@
 	</select>
 	<select id="memberlapcheck" parameterType="String"
 		resultType="Integer">
-		SELECT COUNT(*) FROM MEMBER WHERE mb_id=${mb_id}
+		SELECT COUNT(*) FROM MEMBER WHERE mb_id=#{mb_id}
 	</select>
 </mapper>
