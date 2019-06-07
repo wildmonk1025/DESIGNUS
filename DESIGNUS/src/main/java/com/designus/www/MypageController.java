@@ -89,5 +89,23 @@ public class MypageController {
 		 mav=pm.basketFrm(pageNum,kind);
 		return mav;
 	}
+	@RequestMapping(value = "/basketFrmrev", method = RequestMethod.GET)
+
+	public ModelAndView lbrev(Integer pageNum ,String kind) {
+		System.out.println("여기로 와야 하는데....");
+		System.out.println("카인드 뭐야??"+kind);
+		mav = new ModelAndView();
+		 mav=pm.basketFrmrev(pageNum,kind);
+		return mav;
+	}
+	@RequestMapping(value = "/basketFrmspon", method = RequestMethod.GET)
+
+	public ModelAndView basketFrmspon(Integer pageNum ,String kind) {
+		System.out.println("여기로 와야 하는데....");
+		System.out.println("카인드 뭐야??"+kind);
+		mav = new ModelAndView();
+		 mav=pm.basketFrmspon(pageNum,kind);
+		return mav;
+	}
 
 }
