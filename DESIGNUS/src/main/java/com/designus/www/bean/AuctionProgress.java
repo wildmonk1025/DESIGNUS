@@ -1,7 +1,15 @@
 package com.designus.www.bean;
 
+import org.apache.ibatis.type.Alias;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Alias("auctionprogress")
+@Getter
+@Setter
 public class AuctionProgress {
-	int    aup_aunum;
+	int    aup_ptnum;
 	int    aup_ranum;
 	String aup_mbid_n;
 	String aup_name;

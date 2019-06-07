@@ -101,4 +101,8 @@
 		resultType="Integer">
 		select count(*) from ISP where SB_MBID=#{id}
 	</select>
+	<select id="auctionMyOrderListSelect" parameterType="String"
+		resultType="auctionprogress">
+		select count(*) from ISP where SB_MBID=#{id}
+	</select>
 </mapper>

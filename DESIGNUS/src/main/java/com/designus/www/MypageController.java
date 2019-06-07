@@ -107,5 +107,12 @@ public class MypageController {
 		 mav=pm.basketFrmspon(pageNum,kind);
 		return mav;
 	}
+	@RequestMapping(value = "/auctionMyOrderList", method = RequestMethod.GET)
 
+	public ModelAndView auctionMyOrderList() {
+		mav = new ModelAndView();
+		
+		 mav=pm.auctionMyOrderList();
+		return mav;
+	}
 }

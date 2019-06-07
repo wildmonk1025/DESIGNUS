@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
@@ -45,7 +46,7 @@ public class MypageMM {
 		} else if (list.equals("revre")) {
 			view = "revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
-			view = "auctionMyOrderList";
+			view = "redirect:/auctionMyOrderList";
 		} else if (list.equals("aucre")) {
 			view = "auctionMyAcceptList";
 		} else if (list.equals("spon")) {
@@ -316,6 +317,16 @@ public class MypageMM {
 		com.designus.www.userClass.Paging paging = 
 				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
 		return paging.makeHtmlPaging();
+	}
+
+	public ModelAndView auctionMyOrderList() {
+		mav = new ModelAndView();
+		String id=session.getAttribute("id").toString();
+		List<AuctionProgress> apList = null;
+		//AuctionProgress ap=new AuctionProgress();
+		apList=pDao.auctionMyOrderListSelect(id);
+		
+		return mav;
 	}
 
 }
