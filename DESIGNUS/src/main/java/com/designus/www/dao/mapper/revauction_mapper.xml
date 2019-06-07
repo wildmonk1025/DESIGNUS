@@ -26,4 +26,16 @@
 		SELECT * FROM RA WHERE RA_NUM = ${ra_num}
 	</select>
 
+	<select id="setRevAuctionTenderMinValue" parameterType="revauction" resultType="String">
+		<![CDATA[
+		SELECT MIN(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num} AND RAT_PRICE>0
+		]]>
+	</select>
+	
+	<select id="setRevAuctionTenderMaxValue" parameterType="revauction" resultType="String">
+		<![CDATA[
+		SELECT MAX(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num}
+		]]>
+	</select>
+
 </mapper>

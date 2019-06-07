@@ -78,9 +78,9 @@
 	float: right;
 }
 
-#peek2 {
+/*  #peek2 {
 	display: none;
-}
+}  */
 
 #middle_contents1_lv3 {
 	border: 1px solid blue;
@@ -220,14 +220,12 @@
 				<div id="middle_contents1_lv1">
 					여기에 상품 이름
 					<div id="middle_contents1_lv2">
-						<form action="shopbasket?ab_aunum=${au_num}" method="post">
 							<div id="peek1">
-								<input type="submit" value="꿍누르기♡" class="subtn">
-							</div>
-							<div id="peek2">
 								<input type="submit" value="꿍누르기♥" class="subtn">
 							</div>
-						</form>
+							<div id="peek2">
+								<input type="submit" value="꿍누르기♡" class="subtn">
+							</div>
 					</div>
 				</div>
 				<div id="middle_contents1_lv3">
@@ -246,7 +244,7 @@
 						</tr>
 						<tr>
 							<th>즉시구매가격 :</th>
-							<td colspan="2"><div id="tender_result">0원</div></td>
+							<td colspan="2"><dWiv id="tender_result">0원</div></td>
 						</tr>
 					</table>
 					<div id="auctiontime">경매 남은 시간 표시</div>
@@ -279,27 +277,37 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-
-
+	if(${nb} > 0){
+		$("#peek2").css("display", "none");
+		$("#peek1").css("display", "inline");
+	}
+	if(${nb} == 0){
+		$("#peek1").css("display", "none");
+		$("#peek2").css("display", "inline");
+	}
 
 
 	var kind = 1;
-
-	$("#peek1").click(function() {
-		if ($("#peek2").val != null) {
-			$("#peek1").css("display", "none");
-			$("#peek2").css("display", "inline");
-			kind = kind + 1;
-		}
+	$(".subtn").click(function() {
+			 	$.ajax({
+				url : 'ajax/BasketSelect',
+				type: 'post',
+				data: {'num':${au_num}},
+				success:function(data){
+					if(data > 0){
+						$("#peek1").css("display", "none");
+						$("#peek2").css("display", "inline");
+					}
+					if(data == 0){
+						$("#peek2").css("display", "none");
+						$("#peek1").css("display", "inline");
+					}
+				},
+				error:function(error){
+					console.log(error);
+				}
+			});	
 	});
-	$("#peek2").click(function() {
-		if ($("#peek1").val != null) {
-			$("#peek2").css("display", "none");
-			$("#peek1").css("display", "inline");
-			kind = kind - 1;
-		}
-	});
-
 	
 	$("#btn1").click(function() {
 		$("#inbuyLB").css("display", "inline");
@@ -321,9 +329,7 @@
 		$("#tenderLB-shadow").css("display", "none");
 	});
 	
-	var chk = ${au_num};
-	$(document).ready(function() {
-		alert("제작의뢰 리스트 시퀀스 "+chk+"번 글 입니다.");
-	});
+	
+	
 </script>
 </html>
