@@ -198,7 +198,7 @@ public class AuctionMM {
 	public ModelAndView auctionReadInbuy(int inbuyQty,int inbuyNum) {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String view = "/auctionRead";
+		String view = "auctionRead";
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
@@ -215,7 +215,6 @@ public class AuctionMM {
 		
 		aDao.setAuctionTenderI(at);
 		aDao.setAuctionTenderDel(at);
-		mav.addObject("au_num", inbuyNum);
 		mav.setViewName(view);
 		return mav;
 	}
