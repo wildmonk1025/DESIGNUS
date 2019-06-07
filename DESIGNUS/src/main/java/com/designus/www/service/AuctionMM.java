@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.revAuctionProgress;
@@ -81,6 +82,7 @@ public class AuctionMM {
 	public ModelAndView auctionList(int cgcode) {
 		mav=new ModelAndView();
 		String view="null";
+		int num = 0;
 		List<Auction> auList = null;
 		List<RevAuction> raList = null;
 		Auction au = new Auction();
@@ -90,7 +92,6 @@ public class AuctionMM {
 		
 		auList = aDao.getAuctionListSelect(au);
 		raList = rDao.getRevAuctionListSelect(rau);
-		
 	      for (int i = 0; i < raList.size(); i++) {
 	          //int ra_num=raList.get(i).getRa_num();
 	          String y = rDao.setRevAuctionTenderMinValue(raList.get(i));
@@ -191,4 +192,41 @@ public class AuctionMM {
 			view = "auctionRead";
 		}	
 		return number;
+	}
+
+
+	public ModelAndView auctionReadInbuy(int inbuyQty,int inbuyNum) {
+		mav = new ModelAndView();
+		String id = (String)session.getAttribute("id");
+		String view = "/auctionRead";
+		int price = 0;
+		int totalPrice =0;
+		int qty = inbuyQty;
+		System.out.println("[1]Qty = "+qty);
+		AuctionTender at = new AuctionTender();
+		at.setAut_aunum(inbuyNum);
+		System.out.println("[1]au_num = "+at.getAut_aunum());
+		at.setAut_mbid(id);
+		System.out.println("[1]id = "+at.getAut_mbid());
+		price = aDao.getAuctionTenderPrice(at);
+		totalPrice = price * qty; 
+		at.setAut_price(totalPrice);
+		System.out.println("[1]price = "+at.getAut_price());
+		
+		aDao.setAuctionTenderI(at);
+		aDao.setAuctionTenderDel(at);
+		mav.addObject("au_num", inbuyNum);
+		mav.setViewName(view);
+		return mav;
+	}
+
+
+	public ModelAndView auctionReadTender(int au_num) {
+		String id = (String)session.getAttribute("id");
+		String view = null;
+		AuctionTender at= new AuctionTender();
+		
+		
+		
+		return null;
 	}}
