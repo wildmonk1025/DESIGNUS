@@ -1,207 +1,211 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <style type="text/css">
-        #one {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#one {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
 
-        div {
-            margin: auto;
-        }
+div {
+	margin: auto;
+}
 
-        #notice {
-            background-color: orange;
-            border: 1px solid orange;
-            position: absolute;
-            width: 1100px;
-            height: 60px;
-            text-align: center;
-            left: 611px;
-            top: 180px;
-            font-size: 100%
-        }
+#notice {
+	background-color: orange;
+	border: 1px solid orange;
+	position: absolute;
+	width: 1100px;
+	height: 60px;
+	text-align: center;
+	left: 611px;
+	top: 180px;
+	font-size: 100%
+}
 
-        #info {
-           border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 600px;
-            text-align: left;
-            left: 190px;
-            top: 600px;
-            
-        }
+#info {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 600px;
+	text-align: left;
+	left: 190px;
+	top: 600px;
+}
 
+#main {
+	position: absolute;
+	width: 1520px;
+	height: 170px;
+	left: 190px;
+	text-align: center;
+}
 
+.bt01 {
+	position: absolute;
+	right: 100px;
+	top: 50px;
+}
 
-        #main {
-            position: absolute;
-            width: 1520px;
-            height: 170px;
-            left: 190px;
-            text-align: center;
-        }
+a {
+	color: red
+}
 
-        .bt01 {
-            position: absolute;
-            right: 100px;
-            top: 50px;
+#spon1 {
+	position: absolute;
+	width: 1100px;
+	height: 60px;
+	text-align: center;
+	left: 611px;
+	top: 280px;
+	font-size: 100%
+}
 
-        }
+#ListView1 {
+	border: 1px solid black;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 97%;
+	height: 96%;
+}
 
-        a {
-            color: red
-        }
+#ListView2 {
+	border: 1px solid black;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 97%;
+	height: 96%;
+	display: none;
+}
 
+#ListView3 {
+	border: 1px solid black;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 97%;
+	height: 96%;
+	display: none;
+}
 
-      
-        #spon1 {
+#list {
+	width: 1100px;
+	height: 700px;
+	text-align: center;
+	left: 603px;
+	position: absolute;
+	top: 360px;
+}
 
-            position: absolute;
-            width: 1100px;
-            height: 60px;
-            text-align: center;
-            left: 611px;
-            top: 280px;
-            font-size: 100%
-        }
+.lv1 {
+	border: 1px solid black;
+	position: absolute;
+	top: 90px;
+	left: 10%;
+	width: 40%;
+	height: 25%;
+}
 
+.lv2 {
+	border: 1px solid black;
+	position: absolute;
+	top: 90px;
+	left: 50%;
+	width: 40%;
+	height: 25%;
+}
 
-        #ListView1 {
-            border: 1px solid black;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 97%;
-            height: 96%;
-        }
+.lv3 {
+	border: 1px solid black;
+	position: absolute;
+	top: 260px;
+	left: 10%;
+	width: 40%;
+	height: 25%;
+}
 
-        #ListView2 {
-            border: 1px solid black;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 97%;
-            height: 96%;
-            display: none;
+.lv4 {
+	border: 1px solid black;
+	position: absolute;
+	top: 260px;
+	left: 50%;
+	width: 40%;
+	height: 25%;
+}
 
-        }
+.lv5 {
+	position: absolute;
+	top: 430px;
+	left: 30%;
+	width: 40%;
+	height: 10%;
+}
 
-        #ListView3 {
-            border: 1px solid black;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 97%;
-            height: 96%;
-            display: none;
-        }
+.lv6 {
+	position: absolute;
+	top: 540px;
+	left: 50%;
+	width: 40%;
+	height: 10%;
+}
 
-        #list {
-            width: 1100px;
-            height: 700px;
-            text-align: center;
-            left: 603px;
-            position: absolute;
-            top: 360px;
+.page {
+	color: blue;
+}
 
+#point {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 80px;
+	text-align: left;
+	left: 190px;
+	top: 508px;
+	font-size: 20px;
+}
 
-        }
+#img {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 310px;
+	text-align: left;
+	left: 190px;
+	top: 188px;
+	font-size: 20px;
+}
 
-        .lv1 {
-            border: 1px solid black;
-            position: absolute;
-            top: 90px;
-            left: 10%;
-            width: 40%;
-            height: 25%;
-        }
+a:active {
+	text-decoration: none;
+	color: #646464;
+}
 
-        .lv2 {
-            border: 1px solid black;
-            position: absolute;
-            top: 90px;
-            left: 50%;
-            width: 40%;
-            height: 25%;
-        }
+a:visited {
+	text-decoration: none;
+	color: #646464;
+}
 
-        .lv3 {
-            border: 1px solid black;
-            position: absolute;
-            top: 260px;
-            left: 10%;
-            width: 40%;
-            height: 25%;
-        }
+a:link {
+	text-decoration: none;
+	color: #646464;
+}
 
-        .lv4 {
-            border: 1px solid black;
-            position: absolute;
-            top: 260px;
-            left: 50%;
-            width: 40%;
-            height: 25%;
-        }
+a:hover {
+	text-decoration: none;
+	color: #646464;
+}
 
-        .lv5 {
-            position: absolute;
-            top: 430px;
-            left: 30%;
-            width: 40%;
-            height: 10%;
-        }
-
-        .lv6 {
-            position: absolute;
-            top: 540px;
-            left: 50%;
-            width: 40%;
-            height: 10%;
-        }
-
-        .page {
-            color: blue;
-        }
-          #point {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 80px;
-            text-align: left;
-            left: 190px;
-            top: 508px;
-
-            font-size: 20px;
-        }
-
-        #img {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 310px;
-            text-align: left;
-            left: 190px;
-            top: 188px;
-
-            font-size: 20px;
-
-        }
-        a:active{text-decoration: none; color:#646464;}
-        a:visited{text-decoration: none;color:#646464;}
-        a:link {text-decoration: none;color:#646464;}
-        a:hover{text-decoration: none;color:#646464;}
-               #header {
+#header {
 	padding: 3px;
 	width: 1510px;
 	height: 100px;
@@ -290,109 +294,125 @@
 	height: 50px;
 	margin-left: 10px;
 }
+
 #mainheader {
-   border: 1px solid black;
-   width: 1520px;
-   height: 170px;
+	border: 1px solid black;
+	width: 1520px;
+	height: 170px;
 }
-    </style>
+</style>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-  
-<div id="mainheader">
-      <jsp:include page="main.jsp" />
-   </div>
-        
-        <div id="notice">
-            <h2>꿍 리스트</h2>
-            <hr>
-        </div>
-        <div id="info">
-            <table width="1000">
 
-               <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰 접수내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=auc">출품작 구매 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=aucre">출품작 판매 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=spon">후원진행 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=sponre">후원요청 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="historylist?list=basket">꿍 내역</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
-                </tr>
-            </table>
-        </div>
-        <div id="spon1">
-            <button id="Lbtn1" onclick="Aucbtn()"> 출품 꿍리스트</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="Lbtn2" onclick="ReAucbtn()"> 제작의뢰 꿍리스트</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="Lbtn3" onclick="sponbtn()"> 후원 꿍리스트</button>
-        </div>
-        <div id="list">
-            <div id="ListView1">
-                출품 꿍리스트
-                <div id="cnfvna" class="lv1">
-                <c:forEach var="board" items="${bList}">
-				${board.au_title}
-				<a href='#' onclick="articleView(${board.ab_aunum})">${board.aui_img}</a>
-				${board.ab_mbid}
-		</c:forEach>
-                </div>
-                
-                <div class="lv5">${paging}</div><br>
-             
-                
-                <div class="lv6"><button type="button" onclick="location.href='myPage.html' ">돌아가기</button></div>
-            </div>
-            <div id="ListView2">
-                제작의뢰 꿍리스트
-                <div id="wpwkr" class="lv1"></div>
-            
-               
-                <div class="lv5">페이징<br>
-                    <h3 class="page">[1][2][3][4][5].....[45]</h3>
-                </div>
-                <div class="lv6"><button type="button" onclick="location.href='myPage.html' ">돌아가기</button></div>
-            </div>
-            <div id="ListView3">
-                후원꿍리스트
-                <div id="gndnjs" class="lv1">44</div>
-               
-                <div class="lv5">페이징<br>
-                    <h3 class="page">[1][2][3][4][5].....[45]</h3>
-                </div>
-                <div class="lv6"><button type="button" onclick="location.href='myPage.html' ">돌아가기</button></div>
-            </div>
-        </div>
-         <div id="point">
-                <h1>포인트:</h1>
-            </div>
-            <div id="img">
-                <h1>프로필사진</h1>
-            </div>
-  
+	<div id="mainheader">
+		<jsp:include page="main.jsp" />
+	</div>
+
+	<div id="notice">
+		<h2>꿍 리스트</h2>
+		<hr>
+	</div>
+	<div id="info">
+		<table width="1000">
+
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰
+						내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰
+						접수내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=auc">출품작
+						구매 내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=aucre">출품작
+						판매 내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=spon">후원진행
+						내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=sponre">후원요청
+						내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="historylist?list=basket">꿍
+						내역</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
+			</tr>
+			<tr>
+				<td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
+			</tr>
+		</table>
+	</div>
+	<div id="spon1">
+		<button id="Lbtn1" onclick="location.href='basketFrm?kind=A'">
+			출품 꿍리스트</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button id="Lbtn2" onclick="ReAucbtn()">제작의뢰 꿍리스트</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button id="Lbtn3" onclick="sponbtn()">후원 꿍리스트</button>
+	</div>
+	<div id="list">
+		<div id="ListView1">
+			출품 꿍리스트
+			<div id="cnfvna" class="lv1">
+				<c:forEach var="board" items="${bList}">
+					<a href='#' onclick="articleView(${board.ab_aunum})">${board.aui_img}</a>
+					<P>상품 제목 : ${board.au_title}</P><br/>
+
+
+				</c:forEach>
+			</div>
+
+			<div class="lv5">${paging}</div>
+			<br>
+
+
+			<div class="lv6">
+				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
+			</div>
+		</div>
+		<div id="ListView2">
+			제작의뢰 꿍리스트
+			<div id="wpwkr" class="lv1"></div>
+
+
+			<div id="pagerev" class="lv5"></div>
+			<div class="lv6">
+				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
+			</div>
+		</div>
+		<div id="ListView3">
+			후원꿍리스트
+			<div id="gndnjs" class="lv1"></div>
+
+			<div id="pagingspon" class="lv5">
+			</div>
+			<div class="lv6">
+				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
+			</div>
+		</div>
+	</div>
+	<div id="point">
+		<h1>포인트:</h1>
+	</div>
+	<div id="img">
+		<h1>프로필사진</h1>
+	</div>
+
 
 
 
@@ -409,7 +429,7 @@
       $("#ListView2").css("display", "none");
       $("#ListView3").css("display", "none");
      
-      $.ajax({
+     /* $.ajax({
   		url: "ajax/lbauc",
   		type:"post",
   	    processData : false,
@@ -433,9 +453,12 @@
   	    	console.log(error);
   	    }
   		 
-  	 });
+  	 });*/
 }
  function ReAucbtn() {
+	 
+	
+			 
 	 $("#ListView1").css("display", "none");
      $("#ListView2").css("display", "inline");
      $("#ListView3").css("display", "none");
@@ -445,18 +468,17 @@
    	    processData : false,
    	    dataType:"json",//생략가능
    	    success:function(data){
-   	    
-   	    	console.log(data);
-   	    	//console.log(data[0][0].aui_img);
-   	    	console.log(data[0].aui_img);
-   	    	var rList2='';
- 			for(key in data){
- 					rList2+="<a href='auctionread?rab_ranum="+data[key].rab_ranum+"'>"
- 							+data[key].ra_image+"</a>"
- 					       +'상품 이름 : '+data[key].ra_title+"<br/>";
- 			}
- 			$('#wpwkr').html(rList2);
-   	    	
+   	    console.log(1,data);
+   	     var result='';
+   	     var data2=data.rList;
+		for(key in data.rList){
+		
+				result+="<a href='auctionread?rab_ranum="+data2[key].rab_ranum+"'>"
+				      +data2[key].ra_image+"</a>"+"<br/>"
+				      +"<p>상품 제목 : "+data2[key].ra_title+"</p><br/>";
+		}
+		$('#wpwkr').html(result);
+		$('#pagerev').html(data.paging);
    	    },
    	    error:function(error){
    	    	alert('에러');
@@ -466,6 +488,7 @@
    	 });
 }
  function sponbtn() {
+	
 	 
      $("#ListView1").css("display", "none");
      $("#ListView2").css("display", "none");
@@ -476,17 +499,17 @@
    	    processData : false,
    	    dataType:"json",//생략가능
    	    success:function(data){
-   	    
-   	    	console.log(data);
-   	    	//console.log(data[0][0].aui_img);
-   	    	console.log(data[0].aui_img);
-   	    	var rList3='';
- 			for(key in data){
- 					rList3+="<a href='auctionread?sb_ssnum="+data[key].sb_ssnum+"'>"
- 							+data[key].ssi_img+"</a>"
- 					       +'상품 이름 : '+data[key].ss_title+"<br/>";
- 			}
- 			$('#gndnjs').html(rList3);
+   	    console.log(data);
+   	 var result='';
+	     var data2=data.sList;
+	for(key in data.sList){
+	
+			result+="<a href='auctionread?rab_ranum="+data2[key].sb_ssnum+"'>"
+			      +data2[key].ssi_img+"</a>"+"<br/>"
+			      +"<p>상품 제목 : "+data2[key].ss_title+"</p><br/>";
+	}
+	$('#gndnjs').html(result);
+	$('#pagingspon').html(data.paging);
    	    	
    	    },
    	    error:function(error){
@@ -502,20 +525,21 @@
         $("#ListView2").css("display", "none");
         $("#ListView3").css("display", "none");
      
-    });*/
+    });
 
-    /*$("#Lbtn2").click(function() {
+    $("#Lbtn2").click(function() {
     	 
         $("#ListView1").css("display", "none");
         $("#ListView2").css("display", "inline");
         $("#ListView3").css("display", "none");
         
-    });*/
-    /*$("#Lbtn3").click(function() {
+    });
+    $("#Lbtn3").click(function() {
     	 
         $("#ListView1").css("display", "none");
         $("#ListView2").css("display", "none");
         $("#ListView3").css("display", "inline");
         
     });*/
-</script></html>
+</script>
+</html>

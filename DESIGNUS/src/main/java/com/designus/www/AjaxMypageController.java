@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+
+import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.service.MypageMM;
 
@@ -17,32 +19,21 @@ import com.designus.www.service.MypageMM;
 public class AjaxMypageController {
 	@Autowired
 	private MypageMM pm;
-
-	@RequestMapping(value = "ajax/lbauc", produces = "application/json;charset=utf8")
-	// json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
-	public String lbauc() {
-		System.out.println("컨트롤러 왔다 소리 질러~~~");
-
-		String aa = pm.lbauc();
-		return aa;
+	@RequestMapping(value = "/ajax/lbrev",produces="application/json;charset=utf8")
+	
+	public  Map<String, Object> lbrev(Integer pageNum ,String kind) {
+		System.out.println("여기로 와라 제발...");
+		System.out.println("kind="+kind);
+		Map<String, Object>rMap=pm.lbrev(pageNum,kind);
+		return rMap; 
+		
 	}
-
-	@RequestMapping(value = "ajax/lbrev", produces = "application/json;charset=utf8")
-	// json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
-	public String lbrev() {
-		System.out.println("컨트롤러 왔다 소리 질러~~~");
-
-		String cc = pm.lbrev();
-		return cc;
-	}
-
-	@RequestMapping(value = "ajax/lbspon", produces = "application/json;charset=utf8")
-	// json을 커맨드 객체 ( Reply r: 요청을 받아드리는 객체)에 저장하기 위해서는 @RequestBody 사용해야 함.
-	public String lbspon() {
-		System.out.println("컨트롤러 왔다 소리 질러~~~");
-
-		String bb = pm.lbspon();
-		return bb;
+	@RequestMapping(value = "/ajax/lbspon",produces="application/json;charset=utf8")
+	
+	public  Map<String, Object> lbspon(Integer pageNum ,String kind) {
+		System.out.println("여기로 와라 제발...ㅜㅜ");
+		Map<String, Object>sMap=pm.lbspon(pageNum,kind);
+		return sMap; 
 	}
 
 }

@@ -36,4 +36,10 @@
 		resultType="Integer">
 		SELECT COUNT(*) FROM MEMBER WHERE mb_id=#{mb_id}
 	</select>
+	
+	<select id="memberFind" parameterType="member" resultType="String">
+		SELECT MB_ID FROM MEMBER WHERE MB_ID=#{MB_ID}
+	</select>
+	
+	
 </mapper>
