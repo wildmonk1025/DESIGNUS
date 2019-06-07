@@ -8,102 +8,142 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+div {
+	margin: auto;
+}
+
 #join {
-	position: relative;
-	top: 40px;
-	left: 100px;
+	width: 800px;
+	height: 800px;
+	text-align: center;
+	border: 1px solid black;
+}
+
+#writable {
+	width: 700px;
+	height: 600px;
+	text-align: center;
+}
+
+#wrijoinFrm {
+	margin: auto;
+	width: 500px;
+	text-align: center;
+	height: auto;
 }
 
 #logoimg {
+	margin: 10px;
 	width: 250px;
 	height: 100px;
-	position: relative;
-	top: 40px;
-	left: 500px;
-}
-
-#norjoinFrm {
-	position: relative;
-	top: 50px;
-	left: 400px;
 }
 
 .memberN {
-	font-size: 15;
-	width: 90%;
-	height: 40;
+	font-size: 15px;
+	width: 300px;
+	height: 30px;
 }
 
 #btz {
-	position: relative;
-	width: 70;
-	height: 40;
-}
-
-#memberS {
-	position: relative;
-	top: 80px;
-	left: 400px;
+	width: 70px;
+	height: 40px;
 }
 
 .btz2 {
-	position: relative;
-	top: 20px;
-	left: 120px;
-	width: 300px;
-	height: 40
-}
-
-#norjoinFrm2 {
-	position: relative;
-	top: 50px;
-	left: 300px;
-}
-
-#mb_email {
-	font-size: 15;
+	margin-top: 20px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
 	width: 200px;
-	height: 40;
-	position: relative;
-	left: -98px;
+	height: 70px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+
+.btz2:hover {
+	color: white;
+}
+
+.btz2:active {
+	color: yellow;
 }
 
 #mb_email2 {
 	font-size: 15;
 	width: 200px;
 	height: 40;
-	position: relative;
-	right: 175px;
 }
 
 #emailList {
 	font-size: 15;
 	width: 100px;
 	height: 40;
-	position: relative;
-	right: 175px;
 }
 
 #Echeck {
 	width: 100;
 	height: 40;
-	position: relative;
-	top: 10px;
-	left: 450px;
 }
 
 #null {
-	position: absolute;
 	font-size: 15px;
 	width: 20px;
-	top: 410px;
-	left: 715px;
 }
 
-#i2 {
-	position: relative;
-	top: 10px;
-	left: 150px;
+#checkbx {
+	padding-top: 10px;
+	width: 400px;
+	height: 100px;
+	text-align: left;
 }
 </style>
 </head>
@@ -113,98 +153,95 @@
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
 		<form action="wriapply" name="wrimemberapplyFrm" method="post"
-			enctype="multipart/form-data">
+			enctype="multipart/form-data" onsubmit="return joinCheck2()">
 
-			<table id="wrijoinFrm">
-				<tr>
-					<th>아이디</th>
-					<td><input class="memberN" type="text" name="mb_id" id="mb_id"></td>
-					<td><input id="idcheckbtz" type="button" value="중복확인"
-						onclick="check1()"><input type="hidden" name="checkid"
-						value="0"></td>
-				</tr>
-				<tr>
-					<th>비밀번호</th>
-					<td><input class="memberN" type="password" name="mb_pw"
-						id="mb_pw"></td>
-				</tr>
-				<tr>
-					<th>비밀번호 확인</th>
-					<td><input class="memberN" type="password" name="mb_pwcheck"
-						id="mb_pwcheck"></td>
-				</tr>
-				<tr>
-					<th><span id="pwcheck"></span></th>
-				</tr>
-				<tr>
-					<th>이름</th>
-					<td><input class="memberN" type="text" name="mb_name"
-						id="mb_name"></td>
-				</tr>
-				<tr>
-					<th>생년월일</th>
-					<td><input id="mb_birth" class="memberN" type="text"
-						name="mb_birth"></td>
-				</tr>
-				<tr>
-					<th>프로필 사진</th>
-					<td><input id="mb_profile" class="memberN" type="file"
-						name="mb_profile" onchange="fileChk(this)"> <input
-						type="hidden" id="fileCheck" value="0" name="fileCheck"></td>
-				</tr>
-				<tr>
-					<th>전공</th>
-					<td><select id="mj_cg_code" name="mj_cg_code" class="memberN">
-							<option value="100">전공선택</option>
-							<option value="110">귀금속</option>
-							<option value="120">도예</option>
-							<option value="130">가죽</option>
-					</select></td>
-				</tr>
-				<tr>
-					<th>포트폴리오</th>
-					<td>
-					<td><input id="mj_portf" class="memberN" type="file"
-						name="mj_portf" onchange="fileChk2(this)" value="4"> <input
-						type="hidden" id="fileCheck2" value="3" name="fileCheck2"></td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td><input id="mb_address" class="memberN" type="text"
-						name="mb_address"></td>
-				</tr>
-			</table>
-			<table id="norjoinFrm2">
-
-				<tr>
-					<th>이메일</th>
-					<td><input id="mb_email" type="email" name="mb_email"></td>
-					<!-- 	<td><select id="emailList" class="Data">
+			<div id="writable">
+				<table id="wrijoinFrm">
+					<tr>
+						<th>아이디</th>
+						<td><input class="memberN" type="text" name="mb_id"
+							id="mb_id"></td>
+						<td><input id="idcheckbtz" type="button" value="중복확인"
+							onclick="check1()"><input type="hidden" name="checkid"
+							value="0"></td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input class="memberN" type="password" name="mb_pw"
+							id="mb_pw"></td>
+					</tr>
+					<tr>
+						<th>비밀번호 확인</th>
+						<td><input class="memberN" type="password" name="mb_pwcheck"
+							id="mb_pwcheck"></td>
+					</tr>
+					<tr>
+						<th><span id="pwcheck"></span></th>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td><input class="memberN" type="text" name="mb_name"
+							id="mb_name"></td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td><input id="mb_birth" class="memberN" type="text"
+							name="mb_birth"></td>
+					</tr>
+					<tr>
+						<th>프로필 사진</th>
+						<td><input id="mb_profile" class="memberN" type="file"
+							name="mb_profile" onchange="fileChk(this)"> <input
+							type="hidden" id="fileCheck" value="0" name="fileCheck"></td>
+					</tr>
+					<tr>
+						<th>전공</th>
+						<td><select id="mj_cg_code" name="mj_cg_code" class="memberN">
+								<option value="100">전공선택</option>
+								<option value="110">귀금속</option>
+								<option value="120">도예</option>
+								<option value="130">가죽</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>포트폴리오</th>
+						<td><input id="mj_portf" class="memberN" type="file"
+							name="mj_portf" onchange="fileChk2(this)" value="4"> <input
+							type="hidden" id="fileCheck2" value="3" name="fileCheck2"></td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td><input id="mb_address" class="memberN" type="text"
+							name="mb_address"></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input id="mb_email" type="email" class="memberN"
+							name="mb_email" width="300"></td>
+						<!-- 	<td><select id="emailList" class="Data">
 							<option value="1">직접입력</option>
 							<option value="naver">naver.com</option>
 							<option value="daum">daum.net</option>
 							<option value="google">google.com</option>
 					</select></td> -->
 
-				</tr>
-				<tr>
-					<td><input id="Echeck" type="button" value="이메일 인증"
-						onclick="emailcheck()"></td>
-					<td><input id="joinhidden" type="hidden"></td>
-				</tr>
-				<tr>
-					<td id="i2"><input id="che" type="checkbox">전체동의<br>
-						<input class="i1" type="checkbox">이용약관(필수)<br> <input
-						class="i1" type="checkbox">개인정보 수집 및 이용(필수)<br> <input
-						class="i1" type="checkbox">개인정보 수집 및 이용(선택)<br></td>
-				</tr>
-				<tr>
-					<td>
-						<button class="btz2">회원가입</button>
-					</td>
-					<td><input class="btz2" type="reset" value="취소"></td>
-				</tr>
-			</table>
+						<td><input id="Echeck" type="button" value="이메일 인증"
+							onclick="emailcheck()"></td>
+						<td><input id="joinhidden" type="hidden"></td>
+					</tr>
+				</table>
+				<div id="checkbx">
+					<input id="che" name="check1" type="checkbox" value="1">전체동의<br>
+					<input class="i1" id="chk2" name="chk2" type="checkbox">이용약관(필수)<br>
+					<input class="i2" type="checkbox" id="Chk3" name="chk3">개인정보
+					수집 및 이용(필수)<br> <input class="i3" type="checkbox">개인정보
+					수집 및 이용(선택)<br>
+				</div>
+				<div id="joinbox">
+					<input class="btz2" type="submit" value="회원가입"> <input
+						class="btz2" type="reset" value="취소">
+				</div>
+			</div>
 		</form>
 	</div>
 </body>
@@ -244,7 +281,7 @@
 	 }) */
 	var idck = 0;
 	$(function() {
-		$('#btz').click(function() {
+		$('#idcheckbtz').click(function() {
 			var mbid = $("#mb_id").val();
 			$.ajax({
 				async : true,
@@ -271,5 +308,99 @@
 			});
 		});
 	});
+	function joinCheck2() {
+		var mbid = $("#mb_id").val();
+		var mbpw = $("#mb_pw").val();
+		var mbpw2 = $("#mb_pwcheck").val();
+		var mbname = $("#mb_name").val();
+		var mbbirth = $("#mb_birth").val();
+		var mbaddr = $("#mb_address").val();
+		var chk1 = $("#chk2").val();
+		var chk2 = $("#chk3").val();
+		var cate = $("#mj_cg_code").val();
+		var email = $("#mb_email").val()
+
+		if (mbid.length == 0) {
+			alert("아이디를 입력해주세요.");
+			$("#mb_id").focus();
+			return false;
+		}
+
+		if (mbpw.length == 0) {
+			alert("비밀번호를 입력해주세요.");
+			$("#mb_pw").focus();
+			return false;
+		}
+		if (mbpw != mbpw2) {
+			alert("비밀번호확인이 일치하지 않습니다. 비밀번호를 확인해주세요.")
+			$("#mb_pwcheck").focus();
+			return false;
+		}
+
+		if (mbname.length == 0) {
+			alert("이름을 입력해주세요.")
+			$("#mb_name").focus();
+			return false;
+		}
+		if (mbbirth.length == 0) {
+			alert("생일을 입력해주세요.")
+			$("#mb_birth").focus();
+			return false;
+		}
+		if (mbaddr.length == 0) {
+			alert("주소를 입력해주세요.")
+			$("#mb_address").focus();
+			return false;
+		}
+		if (cate == 100) {
+			alert("카테고리를 선택해주세요.")
+			return false;
+		}
+		if ($('#fileCheck').val() == 0) {
+			alert("프로필 이미지를 첨부해주세요.")
+			return false;
+		}
+		if ($('#fileCheck2').val() == 3) {
+			alert("가입신청을 위해 포트폴리오를 첨부해주셔야합니다.")
+			return false;
+		}
+		if (email.length == 0) {
+			alert("이메일을 입력하세요.")
+			$("#mb_email").focus();
+			return false;
+		}
+		if ($("input:checkbox[name=chk2]").is(":checked") == false) {
+			alert("이용약관에 동의해주세요.")
+			return false;
+		}
+
+		if ($("input:checkbox[name=chk3]").is(":checked") == false) {
+			alert("개인정보 수집 약관에 동의해주세요.")
+			return false;
+		}
+
+		if (confirm("가입 신청을 하시겠습니까?")) {
+			if (idck == 0) {
+				alert("아이디 중복체크를 진행해주세요.")
+				return false;
+			} else {
+				alert("정상적으로 가입신청 되었습니다!");
+				$("#wrimemberapplyFrm").submit();
+			}
+		}
+	}
+	$(function() { //전체선택 체크박스 클릭
+		$("#che").click(function() {
+			//만약 전체 선택 체크박스가 체크된상태일경우 
+			if ($("#che").prop("checked")) {
+				//해당화면에 전체 checkbox들을 체크해준다
+				$("input[type=checkbox]").prop("checked", true);
+				// 전체선택 체크박스가 해제된 경우 
+			} else {
+				//해당화면에 모든 checkbox들의 체크를해제시킨다.
+				$("input[type=checkbox]").prop("checked", false);
+			}
+		})
+	})
 </script>
 </html>

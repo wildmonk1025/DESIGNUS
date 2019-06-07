@@ -383,7 +383,6 @@ button:hover {
 
 	function Aj(id) {
 		$('#articleView_layer').addClass('open');
-
 	}
 
 	$("#revauctionbtn").click(function() {
