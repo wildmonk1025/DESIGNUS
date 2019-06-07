@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.userClass.UploadFile;
@@ -65,13 +66,19 @@ public class RevAuctionMM {
 	}
 
 	public ModelAndView revAuctionRead(int ra_num) {
-		//mav.addObject("ra_num", ra_num);
 		mav = new ModelAndView();
 		String view = null;
+		String id = (String)session.getAttribute("id");
+		int nb = 1;
 		RevAuction ra = new RevAuction();
+		Basket bk = new Basket();
 		ra.setRa_num(ra_num);
 		ra = rDao.revAuctionReadSelect(ra);
-
+		bk.setRab_mbid(id);
+		bk.setRab_ranum(ra_num);
+		nb = rDao.getrevAuctionBasketSelect(bk);
+		bk.setRab_ranum(nb);
+		mav.addObject("nb",bk.getRab_ranum());
 		mav.addObject("raInfo", ra);
 		if (ra_num == ra.getRa_num()) {
 			view = "revAuctionRead";
@@ -82,6 +89,28 @@ public class RevAuctionMM {
 		}
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public int revbasketSelect(int num) {
+		String id = (String)session.getAttribute("id");
+		String view = null;
+		Basket bk = new Basket();
+		bk.setRab_ranum(num);
+		bk.setRab_mbid(id);
+		
+		mav.addObject("num",num);
+		
+		int number = rDao.getrevAuctionBasketSelect(bk);
+		
+		if(number == 0) {
+			rDao.getrevAuctionBasketInsert(bk);
+			view = "auctionRead";
+		} 
+		if(number > 0) {
+			rDao.getrevAuctionBasketDelete(bk);
+			view = "auctionRead";
+		}	
+		return number;
 	}
 
 }

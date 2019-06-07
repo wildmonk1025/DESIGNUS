@@ -277,6 +277,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+	
 	if(${nb} > 0){
 		$("#peek2").css("display", "none");
 		$("#peek1").css("display", "inline");
