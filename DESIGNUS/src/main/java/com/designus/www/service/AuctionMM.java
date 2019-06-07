@@ -105,7 +105,6 @@ public class AuctionMM {
 	             else
 	                raList.get(i).setRa_max("-");
 	          }
-	          
 	       }
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);

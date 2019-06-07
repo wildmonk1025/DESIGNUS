@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.service.AuctionMM;
 import com.designus.www.service.CommonMM;
+import com.designus.www.service.RevAuctionMM;
 
 @RestController
 public class AjaxAuctionController {
@@ -17,7 +18,8 @@ public class AjaxAuctionController {
 	 */
 	@Autowired
 	private AuctionMM aum;
-	
+	@Autowired
+	private RevAuctionMM ram;
 	
 	@RequestMapping(value = "ajax/BasketSelect",method = {RequestMethod.POST,RequestMethod.GET})
 	public int ajaxBasketSelect(int num) {
@@ -27,4 +29,14 @@ public class AjaxAuctionController {
 		
 		return number;
 	}
+
+	@RequestMapping(value = "ajax/revBasketSelect",method = {RequestMethod.POST,RequestMethod.GET})
+	public int ajaxrevBasketSelect(int num) {
+		
+		int number = ram.revbasketSelect(num); 
+		
+		
+		return number;
+	}
+
 }
