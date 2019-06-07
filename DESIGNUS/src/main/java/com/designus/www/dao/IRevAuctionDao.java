@@ -13,5 +13,8 @@ public interface IRevAuctionDao {
 
 	RevAuction revAuctionReadSelect(RevAuction ra_num);
 
+	String setRevAuctionTenderMinValue(RevAuction ra_num);
+
+	String setRevAuctionTenderMaxValue(RevAuction ra_num);
   
 }
