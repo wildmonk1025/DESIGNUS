@@ -103,25 +103,28 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionRead(int au_num) {
+	public ModelAndView auctionRead(int au_num,int nb) {
 		mav=new ModelAndView();
 		String view = null;
 		List<Auction> audList = null;
+		int numb = 0;
 		Auction au = new Auction();
+		Basket bk = new Basket();
 		au.setAu_num(au_num);
-		
+		bk.setAb_aunum(nb);
 		audList = aDao.getAuctionReadSelect(au);
-		
+		numb = aDao.getAuctionBasketSelect(bk);
+		System.out.println("number ="+nb);
 		mav.addObject("audList",audList);
-		
-		view = "auctionRead";
+		mav.addObject("nb",numb);
 		mav.addObject("au_num",au_num);
+		view = "auctionRead";
 		mav.setViewName(view);
 		
 		return mav;
 	}
 
-
+/*  아마 필요 없을듯 한 코드 ajax 로 해결함
 	public ModelAndView shopbasket(int ab_aunum) {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
@@ -146,8 +149,26 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
-
-
+*/
 	
-
-}
+	public int basketSelect(int num) {
+		String id = (String)session.getAttribute("id");
+		String view = null;
+		Basket bk = new Basket();
+		bk.setAb_aunum(num);
+		bk.setAb_mbid(id);
+		
+		mav.addObject("num",num);
+		
+		int number = aDao.getAuctionBasketSelect(bk);
+		
+		if(number == 0) {
+			aDao.getAuctionBasketInsert(bk);
+			view = "auctionRead";
+		} 
+		if(number > 0) {
+			aDao.getAuctionBasketDelete(bk);
+			view = "auctionRead";
+		}	
+		return number;
+	}}

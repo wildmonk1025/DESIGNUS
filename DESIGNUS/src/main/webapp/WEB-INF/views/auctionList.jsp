@@ -204,7 +204,7 @@
 			</div>
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
-				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
+				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}&number=${nb.ab_aunum}'">
 					<div class="auListImg">
 						<img src="./images/logo.png" />
 					</div>
@@ -237,6 +237,8 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+	console.log(1,${numb});
+	console.log(2,${numb.ab_aunum});
 	
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");
