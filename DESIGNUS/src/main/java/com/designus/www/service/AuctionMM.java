@@ -10,10 +10,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
+
+import javafx.scene.control.Alert;
 
 @Service
 public class AuctionMM {
@@ -112,11 +115,39 @@ public class AuctionMM {
 		mav.addObject("audList",audList);
 		
 		view = "auctionRead";
-		
+		mav.addObject("au_num",au_num);
 		mav.setViewName(view);
 		
 		return mav;
 	}
+
+
+	public ModelAndView shopbasket(int ab_aunum) {
+		mav = new ModelAndView();
+		String id = (String)session.getAttribute("id");
+		String view = null;
+		Basket bk = new Basket();
+		bk.setAb_aunum(ab_aunum);
+		bk.setAb_mbid(id);
+		
+		mav.addObject("au_num",ab_aunum);
+		
+		int check = aDao.getAuctionBasketSelect(bk);
+		
+		if(check == 0) {
+			aDao.getAuctionBasketInsert(bk);
+			view = "auctionRead";
+		} 
+		if(check > 0) {
+			aDao.getAuctionBasketDelete(bk);
+			view = "auctionRead";
+		}
+		
+		mav.setViewName(view);
+		return mav;
+	}
+
+
 	
 
 }

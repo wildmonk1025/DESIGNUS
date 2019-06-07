@@ -55,5 +55,13 @@ public class AuctionController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/shopbasket" )
+	public ModelAndView shopbasket(int ab_aunum) {
+		mav = new ModelAndView();
+		mav = aum.shopbasket(ab_aunum);
+		
+		return mav;
+	}
+	
 	
 }
