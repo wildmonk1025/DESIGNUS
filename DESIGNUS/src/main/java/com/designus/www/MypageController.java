@@ -82,10 +82,12 @@ public class MypageController {
 
 	@RequestMapping(value = "/basketFrm", method = RequestMethod.GET)
 
-	public ModelAndView basketFrm(Integer pageNum) {
+	public ModelAndView basketFrm(Integer pageNum ,String kind) {
 		System.out.println("여기로 와야 하는데....");
+		System.out.println("카인드 뭐야??"+kind);
 		mav = new ModelAndView();
-		 mav=pm.basketFrm(pageNum);
+		 mav=pm.basketFrm(pageNum,kind);
 		return mav;
 	}
+
 }
