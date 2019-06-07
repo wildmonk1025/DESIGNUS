@@ -256,15 +256,8 @@ div {
 	<div id="middle_contents3">
 		<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
 		<div id="middle_contents3_lv1">
-			<table>
-				<tr>
-					<td align="center" style="width: 200px">작가</td>
-					<td style="width: 100px"><button id="select">의뢰결정</button></td>
-					<td style="width: 200px">의뢰 접수 금액: 0원</td>
-					<td colspan="2" style="width: 700px; text-align: right;">견적서
-						<button id="writerselect">다운로드</button>
-					</td>
-				</tr>
+			<table id="tenderlist">
+
 			</table>
 		</div>
 	</div>
@@ -370,10 +363,32 @@ $(".subtn").click(function() {
 		$('#lightbox_contents1').css("display", "none")
 	});
 
-/* 	var chk = ${ra_num};
+	/* 여기부터 */
+ 	var ra_num = ${ra_num};
 	$(document).ready(function() {
-		alert("제작의뢰 리스트 시퀀스 "+chk+"번 글 입니다.");
-	}); */
+		alert("제작의뢰 리스트 시퀀스 "+ra_num+"번 글 입니다.");
+			$.ajax({
+				type:'POST',
+				url:'ajax/revauction',
+				//traditional : true,
+				data: { rat_ranum : ra_num},
+				dataType:'json',
+				success: function(data) {
+					var str = "<tr><td>작가ID</td><td>접수금액</td><td>첨부파일</td><td>제작기간</td><td></td>";
+					for(var i in data) {
+					str+="<tr><td>"+data[i].rat_mbid_w+"</td><td>"+data[i].rat_price
+							+"</td><td><a href='/download/"+data[i].rat_file+"'<button>다운로드</button></a></td><td>"+data[i].rat_days+"</td>";
+					}
+					$("#tenderlist").html(str);
+					console.log(str);
+				},
+				error: function(error) {
+					console.log("에러");
+					console.log(error);
+				}
+			}); //ajax End
+		})//function End
+		/* 여기까지 */
 
 </script>
 </html>

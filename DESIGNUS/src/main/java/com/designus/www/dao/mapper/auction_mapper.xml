@@ -28,6 +28,17 @@
 		SELECT * FROM AU WHERE AU_NUM = ${au_num}
 	</select>
 
+	<select id="getAuctionTenderPrice" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_INPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+
+	<insert id="setAuctionTenderI" parameterType="auctiontender">
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I')
+	</insert>
+
+	<update id="setAuctionTenderDel" parameterType="auctiontender">
+		UPDATE AU SET AU_QTY = AU_QTY-(${aut_price}/AU_INPRICE) WHERE AU_NUM = ${aut_aunum}
+	</update>
 
 
 </mapper>

@@ -22,4 +22,6 @@ public interface ImemberDao {
 
 	int memberlapcheck(String mbid);
 
+	String memberFind(Member mb_id);
+
 }
