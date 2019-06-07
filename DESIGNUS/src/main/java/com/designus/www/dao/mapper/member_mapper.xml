@@ -16,7 +16,8 @@
 		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'N',DEFAULT)
 	</insert>
 	<insert id="wrimemberapplyInsert" parameterType="member">
-		INSERT INTO MEMBER
+		INSERT INTO
+		MEMBER
 		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'S',DEFAULT)
 	</insert>
 	<insert id="wrimajorInsert" parameterType="major">
@@ -30,5 +31,9 @@
 	<select id="getMemberInfo" parameterType="String"
 		resultType="member">
 		SELECT * FROM MB WHERE MB_ID=#{mb_id}
+	</select>
+	<select id="memberlapcheck" parameterType="String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE mb_id=${mb_id}
 	</select>
 </mapper>

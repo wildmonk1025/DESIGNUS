@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 #join {
 	position: relative;
@@ -59,13 +60,14 @@
 	left: 300px;
 }
 
-#mb_email{
+#mb_email {
 	font-size: 15;
 	width: 200px;
 	height: 40;
 	position: relative;
 	left: -98px;
 }
+
 #mb_email2 {
 	font-size: 15;
 	width: 200px;
@@ -73,6 +75,7 @@
 	position: relative;
 	right: 175px;
 }
+
 #emailList {
 	font-size: 15;
 	width: 100px;
@@ -80,6 +83,7 @@
 	position: relative;
 	right: 175px;
 }
+
 #Echeck {
 	width: 100;
 	height: 40;
@@ -87,20 +91,20 @@
 	top: 10px;
 	left: 450px;
 }
-#null{
-	position:absolute;
-	font-size:15px;
+
+#null {
+	position: absolute;
+	font-size: 15px;
 	width: 20px;
-	top:360px;
+	top: 360px;
 	left: 715px;
-	
 }
-#i2{
- position: relative;
+
+#i2 {
+	position: relative;
 	top: 10px;
 	left: 150px;
 }
-
 </style>
 </head>
 <body>
@@ -108,7 +112,8 @@
 
 		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
 
-		<form action="memberapply" name="memberapplyFrm" method="post" enctype="multipart/form-data">
+		<form action="memberapply" name="memberapplyFrm" method="post"
+			enctype="multipart/form-data">
 
 			<table id="norjoinFrm">
 				<tr>
@@ -136,17 +141,19 @@
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input id="mb_birth" class="memberN" type="text" name="mb_birth"></td>
+					<td><input id="mb_birth" class="memberN" type="text"
+						name="mb_birth"></td>
 				</tr>
 				<tr>
 					<th>프로필 사진</th>
-					<td><input id="mb_profile" class="memberN" type="file" name="mb_profile" 
-					     onchange="fileChk(this)"multiple>
-					     <input type="hidden" id="fileCheck" value="0" name="fileCheck"> </td>
+					<td><input id="mb_profile" class="memberN" type="file"
+						name="mb_profile" onchange="fileChk(this)" multiple> <input
+						type="hidden" id="fileCheck" value="0" name="fileCheck"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input id="mb_address" class="memberN" type="text" name="mb_address"></td>
+					<td><input id="mb_address" class="memberN" type="text"
+						name="mb_address"></td>
 				</tr>
 			</table>
 			<table id="norjoinFrm2">
@@ -154,7 +161,7 @@
 				<tr>
 					<th>이메일</th>
 					<td><input id="mb_email" type="text" name="mb_email"></td>
-					
+
 				</tr>
 				<tr>
 					<td><input id="Echeck" type="button" value="이메일 인증"
@@ -162,33 +169,58 @@
 					<td><input id="joinhidden" type="hidden"></td>
 				</tr>
 				<tr>
-					<td id="i2"><input id="che" type="checkbox">전체동의<br> <input
-						class="i1" type="checkbox">이용약관(필수)<br> <input
+					<td id="i2"><input id="che" type="checkbox">전체동의<br>
+						<input class="i1" type="checkbox">이용약관(필수)<br> <input
 						class="i1" type="checkbox">개인정보 수집 및 이용(필수)<br> <input
 						class="i1" type="checkbox">개인정보 수집 및 이용(선택)<br></td>
 				</tr>
 				<tr>
 					<td>
-							<td><input class="btz2" type="submit" value="회원가입"></td> 
-						</td>
-						<td> 
-						<input class="btz2" type="reset" value="취소">
-					   </td>
+					<td><input class="btz2" type="submit" value="회원가입"></td>
+					</td>
+					<td><input class="btz2" type="reset" value="취소"></td>
 				</tr>
 			</table>
 		</form>
 	</div>
 </body>
 <script>
-function fileChk(elem) {
-	console.dir(elem);
-	if(elem.value==""){
-		console.log("empty"); 
-		$('#fileCheck').val(0); //파일 첨부 안했음
-	}else{
-		console.log("Notempty")
-		$('#fileCheck').val(1);//파일 첨부 했음
+	function fileChk(elem) {
+		console.dir(elem);
+		if (elem.value == "") {
+			console.log("empty");
+			$('#fileCheck').val(0); //파일 첨부 안했음
+		} else {
+			console.log("Notempty")
+			$('#fileCheck').val(1);//파일 첨부 했음
+		}
 	}
-}
+
+	var idck = 0;
+	$(function() {
+		$('#btz').click(function() {
+			var mbid = $("#mb_id").val();
+			$.ajax({
+				async : true, //동기화
+				type : 'post',
+				data : mbid,
+				url : "/memberlapcheck",
+				dataType : "Json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					if (data.cnt > 0) {
+						alert("존재하는 아이디 입니다.");
+						$("#mb_id").focus();
+					} else {
+						alert("사용가능한 아이디입니다.");
+						idck = 1;
+					}
+				},
+				error : function(error) {
+					alert("error:" + error);
+				}
+			});
+		});
+	});
 </script>
 </html>
