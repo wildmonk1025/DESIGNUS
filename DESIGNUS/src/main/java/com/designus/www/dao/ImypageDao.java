@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 
@@ -28,6 +29,16 @@ public interface ImypageDao {
 	boolean nortowriapplyInsert(Major mj);
 
 	boolean nortowriapplyupdate(String mj_id);
+
+	List<Basket> basketAuctionselect(String id);
+
+	List<Basket> basketRevAuctionselect(String id);
+
+	List<Basket> basketSponsorselect(String id);
+
+	List<Basket> basketFrmSelect(@Param("num") int num,@Param("id") String id);
+
+	int getBoardCount(String id);
   
   
 }
