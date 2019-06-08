@@ -27,6 +27,9 @@ public interface ImemberDao {
 	String memberFind(Member mb_id);
 
 
-	String getmemberidinfo(String mb_id);
+
+	String getmembernameInfo(String mb_name);
+
+	Member getMemberemailInfo(String mb_email);
 
 }

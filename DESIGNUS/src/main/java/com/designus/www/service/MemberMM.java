@@ -164,16 +164,16 @@ public class MemberMM {
 
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 
-		String pwdEncode = mDao.getmemberidinfo(mb.getMb_id());
+		String pwdEncode = mDao.getmembernameInfo(mb.getMb_name());
 		if (pwdEncode != null) {
-			if (pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
-				mb = mDao.getMemberInfo(mb.getMb_id());
+			if (pwdEncoder.matches(mb.getMb_email(), pwdEncode)) {
+				mb = mDao.getMemberemailInfo(mb.getMb_email());
 				session.setAttribute("id", mb.getMb_id());
 				session.setAttribute("grade", mb.getMb_grade());
 				/* session.setAttribute("mb", mb); */
 				System.out.println("grede=" + mb.getMb_grade());
 				System.out.println("id=" + mb.getMb_id());
-				view = "redirect:home";
+				view = "redirect:loginBox";
 			} else {
 				view = "loginBox";
 				mav.addObject("ckeck", 2);

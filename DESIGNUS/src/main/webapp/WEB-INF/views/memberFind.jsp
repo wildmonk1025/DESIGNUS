@@ -358,7 +358,7 @@ button:hover {
 	</div>
 </body>
 <script>	
-	/* function AjId() {
+	 function AjId() {
 	var mb_email = $("#mb_email").val();
 	var mb_name = $("#mb_name").val();
 	console.log(mb_email);
