@@ -40,6 +40,9 @@
 	<select id="memberFind" parameterType="member" resultType="String">
 		SELECT MB_ID FROM MEMBER WHERE MB_ID=#{MB_ID}
 	</select>
+	<select id="getmemberidinfo" parameterType="member" resultType="String">
+		SELECT MB_ID  FROM MEMBER WHERE MB_EMAIL =#{mb_email} AND MB_NAME=#{mb_name}
+	</select>
 	
 	
 </mapper>
