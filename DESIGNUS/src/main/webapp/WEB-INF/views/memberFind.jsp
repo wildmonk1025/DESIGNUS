@@ -274,30 +274,7 @@ button:hover {
 </style>
 </head>
 <body>
-<form action="/sendMail/id" id="findForm" method="post">
-    <fieldset>
-        <legend class="screen_out">아이디 찾기 폼</legend>
- 
-        <div class="box email">
-            <label for="email">이메일</label>
-            <input type="text" id="email" name="email" autofocus autocomplete="off" required />
-        </div>
- 
-        <div class="box captcha">
-            <div class="loading"></div>
- 
-            <label for="captcha">자동 방지 코드</label>
-            <input type="text" id="captcha" name="captcha" autocomplete="off" required />
-            <img src="/captcha" alt="캡차 이미지" title="클릭시 새로고침" />
-        </div>
- 
-        <div class="box btn">
-            <button type="submit" class="btn join">
-                <i class="fa fa-envelope"></i>
-            </button>
-        </div>
-    </fieldset>
-</form>
+
 
 
 	<div id="findcheckmain">
@@ -312,6 +289,7 @@ button:hover {
 			<br> <br>
 			<div id="list">
 				<div id="text1" align="center">
+				<form action="memberidfind" id="memberidfind" method="post">
 					<table>
 						<tr>
 							<th>이름</th>
@@ -324,6 +302,7 @@ button:hover {
 								onclick="emailcheck()"></td>
 						</tr>
 					</table>
+					</form>
 				</div>
 				<div id="text2" align="center">
 					<button id="idf" onclick="AjId()">아이디 찾기</button>
@@ -379,7 +358,7 @@ button:hover {
 	</div>
 </body>
 <script>	
-	function AjId() {
+	 function AjId() {
 	var mb_email = $("#mb_email").val();
 	var mb_name = $("#mb_name").val();
 	console.log(mb_email);
@@ -403,7 +382,7 @@ button:hover {
 				alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
 			}//AjIdEnd
 		});//ajax end 
-	}
+	} */
 
 	//ajax 실행문 작성
 

@@ -1,7 +1,9 @@
 package com.designus.www.dao;
 
+import java.util.List;
 import java.util.Map;
 
+import com.designus.www.bean.Auction;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 
@@ -23,5 +25,11 @@ public interface ImemberDao {
 	int memberlapcheck(String mbid);
 
 	String memberFind(Member mb_id);
+
+
+
+	String getmembernameInfo(String mb_name);
+
+	Member getMemberemailInfo(String mb_email);
 
 }

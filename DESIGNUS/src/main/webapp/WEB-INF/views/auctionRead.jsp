@@ -160,7 +160,11 @@
 	width: 150px;
 	font-size: 20px;
 }
-
+#tenderInput{
+	height: 40px;
+	width: 200px;
+	font-size: 16px;
+}
 #inbuyLB-shadow {
 	position: absolute;
 	width: 100%;
@@ -220,14 +224,13 @@
 		</form>
 	</div><!--   --><div id="inbuyLB-shadow"></div>
 	<div id="tenderLB">
-	<!--
-		<form action="auctiontender">
-			입찰가격 : <input type="number" id="inbuyInput" max="99999999" min="1"
-				maxlength="8" oninput="maxLengthCheck(this)"><br><br> 
+		<form action="auctiontender" method="post">
+			<input type="hidden" name="tenderNum" value="${nb}">
+			입찰가격 : <input type="number" id="tenderInput" name="tenderPrice" max="99999999" min="1"
+				maxlength="8" oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"><br><br> 
 				<input type="submit" class="btn11" value="구입"> 
 				<input type="reset" class="btn11" value="취소">
 		</form>
-		 -->
 	</div>
 	<div id="tenderLB-shadow"></div>
 
