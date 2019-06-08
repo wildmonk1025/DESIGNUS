@@ -50,6 +50,22 @@ public interface ImypageDao {
 	int getsponCount(String id);
 
 	List<AuctionProgress> auctionMyOrderListSelect(String id);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep2(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep3(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep4(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	int getSetpCount(@Param("id") String id, @Param("step") int step);
+
+	int getSetpCount2(@Param("id") String id, @Param("step") int step);
+
+	int getSetpCount3(@Param("id") String id, @Param("step") int step);
+
+	int getSetpCount4(@Param("id") String id, @Param("step") int step);
   
   
 }

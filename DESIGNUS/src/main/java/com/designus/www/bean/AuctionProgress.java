@@ -19,4 +19,9 @@ public class AuctionProgress {
 	int    aup_price;
 	String aup_track;
 	int    aup_step;
+	String aui_img;
+	String au_mbid_w;
+	String au_title;
+    String aut_kind;
+
 }

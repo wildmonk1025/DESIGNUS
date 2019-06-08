@@ -107,12 +107,14 @@ public class MypageController {
 		 mav=pm.basketFrmspon(pageNum,kind);
 		return mav;
 	}
-	@RequestMapping(value = "/auctionMyOrderList", method = RequestMethod.GET)
+	@RequestMapping(value = "/auctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
 
-	public ModelAndView auctionMyOrderList() {
+	public ModelAndView auctionMyOrderList(Integer pageNum ,String kind) {
+		System.out.println("일단 여기로 와야 하는디....");
 		mav = new ModelAndView();
 		
-		 mav=pm.auctionMyOrderList();
+		 mav=pm.auctionMyOrderList(pageNum,kind);
+		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
 		return mav;
 	}
 }
