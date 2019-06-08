@@ -361,50 +361,28 @@ a:hover {
 		<button id="Lbtn1" onclick="location.href='basketFrm?kind=A'">
 			출품 꿍리스트</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button id="Lbtn2" onclick="ReAucbtn()">제작의뢰 꿍리스트</button>
+		<button id="Lbtn2" onclick="location.href='basketFrmrev?kind=R'">제작의뢰 꿍리스트</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button id="Lbtn3" onclick="sponbtn()">후원 꿍리스트</button>
+		<button id="Lbtn3" onclick="location.href='basketFrmspon?kind=S'">후원 꿍리스트</button>
 	</div>
 	<div id="list">
 		<div id="ListView1">
 			출품 꿍리스트
 			<div id="cnfvna" class="lv1">
 				<c:forEach var="board" items="${bList}">
-					<a href='#' onclick="articleView(${board.ab_aunum})">${board.aui_img}</a>
+					<a href='#' onclick="articleView(${board.ab_aunum})">
+					<img src='/resources/images/${board.aui_img}'></a>
 					<P>상품 제목 : ${board.au_title}</P><br/>
-
-
 				</c:forEach>
 			</div>
 
 			<div class="lv5">${paging}</div>
-			<br>
-
-
+	
 			<div class="lv6">
 				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
 			</div>
 		</div>
-		<div id="ListView2">
-			제작의뢰 꿍리스트
-			<div id="wpwkr" class="lv1"></div>
-
-
-			<div id="pagerev" class="lv5"></div>
-			<div class="lv6">
-				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
-			</div>
-		</div>
-		<div id="ListView3">
-			후원꿍리스트
-			<div id="gndnjs" class="lv1"></div>
-
-			<div id="pagingspon" class="lv5">
-			</div>
-			<div class="lv6">
-				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
-			</div>
-		</div>
+		
 	</div>
 	<div id="point">
 		<h1>포인트:</h1>
@@ -413,9 +391,6 @@ a:hover {
 		<h1>프로필사진</h1>
 	</div>
 
-
-
-
 </body>
 <script type="text/javascript">
  
@@ -423,13 +398,13 @@ a:hover {
  var btn2=$("#Lbtn2");
  var btn3=$("#Lbtn3");
 
- function Aucbtn() {
+ /*function Aucbtn() {
 	 
 	  $("#ListView1").css("display", "inline");
       $("#ListView2").css("display", "none");
       $("#ListView3").css("display", "none");
      
-     /* $.ajax({
+      $.ajax({
   		url: "ajax/lbauc",
   		type:"post",
   	    processData : false,
@@ -453,9 +428,9 @@ a:hover {
   	    	console.log(error);
   	    }
   		 
-  	 });*/
-}
- function ReAucbtn() {
+  	 });
+}*/
+ /*function ReAucbtn() {
 	 
 	
 			 
@@ -474,7 +449,7 @@ a:hover {
 		for(key in data.rList){
 		
 				result+="<a href='auctionread?rab_ranum="+data2[key].rab_ranum+"'>"
-				      +data2[key].ra_image+"</a>"+"<br/>"
+				      +"<img src='"+data2[key].ra_image+"'></a>"+"<br/>"
 				      +"<p>상품 제목 : "+data2[key].ra_title+"</p><br/>";
 		}
 		$('#wpwkr').html(result);
@@ -486,8 +461,8 @@ a:hover {
    	    }
    		 
    	 });
-}
- function sponbtn() {
+}*/
+ /*function sponbtn() {
 	
 	 
      $("#ListView1").css("display", "none");
@@ -505,7 +480,7 @@ a:hover {
 	for(key in data.sList){
 	
 			result+="<a href='auctionread?rab_ranum="+data2[key].sb_ssnum+"'>"
-			      +data2[key].ssi_img+"</a>"+"<br/>"
+			      +"<img src='"+data2[key].ssi_img+"'></a>"+"<br/>"
 			      +"<p>상품 제목 : "+data2[key].ss_title+"</p><br/>";
 	}
 	$('#gndnjs').html(result);

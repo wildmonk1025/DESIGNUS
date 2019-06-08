@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,15 +54,22 @@ public class AuctionController {
 		mav = aum.auctionRead(au_num);
 		return mav;
 	}
-	
-	/*  ajax 로 해서 필요 없을듯한 코드
-	@RequestMapping(value = "/shopbasket" )
-	public ModelAndView shopbasket(int ab_aunum) {
+
+	@RequestMapping(value = "/auctioninbuy" )
+	public ModelAndView auctioninbuy(int inbuyQty, int inbuyNum) {
 		mav = new ModelAndView();
-		mav = aum.shopbasket(ab_aunum);
+		mav = aum.auctionReadInbuy(inbuyQty,inbuyNum);
+		return mav;
+	}
+/*
+	@RequestMapping(value = "/auctiontender" )
+	public ModelAndView auctiontender(int au_num) {
+		mav = new ModelAndView();
+		mav = aum.auctionReadTender(au_num);
+		
 		
 		return mav;
 	}
-	*/
+*/	
 	
 }

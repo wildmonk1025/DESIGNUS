@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
@@ -47,6 +48,8 @@ public interface ImypageDao {
 	int getrevCount(String id);
 
 	int getsponCount(String id);
+
+	List<AuctionProgress> auctionMyOrderListSelect(String id);
   
   
 }
