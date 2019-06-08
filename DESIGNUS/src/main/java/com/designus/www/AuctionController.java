@@ -61,15 +61,15 @@ public class AuctionController {
 		mav = aum.auctionReadInbuy(inbuyQty,inbuyNum);
 		return mav;
 	}
-/*
+
 	@RequestMapping(value = "/auctiontender" )
-	public ModelAndView auctiontender(int au_num) {
+	public ModelAndView auctiontender(int tenderNum,int tenderPrice) {
 		mav = new ModelAndView();
-		mav = aum.auctionReadTender(au_num);
+		mav = aum.auctionReadTender(tenderNum,tenderPrice);
 		
 		
 		return mav;
 	}
-*/	
+
 	
 }

@@ -212,10 +212,10 @@
 						${au.au_title }
 					</div>
 					<div class="auListPrice">
-						수	   량 : ${au.au_qty }			<br>
+						즉시구매가능수량 : ${au.au_qty -1}		<br>
 						경매시작가 : ${au.au_minprice}     <br>
 						즉시구매가 : ${au.au_inprice}     <br>
-						경매최고가 : el로 가져와
+						경매최고가 : ${au.aut_price}
 					</div>
 					<div class="auListDate">
 						마감시간 :  ${au.au_date }

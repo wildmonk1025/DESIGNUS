@@ -21,4 +21,5 @@ public class Auction {
 	String au_date;
 	String aui_imgSysName;
 	int au_count;
+	int aut_price;
 }

@@ -29,6 +29,10 @@ public interface IauctionDao {
 
 	void setAuctionTenderDel(AuctionTender at);
 
+	int auctionTenderSel(AuctionTender at);
+
+	void setAuctionTenderT(AuctionTender at);
+
 
   
   

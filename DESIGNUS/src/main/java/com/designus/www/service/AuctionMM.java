@@ -83,13 +83,14 @@ public class AuctionMM {
 		mav=new ModelAndView();
 		String view="null";
 		int num = 0;
+		int maxPrice = 0;
 		List<Auction> auList = null;
 		List<RevAuction> raList = null;
 		Auction au = new Auction();
 		RevAuction rau = new RevAuction();
+		AuctionTender at = new AuctionTender();
 		au.setAu_cgcode(cgcode);
 		rau.setRa_cgcode(cgcode);
-		
 		auList = aDao.getAuctionListSelect(au);
 		raList = rDao.getRevAuctionListSelect(rau);
 	      for (int i = 0; i < raList.size(); i++) {
@@ -198,7 +199,7 @@ public class AuctionMM {
 	public ModelAndView auctionReadInbuy(int inbuyQty,int inbuyNum) {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String view = "auctionRead";
+		String view = "/auctionMyorderList";
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
@@ -212,20 +213,35 @@ public class AuctionMM {
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
 		System.out.println("[1]price = "+at.getAut_price());
-		
-		aDao.setAuctionTenderI(at);
-		aDao.setAuctionTenderDel(at);
+		if(qty > 0) {
+			
+			aDao.setAuctionTenderDel(at);
+			
+			aDao.setAuctionTenderI(at);
+		}
 		mav.setViewName(view);
 		return mav;
 	}
 
 
-	public ModelAndView auctionReadTender(int au_num) {
+	public ModelAndView auctionReadTender(int tenderNum,int tenderPrice) {
+		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view = null;
+		int price = 0;
 		AuctionTender at= new AuctionTender();
-		
-		
-		
-		return null;
+		at.setAut_aunum(tenderNum);
+		at.setAut_mbid(id);
+		at.setAut_price(tenderPrice);
+		price = aDao.auctionTenderSel(at);
+		System.out.println("[1]Test1 = "+ price);
+		if(price < tenderPrice) {
+			aDao.setAuctionTenderT(at);
+			view = "/auctionMyorderList";
+		}
+		if(price >= tenderPrice) {
+			view = "/auctionRead";
+		}
+		mav.setViewName(view);
+		return mav;
 	}}
