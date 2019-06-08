@@ -99,6 +99,10 @@
 	</select>
 	<select id="getsponCount" parameterType="String"
 		resultType="Integer">
-		select count(*) from IV where SB_MBID=#{id}
+		select count(*) from ISP where SB_MBID=#{id}
+	</select>
+	<select id="auctionMyOrderListSelect" parameterType="String"
+		resultType="auctionprogress">
+		select count(*) from ISP where SB_MBID=#{id}
 	</select>
 </mapper>

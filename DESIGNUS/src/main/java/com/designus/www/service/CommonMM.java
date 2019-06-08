@@ -14,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.IcommonDao;
+import com.designus.www.dao.ImemberDao;
 import com.google.gson.Gson;
 
 @Service
 public class CommonMM {
 	@Autowired
 	private IcommonDao cDao;
+	@Autowired
+	private ImemberDao mDao;
 	@Autowired
 	private HttpSession session;
 	private ModelAndView mav;
@@ -61,4 +64,5 @@ public class CommonMM {
 		System.out.println("여기는??");
 	return jsonObj;
 	}
+	
 }
