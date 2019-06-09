@@ -1,5 +1,7 @@
 package com.designus.www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Auction;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 @Service
 public class MemberMM {
@@ -154,9 +158,32 @@ public class MemberMM {
 		return mav;
 	}
 
-	public String memberidfind() {
-		return null;
+	public ModelAndView memberidfind(Member mb) {
+		mav = new ModelAndView();
+		String view = null;
 
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+
+		String pwdEncode = mDao.getmembernameInfo(mb.getMb_name());
+		if (pwdEncode != null) {
+			if (pwdEncoder.matches(mb.getMb_email(), pwdEncode)) {
+				mb = mDao.getMemberemailInfo(mb.getMb_email());
+				session.setAttribute("id", mb.getMb_id());
+				session.setAttribute("grade", mb.getMb_grade());
+				/* session.setAttribute("mb", mb); */
+				System.out.println("grede=" + mb.getMb_grade());
+				System.out.println("id=" + mb.getMb_id());
+				view = "redirect:loginBox";
+			} else {
+				view = "loginBox";
+				mav.addObject("ckeck", 2);
+			}
+		} else {
+			view = "loginBox";
+			mav.addObject("ckeck", 2);
+		}
+		mav.setViewName(view);
+		return mav;
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Member;
 import com.designus.www.service.MemberMM;
 import com.designus.www.service.MypageMM;
@@ -89,5 +90,45 @@ public class MypageController {
 		 mav=pm.basketFrm(pageNum,kind);
 		return mav;
 	}
+	@RequestMapping(value = "/basketFrmrev", method = RequestMethod.GET)
 
+	public ModelAndView lbrev(Integer pageNum ,String kind) {
+		System.out.println("여기로 와야 하는데....");
+		System.out.println("카인드 뭐야??"+kind);
+		mav = new ModelAndView();
+		 mav=pm.basketFrmrev(pageNum,kind);
+		return mav;
+	}
+	@RequestMapping(value = "/basketFrmspon", method = RequestMethod.GET)
+
+	public ModelAndView basketFrmspon(Integer pageNum ,String kind) {
+		System.out.println("여기로 와야 하는데....");
+		System.out.println("카인드 뭐야??"+kind);
+		mav = new ModelAndView();
+		 mav=pm.basketFrmspon(pageNum,kind);
+		return mav;
+	}
+	@RequestMapping(value = "/auctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView auctionMyOrderList(Integer pageNum ,String kind) {
+		System.out.println("일단 여기로 와야 하는디....");
+		mav = new ModelAndView();
+		
+		 mav=pm.auctionMyOrderList(pageNum,kind);
+		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		return mav;
+	}
+	@RequestMapping(value = "/aucapply", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView aucapply(AuctionProgress ap) {
+		mav = new ModelAndView();
+		System.out.println("apapap: "+ap.getAu_mbid_w());
+		System.out.println("apapap: "+ap.getAup_address());
+		System.out.println("apapap: "+ap.getAup_name());
+		System.out.println("apapap: "+ap.getAup_phone());
+		System.out.println("apapap: "+ap.getAup_ptnum());
+		 mav=pm.aucapply(ap);
+		
+		return mav;
+	}
 }

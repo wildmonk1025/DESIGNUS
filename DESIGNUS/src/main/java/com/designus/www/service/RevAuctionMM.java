@@ -1,5 +1,9 @@
 package com.designus.www.service;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
+import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 @Service
 public class RevAuctionMM {
@@ -68,7 +74,7 @@ public class RevAuctionMM {
 	public ModelAndView revAuctionRead(int ra_num) {
 		mav = new ModelAndView();
 		String view = null;
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		int nb = 1;
 		RevAuction ra = new RevAuction();
 		Basket bk = new Basket();
@@ -78,7 +84,7 @@ public class RevAuctionMM {
 		bk.setRab_ranum(ra_num);
 		nb = rDao.getrevAuctionBasketSelect(bk);
 		bk.setRab_ranum(nb);
-		mav.addObject("nb",bk.getRab_ranum());
+		mav.addObject("nb", bk.getRab_ranum());
 		mav.addObject("raInfo", ra);
 		if (ra_num == ra.getRa_num()) {
 			view = "revAuctionRead";
@@ -92,25 +98,51 @@ public class RevAuctionMM {
 	}
 
 	public int revbasketSelect(int num) {
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		String view = null;
 		Basket bk = new Basket();
 		bk.setRab_ranum(num);
 		bk.setRab_mbid(id);
-		
-		mav.addObject("num",num);
-		
+
+		mav.addObject("num", num);
+
 		int number = rDao.getrevAuctionBasketSelect(bk);
-		
-		if(number == 0) {
+
+		if (number == 0) {
 			rDao.getrevAuctionBasketInsert(bk);
 			view = "auctionRead";
-		} 
-		if(number > 0) {
+		}
+		if (number > 0) {
 			rDao.getrevAuctionBasketDelete(bk);
 			view = "auctionRead";
-		}	
+		}
 		return number;
+	}
+
+	public String revAuctionAjax(RevAuctionTender rat_ranum) {
+		String jsonStr = null;
+		List<RevAuctionTender> tList = rDao.revAuctionAjaxSelect(rat_ranum);
+		System.out.println(tList.get(0));
+		if (tList.size() != 0) {
+			jsonStr = new Gson().toJson(tList);
+		} else {
+			jsonStr = new Gson().toJson(jsonStr);
+			System.out.println("입찰내역이 없습니다.");
+		}
+
+		return jsonStr;
+	}
+
+	public void ratFileDownload(Map<String, Object> params) throws Exception {
+		String root = (String) params.get("root");
+		String rat_file = (String) params.get("rat_file");
+		String fullPath = root + "/resources/upload/" + rat_file;
+		System.out.println(fullPath);
+
+		HttpServletResponse resp = (HttpServletResponse) params.get("response");
+
+		//실제 다운로드
+		upload.download(fullPath, rat_file, resp);
 	}
 
 }

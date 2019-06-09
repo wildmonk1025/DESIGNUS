@@ -81,7 +81,6 @@
 /*  #peek2 {
 	display: none;
 }  */
-
 #middle_contents1_lv3 {
 	border: 1px solid blue;
 	width: 850px;
@@ -153,8 +152,19 @@
 	text-align: center;
 	background-color: #FFE08C;
 	display: none;
+	font-size: 22px;
 }
 
+#inbuyInput {
+	height: 40px;
+	width: 150px;
+	font-size: 20px;
+}
+#tenderInput{
+	height: 40px;
+	width: 200px;
+	font-size: 16px;
+}
 #inbuyLB-shadow {
 	position: absolute;
 	width: 100%;
@@ -164,6 +174,7 @@
 	opacity: 0.75;
 	display: none;
 }
+
 #tenderLB {
 	position: absolute;
 	width: 400px;
@@ -188,27 +199,45 @@
 	display: none;
 }
 
-.subtn{
+.subtn {
 	border: none;
 	font-size: 29.5px;
 	color: red;
 	background-color: white;
-
 }
 
+.btn11 {
+	width: 70px;
+	height: 40px;
+}
 </style>
 </head>
 
 <body>
-	<div id="inbuyLB"></div>
-	<div id="inbuyLB-shadow"></div>
-	<div id="tenderLB"></div>
+	<div id="inbuyLB">
+		<form action="auctioninbuy" method="post">
+			<input type="hidden" name="inbuyNum" value="${nb}">
+			구입수량 : <input type="number" id="inbuyInput" name="inbuyQty" max="999" min="1" 
+			placeholder="최대  999EA" maxlength="3" oninput="maxLengthCheck(this)"><br><br> 
+				<input type="submit" class="btn11" value="구입"> 
+				<input type="reset" class="btn11" value="취소">
+		</form>
+	</div><!--   --><div id="inbuyLB-shadow"></div>
+	<div id="tenderLB">
+		<form action="auctiontender" method="post">
+			<input type="hidden" name="tenderNum" value="${nb}">
+			입찰가격 : <input type="number" id="tenderInput" name="tenderPrice" max="99999999" min="1"
+				maxlength="8" oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"><br><br> 
+				<input type="submit" class="btn11" value="구입"> 
+				<input type="reset" class="btn11" value="취소">
+		</form>
+	</div>
 	<div id="tenderLB-shadow"></div>
 
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
-	
+
 	<div id="homeMain">
 
 		<div id="List">
@@ -220,12 +249,12 @@
 				<div id="middle_contents1_lv1">
 					여기에 상품 이름
 					<div id="middle_contents1_lv2">
-							<div id="peek1">
-								<input type="submit" value="꿍누르기♥" class="subtn">
-							</div>
-							<div id="peek2">
-								<input type="submit" value="꿍누르기♡" class="subtn">
-							</div>
+						<div id="peek1">
+							<input type="submit" value="꿍누르기♥" class="subtn">
+						</div>
+						<div id="peek2">
+							<input type="submit" value="꿍누르기♡" class="subtn">
+						</div>
 					</div>
 				</div>
 				<div id="middle_contents1_lv3">
@@ -236,15 +265,14 @@
 							<td></td>
 						</tr>
 						<tr>
-							<th>수량 : 총수량</th>
-							<td>총수량</td>
-							<th>즉시구매가능수량 :</th>
+							<th>수량 : </th>
 							<td>총수량-1</td>
 							<td style="color: gray; font-size: 11px;"></td>
 						</tr>
 						<tr>
 							<th>즉시구매가격 :</th>
-							<td colspan="2"><dWiv id="tender_result">0원</div></td>
+							<td colspan="2"><dWiv id="tender_result">0원
+								</div></td>
 						</tr>
 					</table>
 					<div id="auctiontime">경매 남은 시간 표시</div>
@@ -263,13 +291,13 @@
 				<div id="middle_item"></div>
 			</div>
 
-			
+
 		</div>
-		
+
 		<div id="footercheck">
 			<jsp:include page="footer.jsp"></jsp:include>
-		</div>	
-		
+		</div>
+
 
 	</div>
 
@@ -330,7 +358,12 @@
 		$("#tenderLB-shadow").css("display", "none");
 	});
 	
-	
+	function maxLengthCheck(object){
+		if (object.value.length > object.maxLength){
+			object.value = object.value.slice(0, object.maxLength);
+			}   
+		}
+
 	
 </script>
 </html>

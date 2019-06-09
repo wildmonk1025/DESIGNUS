@@ -21,13 +21,38 @@
 	</select>	
 
 	<select id="getAuctionListSelect" parameterType="auction" resultType="auction">
-		SELECT * FROM AU WHERE AU_CGCODE = ${au_cgcode}
+	  <![CDATA[
+		select * from(
+    select rownum AS RN,au_num, au_mbid_w, au_title, au_cgcode, au_qty,
+    au_minprice, au_inprice, au_contents, au_date, aut_price, ROW_NUMBER() 
+    OVER(PARTITION BY AU_NUM ORDER BY AUT_PRICE DESC) AS AUNUM
+     from AUAUT where AU_CGCODE= ${au_cgcode}
+     ) where AUNUM=1
+      ]]>
 	</select>
 
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
 		SELECT * FROM AU WHERE AU_NUM = ${au_num}
 	</select>
 
+	<select id="getAuctionTenderPrice" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_INPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
 
+	<insert id="setAuctionTenderI" parameterType="auctiontender">
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I')
+	</insert>
+
+	<insert id="setAuctionTenderT" parameterType="auctiontender">
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'T')
+	</insert>
+	
+	<update id="setAuctionTenderDel" parameterType="auctiontender">
+		UPDATE AU SET AU_QTY = AU_QTY-(${aut_price}/AU_INPRICE) WHERE AU_NUM = ${aut_aunum}
+	</update>
+
+	<select id="auctionTenderSel" parameterType="auctiontender" resultType="Integer">
+		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_num = ${aut_aunum}
+	</select>
 
 </mapper>

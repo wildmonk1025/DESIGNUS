@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
@@ -47,6 +48,30 @@ public interface ImypageDao {
 	int getrevCount(String id);
 
 	int getsponCount(String id);
+
+	List<AuctionProgress> auctionMyOrderListSelect(String id);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep2(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep3(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	List<AuctionProgress> auctionMyOrderListSelectstep4(@Param("id") String id, @Param("step") int step,@Param("num") int num);
+
+	int getSetpCount(@Param("id") String id, @Param("step") int step);
+
+	int getSetpCount2(@Param("id") String id, @Param("step") int step);
+
+	int getSetpCount3(@Param("id") String id, @Param("step") int step);
+
+	int getSetpCount4(@Param("id") String id, @Param("step") int step);
+
+	boolean aucapplyupdate(AuctionProgress ap);
+
+	boolean aucapplyMbNupdate(AuctionProgress ap);
+
+	boolean aucapplyMbWupdate(AuctionProgress ap);
   
   
 }

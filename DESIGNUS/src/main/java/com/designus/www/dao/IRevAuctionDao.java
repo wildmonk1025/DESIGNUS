@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
+import com.designus.www.bean.RevAuctionTender;
 
 //import org.springframework.stereotype.Repository;
 
@@ -24,5 +25,6 @@ public interface IRevAuctionDao {
 	boolean getrevAuctionBasketInsert(Basket bk);
 
 	boolean getrevAuctionBasketDelete(Basket bk);
-  
+
+	List<RevAuctionTender> revAuctionAjaxSelect(RevAuctionTender rat_ranum);
 }
