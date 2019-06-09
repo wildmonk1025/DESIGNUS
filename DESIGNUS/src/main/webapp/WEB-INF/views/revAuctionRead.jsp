@@ -297,6 +297,7 @@ div {
 	<!-- 여기서부턴 라이트 박스 -->
 	<div id="lightboxshadow">
 	</div>
+	<form id="tenderlightbox" enctype="multipart/form-data">
 		<div id="lightbox_contents1">
 			<p>의뢰 접수 및 견적서 첨부</p>
 			<hr style="color: black">
@@ -308,7 +309,7 @@ div {
 						</tr>
 						<tr>
 							<td>견적서 첨부</td>
-							<td><input type="file" id="revafiley" name="revafiley"></td>
+							<td><input type="file" id="revfile" name="revfile"></td>
 						</tr>
 						<tr>
 							<td>제작소요기간</td>
@@ -329,6 +330,7 @@ div {
 					<input type="button" id="meneycancle" value="돌아가기" />
 			</div>
 		</div>
+		</form>
 	</div>
 
 
@@ -411,34 +413,28 @@ $(".subtn").click(function() {
 		});
 		/* 여기까지 */
 
-	/*	
- 	var ra_mbid = ${raInfo.ra_mbid};
- 	var w_grade = ${grade};
-	function revauctionapply(ra_mbid,w_grade) {
-		console.log(ra_mbid);
-		console.log(w_grade);
+	function revauctionapply() {
+			var formData = new FormData($("#tenderlightbox"));
+			//var formData = new FormData();
+			//formData.append("revamoney",$("#revamoney").val());
+			//formData.append("revadate",$("#revadate").val());
+			//formData.append("file",$("#revfile"));
+			console.log(formData);
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauctionapply',
-				//traditional : true,
-				data: { ra_mbid : ra_mbid,
-					w_grade : w_grade},
+				processData: false,
+                contentType: false,
+				data: formData,
 				dataType:'json',
 				success: function(data) {
-					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td>";
-					for(var i in data) {
-					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
-							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
-							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days+"일</td>";
-					}
-					$("#tenderlist").html(str);
-					console.log(str);
+					console.log("성공");
 				},
 				error: function(error) {
 					console.log("에러");
 					console.log(error);
 				}
 			}); //ajax End
-		})*/
+		}
 </script>
 </html>
