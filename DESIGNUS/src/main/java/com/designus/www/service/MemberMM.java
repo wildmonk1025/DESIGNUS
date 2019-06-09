@@ -39,7 +39,7 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("mb_address");
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 		String wriid = multi.getParameter("mb_id");
 		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
@@ -94,8 +94,11 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("mb_address");
+		/* String address = multi.getParameter("mb_address"); */
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
+
+		System.out.println(address);
 
 		Member mb = new Member();
 		mb.setMb_id(id);
@@ -184,6 +187,21 @@ public class MemberMM {
 		}
 		mav.setViewName(view);
 		return mav;
+	}
+
+	@Override
+	public void createAuthKey(String userEmail, String authKey) throws Exception { // 인증키 DB에 넣기
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("userEmail", userEmail);
+		map.put("authKey", authKey);
+
+		session.selectOne(namespace + ".createAuthKey", map);
+	}
+
+	@Override
+	public void userAuth(String userEmail) throws Exception { // 인증키 일치시 DB칼럼(인증여부) false->true 로 변경
+		session.update(namespace + ".userAuth", userEmail);
 	}
 
 }
