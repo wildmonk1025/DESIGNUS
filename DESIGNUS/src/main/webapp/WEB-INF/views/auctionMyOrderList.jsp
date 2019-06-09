@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -63,8 +63,6 @@ div {
 	right: 100px;
 	top: 50px;
 }
-
-
 
 #lightbox {
 	border: 1px solid orange;
@@ -328,6 +326,16 @@ a:hover {
 	position: relative;
 	top: 2px;
 }
+#l1{
+  display: none;
+	position: fixed;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%
+}
+
 </style>
 
 </head>
@@ -388,70 +396,87 @@ a:hover {
 		<div class="setpT">
 			<h1>SETP1</h1>
 			<div class="bt01">
-			<table>
-			<c:forEach var="stepone" items="${step1}">
-			   <tr>
-			     <td rowspan="4">
-			     <a href='#' onclick="articleView(${stepone.aup_ranum})">
-			     <img src='/resources/images/${stepone.aui_img}'></a>
-			     </td>
-			     <td>
-			     ${stepone.au_title} 
-			     </td>
-			   </tr>
-			   <tr>
-			     <td>구매 금액 : ${stepone.aup_price}</td>
-			     </tr>
-			     <tr>
-			     <td>주문 수량 : ${stepone.aup_qty}</td>
-			     </tr>
-			     <tr>
-			     <td><p>작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</p></td>
-			   </tr>
-			   </c:forEach>
-			</table>
-			<div>${paging}</div>
-			   <%-- <c:forEach var="stepone" items="${step1}">
-					<a href='#' onclick="articleView(${stepone.ab_aunum})">
-					<img src='/resources/images/${board.aui_img}'></a>
-					<P>상품 제목 : ${board.au_title}</P><br/>
-				</c:forEach> --%>
-				<button id="service">고객센터문의</button>
+				<c:forEach var="stepone" items="${step1}">
+					<table>
+
+						<tr>
+							<td rowspan="4"><a href='#'
+								onclick="articleView(${stepone.aup_ranum})"> <img
+									src='/resources/images/${stepone.aui_img}'></a></td>
+							<td>${stepone.au_title}</td>
+						</tr>
+						<tr>
+							<td>구매 금액 : ${stepone.aup_price}</td>
+						</tr>
+						<tr>
+							<td>주문 수량 : ${stepone.aup_qty}</td>
+						</tr>
+						<tr>
+							<td><p>
+									작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+								</p></td>
+						</tr>
+						<tr>
+							<td colspan="2"><button id="service" onclick="">배송정보
+									입력</button></td>
+						</tr>
+						<tr>
+							<td colspan="2"><button id="review">취소</button></td>
+						</tr>
+					</table>
+					<form action="aucapply" method="post">
+					<div id="l1">
+                       ${stepone.au_mbid_w} 님에게 배송요청
+					<div id="l2">
+					   ${stepone.au_title}
+					</div>
+					<div id="l3">
+					    아이디 : ${stepone.aup_mbid_n} <br/>
+					   이름 : <input type="text" name="aup_name" id="aup_name"><br/>
+					   주소 : <input type="text" name="aup_address" id="aup_address"><br/>
+					   연락처 :<input type="text" name="aup_phone" id="aup_phone">
+					</div>
+					 <input type="submit" value="요청하기"><input type="button" value="취소">
+				</div>
+				</form>
+				</c:forEach>
+
+				<div>${paging}</div>
+				
+				<!-- 	<button id="service" onclick="">배송정보 입력</button>
 				<br>
 				<br>
 
-				<button id="review">구매후기쓰기</button>
+				<button id="review">취소</button> -->
 			</div>
 		</div>
 		<div class="setpT">
 			<h1>SETP2</h1>
 			<div class="bt01">
-			<table>
-			<c:forEach var="stepone" items="${step2}">
-			   <tr>
-			     <td rowspan="4">
-			     <a href='#' onclick="articleView(${stepone.aup_ranum})">
-			     <img src='/resources/images/${stepone.aui_img}'></a>
-			     </td>
-			     <td>
-			     ${stepone.au_title} 
-			     </td>
-			   </tr>
-			   <tr>
-			     <td>구매 금액 : ${stepone.aup_price}</td>
-			     </tr>
-			     <tr>
-			     <td>주문 수량 : ${stepone.aup_qty}</td>
-			     </tr>
-			     <tr>
-			     <td><p>작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</p></td>
-			   </tr>
-			   </c:forEach>
-			</table>
-			<div>${paging}</div>
+				<table>
+					<c:forEach var="stepone" items="${step2}">
+						<tr>
+							<td rowspan="4"><a href='#'
+								onclick="articleView(${stepone.aup_ranum})"> <img
+									src='/resources/images/${stepone.aui_img}'></a></td>
+							<td>${stepone.au_title}</td>
+						</tr>
+						<tr>
+							<td>구매 금액 : ${stepone.aup_price}</td>
+						</tr>
+						<tr>
+							<td>주문 수량 : ${stepone.aup_qty}</td>
+						</tr>
+						<tr>
+							<td><p>
+									작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+								</p></td>
+						</tr>
+					</c:forEach>
+				</table>
+				<div>${paging}</div>
 				<button id="service">고객센터문의</button>
-				<br>
-				<br>
+				<br> <br>
 
 				<button id="review">구매후기쓰기</button>
 			</div>
@@ -459,32 +484,30 @@ a:hover {
 		<div class="setpT">
 			<h1>SETP3</h1>
 			<div class="bt01">
-			<table>
-			<c:forEach var="stepone" items="${step3}">
-			   <tr>
-			     <td rowspan="4">
-			     <a href='#' onclick="articleView(${stepone.aup_ranum})">
-			     <img src='/resources/images/${stepone.aui_img}'></a>
-			     </td>
-			     <td>
-			     ${stepone.au_title} 
-			     </td>
-			   </tr>
-			   <tr>
-			     <td>구매 금액 : ${stepone.aup_price}</td>
-			     </tr>
-			     <tr>
-			     <td>주문 수량 : ${stepone.aup_qty}</td>
-			     </tr>
-			     <tr>
-			     <td><p>작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</p></td>
-			   </tr>
-			   </c:forEach>
-			</table>
-			<div>${paging}</div>
+				<table>
+					<c:forEach var="stepone" items="${step3}">
+						<tr>
+							<td rowspan="4"><a href='#'
+								onclick="articleView(${stepone.aup_ranum})"> <img
+									src='/resources/images/${stepone.aui_img}'></a></td>
+							<td>${stepone.au_title}</td>
+						</tr>
+						<tr>
+							<td>구매 금액 : ${stepone.aup_price}</td>
+						</tr>
+						<tr>
+							<td>주문 수량 : ${stepone.aup_qty}</td>
+						</tr>
+						<tr>
+							<td><p>
+									작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+								</p></td>
+						</tr>
+					</c:forEach>
+				</table>
+				<div>${paging}</div>
 				<button id="service">고객센터문의</button>
-				<br>
-				<br>
+				<br> <br>
 
 				<button id="review">구매후기쓰기</button>
 			</div>
@@ -492,32 +515,30 @@ a:hover {
 		<div class="setpT">
 			<h1>SETP4</h1>
 			<div class="bt01">
-			<table>
-			<c:forEach var="stepone" items="${step4}">
-			   <tr>
-			     <td rowspan="4">
-			     <a href='#' onclick="articleView(${stepone.aup_ranum})">
-			     <img src='/resources/images/${stepone.aui_img}'></a>
-			     </td>
-			     <td>
-			     ${stepone.au_title} 
-			     </td>
-			   </tr>
-			   <tr>
-			     <td>구매 금액 : ${stepone.aup_price}</td>
-			     </tr>
-			     <tr>
-			     <td>주문 수량 : ${stepone.aup_qty}</td>
-			     </tr>
-			     <tr>
-			     <td><p>작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</p></td>
-			   </tr>
-			   </c:forEach>
-			</table>
-			<div>${paging}</div>
+				<table>
+					<c:forEach var="stepone" items="${step4}">
+						<tr>
+							<td rowspan="4"><a href='#'
+								onclick="articleView(${stepone.aup_ranum})"> <img
+									src='/resources/images/${stepone.aui_img}'></a></td>
+							<td>${stepone.au_title}</td>
+						</tr>
+						<tr>
+							<td>구매 금액 : ${stepone.aup_price}</td>
+						</tr>
+						<tr>
+							<td>주문 수량 : ${stepone.aup_qty}</td>
+						</tr>
+						<tr>
+							<td><p>
+									작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+								</p></td>
+						</tr>
+					</c:forEach>
+				</table>
+				<div>${paging}</div>
 				<button id="service">고객센터문의</button>
-				<br>
-				<br>
+				<br> <br>
 
 				<button id="review">구매후기쓰기</button>
 			</div>
