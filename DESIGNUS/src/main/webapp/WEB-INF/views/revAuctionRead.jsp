@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -204,6 +205,15 @@ div {
 	color: red;
 	background-color: white;
 }
+
+.file {
+	color: blue;
+	font-size: 15px;
+}
+
+#tenderlist{
+	text-align: center;
+}
 </style>
 </head>
 
@@ -281,15 +291,16 @@ div {
 				플라스틱은 유광으로 제작해야합니다. <br> 4. 색상은 RGB색상표 기준으로 도안에 첨부 하였습니다.
 			</p>
 		</div>
-	</div>
+	</div> 
 	<div id="footer">여기는 푸터 입니다.</div>
+	
 	<!-- 여기서부턴 라이트 박스 -->
 	<div id="lightboxshadow">
+	</div>
 		<div id="lightbox_contents1">
 			<p>의뢰 접수 및 견적서 첨부</p>
-			<hr style="color: black;">
+			<hr style="color: black">
 			<div id="revamn">
-				<form>
 					<table>
 						<tr style="width: 400px;">
 							<td>의뢰접수금액</td>
@@ -305,19 +316,24 @@ div {
 						</tr>
 
 					</table>
-					<button id="meneyapply">전송</button>
-
-					<input type="button" id="meneycancle" value="취소" />
-				</form>
+					<c:set var="ra_id" value="${raInfo.ra_mbid}"/>
+					<c:set var="se_id" value="${id}"/>
+					<c:set var="grade" value="${grade}"/>
+					<c:if test="${ra_id ne se_id}">
+					<c:if test="${grade eq 'W'}">
+					<input type="button" id="yespermitapply" onclick="revauctionapply()" value="전송"/></c:if></c:if>
+					<c:if test="${ra_id eq se_id}">
+					<c:if test="${grade ne 'W'}">
+					<input type="button" id="nopermitapply" value="전송"/>
+					</c:if></c:if>
+					<input type="button" id="meneycancle" value="돌아가기" />
 			</div>
 		</div>
-	</div>
 	</div>
 
 
 </body>
 <script>
-	
 if(${nb} > 0){
 	$("#peek2").css("display", "none");
 	$("#peek1").css("display", "inline");
@@ -362,11 +378,15 @@ $(".subtn").click(function() {
 		$('#lightboxshadow').css("display", "none")
 		$('#lightbox_contents1').css("display", "none")
 	});
+	$("#nopermitapply").click(function() {
+		alert("접근 권한이 없습니다.");
+		$('#lightboxshadow').css("display", "none")
+		$('#lightbox_contents1').css("display", "none")
+	});
 
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-		alert("제작의뢰 리스트 시퀀스 "+ra_num+"번 글 입니다.");
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -374,10 +394,42 @@ $(".subtn").click(function() {
 				data: { rat_ranum : ra_num},
 				dataType:'json',
 				success: function(data) {
-					var str = "<tr><td>작가ID</td><td>접수금액</td><td>첨부파일</td><td>제작기간</td><td></td>";
+					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td>";
 					for(var i in data) {
-					str+="<tr><td>"+data[i].rat_mbid_w+"</td><td>"+data[i].rat_price
-							+"</td><td><a href='/download/"+data[i].rat_file+"'<button>다운로드</button></a></td><td>"+data[i].rat_days+"</td>";
+					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
+							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
+							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days+"일</td>";
+					}
+					$("#tenderlist").html(str);
+					console.log(str);
+				},
+				error: function(error) {
+					var str="<tr><td width='1300'>작가회원의 의뢰 접수내역이 없습니다.</td></tr>";
+					$("#tenderlist").html(str);
+				}
+			}); //ajax End
+		});
+		/* 여기까지 */
+
+	/*	
+ 	var ra_mbid = ${raInfo.ra_mbid};
+ 	var w_grade = ${grade};
+	function revauctionapply(ra_mbid,w_grade) {
+		console.log(ra_mbid);
+		console.log(w_grade);
+			$.ajax({
+				type:'POST',
+				url:'ajax/revauctionapply',
+				//traditional : true,
+				data: { ra_mbid : ra_mbid,
+					w_grade : w_grade},
+				dataType:'json',
+				success: function(data) {
+					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td>";
+					for(var i in data) {
+					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
+							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
+							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days+"일</td>";
 					}
 					$("#tenderlist").html(str);
 					console.log(str);
@@ -387,8 +439,6 @@ $(".subtn").click(function() {
 					console.log(error);
 				}
 			}); //ajax End
-		})//function End
-		/* 여기까지 */
-
+		})*/
 </script>
 </html>
