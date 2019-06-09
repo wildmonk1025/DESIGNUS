@@ -23,5 +23,6 @@ public class AuctionProgress {
 	String au_mbid_w;
 	String au_title;
     String aut_kind;
-
+    int ponitN;
+    int ponitW;
 }

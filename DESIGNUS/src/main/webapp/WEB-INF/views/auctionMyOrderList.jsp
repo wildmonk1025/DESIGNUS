@@ -328,12 +328,27 @@ a:hover {
 }
 #l1{
   display: none;
-	position: fixed;
+	
 	position: absolute;
-	top: 0;
-	left: 0;
+	top:100;
+	left: 300;
 	width: 100%;
 	height: 100%
+	margin: -150px 0 0 -194px;
+	padding: 28px 28px 0 28px;
+	border: 2px solid #555;
+	background: #fff;
+	font-size: 12px;
+	z-index: 200;
+	color: #767676;
+	line-height: normal;
+	white-space: normal;
+	overflow: scroll
+}
+.t1{
+   position: relative;
+	top: 100;
+	left: -200;
 }
 
 </style>
@@ -397,7 +412,7 @@ a:hover {
 			<h1>SETP1</h1>
 			<div class="bt01">
 				<c:forEach var="stepone" items="${step1}">
-					<table>
+					<table class="t1">
 
 						<tr>
 							<td rowspan="4"><a href='#'
@@ -417,24 +432,26 @@ a:hover {
 								</p></td>
 						</tr>
 						<tr>
-							<td colspan="2"><button id="service" onclick="">배송정보
-									입력</button></td>
+							<td colspan="2"><button id="btzRevM">배송정보입력</button></td>
 						</tr>
 						<tr>
-							<td colspan="2"><button id="review">취소</button></td>
+							<td colspan="2"><button id="cencle" onclick="location.href='auccancel'">취소</button></td>
 						</tr>
 					</table>
 					<form action="aucapply" method="post">
 					<div id="l1">
-                       ${stepone.au_mbid_w} 님에게 배송요청
+                      <input type="text" name="au_mbid_w" id="au_mbid_w" value="${stepone.au_mbid_w}">님에게 배송요청
 					<div id="l2">
 					   ${stepone.au_title}
 					</div>
 					<div id="l3">
 					    아이디 : ${stepone.aup_mbid_n} <br/>
+					   <input type="hidden" name="aup_mbid_n" id="aup_mbid_n" value="${stepone.aup_mbid_n}">
 					   이름 : <input type="text" name="aup_name" id="aup_name"><br/>
 					   주소 : <input type="text" name="aup_address" id="aup_address"><br/>
 					   연락처 :<input type="text" name="aup_phone" id="aup_phone">
+					   <input type="hidden" name="aup_ptnum" id="aup_ptnum" value="${stepone.aup_ptnum}">
+					   <input type="hidden" name="aup_price" id="aup_price" value="${stepone.aup_price}">
 					</div>
 					 <input type="submit" value="요청하기"><input type="button" value="취소">
 				</div>
@@ -453,7 +470,7 @@ a:hover {
 		<div class="setpT">
 			<h1>SETP2</h1>
 			<div class="bt01">
-				<table>
+				<table class="t1">
 					<c:forEach var="stepone" items="${step2}">
 						<tr>
 							<td rowspan="4"><a href='#'
@@ -474,7 +491,7 @@ a:hover {
 						</tr>
 					</c:forEach>
 				</table>
-				<div>${paging}</div>
+				<div>${pagingS2}</div>
 				<button id="service">고객센터문의</button>
 				<br> <br>
 
@@ -484,7 +501,7 @@ a:hover {
 		<div class="setpT">
 			<h1>SETP3</h1>
 			<div class="bt01">
-				<table>
+				<table class="t1">
 					<c:forEach var="stepone" items="${step3}">
 						<tr>
 							<td rowspan="4"><a href='#'
@@ -515,7 +532,7 @@ a:hover {
 		<div class="setpT">
 			<h1>SETP4</h1>
 			<div class="bt01">
-				<table>
+				<table class="t1">
 					<c:forEach var="stepone" items="${step4}">
 						<tr>
 							<td rowspan="4"><a href='#'
@@ -591,7 +608,15 @@ a:hover {
 
 </body>
 <script type="text/javascript">
+
+$("#btzRevM").click(function() {
+	$('#l1').css("display", "inline")
+});
+
+	
+
 	$("#action").click(function() {
+
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")
 	});

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 
@@ -31,5 +32,9 @@ public interface ImemberDao {
 	String getmembernameInfo(String mb_name);
 
 	Member getMemberemailInfo(String mb_email);
+
+	int memberNpoint(AuctionProgress ap);
+
+	int memberWpoint(AuctionProgress ap);
 
 }

@@ -101,7 +101,8 @@
 		resultType="Integer">
 		select count(*) from ISP where SB_MBID=#{id}
 	</select>
-	<select id="auctionMyOrderListSelect" parameterType="String" resultType="auctionprogress">
+	<select id="auctionMyOrderListSelect" parameterType="String"
+		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
     select rownum AS RN,AUP_STEP,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
@@ -109,7 +110,8 @@
      ) where RankNo=1
   ]]>
 	</select>
-	<select id="auctionMyOrderListSelectstep" resultType="auctionprogress">
+	<select id="auctionMyOrderListSelectstep"
+		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -119,7 +121,8 @@
      ) where rn>=#{num}*5-4 AND RankNo=1 
   ]]>
 	</select>
-	<select id="auctionMyOrderListSelectstep2" resultType="auctionprogress">
+	<select id="auctionMyOrderListSelectstep2"
+		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -129,7 +132,8 @@
      ) where rn>=#{num}*5-4 AND RankNo=1 
   ]]>
 	</select>
-	<select id="auctionMyOrderListSelectstep3" resultType="auctionprogress">
+	<select id="auctionMyOrderListSelectstep3"
+		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -139,7 +143,8 @@
      ) where rn>=#{num}*5-4 AND RankNo=1 
   ]]>
 	</select>
-	<select id="auctionMyOrderListSelectstep4" resultType="auctionprogress">
+	<select id="auctionMyOrderListSelectstep4"
+		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -150,15 +155,34 @@
   ]]>
 	</select>
 	<select id="getSetpCount" resultType="Integer">
-		select count(*) from AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
+		select count(*) from
+		AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
 	</select>
 	<select id="getSetpCount2" resultType="Integer">
-		select count(*) from AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
+		select count(*) from
+		AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
 	</select>
 	<select id="getSetpCount3" resultType="Integer">
-		select count(*) from AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
+		select count(*) from
+		AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
 	</select>
 	<select id="getSetpCount4" resultType="Integer">
-		select count(*) from AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
+		select count(*) from
+		AUPVIEW where AUP_MBID_N=#{id} and aup_step=#{step}
 	</select>
+	<update id="aucapplyupdate" parameterType="auctionprogress">
+		update AUP SET
+		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
+		where aup_ptnum=#{aup_ptnum}
+	</update>
+	<update id="aucapplyMbNupdate" parameterType="auctionprogress">
+		update MB SET
+		mb_point=#{ponitN}-#{aup_price}
+		where mb_id=#{aup_mbid_n}
+	</update>
+	<update id="aucapplyMbWupdate" parameterType="auctionprogress">
+		update MB SET
+		mb_point=#{ponitW}+#{aup_price}
+		where mb_id=#{au_mbid_w}
+	</update>
 </mapper>

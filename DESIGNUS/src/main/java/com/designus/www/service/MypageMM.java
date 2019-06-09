@@ -27,6 +27,8 @@ public class MypageMM {
 	@Autowired
 	private ImypageDao pDao;
 	@Autowired
+	private ImemberDao mDao;
+	@Autowired
 	private HttpSession session;
 	@Autowired
 	private com.designus.www.userClass.UploadFile upload;
@@ -46,7 +48,7 @@ public class MypageMM {
 		} else if (list.equals("revre")) {
 			view = "revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
-			view = "redirect:/auctionMyOrderList";
+			view = "dispatche:/auctionMyOrderList";
 		} else if (list.equals("aucre")) {
 			view = "auctionMyAcceptList";
 		} else if (list.equals("spon")) {
@@ -359,7 +361,7 @@ public class MypageMM {
 				apsList=pDao.auctionMyOrderListSelectstep2(id,2,num);
 				
 				mav.addObject("step2", apsList);
-				mav.addObject("paging", getMPaging(num,kind));
+				mav.addObject("pagingS2", getMPagingS2(num,kind));
 			}else if(apList.get(i).getAup_step()==3) {
 				kind="S3";
 				apsList=pDao.auctionMyOrderListSelectstep3(id,3,num);
@@ -386,6 +388,20 @@ public class MypageMM {
 		return mav;
 	}
 
+	private Object getMPagingS2(int pageNum, String kind) {
+		int setp=2;
+		String id=session.getAttribute("id").toString();
+		System.out.println("dddddddd="+id);
+		int maxNum = pDao.getSetpCount2(id,setp); // 전체 글의 개수
+		String boardName = "auctionMyOrderList";
+		int listCount = 5; // 페이지당 글의 수
+		int pageCount = 2;// 그룹당 페이지 수
+		
+		com.designus.www.userClass.Paging paging = 
+				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
+		return paging.makeHtmlPaging();
+	}
+
 	private Object getMPaging(int pageNum, String kind) {
 		int a = 0;
 		String id=session.getAttribute("id").toString();
@@ -397,9 +413,6 @@ public class MypageMM {
 		if(kind.equals("S1")) {
 			int setp=1;
 		    a=pDao.getSetpCount(id,setp);
-		}else if(kind.equals("S2")) {
-			int setp=2;
-			a=pDao.getSetpCount2(id,setp);
 		}else if(kind.equals("S3")){
 			int setp=3;
 			a=pDao.getSetpCount3(id,setp);
@@ -408,10 +421,35 @@ public class MypageMM {
 			a=pDao.getSetpCount4(id,setp);
 		}
 		int maxNum =a;
+		System.out.println("몇 페이지????"+a);
 		
 		com.designus.www.userClass.Paging paging = 
 				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
 		return paging.makeHtmlPaging();
+	}
+	
+	@Transactional
+	public ModelAndView aucapply(AuctionProgress ap) {
+		mav=new ModelAndView();
+		int ponitN=mDao.memberNpoint(ap);
+		int ponitW=mDao.memberWpoint(ap);
+		boolean a=pDao.aucapplyupdate(ap);
+		  ap.setPonitN(ponitN);
+		  ap.setPonitW(ponitW);
+			if(a) {
+				boolean b=pDao.aucapplyMbNupdate(ap);
+				boolean c=pDao.aucapplyMbWupdate(ap);
+				if(b && c) {
+				  mav.addObject("msg", 1);
+				}else {
+					mav.addObject("msg", 2);
+				}
+			   	
+			}
+				
+			mav.setViewName("auctionMyOrderList");
+		
+		return mav;
 	}
 
 }

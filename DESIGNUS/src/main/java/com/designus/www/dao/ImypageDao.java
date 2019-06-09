@@ -66,6 +66,12 @@ public interface ImypageDao {
 	int getSetpCount3(@Param("id") String id, @Param("step") int step);
 
 	int getSetpCount4(@Param("id") String id, @Param("step") int step);
+
+	boolean aucapplyupdate(AuctionProgress ap);
+
+	boolean aucapplyMbNupdate(AuctionProgress ap);
+
+	boolean aucapplyMbWupdate(AuctionProgress ap);
   
   
 }

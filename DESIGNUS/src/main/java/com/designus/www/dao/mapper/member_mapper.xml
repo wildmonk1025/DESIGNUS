@@ -47,6 +47,10 @@
 	<select id="getmemberemailInfo" parameterType="member" resultType="String">
 		SELECT * FROM MB WHERE MB_EMAIL=#{mb_email}
 	</select>
-	
-	
+	<select id="memberNpoint" parameterType="auctionprogress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{aup_mbid_n}
+	</select>
+	<select id="memberWpoint" parameterType="auctionprogress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
+	</select>
 </mapper>
