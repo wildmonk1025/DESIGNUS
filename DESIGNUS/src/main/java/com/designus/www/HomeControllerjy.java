@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.text.DateFormat;
+import java.text.DateFormat; 
 import java.util.Date;
 import java.util.Locale;
 
@@ -101,13 +101,13 @@ public class HomeControllerjy {
 		return mav;
 	}
 
-	@RequestMapping(value = "joinPost", method = RequestMethod.POST)
-	public String joinPost(@ModelAttribute("mb") Member mb) throws Exception {
-		logger.info("currnent join member: " + mb.toString());
-		mDao.create(mb);
-
-		return "/user/joinPost";
-	}
+	/*
+	 * @RequestMapping(value = "joinPost", method = RequestMethod.POST) public
+	 * String joinPost(@ModelAttribute("mb") Member mb) throws Exception {
+	 * logger.info("currnent join member: " + mb.toString()); mDao.create(mb);
+	 * 
+	 * return "/user/joinPost"; }
+	 */
 	/*
 	 * @RequestMapping(value = "/memberidfind", method = RequestMethod.POST) public
 	 * ModelAndView memberidfind(MultipartHttpServletRequest multi, String kind) {

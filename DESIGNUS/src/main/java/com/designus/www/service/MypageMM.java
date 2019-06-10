@@ -333,62 +333,19 @@ public class MypageMM {
 	     String result="";
 		String view=null;
         System.out.println("kind"+kind);
-		
+        int num = (pageNum == null) ? 1 : pageNum;
 	
 		
 		System.out.println("여기까지 오나????....");
 		//AuctionProgress ap=new AuctionProgress();
 		apList=pDao.auctionMyOrderListSelect(id);
+		System.out.println("size"+apList.size());
+		mav.addObject("apList", apList);
+		mav.addObject("paging", getMPaging(num,kind));
 		System.out.println("사망띠....");
 		System.out.println("apList"+apList.size());
 		
 		System.out.println("여기까지가 끝인가보오....");
-		for(int i=0;i<apList.size();i++) {
-			
-			System.out.println("그치만...."+apList.get(i).getAup_step());
-			if(apList.get(i).getAup_step()==1) {
-				kind="S1";
-				//System.out.println("1111");
-				int num = (pageNum == null) ? 1 : pageNum;
-				apsList=pDao.auctionMyOrderListSelectstep(id,1,num);
-				System.out.println("step1size : "+apsList.size());
-				System.out.println("step1price : "+apsList.get(0).getAup_price());
-				mav.addObject("step1", apsList);
-				System.out.println("numS1"+num);
-				mav.addObject("paging", getMPaging(num,kind));
-				
-				
-			}else if(apList.get(i).getAup_step()==2){
-				//System.out.println("2222");
-				kind="S2";
-				int num = (pageNum == null) ? 1 : pageNum;
-				apsList=pDao.auctionMyOrderListSelectstep2(id,2,num);
-				
-				mav.addObject("step2", apsList);
-				System.out.println("numS2"+num);
-				mav.addObject("pagingS2", getMPagingS2(num,kind));
-			}else if(apList.get(i).getAup_step()==3) {
-				kind="S3";
-				int num = (pageNum == null) ? 1 : pageNum;
-				apsList=pDao.auctionMyOrderListSelectstep3(id,3,num);
-				//System.out.println("33333");
-				mav.addObject("step3", apsList);
-				System.out.println("numS3"+num);
-				mav.addObject("paging", getMPaging(num,kind));
-				
-			}else {
-				kind="S4";
-				int num = (pageNum == null) ? 1 : pageNum;
-				apsList=pDao.auctionMyOrderListSelectstep4(id,4,num);
-				//System.out.println("44444");
-				mav.addObject("step4", apsList);
-				System.out.println("numS4"+num);
-				mav.addObject("paging", getMPaging(num,kind));
-			}
-			
-		}
-		
-		
 		
 		view="auctionMyOrderList";
 		
@@ -397,40 +354,16 @@ public class MypageMM {
 		return mav;
 	}
 
-	private Object getMPagingS2(int pageNum, String kind) {
-		int setp=2;
-		String id=session.getAttribute("id").toString();
-		System.out.println("dddddddd="+id);
-		int maxNum = pDao.getSetpCount2(id,setp); // 전체 글의 개수
-		String boardName = "auctionMyOrderList";
-		int listCount = 5; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
-		
-		com.designus.www.userClass.Paging paging = 
-				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
-		return paging.makeHtmlPaging();
-	}
-
 	private Object getMPaging(int pageNum, String kind) {
-		int a = 0;
 		String id=session.getAttribute("id").toString();
 		System.out.println("dddddddd="+id);
 		 // 전체 글의 개수
 		int listCount = 5; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum =pDao.getSetpCount(id);
+		System.out.println("전체 글의 개수"+maxNum);
 		String boardName = "auctionMyOrderList";
-		if(kind.equals("S1")) {
-			int setp=1;
-		    a=pDao.getSetpCount(id,setp);
-		}else if(kind.equals("S3")){
-			int setp=3;
-			a=pDao.getSetpCount3(id,setp);
-		}else {
-			int setp=4;
-			a=pDao.getSetpCount4(id,setp);
-		}
-		int maxNum =a;
-		System.out.println("몇 페이지????"+a);
+		
 		
 		com.designus.www.userClass.Paging paging = 
 				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);

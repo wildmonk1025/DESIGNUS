@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.io.PrintWriter;
+import java.io.PrintWriter; 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -30,7 +30,6 @@ import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
-import com.designus.www.userClass.MemberServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -186,5 +185,19 @@ public class HomeController {
 	 * joinPost(@ModelAttribute("uVO") UserVO uVO) throws Exception) { //이메일 발송 관련
 	 * url return "loginBox"; }
 	 */
+	@RequestMapping(value = "/memberidfind",method = RequestMethod.POST)
+	public ModelAndView memberidfind(Member mb) {
+		mav = new ModelAndView();
+				
+		mav = mm.memberidfind(mb);
+		return mav;	
+	} 
+	@RequestMapping(value = "/memberpwfind",method = RequestMethod.POST)
+	public ModelAndView memberpwfind(Member mb) {
+		mav = new ModelAndView();
+		
+		mav = mm.memberpwfind(mb);
+		return mav;	
+	} 
 
 }
