@@ -5,6 +5,7 @@
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -213,8 +214,35 @@ div {
 					</tr>
 					<tr>
 						<th>주소</th>
-						<td><input id="mb_address" class="memberN" type="text"
-							name="mb_address"></td>
+						<!-- <td><input id="mb_address" class="memberN" type="text"
+							name="mb_address"></td> -->
+						<td><div class="form-group">
+								<input class="form-control"
+									style="top: 5px; width: 180px; height: 30px" placeholder="우편번호"
+									name="addr1" id="addr1" type="text" readonly="readonly">
+								<button type="button" class="btn btn-default"
+									onclick="execPostCode();">
+									<i class="fa fa-search"></i> 우편번호 찾기
+								</button>
+							</div></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><div class="form-group">
+								<input class="form-control"
+									style="top: 5px; width: 300px; height: 30px"
+									placeholder="도로명 주소" name="addr2" id="addr2" type="text"
+									readonly="readonly" />
+							</div></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<div class="form-group">
+								<input class="form-control" placeholder="상세주소" name="addr3"
+									style="width: 300px; height: 30px" id="addr3" type="text" />
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<th>이메일</th>

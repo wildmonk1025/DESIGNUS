@@ -39,7 +39,7 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("mb_address");
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 		String wriid = multi.getParameter("mb_id");
 		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
@@ -94,8 +94,11 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("mb_address");
+		/* String address = multi.getParameter("mb_address"); */
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
+
+		System.out.println(address);
 
 		Member mb = new Member();
 		mb.setMb_id(id);
@@ -185,5 +188,7 @@ public class MemberMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+	
 
 }

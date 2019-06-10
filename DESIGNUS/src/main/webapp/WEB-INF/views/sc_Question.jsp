@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/resources/js/addressapi.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
