@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>제작의뢰 상세보기</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -235,7 +234,7 @@ div {
 		<!-- div 카테고리와 이미지 -->
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
-			<div id="middle_img_lv2"><img src="/images/normal.png">${raInfo.ra_image}</div>
+			<div id="middle_img_lv2"><img src="resources/logo.png" alt="${raInfo.ra_image}"/></div>
 		</div>
 		<div id="middle_contents1">
 			<div id="middle_contents1_lv1">
