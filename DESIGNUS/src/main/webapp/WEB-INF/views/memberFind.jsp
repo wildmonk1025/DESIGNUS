@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -301,7 +302,7 @@ button:hover {
 								<th>이메일</th>
 								<td><input type="text" id="mb_email" name="mb_email"
 									></td>
-									<p>${findid}</p>
+									
 							</tr>
 						</table>
 
@@ -317,6 +318,7 @@ button:hover {
 					<div id="bestlist">
 						<a id="idhome" href="home">홈으로가기</a>
 					</div>
+					<p>${findid}</p>
 				</div>
 			</div>
 		</form>
@@ -336,8 +338,11 @@ button:hover {
 						<tr>
 							<th>이메일</th>
 							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
-						
-								<p>${findpw}</p>
+							
+					<%-- 	<c:set var="zz" value="${findpw}"/>
+						<c:if test="${findpw != null}">
+								<input type="button" value="${findpw}"/>
+								</c:if> --%>
 						</tr>
 					</table>
 				</div>
@@ -347,6 +352,8 @@ button:hover {
 				<div id="pwbestlist">
 					<a id="pwhome" href="home">홈으로가기</a>
 				</div>
+				<p>${findpw}</p>
+				<input type="button" value="${findpw1}"/>
 			</div>
 		</div>
 	</form>
