@@ -463,12 +463,14 @@ a:hover {
 							type="button" value="취소">
 					</div>
 				</form>
-				<form action="reviewBoardWrite" method="post">
+				<form action="reviewBoardWrite" method="post" enctype="multipart/form-data">
 					<div id="Q1">
 						수령 확인 및 구매후기 쓰기
 						<div id="Q2">
 							${apList.au_title} <input type="button" id="butt" value="추천하기"
 								onclick="good()">
+								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
+								value="${apList.aup_ptnum}">
 						</div>
 						<div id="Q3">
 							구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>

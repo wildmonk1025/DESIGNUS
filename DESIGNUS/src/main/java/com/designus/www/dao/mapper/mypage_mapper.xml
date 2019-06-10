@@ -133,4 +133,8 @@
 		mb_point=#{ponitW}+#{aup_price}
 		where mb_id=#{au_mbid_w}
 	</update>
+	<update id="reviewBoardyhWriteupDate" parameterType="Integer">
+		update AUP SET aup_step=4
+		where aup_ptnum=#{ptnum}
+	</update>
 </mapper>

@@ -12,4 +12,5 @@ public class AuctionTender {
 	String aut_mbid;
 	int    aut_price;
 	String aut_kind;
+	int    aut_qty;
 }

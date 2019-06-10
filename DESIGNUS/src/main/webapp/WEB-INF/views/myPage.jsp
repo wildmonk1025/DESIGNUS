@@ -143,8 +143,6 @@ a:hover {
 	float: left;
 }
 
-
-
 #loginwriter {
 	padding: 3px;
 	padding-top: 20px;
@@ -159,37 +157,11 @@ a:hover {
 	height: 50px;
 }
 
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
-}
-
-#subcategory {
-	width: 50px;
-	height: 50px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
-	float: left;
-}
-
 #menu {
 	float: left;
 	width: 1400px;
 	height: 50px
 }
-
-#submenu {
-	margin-left: 100px;
-	width: 150px;
-	float: left;
-	height: 50px;
-	text-align: center;
-	font-size: 18px;
-}
-
 #msg {
 	width: 50px;
 	height: 50px;

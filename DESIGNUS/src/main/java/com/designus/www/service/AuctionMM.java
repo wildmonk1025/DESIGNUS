@@ -82,8 +82,6 @@ public class AuctionMM {
 	public ModelAndView auctionList(int cgcode) {
 		mav=new ModelAndView();
 		String view="null";
-		int num = 0;
-		int maxPrice = 0;
 		List<Auction> auList = null;
 		List<RevAuction> raList = null;
 		Auction au = new Auction();
@@ -123,55 +121,37 @@ public class AuctionMM {
 		mav=new ModelAndView();
 		String view = null;
 		String id = (String)session.getAttribute("id");
-		List<Auction> audList = null;
+		List<AuctionTender> atList = null;
+		List<Auction> auwList = null;
+		String chkID = null;
 		int nb = 1;
 		Auction au = new Auction();
 		Basket bk = new Basket();
+		AuctionTender at = new AuctionTender();
+		at.setAut_aunum(au_num);
+		atList = aDao.getAuctionTenderList(at);
+		auwList = aDao.getAuctionWriterListSel(au);
 		bk.setAb_mbid(id);
 		au.setAu_num(au_num);
 		bk.setAb_aunum(au_num);
-		audList = aDao.getAuctionReadSelect(au);
+		au = aDao.getAuctionReadSelect(au);
 		nb = aDao.getAuctionBasketSelect(bk);
-		System.out.println("nb ="+nb);
 		bk.setAb_aunum(nb);
-
-		System.out.println("number ="+bk.getAb_aunum());
-		mav.addObject("audList",audList);
+		chkID = aDao.getAuctionInfoID(au);
+		mav.addObject("chkID",chkID);
+		mav.addObject("auInfo",au);
 		mav.addObject("nb",bk.getAb_aunum());
 		mav.addObject("nb2",nb);
+		mav.addObject("id",id);
 		mav.addObject("au_num",au_num);
+		mav.addObject("atList",atList);
+		mav.addObject("auwList",auwList);
 		view = "auctionRead";
 		mav.setViewName(view);
 		
 		return mav;
 	}
 
-/*  아마 필요 없을듯 한 코드 ajax 로 해결함
-	public ModelAndView shopbasket(int ab_aunum) {
-		mav = new ModelAndView();
-		String id = (String)session.getAttribute("id");
-		String view = null;
-		Basket bk = new Basket();
-		bk.setAb_aunum(ab_aunum);
-		bk.setAb_mbid(id);
-		
-		mav.addObject("au_num",ab_aunum);
-		
-		int check = aDao.getAuctionBasketSelect(bk);
-		
-		if(check == 0) {
-			aDao.getAuctionBasketInsert(bk);
-			view = "auctionRead";
-		} 
-		if(check > 0) {
-			aDao.getAuctionBasketDelete(bk);
-			view = "auctionRead";
-		}
-		
-		mav.setViewName(view);
-		return mav;
-	}
-*/
 	
 	public int basketSelect(int num) {
 		String id = (String)session.getAttribute("id");
@@ -203,20 +183,18 @@ public class AuctionMM {
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
-		System.out.println("[1]Qty = "+qty);
+		int Tqty = 0;
 		AuctionTender at = new AuctionTender();
 		at.setAut_aunum(inbuyNum);
-		System.out.println("[1]au_num = "+at.getAut_aunum());
 		at.setAut_mbid(id);
-		System.out.println("[1]id = "+at.getAut_mbid());
+		at.setAut_qty(qty);
+		Tqty = aDao.getAuctionTenderQty(at);
 		price = aDao.getAuctionTenderPrice(at);
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
-		System.out.println("[1]price = "+at.getAut_price());
-		if(qty > 0) {
-			
+		
+		if(Tqty > 0) {
 			aDao.setAuctionTenderDel(at);
-			
 			aDao.setAuctionTenderI(at);
 		}
 		mav.setViewName(view);
