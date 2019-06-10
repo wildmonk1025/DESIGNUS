@@ -13,7 +13,7 @@ div {
 	margin: auto;
 }
 
-button {
+.button {
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -272,6 +272,32 @@ button:hover {
 #btz2:hover {
 	color: white;
 }
+ #lightbox {
+            border: 1px solid orange;
+            position: absolute;
+            top: 200px;
+            left: 600px;
+            width: 800px;
+            height: 700px;
+            margin: auto;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            background-color: orange;
+            text-align: center;
+        }
+
+        #lightbox-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8000px;
+            height: 8000px;
+            background: #000;
+            opacity: 1;
+            z-index: 1000;
+            display: none;
+        }
 </style>
 </head>
 <body>
@@ -308,7 +334,7 @@ button:hover {
 
 					</div>
 					<div id="text2" align="center">
-						<button id="idf" >아이디 찾기</button>
+						<button id="idf" class="button">아이디 찾기</button>
 						<!-- onclick="AjId()" -->
 					</div>
 					<div id="idfindd">
@@ -347,17 +373,24 @@ button:hover {
 					</table>
 				</div>
 				<div id="pwtext2" align="center">
-					<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
+					<button id="pwf" class="button" onclick="Aj('mb_pw')">비밀번호 찾기</button>
 				</div>
 				<div id="pwbestlist">
 					<a id="pwhome" href="home">홈으로가기</a>
 				</div>
 				<p>${findpw}</p>
-				<input type="button" value="${findpw1}"/>
+				<button id="pwbtn">${findpw1}</button>
 			</div>
 		</div>
 	</form>
 	</div>
+	<div id="lightbox-shadow">
+	<div id="lightbox">
+     <h1>후원인들 배송정보 리스트</h1>
+            <button class="button">확인</button>
+            <button type="button"  class="button" onclick="location.href='fundingOrderList.html' ">돌아가기</button>
+    </div>
+    </div>       
 	<!--아이디 명시-->
 
 
@@ -368,7 +401,10 @@ button:hover {
 	</div>
 </body>
 <script>
-
+$("#pwbtn").click(function() {
+    $('#lightbox-shadow').css("display","inline")
+    $('#lightbox').css("display","inline")
+ }); 
 	 function AjId() {
 	var mb_email = $("#mb_email").val();
 	var mb_name = $("#mb_name").val();
