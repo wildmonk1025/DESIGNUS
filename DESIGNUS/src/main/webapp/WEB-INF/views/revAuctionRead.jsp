@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +12,18 @@
 div {
 	margin: auto;
 }
+#main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
 
+}
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
+	position:fixed;
+	background-color: white;
 }
 
 #middle {
@@ -154,6 +161,7 @@ div {
 	width: 1492px;
 	heigth: auto;
 	margin-left: 10px;
+	margin-top: 15px;
 	float: left;
 }
 
@@ -211,97 +219,95 @@ div {
 	font-size: 15px;
 }
 
-#tenderlist{
+#tenderlist {
 	text-align: center;
 }
 </style>
 </head>
 
 <body>
+	<div id="main">
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
+	</div>
 	</div>
 	<div id="middle">
 		<!-- div 카테고리와 이미지 -->
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
-			<div id="middle_img_lv2">여기에 이미지</div>
+			<div id="middle_img_lv2">${raInfo.ra_image}</div>
 		</div>
-		      <div id="middle_contents1">
-         <div id="middle_contents1_lv1">여기에 상품 이름
-         <div id="middle_contents1_lv2">
-			<div id="peek1">
-				<input type="submit" value="꿍누르기♥" class="subtn">
+		<div id="middle_contents1">
+			<div id="middle_contents1_lv1">
+				${raInfo.ra_title}
+				<div id="middle_contents1_lv2">
+					<div id="peek1">
+						<input type="submit" value="꿍누르기♥" class="subtn">
+					</div>
+					<div id="peek2">
+						<input type="submit" value="꿍누르기♡" class="subtn">
+					</div>
+				</div>
 			</div>
-			<div id="peek2">
-				<input type="submit" value="꿍누르기♡" class="subtn">
+			<div id="middle_contents1_lv3">
+				<table style="margin: 10px 0px 0px 10px; line-height: 200%">
+					<tr>
+						<th>작성자 :</th>
+						<td>'${raInfo.ra_mbid}' 님</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>수량 :</th>
+						<td style="font-size: 15px;">1EA(짝/켤레/쌍)</td>
+						<td style="color: gray; font-size: 11px;">제작의뢰 수량은 DEFAULT 1개
+							입니다.</td>
+					</tr>
+					<tr>
+						<th>회원님이 낙찰한 금액 :</th>
+						<td colspan="2"><div id="tender_result">0원</div></td>
+					</tr>
+				</table>
+				<div id="middle_contents1_lv4">경매 남은 시간 표시</div>
 			</div>
 		</div>
-         </div>
-         <div id="middle_contents1_lv3">
-            <table style="margin: 10px 0px 0px 10px; line-height: 200%">
-               <tr>
-                  <th>작성자 :</th>
-                  <td>'${raInfo.ra_mbid}' 님</td>
-                  <td></td>
-               </tr>
-               <tr>
-                  <th>수량 :</th>
-                  <td style="font-size: 15px;">1EA(짝/켤레/쌍)</td>
-                  <td style="color: gray; font-size: 11px;">제작의뢰 수량은 DEFAULT 1개 입니다.</td>
-               </tr>
-               <tr>
-                  <th>회원님이 낙찰한 금액 :</th>
-                  <td colspan="2"><div id="tender_result">0원</div></td>
-               </tr>
-            </table>
-            <div id="middle_contents1_lv4">경매 남은 시간 표시</div>
-         </div>
-      </div>
-	<div id="middle_contents2">
-		<button id="middle_contents2_btn">
-			작가 의뢰 접수 <br> 및 견적서 첨부
-		</button>
-	</div>
-	<div id="middle_contents3">
-		<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
-		<div id="middle_contents3_lv1">
-			<table id="tenderlist">
+		<div id="middle_contents2">
+			<button id="middle_contents2_btn">
+				작가 의뢰 접수 <br> 및 견적서 첨부
+			</button>
+		</div>
+		<div id="middle_contents3">
+			<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
+			<div id="middle_contents3_lv1">
+				<table id="tenderlist">
 
-			</table>
-		</div>
-	</div>
-	<div id="middle_contents4">
-		<p style="font-size: 25px; margin: 10px 0px 10px 10px;">작가님 요청사항</p>
-		<div id="middle_contents4_lv1">
-			<p style="font-size: 20px; color: blue;">제작 의뢰 도안(첨부파일)</p>
-			<div id="middle_contents4_lv2">
-				도안.pdf
-				<button id="middle_contents4_btn">DOWNLOAD</button>
+				</table>
 			</div>
 		</div>
-		<div id="middle_contents4_lv3">
-			<p style="font-size: 25px;">작성예시 및 유의사항
-			<p>
-				유의사항-- <br> 1. 작가님에게 정확한 정보전달을 위해서 간단한 설명 및 도안을 자세히 올려주시기 바랍니다.
-				<br> 2. 욕설, 비방 및 의뢰사항과 관련없는 글에 대해서는 삭제 및 계정 제재대상이 될 수 있으니
-				유의합니다.<br> 3. 기타 등등..<br> <br> 작성예시-- <br> 1.
-				사이즈는 (W)30mm X (H)20mm X (D)15mm 로 제작 부탁합니다. <br> 2. 바닥 재질은 구리로
-				제작 하였으면 하며, 구리 수급 및 가공이 어려울 경우 나무로 만들어도 무관합니다. <br> 3. 첨부된 도안에서
-				플라스틱은 유광으로 제작해야합니다. <br> 4. 색상은 RGB색상표 기준으로 도안에 첨부 하였습니다.
-			</p>
+		<div id="middle_contents4">
+			<p style="font-size: 25px; margin: 10px 0px 10px 10px;">의뢰인 요청사항</p>
+			<div id="middle_contents4_lv1">
+				<p style="font-size: 20px; color: blue;">제작 의뢰 도안(첨부파일)</p>
+				<div id="middle_contents4_lv2">
+					${raInfo.ra_file}
+					<button id="middle_contents4_btn">DOWNLOAD</button>
+				</div>
+			</div>
+			<div id="middle_contents4_lv3">
+				<p style="font-size: 25px;">작성예시 및 유의사항
+				<p>
+					${raInfo.ra_contents}
+				</p>
+			</div>
 		</div>
-	</div> 
-	<div id="footer">여기는 푸터 입니다.</div>
-	
-	<!-- 여기서부턴 라이트 박스 -->
-	<div id="lightboxshadow">
-	</div>
-	<form id="tenderlightbox" enctype="multipart/form-data">
-		<div id="lightbox_contents1">
-			<p>의뢰 접수 및 견적서 첨부</p>
-			<hr style="color: black">
-			<div id="revamn">
+		<div id="footer">여기는 푸터 입니다.</div>
+
+		<!-- 여기서부턴 라이트 박스 -->
+		<div id="lightboxshadow"></div>
+		<form id="tenderlightbox" enctype="multipart/form-data">
+			<div id="lightbox_contents1">
+				<p>의뢰 접수 및 견적서 첨부</p>
+				<hr style="color: black">
+				<div id="revamn">
 					<table>
 						<tr style="width: 400px;">
 							<td>의뢰접수금액</td>
@@ -317,19 +323,23 @@ div {
 						</tr>
 
 					</table>
-					<c:set var="ra_id" value="${raInfo.ra_mbid}"/>
-					<c:set var="se_id" value="${id}"/>
-					<c:set var="grade" value="${grade}"/>
+					<c:set var="ra_id" value="${raInfo.ra_mbid}" />
+					<c:set var="se_id" value="${id}" />
+					<c:set var="grade" value="${grade}" />
 					<c:if test="${ra_id ne se_id}">
-					<c:if test="${grade eq 'W'}">
-					<input type="button" id="yespermitapply" onclick="revauctionapply()" value="전송"/></c:if></c:if>
+						<c:if test="${grade eq 'W'}">
+							<input type="button" id="yespermitapply"
+								onclick="revauctionapply()" value="전송" />
+						</c:if>
+					</c:if>
 					<c:if test="${ra_id eq se_id}">
-					<c:if test="${grade ne 'W'}">
-					<input type="button" id="nopermitapply" value="전송"/>
-					</c:if></c:if>
+						<c:if test="${grade ne 'W'}">
+							<input type="button" id="nopermitapply" value="전송" />
+						</c:if>
+					</c:if>
 					<input type="button" id="meneycancle" value="돌아가기" />
+				</div>
 			</div>
-		</div>
 		</form>
 	</div>
 
@@ -389,6 +399,7 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
+		//setInterval(function() {
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -410,15 +421,18 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
+			//}, 300);
 		});
 		/* 여기까지 */
 
 	function revauctionapply() {
-			var formData = new FormData($("#tenderlightbox"));
-			//var formData = new FormData();
-			//formData.append("revamoney",$("#revamoney").val());
-			//formData.append("revadate",$("#revadate").val());
-			//formData.append("file",$("#revfile"));
+			//var formData = new FormData(document.getElementById("#tenderlightbox"));
+			var $file = $("#revfile");
+			var formData = new FormData();
+			formData.append("revamoney",$("#revamoney").val());
+			formData.append("revadate",$("#revadate").val());
+			formData.append("file",$file[0].files[0]);
+			formData.append("ra_num",${ra_num});
 			console.log(formData);
 			$.ajax({
 				type:'POST',
@@ -428,13 +442,15 @@ $(".subtn").click(function() {
 				data: formData,
 				dataType:'json',
 				success: function(data) {
-					console.log("성공");
+					alert(data);
+					$('#lightboxshadow').css("display", "none")
+					$('#lightbox_contents1').css("display", "none")
 				},
 				error: function(error) {
-					console.log("에러");
-					console.log(error);
+					alert("해당 정보를 다시 입력하여 주시기 바랍니다.");
 				}
 			}); //ajax End
 		}
+
 </script>
 </html>

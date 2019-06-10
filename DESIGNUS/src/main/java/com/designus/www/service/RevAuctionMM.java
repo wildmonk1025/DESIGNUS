@@ -146,26 +146,41 @@ public class RevAuctionMM {
 		upload.download(fullPath, rat_file, resp);
 	}
 
-	public void revAuctionApply(MultipartHttpServletRequest multi) {
+	public String revAuctionApply(MultipartHttpServletRequest multi) {
+		String tenderchk = null;
 		String rat_mbid_w = session.getAttribute("id").toString();
-		int rat_days = Integer.parseInt(multi.getAttribute("revadate").toString());
-		int rat_price = Integer.parseInt(multi.getAttribute("revamoney").toString());
-		//int rat_num = Integer.parseInt(multi.get("ra_num").toString());
-
+		int rat_days = Integer.parseInt(multi.getParameter("revadate"));
+		int rat_price = Integer.parseInt(multi.getParameter("revamoney"));
+		int rat_num = Integer.parseInt(multi.getParameter("ra_num"));
 		System.out.println("확인1="+rat_days);
 		System.out.println("확인2="+rat_price);
-		//System.out.println("확인3="+rat_num);
+		System.out.println("확인3="+rat_num);
+		
 		RevAuctionTender rat = new RevAuctionTender();
-		//rat.setRat_ranum(rat_num);
+		rat.setRat_ranum(rat_num);
 		rat.setRat_mbid_w(rat_mbid_w);
 		rat.setRat_days(rat_days);
 		rat.setRat_price(rat_price);
-
-		//String rat_file = upload.revTenderfileUp(file);
-		//rat.setRat_file(rat_file);
 		
-		//boolean f = false;
-
-		//f = rDao.revAuctionApplyInsert(rat);
+		if(rat.getRat_mbid_w()!=null && rat.getRat_price()!=0 && rat.getRat_days()!=0) {
+		int check = rDao.revAuctionApplyDelete(rat);
+		tenderchk = check + "개의 기존 입찰내역을 삭제하였습니다.\n";
+		
+		
+		String rat_file = upload.revTenderfileUp(multi);
+		rat.setRat_file(rat_file);
+		
+		System.out.println(rat.getRat_file());
+		boolean f = rDao.revAuctionApplyInsert(rat);
+		
+		if(f) {
+			tenderchk += "의뢰 접수가 정상적으로 등록되었습니다.";
+		} else {
+			tenderchk += "의뢰 접수를 다시 진행해주시기 바랍니다.";
+		}
+			return tenderchk;
+		} else {
+			return "입력할 수 없습니다.";
+		}
 	}
 }
