@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -145,4 +146,26 @@ public class RevAuctionMM {
 		upload.download(fullPath, rat_file, resp);
 	}
 
+	public void revAuctionApply(MultipartHttpServletRequest multi) {
+		String rat_mbid_w = session.getAttribute("id").toString();
+		int rat_days = Integer.parseInt(multi.getAttribute("revadate").toString());
+		int rat_price = Integer.parseInt(multi.getAttribute("revamoney").toString());
+		//int rat_num = Integer.parseInt(multi.get("ra_num").toString());
+
+		System.out.println("확인1="+rat_days);
+		System.out.println("확인2="+rat_price);
+		//System.out.println("확인3="+rat_num);
+		RevAuctionTender rat = new RevAuctionTender();
+		//rat.setRat_ranum(rat_num);
+		rat.setRat_mbid_w(rat_mbid_w);
+		rat.setRat_days(rat_days);
+		rat.setRat_price(rat_price);
+
+		//String rat_file = upload.revTenderfileUp(file);
+		//rat.setRat_file(rat_file);
+		
+		//boolean f = false;
+
+		//f = rDao.revAuctionApplyInsert(rat);
+	}
 }

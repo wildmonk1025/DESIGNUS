@@ -27,7 +27,7 @@ div {
 
 #wrijoinFrm {
 	margin: auto;
-	width: 500px;
+	width: 520px;
 	text-align: center;
 	height: auto;
 }
@@ -161,10 +161,12 @@ div {
 						<th>아이디</th>
 						<td><input class="memberN" type="text" name="mb_id"
 							id="mb_id"></td>
-						<td><input id="idcheckbtz" type="button" value="중복확인"
-							onclick="check1()"><input type="hidden" name="checkid"
-							value="0"></td>
+						<td><input id="idcheckbtz" type="button" value="중복확인" /></td>
 					</tr>
+					<tr>
+						<td colspan="3" align="right"><p class="result">
+								<span class="msg"> 아이디를 확인해주세요.</span></td>
+					<tr>
 					<tr>
 						<th>비밀번호</th>
 						<td><input class="memberN" type="password" name="mb_pw"
@@ -292,12 +294,12 @@ div {
 				contentType : "application/json; charset=UTF-8",
 				success : function(data) {
 					if (data.cnt > 0) {
-						alert("아이디가 존재합니다.");
-						$("#idChk").val("Y");
+						$(".result .msg").text("사용할 수 없습니다.");
+						$(".result .msg").attr("style", "color:#f00");
 						$("#mb_id").focus();
 					} else {
-						alert("사용가능한 아이디래용.");
-						$("#idChk").val("N");
+						$(".result .msg").text("사용 가능한 아이디입니다.");
+						$(".result .msg").attr("style", "color:#00f");
 						//아이디가 중복하지 않으면 idck=1
 						idck = 1;
 					}
