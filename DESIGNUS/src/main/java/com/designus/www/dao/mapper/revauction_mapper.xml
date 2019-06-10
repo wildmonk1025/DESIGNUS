@@ -51,7 +51,15 @@
 	</select>
 	
 	<select id="revAuctionAjaxSelect" parameterType="revauctiontender" resultType="revauctiontender">
-		SELECT * FROM RAT WHERE RAT_NUM = ${rat_ranum}
+		SELECT * FROM RAT WHERE RAT_NUM = ${rat_ranum} ORDER BY RAT_PRICE ASC
 	</select>
+	
+	<delete id="revAuctionApplyDelete" parameterType="revauctiontender">
+		DELETE FROM RAT WHERE RAT_NUM = #{rat_ranum} AND RAT_MBID_W = #{rat_mbid_w}
+	</delete>
+	
+	<insert id="revAuctionApplyInsert" parameterType="revauctiontender">
+		INSERT INTO RAT VALUES(#{rat_ranum},#{rat_mbid_w},${rat_price},#{rat_file},${rat_days},DEFAULT)
+	</insert>
 
 </mapper>
