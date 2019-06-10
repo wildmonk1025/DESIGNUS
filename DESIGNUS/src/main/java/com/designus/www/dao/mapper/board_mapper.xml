@@ -3,7 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.designus.www.dao.IboardDao">  
-     
+     <insert id="reviewBoardyhWrite" parameterType="member">
+		INSERT  INTO BOARD 
+     VALUES(BD_SEQ.NEXTVAL,#{bd_kind},#{bd_mbid},#{bd_title},#{bd_contents},DEFAULT,DEFAULT,DEFAULT)
+	</insert>
       
      
       

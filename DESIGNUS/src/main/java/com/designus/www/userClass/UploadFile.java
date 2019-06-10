@@ -330,8 +330,8 @@ public class UploadFile {
 		return false;
 	}
 
-	public String revTenderfileUp(MultipartHttpServletRequest file) {
-		String root = file.getServletContext().getRealPath("/");
+	public String revTenderfileUp(MultipartHttpServletRequest multi) {
+		String root = multi.getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
 		String path = root + "resources/upload/";
 		// 2.폴더 생성을 꼭 할것...
@@ -343,8 +343,7 @@ public class UploadFile {
 		// String files=multi.getFileNames(); //파일태그가 2개이상일때
 		// List<MultipartFile> file = multi.getFiles("b_files");
 
-		MultipartFile files = file.getFile("revfile");
-		System.out.println(files);
+		MultipartFile files = multi.getFile("file");
 		// 파일 메모리에 저장
 		String oriFileName = files.getOriginalFilename(); // a.txt
 		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
