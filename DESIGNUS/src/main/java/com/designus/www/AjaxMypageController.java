@@ -30,15 +30,7 @@ public class AjaxMypageController {
 
 	}
 
-	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
-
-	public boolean auccancel(int ranum) {
-		System.out.println("여기로 와라 제발...");
-		System.out.println("이게 작가 아이디인데....=" + ranum);
-		boolean a = pm.auccancel(ranum);
-		return a;
-
-	}
+	
 	/*
 	 * @RequestMapping(value =
 	 * "/ajax/lbspon",produces="application/json;charset=utf8")
