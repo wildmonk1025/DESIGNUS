@@ -281,42 +281,47 @@ button:hover {
 		<div id="logoimgdiv">
 			<a href="home"><img id="logoimg" src="img/logo"></a>
 		</div>
-		<div id="idfind">
-			<div id="buttondiv">
-				<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
-				<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
-			</div>
-			<br> <br>
-			<div id="list">
-				<div id="text1" align="center">
-				<form action="memberidfind" id="memberidfind" method="post">
-					<table>
-						<tr>
-							<th>이름</th>
-							<td><input type="text" id="mb_name" name="mb_name" value="123"></td>
-						</tr>
-						<tr>
-							<th>이메일</th>
-							<td><input type="text" id="mb_email" name="mb_email" value="321"></td>
-							<td><input id="btz2" type="button" value="이메일 인증"
-								onclick="emailcheck()"></td>
-						</tr>
-					</table>
-					</form>
-				</div>
-				<div id="text2" align="center">
-					<button id="idf" onclick="AjId()">아이디 찾기</button>
-				</div>
-				<div id="idfindd">
-					회원님의 아이디는
-					<!--이엘문 찍기-->
-				</div>
-				<div id="bestlist">
-					<a id="idhome" href="home">홈으로가기</a>
-				</div>
-			</div>
-		</div>
+		<form action="memberidfind" id="memberidfind" method="post">
 
+			<div id="idfind">
+				<div id="buttondiv">
+					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
+					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+				</div>
+				<br> <br>
+				<div id="list">
+					<div id="text1" align="center">
+						<table>
+							<tr>
+								<th>이름</th>
+								<td><input type="text" id="mb_name" name="mb_name"
+									value="123"></td>
+							</tr>
+							<tr>
+								<th>이메일</th>
+								<td><input type="text" id="mb_email" name="mb_email"
+									value="321"></td>
+								<td><input id="btz2" type="button" value="이메일 인증"
+									onclick="emailcheck()"></td>
+									<p>${findid}</p>
+							</tr>
+						</table>
+
+					</div>
+					<div id="text2" align="center">
+						<button id="idf" >아이디 찾기</button>
+						<!-- onclick="AjId()" -->
+					</div>
+					<div id="idfindd">
+						회원님의 아이디는
+						<!--이엘문 찍기-->
+					</div>
+					<div id="bestlist">
+						<a id="idhome" href="home">홈으로가기</a>
+					</div>
+				</div>
+			</div>
+		</form>
 
 		<div id="pwfindcheckmain">
 			<div id="pwlist">
@@ -358,7 +363,7 @@ button:hover {
 	</div>
 </body>
 <script>	
-	 function AjId() {
+	/*  function AjId() {
 	var mb_email = $("#mb_email").val();
 	var mb_name = $("#mb_name").val();
 	console.log(mb_email);
@@ -382,8 +387,8 @@ button:hover {
 				alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
 			}//AjIdEnd
 		});//ajax end 
-	} */
-
+	} 
+ */
 	//ajax 실행문 작성
 
 	function Aj(id) {

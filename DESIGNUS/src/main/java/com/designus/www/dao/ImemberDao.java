@@ -27,16 +27,12 @@ public interface ImemberDao {
 
 	String memberFind(Member mb_id);
 
-	String getmembernameInfo(String mb_name);
-
-	Member getMemberemailInfo(String mb_email);
 
 	int memberNpoint(AuctionProgress ap);
 
 	int memberWpoint(AuctionProgress ap);
 
-	void create(Member mb) throws Exception;
+	Member getMemberNameInfo(Member mb);
 
-	void updateAuthkey(Member mb);
 
 }

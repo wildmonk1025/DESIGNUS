@@ -19,9 +19,10 @@ div {
 
 #notice {
 	padding-top: 5px;
+	margin: 10px;
 	border: 1px solid orange;
-	width: 1100px;
-	height: 60px;
+	width: 1080px;
+	height: 100px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -29,15 +30,18 @@ div {
 
 #info {
 	border: 1px solid orange;
-	width: 300px;
-	height: 600px;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 580px;
+	font-size: 20px;
 	text-align: left;
 	float: left;
 }
 
 #renking {
 	border: 1px solid orange;
-	width: 1100px;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
 	height: 200px;
 	text-align: center;
 	font-size: 20px;
@@ -46,8 +50,9 @@ div {
 
 #auction {
 	border: 1px solid orange;
-	width: 1100px;
-	height: 250px;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 300px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -55,10 +60,11 @@ div {
 
 #spon {
 	border: 1px solid orange;
-	margin:10px;
+	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 210px;
+	height: 300px;
 	float: left;
+	font-size: 20px;
 	text-align: center;
 }
 
@@ -70,7 +76,7 @@ div {
 
 #point {
 	border: 1px solid orange;
-	margin:10px;
+	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
 	text-align: left;
@@ -81,7 +87,7 @@ div {
 #img {
 	margin-top: 20px;
 	border: 1px solid orange;
-	margin: 10px;
+	margin: 20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;
 	text-align: left;
@@ -118,14 +124,14 @@ a:hover {
 
 #leftmain {
 	width: 310px;
-	height: 1200px;
+	height: 950x;
 	border: 1px solid black;
 	float: left;
 }
 
 #rightmain {
 	width: 1210px;
-	height: 1200px;
+	height: 950px;
 	border: 1px solid black;
 	float: left;
 }
@@ -137,15 +143,7 @@ a:hover {
 	float: left;
 }
 
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
+
 
 #loginwriter {
 	padding: 3px;

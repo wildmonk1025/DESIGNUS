@@ -186,5 +186,12 @@ public class HomeController {
 	 * joinPost(@ModelAttribute("uVO") UserVO uVO) throws Exception) { //이메일 발송 관련
 	 * url return "loginBox"; }
 	 */
+	@RequestMapping(value = "/memberidfind",method = RequestMethod.POST)
+	public ModelAndView memberidfind(Member mb) {
+		mav = new ModelAndView();
+				
+				mav = mm.memberidfind(mb);
+		return mav;	
+	} 
 
 }
