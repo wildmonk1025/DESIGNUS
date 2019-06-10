@@ -13,6 +13,8 @@ import com.designus.www.bean.Board;
 public interface IboardDao {
 
 	boolean reviewBoardyhWrite(Board b);
+
+	boolean reviewfileInsert(Map<String, String> fMap);
   
   
 }

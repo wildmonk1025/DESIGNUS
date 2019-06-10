@@ -123,7 +123,7 @@ public class MypageController {
 
 	public ModelAndView reviewBoardWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
-	
+	    System.out.println("아오진짜 화난다....");
 		 mav=pm.reviewBoardyhWrite(multi);
 		
 		return mav;

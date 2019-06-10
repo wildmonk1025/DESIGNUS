@@ -64,5 +64,7 @@ public interface ImypageDao {
 
 	boolean aucapplyMbWupdate(AuctionProgress ap);
 
+	boolean reviewBoardyhWriteupDate(int ptnum);
+
   
 }

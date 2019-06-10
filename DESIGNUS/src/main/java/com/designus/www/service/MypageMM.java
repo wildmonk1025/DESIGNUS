@@ -396,10 +396,12 @@ public class MypageMM {
 		
 		return mav;
 	}
-
+	@Transactional
 	public ModelAndView reviewBoardyhWrite(MultipartHttpServletRequest multi) {
+		System.out.println("뭐지?? 또 시작이네...");
 		String view =null;
 		String bd_kind="이용후기"; 
+		int ptnum =Integer.parseInt(multi.getParameter("aup_ptnum"));
 		String id=session.getAttribute("id").toString();
 		String title=multi.getParameter("bd_title");
 		String contents=multi.getParameter("bd_contents");
@@ -415,20 +417,25 @@ public class MypageMM {
 	     b.setBd_kind(bd_kind);
 	     
 	     boolean a = bDao.reviewBoardyhWrite(b);
+	     System.out.println("boardnum=" + b.getBd_num());
 	     boolean f = false;
 			if (check == 1) { // 첨부된 파일이 있다면....
 				// upload=new UploadFile(); //프로토타입
 				// 이클립스 서버에 파일을 업로드 한 후,
 				// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
-				f = upload.fileUp(multi, board.getB_num());
+				f = upload.fileboardUp(multi, b.getBd_num(),b.getBd_kind());
 				if (f) {
-					view = "redirect:boardList";
+					boolean d=pDao.reviewBoardyhWriteupDate(ptnum); 
+					if(d) {
+						view = "redirect:/auctionMyOrderList";	
+					}
+					
 				}
 			}
-			if (b) { // 글쓰기 성공
-				view = "redirect:boardList";
+			if (a) { // 글쓰기 성공
+				view = "redirect:/auctionMyOrderList";
 			} else {
-				view = "writeFrm";
+				view = "myPage";
 			}
 			mav.setViewName(view);
 			return mav;
