@@ -177,10 +177,12 @@ public class MemberMM {
 
 	public ModelAndView memberpwfind(Member mb) {
 		mav = new ModelAndView();
+		
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		String view = null;
+		String pwdEncode = mDao.getSecurityPwd(mb.getMb_id());
+		if (pwdEncode != null) {
 		mb = mDao.getMemberpwInfo(mb);
-		if(mb!=null) {
-		StringBuilder sb = new StringBuilder(); 
 		System.out.println("id"+mb.getMb_pw());
 		mav.addObject("findpw","비밀번호 변경하기.");
 		view = "memberFind";
