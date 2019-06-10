@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,7 +29,7 @@
         #search {
             margin-left: 100px;
             padding-left: 120px;
-            padding-right: 120px;
+            padding-right: 20px;
             padding-top: 20px;
             width: 570px;
             height: 80px;
@@ -39,7 +39,7 @@
         #loginwriter {
             padding: 3px;
             padding-top: 20px;
-            width: 300px;
+            width: 400px;
             height: 80px;
             float: right;
         }
@@ -95,11 +95,27 @@
             margin-left: 5px;
         }
 
-        #loginmsg {
+        .loginmsg {
             float: left;
-            width: 130px;
+            width: 250px;
             height: 50px;
             margin-left: 10px;
+        }
+        
+        .logbtn {
+        	margin: auto;
+        	width: 130px;
+        	text-align: center;
+        }
+        
+        .mark {
+       		float: left;
+        	width: 250px;
+        	heigh: 35px;
+        	margin-left: auto;
+        	margin-top: auto;
+        	color: coral;
+        	
         }
 
         * {
@@ -219,7 +235,7 @@
 <body>
     <div id="header">
         <div id="logo">
-            <a href="home"><img src="${pageContext.request.contextPath}/resources/images/logo.png" width="250px" height="80px" /></a>
+            <a href="home"><img src="resources/images/logo.png" width="250px" height="80px"></a>
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
         </div>
@@ -231,12 +247,25 @@
         <div id="loginwriter">
             <div id="mypageimg"><a href="mypage">마이페이지</a></div>
             <div id="msg">
-                <img src="./images/writer.png" width="40px" height="40px" />
+                <img src="resources/images/writer.png" width="40px" height="40px" />
             </div>
-            <div id="loginmsg"><a href="logingo">로그인</a>
-            <form id="logout" action="logout" method="post">
-		<a href="javascript:logout()">로그아웃</a>
-	</form><br>id:${id}<br>등급:${grade}</div>
+            <c:set var="check" value="${id}"/>
+            <c:if test="${check eq null}">
+            <div class="loginmsg"><input type="button" class="logbtn" onclick="location.href='logingo'" value="로그인"><br>
+            <div class="mark">로그인 해주시기 바랍니다.</div></div></c:if>
+            <c:if test="${check ne null}">
+            <div class="loginmsg"><form id="logout" action="logout" method="post"><input type="button" class="logbtn" onclick="javascript:logout()" value="로그아웃"></form>
+            <c:choose>
+            <c:when test="${grade=='N'}">
+            <div class="mark"><img src="resources/images/letter-n.png">[일반] <c:out value="${check}"/> 님 반가워요</div> </c:when>
+            <c:when test="${grade=='W'}">
+            <div class="mark"><img src="resources/images/letter-w.png">[작가] <c:out value="${check}"/> 님 반가워요</div> </c:when>
+			<c:when test="${grade=='M'}">
+            <div class="mark"><img src="resources/images/letter-m.png">[관리자] <c:out value="${check}"/> 님 반가워요</div> </c:when>
+			<c:when test="${grade=='S'}">
+            <div class="mark"><img src="resources/images/letter-s.png">[임시] <c:out value="${check}"/> 님 반가워요</div> </c:when>
+            </c:choose>
+            </div></c:if>
         </div>
     </div>
     <div id="category" >
@@ -274,5 +303,5 @@ function logout(){
 	$('#logout').submit();
 }
 
-
-</script></html>
+</script>
+</html>

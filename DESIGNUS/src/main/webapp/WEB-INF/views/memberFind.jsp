@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@ div {
 	margin: auto;
 }
 
-button {
+.button {
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -271,6 +272,32 @@ button:hover {
 #btz2:hover {
 	color: white;
 }
+ #lightbox {
+            border: 1px solid orange;
+            position: absolute;
+            top: 200px;
+            left: 600px;
+            width: 800px;
+            height: 700px;
+            margin: auto;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            background-color: orange;
+            text-align: center;
+        }
+
+        #lightbox-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8000px;
+            height: 8000px;
+            background: #000;
+            opacity: 1;
+            z-index: 1000;
+            display: none;
+        }
 </style>
 </head>
 <body>
@@ -301,13 +328,13 @@ button:hover {
 								<th>이메일</th>
 								<td><input type="text" id="mb_email" name="mb_email"
 									></td>
-									<p>${findid}</p>
+									
 							</tr>
 						</table>
 
 					</div>
 					<div id="text2" align="center">
-						<button id="idf" >아이디 찾기</button>
+						<button id="idf" class="button">아이디 찾기</button>
 						<!-- onclick="AjId()" -->
 					</div>
 					<div id="idfindd">
@@ -317,6 +344,7 @@ button:hover {
 					<div id="bestlist">
 						<a id="idhome" href="home">홈으로가기</a>
 					</div>
+					<p>${findid}</p>
 				</div>
 			</div>
 		</form>
@@ -336,21 +364,33 @@ button:hover {
 						<tr>
 							<th>이메일</th>
 							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
-						
-								<p>${findpw}</p>
+							
+					<%-- 	<c:set var="zz" value="${findpw}"/>
+						<c:if test="${findpw != null}">
+								<input type="button" value="${findpw}"/>
+								</c:if> --%>
 						</tr>
 					</table>
 				</div>
 				<div id="pwtext2" align="center">
-					<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
+					<button id="pwf" class="button" onclick="Aj('mb_pw')">비밀번호 찾기</button>
 				</div>
 				<div id="pwbestlist">
 					<a id="pwhome" href="home">홈으로가기</a>
 				</div>
+				<p>${findpw}</p>
+				<button id="pwbtn">${findpw1}</button>
 			</div>
 		</div>
 	</form>
 	</div>
+	<div id="lightbox-shadow">
+	<div id="lightbox">
+     <h1>후원인들 배송정보 리스트</h1>
+            <button class="button">확인</button>
+            <button type="button"  class="button" onclick="location.href='fundingOrderList.html' ">돌아가기</button>
+    </div>
+    </div>       
 	<!--아이디 명시-->
 
 
@@ -361,7 +401,10 @@ button:hover {
 	</div>
 </body>
 <script>
-
+$("#pwbtn").click(function() {
+    $('#lightbox-shadow').css("display","inline")
+    $('#lightbox').css("display","inline")
+ }); 
 	 function AjId() {
 	var mb_email = $("#mb_email").val();
 	var mb_name = $("#mb_name").val();

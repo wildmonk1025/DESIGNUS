@@ -11,17 +11,18 @@
 div {
 	margin: auto;
 }
+
 #main {
 	width: 1518px;
 	height: 170px;
 	position: relative;
-
 }
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
-	position:fixed;
+	position: fixed;
 	background-color: white;
 }
 
@@ -226,15 +227,17 @@ div {
 
 <body>
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 	</div>
 	<div id="middle">
 		<!-- div 카테고리와 이미지 -->
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
-			<div id="middle_img_lv2"><img src="resources/logo.png" alt="${raInfo.ra_image}"/></div>
+			<div id="middle_img_lv2">
+				<img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" />
+			</div>
 		</div>
 		<div id="middle_contents1">
 			<div id="middle_contents1_lv1">
@@ -293,9 +296,7 @@ div {
 			</div>
 			<div id="middle_contents4_lv3">
 				<p style="font-size: 25px;">작성예시 및 유의사항
-				<p>
-					${raInfo.ra_contents}
-				</p>
+				<p>${raInfo.ra_contents}</p>
 			</div>
 		</div>
 		<div id="footer">여기는 푸터 입니다.</div>
@@ -332,14 +333,14 @@ div {
 						</c:if>
 					</c:if>
 					<c:if test="${ra_id eq se_id}">
-							<input type="button" id="nopermitapply" value="전송" />
+						<input type="button" id="nopermitapply" value="전송" />
 					</c:if>
 					<input type="button" id="meneycancle" value="돌아가기" />
 				</div>
 			</div>
 		</form>
 	</div>
-	
+
 </body>
 <script>
 if(${nb} > 0){
