@@ -114,6 +114,7 @@
         	heigh: 35px;
         	margin-left: auto;
         	margin-top: auto;
+        	color: coral;
         	
         }
 
@@ -250,7 +251,8 @@
             </div>
             <c:set var="check" value="${id}"/>
             <c:if test="${check eq null}">
-            <div class="loginmsg"><input type="button" class="logbtn" onclick="location.href='logingo'" value="로그인"></div></c:if>
+            <div class="loginmsg"><input type="button" class="logbtn" onclick="location.href='logingo'" value="로그인"><br>
+            <div class="mark">로그인 해주시기 바랍니다.</div></div></c:if>
             <c:if test="${check ne null}">
             <div class="loginmsg"><form id="logout" action="logout" method="post"><input type="button" class="logbtn" onclick="javascript:logout()" value="로그아웃"></form>
             <c:choose>
@@ -301,5 +303,5 @@ function logout(){
 	$('#logout').submit();
 }
 
-
-</script></html>
+</script>
+</html>
