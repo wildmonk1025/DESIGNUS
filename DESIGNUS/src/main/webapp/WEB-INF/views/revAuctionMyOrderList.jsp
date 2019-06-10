@@ -499,7 +499,7 @@ a:hover {
 					<h1>배송정보입력</h1>
 					<button>요청</button>
 					<button type="button"
-						onclick="location.href='revAuctionMyOrderList.html' ">취소</button>
+						onclick="location.href='revAuctionMyOrderList.jsp' ">취소</button>
 				</div>
 			</div>
 			<div id="lightbox-shadow1">
@@ -508,7 +508,7 @@ a:hover {
 					<h1>제작의뢰 요청 취소</h1>
 					<button>취소하기</button>
 					<button type="button"
-						onclick="location.href='revAuctionMyOrderList.html' ">돌아가기</button>
+						onclick="location.href='revAuctionMyOrderList.jsp' ">돌아가기</button>
 				</div>
 			</div>
 			<div id="lightbox-shadow2">
