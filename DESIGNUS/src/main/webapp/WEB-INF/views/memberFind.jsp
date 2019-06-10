@@ -301,9 +301,7 @@ button:hover {
 								<th>이메일</th>
 								<td><input type="text" id="mb_email" name="mb_email"
 									></td>
-								<td><input id="btz2" type="button" value="이메일 인증"
-									onclick="emailcheck()"></td>
-									<p>${findid}</p>
+									<p><button>${findid}</button></p>
 							</tr>
 						</table>
 
@@ -338,8 +336,7 @@ button:hover {
 						<tr>
 							<th>이메일</th>
 							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
-							<td><input id="btz" type="button" value="이메일 인증"
-								onclick="emailcheck()"></td>
+						
 								<p>${findpw}</p>
 						</tr>
 					</table>
