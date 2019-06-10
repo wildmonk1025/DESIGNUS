@@ -219,7 +219,7 @@
 <body>
     <div id="header">
         <div id="logo">
-            <a href="home"><img src="${pageContext.request.contextPath}/resources/images/logo.png" width="250px" height="80px" /></a>
+            <a href="home"><img src="resources/images/logo.png" width="250px" height="80px"></a>
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
             <!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
         </div>
@@ -231,7 +231,7 @@
         <div id="loginwriter">
             <div id="mypageimg"><a href="mypage">마이페이지</a></div>
             <div id="msg">
-                <img src="./images/writer.png" width="40px" height="40px" />
+                <img src="resources/images/writer.png" width="40px" height="40px" />
             </div>
             <div id="loginmsg"><a href="logingo">로그인</a>
             <form id="logout" action="logout" method="post">

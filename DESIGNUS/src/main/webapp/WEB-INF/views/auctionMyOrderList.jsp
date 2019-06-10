@@ -9,6 +9,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 #one {
 	position: relative;
@@ -430,7 +431,7 @@ a:hover {
 					<c:set var="step" value="${apList.aup_step}" />
 					<c:if test="${step eq 1}">
 						<button id="btzRevM">배송정보입력</button>
-						<button id="cencle" onclick="cencle('${apList.aup_ranum}')">취소</button>
+						<button id="cencle" onclick="location.href='auccancel?ranum=${apList.aup_ranum}'">취소</button>
 					</c:if>
 					<c:if test="${step eq 2}">
 						<h3>배송 대기중</h3>
@@ -537,31 +538,8 @@ a:hover {
 </body>
 <script type="text/javascript">
 
-function cencle(data) {
-	$.ajax({
-		url: "auccancel",
-		type:"post",
-	    data:{ranum:data},
-	    success:function(data){
-	    	alert('해당 상품을 추천하였습니다.');
-	    	console.log("123456"+data);
-	    	 /* confirm(문자열, 초기값) */
-	    	     var check = confirm("확인 또는 취소 버튼");
-	    	      	 /* if(check == true) else false */
-	    	     if(check) alert("확인버튼 클릭");
-	    	     else alert("취소버튼 클릭");
 
-
-	    	
 	
-	    },
-	    error:function(error){
-	    	alert('정상적인 추천이 실패했습니다.');
-	    	console.log(error);
-	    }
-		 
-	 });//end ajax
-}
 
 function good(data) {
 	var btn = $('#butt');
