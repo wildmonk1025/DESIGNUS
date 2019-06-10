@@ -105,7 +105,7 @@
 		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
-    select rownum AS RN,AUP_STEP,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+    select rownum AS RN,AUP_RANUM,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
      from AUPVIEW where AUP_MBID_N=#{id}
      ) where RankNo=1
   ]]>
