@@ -65,10 +65,11 @@
 
 	<select id="getAuctionTenderList" parameterType="auctiontender" resultType="auctiontender">
 		  <![CDATA[
-		SELECT ROWNUM AS A, AUT_NUM, AUT_MBID, AUT_PRICE, AUT_KIND 
-		FROM AUT
-		WHERE AUT_NUM = ${aut_aunum} AND AUT_KIND != 'I' AND ROWNUM <=3
-		ORDER BY AUT_PRICE DESC
+		SELECT *FROM(SELECT ROWNUM AS A, AUT_NUM, AUT_MBID, AUT_PRICE, AUT_KIND 
+        FROM AUT  
+        WHERE AUT_NUM = ${aut_aunum} AND AUT_KIND != 'I' AND AUT_KIND !='O'
+        ORDER BY AUT_PRICE DESC
+        )WHERE  ROWNUM <=3
  		]]>
 	</select>
 
