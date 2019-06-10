@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -15,17 +16,6 @@
 
 div {
 	margin: auto;
-}
-
-#notice {
-	padding-top: 5px;
-	margin: 10px;
-	border: 1px solid orange;
-	width: 1080px;
-	height: 100px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
 }
 
 #info {
@@ -52,10 +42,13 @@ div {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 300px;
+	height: 870px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	position: relative;
+	left: 30px;
+	top: 20px;
 }
 
 #spon {
@@ -135,10 +128,13 @@ div {
 }
 
 #rightmain {
-	width: 1200px;
+	width: 1150px;
 	height: 950px;
 	border: 1px solid black;
 	float: left;
+	position: relative;
+	left: 30px;
+	top: 100px;
 }
 
 #main {
@@ -346,6 +342,69 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
+
+#notice {
+	border: 1px solid orange;
+	position: absolute;
+	width: 1100px;
+	height: 60px;
+	text-align: center;
+	left: 411px;
+	top: 180px;
+	font-size: 100%
+}
+#setp {
+	border: 1px solid orange;
+	position: relative;
+	width: 1100px;
+	height: 860px;
+	text-align: center;
+	left: 208px;
+	top: 80px;
+	font-size: 100%
+}
+#setpT {
+	height: 800px;
+	position: relative;
+	top: 10px;
+}
+#l1 {
+	position: absolute;
+	width: 400px;
+	height: 230px;
+	top: 100px;
+	left: 20%;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+}
+#Q1 {
+	position: absolute;
+	width: 500px;
+	height: 330px;
+	top: 100px;
+	left: 20%;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+}
+#total {
+	position: absolute;
+	width: 100%;
+	height: 1200px;
+	background-color: black;
+	z-index: 1001;
+	opacity: 0.75;
+	display: none;
+}
 </style>
 
 </head>
@@ -354,6 +413,11 @@ a:hover {
 <body>
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
+	</div>
+
+	<div id="notice">
+		<h2>출품작 구매 내역 ㅅㅂ,,,,,</h2>
+		<hr>
 	</div>
 	<div id="mypagemain">
 		<div id="leftmain">
@@ -408,25 +472,70 @@ a:hover {
 				</table>
 			</div>
 		</div>
-		<div id="rightmain">
-			<div id="notice">
-				<h2>출품작 판매 내역(& 경매 낙찰내역)</h2>
-			</div>
-			<div id="auction">
-				<h1>배송정보입력</h1>
-				<div class="bt01">
-					<button id="action" class="bt">의뢰인배송정보</button>
-					<button id="cancel" class="bt">배송 보내기</button>
+		<div id="setp">
+		<div id="setpT">
+			<c:forEach var="apwList" items="${apwList}">
+				<div>
+					<a href='#' onclick="articleView(${apwList.aup_ranum})"> <img
+						src='/resources/images/${apwList.aui_img}'></a> 상품 이름 :
+					${apwList.au_title} 구매 금액 : ${apwList.aup_price} 주문 수량 :
+					${apwList.aup_qty}
+					<p>
+						작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+					</p>
+					<c:set var="step" value="${apwList.aup_step}" />
+					<c:if test="${step eq 1}">
+						<h3>의뢰 결정을 <br/>기다리는 중입니다.</h3>
+					</c:if>
+					<c:if test="${step eq 2}">
+						
+						<button id="client" onclick="location.href='deliinfo?ranum=${apwList.aup_ranum}'">의뢰인 배송 정보</button>
+						<button id="btzRevM" onclick="shipping('${apwList.aup_ptnum}')" >배송보내기</button>
+					</c:if>
+					<c:if test="${step eq 3}">
+						<h3>수령 확인 <br/>대기중입니다.</h3>
+					</c:if>
+					<c:if test="${step eq 4}">
+						<h3>완료</h3>
+					</c:if>
 				</div>
-			</div>
-			<div id="spon">
-				<h1>배송정보</h1>
-				<div class="bt02">
-					<h1>완료</h1>
-				</div>
-			</div>
+				<form action="delinumupload" method="post">
+
+					<div id="l1">
+						<div id="l2"></div>
+						<div id="l3">
+							
+						</div>
+						<input type="submit" value="확인"> <input id="back"
+							type="button" value="취소">
+					</div>
+				</form>
+				<form action="reviewBoardWrite" method="post" enctype="multipart/form-data">
+					<div id="Q1">
+						수령 확인 및 구매후기 쓰기
+						<div id="Q2">
+							${apList.au_title} <input type="button" id="butt" value="추천하기"
+								onclick="good('${apList.au_mbid_w}')">
+								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
+								value="${apList.aup_ptnum}">
+						</div>
+						<div id="Q3">
+							구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
+							내용 <br/>
+							<textarea rows="10" cols="70" name="bd_contents"></textarea>
+								<input type="file" name="bd_imgSysName" id="bd_imgSysName" 
+								        value="파일 첨부"  onchange="fileChk(this)" multiple>
+								<input type="hidden" id="fileCheck" value="0" name="fileCheck"> 
+						</div>
+						<input type="submit" value="완료"> 
+						<input id="backSetp" type="button" value="취소">
+					</div>
+				</form>
+			</c:forEach>
 
 		</div>
+		${paging}
+	</div>
 		<div id="lightbox">
 			<h1>의뢰인배송정보</h1>
 			<button>확인</button>
@@ -449,14 +558,65 @@ a:hover {
 
 </body>
 <script type="text/javascript">
-	$("#action").click(function() {
+function shipping(data) {
+	
+	console.log(data)
+	$.ajax({
+		url: "sends",
+		type:"post",
+	    data:{ptnum:data},
+	    dataTepy : 'json',
+	    success:function(data){
+	    	alert('해당 상품을 추천하였습니다.');
+	    	console.log(data.aup_ptnum);
+	    	$('#l2').html(data.au_title);
+	    	///$('#l3').html("운송장 번호 : "+"<input type='text' name='aup_track' id='aup_track'>"
+	    			                 // +"<input type='hidden' name='aup_ptnum' id='aup_ptnum' value='"${apwList.aup_ptnum}"'>");
+	    	
+	    	
+	    },
+	    error:function(error){
+	    	alert('정상적인 추천이 실패했습니다.');
+	    	console.log(error);
+	    }
+		 
+	 });//end ajax
+}
+
+/* $("#btzRevM").click(function() {
+	$('#total').css("display", "inline")
+	$('#l1').css("display", "inline")
+}); */
+
+$("#total").click(function() {
+	$("#total").css("display", "none");
+	$("#l1").css("display", "none");
+});
+$("#back").click(function() {
+	$("#total").css("display", "none");
+	$("#l1").css("display", "none");
+});	
+
+$("#review").click(function() {
+	$('#total').css("display", "inline")
+	$('#Q1').css("display", "inline")
+});
+$("#total").click(function() {
+	$("#total").css("display", "none");
+	$("#Q1").css("display", "none");
+});
+$("#backSetp").click(function() {
+	$("#total").css("display", "none");
+	$("#Q1").css("display", "none");
+});	
+	/* $("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")
 	});
 	$("#cancel").click(function() {
 		$('#lightbox-shadow1').css("display", "inline")
 		$('#lightbox1').css("display", "inline")
-	});
+	}); */
 </script>
 
 </html>

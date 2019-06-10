@@ -119,6 +119,16 @@ public class MypageController {
 		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
 		return mav;
 	}
+	@RequestMapping(value = "/aucapply", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView aucapply(AuctionProgress ap) {
+		System.out.println("일단 여기로 와야 하는디....");
+		mav = new ModelAndView();
+		
+		 mav=pm.aucapply(ap);
+		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		return mav;
+	}
 	@RequestMapping(value = "/reviewBoardWrite", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView reviewBoardWrite(MultipartHttpServletRequest multi) {
@@ -138,5 +148,23 @@ public class MypageController {
 		return mav;
 
 	}
-	
+	@RequestMapping(value = "/auctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView auctionMyAcceptList(Integer pageNum ,String kind) {
+		System.out.println("ㅆㅂ,,,,,");
+		mav = new ModelAndView();
+		
+		 mav=pm.auctionMyAcceptList(pageNum,kind);
+		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		return mav;
+	}
+	@RequestMapping(value = "/delinumupload", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView delinumupload(AuctionProgress ap) {
+		System.out.println("아니 여긴 오는거 맞아??");
+		mav = new ModelAndView();
+		 mav=pm.delinumupload(ap);
+		 
+		return mav;
+	}
 }

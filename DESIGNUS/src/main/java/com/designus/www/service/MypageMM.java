@@ -53,7 +53,7 @@ public class MypageMM {
 		} else if (list.equals("auc")) {
 			view = "redirect:/auctionMyOrderList";
 		} else if (list.equals("aucre")) {
-			view = "auctionMyAcceptList";
+			view = "redirect:/auctionMyAcceptList";
 		} else if (list.equals("spon")) {
 			view = "fundingAcceptList";
 		} else if (list.equals("sponre")) {
@@ -61,6 +61,7 @@ public class MypageMM {
 		} else {
 			view = "redirect:/basketFrm?kind=A";
 		}
+		System.out.println("view"+view);
 		mav.setViewName(view);
 		return mav;
 	}
@@ -328,12 +329,8 @@ public class MypageMM {
 		mav = new ModelAndView();
 		String id=session.getAttribute("id").toString();
 		List<AuctionProgress> apList = null;
-		List<AuctionProgress> apsList = null;
-		/*
-		 * List<AuctionProgress> apsListsetp2 = null; List<AuctionProgress> apsListsetp3
-		 * = null; List<AuctionProgress> apsListsetp4 = null;
-		 */
-	     String result="";
+		
+		
 		String view=null;
         System.out.println("kind"+kind);
         int num = (pageNum == null) ? 1 : pageNum;
@@ -341,7 +338,7 @@ public class MypageMM {
 		
 		System.out.println("여기까지 오나????....");
 		//AuctionProgress ap=new AuctionProgress();
-		apList=pDao.auctionMyOrderListSelect(id);
+		apList=pDao.auctionMyOrderListSelect(id,num);
 		System.out.println("size"+apList.size());
 		mav.addObject("apList", apList);
 		mav.addObject("paging", getMPaging(num,kind));
@@ -464,6 +461,86 @@ public class MypageMM {
 		}
 		mav.setViewName("redirect:/auctionMyOrderList");
 		return mav;
+	}
+
+	public ModelAndView auctionMyAcceptList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		String id=session.getAttribute("id").toString();
+		List<AuctionProgress> apwList = null;
+		
+		String view=null;
+        System.out.println("kind"+kind);
+        int num = (pageNum == null) ? 1 : pageNum;
+	
+		
+		//AuctionProgress ap=new AuctionProgress();
+		apwList=pDao.auctionMyAcceptListSelect(id,num);
+		System.out.println("size"+apwList.size());
+		System.out.println("????"+apwList.get(0).getAup_ptnum());
+		System.out.println("????"+apwList.get(1).getAup_ptnum());
+		System.out.println("????"+apwList.get(2).getAup_ptnum());
+		mav.addObject("apwList", apwList);
+		mav.addObject("pagMPWing", getMPWaging(num,kind));
+		System.out.println("사망띠....");
+		
+		System.out.println("여기까지가 끝인가보오....");
+		
+		view="auctionMyAcceptList";
+		
+		mav.setViewName(view);
+		System.out.println("여기 진짜 와야 돼... 안그럼 나 프로젝트 접어.....");
+		return mav;
+	}
+
+	private Object getMPWaging(int pageNum, String kind) {
+		String id=session.getAttribute("id").toString();
+		System.out.println("dddddddd="+id);
+		 // 전체 글의 개수
+		int listCount = 5; // 페이지당 글의 수
+		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum =pDao.getSetpWCount(id);
+		System.out.println("전체 글의 개수"+maxNum);
+		String boardName = "auctionMyAcceptList";
+		
+		
+		com.designus.www.userClass.Paging paging = 
+				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
+		return paging.makeHtmlPaging();
+	}
+	@Transactional
+	public ModelAndView delinumupload(AuctionProgress ap) {
+		mav=new ModelAndView();
+		System.out.println("그럼 여기는??");
+		boolean a=pDao.delinumuploadupdate(ap);
+		System.out.println("nnnnuuuummmm::::"+ap.getAup_ptnum());
+		System.out.println("getAup_track::::"+ap.getAup_track());
+		 
+			if(a) {
+				System.out.println("ㅎㅎ");
+				  mav.addObject("msg", 1);
+   	
+			}else {
+				System.out.println("실패?? 왜?? 뒤질래??");
+				mav.addObject("msg", 2);
+			}
+				
+			mav.setViewName("redirect:/auctionMyAcceptList");
+		System.out.println("된거야??");
+		return mav;
+	}
+
+	public String sends(int ptnum) {
+		String id=session.getAttribute("id").toString();
+		String json = null;
+		AuctionProgress ap=pDao.sendsSelect(ptnum,id);
+		if(ap != null) {
+		json = new Gson().toJson(ap);
+		System.out.println("json=" + json);
+		}else {
+			json = null;
+
+		}
+		return json;
 	}
 
 
