@@ -437,7 +437,7 @@ position: absolute;
 					</c:if>
 					<c:if test="${step eq 3}">
 						<button id="btzRevQ">고객센터 문의</button>
-						<button id="review">수령 확인/구매 후기 쓰기</button>
+						<button id="review" >수령 확인/구매 후기 쓰기</button>
 					</c:if>
 					<c:if test="${step eq 4}">
 						<h3>완료</h3>
@@ -463,8 +463,27 @@ position: absolute;
 							<input type="submit" value="요청하기">
 							<input id="back" type="button" value="취소">
 						</div>
-						
 					</form>
+					<div id="Q2">
+						    수령 확인 및 구매후기 쓰기
+							
+							<div id="Q2">
+							${apList.au_title}
+							<input type="button" id="butt" value="추천하기" onclick="good()">
+							</div>
+							<div id="Q3">
+								아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
+									name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
+								이름 : <input type="text" name="aup_name" id="aup_name"><br />
+								주소 : <input type="text" name="aup_address" id="aup_address"><br />
+								연락처 :<input type="text" name="aup_phone" id="aup_phone">
+								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
+									value="${apList.aup_ptnum}"> <input type="hidden"
+									name="aup_price" id="aup_price" value="${apList.aup_price}">
+							</div>
+							<input type="submit" value="요청하기">
+							<input id="back" type="button" value="취소">
+						</div>
 				</c:forEach>
 
 			</div>
@@ -530,6 +549,15 @@ $("#back").click(function() {
 	$("#total").css("display", "none");
 	$("#l1").css("display", "none");
 });	
+
+$("#review").click(function() {
+	$('#total').css("display", "inline")
+	$('#Q1').css("display", "inline")
+});
+$("#total").click(function() {
+	$("#total").css("display", "none");
+	$("#l1").css("display", "none");
+});
 
 	$("#action").click(function() {
 
