@@ -52,4 +52,6 @@
 	<select id="getMemberpwInfo" parameterType="member" resultType="member">
 		SELECT MB_PW FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name} AND MB_ID=#{mb_id}
 	</select>
+	
+	<!-- update mb set mb_pw ='123' where mb_id='나는야소형준' -->
 </mapper>
