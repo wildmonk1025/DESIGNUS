@@ -66,5 +66,7 @@ public interface ImypageDao {
 
 	boolean reviewBoardyhWriteupDate(int ptnum);
 
+	boolean auccancelDelete(@Param("ranum") int ranum, @Param("id") String id);
+
   
 }
