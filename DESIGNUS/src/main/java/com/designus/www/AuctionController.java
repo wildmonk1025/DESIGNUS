@@ -42,7 +42,6 @@ public class AuctionController {
 	@RequestMapping(value = "/auctionList" )
 	public ModelAndView auctionList(int cgcode) {
 		mav = new ModelAndView();
-		System.out.println("cgcode:="+cgcode);
 		mav = aum.auctionList(cgcode);
 		
 		return mav;

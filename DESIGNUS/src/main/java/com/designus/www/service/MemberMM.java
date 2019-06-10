@@ -180,8 +180,9 @@ public class MemberMM {
 		String view = null;
 		mb = mDao.getMemberpwInfo(mb);
 		if(mb!=null) {
-		mav.addObject("findpw", "비밀번호는 "+ mb.getMb_pw()+"입니다.");
-		System.out.println("id"+mb.getMb_id());
+		StringBuilder sb = new StringBuilder(); 
+		System.out.println("id"+mb.getMb_pw());
+		mav.addObject("findpw","비밀번호 변경하기.");
 		view = "memberFind";
 		} else {
 			view = "memberFind";
