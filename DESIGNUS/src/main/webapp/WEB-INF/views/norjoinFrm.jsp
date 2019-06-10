@@ -302,7 +302,10 @@ div {
 		var mbpw2 = $("#mb_pwcheck").val();
 		var mbname = $("#mb_name").val();
 		var mbbirth = $("#mb_birth").val();
-		var mbaddr = $("#mb_address").val();
+		var mbaddr = $("#addr1").val();
+		var mbaddr2 = $("#addr2").val();
+		var mbaddr3 = $("#addr3").val();
+		
 		var chk1 = $("#chk2").val();
 		var chk2 = $("#chk3").val();
 		var email = $("#mb_email").val()
@@ -329,14 +332,25 @@ div {
 			$("#mb_name").focus();
 			return false;
 		}
+		
 		if (mbbirth.length == 0) {
 			alert("생일을 입력해주세요.")
 			$("#mb_birth").focus();
 			return false;
 		}
 		if (mbaddr.length == 0) {
+			alert("우편번호를 입력해주세요.")
+			$("#addr1").focus();
+			return false;
+		}
+		if (mbaddr2.length == 0) {
 			alert("주소를 입력해주세요.")
-			$("#mb_address").focus();
+			$("#addr2").focus();
+			return false;
+		}
+		if (mbaddr3.length == 0) {
+			alert("상세주소를 입력해주세요.")
+			$("#addr3").focus();
 			return false;
 		}
 		if (email.length == 0) {

@@ -33,13 +33,14 @@ public class MemberMM {
 		mav = new ModelAndView();
 		kind = "S";
 		String view = null;
+		
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		int check2 = Integer.parseInt(multi.getParameter("fileCheck2"));
 		String id = multi.getParameter("mb_id");
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("mb_address");
+		String address = multi.getParameter("addr1")+multi.getParameter("addr2")+multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 		String wriid = multi.getParameter("mb_id");
 		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
@@ -94,7 +95,7 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("mb_address");
+		String address = multi.getParameter("addr1")+multi.getParameter("addr2")+multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 
 		Member mb = new Member();
