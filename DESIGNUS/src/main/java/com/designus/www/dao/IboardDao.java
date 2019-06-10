@@ -15,6 +15,8 @@ public interface IboardDao {
 	boolean reviewBoardyhWrite(Board b);
 
 	boolean reviewfileInsert(Map<String, String> fMap);
+
+	boolean goods(String idw);
   
   
 }

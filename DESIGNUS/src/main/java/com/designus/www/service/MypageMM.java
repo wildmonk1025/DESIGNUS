@@ -443,4 +443,22 @@ public class MypageMM {
 	
 	}
 
+	public boolean goods(String idw) {
+		System.out.println("내마음 오지고 지리고 레릿고 : ");
+		boolean a = bDao.goods(idw);
+		System.out.println("aaaaa : "+a);
+		return a;
+	}
+
+	public boolean auccancel(int ranum) {
+		System.out.println("내마음 오지고 지리고 레릿고 : ");
+		String id=session.getAttribute("id").toString();
+		System.out.println("ididididi :"+id);
+		boolean a = pDao.auccancelDelete(ranum,id);
+		System.out.println("aaaaa : "+a);
+		return false;
+	}
+
+
+
 }
