@@ -190,7 +190,14 @@ public class HomeController {
 	public ModelAndView memberidfind(Member mb) {
 		mav = new ModelAndView();
 				
-				mav = mm.memberidfind(mb);
+		mav = mm.memberidfind(mb);
+		return mav;	
+	} 
+	@RequestMapping(value = "/memberpwfind",method = RequestMethod.POST)
+	public ModelAndView memberpwfind(Member mb) {
+		mav = new ModelAndView();
+		
+		mav = mm.memberpwfind(mb);
 		return mav;	
 	} 
 

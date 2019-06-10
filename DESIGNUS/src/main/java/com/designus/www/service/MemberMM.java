@@ -169,7 +169,23 @@ public class MemberMM {
 		view = "memberFind";
 		} else {
 			view = "memberFind";
-			mav.addObject("findid","없는아이디 입니다. 다시입력해주세요.");
+			mav.addObject("findid","입력하신 정보는 없는 정보입니다.");
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView memberpwfind(Member mb) {
+		mav = new ModelAndView();
+		String view = null;
+		mb = mDao.getMemberpwInfo(mb);
+		if(mb!=null) {
+		mav.addObject("findpw", "비밀번호는 "+ mb.getMb_pw()+"입니다.");
+		System.out.println("id"+mb.getMb_id());
+		view = "memberFind";
+		} else {
+			view = "memberFind";
+			mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
 		}
 		mav.setViewName(view);
 		return mav;

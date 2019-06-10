@@ -33,6 +33,8 @@ public interface ImemberDao {
 	int memberWpoint(AuctionProgress ap);
 
 	Member getMemberNameInfo(Member mb);
+	
+	Member getMemberpwInfo(Member mb);
 
 
 }

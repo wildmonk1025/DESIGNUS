@@ -49,4 +49,7 @@
 	<select id="memberWpoint" parameterType="auctionprogress" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
 	</select>
+	<select id="getMemberpwInfo" parameterType="member" resultType="member">
+		SELECT MB_PW FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name} AND MB_ID=#{mb_id}
+	</select>
 </mapper>

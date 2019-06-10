@@ -295,12 +295,12 @@ button:hover {
 							<tr>
 								<th>이름</th>
 								<td><input type="text" id="mb_name" name="mb_name"
-									value="123"></td>
+									></td>
 							</tr>
 							<tr>
 								<th>이메일</th>
 								<td><input type="text" id="mb_email" name="mb_email"
-									value="321"></td>
+									></td>
 								<td><input id="btz2" type="button" value="이메일 인증"
 									onclick="emailcheck()"></td>
 									<p>${findid}</p>
@@ -322,7 +322,7 @@ button:hover {
 				</div>
 			</div>
 		</form>
-
+	<form action="memberpwfind" id="memberidfind" method="post">
 		<div id="pwfindcheckmain">
 			<div id="pwlist">
 				<div id="pwtext1" align="center">
@@ -340,6 +340,7 @@ button:hover {
 							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
 							<td><input id="btz" type="button" value="이메일 인증"
 								onclick="emailcheck()"></td>
+								<p>${findpw}</p>
 						</tr>
 					</table>
 				</div>
@@ -351,7 +352,7 @@ button:hover {
 				</div>
 			</div>
 		</div>
-
+	</form>
 	</div>
 	<!--아이디 명시-->
 
@@ -362,8 +363,9 @@ button:hover {
 		<div id="contents_layer"></div>
 	</div>
 </body>
-<script>	
-	/*  function AjId() {
+<script>
+
+	 function AjId() {
 	var mb_email = $("#mb_email").val();
 	var mb_name = $("#mb_name").val();
 	console.log(mb_email);
@@ -388,7 +390,7 @@ button:hover {
 			}//AjIdEnd
 		});//ajax end 
 	} 
- */
+ 
 	//ajax 실행문 작성
 
 	function Aj(id) {
