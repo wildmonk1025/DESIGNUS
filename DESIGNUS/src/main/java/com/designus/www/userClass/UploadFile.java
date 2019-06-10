@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
@@ -326,5 +328,42 @@ public class UploadFile {
 		if (f)
 			return true;
 		return false;
+	}
+
+	public String revTenderfileUp(MultipartHttpServletRequest file) {
+		String root = file.getServletContext().getRealPath("/");
+		System.out.println("root=" + root);
+		String path = root + "resources/upload/";
+		// 2.폴더 생성을 꼭 할것...
+		File dir = new File(path);
+		if (!dir.isDirectory()) { // upload폴더 없다면
+			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
+		}
+		// 3.파일을 가져오기-파일태그 이름들 반환
+		// String files=multi.getFileNames(); //파일태그가 2개이상일때
+		// List<MultipartFile> file = multi.getFiles("b_files");
+
+		MultipartFile files = file.getFile("revfile");
+		System.out.println(files);
+		// 파일 메모리에 저장
+		String oriFileName = files.getOriginalFilename(); // a.txt
+		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
+		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+		System.out.println("ori=" + oriFileName);
+		System.out.println("sys=" + sysFileName);
+		// 5.메모리->실제 파일 업로드
+		/*
+		 * System.out.println(session.getAttribute("id").toString());
+		 * System.out.println("세션 확인");
+		 */
+		try {
+			files.transferTo(new File(path + sysFileName));
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// for End
+
+			return sysFileName;
 	}
 }

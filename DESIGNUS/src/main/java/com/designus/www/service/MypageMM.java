@@ -48,7 +48,7 @@ public class MypageMM {
 		} else if (list.equals("revre")) {
 			view = "revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
-			view = "dispatche:/auctionMyOrderList";
+			view = "/auctionMyOrderList";
 		} else if (list.equals("aucre")) {
 			view = "auctionMyAcceptList";
 		} else if (list.equals("spon")) {
