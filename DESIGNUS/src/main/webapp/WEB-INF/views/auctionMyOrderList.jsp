@@ -5,7 +5,8 @@
 <html>
 
 <head>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -145,20 +146,7 @@ div {
 	display: none;
 }
 
-#lightbox3 {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
+
 
 #lightbox-shadow3 {
 	position: absolute;
@@ -328,7 +316,7 @@ a:hover {
 }
 
 #l1 {
-position: absolute;
+	position: absolute;
 	width: 400px;
 	height: 230px;
 	top: 100px;
@@ -340,18 +328,32 @@ position: absolute;
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
-	
 }
-#total{
-position: absolute;
+#Q1 {
+	position: absolute;
+	width: 500px;
+	height: 330px;
+	top: 100px;
+	left: 20%;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+}
+
+#total {
+	position: absolute;
 	width: 100%;
 	height: 1200px;
 	background-color: black;
 	z-index: 1001;
 	opacity: 0.75;
 	display: none;
-
 }
+
 .t1 {
 	position: relative;
 	top: 100;
@@ -363,8 +365,7 @@ position: absolute;
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-<div id="total">
-</div>
+	<div id="total"></div>
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
@@ -417,78 +418,75 @@ position: absolute;
 	</div>
 	<div id="setp">
 		<div id="setpT">
-				<c:forEach var="apList" items="${apList}">
+			<c:forEach var="apList" items="${apList}">
 				<div>
 					<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
-						src='/resources/images/${apList.aui_img}'></a>
-							상품 이름 : ${apList.au_title}
-						        구매 금액 : ${apList.aup_price}
-						        주문 수량 : ${apList.aup_qty}
-						<p>
+						src='/resources/images/${apList.aui_img}'></a> 상품 이름 :
+					${apList.au_title} 구매 금액 : ${apList.aup_price} 주문 수량 :
+					${apList.aup_qty}
+					<p>
 						작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
 					</p>
-					<c:set var="step" value="${apList.aup_step}"/>
+					<c:set var="step" value="${apList.aup_step}" />
 					<c:if test="${step eq 1}">
 						<button id="btzRevM">배송정보입력</button>
 						<button id="cencle" onclick="location.href='auccancel'">취소</button>
 					</c:if>
-                   <c:if test="${step eq 2}">
+					<c:if test="${step eq 2}">
 						<h3>배송 대기중</h3>
 					</c:if>
 					<c:if test="${step eq 3}">
 						<button id="btzRevQ">고객센터 문의</button>
-						<button id="review" >수령 확인/구매 후기 쓰기</button>
+						<button id="review">수령 확인/구매 후기 쓰기</button>
 					</c:if>
 					<c:if test="${step eq 4}">
 						<h3>완료</h3>
 					</c:if>
-					</div>
-					<form action="aucapply" method="post">
-					
-						<div id="l1">
-						    ${apList.au_mbid_w}님에게 배송요청
-							<input type="hidden" name="au_mbid_w" id="au_mbid_w"
-								value="${apList.au_mbid_w}">
-							<div id="l2">${apList.au_title}</div>
-							<div id="l3">
-								아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
-									name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
-								이름 : <input type="text" name="aup_name" id="aup_name"><br />
-								주소 : <input type="text" name="aup_address" id="aup_address"><br />
-								연락처 :<input type="text" name="aup_phone" id="aup_phone">
-								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
-									value="${apList.aup_ptnum}"> <input type="hidden"
-									name="aup_price" id="aup_price" value="${apList.aup_price}">
-							</div>
-							<input type="submit" value="요청하기">
-							<input id="back" type="button" value="취소">
-						</div>
-					</form>
-					<div id="Q2">
-						    수령 확인 및 구매후기 쓰기
-							
-							<div id="Q2">
-							${apList.au_title}
-							<input type="button" id="butt" value="추천하기" onclick="good()">
-							</div>
-							<div id="Q3">
-								아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
-									name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
-								이름 : <input type="text" name="aup_name" id="aup_name"><br />
-								주소 : <input type="text" name="aup_address" id="aup_address"><br />
-								연락처 :<input type="text" name="aup_phone" id="aup_phone">
-								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
-									value="${apList.aup_ptnum}"> <input type="hidden"
-									name="aup_price" id="aup_price" value="${apList.aup_price}">
-							</div>
-							<input type="submit" value="요청하기">
-							<input id="back" type="button" value="취소">
-						</div>
-				</c:forEach>
+				</div>
+				<form action="aucapply" method="post">
 
-			</div>
-			${paging}
+					<div id="l1">
+						${apList.au_mbid_w}님에게 배송요청 <input type="hidden" name="au_mbid_w"
+							id="au_mbid_w" value="${apList.au_mbid_w}">
+						<div id="l2">${apList.au_title}</div>
+						<div id="l3">
+							아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
+								name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
+							이름 : <input type="text" name="aup_name" id="aup_name"><br />
+							주소 : <input type="text" name="aup_address" id="aup_address"><br />
+							연락처 :<input type="text" name="aup_phone" id="aup_phone">
+							<input type="hidden" name="aup_ptnum" id="aup_ptnum"
+								value="${apList.aup_ptnum}"> <input type="hidden"
+								name="aup_price" id="aup_price" value="${apList.aup_price}">
+						</div>
+						<input type="submit" value="요청하기"> <input id="back"
+							type="button" value="취소">
+					</div>
+				</form>
+				<form action="reviewBoardWrite" method="post">
+					<div id="Q1">
+						수령 확인 및 구매후기 쓰기
+						<div id="Q2">
+							${apList.au_title} <input type="button" id="butt" value="추천하기"
+								onclick="good()">
+						</div>
+						<div id="Q3">
+							구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
+							내용 <br/>
+							<textarea rows="10" cols="70" name="bd_contents"></textarea>
+								<input type="file" name="bd_imgSysName" id="bd_imgSysName" 
+								        value="파일 첨부"  onchange="fileChk(this)" multiple>
+								<input type="hidden" id="fileCheck" value="0" name="fileCheck"> 
+						</div>
+						<input type="submit" value="완료"> <input id="back"
+							type="button" value="취소">
+					</div>
+				</form>
+			</c:forEach>
+
 		</div>
+		${paging}
+	</div>
 
 	<div id="point">
 		<h1>포인트:</h1>
@@ -556,7 +554,7 @@ $("#review").click(function() {
 });
 $("#total").click(function() {
 	$("#total").css("display", "none");
-	$("#l1").css("display", "none");
+	$("#Q1").css("display", "none");
 });
 
 	$("#action").click(function() {
@@ -572,10 +570,16 @@ $("#total").click(function() {
 		$('#lightbox-shadow2').css("display", "inline")
 		$('#lightbox2').css("display", "inline")
 	});
-	$("#review").click(function() {
-		$('#lightbox-shadow3').css("display", "inline")
-		$('#lightbox3').css("display", "inline")
-	});
+	function fileChk(elem) {
+		console.dir(elem);
+		if(elem.value==""){
+			console.log("empty"); 
+			$('#fileCheck').val(0); //파일 첨부 안했음
+		}else{
+			console.log("Notempty")
+			$('#fileCheck').val(1);//파일 첨부 했음
+		}
+	}
 </script>
 
 </html>
