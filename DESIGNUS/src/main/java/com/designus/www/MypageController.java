@@ -128,4 +128,15 @@ public class MypageController {
 		
 		return mav;
 	}
+	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView auccancel(int ranum) {
+		mav=new ModelAndView();
+		System.out.println("여기로 와라 제발...");
+		System.out.println("이게 작가 아이디인데....=" + ranum);
+		mav=pm.auccancel(ranum);
+		return mav;
+
+	}
+	
 }

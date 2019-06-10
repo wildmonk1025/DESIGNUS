@@ -173,7 +173,7 @@ button:hover {
 }
 
 #revauctionbtn, #auctionbtn {
-	margin-top: 30px;
+	margin-top: 10px;
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -199,8 +199,8 @@ button:hover {
 		rgb(237, 237, 237) 100%);
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
-	width: 200px;
-	height: 70px;
+	width: 150px;
+	height: 40px;
 	border-color: rgb(223, 192, 86);
 	border-width: 1px;
 	-moz-border-radius: 3px;
@@ -301,7 +301,7 @@ button:hover {
 								<th>이메일</th>
 								<td><input type="text" id="mb_email" name="mb_email"
 									></td>
-									<p><button>${findid}</button></p>
+									<p>${findid}</p>
 							</tr>
 						</table>
 

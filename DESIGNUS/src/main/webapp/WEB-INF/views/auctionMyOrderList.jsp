@@ -9,6 +9,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 #one {
 	position: relative;
@@ -430,7 +431,7 @@ a:hover {
 					<c:set var="step" value="${apList.aup_step}" />
 					<c:if test="${step eq 1}">
 						<button id="btzRevM">배송정보입력</button>
-						<button id="cencle" onclick="location.href='auccancel'">취소</button>
+						<button id="cencle" onclick="location.href='auccancel?ranum=${apList.aup_ranum}'">취소</button>
 					</c:if>
 					<c:if test="${step eq 2}">
 						<h3>배송 대기중</h3>
@@ -468,7 +469,7 @@ a:hover {
 						수령 확인 및 구매후기 쓰기
 						<div id="Q2">
 							${apList.au_title} <input type="button" id="butt" value="추천하기"
-								onclick="good()">
+								onclick="good('${apList.au_mbid_w}')">
 								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
 								value="${apList.aup_ptnum}">
 						</div>
@@ -480,8 +481,8 @@ a:hover {
 								        value="파일 첨부"  onchange="fileChk(this)" multiple>
 								<input type="hidden" id="fileCheck" value="0" name="fileCheck"> 
 						</div>
-						<input type="submit" value="완료"> <input id="back"
-							type="button" value="취소">
+						<input type="submit" value="완료"> 
+						<input id="backSetp" type="button" value="취소">
 					</div>
 				</form>
 			</c:forEach>
@@ -537,6 +538,31 @@ a:hover {
 </body>
 <script type="text/javascript">
 
+
+	
+
+function good(data) {
+	var btn = $('#butt');
+	 $.ajax({
+			url: "goods",
+			type:"post",
+		    data:{idw:data},
+		    success:function(data){
+		    	alert('해당 상품을 추천하였습니다.');
+		    	console.log("123456"+data);
+		    	//btn.disabled = 'disabled'
+		    	var bu=document.getElementById('butt');
+		    		bu.disabled =true;
+		
+		    },
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+			 
+		 });//end ajax
+}
+
 $("#btzRevM").click(function() {
 	$('#total').css("display", "inline")
 	$('#l1').css("display", "inline")
@@ -558,6 +584,10 @@ $("#total").click(function() {
 	$("#total").css("display", "none");
 	$("#Q1").css("display", "none");
 });
+$("#backSetp").click(function() {
+	$("#total").css("display", "none");
+	$("#Q1").css("display", "none");
+});	
 
 	$("#action").click(function() {
 

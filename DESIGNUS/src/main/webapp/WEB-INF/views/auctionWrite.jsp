@@ -193,9 +193,12 @@ textarea {
 					
 
 					<div id="attachFileDiv">
-						<input type="file" name="aui_imgSysName" id="imgIn"
+						<input type="file" name="aui_imgSysName1" id="imgIn"
 						 value="" onchange="fileChk(this)"multiple> 
-						<input type="button" value="추가" id="addBtn" onclick="attachFile.add()">
+						<input type="file" name="aui_imgSysName2" multiple> 
+						<input type="file" name="aui_imgSysName3" multiple> 
+						<input type="file" name="aui_imgSysName4" multiple> 
+						<!-- <input type="button" value="추가" id="addBtn" onclick="attachFile.add()"> -->
 					</div>
 
 				</div>
@@ -203,8 +206,8 @@ textarea {
 					<textarea placeholder=" 이곳에 작품 설명을 적어주세요 " name="au_contents" id="contents"></textarea>
 				</div>
 				<input type="submit" value="출품하기">
-				<button><a href="home">돌아가기</a></button>
 			</form>
+				<button><a href="home">돌아가기</a></button>
 		</div>
 
 
@@ -216,6 +219,7 @@ textarea {
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="JavaScript">
+	/* 
 	attachFile = {
 		idx:0,
 		add:function(){ // 파일필드 추가
@@ -234,25 +238,25 @@ textarea {
 			file.id = 'fileField' + o.idx;
 
 			var btn = document.createElement('input');
-			btn.type = 'button';
-			btn.value = '삭제';
 			btn.onclick = function(){o.del(idx)}
+			btn.type = 'button';
+			btn.value = '삭제'; 
 			btn.style.marginLeft = '5px';
 			btn.style.width = '99%';
-
 			div.appendChild(file);
 			div.appendChild(btn);
 			document.getElementById('attachFileDiv').appendChild(div);
 
 			o.idx++;
 		},
-		del:function(idx){ // 파일필드 삭제
+		 del:function(idx){ // 파일필드 삭제
 			if(document.getElementById('fileField' + idx).value != '' && !confirm('삭제 하시겠습니까?')){
 				return;
 			}
 			document.getElementById('attachFileDiv').removeChild(document.getElementById('file' + idx));
-		}
+		} 
 	}
+	*/
 	
 	var count = 0;
 	 
@@ -270,15 +274,15 @@ textarea {
                 var reader = new FileReader();
  
                 reader.onload = function (img) {
-                    $("#pht1").html(
-                        "<img src=\"" + img.target.result + "\"\ style='height: 260px; width: 398px;'/>"
+                    $("#pht1").html(										 /* 260 */
+                        "<img src=\"" + img.target.result + "\"\ style='height: 380px; width: 398px;'/>"
                     );
                     
                 };
                 
                 reader.readAsDataURL(file);
             }
-        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
+        } else alert('invalid file input');
     }
 	
 	
@@ -288,10 +292,13 @@ textarea {
 				$("#addBtn").css("pointer-events","none");
 			}
 		});
-	$("#cgcode").click(function() {	
+		
+ 
+ 	$("#cgcode").click(function() {	
 		console.log($("#cgcode").val());
 	});
-
+	
+ 	
 	
 </script>
 </html>

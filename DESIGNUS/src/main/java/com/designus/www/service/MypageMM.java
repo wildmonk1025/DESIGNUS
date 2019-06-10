@@ -443,4 +443,29 @@ public class MypageMM {
 	
 	}
 
+	public boolean goods(String idw) {
+		System.out.println("내마음 오지고 지리고 레릿고 : ");
+		boolean a = bDao.goods(idw);
+		System.out.println("aaaaa : "+a);
+		return a;
+	}
+
+	public ModelAndView auccancel(int ranum) {
+		mav=new ModelAndView();
+		System.out.println("내마음 오지고 지리고 레릿고 : ");
+		String id=session.getAttribute("id").toString();
+		System.out.println("ididididi :"+id);
+		boolean a = pDao.auccancelDelete(ranum,id);
+		System.out.println("aaaaa : "+a);
+		if(a) {
+			mav.addObject("check", 1);
+		}else {
+			mav.addObject("check", 2);
+		}
+		mav.setViewName("redirect:/auctionMyOrderList");
+		return mav;
+	}
+
+
+
 }

@@ -137,4 +137,8 @@
 		update AUP SET aup_step=4
 		where aup_ptnum=#{ptnum}
 	</update>
+	<delete id="auccancelDelete" >
+		  DELETE FROM AUP 
+     WHERE AUP_MBID_N=#{id} AND AUP_RANUM=#{ranum}
+	</delete>
 </mapper>
