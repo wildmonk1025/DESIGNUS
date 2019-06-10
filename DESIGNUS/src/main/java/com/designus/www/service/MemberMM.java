@@ -159,31 +159,40 @@ public class MemberMM {
 	}
 
 	public ModelAndView memberidfind(Member mb) {
+		System.out.println("여기 안오고..?");
 		mav = new ModelAndView();
 		String view = null;
-
-		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-
-		String pwdEncode = mDao.getmembernameInfo(mb.getMb_name());
-		if (pwdEncode != null) {
-			if (pwdEncoder.matches(mb.getMb_email(), pwdEncode)) {
-				mb = mDao.getMemberemailInfo(mb.getMb_email());
-				session.setAttribute("id", mb.getMb_id());
-				session.setAttribute("grade", mb.getMb_grade());
-				/* session.setAttribute("mb", mb); */
-				System.out.println("grede=" + mb.getMb_grade());
-				System.out.println("id=" + mb.getMb_id());
-				view = "redirect:loginBox";
-			} else {
-				view = "loginBox";
-				mav.addObject("ckeck", 2);
-			}
+		mb = mDao.getMemberNameInfo(mb);
+		if(mb!=null) {
+		mav.addObject("findid", "아이디는 "+ mb.getMb_id()+"입니다.");
+		System.out.println("id"+mb.getMb_id());
+		view = "memberFind";
 		} else {
-			view = "loginBox";
-			mav.addObject("ckeck", 2);
+			view = "memberFind";
+			mav.addObject("findid","입력하신 정보는 없는 정보입니다.");
 		}
 		mav.setViewName(view);
 		return mav;
 	}
+
+	public ModelAndView memberpwfind(Member mb) {
+		mav = new ModelAndView();
+		String view = null;
+		mb = mDao.getMemberpwInfo(mb);
+		if(mb!=null) {
+		mav.addObject("findpw", "비밀번호는 "+ mb.getMb_pw()+"입니다.");
+		System.out.println("id"+mb.getMb_id());
+		view = "memberFind";
+		} else {
+			view = "memberFind";
+			mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+
+
+	
 
 }

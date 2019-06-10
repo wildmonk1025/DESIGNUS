@@ -17,6 +17,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
 import com.google.gson.Gson;
@@ -28,6 +29,8 @@ public class MypageMM {
 	private ImypageDao pDao;
 	@Autowired
 	private ImemberDao mDao;
+	@Autowired
+	private IboardDao bDao;
 	@Autowired
 	private HttpSession session;
 	@Autowired
@@ -48,7 +51,7 @@ public class MypageMM {
 		} else if (list.equals("revre")) {
 			view = "revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
-			view = "dispatche:/auctionMyOrderList";
+			view = "redirect:/auctionMyOrderList";
 		} else if (list.equals("aucre")) {
 			view = "auctionMyAcceptList";
 		} else if (list.equals("spon")) {
@@ -333,53 +336,19 @@ public class MypageMM {
 	     String result="";
 		String view=null;
         System.out.println("kind"+kind);
-		
-		int num = (pageNum == null) ? 1 : pageNum;
+        int num = (pageNum == null) ? 1 : pageNum;
+	
 		
 		System.out.println("여기까지 오나????....");
 		//AuctionProgress ap=new AuctionProgress();
 		apList=pDao.auctionMyOrderListSelect(id);
+		System.out.println("size"+apList.size());
+		mav.addObject("apList", apList);
+		mav.addObject("paging", getMPaging(num,kind));
 		System.out.println("사망띠....");
 		System.out.println("apList"+apList.size());
 		
 		System.out.println("여기까지가 끝인가보오....");
-		for(int i=0;i<apList.size();i++) {
-			
-			System.out.println("그치만...."+apList.get(i).getAup_step());
-			if(apList.get(i).getAup_step()==1) {
-				kind="S1";
-				//System.out.println("1111");
-				apsList=pDao.auctionMyOrderListSelectstep(id,1,num);
-				System.out.println("step1size : "+apsList.size());
-				System.out.println("step1price : "+apsList.get(0).getAup_price());
-				mav.addObject("step1", apsList);
-				mav.addObject("paging", getMPaging(num,kind));
-				
-			}else if(apList.get(i).getAup_step()==2){
-				//System.out.println("2222");
-				kind="S2";
-				apsList=pDao.auctionMyOrderListSelectstep2(id,2,num);
-				
-				mav.addObject("step2", apsList);
-				mav.addObject("pagingS2", getMPagingS2(num,kind));
-			}else if(apList.get(i).getAup_step()==3) {
-				kind="S3";
-				apsList=pDao.auctionMyOrderListSelectstep3(id,3,num);
-				//System.out.println("33333");
-				mav.addObject("step3", apsList);
-				mav.addObject("paging", getMPaging(num,kind));
-				
-			}else {
-				kind="S4";
-				apsList=pDao.auctionMyOrderListSelectstep4(id,4,num);
-				//System.out.println("44444");
-				mav.addObject("step4", apsList);
-				mav.addObject("paging", getMPaging(num,kind));
-			}
-			
-		}
-		
-		
 		
 		view="auctionMyOrderList";
 		
@@ -388,40 +357,16 @@ public class MypageMM {
 		return mav;
 	}
 
-	private Object getMPagingS2(int pageNum, String kind) {
-		int setp=2;
-		String id=session.getAttribute("id").toString();
-		System.out.println("dddddddd="+id);
-		int maxNum = pDao.getSetpCount2(id,setp); // 전체 글의 개수
-		String boardName = "auctionMyOrderList";
-		int listCount = 5; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
-		
-		com.designus.www.userClass.Paging paging = 
-				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
-		return paging.makeHtmlPaging();
-	}
-
 	private Object getMPaging(int pageNum, String kind) {
-		int a = 0;
 		String id=session.getAttribute("id").toString();
 		System.out.println("dddddddd="+id);
 		 // 전체 글의 개수
 		int listCount = 5; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum =pDao.getSetpCount(id);
+		System.out.println("전체 글의 개수"+maxNum);
 		String boardName = "auctionMyOrderList";
-		if(kind.equals("S1")) {
-			int setp=1;
-		    a=pDao.getSetpCount(id,setp);
-		}else if(kind.equals("S3")){
-			int setp=3;
-			a=pDao.getSetpCount3(id,setp);
-		}else {
-			int setp=4;
-			a=pDao.getSetpCount4(id,setp);
-		}
-		int maxNum =a;
-		System.out.println("몇 페이지????"+a);
+		
 		
 		com.designus.www.userClass.Paging paging = 
 				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
@@ -447,9 +392,55 @@ public class MypageMM {
 			   	
 			}
 				
-			mav.setViewName("auctionMyOrderList");
+			mav.setViewName("redirect:/auctionMyOrderList");
 		
 		return mav;
+	}
+	@Transactional
+	public ModelAndView reviewBoardyhWrite(MultipartHttpServletRequest multi) {
+		System.out.println("뭐지?? 또 시작이네...");
+		String view =null;
+		String bd_kind="이용후기"; 
+		int ptnum =Integer.parseInt(multi.getParameter("aup_ptnum"));
+		String id=session.getAttribute("id").toString();
+		String title=multi.getParameter("bd_title");
+		String contents=multi.getParameter("bd_contents");
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		System.out.println("title=" + title);
+		System.out.println("contents=" + contents);
+		System.out.println("check=" + check);
+	     com.designus.www.bean.Board b= new com.designus.www.bean.Board();
+		
+	     b.setBd_mbid(id);
+	     b.setBd_title(title);
+	     b.setBd_contents(contents);
+	     b.setBd_kind(bd_kind);
+	     
+	     boolean a = bDao.reviewBoardyhWrite(b);
+	     System.out.println("boardnum=" + b.getBd_num());
+	     boolean f = false;
+			if (check == 1) { // 첨부된 파일이 있다면....
+				// upload=new UploadFile(); //프로토타입
+				// 이클립스 서버에 파일을 업로드 한 후,
+				// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+				f = upload.fileboardUp(multi, b.getBd_num(),b.getBd_kind());
+				if (f) {
+					boolean d=pDao.reviewBoardyhWriteupDate(ptnum); 
+					if(d) {
+						view = "redirect:/auctionMyOrderList";	
+					}
+					
+				}
+			}
+			if (a) { // 글쓰기 성공
+				view = "redirect:/auctionMyOrderList";
+			} else {
+				view = "myPage";
+			}
+			mav.setViewName(view);
+			return mav;
+		
+	
 	}
 
 }

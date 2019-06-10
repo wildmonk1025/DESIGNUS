@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.text.DateFormat;
+import java.text.DateFormat; 
 import java.util.Date;
 import java.util.Locale;
 
@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Member;
+import com.designus.www.dao.ImemberDao;
 import com.designus.www.service.MemberMM;
 
 /**
@@ -32,6 +33,7 @@ public class HomeControllerjy {
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
+	ImemberDao mDao;
 
 	/*
 	 * @RequestMapping(value = "/", method = RequestMethod.GET) public String
@@ -99,6 +101,13 @@ public class HomeControllerjy {
 		return mav;
 	}
 
+	/*
+	 * @RequestMapping(value = "joinPost", method = RequestMethod.POST) public
+	 * String joinPost(@ModelAttribute("mb") Member mb) throws Exception {
+	 * logger.info("currnent join member: " + mb.toString()); mDao.create(mb);
+	 * 
+	 * return "/user/joinPost"; }
+	 */
 	/*
 	 * @RequestMapping(value = "/memberidfind", method = RequestMethod.POST) public
 	 * ModelAndView memberidfind(MultipartHttpServletRequest multi, String kind) {

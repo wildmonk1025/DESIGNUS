@@ -40,17 +40,16 @@
 	<select id="memberFind" parameterType="member" resultType="String">
 		SELECT MB_ID FROM MEMBER WHERE MB_ID=#{MB_ID}
 	</select>
-	<select id="getmembernameInfo" parameterType="member" resultType="String">
-		SELECT * FROM MB WHERE MB_NAME=#{mb_name}
-		<!-- SELECT MB_ID  FROM MEMBER WHERE MB_EMAIL =#{mb_email} AND MB_NAME=#{mb_name} -->
-	</select>
-	<select id="getmemberemailInfo" parameterType="member" resultType="String">
-		SELECT * FROM MB WHERE MB_EMAIL=#{mb_email}
+	<select id="getMemberNameInfo" parameterType="member" resultType="member">
+		SELECT MB_ID FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name}
 	</select>
 	<select id="memberNpoint" parameterType="auctionprogress" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{aup_mbid_n}
 	</select>
 	<select id="memberWpoint" parameterType="auctionprogress" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
+	</select>
+	<select id="getMemberpwInfo" parameterType="member" resultType="member">
+		SELECT MB_PW FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name} AND MB_ID=#{mb_id}
 	</select>
 </mapper>
