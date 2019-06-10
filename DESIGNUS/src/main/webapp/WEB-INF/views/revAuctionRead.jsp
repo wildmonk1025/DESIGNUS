@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>제작의뢰 상세보기</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -235,7 +234,7 @@ div {
 		<!-- div 카테고리와 이미지 -->
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
-			<div id="middle_img_lv2">${raInfo.ra_image}</div>
+			<div id="middle_img_lv2"><img src="resources/logo.png" alt="${raInfo.ra_image}"/></div>
 		</div>
 		<div id="middle_contents1">
 			<div id="middle_contents1_lv1">
@@ -333,17 +332,14 @@ div {
 						</c:if>
 					</c:if>
 					<c:if test="${ra_id eq se_id}">
-						<c:if test="${grade ne 'W'}">
 							<input type="button" id="nopermitapply" value="전송" />
-						</c:if>
 					</c:if>
 					<input type="button" id="meneycancle" value="돌아가기" />
 				</div>
 			</div>
 		</form>
 	</div>
-
-
+	
 </body>
 <script>
 if(${nb} > 0){
