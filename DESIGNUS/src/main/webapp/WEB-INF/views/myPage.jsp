@@ -19,9 +19,10 @@ div {
 
 #notice {
 	padding-top: 5px;
+	margin: 10px;
 	border: 1px solid orange;
-	width: 1100px;
-	height: 60px;
+	width: 1080px;
+	height: 100px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -29,15 +30,18 @@ div {
 
 #info {
 	border: 1px solid orange;
-	width: 300px;
-	height: 600px;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 580px;
+	font-size: 20px;
 	text-align: left;
 	float: left;
 }
 
 #renking {
 	border: 1px solid orange;
-	width: 1100px;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
 	height: 200px;
 	text-align: center;
 	font-size: 20px;
@@ -46,7 +50,8 @@ div {
 
 #auction {
 	border: 1px solid orange;
-	width: 1100px;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
 	height: 250px;
 	text-align: center;
 	font-size: 20px;
@@ -55,10 +60,11 @@ div {
 
 #spon {
 	border: 1px solid orange;
-	margin:10px;
+	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 210px;
+	height: 250px;
 	float: left;
+	font-size: 20px;
 	text-align: center;
 }
 
@@ -70,7 +76,7 @@ div {
 
 #point {
 	border: 1px solid orange;
-	margin:10px;
+	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
 	text-align: left;
@@ -81,7 +87,7 @@ div {
 #img {
 	margin-top: 20px;
 	border: 1px solid orange;
-	margin: 10px;
+	margin: 20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;
 	text-align: left;
