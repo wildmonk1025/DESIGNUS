@@ -1,6 +1,6 @@
 package com.designus.www;
 
-import java.io.PrintWriter;
+import java.io.PrintWriter; 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -30,7 +30,6 @@ import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
-import com.designus.www.userClass.MemberServiceImpl;
 
 /**
  * Handles requests for the application home page.
