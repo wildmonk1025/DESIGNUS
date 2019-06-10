@@ -52,7 +52,7 @@ div {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 250px;
+	height: 300px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -62,7 +62,7 @@ div {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 250px;
+	height: 300px;
 	float: left;
 	font-size: 20px;
 	text-align: center;
@@ -124,14 +124,14 @@ a:hover {
 
 #leftmain {
 	width: 310px;
-	height: 1200px;
+	height: 950x;
 	border: 1px solid black;
 	float: left;
 }
 
 #rightmain {
 	width: 1210px;
-	height: 1200px;
+	height: 950px;
 	border: 1px solid black;
 	float: left;
 }
