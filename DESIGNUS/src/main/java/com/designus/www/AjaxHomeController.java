@@ -50,9 +50,5 @@ public class AjaxHomeController {
 		System.out.println("이거는??????");
 		return aa;	
 	} 
-	@RequestMapping(value = "/memberidfind", produces = "application/json;charset=utf8",method = RequestMethod.POST)
-	public ModelAndView memberidfind(Member mb) {
-		ModelAndView mav = mm.memberidfind(mb);
-		return mav;	
-	} 
+	
 }
