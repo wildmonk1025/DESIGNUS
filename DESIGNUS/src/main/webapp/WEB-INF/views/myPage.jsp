@@ -143,15 +143,7 @@ a:hover {
 	float: left;
 }
 
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
+
 
 #loginwriter {
 	padding: 3px;

@@ -39,7 +39,7 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
+		String address = multi.getParameter("mb_address");
 		String email = multi.getParameter("mb_email");
 		String wriid = multi.getParameter("mb_id");
 		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
@@ -94,11 +94,8 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		/* String address = multi.getParameter("mb_address"); */
-		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
+		String address = multi.getParameter("mb_address");
 		String email = multi.getParameter("mb_email");
-
-		System.out.println(address);
 
 		Member mb = new Member();
 		mb.setMb_id(id);
@@ -162,32 +159,23 @@ public class MemberMM {
 	}
 
 	public ModelAndView memberidfind(Member mb) {
+		System.out.println("여기 안오고..?");
 		mav = new ModelAndView();
 		String view = null;
-
-		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-
-		String pwdEncode = mDao.getmembernameInfo(mb.getMb_name());
-		if (pwdEncode != null) {
-			if (pwdEncoder.matches(mb.getMb_email(), pwdEncode)) {
-				mb = mDao.getMemberemailInfo(mb.getMb_email());
-				session.setAttribute("id", mb.getMb_id());
-				session.setAttribute("grade", mb.getMb_grade());
-				/* session.setAttribute("mb", mb); */
-				System.out.println("grede=" + mb.getMb_grade());
-				System.out.println("id=" + mb.getMb_id());
-				view = "redirect:loginBox";
-			} else {
-				view = "loginBox";
-				mav.addObject("ckeck", 2);
-			}
+		mb = mDao.getMemberNameInfo(mb);
+		if(mb!=null) {
+		mav.addObject("findid", "아이디는 "+ mb.getMb_id()+"입니다.");
+		System.out.println("id"+mb.getMb_id());
+		view = "memberFind";
 		} else {
-			view = "loginBox";
-			mav.addObject("ckeck", 2);
+			view = "memberFind";
+			mav.addObject("findid","없는아이디 입니다. 다시입력해주세요.");
 		}
 		mav.setViewName(view);
 		return mav;
 	}
+
+
 
 	
 
