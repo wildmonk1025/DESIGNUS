@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 
@@ -62,6 +63,8 @@ public interface ImypageDao {
 	boolean aucapplyMbNupdate(AuctionProgress ap);
 
 	boolean aucapplyMbWupdate(AuctionProgress ap);
-  
+
+	boolean reviewBoardyhWriteupDate(int ptnum);
+
   
 }

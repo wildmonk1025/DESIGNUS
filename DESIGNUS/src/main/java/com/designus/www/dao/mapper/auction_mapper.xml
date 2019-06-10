@@ -55,4 +55,30 @@
 		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_num = ${aut_aunum}
 	</select>
 
+	<select id="getAuctionTenderQty" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_QTY-${aut_qty} FROM AU WHERE au_num = ${aut_aunum}
+	</select>
+
+	<select id="getAuctionInfoID" parameterType="auction" resultType="String">
+		SELECT AU_MBID_W FROM AU WHERE au_num = ${au_num}
+	</select>
+
+	<select id="getAuctionTenderList" parameterType="auctiontender" resultType="auctiontender">
+		  <![CDATA[
+		SELECT ROWNUM AS A, AUT_NUM, AUT_MBID, AUT_PRICE, AUT_KIND 
+		FROM AUT
+		WHERE AUT_NUM = ${aut_aunum} AND AUT_KIND != 'I' AND ROWNUM <=3
+		ORDER BY AUT_PRICE DESC
+ 		]]>
+	</select>
+
+	<select id="getAuctionWriterListSel" parameterType="auction" resultType="auction">
+		  <![CDATA[
+		SELECT * FROM AU 
+		WHERE ROWNUM <=3 AND AU_NUM != ${au_num}
+		ORDER BY AU_NUM DESC
+ 		]]>
+	</select>
+
+	
 </mapper>

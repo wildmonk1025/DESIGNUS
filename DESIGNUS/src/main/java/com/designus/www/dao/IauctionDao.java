@@ -15,7 +15,7 @@ public interface IauctionDao {
 
 	List<Auction> getAuctionListSelect(Auction au);
 
-	List<Auction> getAuctionReadSelect(Auction au);
+	Auction getAuctionReadSelect(Auction au);
 
 	int getAuctionBasketSelect(Basket bk);
 
@@ -32,6 +32,16 @@ public interface IauctionDao {
 	int auctionTenderSel(AuctionTender at);
 
 	void setAuctionTenderT(AuctionTender at);
+
+	int getAuctionTenderQty(AuctionTender at);
+
+	List<AuctionTender> getAuctionTenderList(AuctionTender at);
+
+	List<Auction> getAuctionWriterListSel(Auction au);
+
+	String getAuctionInfoID(Auction au);
+
+
 
 
   

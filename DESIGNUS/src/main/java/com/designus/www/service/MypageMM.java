@@ -17,6 +17,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
 import com.google.gson.Gson;
@@ -28,6 +29,8 @@ public class MypageMM {
 	private ImypageDao pDao;
 	@Autowired
 	private ImemberDao mDao;
+	@Autowired
+	private IboardDao bDao;
 	@Autowired
 	private HttpSession session;
 	@Autowired
@@ -392,6 +395,52 @@ public class MypageMM {
 			mav.setViewName("redirect:/auctionMyOrderList");
 		
 		return mav;
+	}
+	@Transactional
+	public ModelAndView reviewBoardyhWrite(MultipartHttpServletRequest multi) {
+		System.out.println("뭐지?? 또 시작이네...");
+		String view =null;
+		String bd_kind="이용후기"; 
+		int ptnum =Integer.parseInt(multi.getParameter("aup_ptnum"));
+		String id=session.getAttribute("id").toString();
+		String title=multi.getParameter("bd_title");
+		String contents=multi.getParameter("bd_contents");
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		System.out.println("title=" + title);
+		System.out.println("contents=" + contents);
+		System.out.println("check=" + check);
+	     com.designus.www.bean.Board b= new com.designus.www.bean.Board();
+		
+	     b.setBd_mbid(id);
+	     b.setBd_title(title);
+	     b.setBd_contents(contents);
+	     b.setBd_kind(bd_kind);
+	     
+	     boolean a = bDao.reviewBoardyhWrite(b);
+	     System.out.println("boardnum=" + b.getBd_num());
+	     boolean f = false;
+			if (check == 1) { // 첨부된 파일이 있다면....
+				// upload=new UploadFile(); //프로토타입
+				// 이클립스 서버에 파일을 업로드 한 후,
+				// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+				f = upload.fileboardUp(multi, b.getBd_num(),b.getBd_kind());
+				if (f) {
+					boolean d=pDao.reviewBoardyhWriteupDate(ptnum); 
+					if(d) {
+						view = "redirect:/auctionMyOrderList";	
+					}
+					
+				}
+			}
+			if (a) { // 글쓰기 성공
+				view = "redirect:/auctionMyOrderList";
+			} else {
+				view = "myPage";
+			}
+			mav.setViewName(view);
+			return mav;
+		
+	
 	}
 
 }

@@ -27,4 +27,8 @@ public interface IRevAuctionDao {
 	boolean getrevAuctionBasketDelete(Basket bk);
 
 	List<RevAuctionTender> revAuctionAjaxSelect(RevAuctionTender rat_ranum);
+
+	int revAuctionApplyDelete(RevAuctionTender rat);
+
+	boolean revAuctionApplyInsert(RevAuctionTender rat);
 }

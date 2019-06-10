@@ -3,9 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.designus.www.dao.IboardDao">  
-     
-      
-     
+    <insert id="reviewBoardyhWrite" parameterType="board" keyProperty="bd_num" useGeneratedKeys="true">
+	<selectKey keyProperty="bd_num" resultType="int" order="BEFORE">
+	  SELECT BD_SEQ.NEXTVAL FROM DUAL 
+	</selectKey>
+        INSERT  INTO BOARD 
+     VALUES(BD_SEQ.NEXTVAL,#{bd_kind},#{bd_mbid},#{bd_title},#{bd_contents},DEFAULT,DEFAULT,DEFAULT)
+	</insert>  
+	
+       <insert id="reviewfileInsert" parameterType="HashMap">
+		 INSERT INTO BOARDIMG VALUES(#{bnum},#{sysFileName})
+	</insert>
+	
+   
       
        
 </mapper>
