@@ -31,7 +31,7 @@ public abstract class MemberServiceImpl implements ImemberDao {
 		// 임의의 authkey 생성
 		String authkey = new TempKey().getKey(50, false);
 
-		mb.setAuthkey(authkey);
+		/* mb.setAuthkey(authkey); */
 		mDao.updateAuthkey(mb);
 
 		// mail 작성 관련
