@@ -280,7 +280,7 @@ body {
 .signUp {
    position: relative;
    margin: 50px auto;
-   height:400px;
+   height:500px;
    width: 550px;
    padding: 33px 25px 29px;
    background: #FFFFFF;
@@ -425,12 +425,12 @@ input {
 
 
 	<div id="findcheckmain">
-		<div id="logoimgdiv">
-			<a href="home"><img id="logoimg" src="img/logo"></a>
-		</div>
+		
 		<form action="memberidfind"  class="signUp" id="signupForm" method="post">
 
 			<div id="idfind">
+				<div align="center"><a href="home"><img src="resources/images/logo.png"
+					 width="250px" height="80px"></a></div>
 				<div id="buttondiv">
 					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기"
 					 onclick="location.href='memberFind'">
@@ -456,17 +456,17 @@ input {
 
 					</div>
 					<div id="text2" align="center"><br/><br/><br/><br/>
-						<button id="idf" class="button">아이디 찾기</button>
+						<button id="idf" class="signUpButton">아이디 찾기</button>
 						<!-- onclick="AjId()" -->
 					</div>
 					<div id="idfindd">
 						회원님의 아이디는
 						<!--이엘문 찍기-->
 					</div>
-					<div id="bestlist"><br/><br/><br/><br/>
+					<div id="bestlist"><br/><br/><br/><br/><br/>
 						<a id="idhome" href="home">홈으로가기</a>
 					</div>
-					<br/><br/><br/><br/><br/><p>${findid}</p>
+					<br/><br/><br/><br/><br/><p><br/>${findid}</p>
 				</div>
 			</div>
 		</form>

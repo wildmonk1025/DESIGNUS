@@ -239,65 +239,7 @@ button:hover {
 	display: none;
 	margin: auto;
 }
-#pwbtn{
-margin-top: 10px;
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-}
+
 body {
    font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
    color: #333333;
@@ -307,7 +249,7 @@ body {
 .signUp {
    position: relative;
    margin: 50px auto;
-   height:400px;
+   height:550px;
    width: 550px;
    padding: 33px 25px 29px;
    background: #FFFFFF;
@@ -459,7 +401,8 @@ input {
 							<th>
 								아이디<br/><br/>
 							<th>
-							<td><input type="text" name="mb_id" 
+							<td><input type="text" name="mb_id" class="signUpInput" 
+							placeholder="Type your username" autofocus required
 								  value="${mb.mb_id}" readonly /><br/><br/> </td>
 
 						</tr>
@@ -468,7 +411,7 @@ input {
 								변경할 비밀번호<br/><br/>
 							<th>
 							<td><input type="password" name="mb_pw" id="pwd1"
-								class="form-control" required /><br/><br/> </td>
+								class="signUpInput" placeholder="Type your username" autofocus required /><br/><br/> </td>
 
 						</tr>
 								
@@ -477,7 +420,7 @@ input {
 							<th>비밀번호 재입력<br/><br/>
 							<th>
 							<td><input type="password"   id="pwd2"
-								class="form-control" required /><br/><br/></td>
+								class="signUpInput" placeholder="Type your username" autofocus required required /><br/><br/></td>
 
 						</tr>
 						<tr>
@@ -502,12 +445,12 @@ input {
 
 
 	<div id="findcheckmain">
-		<div id="logoimgdiv">
-			<a href="home"><img id="logoimg" src="img/logo"></a>
-		</div>
+		
 		<form action="memberpwfind" class="signUp" id="signupForm" method="post">
 
 			<div id="idfind">
+			<div align="center"><a href="home"><img src="resources/images/logo.png" width="250px"
+					height="80px"></a><br/><br/></div>
 				<div id="buttondiv">
 					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기"
 						onclick="location.href='memberFind'"> <input class="size"
@@ -539,8 +482,8 @@ input {
 						</tr>
 					</table>
 				</div>
-				<div id="pwtext2" align="center"><br/><br/><br/><br/><br/><br/>
-					<button id="pwf" class="button">비밀번호 찾기</button>
+				<div id="pwtext2" align="center"><br/><br/><br/><br/><br/><br/><br/>
+					<button id="pwf"  class="signUpButton">비밀번호 찾기</button>
 					<br /> 
 					<div id="pwbestlist"><br/>
 						<a id="pwhome" href="home">홈으로가기</a>
@@ -552,7 +495,7 @@ input {
 				<div align="center">
 			<c:set var="go" value="${findpw1}" />
 			<c:if test="${go ne null}">
-				<button id="pwbtn">${findpw1}</button>
+				<button id="pwbtn"  class="signUpButton">${findpw1}</button>
 			</c:if>
 			<c:if test="${go eq null}"></c:if>
 		</div>
