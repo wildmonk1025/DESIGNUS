@@ -209,4 +209,11 @@ public class HomeController {
 		
 		return "memberpwFind";
 	}
+	@RequestMapping(value = "/memberpwupdate",method = RequestMethod.POST)
+	public ModelAndView memberpwupdate(Member mb) {
+		mav = new ModelAndView();
+				
+		mav = mm.memberpwupdate(mb);
+		return mav;	
+	} 
 }
