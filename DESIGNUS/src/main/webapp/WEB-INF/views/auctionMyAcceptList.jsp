@@ -218,7 +218,7 @@
 			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
 			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
 			    +"<tr><td colspan='3'><input id='btzsho' type='button' onclick=\"shopping('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/>"
-			    +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_mbid_n+"')\" value='의뢰인 배송정보'/></td></tr></table>";
+			    +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_ptnum+"')\" value='의뢰인 배송정보'/></td></tr></table>";
 			}else if(apwList[i].aup_step==3){
 				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
 			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
@@ -244,6 +244,7 @@
 	 $('#total').css("display", "inline")
 	 $('#l1').css("display", "inline")
 	 }); */
+	 
 	 $("#btzsho").click(function() {
 			$('#total').css("display", "inline")
 			$('#l1').css("display", "inline")
