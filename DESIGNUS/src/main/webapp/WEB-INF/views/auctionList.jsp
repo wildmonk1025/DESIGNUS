@@ -206,7 +206,7 @@
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
-						<img src="./images/logo.png" />
+						<img src="resources/images/${auimg}" />
 					</div>
 					<div class="auListTitle">
 						${au.au_title }

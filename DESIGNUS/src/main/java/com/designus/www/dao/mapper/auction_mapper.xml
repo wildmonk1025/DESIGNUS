@@ -77,15 +77,60 @@
 	<select id="getAuctionWriterListSel" parameterType="auction" resultType="auction">
 		  <![CDATA[
 		SELECT * FROM AU 
-		WHERE ROWNUM <=3 AND AU_NUM != ${au_num}
+		WHERE ROWNUM <=3 AND AU_NUM != ${au_num} AND AU_MBID_W = #{au_mbid_w}
 		ORDER BY AU_NUM DESC
  		]]>
 	</select>
 
-	<insert id="setAuctionUT" parameterType="auctiontender">
-		INSERT INTO AUCTION_PROGRESS VALUES()
+	<insert id="setAuctionUTI" parameterType="auctiontender">
+		INSERT INTO AUCTION_PROGRESS
         VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1)
 	</insert>
+
+	<insert id="setAuctionUTT" parameterType="auctiontender">
+		INSERT INTO AUCTION_PROGRESS
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1)
+	</insert>
  
- 
+	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
+		SELECT MAX(AU_NUM) FROM AU
+	</select>
+
+	<select id="getAuctionWriteIdSel" parameterType="auction" resultType="String">
+		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${au_num}
+	</select>
+     <!-- 출품 이미지 등록 -->
+	<insert id="AuctionImageInsert1" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName1})
+	</insert>
+	<insert id="AuctionImageInsert2" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName2})
+	</insert>
+	<insert id="AuctionImageInsert3" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName3})
+	</insert>
+	<insert id="AuctionImageInsert4" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName4})
+	</insert>
+	<!-- 출품 이미지 등록 -->
+	
+	<insert id="setAuctionTenderIns" parameterType="auction">
+		INSERT INTO AUT
+        VALUES(${au_num},'AAAA',100,'T')
+	</insert>
+	
+	<select id="getAuctionImgSel" parameterType="auction" resultType="String">
+		<![CDATA[
+		SELECT * FROM (
+		SELECT ROWNUM AS RN, AUI_NUM, AUI_IMG, ROW_NUMBER()
+		OVER(PARTITION BY AUI_NUM ORDER BY AUI_IMG ) AS AUI
+		FROM AUI WHERE AUI_NUM = ${au_num}
+		) WHERE AUI = 1
+		]]>
+	</select>
+	
 </mapper>

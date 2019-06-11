@@ -16,6 +16,7 @@ import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
+import com.designus.www.userClass.UploadFile;
 
 import javafx.scene.control.Alert;
 
@@ -26,9 +27,10 @@ public class AuctionMM {
 	
 	@Autowired
 	private IRevAuctionDao rDao;
-	
 	@Autowired
     private HttpSession session;
+	@Autowired
+	private UploadFile upload;
 	
 	private ModelAndView mav;
 
@@ -36,17 +38,14 @@ public class AuctionMM {
 		mav=new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view=null;
-			
-		  String title = multi.getParameter("au_title"); 
-		  int cgcode =Integer.parseInt(multi.getParameter("au_cgcode")); 
-		  int qty =Integer.parseInt(multi.getParameter("au_qty")); 
-		  int minprice =Integer.parseInt(multi.getParameter("au_minprice")); 
-		  int inprice =Integer.parseInt(multi.getParameter("au_inprice")); 
-		  String contents =multi.getParameter("au_contents"); 
-		  String photo = multi.getParameter("aui_imgSysName");
-		
+		int num = 0;
+		String title = multi.getParameter("au_title"); 
+		int cgcode =Integer.parseInt(multi.getParameter("au_cgcode")); 
+		int qty =Integer.parseInt(multi.getParameter("au_qty")); 
+		int minprice =Integer.parseInt(multi.getParameter("au_minprice")); 
+		int inprice =Integer.parseInt(multi.getParameter("au_inprice")); 
+		String contents =multi.getParameter("au_contents"); 
 		Auction au = new Auction();
-		System.out.println("[3] photo name ="+multi.getParameter("aui_imgSysName1"));
 		au.setAu_mbid_w(id);
 		au.setAu_title(title);
 		au.setAu_cgcode(cgcode);
@@ -54,11 +53,15 @@ public class AuctionMM {
 		au.setAu_minprice(minprice);
 		au.setAu_inprice(inprice);
 		au.setAu_contents(contents);
-		au.setAui_imgSysName1(photo); 
-		
-		
+		num = aDao.getAuctionWriteSel(au);
+		au.setAu_num(num);
+		upload.fileUpImage(multi, au);
 		if(aDao.getAuctionWriteInsert(au)) { 
-		  view = "auctionList"; 
+			num = aDao.getAuctionWriteSel(au);
+			au.setAu_num(num);
+			aDao.setAuctionTenderIns(au);
+			mav.addObject("au_num",num);
+		  view = "redirect:/auctionRead"; 
 		  } else { 
 		  view = "auctionWrite";
 		  }
@@ -73,6 +76,7 @@ public class AuctionMM {
 	public ModelAndView auctionList(int cgcode) {
 		mav=new ModelAndView();
 		String view="null";
+		String auimg = null;
 		List<Auction> auList = null;
 		List<RevAuction> raList = null;
 		Auction au = new Auction();
@@ -82,6 +86,7 @@ public class AuctionMM {
 		rau.setRa_cgcode(cgcode);
 		auList = aDao.getAuctionListSelect(au);
 		raList = rDao.getRevAuctionListSelect(rau);
+		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
 	          //int ra_num=raList.get(i).getRa_num();
 	          String y = rDao.setRevAuctionTenderMinValue(raList.get(i));
@@ -97,6 +102,8 @@ public class AuctionMM {
 	                raList.get(i).setRa_max("-");
 	          }
 	       }
+	      
+	    mav.addObject("auimg",auimg);
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
@@ -111,6 +118,7 @@ public class AuctionMM {
 	public ModelAndView auctionRead(int au_num) {
 		mav=new ModelAndView();
 		String view = null;
+		String Wid = null;
 		String id = (String)session.getAttribute("id");
 		List<AuctionTender> atList = null;
 		List<Auction> auwList = null;
@@ -121,7 +129,6 @@ public class AuctionMM {
 		AuctionTender at = new AuctionTender();
 		at.setAut_aunum(au_num);
 		atList = aDao.getAuctionTenderList(at);
-		auwList = aDao.getAuctionWriterListSel(au);
 		bk.setAb_mbid(id);
 		au.setAu_num(au_num);
 		bk.setAb_aunum(au_num);
@@ -129,6 +136,12 @@ public class AuctionMM {
 		nb = aDao.getAuctionBasketSelect(bk);
 		bk.setAb_aunum(nb);
 		chkID = aDao.getAuctionInfoID(au);
+		
+		
+		Wid = aDao.getAuctionWriteIdSel(au);
+		au.setAu_mbid_w(Wid);
+		auwList = aDao.getAuctionWriterListSel(au);
+		
 		mav.addObject("chkID",chkID);
 		mav.addObject("auInfo",au);
 		mav.addObject("nb",bk.getAb_aunum());
@@ -170,7 +183,7 @@ public class AuctionMM {
 	public ModelAndView auctionReadInbuy(int inbuyQty,int inbuyNum) {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String view = "/auctionMyorderList";
+		String view = "redirect:/auctionMyOrderList";
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
@@ -187,7 +200,7 @@ public class AuctionMM {
 		if(Tqty > 0) {
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
-			aDao.setAuctionUT(at);
+			aDao.setAuctionUTI(at);
 		}
 		mav.setViewName(view);
 		return mav;
@@ -204,16 +217,16 @@ public class AuctionMM {
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
 		price = aDao.auctionTenderSel(at);
-		
-		
-		
+
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
+			aDao.setAuctionUTT(at);
 			
-			view = "/auctionMyorderList";
+			view = "redirect:/auctionMyOrderList";
 		}
 		if(price >= tenderPrice) {
-			view = "/auctionRead";
+			mav.addObject("au_num",tenderNum);
+			view = "redirect:/auctionRead";
 		}
 		mav.setViewName(view);
 		return mav;

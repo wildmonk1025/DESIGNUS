@@ -367,7 +367,7 @@
 								<table>
 									<tr style="height: 32.5px">
 										<th style="width: 100px" >수량</th>
-										<td style="width: 170px;text-align: right;">${auw.au_qty} </td>
+										<td style="width: 170px;text-align: right;">${auw.au_qty -1} </td>
 										<td style="width: 15px">EA</td>
 									</tr>
 									<tr style="height: 32.5px">
