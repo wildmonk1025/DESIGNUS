@@ -195,14 +195,21 @@ public class MemberMM {
 	public ModelAndView memberpwupdate(Member mb) {
 		mav = new ModelAndView();
 		String view = null;
-		mb = mDao.getmemberpwupdate(mb);
-		if(mb!=null) {
-		System.out.println("id"+mb.getMb_pw());
-		mav.addObject("findpw1","비밀번호 변경하기.");
+		String id = mb.getMb_id();
+		String pw = mb.getMb_pw();
+		System.out.println("너 널이니?"+mb);
+		mb.setMb_id(id);
+		System.out.println(mb.getMb_pw());
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		mb.setMb_pw(pwdEncoder.encode(pw));
+		System.out.println(mb.getMb_pw());
+		int check = mDao.getmemberpwupdate(mb);
+		System.out.println("넌뭐하는애니?"+check);
+		if(check!=0) {
+		System.out.println("여기오냐?");
 		view = "memberpwFind";
 		} else {
 			view = "memberpwFind";
-		mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
 		}
 		mav.setViewName(view);
 		return mav;
