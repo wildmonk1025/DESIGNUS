@@ -203,13 +203,13 @@ public class MemberMM {
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
 		System.out.println(mb.getMb_pw());
-		int check = mDao.getmemberpwupdate(mb);
-		System.out.println("넌뭐하는애니?"+check);
-		if(check!=0) {
+		mDao.getMemberPwUpdate(mb);
+		if(true) {
 		System.out.println("여기오냐?");
-		view = "memberpwFind";
+		view = "loginBox";
 		} else {
 			view = "memberpwFind";
+		System.out.println();
 		}
 		mav.setViewName(view);
 		return mav;
