@@ -17,8 +17,8 @@ import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.service.AuctionMM;
 import com.designus.www.service.RevAuctionMM;
 import com.google.gson.Gson;
-
 @RestController
+@RequestMapping(value="/ajax")
 public class AjaxAuctionController {
 	/*
 	 * @RequestMapping() public String norJoinFrm() { return "norjoinFrm"; }

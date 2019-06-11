@@ -133,7 +133,10 @@ textarea {
 input[type="file"]{
 	color: gray;
 }
-
+.Btn5{
+	width: 100px;
+	height: 30px;
+}
 
 </style>
 </head>
@@ -207,9 +210,9 @@ input[type="file"]{
 				<div id="contents">
 					<textarea placeholder=" 이곳에 작품 설명을 적어주세요 " name="au_contents" id="contents"></textarea>
 				</div>
-				<input type="submit" value="출품하기">
+				<input type="submit" value="출품하기" class="Btn5">
 			</form>
-				<button><a href="home">돌아가기</a></button>
+				<button class="Btn5"><a href="home">돌아가기</a></button>
 		</div>
 
 
