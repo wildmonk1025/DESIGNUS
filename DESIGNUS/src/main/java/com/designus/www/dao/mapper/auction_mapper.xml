@@ -81,5 +81,10 @@
  		]]>
 	</select>
 
-	
+	<insert id="setAuctionUT" parameterType="auctiontender">
+		INSERT INTO AUCTION_PROGRESS VALUES()
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1)
+	</insert>
+ 
+ 
 </mapper>

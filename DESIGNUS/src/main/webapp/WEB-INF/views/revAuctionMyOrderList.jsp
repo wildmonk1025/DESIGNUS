@@ -348,29 +348,6 @@ a:hover {
 	float: left;
 }
 
-#loginwriter {
-	padding: 3px;
-	padding-top: 20px;
-	width: 300px;
-	height: 80px;
-	float: right;
-}
-
-#category {
-	float: left;
-	width: 1500px;
-	height: 50px;
-}
-
-#subcategory {
-	width: 50px;
-	height: 50px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
-	float: left;
-}
-
 #menu {
 	float: left;
 	width: 1400px;
