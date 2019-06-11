@@ -281,7 +281,6 @@ div {
 			<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
 			<div id="middle_contents3_lv1">
 				<table id="tenderlist">
-
 				</table>
 			</div>
 		</div>
@@ -404,11 +403,14 @@ $(".subtn").click(function() {
 				data: { rat_ranum : ra_num},
 				dataType:'json',
 				success: function(data) {
-					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td>";
+
+					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td></tr>";
 					for(var i in data) {
+					var decisionval = data[i];
 					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
 							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
-							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days+"일</td>";
+							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days
+							+"일</td><td width='200'><input type='button' onclick='revdecision("+decisionval+");' value='의뢰하기'></td></tr>";
 					}
 					$("#tenderlist").html(str);
 					console.log(str);
@@ -449,5 +451,10 @@ $(".subtn").click(function() {
 			}); //ajax End
 		}
 
+		
+function revdecision(decisionval) {
+	console.log(decisionval);
+	console.log("안녕");
+}
 </script>
 </html>
