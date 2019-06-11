@@ -336,14 +336,37 @@ input {
    border: 0;
    padding: 0;
 }
+
+        a:active {
+            text-decoration: none;
+            color: #646464;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #646464;
+        }
+
+        a:link {
+            text-decoration: none;
+            color: #646464;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #646464;
+        }
 </style>
 </head>
 <body>
 	<div id="loginmain">
-		<a href="home"><img id="logoimg" src="./images/logo.png"></a>
+		
 		<div id="loginFrmmain">
+		
 			<form action="login" name="loginFrm" method="post"class="signUp">
 				<div id="login">
+				<div align="center"><a href="home"><img src="resources/images/logo.png"
+				 width="250px" height="80px"></a><br/><br/><br/><br/></div>
 					<table id="idpw" align="center">
 						<tr>
 							<th>아이디</th>
@@ -356,10 +379,9 @@ input {
 							 placeholder="Type your user password" autofocus required/></th>
 						</tr>
 					</table>
-					<div id="logcheck">
-						로그인유지<input type="checkbox" id="loging" /><br/><br/>
-					</div>
-					<div id="mfind">
+					
+					<div id="mfind"><br/><br/>
+						<a  href="joinfrm">회원가입</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="memberfind">아이디 | 비빌번호 찾기</a><br/><br/>
 					</div>
 					<div id="loginbtz">
@@ -367,9 +389,7 @@ input {
 					</div>
 				</div>
 			</form>
-			<div id="joinatag">
-				<a id="haha" href="joinfrm">회원가입</a>
-			</div>
+			
 		</div>
 	</div>
 </body>
