@@ -38,7 +38,7 @@ public class AuctionMM {
 		mav=new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view=null;
-		
+		int num = 0;
 		String title = multi.getParameter("au_title"); 
 		int cgcode =Integer.parseInt(multi.getParameter("au_cgcode")); 
 		int qty =Integer.parseInt(multi.getParameter("au_qty")); 
@@ -53,10 +53,12 @@ public class AuctionMM {
 		au.setAu_minprice(minprice);
 		au.setAu_inprice(inprice);
 		au.setAu_contents(contents);
-		int num = aDao.getAuctionWriteSel(au);
+		num = aDao.getAuctionWriteSel(au);
 		au.setAu_num(num);
 		upload.fileUpImage(multi, au);
 		if(aDao.getAuctionWriteInsert(au)) { 
+			num = aDao.getAuctionWriteSel(au);
+			au.setAu_num(num);
 			aDao.setAuctionTenderIns(au);
 			mav.addObject("au_num",num);
 		  view = "redirect:/auctionRead"; 
