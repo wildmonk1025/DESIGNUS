@@ -61,7 +61,7 @@ public class MypageMM {
 		} else {
 			view = "redirect:/basketFrm?kind=A";
 		}
-		System.out.println("view"+view);
+		//System.out.println("view"+view);
 		mav.setViewName(view);
 		return mav;
 	}
@@ -469,17 +469,19 @@ public class MypageMM {
 		List<AuctionProgress> apwList = null;
 		
 		String view=null;
-        System.out.println("kind"+kind);
+       
         int num = (pageNum == null) ? 1 : pageNum;
 	
 		
-		//AuctionProgress ap=new AuctionProgress();
+		
 		apwList=pDao.auctionMyAcceptListSelect(id,num);
+		Gson gson=new Gson();
+		String str=gson.toJson(apwList);
 		System.out.println("size"+apwList.size());
 		System.out.println("????"+apwList.get(0).getAup_ptnum());
 		System.out.println("????"+apwList.get(1).getAup_ptnum());
 		System.out.println("????"+apwList.get(2).getAup_ptnum());
-		mav.addObject("apwList", apwList);
+		mav.addObject("apwList", str);
 		mav.addObject("pagMPWing", getMPWaging(num,kind));
 		System.out.println("사망띠....");
 		

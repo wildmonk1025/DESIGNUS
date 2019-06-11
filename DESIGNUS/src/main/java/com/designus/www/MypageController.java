@@ -25,7 +25,6 @@ public class MypageController {
 
 	@RequestMapping(value = "/historylist", method = RequestMethod.GET)
 	public ModelAndView historylist(String list) {
-		System.out.println("ddd=" + list);
 		mav = pm.historylist(list);
 		System.out.println("view=" + mav.getViewName());
 		return mav;
@@ -151,12 +150,23 @@ public class MypageController {
 	@RequestMapping(value = "/auctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView auctionMyAcceptList(Integer pageNum ,String kind) {
+		System.out.println("아니 여긴 오는거 맞아??");
 		mav = new ModelAndView();
-		System.out.println("여기로 오는 거 맞지??? 여기가 어디냐면 옥션 마이엑...어쩌구");
-		 mav=pm.auctionMyAcceptList(pageNum,kind);
-		 System.out.println("aup_ptnum이 인트라고 오류가 나는데 여기까지는 실행이 된다? 말이 안되는데...." );
+		mav=pm.auctionMyAcceptList(pageNum,kind);
 		return mav;
 	}
+
+	/*
+	 * @RequestMapping(value = "/auctionMyAcceptList", method =
+	 * {RequestMethod.GET,RequestMethod.POST})
+	 * 
+	 * public ModelAndView auctionMyAcceptList(Integer pageNum ,String kind) { mav =
+	 * new ModelAndView();
+	 * System.out.println("여기로 오는 거 맞지??? 여기가 어디냐면 옥션 마이엑...어쩌구");
+	 * //mav=pm.auctionMyAcceptList(pageNum,kind);
+	 * System.out.println("aup_ptnum이 인트라고 오류가 나는데 여기까지는 실행이 된다? 말이 안되는데...." );
+	 * return mav; }
+	 */
 	@RequestMapping(value = "/delinumupload", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView delinumupload(AuctionProgress ap) {
