@@ -120,7 +120,7 @@
 	
 	<insert id="setAuctionTenderIns" parameterType="auction">
 		INSERT INTO AUT
-        VALUES(${au_num},'AAAA',0,'T')
+        VALUES(${au_num},'AAAA',100,'T')
 	</insert>
 	
 	<select id="getAuctionImgSel" parameterType="auction" resultType="String">
