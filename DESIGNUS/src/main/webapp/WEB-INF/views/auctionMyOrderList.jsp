@@ -12,7 +12,6 @@
 
 <style type="text/css">
 #one {
-	position: relative;
 	width: 100%;
 	height: 100%;
 }
@@ -21,25 +20,98 @@ div {
 	margin: auto;
 }
 
-#notice {
-	border: 1px solid orange;
-	position: absolute;
-	width: 1100px;
-	height: 60px;
+.bt {
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
 	text-align: center;
-	left: 611px;
-	top: 180px;
-	font-size: 100%
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 85px;
+	height: 35px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+
+#notice {
+	padding-top: 5px;
+	margin: 10px;
+	border: 1px solid orange;
+	width: 1080px;
+	height: 100px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+
+#leftmain {
+	width: 310px;
+	height: 950x;
+	border: 1px solid black;
+	float: left;
+}
+
+#rightmain {
+	width: 1210px;
+	height: 950px;
+	border: 1px solid black;
+	float: left;
 }
 
 #info {
 	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 600px;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 580px;
+	font-size: 20px;
 	text-align: left;
-	left: 190px;
-	top: 600px;
+	float: left;
 }
 
 /*#renking {
@@ -53,17 +125,17 @@ div {
 
         }*/
 #main {
-	position: absolute;
 	width: 1520px;
 	height: 170px;
-	left: 190px;
 	text-align: center;
 }
 
 .bt01 {
-	position: absolute;
-	right: 100px;
-	top: 50px;
+	border: none;
+	float: right;
+	margin-right: 30px;
+	width: 100px;
+	height: 80px;
 }
 
 #lightbox {
@@ -147,8 +219,6 @@ div {
 	display: none;
 }
 
-
-
 #lightbox-shadow3 {
 	position: absolute;
 	top: 0;
@@ -163,24 +233,23 @@ div {
 
 #point {
 	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 80px;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 60px;
 	text-align: left;
-	left: 190px;
-	top: 508px;
 	font-size: 20px;
+	float: left;
 }
 
 #img {
+	margin-top: 20px;
 	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 310px;
+	margin: 20px 10px 10px 10px;
+	width: 280px;
+	height: 290px;
 	text-align: left;
-	left: 190px;
-	top: 188px;
 	font-size: 20px;
+	float: left;
 }
 
 a:active {
@@ -217,35 +286,12 @@ a:hover {
 	float: left;
 }
 
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
-
 #loginwriter {
 	padding: 3px;
 	padding-top: 20px;
 	width: 300px;
 	height: 80px;
 	float: right;
-}
-
-#category {
-	float: left;
-	width: 1500px;
-	height: 50px;
-}
-
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
 }
 
 #subcategory {
@@ -301,27 +347,26 @@ a:hover {
 
 #setp {
 	border: 1px solid orange;
-	position: relative;
-	width: 1100px;
-	height: 860px;
+	margin: 0px 10px 10px 10px;
+	width: 1200px;
+	height: 840px;
+	float: left;
+	font-size: 20px;
 	text-align: center;
-	left: 298px;
-	top: 80px;
-	font-size: 100%
+	overflow: auto;
 }
 
 #setpT {
-	height: 800px;
-	position: relative;
-	top: 10px;
+	width: 1200px;
+	margin: 0px 10px 10px 10px;
+	height: 900px;
+	float: left;
+	border: none;
 }
 
 #l1 {
-	position: absolute;
 	width: 400px;
 	height: 230px;
-	top: 100px;
-	left: 20%;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
@@ -330,12 +375,10 @@ a:hover {
 	display: none;
 	font-size: 22px;
 }
+
 #Q1 {
-	position: absolute;
 	width: 500px;
 	height: 330px;
-	top: 100px;
-	left: 20%;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
@@ -346,7 +389,6 @@ a:hover {
 }
 
 #total {
-	position: absolute;
 	width: 100%;
 	height: 1200px;
 	background-color: black;
@@ -356,9 +398,35 @@ a:hover {
 }
 
 .t1 {
-	position: relative;
 	top: 100;
 	left: -200;
+}
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+	border: 1px solid black;
+}
+
+#2list {
+	width: 1000px;
+	height: 250px;
+	float: left;
+}
+
+#sangimg {
+	margin: 10px;
+	height: 150px;
+	width: 150px;
+	float: left;
+}
+
+#stepp {
+	border: 1px solid black;
+	margin: 10px;
+	hieght: 50px;
+	width: 120px;
+	float: right;
 }
 </style>
 
@@ -371,138 +439,159 @@ a:hover {
 		<jsp:include page="main.jsp" />
 	</div>
 
-	<div id="notice">
-		<h2>출품작 구매 내역</h2>
-		<hr>
-	</div>
-	<div id="info">
-		<table width="1000">
 
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰
-						접수내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=auc">출품작
-						구매 내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=aucre">출품작
-						판매 내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=spon">후원진행
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=sponre">후원요청
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=basket">꿍
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
-			</tr>
-		</table>
-	</div>
-	<div id="setp">
-		<div id="setpT">
-			<c:forEach var="apList" items="${apList}">
-				<div>
-					<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
-						src='/resources/images/${apList.aui_img}'></a> 상품 이름 :
-					${apList.au_title} 구매 금액 : ${apList.aup_price} 주문 수량 :
-					${apList.aup_qty}
-					<p>
-						작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
-					</p>
-					<c:set var="step" value="${apList.aup_step}" />
-					<c:if test="${step eq 1}">
-						<button id="btzRevM">배송정보입력</button>
-						<button id="cencle" onclick="location.href='auccancel?ranum=${apList.aup_ranum}'">취소</button>
-					</c:if>
-					<c:if test="${step eq 2}">
-						<h3>배송 대기중</h3>
-					</c:if>
-					<c:if test="${step eq 3}">
-						<button id="btzRevQ">고객센터 문의</button>
-						<button id="review">수령 확인/구매 후기 쓰기</button>
-					</c:if>
-					<c:if test="${step eq 4}">
-						<h3>완료</h3>
-					</c:if>
-				</div>
-				<form action="aucapply" method="post">
+	<div id="mypagemain">
+		<div id="leftmain">
+			<div id="img">
+				<h1>프로필사진</h1>
+			</div>
 
-					<div id="l1">
-						${apList.au_mbid_w}님에게 배송요청 <input type="hidden" name="au_mbid_w"
-							id="au_mbid_w" value="${apList.au_mbid_w}">
-						<div id="l2">${apList.au_title}</div>
-						<div id="l3">
-							아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
-								name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
-							이름 : <input type="text" name="aup_name" id="aup_name"><br />
-							주소 : <input type="text" name="aup_address" id="aup_address"><br />
-							연락처 :<input type="text" name="aup_phone" id="aup_phone">
-							<input type="hidden" name="aup_ptnum" id="aup_ptnum"
-								value="${apList.aup_ptnum}"> <input type="hidden"
-								name="aup_price" id="aup_price" value="${apList.aup_price}">
-						</div>
-						<input type="submit" value="요청하기"> <input id="back"
-							type="button" value="취소">
-					</div>
-				</form>
-				<form action="reviewBoardWrite" method="post" enctype="multipart/form-data">
-					<div id="Q1">
-						수령 확인 및 구매후기 쓰기
-						<div id="Q2">
-							${apList.au_title} <input type="button" id="butt" value="추천하기"
-								onclick="good('${apList.au_mbid_w}')">
-								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
-								value="${apList.aup_ptnum}">
-						</div>
-						<div id="Q3">
-							구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
-							내용 <br/>
-							<textarea rows="10" cols="70" name="bd_contents"></textarea>
-								<input type="file" name="bd_imgSysName" id="bd_imgSysName" 
-								        value="파일 첨부"  onchange="fileChk(this)" multiple>
-								<input type="hidden" id="fileCheck" value="0" name="fileCheck"> 
-						</div>
-						<input type="submit" value="완료"> 
-						<input id="backSetp" type="button" value="취소">
-					</div>
-				</form>
-			</c:forEach>
+			<div id="point">
+				<h1>포인트:</h1>
+			</div>
 
+			<div id="info">
+				<table width="1000">
+
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=rev">제작의뢰
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=revre">제작의뢰
+								접수내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=auc">출품작
+								구매 내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=aucre">출품작
+								판매 내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=spon">후원진행
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=sponre">후원요청
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=basket">꿍
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="privacyedit">개인정보 수정</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="memberout">회원탈퇴 신청</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="nortowri">작가전환 신청</a></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		${paging}
-	</div>
+		<div id="rightmain">
+			<div id="notice">
+				<h2>출품작 구매 내역</h2>
+				<hr>
+			</div>
+			<div id="setp">
+				<div id="setpT">
+					<c:forEach var="apList" items="${apList}">
+						<div id="2list">
+							<div id="sangimg" align="left">
+								<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
+									src='/resources/images/${apList.aui_img}'></a>
+							</div>
+							<br />
+							<p align="left">상품 이름 : ${apList.au_title}</p>
+							<div id="stepp">
+								<c:set var="step" value="${apList.aup_step}" />
+								<c:if test="${step eq 1}">
+									<button class="bt" id="btzRevM">배송정보입력</button>
+									<button class="bt" id="cencle"
+										onclick="location.href='auccancel?ranum=${apList.aup_ranum}'">취소</button>
+								</c:if>
+								<c:if test="${step eq 2}">
+									<h3>
+										배송<br /> 대기중
+									</h3>
+								</c:if>
+								<c:if test="${step eq 3}">
+									<button class="bt" id="btzRevQ">고객센터 문의</button>
+									<br />
+									<button class="bt" id="review">수령 확인/구매 후기 쓰기</button>
+								</c:if>
+								<c:if test="${step eq 4}">
+									<h3>완료</h3>
+								</c:if>
+							</div>
 
-	<div id="point">
-		<h1>포인트:</h1>
-	</div>
-	<div id="img">
-		<h1>프로필사진</h1>
+							<p align="left">구매 금액 : ${apList.aup_price}</p>
+							<p align="left">주문 수량 : ${apList.aup_qty}</p>
+							<br />
+							<p align="left">
+								작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+							</p>
+							<br />
+						</div>
+						<form action="aucapply" method="post">
+							<div id="l1">
+								${apList.au_mbid_w}님에게 배송요청 <input type="hidden"
+									name="au_mbid_w" id="au_mbid_w" value="${apList.au_mbid_w}">
+								<div id="l2">${apList.au_title}</div>
+								<div id="l3">
+									아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
+										name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
+									이름 : <input type="text" name="aup_name" id="aup_name"><br />
+									주소 : <input type="text" name="aup_address" id="aup_address"><br />
+									연락처 :<input type="text" name="aup_phone" id="aup_phone">
+									<input type="hidden" name="aup_ptnum" id="aup_ptnum"
+										value="${apList.aup_ptnum}"> <input type="hidden"
+										name="aup_price" id="aup_price" value="${apList.aup_price}">
+								</div>
+								<input type="submit" class="bt" value="요청하기"> <input
+									class="bt" id="back" type="button" value="취소">
+							</div>
+						</form>
+						<form action="reviewBoardWrite" method="post"
+							enctype="multipart/form-data">
+							<div id="Q1">
+								수령 확인 및 구매후기 쓰기
+								<div id="Q2">
+									${apList.au_title} <input class="bt" type="button" id="butt"
+										value="추천하기" onclick="good('${apList.au_mbid_w}')"> <input
+										type="hidden" name="aup_ptnum" id="aup_ptnum"
+										value="${apList.aup_ptnum}">
+								</div>
+								<div id="Q3">
+									구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
+									내용 <br />
+									<textarea rows="10" cols="70" name="bd_contents"></textarea>
+									<input type="file" name="bd_imgSysName" id="bd_imgSysName"
+										value="파일 첨부" onchange="fileChk(this)" multiple> <input
+										type="hidden" id="fileCheck" value="0" name="fileCheck">
+								</div>
+								<input type="submit" class="bt" value="완료"> <input
+									class="bt" id="backSetp" type="button" value="취소">
+							</div>
+						</form>
+					</c:forEach>
+
+				</div>
+				${paging}
+			</div>
+		</div>
 	</div>
 	<div id="lightbox-shadow">
 
 		<div id="lightbox">
 			<h1>여기가 배송정보입력</h1>
-			<button>요청</button>
-			<button type="button"
+			<button class="bt">요청</button>
+			<button class="bt" type="button"
 				onclick="location.href='auctionMyOrderList.html' ">취소</button>
 		</div>
 	</div>
@@ -510,8 +599,8 @@ a:hover {
 
 		<div id="lightbox1">
 			<h1>출품작 낙찰취소</h1>
-			<button>취소하기</button>
-			<button type="button"
+			<button class="bt">취소하기</button>
+			<button class="bt" type="button"
 				onclick="location.href='auctionMyOrderList.html' ">돌아가기</button>
 		</div>
 	</div>
@@ -533,8 +622,7 @@ a:hover {
 				onclick="location.href='auctionMyOrderList.html' ">취소</button>
 		</div>
 	</div>
-
-
+	</div>
 </body>
 <script type="text/javascript">
 

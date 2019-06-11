@@ -103,13 +103,22 @@ div {
 	float: left;
 }
 
-#middle_contents2_btn {
+#middle_contents2_btn1 {
 	width: 130px;
 	height: 130px;
 	margin: 150px 0px 0px 100px;
 	color: white;
 	border-radius: 15px;
 	background-color: coral;
+}
+
+#middle_contents2_btn2 {
+	width: 130px;
+	height: 130px;
+	margin: 150px 0px 0px 100px;
+	color: white;
+	border-radius: 15px;
+	background-color: gray;
 }
 
 #middle_contents3 {
@@ -222,6 +231,10 @@ div {
 #tenderlist {
 	text-align: center;
 }
+
+.decisionbtn {
+	width: 150px;
+}
 </style>
 </head>
 
@@ -273,15 +286,16 @@ div {
 			</div>
 		</div>
 		<div id="middle_contents2">
-			<button id="middle_contents2_btn">
-				작가 의뢰 접수 <br> 및 견적서 첨부
-			</button>
+			<c:set var="decidechk" value="${decidechk}"/>
+			<c:if test="${decidechk eq null}">
+			<button id="middle_contents2_btn1">작가 의뢰 접수 <br> 및 견적서 첨부</button></c:if>
+			<c:if test="${decidechk eq 'HIDE'}">
+			<button id="middle_contents2_btn2">작가 의뢰 접수 <br> 및 견적서 첨부</button></c:if>
 		</div>
 		<div id="middle_contents3">
 			<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
 			<div id="middle_contents3_lv1">
 				<table id="tenderlist">
-
 				</table>
 			</div>
 		</div>
@@ -375,7 +389,7 @@ $(".subtn").click(function() {
 		});	
 });
 
-	$("#middle_contents2_btn").click(function() {
+	$("#middle_contents2_btn1").click(function() {
 		$('#lightboxshadow').css("display", "block")
 		$('#lightbox_contents1').css("display", "block")
 	});
@@ -404,11 +418,16 @@ $(".subtn").click(function() {
 				data: { rat_ranum : ra_num},
 				dataType:'json',
 				success: function(data) {
-					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td>";
+
+					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td></tr>";
 					for(var i in data) {
+					var dval1 = data[i].rat_mbid_w;
+					var dval2 = data[i].rat_price;
+					var dval3 = data[i].rat_days;
 					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
 							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
-							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days+"일</td>";
+							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days
+							+"일</td><td width='200'><input class='decisionbtn' type='button' onclick=\"revdecision('"+dval1+"','"+dval2+"','"+dval3+"');\" value='의뢰하기'></td></tr>";
 					}
 					$("#tenderlist").html(str);
 					console.log(str);
@@ -440,8 +459,8 @@ $(".subtn").click(function() {
 				dataType:'json',
 				success: function(data) {
 					alert(data);
-					$('#lightboxshadow').css("display", "none")
-					$('#lightbox_contents1').css("display", "none")
+					$('#lightboxshadow').css("display", "none");
+					$('#lightbox_contents1').css("display", "none");
 				},
 				error: function(error) {
 					alert("해당 정보를 다시 입력하여 주시기 바랍니다.");
@@ -449,5 +468,14 @@ $(".subtn").click(function() {
 			}); //ajax End
 		}
 
+function revdecision(dval1,dval2,dval3) {
+	alert("(가격: "+dval2+"원, 제작기간: "+dval3+"일) \n작가'"+dval1+"'님 에게 의뢰를 요청 하시겠습니까?");
+	console.log(dval1);
+	console.log(dval2);
+	console.log(dval3);
+}
+
+/* $("#middle_contents2_btn").attr('disabled',true);
+$(".decisionbtn").css("display","none"); */
 </script>
 </html>

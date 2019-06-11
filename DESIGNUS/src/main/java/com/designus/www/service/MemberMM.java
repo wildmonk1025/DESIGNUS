@@ -183,10 +183,33 @@ public class MemberMM {
 		if(mb!=null) {
 		System.out.println("id"+mb.getMb_pw());
 		mav.addObject("findpw1","비밀번호 변경하기.");
-		view = "memberFind";
+		view = "memberpwFind";
 		} else {
-			view = "memberFind";
-			mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
+			view = "memberpwFind";
+		mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView memberpwupdate(Member mb) {
+		mav = new ModelAndView();
+		String view = null;
+		String id = mb.getMb_id();
+		String pw = mb.getMb_pw();
+		System.out.println("너 널이니?"+mb);
+		mb.setMb_id(id);
+		System.out.println(mb.getMb_pw());
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		mb.setMb_pw(pwdEncoder.encode(pw));
+		System.out.println(mb.getMb_pw());
+		mDao.getMemberPwUpdate(mb);
+		if(true) {
+		System.out.println("여기오냐?");
+		view = "loginBox";
+		} else {
+			view = "memberpwFind";
+		System.out.println();
 		}
 		mav.setViewName(view);
 		return mav;

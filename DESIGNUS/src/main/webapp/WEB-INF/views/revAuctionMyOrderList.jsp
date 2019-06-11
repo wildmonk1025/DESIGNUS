@@ -141,7 +141,6 @@ div {
 	float: left;
 }
 
-}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -345,29 +344,6 @@ a:hover {
 	padding: 5px;
 	width: 270px;
 	height: 80px;
-	float: left;
-}
-
-#loginwriter {
-	padding: 3px;
-	padding-top: 20px;
-	width: 300px;
-	height: 80px;
-	float: right;
-}
-
-#category {
-	float: left;
-	width: 1500px;
-	height: 50px;
-}
-
-#subcategory {
-	width: 50px;
-	height: 50px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
 	float: left;
 }
 

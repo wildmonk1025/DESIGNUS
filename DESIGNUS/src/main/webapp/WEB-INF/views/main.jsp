@@ -242,7 +242,7 @@
    
         <div id="search">
             <input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
-            <button id="searchbtn">검색</button>
+            <button id="searchbtn" onclick="asd()">검색</button>
         </div>
         <div id="loginwriter">
             <div id="mypageimg"><a href="mypage">마이페이지</a></div>
@@ -299,9 +299,16 @@
 		<button id="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
 </body>
 <script>
+var a="";
 function logout(){
 	$('#logout').submit();
 }
+function asd(){
+	a=$('#searchtxt').val();
+	console.log(a);
+}
+console.log(a);
+console.log('새로고침')
 
 </script>
 </html>

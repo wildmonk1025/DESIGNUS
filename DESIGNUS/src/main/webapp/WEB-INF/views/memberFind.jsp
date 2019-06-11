@@ -312,8 +312,10 @@ button:hover {
 
 			<div id="idfind">
 				<div id="buttondiv">
-					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
-					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기"
+					 onclick="location.href='memberFind'">
+					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기"
+					 onclick="location.href='memberpwFind'">
 				</div>
 				<br> <br>
 				<div id="list">
@@ -348,49 +350,9 @@ button:hover {
 				</div>
 			</div>
 		</form>
-	<form action="memberpwfind" id="memberidfind" method="post">
-		<div id="pwfindcheckmain">
-			<div id="pwlist">
-				<div id="pwtext1" align="center">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><input type="text" name="mb_id" id="mb_pwid"></td>
-						</tr>
-						<tr>
-							<th>이름</th>
-							<td><input type="text" name="mb_name" id="mb_pwname"></td>
-						</tr>
-						<tr>
-							<th>이메일</th>
-							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
-							
-					<%-- 	<c:set var="zz" value="${findpw}"/>
-						<c:if test="${findpw != null}">
-								<input type="button" value="${findpw}"/>
-								</c:if> --%>
-						</tr>
-					</table>
-				</div>
-				<div id="pwtext2" align="center">
-					<button id="pwf" class="button" onclick="Aj('mb_pw')">비밀번호 찾기</button>
-				</div>
-				<div id="pwbestlist">
-					<a id="pwhome" href="home">홈으로가기</a>
-				</div>
-				<p>${findpw}</p>
-				<button id="pwbtn">${findpw1}</button>
-			</div>
-		</div>
-	</form>
+	
 	</div>
-	<div id="lightbox-shadow">
-	<div id="lightbox">
-     <h1>후원인들 배송정보 리스트</h1>
-            <button class="button">확인</button>
-            <button type="button"  class="button" onclick="location.href='fundingOrderList.html' ">돌아가기</button>
-    </div>
-    </div>       
+	     
 	<!--아이디 명시-->
 
 
@@ -401,54 +363,6 @@ button:hover {
 	</div>
 </body>
 <script>
-$("#pwbtn").click(function() {
-    $('#lightbox-shadow').css("display","inline")
-    $('#lightbox').css("display","inline")
- }); 
-	 function AjId() {
-	var mb_email = $("#mb_email").val();
-	var mb_name = $("#mb_name").val();
-	console.log(mb_email);
-	console.log(mb_name);
-		$.ajax({
-			url : 'memberidfind',
-			type : 'POST',
-			datatype : 'json',
-			data : {
-				email : mb_email,
-				name : mb_name
-			},
-			success : function(data) {
-				$('#idf').click(function() {
-					$("#text1").css("display", "block");
-					$("#idf").css("display", "none");
-					$('#idfindd').css("display", "block");
-				});
-			},
-			error : function(error) {
-				alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
-			}//AjIdEnd
-		});//ajax end 
-	} 
- 
-	//ajax 실행문 작성
 
-	function Aj(id) {
-		$('#articleView_layer').addClass('open');
-	}
-
-	$("#revauctionbtn").click(function() {
-		$("#list").css("display", "block");
-		$("#pwlist").css("display", "none");
-	});
-	$("#auctionbtn").click(function() {
-		$("#list").css("display", "none");
-		$("#pwlist").css("display", "block");
-	});//end Hbutton
-
-	var $layerWindow = $('#articleView_layer');
-	$layerWindow.find('#bg_layer').on('mousedown', function(event) {
-		$layerWindow.removeClass('open');
-	});//function End
 </script>
 </html>

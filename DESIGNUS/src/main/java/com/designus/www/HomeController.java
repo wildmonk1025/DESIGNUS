@@ -199,5 +199,21 @@ public class HomeController {
 		mav = mm.memberpwfind(mb);
 		return mav;	
 	} 
-
+	@RequestMapping(value = "/memberFind", method = RequestMethod.GET)
+	public String memberFind() {
+		
+		return "memberFind";
+	}
+	@RequestMapping(value = "/memberpwFind", method = RequestMethod.GET)
+	public String memberpwFind() {
+		
+		return "memberpwFind";
+	}
+	@RequestMapping(value = "/memberpwupdate",method = RequestMethod.POST)
+	public ModelAndView memberpwupdate(Member mb) {
+		mav = new ModelAndView();
+		System.out.println("너되기는하냐?");
+		mav = mm.memberpwupdate(mb);
+		return mav;	
+	} 
 }

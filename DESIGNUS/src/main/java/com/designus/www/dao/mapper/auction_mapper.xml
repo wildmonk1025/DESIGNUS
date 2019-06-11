@@ -34,6 +34,7 @@
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
 		SELECT * FROM AU WHERE AU_NUM = ${au_num}
 	</select>
+	
 
 	<select id="getAuctionTenderPrice" parameterType="auctiontender" resultType="Integer">
 		SELECT AU_INPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
