@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,10 +10,9 @@
 <title>출품작 판매내역</title>
 <style type="text/css">
 #one {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
-
 div {
 	margin: auto;
 }
@@ -353,6 +352,7 @@ a:hover {
 	top: 180px;
 	font-size: 100%
 }
+
 #setp {
 	border: 1px solid orange;
 	position: relative;
@@ -361,13 +361,16 @@ a:hover {
 	text-align: center;
 	left: 208px;
 	top: 80px;
-	font-size: 100%
+	font-size: 100%;
+	overflow: auto;
 }
+
 #setpT {
 	height: 800px;
 	position: relative;
 	top: 10px;
 }
+
 #l1 {
 	position: absolute;
 	width: 400px;
@@ -382,6 +385,7 @@ a:hover {
 	display: none;
 	font-size: 22px;
 }
+
 #Q1 {
 	position: absolute;
 	width: 500px;
@@ -396,6 +400,7 @@ a:hover {
 	display: none;
 	font-size: 22px;
 }
+
 #total {
 	position: absolute;
 	width: 100%;
@@ -404,6 +409,34 @@ a:hover {
 	z-index: 1001;
 	opacity: 0.75;
 	display: none;
+}
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+	border: 1px solid black;
+}
+
+#2list {
+	width: 100%;
+	height: 250px;
+	float: left;
+}
+
+#sangimg {
+	margin: 10px;
+	height: 150px;
+	width: 150px;
+	float: left;
+}
+
+#stepp {
+	border: 1px solid black;
+	margin: 10px;
+	hieght: 70px;
+	width: 160px;
+	float: right;
+	display: block;
 }
 </style>
 
@@ -473,69 +506,74 @@ a:hover {
 			</div>
 		</div>
 		<div id="setp">
-		<div id="setpT">
-			<c:forEach var="apwList" items="${apwList}">
-				<div>
-					<a href='#' onclick="articleView(${apwList.aup_ranum})"> <img
-						src='/resources/images/${apwList.aui_img}'></a> 상품 이름 :
-					${apwList.au_title} 구매 금액 : ${apwList.aup_price} 주문 수량 :
-					${apwList.aup_qty}
-					<p>
-						작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
-					</p>
-					<c:set var="step" value="${apwList.aup_step}" />
-					<c:if test="${step eq 1}">
-						<h3>의뢰 결정을 <br/>기다리는 중입니다.</h3>
-					</c:if>
-					<c:if test="${step eq 2}">
-						
-						<button id="client" onclick="location.href='deliinfo?ranum=${apwList.aup_ranum}'">의뢰인 배송 정보</button>
-						<button id="btzRevM" onclick="shipping('${apwList.aup_ptnum}')" >배송보내기</button>
-					</c:if>
-					<c:if test="${step eq 3}">
-						<h3>수령 확인 <br/>대기중입니다.</h3>
-					</c:if>
-					<c:if test="${step eq 4}">
-						<h3>완료</h3>
-					</c:if>
-				</div>
-				<form action="delinumupload" method="post">
+			<div id="setpT">
+				<c:forEach var="apwList" items="${apwList}">
+					<div>
+						<a href='#' onclick="articleView(${apwList.aup_ranum})"> <img
+							src='/resources/images/${apwList.aui_img}'></a> 상품 이름 :
+						${apwList.au_title} 구매 금액 : ${apwList.aup_price} 주문 수량 :
+						${apwList.aup_qty}
+						<p>
+							작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
+						</p>
+						<c:set var="step" value="${apwList.aup_step}" />
+						<c:if test="${step eq 1}">
+							<h3>
+								의뢰 결정을 <br />기다리는 중입니다.
+							</h3>
+						</c:if>
+						<c:if test="${step eq 2}">
 
-					<div id="l1">
-						<div id="l2"></div>
-						<div id="l3">
-							
-						</div>
-						<input type="submit" value="확인"> <input id="back"
-							type="button" value="취소">
+							<button id="client"
+								onclick="location.href='deliinfo?ranum=${apwList.aup_ranum}'">의뢰인
+								배송 정보</button>
+							<button id="btzRevM" onclick="shipping('${apwList.aup_ptnum}')">배송보내기</button>
+						</c:if>
+						<c:if test="${step eq 3}">
+							<h3>
+								수령 확인 <br />대기중입니다.
+							</h3>
+						</c:if>
+						<c:if test="${step eq 4}">
+							<h3>완료</h3>
+						</c:if>
 					</div>
-				</form>
-				<form action="reviewBoardWrite" method="post" enctype="multipart/form-data">
-					<div id="Q1">
-						수령 확인 및 구매후기 쓰기
-						<div id="Q2">
-							${apList.au_title} <input type="button" id="butt" value="추천하기"
-								onclick="good('${apList.au_mbid_w}')">
-								<input type="hidden" name="aup_ptnum" id="aup_ptnum"
-								value="${apList.aup_ptnum}">
-						</div>
-						<div id="Q3">
-							구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
-							내용 <br/>
-							<textarea rows="10" cols="70" name="bd_contents"></textarea>
-								<input type="file" name="bd_imgSysName" id="bd_imgSysName" 
-								        value="파일 첨부"  onchange="fileChk(this)" multiple>
-								<input type="hidden" id="fileCheck" value="0" name="fileCheck"> 
-						</div>
-						<input type="submit" value="완료"> 
-						<input id="backSetp" type="button" value="취소">
-					</div>
-				</form>
-			</c:forEach>
+					<form action="delinumupload" method="post">
 
+						<div id="l1">
+							<div id="l2"></div>
+							<div id="l3"></div>
+							<input type="submit" value="확인"> <input id="back"
+								type="button" value="취소">
+						</div>
+					</form>
+					<form action="reviewBoardWrite" method="post"
+						enctype="multipart/form-data">
+						<div id="Q1">
+							수령 확인 및 구매후기 쓰기
+							<div id="Q2">
+								${apList.au_title} <input type="button" id="butt" value="추천하기"
+									onclick="good('${apList.au_mbid_w}')"> <input
+									type="hidden" name="aup_ptnum" id="aup_ptnum"
+									value="${apList.aup_ptnum}">
+							</div>
+							<div id="Q3">
+								구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
+								내용 <br />
+								<textarea rows="10" cols="70" name="bd_contents"></textarea>
+								<input type="file" name="bd_imgSysName" id="bd_imgSysName"
+									value="파일 첨부" onchange="fileChk(this)" multiple> <input
+									type="hidden" id="fileCheck" value="0" name="fileCheck">
+							</div>
+							<input type="submit" value="완료"> <input id="backSetp"
+								type="button" value="취소">
+						</div>
+					</form>
+				</c:forEach>
+
+			</div>
+			${paging}
 		</div>
-		${paging}
-	</div>
 		<div id="lightbox">
 			<h1>의뢰인배송정보</h1>
 			<button>확인</button>
