@@ -5,7 +5,7 @@
 <configuration>
 	<typeAliases>
 	    <!-- <typeAlias type="com.board.lee.bean.Member" alias="member"/>
-	    <typeAlias type="com.board.lee.bean.Board" alias="board"/> -->
+	    <typeAlias type="com.designus.www.bean.Auction" alias="auction"/>--> 
 	    <package name="com.designus.www.bean"/>
 	</typeAliases>
 </configuration>
