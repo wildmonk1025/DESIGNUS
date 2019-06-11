@@ -295,8 +295,8 @@
          	
         </div>
     </div>
-    <button id="revauctionbtn"><a href="revauctionWrite">제작의뢰 요청하기</a></button>
-		<button id="auctionbtn"><a href="auctionWrite">출품등록하기</a></button>
+    <button id="revauctionbtn" onclick="location.href='revauctionWrite'">제작의뢰 요청하기</button>
+		<button id="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
 </body>
 <script>
 function logout(){
