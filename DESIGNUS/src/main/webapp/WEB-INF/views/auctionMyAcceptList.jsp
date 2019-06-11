@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -9,42 +9,45 @@
 <meta charset="UTF-8">
 <title>출품작 판매내역</title>
 <style type="text/css">
-
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
+
 #notice {
 	border: 1px solid orange;
 	position: absolute;
 	width: 1100px;
 	height: 60px;
 	text-align: center;
-	left: 411px;
-	top: 180px;
+	left: 531px;
+	top: 190px;
 	font-size: 100%
 }
+
 #point {
 	border: 1px solid orange;
 	position: absolute;
 	width: 300px;
 	height: 80px;
 	text-align: left;
-	left: 190px;
-	top: 508px;
+	left: 100px;
+	top: 500px;
 	font-size: 20px;
 }
+
 #img {
 	border: 1px solid orange;
 	position: absolute;
 	width: 300px;
 	height: 310px;
 	text-align: left;
-	left: 190px;
-	top: 188px;
+	left: 100px;
+	top: 178px;
 	font-size: 20px;
 }
+
 #setp {
 	border: 1px solid orange;
 	position: relative;
@@ -55,11 +58,14 @@
 	top: 80px;
 	font-size: 100%
 }
+
 #setpT {
+	border: 1px solid orange;
 	height: 800px;
 	position: relative;
 	top: 10px;
 }
+
 #total {
 	position: absolute;
 	width: 100%;
@@ -69,31 +75,61 @@
 	opacity: 0.75;
 	display: none;
 }
+
+#info {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 300px;
+	height: 580px;
+	font-size: 20px;
+	text-align: left;
+	float: left;
+	position: absolute;
+	left: 88px;
+	top: 590px;
+}
+
+#subb {
+	border: 1px solid orange;
+	height: 800px;
+	position: relative;
+	top: 10px;
+}
+#l1 {
+	width: 400px;
+	height: 230px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
 </style>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-   <div id="mainheader">
+	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
-<div id="total"></div>
-  <div id="notice">
-		<h2>출품작 구매 내역 ㅅㅂ,,,,,</h2>
+	<div id="total"></div>
+	<div id="notice">
+		<h2>출품작 판매 내역</h2>
 		<hr>
 	</div>
-	
-	
-			<div id="img">
-				<h1>프로필사진</h1>
-			</div>
 
-			<div id="point">
-				<h1>포인트:</h1>
-			</div>
 
-			<div id="info">
+	<div id="img">
+		<h1>프로필사진</h1>
+	</div>
+
+	<div id="point">
+		<h1>포인트:</h1>
+	</div>
+
+	<div id="info">
 		<table width="1000">
 
 			<tr>
@@ -136,90 +172,90 @@
 		</table>
 	</div>
 	<div id="setp">
-		<div id="setpT">
-			<c:forEach var="apwList" items="${apwList}">
-				<div>
-					<a href='#' onclick="article(${apwList.aup_ranum})"> <img
-						src='/resources/images/${apwList.aui_img}'></a> 상품 이름 :
-					${apwList.au_title} 구매 금액 : ${apwList.aup_price} 주문 수량 :
-					${apwList.aup_qty}
-					<p>
-						작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
-					</p>
-					<c:set var="step" value="${apwList.aup_step}" />
-					<c:if test="${step eq 1}">
-						<h3>의뢰 결정을 <br/>기다리는 중입니다.</h3>
-					</c:if>
-					<c:if test="${step eq 2}">
-						
-						<button id="client" onclick="location.href='deliinfo?ranum=${apwList.aup_ranum}'">의뢰인 배송 정보</button>
-						<button id="btzRevM" onclick="shipping('${apwList.aup_ptnum}')" >배송보내기</button>
-					</c:if>
-					<c:if test="${step eq 3}">
-						<h3>수령 확인 <br/>대기중입니다.</h3>
-					</c:if>
-					<c:if test="${step eq 4}">
-						<h3>완료</h3>
-					</c:if>
-				</div>
-				</c:forEach>
-				<form action="delinumupload" method="post">
+		<div id="setpT"></div>
+		<form action="delinumupload" method="post">
 
-					<div id="l1">
-						<div id="l2"></div>
-						<div id="l3">
-							
-						</div>
-						<input type="submit" value="확인"> <input id="back"
-							type="button" value="취소">
-					</div>
-				</form>
-				
-			
+			<div id="l1">
+				<div id="l2"></div>
+				<div id="l3"></div>
+				<input type="submit" value="확인"> <input id="back"
+					type="button" value="취소">
+			</div>
+		</form>
 
-		</div>
-		${paging}
+
+
+
+
 	</div>
 </body>
 <script type="text/javascript">
-function shipping(data) {
+	var apwList = ${apwList};
+	console.log(apwList);
+	var main = "";
+
+	for (var i = 0; i < apwList.length; i++) {
+		 if (apwList[i].aup_step == 1) {
+		main += "<table style=\"border:1px solid orange\" ><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"
+				+ "<tr><td>상품번호 :"
+				+ apwList[i].aup_ptnum
+				+ "</td><td>상품명:"
+				+ apwList[i].au_title
+				+ "</td></tr>"
+				+ "<tr><td colspan='2'>구매 금액 : "
+				+ apwList[i].aup_price
+				+ "</td></tr>"
+				+ "<tr><td colspan='2'>상품 수량 : "
+				+ apwList[i].aup_qty + "</td></tr>";
 	
-	console.log(data)
-	$.ajax({
-		url: "sends",
-		type:"post",
-	    data:{ptnum:data},
-	    dataTepy : 'json',
-	    success:function(data){
-	    	alert('해당 상품을 추천하였습니다.');
-	    	console.log(data.aup_ptnum);
-	    	$('#l2').html(data.au_title);
-	    	///$('#l3').html("운송장 번호 : "+"<input type='text' name='aup_track' id='aup_track'>"
-	    			                 // +"<input type='hidden' name='aup_ptnum' id='aup_ptnum' value='"${apwList.aup_ptnum}"'>");
-	    	
-	    	
-	    },
-	    error:function(error){
-	    	alert('정상적인 추천이 실패했습니다.');
-	    	console.log(error);
-	    }
-		 
-	 });//end ajax
-}
+			main +="<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</p></td></tr>"
+					+ "<tr><td colspan='3'><h3>의뢰결정을 <br/>기다리는 중입니다.</h3></td></tr></table>";
 
-/* $("#btzRevM").click(function() {
-	$('#total').css("display", "inline")
-	$('#l1').css("display", "inline")
-}); */
+		} else if(apwList[i].aup_step==2){
+				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
+			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
+			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
+			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
+			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
+			    +"<tr><td colspan='3'><input id='btzsho' type='button' onclick=\"shopping('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/>"
+			    +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_mbid_n+"')\" value='의뢰인 배송정보'/></td></tr></table>";
+			}else if(apwList[i].aup_step==3){
+				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
+			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
+			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
+			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
+			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
+			    +"<tr><td colspan='3'><h3>수령확인 <br/>대기중</h3></td></tr></table>";
+			} else if(apwList[i].aup_step==4){
+				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
+			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
+			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
+			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
+			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
+			    +"<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
+			} 
+	}
+	console.log(1, main);
 
-$("#total").click(function() {
-	$("#total").css("display", "none");
-	$("#l1").css("display", "none");
-});
-$("#back").click(function() {
-	$("#total").css("display", "none");
-	$("#l1").css("display", "none");
-});	
+	$('#setpT').html(main);
+
+	//$('#setpT').html(sub);
+	/* $("#btzRevM").click(function() {
+	 $('#total').css("display", "inline")
+	 $('#l1').css("display", "inline")
+	 }); */
+	 $("#btzsho").click(function() {
+			$('#total').css("display", "inline")
+			$('#l1').css("display", "inline")
+		});
+	$("#total").click(function() {
+		$("#total").css("display", "none");
+		$("#l1").css("display", "none");
+	});
+	$("#back").click(function() {
+		$("#total").css("display", "none");
+		$("#l1").css("display", "none");
+	});
 </script>
 
 </html>
