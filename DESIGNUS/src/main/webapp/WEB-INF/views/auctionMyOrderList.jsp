@@ -21,12 +21,6 @@ div {
 }
 
 .bt {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	margin-top: 50px;
-	width: 100px;
-	height: 80px;
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -512,7 +506,7 @@ a:hover {
 								<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
 									src='/resources/images/${apList.aui_img}'></a>
 							</div>
-							<br/>
+							<br />
 							<p align="left">상품 이름 : ${apList.au_title}</p>
 							<div id="stepp">
 								<c:set var="step" value="${apList.aup_step}" />
@@ -590,44 +584,44 @@ a:hover {
 				</div>
 				${paging}
 			</div>
-
 		</div>
-		<div id="lightbox-shadow">
+	</div>
+	<div id="lightbox-shadow">
 
-			<div id="lightbox">
-				<h1>여기가 배송정보입력</h1>
-				<button class="bt">요청</button>
-				<button class="bt" type="button"
-					onclick="location.href='auctionMyOrderList.html' ">취소</button>
-			</div>
+		<div id="lightbox">
+			<h1>여기가 배송정보입력</h1>
+			<button class="bt">요청</button>
+			<button class="bt" type="button"
+				onclick="location.href='auctionMyOrderList.html' ">취소</button>
 		</div>
-		<div id="lightbox-shadow1">
+	</div>
+	<div id="lightbox-shadow1">
 
-			<div id="lightbox1">
-				<h1>출품작 낙찰취소</h1>
-				<button class="bt">취소하기</button>
-				<button class="bt" type="button"
-					onclick="location.href='auctionMyOrderList.html' ">돌아가기</button>
-			</div>
+		<div id="lightbox1">
+			<h1>출품작 낙찰취소</h1>
+			<button class="bt">취소하기</button>
+			<button class="bt" type="button"
+				onclick="location.href='auctionMyOrderList.html' ">돌아가기</button>
 		</div>
-		<div id="lightbox-shadow2">
+	</div>
+	<div id="lightbox-shadow2">
 
-			<div id="lightbox2">
-				<h1>1:1문의</h1>
-				<button>문의하기</button>
-				<button type="button"
-					onclick="location.href='auctionMyOrderList.html' ">취소</button>
-			</div>
+		<div id="lightbox2">
+			<h1>1:1문의</h1>
+			<button>문의하기</button>
+			<button type="button"
+				onclick="location.href='auctionMyOrderList.html' ">취소</button>
 		</div>
-		<div id="lightbox-shadow3">
+	</div>
+	<div id="lightbox-shadow3">
 
-			<div id="lightbox3">
-				<h1>구매후기</h1>
-				<button>완료</button>
-				<button type="button"
-					onclick="location.href='auctionMyOrderList.html' ">취소</button>
-			</div>
+		<div id="lightbox3">
+			<h1>구매후기</h1>
+			<button>완료</button>
+			<button type="button"
+				onclick="location.href='auctionMyOrderList.html' ">취소</button>
 		</div>
+	</div>
 	</div>
 </body>
 <script type="text/javascript">

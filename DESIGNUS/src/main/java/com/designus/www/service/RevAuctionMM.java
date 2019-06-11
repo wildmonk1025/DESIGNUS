@@ -13,9 +13,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Member;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.dao.IRevAuctionDao;
+import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 
@@ -26,6 +28,8 @@ public class RevAuctionMM {
 	HttpSession session;
 	@Autowired
 	private IRevAuctionDao rDao;
+	@Autowired
+	private ImemberDao mDao;
 	@Autowired
 	private UploadFile upload;
 
@@ -76,15 +80,31 @@ public class RevAuctionMM {
 		mav = new ModelAndView();
 		String view = null;
 		String id = (String) session.getAttribute("id");
+		String grade = (String) session.getAttribute("grade");
+		
 		int nb = 1;
+		String decidechk = null;
 		RevAuction ra = new RevAuction();
+		Member mb = new Member();
 		Basket bk = new Basket();
 		ra.setRa_num(ra_num);
 		ra = rDao.revAuctionReadSelect(ra);
+
+		//꿍 기능 Start
 		bk.setRab_mbid(id);
 		bk.setRab_ranum(ra_num);
 		nb = rDao.getrevAuctionBasketSelect(bk);
 		bk.setRab_ranum(nb);
+		//꿍 기능 End
+		
+		List<RevAuctionTender> rat_decide = rDao.getDecideCheckSelect(ra);
+		for(int i=0;i<rat_decide.size();i++) {
+			System.out.println(rat_decide.get(i).getRat_decide());
+			if(rat_decide.get(i).getRat_decide().equals("O") || ra.getRa_mbid().equals(id) || !grade.equals("W")) {
+				decidechk = "HIDE";
+			}
+		}
+		mav.addObject("decidechk",decidechk);
 		mav.addObject("nb", bk.getRab_ranum());
 		mav.addObject("raInfo", ra);
 		if (ra_num == ra.getRa_num()) {
@@ -152,32 +172,31 @@ public class RevAuctionMM {
 		int rat_days = Integer.parseInt(multi.getParameter("revadate"));
 		int rat_price = Integer.parseInt(multi.getParameter("revamoney"));
 		int rat_num = Integer.parseInt(multi.getParameter("ra_num"));
-		System.out.println("확인1="+rat_days);
-		System.out.println("확인2="+rat_price);
-		System.out.println("확인3="+rat_num);
-		
+		System.out.println("확인1=" + rat_days);
+		System.out.println("확인2=" + rat_price);
+		System.out.println("확인3=" + rat_num);
+
 		RevAuctionTender rat = new RevAuctionTender();
 		rat.setRat_ranum(rat_num);
 		rat.setRat_mbid_w(rat_mbid_w);
 		rat.setRat_days(rat_days);
 		rat.setRat_price(rat_price);
-		
-		if(rat.getRat_mbid_w()!=null && rat.getRat_price()!=0 && rat.getRat_days()!=0) {
-		int check = rDao.revAuctionApplyDelete(rat);
-		tenderchk = check + "개의 기존 입찰내역을 삭제하였습니다.\n";
-		
-		
-		String rat_file = upload.revTenderfileUp(multi);
-		rat.setRat_file(rat_file);
-		
-		System.out.println(rat.getRat_file());
-		boolean f = rDao.revAuctionApplyInsert(rat);
-		
-		if(f) {
-			tenderchk += "의뢰 접수가 정상적으로 등록되었습니다.";
-		} else {
-			tenderchk += "의뢰 접수를 다시 진행해주시기 바랍니다.";
-		}
+
+		if (rat.getRat_mbid_w() != null && rat.getRat_price() != 0 && rat.getRat_days() != 0) {
+			int check = rDao.revAuctionApplyDelete(rat);
+			tenderchk = check + "개의 기존 입찰내역을 삭제하였습니다.\n";
+
+			String rat_file = upload.revTenderfileUp(multi);
+			rat.setRat_file(rat_file);
+
+			System.out.println(rat.getRat_file());
+			boolean f = rDao.revAuctionApplyInsert(rat);
+
+			if (f) {
+				tenderchk += "의뢰 접수가 정상적으로 등록되었습니다.";
+			} else {
+				tenderchk += "의뢰 접수를 다시 진행해주시기 바랍니다.";
+			}
 			return tenderchk;
 		} else {
 			return "입력할 수 없습니다.";
