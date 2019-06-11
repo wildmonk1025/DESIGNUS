@@ -320,7 +320,7 @@ margin-top: 10px;
 						</tr>
 						<tr>
 							<th>
-								비밀번호<br/><br/>
+								변경할 비밀번호<br/><br/>
 							<th>
 							<td><input type="password" name="mb_pw" id="pwd1"
 								class="form-control" required /><br/><br/> </td>
@@ -328,6 +328,13 @@ margin-top: 10px;
 						</tr>
 								
 
+						<tr>
+							<th>비밀번호 재입력<br/><br/>
+							<th>
+							<td><input type="password"   id="pwd2"
+								class="form-control" required /><br/><br/></td>
+
+						</tr>
 						<tr>
 							<td colspan="3"><br><br><div class="alert alert-success" id="alert-success">비밀번호가
 									일치합니다.</div>
