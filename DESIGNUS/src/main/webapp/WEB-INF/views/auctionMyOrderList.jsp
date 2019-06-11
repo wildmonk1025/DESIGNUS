@@ -625,8 +625,33 @@ a:hover {
 	</div>
 </body>
 <script type="text/javascript">
+
+/*function ShippingInfo(eles) {
+	 $.ajax({
+			url: "enter",
+			type:"post",
+		    data:{pnum:eles},
+		    dataType:"json",
+		    success:function(data){
+		    	alert('해당 상품을 추천하였습니다.');
+		    	console.log("123456"+data);
+		    	//btn.disabled = 'disabled'
+		    	var bu=document.getElementById('butt');
+		    		bu.disabled =true;
+		
+		    },
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+			 
+		 });//end ajax
+}*/
+
+
 var apList = ${apList};
 console.log(apList);
+
 var main = "";
 
 for (var i = 0; i < apList.length; i++) {
@@ -675,8 +700,28 @@ for (var i = 0; i < apList.length; i++) {
 console.log(1, main);
 
 $('#setpT').html(main);
-	
 
+function ShippingInfo(eles) {
+var sub="";
+$('#total').css("display", "inline");
+$('#l1').css("display", "inline");
+ for(var i = 0; i < apList.length; i++){
+	sub+="<form action='aucapply' method='post'>상품 이름 :"+apList[i].au_title+"<br/>"
+	   + "아이디 :"+ apList.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' id='aup_mbid_n' value='"+${apList.aup_mbid_n}+"'>"
+       + "이름 : <input type='text' name='aup_name' id='aup_name'><br/>"
+ 	   + "주소 : <input type='text' name='aup_address' id='aup_address'><br />"
+ 	   +"연락처 :<input type='text' name='aup_phone' id='aup_phone'>"
+ 	   +"<input type='hidden' name='aup_ptnum' id='aup_ptnum' value='"+apList[i].aup_ptnum+"'>"
+ 	   +"<input type='hidden' name='aup_price' id='aup_price' value='"+apList[i].aup_price}+"'>"
+ }
+
+		
+ console.log(2, sub);
+ $('#l1').html(sub);
+ 
+ }
+
+$('#setpT').html(main);
 function good(data) {
 	var btn = $('#butt');
 	 $.ajax({
@@ -699,10 +744,10 @@ function good(data) {
 		 });//end ajax
 }
 
-$("#btzRevM").click(function() {
+/*$("#btzRevM").click(function() {
 	$('#total').css("display", "inline")
 	$('#l1').css("display", "inline")
-});
+});*/
 $("#total").click(function() {
 	$("#total").css("display", "none");
 	$("#l1").css("display", "none");
