@@ -1,7 +1,5 @@
 package com.designus.www.bean;
 
-import java.security.Timestamp;
-
 import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
@@ -19,7 +17,10 @@ public class Auction {
 	int    au_inprice;
 	String au_contents;
 	String au_date;
-	String aui_imgSysName;
+	String aui_imgSysName1;
+	String aui_imgSysName2;
+	String aui_imgSysName3;
+	String aui_imgSysName4;
 	int au_count;
 	int aut_price;
 }
