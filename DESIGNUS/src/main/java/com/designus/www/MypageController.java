@@ -85,7 +85,7 @@ public class MypageController {
 	@RequestMapping(value = "/basketFrm", method = RequestMethod.GET)
 
 	public ModelAndView basketFrm(Integer pageNum ,String kind) {
-		System.out.println("여기로 와야 하는데....");
+		System.out.println("여기로 와야 하는데..1111..");
 		System.out.println("카인드 뭐야??"+kind);
 		mav = new ModelAndView();
 		 mav=pm.basketFrm(pageNum,kind);
@@ -94,7 +94,7 @@ public class MypageController {
 	@RequestMapping(value = "/basketFrmrev", method = RequestMethod.GET)
 
 	public ModelAndView lbrev(Integer pageNum ,String kind) {
-		System.out.println("여기로 와야 하는데....");
+		System.out.println("여기로 와야 하는데...2222.");
 		System.out.println("카인드 뭐야??"+kind);
 		mav = new ModelAndView();
 		 mav=pm.basketFrmrev(pageNum,kind);
@@ -103,7 +103,7 @@ public class MypageController {
 	@RequestMapping(value = "/basketFrmspon", method = RequestMethod.GET)
 
 	public ModelAndView basketFrmspon(Integer pageNum ,String kind) {
-		System.out.println("여기로 와야 하는데....");
+		System.out.println("여기로 와야 하는데....1111");
 		System.out.println("카인드 뭐야??"+kind);
 		mav = new ModelAndView();
 		 mav=pm.basketFrmspon(pageNum,kind);
@@ -112,21 +112,21 @@ public class MypageController {
 	@RequestMapping(value = "/auctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView auctionMyOrderList(Integer pageNum ,String kind) {
-		System.out.println("일단 여기로 와야 하는디....");
+		//System.out.println("일단 여기로 와야 하는디....");
 		mav = new ModelAndView();
 		
 		 mav=pm.auctionMyOrderList(pageNum,kind);
-		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		 //System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
 		return mav;
 	}
 	@RequestMapping(value = "/aucapply", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView aucapply(AuctionProgress ap) {
-		System.out.println("일단 여기로 와야 하는디....");
+		System.out.println("일단 여기로 와야 하는디....1123123");
 		mav = new ModelAndView();
 		
 		 mav=pm.aucapply(ap);
-		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...123123123???");
 		return mav;
 	}
 	@RequestMapping(value = "/reviewBoardWrite", method = {RequestMethod.GET,RequestMethod.POST})
@@ -151,11 +151,10 @@ public class MypageController {
 	@RequestMapping(value = "/auctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView auctionMyAcceptList(Integer pageNum ,String kind) {
-		System.out.println("ㅆㅂ,,,,,");
 		mav = new ModelAndView();
-		
+		System.out.println("여기로 오는 거 맞지??? 여기가 어디냐면 옥션 마이엑...어쩌구");
 		 mav=pm.auctionMyAcceptList(pageNum,kind);
-		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		 System.out.println("aup_ptnum이 인트라고 오류가 나는데 여기까지는 실행이 된다? 말이 안되는데...." );
 		return mav;
 	}
 	@RequestMapping(value = "/delinumupload", method = {RequestMethod.GET,RequestMethod.POST})
