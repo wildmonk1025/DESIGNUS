@@ -307,26 +307,27 @@ margin-top: 10px;
 		<div id="lightbox">
 			<h1>비밀번호 변경하기</h1>
 			<br /> <br /> <br /> <br /> <br />
-			<form action="memberpwchange" id="memberidfind" method="post">
+			<form action="memberpwupdate" id="memberpwupdate" method="post">
 				<div align="center">
 					<table>
 						<tr>
 							<th>
+								아이디<br/><br/>
+							<th>
+							<td><input type="text" name="mb_id" 
+								 /><br/><br/> </td>
+
+						</tr>
+						<tr>
+							<th>
 								비밀번호<br/><br/>
 							<th>
-							<td><input type="password" name="userPwd" id="pwd1"
+							<td><input type="password" name="mb_pw" id="pwd1"
 								class="form-control" required /><br/><br/> </td>
 
 						</tr>
 								
 
-						<tr>
-							<th>재확인<br/><br/>
-							<th>
-							<td><input type="password" name="reuserPwd" id="pwd2"
-								class="form-control" required /><br/><br/></td>
-
-						</tr>
 						<tr>
 							<td colspan="3"><br><br><div class="alert alert-success" id="alert-success">비밀번호가
 									일치합니다.</div>

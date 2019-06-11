@@ -212,7 +212,7 @@ public class HomeController {
 	@RequestMapping(value = "/memberpwupdate",method = RequestMethod.POST)
 	public ModelAndView memberpwupdate(Member mb) {
 		mav = new ModelAndView();
-				
+		System.out.println("너되기는하냐?");
 		mav = mm.memberpwupdate(mb);
 		return mav;	
 	} 
