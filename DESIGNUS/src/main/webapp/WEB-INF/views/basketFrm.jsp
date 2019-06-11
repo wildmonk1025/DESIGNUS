@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <style type="text/css">
 #one {
-	position: relative;
 	width: 100%;
 	height: 100%;
 }
@@ -20,25 +19,25 @@ div {
 }
 
 #notice {
-	background-color: orange;
+	padding-top: 5px;
+	margin: 10px;
 	border: 1px solid orange;
-	position: absolute;
-	width: 1100px;
-	height: 60px;
+	width: 1080px;
+	height: 100px;
 	text-align: center;
-	left: 611px;
-	top: 180px;
+	font-size: 20px;
+	float: left;
 	font-size: 100%
 }
 
 #info {
-	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 600px;
+		border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 580px;
+	font-size: 20px;
 	text-align: left;
-	left: 190px;
-	top: 600px;
+	float: left;
 }
 
 #main {
