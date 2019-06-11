@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <style type="text/css">
 #one {
-	position: relative;
 	width: 100%;
 	height: 100%;
 }
@@ -19,40 +18,40 @@ div {
 	margin: auto;
 }
 
+#Lbtn1, #Lbtn2, #Lbtn3 {
+	margin-top: 10px;
+}
+
 #notice {
-	background-color: orange;
+	padding-top: 5px;
+	margin: 10px;
 	border: 1px solid orange;
-	position: absolute;
-	width: 1100px;
-	height: 60px;
+	width: 1080px;
+	height: 100px;
 	text-align: center;
-	left: 611px;
-	top: 180px;
+	font-size: 20px;
+	float: left;
 	font-size: 100%
 }
 
 #info {
 	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 600px;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 580px;
+	font-size: 20px;
 	text-align: left;
-	left: 190px;
-	top: 600px;
+	float: left;
 }
 
 #main {
-	position: absolute;
 	width: 1520px;
 	height: 170px;
-	left: 190px;
 	text-align: center;
 }
 
 .bt01 {
-	position: absolute;
-	right: 100px;
-	top: 50px;
+	
 }
 
 a {
@@ -60,101 +59,150 @@ a {
 }
 
 #spon1 {
-	position: absolute;
-	width: 1100px;
-	height: 60px;
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 80px;
+	float: left;
+	font-size: 20px;
 	text-align: center;
-	left: 611px;
-	top: 280px;
-	font-size: 100%
 }
 
 #ListView1 {
+	margin-top: 20px;
+	position: relative;
 	border: 1px solid black;
-	position: absolute;
-	top: 10px;
-	left: 10px;
 	width: 97%;
-	height: 96%;
+	height: 600px;
 }
 
 #ListView2 {
+	float: left;
 	border: 1px solid black;
-	position: absolute;
-	top: 10px;
-	left: 10px;
 	width: 97%;
 	height: 96%;
 	display: none;
 }
 
 #ListView3 {
+	float: left;
 	border: 1px solid black;
-	position: absolute;
-	top: 10px;
-	left: 10px;
 	width: 97%;
 	height: 96%;
 	display: none;
 }
 
+.bt {
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 130px;
+	height: 45px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+
+.bt:hover {
+	color: white;
+}
+
+.bt:active {
+	color: yellow;
+}
+
 #list {
-	width: 1100px;
+	margin: 10px;
+	width: 1080px;
 	height: 700px;
 	text-align: center;
-	left: 603px;
-	position: absolute;
-	top: 360px;
+	float: left;
 }
 
 .lv1 {
 	border: 1px solid black;
-	position: absolute;
-	top: 90px;
-	left: 10%;
-	width: 40%;
+	float: left;
 	height: 25%;
+	width: 40%;
 }
 
 .lv2 {
 	border: 1px solid black;
-	position: absolute;
-	top: 90px;
-	left: 50%;
 	width: 40%;
 	height: 25%;
 }
 
 .lv3 {
 	border: 1px solid black;
-	position: absolute;
-	top: 260px;
-	left: 10%;
 	width: 40%;
 	height: 25%;
 }
 
 .lv4 {
+	float: left;
 	border: 1px solid black;
-	position: absolute;
-	top: 260px;
-	left: 50%;
-	width: 40%;
-	height: 25%;
+	width: 50%;
+	height: 30%;
 }
 
 .lv5 {
 	position: absolute;
-	top: 430px;
-	left: 30%;
+	bottom: 0%;
 	width: 40%;
 	height: 10%;
+	left: 25%;
 }
 
 .lv6 {
-	position: absolute;
-	top: 540px;
-	left: 50%;
+	border: none;
 	width: 40%;
 	height: 10%;
 }
@@ -165,24 +213,23 @@ a {
 
 #point {
 	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 80px;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 60px;
 	text-align: left;
-	left: 190px;
-	top: 508px;
 	font-size: 20px;
+	float: left;
 }
 
 #img {
+	margin-top: 20px;
 	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 310px;
+	margin: 20px 10px 10px 10px;
+	width: 280px;
+	height: 290px;
 	text-align: left;
-	left: 190px;
-	top: 188px;
 	font-size: 20px;
+	float: left;
 }
 
 a:active {
@@ -237,47 +284,24 @@ a:hover {
 	float: right;
 }
 
-#category {
-	float: left;
-	width: 1500px;
-	height: 50px;
-}
-
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
-}
-
-#subcategory {
-	width: 50px;
-	height: 50px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
-	float: left;
-}
-
-#menu {
-	float: left;
-	width: 1400px;
-	height: 50px
-}
-
-#submenu {
-	margin-left: 100px;
-	width: 150px;
-	float: left;
-	height: 50px;
-	text-align: center;
-	font-size: 18px;
-}
-
 #msg {
 	width: 50px;
 	height: 50px;
 	margin-left: 10px;
+	float: left;
+}
+
+#leftmain {
+	width: 310px;
+	height: 950x;
+	border: 1px solid black;
+	float: left;
+}
+
+#rightmain {
+	width: 1200px;
+	height: 950px;
+	border: 1px solid black;
 	float: left;
 }
 
@@ -300,6 +324,33 @@ a:hover {
 	width: 1520px;
 	height: 170px;
 }
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+	border: 1px solid black;
+}
+
+#btnset {
+	width: 450px;
+	height: 100px;
+	align-content: center;
+	border: none;
+}
+
+#listdiv {
+	width: 1000px;
+	height: 60px;
+	border: none;
+}
+
+#cnavfn {
+	margin: 25px;
+	float: left;
+	width: 480px;
+	border: 1px solid black;
+	height: 200px;
+}
 </style>
 
 </head>
@@ -310,93 +361,97 @@ a:hover {
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
-
-	<div id="notice">
-		<h2>꿍 리스트</h2>
-		<hr>
-	</div>
-	<div id="info">
-		<table width="1000">
-
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰
-						접수내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=auc">출품작
-						구매 내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=aucre">출품작
-						판매 내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=spon">후원진행
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=sponre">후원요청
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="historylist?list=basket">꿍
-						내역</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
-			</tr>
-			<tr>
-				<td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
-			</tr>
-		</table>
-	</div>
-	<div id="spon1">
-		<button id="Lbtn1" onclick="location.href='basketFrm?kind=A'">출품 꿍리스트</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button id="Lbtn2" onclick="location.href='basketFrmrev?kind=R'">제작의뢰 꿍리스트</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button id="Lbtn3" onclick="location.href='basketFrmspon?kind=S'">후원 꿍리스트</button>
-	</div>
-	<div id="list">
-		<div id="ListView1">
-			제작의뢰 꿍리스트
-			<div id="cnfvna" class="lv1">
-				<c:forEach var="board" items="${rList}">
-					<a href='#' onclick="articleView(${board.rab_ranum})"> <img
-						src='/resources/images/${board.ra_image}'></a>
-					<P>상품 제목 : ${board.ra_title}</P>
-					<br />
-
-
-				</c:forEach>
+	<div id="mypagemain">
+		<div id="leftmain">
+			<div id="img">
+				<h1>프로필사진</h1>
 			</div>
 
-			<div class="lv5">${paging}</div>
+			<div id="point">
+				<h1>포인트:</h1>
+			</div>
 
-			<div class="lv6">
-				<button type="button" onclick="location.href='myPage.html' ">돌아가기</button>
+			<div id="info">
+				<table width="1000">
+
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=rev">제작의뢰
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=revre">제작의뢰
+								접수내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=auc">출품작
+								구매 내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=aucre">출품작
+								판매 내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=spon">후원진행
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=sponre">후원요청
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="historylist?list=basket">꿍
+								내역</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="privacyedit">개인정보 수정</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="memberout">회원탈퇴 신청</a></td>
+					</tr>
+					<tr>
+						<td style="font-size: 27px"><a href="nortowri">작가전환 신청</a></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 
+		<div id="rightmain">
+			<div id="notice">
+				<h2>꿍 리스트</h2>
+			</div>
+			<div id="spon1">
+				<div id="btnset">
+					<button id="Lbtn1" class="bt"
+						onclick="location.href='basketFrm?kind=A'">출품 꿍리스트</button>
+					<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+					<button id="Lbtn2" class="bt"
+						onclick="location.href='basketFrmrev?kind=R'">제작의뢰 꿍리스트</button>
+					<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+					<button id="Lbtn3" class="bt"
+						onclick="location.href='basketFrmspon?kind=S'">후원 꿍리스트</button>
+				</div>
+				<div id="list">
+					<div id="ListView1">
+						<div id="listdiv">
+							<p align="center" style="font-size: 25px;">제작의뢰 꿍리스트</p>
+						</div>
+						<div id="cnavfn">
+							<c:forEach var="board" items="${rList}">
+								<a href='#' onclick="articleView(${board.rab_ranum})"> <img
+									src='/resources/images/${board.ra_image}'></a>
+								<P>상품 제목 : ${board.ra_title}</P>
+							</c:forEach>
+						</div>
+						<div class="lv5">${paging}</div>
+					</div>
+					<div class="lv6">
+						<button type="button" class="bt"
+							onclick="location.href='myPage.html' ">돌아가기</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div id="point">
-		<h1>포인트:</h1>
-	</div>
-	<div id="img">
-		<h1>프로필사진</h1>
-	</div>
-
-
-
-
 </body>
 <script type="text/javascript">
  
@@ -404,13 +459,13 @@ a:hover {
  var btn2=$("#Lbtn2");
  var btn3=$("#Lbtn3");
 
- function Aucbtn() {
+ /*function Aucbtn() {
 	 
 	  $("#ListView1").css("display", "inline");
       $("#ListView2").css("display", "none");
       $("#ListView3").css("display", "none");
      
-     /* $.ajax({
+      $.ajax({
   		url: "ajax/lbauc",
   		type:"post",
   	    processData : false,
@@ -434,9 +489,9 @@ a:hover {
   	    	console.log(error);
   	    }
   		 
-  	 });*/
-}
- function ReAucbtn() {
+  	 });
+}*/
+ /*function ReAucbtn() {
 	 
 	
 			 
@@ -467,8 +522,8 @@ a:hover {
    	    }
    		 
    	 });
-}
- function sponbtn() {
+}*/
+ /*function sponbtn() {
 	
 	 
      $("#ListView1").css("display", "none");

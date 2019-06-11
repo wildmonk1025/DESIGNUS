@@ -141,7 +141,6 @@ div {
 	float: left;
 }
 
-}
 #main {
 	width: 1520px;
 	height: 170px;
