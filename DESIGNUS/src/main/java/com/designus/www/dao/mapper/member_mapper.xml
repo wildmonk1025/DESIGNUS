@@ -50,7 +50,7 @@
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
 	</select>
 	<select id="getMemberpwInfo" parameterType="member" resultType="member">
-		SELECT MB_PW FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name} AND MB_ID=#{mb_id}
+		SELECT MB_PW, MB_ID FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name} AND MB_ID=#{mb_id}
 	</select>
 	<update id="getMemberPwUpdate" parameterType="member">
 		UPDATE MB SET MB_PW=#{mb_pw} WHERE MB_ID=#{mb_id}
