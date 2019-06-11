@@ -61,4 +61,12 @@ public class AjaxAuctionController {
 		return jsonStr;
 	}
 
+	@RequestMapping(value = "/ajax/reqdecision", produces="application/json; charset=utf-8")
+	public String reqDecision(RevAuctionTender ra) {
+		System.out.println(ra.getRat_mbid_w());
+		System.out.println(ra.getRat_price());
+		System.out.println(ra.getRat_days());
+		//String jsonStr = new Gson().toJson(str);
+		return null;
+	}
 }

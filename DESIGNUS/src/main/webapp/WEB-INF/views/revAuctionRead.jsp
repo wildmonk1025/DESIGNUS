@@ -365,7 +365,7 @@ div {
 	</div>
 
 </body>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 if(${nb} > 0){
 	$("#peek2").css("display", "none");
@@ -477,47 +477,6 @@ $(".subtn").click(function() {
 				}
 			}); //ajax End
 		}
-	function revdecision(wid,wprice,wdays) {
-	//alert("(가격: "+dval2+"원, 제작기간: "+dval3+"일) \n작가'"+dval1+"'님 에게 의뢰를 요청 하시겠습니까?");
-	var str='';
-	str+="(가격: "+wprice+"원, 제작기간: "+wdays+"일) \n작가'"+wid+"'님 에게 의뢰를 요청 하시겠습니까?";
-	swal(str, {
-		  buttons: {
-		    cancel: "뒤로가기",
-		    
-		    catch: {
-		    	text: "네, 의뢰합니다.",
-				value: "go",
-		    },
-		  },
-		})
-		.then((value) => {
-		  switch (value) {
-		    case "go":
-		      swal("마이페이지-[제작의뢰 내역]을 확인해주세요!");
-		      console.log(str);
-		      $.ajax({
-					type:'POST',
-					url:'ajax/reqdecision',
-					processData: false,
-	                contentType: false,
-					data: {RAT_MBID_W:wid,
-						   RAT_PRICE:wprice,
-						   RAT_DAYS:wdays},
-					dataType:'json',
-					success: function(data) {
-						alert(data);
-					},
-					error: function(error) {
-					}
-				});
-		      break;
-		      
-		    default:
-		  }
-		});
-}
-
 
 /* $("#middle_contents2_btn").attr('disabled',true);
 $(".decisionbtn").css("display","none"); */
