@@ -50,7 +50,7 @@ public interface ImypageDao {
 
 	int getsponCount(String id);
 
-	List<AuctionProgress> auctionMyOrderListSelect(String id);
+	List<AuctionProgress> auctionMyOrderListSelect(@Param("id") String id,@Param("num") int num);
 
 	
 
@@ -67,6 +67,14 @@ public interface ImypageDao {
 	boolean reviewBoardyhWriteupDate(int ptnum);
 
 	boolean auccancelDelete(@Param("ranum") int ranum, @Param("id") String id);
+
+	List<AuctionProgress> auctionMyAcceptListSelect(@Param("id") String id,@Param("num") int num);
+
+	int getSetpWCount(String id);
+
+	boolean delinumuploadupdate(AuctionProgress ap);
+
+	AuctionProgress sendsSelect(@Param("ptnum") int ptnum,@Param("id") String id);
 
   
 }

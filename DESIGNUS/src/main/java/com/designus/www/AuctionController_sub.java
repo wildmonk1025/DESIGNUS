@@ -24,7 +24,6 @@ public class AuctionController_sub {
 	 * @Autowired private CommonMM cm;
 	 */
 
-
 	@Autowired
 	private RevAuctionMM ram;
 	ModelAndView mav;

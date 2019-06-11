@@ -181,13 +181,16 @@ public class MemberMM {
 		String view = null;
 		mb = mDao.getMemberpwInfo(mb);
 		if(mb!=null) {
-		StringBuilder sb = new StringBuilder(); 
 		System.out.println("id"+mb.getMb_pw());
+		
+		
+		
+		
 		mav.addObject("findpw1","비밀번호 변경하기.");
-		view = "memberFind";
+		view = "memberpwFind";
 		} else {
-			view = "memberFind";
-			mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
+			view = "memberpwFind";
+		mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
 		}
 		mav.setViewName(view);
 		return mav;

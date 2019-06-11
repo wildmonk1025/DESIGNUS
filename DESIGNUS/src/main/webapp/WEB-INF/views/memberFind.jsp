@@ -13,7 +13,7 @@ div {
 	margin: auto;
 }
 
-button {
+.button {
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -272,6 +272,32 @@ button:hover {
 #btz2:hover {
 	color: white;
 }
+ #lightbox {
+            border: 1px solid orange;
+            position: absolute;
+            top: 200px;
+            left: 600px;
+            width: 800px;
+            height: 700px;
+            margin: auto;
+            background: #fff;
+            z-index: 1001;
+            display: none;
+            background-color: orange;
+            text-align: center;
+        }
+
+        #lightbox-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8000px;
+            height: 8000px;
+            background: #000;
+            opacity: 1;
+            z-index: 1000;
+            display: none;
+        }
 </style>
 </head>
 <body>
@@ -286,8 +312,10 @@ button:hover {
 
 			<div id="idfind">
 				<div id="buttondiv">
-					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기">
-					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기">
+					<input class="size" id="revauctionbtn" type="button" value="아이디 찾기"
+					 onclick="location.href='memberFind'">
+					<input class="size" id="auctionbtn" type="button" value="비밀번호 찾기"
+					 onclick="location.href='memberpwFind'">
 				</div>
 				<br> <br>
 				<div id="list">
@@ -308,7 +336,7 @@ button:hover {
 
 					</div>
 					<div id="text2" align="center">
-						<button id="idf" >아이디 찾기</button>
+						<button id="idf" class="button">아이디 찾기</button>
 						<!-- onclick="AjId()" -->
 					</div>
 					<div id="idfindd">
@@ -322,42 +350,9 @@ button:hover {
 				</div>
 			</div>
 		</form>
-	<form action="memberpwfind" id="memberidfind" method="post">
-		<div id="pwfindcheckmain">
-			<div id="pwlist">
-				<div id="pwtext1" align="center">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><input type="text" name="mb_id" id="mb_pwid"></td>
-						</tr>
-						<tr>
-							<th>이름</th>
-							<td><input type="text" name="mb_name" id="mb_pwname"></td>
-						</tr>
-						<tr>
-							<th>이메일</th>
-							<td><input type="text" name="mb_email" id="mb_pwemail"></td>
-							
-					<%-- 	<c:set var="zz" value="${findpw}"/>
-						<c:if test="${findpw != null}">
-								<input type="button" value="${findpw}"/>
-								</c:if> --%>
-						</tr>
-					</table>
-				</div>
-				<div id="pwtext2" align="center">
-					<button id="pwf" onclick="Aj('mb_pw')">비밀번호 찾기</button>
-				</div>
-				<div id="pwbestlist">
-					<a id="pwhome" href="home">홈으로가기</a>
-				</div>
-				<p>${findpw}</p>
-				<input type="button" value="${findpw1}"/>
-			</div>
-		</div>
-	</form>
+	
 	</div>
+	     
 	<!--아이디 명시-->
 
 
@@ -369,50 +364,5 @@ button:hover {
 </body>
 <script>
 
-	 function AjId() {
-	var mb_email = $("#mb_email").val();
-	var mb_name = $("#mb_name").val();
-	console.log(mb_email);
-	console.log(mb_name);
-		$.ajax({
-			url : 'memberidfind',
-			type : 'POST',
-			datatype : 'json',
-			data : {
-				email : mb_email,
-				name : mb_name
-			},
-			success : function(data) {
-				$('#idf').click(function() {
-					$("#text1").css("display", "block");
-					$("#idf").css("display", "none");
-					$('#idfindd').css("display", "block");
-				});
-			},
-			error : function(error) {
-				alert("에러가 발생했습니다. 관리자에게 문의하시기 바랍니다");
-			}//AjIdEnd
-		});//ajax end 
-	} 
- 
-	//ajax 실행문 작성
-
-	function Aj(id) {
-		$('#articleView_layer').addClass('open');
-	}
-
-	$("#revauctionbtn").click(function() {
-		$("#list").css("display", "block");
-		$("#pwlist").css("display", "none");
-	});
-	$("#auctionbtn").click(function() {
-		$("#list").css("display", "none");
-		$("#pwlist").css("display", "block");
-	});//end Hbutton
-
-	var $layerWindow = $('#articleView_layer');
-	$layerWindow.find('#bg_layer').on('mousedown', function(event) {
-		$layerWindow.removeClass('open');
-	});//function End
 </script>
 </html>

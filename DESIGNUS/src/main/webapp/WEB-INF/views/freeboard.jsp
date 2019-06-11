@@ -147,8 +147,6 @@ select {
 	</div>
 
 	<div id="homeMain">
-		<button id="revauctionbtn" class="btn">제작의뢰 요청하기</button>
-		<button id="auctionbtn" class="btn">출품등록하기</button>
 		<div id="freeboard1">
 			<button style="background-color: orange" class="btn2">자유게시판</button>
 			<button class="btn2">이용후기</button>

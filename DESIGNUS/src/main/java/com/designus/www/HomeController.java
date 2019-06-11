@@ -199,5 +199,14 @@ public class HomeController {
 		mav = mm.memberpwfind(mb);
 		return mav;	
 	} 
-
+	@RequestMapping(value = "/memberFind", method = RequestMethod.GET)
+	public String memberFind() {
+		
+		return "memberFind";
+	}
+	@RequestMapping(value = "/memberpwFind", method = RequestMethod.GET)
+	public String memberpwFind() {
+		
+		return "memberpwFind";
+	}
 }

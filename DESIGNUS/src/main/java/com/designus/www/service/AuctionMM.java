@@ -46,7 +46,7 @@ public class AuctionMM {
 		  String photo = multi.getParameter("aui_imgSysName");
 		
 		Auction au = new Auction();
-		
+		System.out.println("[3] photo name ="+multi.getParameter("aui_imgSysName1"));
 		au.setAu_mbid_w(id);
 		au.setAu_title(title);
 		au.setAu_cgcode(cgcode);
@@ -54,16 +54,7 @@ public class AuctionMM {
 		au.setAu_minprice(minprice);
 		au.setAu_inprice(inprice);
 		au.setAu_contents(contents);
-		au.setAui_imgSysName(photo); 
-		
-		System.out.println("id ="+id);
-		System.out.println("title ="+title);
-		System.out.println("cgcode ="+cgcode);
-		System.out.println("qty ="+qty);
-		System.out.println("minprice ="+minprice);
-		System.out.println("inprice ="+inprice);
-		System.out.println("contents ="+contents);
-		System.out.println("photo ="+photo);
+		au.setAui_imgSysName1(photo); 
 		
 		
 		if(aDao.getAuctionWriteInsert(au)) { 
@@ -196,6 +187,7 @@ public class AuctionMM {
 		if(Tqty > 0) {
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
+			aDao.setAuctionUT(at);
 		}
 		mav.setViewName(view);
 		return mav;
@@ -212,9 +204,12 @@ public class AuctionMM {
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
 		price = aDao.auctionTenderSel(at);
-		System.out.println("[1]Test1 = "+ price);
+		
+		
+		
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
+			
 			view = "/auctionMyorderList";
 		}
 		if(price >= tenderPrice) {
