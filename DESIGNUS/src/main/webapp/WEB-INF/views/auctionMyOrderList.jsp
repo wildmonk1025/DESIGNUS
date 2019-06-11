@@ -134,11 +134,6 @@ div {
 	width: 1520px;
 	height: 170px;
 	text-align: center;
-	height: 170px;
-	text-align: center;
-	height: 170px;
-	text-align: center;
-	height: 170px;
 }
 
 .bt01 {
@@ -359,18 +354,20 @@ a:hover {
 #setp {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
-	width: 1100px;
+	width: 1200px;
 	height: 840px;
 	float: left;
 	font-size: 20px;
 	text-align: center;
+	overflow: auto;
 }
 
 #setpT {
-	width: 1080px;
+	width: 1200px;
 	margin: 0px 10px 10px 10px;
-	height: 800px;
+	height: 900px;
 	float: left;
+	border: none;
 }
 
 #l1 {
@@ -398,7 +395,7 @@ a:hover {
 }
 
 #total {
-	s width: 100%;
+	width: 100%;
 	height: 1200px;
 	background-color: black;
 	z-index: 1001;
@@ -407,7 +404,6 @@ a:hover {
 }
 
 .t1 {
-	position: relative;
 	top: 100;
 	left: -200;
 }
@@ -419,7 +415,7 @@ a:hover {
 }
 
 #2list {
-	width: 100%;
+	width: 1000px;
 	height: 250px;
 	float: left;
 }
@@ -434,10 +430,9 @@ a:hover {
 #stepp {
 	border: 1px solid black;
 	margin: 10px;
-	hieght: 150px;
-	width: 160px;
+	hieght: 50px;
+	width: 120px;
 	float: right;
-	display: block;
 }
 </style>
 
@@ -517,9 +512,8 @@ a:hover {
 								<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
 									src='/resources/images/${apList.aui_img}'></a>
 							</div>
-							<br />
+							<br/>
 							<p align="left">상품 이름 : ${apList.au_title}</p>
-							<p align="left">구매 금액 : ${apList.aup_price}</p>
 							<div id="stepp">
 								<c:set var="step" value="${apList.aup_step}" />
 								<c:if test="${step eq 1}">
@@ -528,10 +522,13 @@ a:hover {
 										onclick="location.href='auccancel?ranum=${apList.aup_ranum}'">취소</button>
 								</c:if>
 								<c:if test="${step eq 2}">
-									<h3>배송 대기중</h3>
+									<h3>
+										배송<br /> 대기중
+									</h3>
 								</c:if>
 								<c:if test="${step eq 3}">
 									<button class="bt" id="btzRevQ">고객센터 문의</button>
+									<br />
 									<button class="bt" id="review">수령 확인/구매 후기 쓰기</button>
 								</c:if>
 								<c:if test="${step eq 4}">
@@ -539,6 +536,7 @@ a:hover {
 								</c:if>
 							</div>
 
+							<p align="left">구매 금액 : ${apList.aup_price}</p>
 							<p align="left">주문 수량 : ${apList.aup_qty}</p>
 							<br />
 							<p align="left">
