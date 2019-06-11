@@ -43,6 +43,23 @@ public interface IauctionDao {
 
 	void setAuctionUT(AuctionTender at);
 
+	int getAuctionWriteSel(Auction au);
+
+	void setAuctionUTI(AuctionTender at);
+
+	void setAuctionUTT(AuctionTender at);
+
+	String getAuctionWriteIdSel(Auction au);
+	// 출품 이미지 등록 시작
+	void AuctionImageInsert1(Auction au);
+	void AuctionImageInsert2(Auction au);
+	void AuctionImageInsert3(Auction au);
+	void AuctionImageInsert4(Auction au);
+	// 출품 이미지 등록 끝
+
+	void setAuctionTenderIns(Auction au);
+
+	String getAuctionImgSel(Auction au);
 
 
 

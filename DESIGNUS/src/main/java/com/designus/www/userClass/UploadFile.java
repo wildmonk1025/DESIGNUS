@@ -22,10 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
+import com.designus.www.bean.Auction;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.dao.IRevAuctionDao;
+import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
@@ -43,6 +45,8 @@ public class UploadFile {
 	private ImypageDao pDao;
 	@Autowired
 	private IRevAuctionDao rDao;
+	@Autowired
+	private IauctionDao aDao;
 	@Autowired
 	private HttpSession session;
 
@@ -411,5 +415,79 @@ public class UploadFile {
 	         return true;
 	      return false;
 	   }
+
+	public void fileUpImage(MultipartHttpServletRequest multi, Auction au) {
+		System.out.println("multi 파라미터와 ra받는 fileUp");
+		// 1.이클립스의 물리적 저장경로 찾기
+		String root = multi.getSession().getServletContext().getRealPath("/");
+		System.out.println("root=" + root);
+		String path = root + "resources/upload/";
+		// 2.폴더 생성을 꼭 할것...
+		File dir = new File(path);
+		if (!dir.isDirectory()) { // upload폴더 없다면
+			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
+		}
+		MultipartFile file1 = multi.getFile("aui_imgSysName1");
+		MultipartFile file2 = multi.getFile("aui_imgSysName2");
+		MultipartFile file3 = multi.getFile("aui_imgSysName3");
+		MultipartFile file4 = multi.getFile("aui_imgSysName4");
+
+		String oriFileName1 = file1.getOriginalFilename();
+		String oriFileName2 = file2.getOriginalFilename();
+		String oriFileName3 = file3.getOriginalFilename();
+		String oriFileName4 = file4.getOriginalFilename();
+
+		System.out.println(oriFileName1);
+		System.out.println(oriFileName2);
+		System.out.println(oriFileName3);
+		System.out.println(oriFileName4);
+
+		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
+		String sysFileName1 = (System.currentTimeMillis() + 1) + "."
+				+ oriFileName1.substring(oriFileName1.lastIndexOf(".") + 1);
+		String sysFileName2 = (System.currentTimeMillis() + 2) + "."
+				+ oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
+		String sysFileName3 = (System.currentTimeMillis() + 3) + "."
+				+ oriFileName3.substring(oriFileName1.lastIndexOf(".") + 1);
+		String sysFileName4 = (System.currentTimeMillis() + 4) + "."
+				+ oriFileName4.substring(oriFileName2.lastIndexOf(".") + 1);
+		
+		au.setAui_imgSysName1(sysFileName1);
+		au.setAui_imgSysName2(sysFileName2);
+		au.setAui_imgSysName3(sysFileName3);
+		au.setAui_imgSysName4(sysFileName4);
+
+		System.out.println("sys=" + sysFileName1);
+		System.out.println("sys=" + sysFileName2);
+		System.out.println("sys=" + sysFileName3);
+		System.out.println("sys=" + sysFileName4);
+
+		// 5.메모리->실제 파일 업로드
+		/*
+		 * System.out.println(session.getAttribute("id").toString());
+		 * System.out.println("세션 확인");
+		 */
+
+		try {
+			file1.transferTo(new File(path + sysFileName1));
+			file2.transferTo(new File(path + sysFileName2));
+			file3.transferTo(new File(path + sysFileName3));
+			file4.transferTo(new File(path + sysFileName4));
+			System.out.println("PC로컬경로에 파일 업로드 완료");
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		aDao.AuctionImageInsert1(au);
+		aDao.AuctionImageInsert2(au);
+		aDao.AuctionImageInsert3(au);
+		aDao.AuctionImageInsert4(au);
+		// flag는 원래 insert여부를 확인하기 위함 이였으나, 게시한 글 번호를 selectKey로 반환하기 위한 겸용으로 사용하였다.
+		// System.out.println("ra_num값="+ra.getRa_num());
+
+		
+	}
 	
 }

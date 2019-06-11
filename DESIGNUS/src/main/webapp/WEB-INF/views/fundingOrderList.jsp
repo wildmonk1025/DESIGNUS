@@ -156,7 +156,7 @@ div {
 }
 
 a {
-	color: red
+	color: red;
 }
 
 #lightbox {

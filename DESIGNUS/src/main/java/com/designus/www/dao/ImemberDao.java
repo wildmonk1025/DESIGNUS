@@ -36,7 +36,7 @@ public interface ImemberDao {
 	
 	Member getMemberpwInfo(Member mb);
 
-	int getmemberpwupdate(Member mb);
+	int getMemberPwUpdate(Member mb);
 
 
 

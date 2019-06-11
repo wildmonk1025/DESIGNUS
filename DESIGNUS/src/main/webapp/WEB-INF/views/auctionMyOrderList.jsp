@@ -500,7 +500,7 @@ a:hover {
 			</div>
 			<div id="setp">
 				<div id="setpT">
-					<c:forEach var="apList" items="${apList}">
+				<%-- 	<c:forEach var="apList" items="${apList}">
 						<div id="2list">
 							<div id="sangimg" align="left">
 								<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
@@ -579,7 +579,7 @@ a:hover {
 									class="bt" id="backSetp" type="button" value="취소">
 							</div>
 						</form>
-					</c:forEach>
+					</c:forEach> --%>
 
 				</div>
 				${paging}
@@ -625,8 +625,56 @@ a:hover {
 	</div>
 </body>
 <script type="text/javascript">
+var apList = ${apList};
+console.log(apList);
+var main = "";
 
+for (var i = 0; i < apList.length; i++) {
+	 if (apList[i].aup_step == 1) {
+	main += "<table style=\"border:1px solid orange\" ><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
+			+ "<tr><td>상품번호 :"
+			+ apList[i].aup_ptnum
+			+ "</td><td>상품명:"
+			+ apList[i].au_title
+			+ "</td></tr>"
+			+ "<tr><td colspan='2'>구매 금액 : "
+			+ apList[i].aup_price
+			+ "</td></tr>"
+			+ "<tr><td colspan='2'>상품 수량 : "
+			+ apList[i].aup_qty + "</td></tr>"
+            +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>";
+            
+		main +="<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"ShippingInfo('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
+             +"<input  type='button' onclick=\"location.href='auccancel?ranum="+apList[i].aup_ptnum+"')\" value='취소'/></td></tr></table>";
+             
+	} else if(apList[i].aup_step==2){
+			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
+		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
+		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
+		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
+		    +"<tr><td colspan='3'><h3>배송대기중...</h3></td></tr></table>";
+		    
+		}else if(apList[i].aup_step==3){
+			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
+		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
+		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
+		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
+		    +"<tr><td colspan='3'><input type='button' onclick=\"btzRevQ('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
+            +"<input type='button' onclick=\"review('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/></td></tr></table>";
+		    
+			
+		} else if(apList[i].aup_step==4){
+			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
+		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
+		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
+		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
+		    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
+		    +"<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
+		} 
+}
+console.log(1, main);
 
+$('#setpT').html(main);
 	
 
 function good(data) {

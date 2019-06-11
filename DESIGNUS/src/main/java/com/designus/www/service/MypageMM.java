@@ -339,8 +339,10 @@ public class MypageMM {
 		System.out.println("여기까지 오나????....");
 		//AuctionProgress ap=new AuctionProgress();
 		apList=pDao.auctionMyOrderListSelect(id,num);
+		Gson gson=new Gson();
+		String str=gson.toJson(apList);
 		System.out.println("size"+apList.size());
-		mav.addObject("apList", apList);
+		mav.addObject("apList", str);
 		mav.addObject("paging", getMPaging(num,kind));
 		System.out.println("사망띠....");
 		System.out.println("apList"+apList.size());
