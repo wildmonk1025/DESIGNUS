@@ -39,7 +39,7 @@ public class AjaxMypageController {
 		return json;
 
 	}
-
+	
 	
 	/*
 	 * @RequestMapping(value =

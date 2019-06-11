@@ -474,16 +474,16 @@ public class UploadFile {
 			file3.transferTo(new File(path + sysFileName3));
 			file4.transferTo(new File(path + sysFileName4));
 			System.out.println("PC로컬경로에 파일 업로드 완료");
+			aDao.AuctionImageInsert1(au);
+			aDao.AuctionImageInsert2(au);
+			aDao.AuctionImageInsert3(au);
+			aDao.AuctionImageInsert4(au);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		aDao.AuctionImageInsert1(au);
-		aDao.AuctionImageInsert2(au);
-		aDao.AuctionImageInsert3(au);
-		aDao.AuctionImageInsert4(au);
 		// flag는 원래 insert여부를 확인하기 위함 이였으나, 게시한 글 번호를 selectKey로 반환하기 위한 겸용으로 사용하였다.
 		// System.out.println("ra_num값="+ra.getRa_num());
 
