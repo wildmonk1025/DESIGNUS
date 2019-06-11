@@ -28,7 +28,6 @@ public class AuctionController {
 	@RequestMapping(value = "/auctionWrite" )
 	public ModelAndView auctionWrite() {
 		mav = new ModelAndView();
-			
 		return mav;
 	}
 	

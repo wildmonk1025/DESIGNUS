@@ -130,7 +130,9 @@ textarea {
 #addBtn {
 	width: 100%;
 }
-
+input[type="file"]{
+	color: gray;
+}
 
 
 </style>
@@ -188,7 +190,7 @@ textarea {
 				<div id="phtDiv">
 
 					<div id="pht1" >
-						<img id="LoadImg" src="#" alt="대표사진 한장을 골라주세요" />
+						<img id="LoadImg" src="#" alt="첫번째 파일이 대표사진 입니다." />
 					</div>
 					
 

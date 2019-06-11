@@ -41,6 +41,8 @@ public interface IauctionDao {
 
 	String getAuctionInfoID(Auction au);
 
+	void setAuctionUT(AuctionTender at);
+
 
 
 
