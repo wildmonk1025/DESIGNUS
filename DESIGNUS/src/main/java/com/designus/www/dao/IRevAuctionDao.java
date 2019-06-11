@@ -31,4 +31,6 @@ public interface IRevAuctionDao {
 	int revAuctionApplyDelete(RevAuctionTender rat);
 
 	boolean revAuctionApplyInsert(RevAuctionTender rat);
+
+	List<RevAuctionTender> getDecideCheckSelect(RevAuction ra);
 }
