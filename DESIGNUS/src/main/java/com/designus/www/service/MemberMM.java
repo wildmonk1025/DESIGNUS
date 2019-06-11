@@ -182,7 +182,9 @@ public class MemberMM {
 		mb = mDao.getMemberpwInfo(mb);
 		if(mb!=null) {
 		System.out.println("id"+mb.getMb_pw());
+		System.out.println("ididididi::"+mb.getMb_id());
 		mav.addObject("findpw1","비밀번호 변경하기.");
+		mav.addObject("mb", mb);
 		view = "memberpwFind";
 		} else {
 			view = "memberpwFind";
@@ -203,8 +205,10 @@ public class MemberMM {
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
 		System.out.println(mb.getMb_pw());
-		mDao.getMemberPwUpdate(mb);
-		if(true) {
+		int check = mDao.getMemberPwUpdate(mb);
+		System.out.println("넌뭐하는애니?"+check);
+		
+		if(check!=0) {
 		System.out.println("여기오냐?");
 		view = "loginBox";
 		} else {
