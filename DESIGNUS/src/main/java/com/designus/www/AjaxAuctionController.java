@@ -1,16 +1,15 @@
 package com.designus.www;
 
 
-
-
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.designus.www.bean.RevAuctionTender;
@@ -28,7 +27,7 @@ public class AjaxAuctionController {
 	@Autowired
 	private RevAuctionMM ram;
 	
-	@RequestMapping(value = "/ajax/BasketSelect",method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/BasketSelect",method = {RequestMethod.POST,RequestMethod.GET})
 	public int ajaxBasketSelect(int num) {
 
 		int number = aum.basketSelect(num); 
@@ -37,7 +36,7 @@ public class AjaxAuctionController {
 		return number;
 	}
 
-	@RequestMapping(value = "/ajax/revBasketSelect",method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/revBasketSelect",method = {RequestMethod.POST,RequestMethod.GET})
 	public int ajaxrevBasketSelect(int num) {
 		
 		int number = ram.revbasketSelect(num);
@@ -46,26 +45,30 @@ public class AjaxAuctionController {
 		return number;
 	}
 
-	@RequestMapping(value = "/ajax/revauction", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
+	@RequestMapping(value = "/revauction", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
 	public @ResponseBody String revAuctionAjax(RevAuctionTender rat_ranum) {
 		String jsonStr = ram.revAuctionAjax(rat_ranum);
 		System.out.println("jsonStr="+jsonStr);
 		return jsonStr;
 	}
 	
-	@RequestMapping(value = "/ajax/revauctionapply", produces="application/json; charset=utf-8")
+	@RequestMapping(value = "/revauctionapply", produces="application/json; charset=utf-8")
 	//public String revAuctionApply(@RequestParam Map<String,String> multi,@RequestPart(value="file",required=false) MultipartHttpServletRequest file) {
-	public String revAuctionApply(MultipartHttpServletRequest multi) {
+	public @ResponseBody String revAuctionApply(MultipartHttpServletRequest multi) {
 		String str = ram.revAuctionApply(multi);
 		String jsonStr = new Gson().toJson(str);
 		return jsonStr;
 	}
 
-	@RequestMapping(value = "/ajax/reqdecision", produces="application/json; charset=utf-8")
-	public String reqDecision(RevAuctionTender ra) {
+	@RequestMapping(value = "/reqdecision", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
+	public @ResponseBody String reqDecision(@RequestBody RevAuctionTender ra) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println(ra.getRat_mbid_w());
 		System.out.println(ra.getRat_price());
 		System.out.println(ra.getRat_days());
+		map.put("rat_mbid_w", ra.getRat_mbid_w());
+		map.put("rat_price",ra.getRat_price());
+		map.put("rat_days", ra.getRat_days());
 		//String jsonStr = new Gson().toJson(str);
 		return null;
 	}

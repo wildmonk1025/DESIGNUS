@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+div {
+	margin: auto;	
+}
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
