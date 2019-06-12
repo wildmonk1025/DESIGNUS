@@ -188,8 +188,8 @@ div {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 1650px;
-	height: 2000px;
+	width: 100%;
+	height: 200%;
 	background: #000;
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 1000;
@@ -201,14 +201,17 @@ div {
 	position: absolute;
 	background-color: coral;
 	left: 30%;
-	top: 10%;
+	top: 20%;
 	padding: 50px;
 	text-align: center;
 	width: 500px;
-	height: 500px;
+	height: 300px;
 	opacity: 100;
 	z-index: 1010;
 	display: none;
+	border-radius: 20px;
+	box-shadow: -60px 0px 30px -90px #000000,
+                60px 0px 30px -90px #000000;
 }
 
 #revamn {
@@ -241,6 +244,45 @@ div {
 </head>
 
 <body>
+		<!-- 여기서부턴 라이트 박스 -->
+		<div id="lightboxshadow"></div>
+		<form id="tenderlightbox" enctype="multipart/form-data">
+			<div id="lightbox_contents1">
+				<p>의뢰 접수 및 견적서 첨부</p>
+				<hr style="color: black">
+				<div id="revamn">
+					<table>
+						<tr style="width: 400px;">
+							<td>의뢰접수금액</td>
+							<td><input type="text" id="revamoney" name="revamoney"></td>
+						</tr>
+						<tr>
+							<td>견적서 첨부</td>
+							<td><input type="file" id="revfile" name="revfile"></td>
+						</tr>
+						<tr>
+							<td>제작소요기간</td>
+							<td><input type="text" id="revadate" name="revadate">일</td>
+						</tr>
+
+					</table>
+					<c:set var="ra_id" value="${raInfo.ra_mbid}" />
+					<c:set var="se_id" value="${id}" />
+					<c:set var="grade" value="${grade}" />
+					<c:if test="${ra_id ne se_id}">
+						<c:if test="${grade eq 'W'}">
+							<input type="button" id="yespermitapply"
+								onclick="revauctionapply()" value="전송" />
+						</c:if>
+					</c:if>
+					<c:if test="${ra_id eq se_id}">
+						<input type="button" id="nopermitapply" value="전송" />
+					</c:if>
+					<input type="button" id="meneycancle" value="돌아가기" />
+				</div>
+			</div>
+		</form>
+		<!-- 라이트박스 끝 -->
 	<div id="main">
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
@@ -323,45 +365,6 @@ div {
 			</div>
 		</div>
 		<div id="footer">여기는 푸터 입니다.</div>
-
-		<!-- 여기서부턴 라이트 박스 -->
-		<div id="lightboxshadow"></div>
-		<form id="tenderlightbox" enctype="multipart/form-data">
-			<div id="lightbox_contents1">
-				<p>의뢰 접수 및 견적서 첨부</p>
-				<hr style="color: black">
-				<div id="revamn">
-					<table>
-						<tr style="width: 400px;">
-							<td>의뢰접수금액</td>
-							<td><input type="text" id="revamoney" name="revamoney"></td>
-						</tr>
-						<tr>
-							<td>견적서 첨부</td>
-							<td><input type="file" id="revfile" name="revfile"></td>
-						</tr>
-						<tr>
-							<td>제작소요기간</td>
-							<td><input type="text" id="revadate" name="revadate">일</td>
-						</tr>
-
-					</table>
-					<c:set var="ra_id" value="${raInfo.ra_mbid}" />
-					<c:set var="se_id" value="${id}" />
-					<c:set var="grade" value="${grade}" />
-					<c:if test="${ra_id ne se_id}">
-						<c:if test="${grade eq 'W'}">
-							<input type="button" id="yespermitapply"
-								onclick="revauctionapply()" value="전송" />
-						</c:if>
-					</c:if>
-					<c:if test="${ra_id eq se_id}">
-						<input type="button" id="nopermitapply" value="전송" />
-					</c:if>
-					<input type="button" id="meneycancle" value="돌아가기" />
-				</div>
-			</div>
-		</form>
 	</div>
 
 </body>
@@ -518,7 +521,7 @@ $(".subtn").click(function() {
  			    default:
  			  }
  			});
- 		}
+ 	}
  	
 // $("#middle_contents2_btn").attr('disabled',true);
 // $(".decisionbtn").css("display","none");
