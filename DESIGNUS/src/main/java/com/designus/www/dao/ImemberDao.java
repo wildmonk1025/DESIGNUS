@@ -38,6 +38,8 @@ public interface ImemberDao {
 
 	int getMemberPwUpdate(Member mb);
 
+	int memberWpoint(AuctionProgress ap);
+
 
 
 }

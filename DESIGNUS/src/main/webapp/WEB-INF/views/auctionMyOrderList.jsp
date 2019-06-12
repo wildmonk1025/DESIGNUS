@@ -379,6 +379,20 @@ position: absolute;
 	left: 900px;
 
 }
+#l3{
+position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 
 #Q1 {
 	width: 500px;
@@ -630,7 +644,7 @@ function review(even) {
 	var form = {
 			aup_ptnum:even
 			 }
-	
+	var bb="";
 	 $.ajax({
 			url: 'reviewboard',
 			type:'post',
@@ -640,27 +654,29 @@ function review(even) {
 		    success:function(data){
 		    	alert('해당 상품을 추천하였습니다.');
 		    	console.log("1234567"+data.aup_ptnum);
-		    	 /*if(data.aut_kind=="I"){
-			    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+		    	 if(data.aut_kind=="I"){
+			    	   bb+="즉시구매<input type='hidden' name='aut_kind'><br>"   
 			    	   }else if(data.aut_kind=="O"){
-			    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+			    	   bb+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
 			    	   }else{
-			    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+			    	   bb+=+"입찰<input type='hidden' name='aut_kind'><br>" 
 			    	   };
-		    	sub+="상품번호 :"+data.aup_price+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
-		    	   +"상품이름 :"+data.au_title+"<br>"
-                +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
-		    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
-		    	   +"이름 :<input type='text' name='aup_name'><br>"
-		    	   +"주소 :<input type='text' name='aup_address'><br>"
-		    	   +"연락처: <input type='text' name='aup_phone'><br>"
-		    	   +"<input type='submit' value='요청'><br>"
-		    	   +"<input type='button' id='back' value='취소'>";
+		    	bb+="<h2>수령 확인 및구매 후기 쓰기</h2><br/></hr><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+		    	   +"상품이름 :"+data.au_title+"<input type='button' id='butt' value='추천하기' onclick=\"good('"+data.au_mbid_w+"')\"><br><hr>"
+                   +"<input type='hidden' name='au_mbid_w' value='"+data.au_mbid_w+"')>"
+                   +"<input type='hidden' name='aup_price' value='"+data.aup_price+"')>"
+		    	   +"구매후기 제목 :<input type='text' name='bd_title'><br>"    	
+		    	   +"내용</br>"
+		    	   +"<textarea rows='10' cols='70' name='bd_contents'></textarea><br>"
+		    	   +"<input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple><br>"
+		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'><br>"
+		    	   +"<input type='submit' value='완료'>"
+		    	   +"<input type='button' id='backSetp' value='취소'>";
 		    	  
 		    	$('#total').css("display", "inline");
-		    	$('#l1').css("display", "inline");
+		    	$('#l3').css("display", "inline");
 		    	
-		    	$('#l1').html(sub);*/
+		    	$('#l3').html(bb);
 		    },
 		    
 		    error:function(error){

@@ -74,9 +74,9 @@ public class AjaxMypageController {
 	public String reviewboard(@RequestBody AuctionProgress ap) {
 		System.out.println("(컨트롤러)수령확인 및 구매후기 작성 시작!!!");
 		System.out.println(ap.getAup_ptnum());
-		//String json = pm.reviewboard(ap);
+		String json = pm.reviewboard(ap);
 		System.out.println("(컨트롤러)수령확인 및 구매후기 작성 마무으리!!!");
-		return null;
+		return json;
 
 	}
 }

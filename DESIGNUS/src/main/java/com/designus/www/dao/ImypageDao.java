@@ -64,7 +64,7 @@ public interface ImypageDao {
 
 	boolean aucapplyMbWupdate(AuctionProgress ap);
 
-	boolean reviewBoardyhWriteupDate(int ptnum);
+	boolean reviewBoardyhWriteupDate(AuctionProgress ap);
 
 	boolean auccancelDelete(AuctionProgress ap);
 
@@ -81,6 +81,10 @@ public interface ImypageDao {
 	AuctionProgress sendsSelect(AuctionProgress ap);
 
 	AuctionProgress scheckSelect(AuctionProgress ap);
+
+	AuctionProgress reviewboardSelect(AuctionProgress ap);
+
+	boolean memberpointup(AuctionProgress ap);
 
   
 }

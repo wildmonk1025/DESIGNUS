@@ -52,4 +52,7 @@
 	<update id="getMemberPwUpdate" parameterType="member">
 		UPDATE MB SET MB_PW=#{mb_pw} WHERE MB_ID=#{mb_id}
 	</update>
+	<select id="memberWpoint" parameterType="auctionprogress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
+	</select>
 </mapper>

@@ -131,9 +131,9 @@ public class MypageController {
 
 	public ModelAndView reviewBoardWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
-	    System.out.println("아오진짜 화난다....");
+	    System.out.println("[컨트롤러].reviewBoardWrite:시작");
 		 mav=pm.reviewBoardyhWrite(multi);
-		
+		 System.out.println("[컨트롤러].reviewBoardWrite:마무리!!");
 		return mav;
 	}
 	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
