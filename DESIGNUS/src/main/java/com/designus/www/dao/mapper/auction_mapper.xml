@@ -41,11 +41,11 @@
 	</select>
 
 	<insert id="setAuctionTenderI" parameterType="auctiontender">
-		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I')
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I',DEFAULT)
 	</insert>
 
 	<insert id="setAuctionTenderT" parameterType="auctiontender">
-		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'T')
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'T',DEFAULT)
 	</insert>
 	
 	<update id="setAuctionTenderDel" parameterType="auctiontender">
@@ -120,7 +120,7 @@
 	
 	<insert id="setAuctionTenderIns" parameterType="auction">
 		INSERT INTO AUT
-        VALUES(${au_num},'AAAA',100,'T')
+        VALUES(${au_num},'AAAA',0,'T',DEFAULT)
 	</insert>
 	
 	<select id="getAuctionImgSel" parameterType="auction" resultType="String">
