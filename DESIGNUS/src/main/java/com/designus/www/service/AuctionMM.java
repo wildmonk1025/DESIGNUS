@@ -44,7 +44,7 @@ public class AuctionMM {
 		int qty =Integer.parseInt(multi.getParameter("au_qty")); 
 		int minprice =Integer.parseInt(multi.getParameter("au_minprice")); 
 		int inprice =Integer.parseInt(multi.getParameter("au_inprice")); 
-		String contents =multi.getParameter("au_contents"); 
+		String contents =multi.getParameter("SS_CONTENTS"); 
 		Auction au = new Auction();
 		au.setAu_mbid_w(id);
 		au.setAu_title(title);
