@@ -54,7 +54,7 @@
 	width: 1100px;
 	height: 860px;
 	text-align: center;
-	left: 208px;
+	left: 528px;
 	top: 80px;
 	font-size: 100%
 }
@@ -67,9 +67,9 @@
 }
 
 #total {
-	position: absolute;
+	position : absolute;
 	width: 100%;
-	height: 1200px;
+	height: 200%;
 	background-color: black;
 	z-index: 1001;
 	opacity: 0.75;
@@ -96,8 +96,9 @@
 	top: 10px;
 }
 #l1 {
+position: absolute;
 	width: 400px;
-	height: 230px;
+	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
@@ -105,6 +106,24 @@
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
+	top : 500px;
+	left: 900px;
+
+}
+#l2{
+position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 </style>
 
 </head>
@@ -115,6 +134,13 @@
 		<jsp:include page="main.jsp" />
 	</div>
 	<div id="total"></div>
+	<form action="delinumupload" method="post">
+
+			<div id="l1">
+
+			</div>
+		</form>
+   <div id="l2"></div>		
 	<div id="notice">
 		<h2>출품작 판매 내역</h2>
 		<hr>
@@ -173,20 +199,7 @@
 	</div>
 	<div id="setp">
 		<div id="setpT"></div>
-		<form action="delinumupload" method="post">
-
-			<div id="l1">
-				<div id="l2"></div>
-				<div id="l3"></div>
-				<input type="submit" value="확인"> <input id="back"
-					type="button" value="취소">
-			</div>
-		</form>
-
-
-
-
-
+      ${pagMPWing}
 	</div>
 </body>
 <script type="text/javascript">
@@ -217,7 +230,7 @@
 			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
 			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
 			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
-			    +"<tr><td colspan='3'><input id='btzsho' type='button' onclick=\"shopping('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/>"
+			    +"<tr><td colspan='3'><input id='btzsho' type='button' onclick=\"delivery('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/>"
 			    +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_ptnum+"')\" value='의뢰인 배송정보'/></td></tr></table>";
 			}else if(apwList[i].aup_step==3){
 				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
@@ -239,19 +252,113 @@
 
 	$('#setpT').html(main);
 
+	
+	function shocheck(even) {
+
+		var form = {
+			aup_ptnum:even
+			 }
+		
+		var aa="";
+		 $.ajax({
+				url: 'scheck',
+				type:'post',
+			    data:JSON.stringify(form),
+			    contentType:"application/json; charset=utf-8;",
+			    dataType:'json',
+			    success:function(data){
+			    	alert('성공');
+			    	console.log("1234567"+data.aup_ptnum);
+			    	$('#total').css("display", "inline");
+			    	$('#l2').css("display", "inline");
+			    	   if(data.aut_kind=="I"){
+				    	   aa+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+				    	   }else if(data.aut_kind=="O"){
+				    	   aa+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+				    	   }else{
+				    	   aa+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   };
+			    	aa+="<h2>의뢰인 배송정보</h2><br><hr>"
+			    	   +"아이디 : "+data.aup_mbid_n+"<br>"
+			    	   +"이름 : "+data.aup_name+"<br>"
+			    	   +"주소 :"+data.aup_address+"<br>"
+			    	   +"연락처 :"+data.aup_phone+"<br>"
+			    	   +"<input type='button' id='back' value='확인'>";
+			    	  
+			    	
+			    	
+			    	$('#l2').html(aa); 
+			    },
+			    
+			    error:function(error){
+			    	alert('정상적인 추천이 실패했습니다.');
+			    	console.log(error);
+			    }
+			 });//end ajax
+		
+	}//end shocheck
+	
+	
+	function delivery(even) {
+		
+		var form = {
+			aup_ptnum:even
+			 }
+		var sub="";
+		 $.ajax({
+
+				url: 'sends',
+				type:'post',
+			    data:JSON.stringify(form),
+			    contentType:"application/json; charset=utf-8;",
+			    dataType:'json',
+			    success:function(data){
+			    	alert('해당 상품을 추천하였습니다.');
+			    	console.log("1234567"+data.aup_ptnum);
+			    	$('#total').css("display", "inline");
+			    	$('#l1').css("display", "inline");
+			    	  if(data.aut_kind=="I"){
+				    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+				    	   }else if(data.aut_kind=="O"){
+				    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+				    	   }else{
+				    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   };
+			    	sub+="<h2>운송장 입력</h2><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+			    	   +"상품이름 :"+data.au_title+"<br>"
+	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
+			    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br><hr>"
+			    	   +"운송장번호<br/><input type='text' name='aup_track'><br>"
+			    	   +"<input type='submit' value='보내기'>"
+			    	   +"<input type='button' id='back' value='취소'>";
+			    	  
+			    	
+			    	
+			    	$('#l1').html(sub);
+			    },
+			    
+			    error:function(error){
+			    	alert('정상적인 추천이 실패했습니다.');
+			    	console.log(error);
+			    }
+			 });//end ajax
+		
+	}//end delivery	
+	
 	//$('#setpT').html(sub);
 	/* $("#btzRevM").click(function() {
 	 $('#total').css("display", "inline")
 	 $('#l1').css("display", "inline")
 	 }); */
-	 
+	 /* 
 	 $("#btzsho").click(function() {
 			$('#total').css("display", "inline")
 			$('#l1').css("display", "inline")
-		});
+		}); */
 	$("#total").click(function() {
 		$("#total").css("display", "none");
 		$("#l1").css("display", "none");
+		$("#l2").css("display", "none");
 	});
 	$("#back").click(function() {
 		$("#total").css("display", "none");

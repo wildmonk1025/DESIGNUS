@@ -106,10 +106,10 @@
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
-    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
-     from AUPVIEWtest
-       where AUP_MBID_N=#{id} and rownum<=#{num}*20
-     ) where rn>=#{num}*20-19 AND RankNo=1 
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWTEST
+       where AUP_MBID_N=#{id} and rownum<=#{num}*4
+     ) where rn>=#{num}*4-3 AND RankNo=1 
   ]]>
 	</select>
 	
@@ -135,21 +135,21 @@
 	</update>
 	<update id="reviewBoardyhWriteupDate" parameterType="Integer">
 		update AUP SET aup_step=4
-		where aup_ptnum=#{ptnum}
+		where aup_ptnum=${ptnum}
 	</update>
 	<delete id="auccancelDelete" >
 		  DELETE FROM AUP 
-     WHERE AUP_MBID_N=#{id} AND AUP_RANUM=#{ranum}
+         WHERE AUP_PTNUM=${aup_ptnum}
 	</delete>
 	<select id="auctionMyAcceptListSelect" 
 		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
-    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
-     from AUPVIEWtest
-       where AU_MBID_W=#{id} and rownum<=#{num}*20
-     ) where rn>=#{num}*20-19 AND RankNo=1 
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWTEST
+       where AU_MBID_W=#{id} and rownum<=#{num}*4
+     ) where rn>=#{num}*4-3 AND RankNo=1 
   ]]>
 	</select>
 	<select id="getSetpWCount" resultType="Integer">
@@ -167,7 +167,7 @@
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
     AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
      from AUPVIEW
-       where AU_MBID_W=#{id} and aup_ptnum=#{ptnum}
+       where aup_ptnum=${aup_ptnum}
      ) where  RankNo=1  
   ]]>
 	</select>
@@ -183,6 +183,17 @@
 	</select>
 	<delete id="autcancelDelete" >
 		  DELETE FROM AUT 
-     WHERE AUT_MBID=#{id} AND AUT_AUNUM=#{ranum}
+     WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND AUT_DATE=#{aut_date}
 	</delete>
+	
+	<select id="scheckSelect" parameterType="auctionprogress" resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWtest
+       where AUP_PTNUM=${aup_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
 </mapper>

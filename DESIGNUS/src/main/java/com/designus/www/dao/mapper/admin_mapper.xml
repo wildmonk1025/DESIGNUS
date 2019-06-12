@@ -5,7 +5,8 @@
 <mapper namespace="com.designus.www.dao.IadminDao">  
      
       
-     
+     <select id="getrepInfo" parameterType="report" resultType="report">
+		SELECT * FROM RP_LIST ORDER BY RP_NUM ASC
+	</select>
       
-       
 </mapper>

@@ -30,7 +30,7 @@ public interface ImemberDao {
 
 	int memberNpoint(AuctionProgress ap);
 
-	int memberWpoint(AuctionProgress ap);
+	
 
 	Member getMemberNameInfo(Member mb);
 	
