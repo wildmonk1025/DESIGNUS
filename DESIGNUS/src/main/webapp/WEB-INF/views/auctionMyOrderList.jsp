@@ -365,8 +365,9 @@ a:hover {
 }
 
 #l1 {
+position: absolute;
 	width: 400px;
-	height: 230px;
+	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
@@ -374,6 +375,9 @@ a:hover {
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
+	top : 500px;
+	left: 900px;
+
 }
 
 #Q1 {
@@ -389,8 +393,9 @@ a:hover {
 }
 
 #total {
+	position : absolute;
 	width: 100%;
-	height: 1200px;
+	height: 200%;
 	background-color: black;
 	z-index: 1001;
 	opacity: 0.75;
@@ -509,129 +514,11 @@ a:hover {
 				</div>
 				${paging}
 				</div>
-				
-				<%-- 	<c:forEach var="apList" items="${apList}">
-						<div id="2list">
-							<div id="sangimg" align="left">
-								<a href='#' onclick="articleView(${apList.aup_ranum})"> <img
-									src='/resources/images/${apList.aui_img}'></a>
-							</div>
-							<br />
-							<p align="left">상품 이름 : ${apList.au_title}</p>
-							<div id="stepp">
-								<c:set var="step" value="${apList.aup_step}" />
-								<c:if test="${step eq 1}">
-									<button class="bt" id="btzRevM">배송정보입력</button>
-									<button class="bt" id="cencle"
-										onclick="location.href='auccancel?ranum=${apList.aup_ranum}'">취소</button>
-								</c:if>
-								<c:if test="${step eq 2}">
-									<h3>
-										배송<br /> 대기중
-									</h3>
-								</c:if>
-								<c:if test="${step eq 3}">
-									<button class="bt" id="btzRevQ">고객센터 문의</button>
-									<br />
-									<button class="bt" id="review">수령 확인/구매 후기 쓰기</button>
-								</c:if>
-								<c:if test="${step eq 4}">
-									<h3>완료</h3>
-								</c:if>
-							</div>
-
-							<p align="left">구매 금액 : ${apList.aup_price}</p>
-							<p align="left">주문 수량 : ${apList.aup_qty}</p>
-							<br />
-							<p align="left">
-								작업이 확정된 시정의 요청 사항 추가는 추가 요금 및,<br /> 작업 완료일이 늘어날 수 있습니다.
-							</p>
-							<br />
-						</div>
-						<form action="aucapply" method="post">
-							<div id="l1">
-								${apList.au_mbid_w}님에게 배송요청 <input type="hidden"
-									name="au_mbid_w" id="au_mbid_w" value="${apList.au_mbid_w}">
-								<div id="l2">${apList.au_title}</div>
-								<div id="l3">
-									아이디 : ${apList.aup_mbid_n} <br /> <input type="hidden"
-										name="aup_mbid_n" id="aup_mbid_n" value="${apList.aup_mbid_n}">
-									이름 : <input type="text" name="aup_name" id="aup_name"><br />
-									주소 : <input type="text" name="aup_address" id="aup_address"><br />
-									연락처 :<input type="text" name="aup_phone" id="aup_phone">
-									<input type="hidden" name="aup_ptnum" id="aup_ptnum"
-										value="${apList.aup_ptnum}"> <input type="hidden"
-										name="aup_price" id="aup_price" value="${apList.aup_price}">
-								</div>
-								<input type="submit" class="bt" value="요청하기"> <input
-									class="bt" id="back" type="button" value="취소">
-							</div>
-						</form>
-						<form action="reviewBoardWrite" method="post"
-							enctype="multipart/form-data">
-							<div id="Q1">
-								수령 확인 및 구매후기 쓰기
-								<div id="Q2">
-									${apList.au_title} <input class="bt" type="button" id="butt"
-										value="추천하기" onclick="good('${apList.au_mbid_w}')"> <input
-										type="hidden" name="aup_ptnum" id="aup_ptnum"
-										value="${apList.aup_ptnum}">
-								</div>
-								<div id="Q3">
-									구매후기 제목 :<input type="text" name="bd_title" id="bd_title"><br>
-									내용 <br />
-									<textarea rows="10" cols="70" name="bd_contents"></textarea>
-									<input type="file" name="bd_imgSysName" id="bd_imgSysName"
-										value="파일 첨부" onchange="fileChk(this)" multiple> <input
-										type="hidden" id="fileCheck" value="0" name="fileCheck">
-								</div>
-								<input type="submit" class="bt" value="완료"> <input
-									class="bt" id="backSetp" type="button" value="취소">
-							</div>
-						</form>
-					</c:forEach> --%>
 
 				</div>
 				
 			</div>
 		</div>
-
-	<div id="lightbox-shadow">
-
-		<div id="lightbox">
-			<h1>여기가 배송정보입력</h1>
-			<button class="bt">요청</button>
-			<button class="bt" type="button"
-				onclick="location.href='auctionMyOrderList.html' ">취소</button>
-		</div>
-	</div>
-	<div id="lightbox-shadow1">
-
-		<div id="lightbox1">
-			<h1>출품작 낙찰취소</h1>
-			<button class="bt">취소하기</button>
-			<button class="bt" type="button"
-				onclick="location.href='auctionMyOrderList.html' ">돌아가기</button>
-		</div>
-	</div>
-	<div id="lightbox-shadow2">
-
-		<div id="lightbox2">
-			<h1>1:1문의</h1>
-			<button>문의하기</button>
-			<button type="button"
-				onclick="location.href='auctionMyOrderList.html' ">취소</button>
-		</div>
-	</div>
-	<div id="lightbox-shadow3">
-
-		<div id="lightbox3">
-			<h1>구매후기</h1>
-			<button>완료</button>
-			<button type="button"
-				onclick="location.href='auctionMyOrderList.html' ">취소</button>
-		</div>
-	</div>
 	
 </body>
 <script>
@@ -657,7 +544,7 @@ for (var i = 0; i < apList.length; i++) {
             +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>";
             
 		main +="<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
-             +"<input  type='button' onclick=\"location.href='auccancel?ranum="+apList[i].aup_ptnum+"')\" value='취소'/></td></tr></table>";
+             +"<input type='button' onclick=\"location.href='auccancel?aup_ptnum="+apList[i].aup_ptnum+"&aup_ranum="+apList[i].aup_ranum+"&aup_mbid_n="+apList[i].aup_mbid_n+"&aut_date="+apList[i].aut_date+"'\" value='취소'/></td></tr></table>";
              
 	} else if(apList[i].aup_step==2){
 			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
@@ -671,8 +558,8 @@ for (var i = 0; i < apList.length; i++) {
 		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
 		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
 		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
-		    +"<tr><td colspan='3'><input type='button' onclick=\"btzRevQ('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
-            +"<input type='button' onclick=\"review('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/></td></tr></table>";
+		    +"<tr><td colspan='3'><input type='button' onclick=\"btzRevQ('"+apList[i].aup_ptnum+"')\" value='고객센터 문의'/>"
+            +"<input type='button' onclick=\"review('"+apList[i].aup_ptnum+"')\" value='수령확인구매후기 쓰기'/></td></tr></table>";
 		    
 			
 		} else if(apList[i].aup_step==4){
@@ -704,20 +591,23 @@ function shippingInfo(even) {
 		    success:function(data){
 		    	alert('해당 상품을 추천하였습니다.');
 		    	console.log("1234567"+data.aup_ptnum);
-		    	
-		    	sub+="상품이름 :"+data.au_title+"<br>"
-		    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n'>"
-		    	   +"이름 :<input type='text' name='aup_name'>"
-		    	   +"주소 :<input type='text' name='aup_address'>"
-		    	   +"연락처: <input type='text' name='aup_phone'>"
-		    	   +"<input type='submit' value='요청'><input id='back' type='button' value='취소'>";
-		    	   if(data.aut_kind==I){
-		    	   sub+="즉시구매:<input type='hidden' name='aut_kind'>"   
-		    	   }else if(data.aut_kind==O){
-		    	   sub+=+"낙찰:<input type='hidden' name='aut_kind'>"   
-		    	   }else{
-		    	   sub+=+"입찰:<input type='hidden' name='aut_kind'>" 
-		    	   }
+		    	 if(data.aut_kind=="I"){
+			    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+			    	   }else if(data.aut_kind=="O"){
+			    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+			    	   }else{
+			    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+			    	   };
+		    	sub+="상품번호 :"+data.aup_price+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+		    	   +"상품이름 :"+data.au_title+"<br>"
+                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
+		    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
+		    	   +"이름 :<input type='text' name='aup_name'><br>"
+		    	   +"주소 :<input type='text' name='aup_address'><br>"
+		    	   +"연락처: <input type='text' name='aup_phone'><br>"
+		    	   +"<input type='submit' value='요청'><br>"
+		    	   +"<input type='button' id='back' value='취소'>";
+		    	  
 		    	$('#total').css("display", "inline");
 		    	$('#l1').css("display", "inline");
 		    	
@@ -730,7 +620,7 @@ function shippingInfo(even) {
 		    }
 		 });//end ajax
 	
-}
+}//end sho
 
 $('#setpT').html(main);
 function good(data) {
@@ -752,36 +642,31 @@ function good(data) {
 		    	console.log(error);
 		    }
 			 
-		 });//end ajax
-}
+		 });//end good(ajax)
+}//end good
 
 
-
-/*$("#btzRevM").click(function() {
-	$('#total').css("display", "inline")
-	$('#l1').css("display", "inline")
-});*/
 $("#total").click(function() {
 	$("#total").css("display", "none");
 	$("#l1").css("display", "none");
-});
+}); // end total
 $("#back").click(function() {
 	$("#total").css("display", "none");
 	$("#l1").css("display", "none");
-});	
+}); //end back
 
 $("#review").click(function() {
 	$('#total').css("display", "inline")
 	$('#Q1').css("display", "inline")
-});
+});//end review
 $("#total").click(function() {
 	$("#total").css("display", "none");
 	$("#Q1").css("display", "none");
-});
+});// end total
 $("#backSetp").click(function() {
 	$("#total").css("display", "none");
 	$("#Q1").css("display", "none");
-});	
+});//end backSetp	
 
 	
 	function fileChk(elem) {
@@ -793,7 +678,7 @@ $("#backSetp").click(function() {
 			console.log("Notempty")
 			$('#fileCheck').val(1);//파일 첨부 했음
 		}
-	}
+	}//end fileChk
 </script>
 
 </html>

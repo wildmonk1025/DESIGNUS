@@ -22,6 +22,7 @@ public class AjaxHomeController {
 	@Autowired
 	private CommonMM cm;
 	private MemberMM mm;
+	
 	ModelAndView mav;
 	@RequestMapping(value = "/bestajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
 	public String replyInsert() {
