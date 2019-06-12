@@ -198,6 +198,14 @@ public class AuctionMM {
 		at.setAut_price(totalPrice);
 		
 		if(Tqty > 0) {
+			
+			System.out.println("[6] inbuyNum ="+inbuyNum);
+			System.out.println("[6] id ="+id);
+			System.out.println("[6] price ="+price);
+			System.out.println("[6] qty ="+qty);
+			System.out.println("[6] Tqty ="+Tqty);
+			System.out.println("[6] totalPrice ="+totalPrice);
+			
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);

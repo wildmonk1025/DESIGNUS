@@ -84,12 +84,12 @@
 
 	<insert id="setAuctionUTI" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1)
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
 
 	<insert id="setAuctionUTT" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1)
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
  
 	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
