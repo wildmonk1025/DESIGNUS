@@ -16,6 +16,7 @@ import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.UploadFile;
@@ -81,7 +82,7 @@ public class RevAuctionMM {
 		String view = null;
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
-		
+
 		int nb = 1;
 		String decidechk = null;
 		RevAuction ra = new RevAuction();
@@ -96,15 +97,15 @@ public class RevAuctionMM {
 		nb = rDao.getrevAuctionBasketSelect(bk);
 		bk.setRab_ranum(nb);
 		//꿍 기능 End
-		
+
 		List<RevAuctionTender> rat_decide = rDao.getDecideCheckSelect(ra);
-		for(int i=0;i<rat_decide.size();i++) {
+		for (int i = 0; i < rat_decide.size(); i++) {
 			System.out.println(rat_decide.get(i).getRat_decide());
-			if(rat_decide.get(i).getRat_decide().equals("O") || ra.getRa_mbid().equals(id) || !grade.equals("W")) {
+			if (rat_decide.get(i).getRat_decide().equals("O") || ra.getRa_mbid().equals(id) || !grade.equals("W")) {
 				decidechk = "HIDE";
 			}
 		}
-		mav.addObject("decidechk",decidechk);
+		mav.addObject("decidechk", decidechk);
 		mav.addObject("nb", bk.getRab_ranum());
 		mav.addObject("raInfo", ra);
 		if (ra_num == ra.getRa_num()) {
@@ -201,5 +202,35 @@ public class RevAuctionMM {
 		} else {
 			return "입력할 수 없습니다.";
 		}
+	}
+
+	public int reqDecision(revAuctionProgress rap) {
+		String id = session.getAttribute("id").toString();
+		int msg = 0; //본인은 의뢰할 수 없습니다.
+		//글 작성자를 임시로 rap_mbid_n에 담아와 세션의 "id"와 비교후, 동일하면 RAT_DECIDE를 "O"로 변경
+		String revwriter = rap.getRap_mbid_n();
+		//rap_mbid_n에 세션 "id"를 세팅
+		rap.setRap_mbid_n(id);
+		if (!rap.getRap_mbid_w().equals(id)) {
+			if (revwriter.equals(id)) {
+				int flag1 = rDao.reqDecisionUpdate(rap);
+				msg = 1; //의뢰한 본인의 의뢰하기 완료
+				System.out.println("flag1의 값=" + flag1);
+				System.out.println("의뢰한 본인의 의뢰하기 완료. O로 변경");
+			} else {
+				msg = 2; //다른사람의 의뢰하기 완료
+				System.out.println("다른사람의 의뢰하기 완료.");
+			}
+
+			int cnt = rDao.reqDecisionSelect(rap);
+			System.out.println("cnt확인=" + cnt);
+			if (cnt == 0) {
+				int flag2 = rDao.reqDecisionInsert(rap);
+				msg = 3; //의뢰접수 완료
+			} else {
+				msg = 4; //이미 의뢰한 접수내역이 존재합니다.
+			}
+		}
+		return msg;
 	}
 }
