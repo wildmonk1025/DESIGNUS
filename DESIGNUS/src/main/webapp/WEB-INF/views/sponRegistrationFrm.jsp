@@ -62,7 +62,7 @@ div {
 }
 
 #contents {
-	border: 1px solid red;
+	border: none;
 	width: 1000px;
 	height: 500px;
 }
@@ -89,7 +89,7 @@ input {
 #LoadImg2 {
 	width: 300px;
 	height: 200px;
-	marginp: 20px;
+	margin: 20px;
 	border: none;
 }
 </style>
@@ -104,24 +104,26 @@ input {
 	<div id="homeMain">
 		<div id="title">후원 상품 등록</div>
 		<div id="contents">
-			<form>
+			<form action="sponupload" name="sponwriter" method="post"
+				enctype="multipart/form-data">
 				<table id="tableCont" border="1" style="text-align: center">
 					<tr style="height: 50">
 						<td style="width: 100">제품명</td>
-						<td colspan="3"><input type="text"></td>
+						<td colspan="3"><input type="text" id="ss_title"
+							name="ss_title"></td>
 					</tr>
 					<tr style="height: 50">
 						<td>가격</td>
-						<td style="width: 400"><input type="number"
-							style="width: 100%"></td>
+						<td style="width: 400"><input id="ss_price" name="ss_price"
+							type="number" style="width: 100%"></td>
 						<td style="width: 100">목표주문량</td>
-						<td style="width: 400"><input type="number"
-							style="width: 100%"></td>
+						<td style="width: 400"><input id="ss_goalqty"
+							name="ss_goalqty" type="number" style="width: 100%"></td>
 					</tr>
 					<tr style="height: 50">
 						<td>이미지</td>
 						<td colspan="3"><input type="file" id="imgInput"
-							style="width: 700px; float: left;"> <!-- <button
+							name="imgInput" style="width: 700px; float: left;"> <!-- <button
 								style="width: 6%; height: 48; float: right; border-radius: 100px">╉</button>
 							<button style="width: 14%; height: 48; float: right;">파일첨부</button> -->
 						</td>
@@ -134,11 +136,14 @@ input {
 					<tr>
 					</tr>
 					<tr style="height: 100">
-						<td colspan="4" rowspan="2">상품설명</td>
+						<td colspan="4" rowspan="2"><textarea id="ss_contents"
+								name="ss_contents"
+								style="width: 1000px; height: 140px; font-size: 17px; resize: none;"
+								rows="20" cols="10" placeholder="상품 상세설명을 작성하세요."></textarea></td>
 					</tr>
 				</table>
 				<div id="btn2">
-					<button class="btn2">후원등록</button>
+					<input type="submit" class="btn2" value="후원등록" />
 					<button class="btn2">돌아가기</button>
 				</div>
 			</form>
