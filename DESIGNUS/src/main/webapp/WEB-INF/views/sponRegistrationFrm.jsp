@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 div {
@@ -87,16 +86,15 @@ input {
 	height: 50px;
 }
 
-.img_wrap {
+#LoadImg2 {
 	width: 300px;
-	margin-top: 50px;
-}
-
-.img_wrap img {
-	max-width: 100%;
+	height: 200px;
+	marginp: 20px;
+	border: none;
 }
 </style>
 <title>Home</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<div id="mainheader">
@@ -122,15 +120,15 @@ input {
 					</tr>
 					<tr style="height: 50">
 						<td>이미지</td>
-						<td colspan="3"><input type="file" id="input_imgs"
-							style="width: 700px; float: left;" multiple> <!-- <button
+						<td colspan="3"><input type="file" id="imgInput"
+							style="width: 700px; float: left;"> <!-- <button
 								style="width: 6%; height: 48; float: right; border-radius: 100px">╉</button>
 							<button style="width: 14%; height: 48; float: right;">파일첨부</button> -->
 						</td>
 					</tr>
 					<tr style="height: 100">
 						<td colspan="4" rowspan="2"><div id="img_wrap">
-								<img id="img" />
+								<img id="LoadImg2" src="*" alt="your image" />
 							</div></td>
 					</tr>
 					<tr>
@@ -148,34 +146,24 @@ input {
 	</div>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include></div>
-	-
 
 </body>
 <script>
-	var sel_file;
+	function readURL(input) {
 
-	$(document).ready(function() {
-		$("#input_imgs").on("change", handleImgsFilesSelect);
-	});
-	function handleImgsFilesSelect(e) {
-		var files = e.target.files;
-		var fileArr = Array.prototype.slice.call(files);
-
-		filesArr.forEach(function(f) {
-			if (!f.type.match("image.*")) {
-				alert("확장자는 이미지 확장자만 가능합니다.");
-				return;
-			}
-			
-			sel_files.push(f);
-			
+		if (input.files && input.files[0]) {
 			var reader = new FileReader();
-			reader.onload=function(e){
-				var img_html = "<img src=\"" + e.target.result + "\" />";
-				$(".imgs_wrap").append(img_html);
+
+			reader.onload = function(e) {
+				$('#LoadImg2').attr('src', e.target.result);
 			}
-			reader.readAsDataURL(f);
-		});
+
+			reader.readAsDataURL(input.files[0]);
+		}
 	}
+
+	$("#imgInput").change(function() {
+		readURL(this);
+	});
 </script>
 </html>
