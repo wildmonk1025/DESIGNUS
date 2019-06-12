@@ -198,6 +198,7 @@ div {
 					<div class="raListPrice">
 						<p>경매최저가 : ${ra.ra_min }</p>
 						<p>경매최고가 : ${ra.ra_max }</p>
+						
 					</div>
 					<div class="raListDate">
 						마감시간 : ${ra.ra_date}
@@ -240,7 +241,7 @@ div {
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	
+
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");
 		$("#ListView2").css("display", "none");
