@@ -229,7 +229,7 @@ a:hover {
 		</div>
 		<div id="loginwriter">
 			<div id="adminpage">
-				<a href="admininfo">관리자</a>
+				<a href="adminInfo">관리자</a><br/><br/>
 			</div>
 			<div id="mypageimg">
 				<a href="mypage">마이페이지</a>
