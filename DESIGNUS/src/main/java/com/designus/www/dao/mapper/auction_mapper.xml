@@ -22,13 +22,14 @@
 
 	<select id="getAuctionListSelect" parameterType="auction" resultType="auction">
 	  <![CDATA[
-		select * from(
-    select rownum AS RN,au_num, au_mbid_w, au_title, au_cgcode, au_qty,
-    au_minprice, au_inprice, au_contents, au_date, aut_price, ROW_NUMBER() 
-    OVER(PARTITION BY AU_NUM ORDER BY AUT_PRICE DESC) AS AUNUM
-     from AUAUT where AU_CGCODE= ${au_cgcode}
-     ) where AUNUM=1
+		SELECT a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty,
+		a.au_minprice, a.au_inprice, a.au_contents, a.au_date, b.aut_price FROM AU a
+		LEFT OUTER JOIN (select aut_num,MAX(aut_price)as aut_price FROM aut group by aut_num) b
+		ON  a.AU_NUM = b.AUT_NUM
+		where a.au_cgcode = ${au_cgcode}
+		ORDER BY a.AU_NUM
       ]]>
+     
 	</select>
 
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
@@ -41,18 +42,18 @@
 	</select>
 
 	<insert id="setAuctionTenderI" parameterType="auctiontender">
-		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I')
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I',DEFAULT)
 	</insert>
 
 	<insert id="setAuctionTenderT" parameterType="auctiontender">
-		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'T')
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'T',DEFAULT)
 	</insert>
 	
 	<update id="setAuctionTenderDel" parameterType="auctiontender">
 		UPDATE AU SET AU_QTY = AU_QTY-(${aut_price}/AU_INPRICE) WHERE AU_NUM = ${aut_aunum}
 	</update>
 
-	<select id="auctionTenderSel" parameterType="auctiontender" resultType="Integer">
+	<select id="auctionTenderSel" parameterType="auctiontender" resultType="String">
 		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_num = ${aut_aunum}
 	</select>
 
@@ -84,12 +85,12 @@
 
 	<insert id="setAuctionUTI" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1)
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
 
 	<insert id="setAuctionUTT" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1)
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
  
 	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
@@ -120,7 +121,7 @@
 	
 	<insert id="setAuctionTenderIns" parameterType="auction">
 		INSERT INTO AUT
-        VALUES(${au_num},'AAAA',100,'T')
+        VALUES(${au_num},'AAAA',0,'T',DEFAULT)
 	</insert>
 	
 	<select id="getAuctionImgSel" parameterType="auction" resultType="String">

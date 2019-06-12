@@ -171,4 +171,18 @@
      ) where  RankNo=1  
   ]]>
 	</select>
+	<select id="enterSelect" parameterType="auctionprogress" resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWtest
+       where AUP_PTNUM=${aup_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
+	<delete id="autcancelDelete" >
+		  DELETE FROM AUT 
+     WHERE AUT_MBID=#{id} AND AUT_AUNUM=#{ranum}
+	</delete>
 </mapper>

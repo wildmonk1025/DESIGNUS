@@ -29,7 +29,7 @@ public interface IauctionDao {
 
 	void setAuctionTenderDel(AuctionTender at);
 
-	int auctionTenderSel(AuctionTender at);
+	String auctionTenderSel(AuctionTender at);
 
 	void setAuctionTenderT(AuctionTender at);
 

@@ -457,6 +457,7 @@ public class MypageMM {
 		boolean a = pDao.auccancelDelete(ranum,id);
 		System.out.println("aaaaa : "+a);
 		if(a) {
+			 boolean b= pDao.autcancelDelete(ranum,id);
 			mav.addObject("check", 1);
 		}else {
 			mav.addObject("check", 2);
@@ -543,6 +544,18 @@ public class MypageMM {
 		}else {
 			json = null;
 
+		}
+		return json;
+	}
+
+	public String enter(AuctionProgress ap) {
+		String id=session.getAttribute("id").toString();
+		String json = null;
+		ap=pDao.enterSelect(ap);
+		System.out.println(ap.getAu_mbid_w());
+		if(ap != null) {
+		json = new Gson().toJson(ap);
+		System.out.println("json=" + json);
 		}
 		return json;
 	}

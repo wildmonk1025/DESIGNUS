@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
 
-/*@Alias("auction")*/
+@Alias("auction")
 @Data
 
 public class Auction {

@@ -462,6 +462,11 @@ public class UploadFile {
 		System.out.println("sys=" + sysFileName3);
 		System.out.println("sys=" + sysFileName4);
 
+		aDao.AuctionImageInsert1(au);
+		aDao.AuctionImageInsert2(au);
+		aDao.AuctionImageInsert3(au);
+		aDao.AuctionImageInsert4(au);
+		
 		// 5.메모리->실제 파일 업로드
 		/*
 		 * System.out.println(session.getAttribute("id").toString());
@@ -474,10 +479,7 @@ public class UploadFile {
 			file3.transferTo(new File(path + sysFileName3));
 			file4.transferTo(new File(path + sysFileName4));
 			System.out.println("PC로컬경로에 파일 업로드 완료");
-			aDao.AuctionImageInsert1(au);
-			aDao.AuctionImageInsert2(au);
-			aDao.AuctionImageInsert3(au);
-			aDao.AuctionImageInsert4(au);
+			
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

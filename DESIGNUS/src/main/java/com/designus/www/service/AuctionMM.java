@@ -55,11 +55,11 @@ public class AuctionMM {
 		au.setAu_contents(contents);
 		num = aDao.getAuctionWriteSel(au);
 		au.setAu_num(num);
-		upload.fileUpImage(multi, au);
 		if(aDao.getAuctionWriteInsert(au)) { 
 			num = aDao.getAuctionWriteSel(au);
 			au.setAu_num(num);
-			aDao.setAuctionTenderIns(au);
+			upload.fileUpImage(multi, au);
+			/* aDao.setAuctionTenderIns(au); */
 			mav.addObject("au_num",num);
 		  view = "redirect:/auctionRead"; 
 		  } else { 
@@ -85,6 +85,12 @@ public class AuctionMM {
 		au.setAu_cgcode(cgcode);
 		rau.setRa_cgcode(cgcode);
 		auList = aDao.getAuctionListSelect(au);
+			for ( int i = 0; i < auList.size(); i++) {
+				if(auList.get(i).getAut_price() < 0) {
+				auList.get(i).setAut_price(0);
+				}
+			}
+		
 		raList = rDao.getRevAuctionListSelect(rau);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
@@ -198,6 +204,7 @@ public class AuctionMM {
 		at.setAut_price(totalPrice);
 		
 		if(Tqty > 0) {
+			
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
@@ -212,20 +219,28 @@ public class AuctionMM {
 		String id = (String)session.getAttribute("id");
 		String view = null;
 		int price = 0;
+		String chk = null;
 		AuctionTender at= new AuctionTender();
 		at.setAut_aunum(tenderNum);
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
-		price = aDao.auctionTenderSel(at);
-
+		//price =
+		chk = aDao.auctionTenderSel(at);
+		if(chk == null) {
+			price = 0;
+		} else {
+		price = Integer.parseInt(chk);
+		}
+		
+		
+		mav.addObject("au_num",tenderNum);
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
-			aDao.setAuctionUTT(at);
+			//aDao.setAuctionUTT(at); 입찰하기 
 			
-			view = "redirect:/auctionMyOrderList";
+			view = "redirect:/auctionRead";
 		}
 		if(price >= tenderPrice) {
-			mav.addObject("au_num",tenderNum);
 			view = "redirect:/auctionRead";
 		}
 		mav.setViewName(view);
