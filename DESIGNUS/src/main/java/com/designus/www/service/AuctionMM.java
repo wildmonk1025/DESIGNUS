@@ -55,10 +55,10 @@ public class AuctionMM {
 		au.setAu_contents(contents);
 		num = aDao.getAuctionWriteSel(au);
 		au.setAu_num(num);
-		upload.fileUpImage(multi, au);
 		if(aDao.getAuctionWriteInsert(au)) { 
 			num = aDao.getAuctionWriteSel(au);
 			au.setAu_num(num);
+			upload.fileUpImage(multi, au);
 			aDao.setAuctionTenderIns(au);
 			mav.addObject("au_num",num);
 		  view = "redirect:/auctionRead"; 
