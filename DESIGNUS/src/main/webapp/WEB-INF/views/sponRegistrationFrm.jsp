@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 div {
@@ -87,16 +86,15 @@ input {
 	height: 50px;
 }
 
-.img_wrap {
+#LoadImg2 {
 	width: 300px;
-	margin-top: 50px;
-}
-
-.img_wrap img {
-	max-width: 100%;
+	height: 200px;
+	marginp: 20px;
+	border: none;
 }
 </style>
 <title>Home</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<div id="mainheader">
@@ -150,7 +148,7 @@ input {
 		<jsp:include page="footer.jsp"></jsp:include></div>
 
 </body>
-<script src="jquery.min.js">
+<script>
 	function readURL(input) {
 
 		if (input.files && input.files[0]) {
