@@ -35,21 +35,9 @@ public class AdminController {
 		return "memberList";
 	}
 
-	@RequestMapping(value = "/permitWriApply", method = RequestMethod.GET)
-	public String permitWriApply() {
-
-		return "permitWriApply";
-	}
-
-	@RequestMapping(value = "/transformList", method = RequestMethod.GET)
-	public String transformList() {
-
-		return "transformList";
-	}
-
 	@RequestMapping(value = "/categoryEdit", method = RequestMethod.GET)
 	public String categoryEdit() {
-		
+
 		return "categoryEdit";
 	}
 

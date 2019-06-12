@@ -59,14 +59,12 @@ public class AuctionMM {
 			num = aDao.getAuctionWriteSel(au);
 			au.setAu_num(num);
 			upload.fileUpImage(multi, au);
-			/* aDao.setAuctionTenderIns(au); */
+			aDao.setAuctionTenderIns(au);
 			mav.addObject("au_num",num);
 		  view = "redirect:/auctionRead"; 
 		  } else { 
 		  view = "auctionWrite";
 		  }
-		
-		
 		
 		mav.setViewName(view);
 		return mav;
@@ -85,12 +83,6 @@ public class AuctionMM {
 		au.setAu_cgcode(cgcode);
 		rau.setRa_cgcode(cgcode);
 		auList = aDao.getAuctionListSelect(au);
-			for ( int i = 0; i < auList.size(); i++) {
-				if(auList.get(i).getAut_price() < 0) {
-				auList.get(i).setAut_price(0);
-				}
-			}
-		
 		raList = rDao.getRevAuctionListSelect(rau);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
@@ -205,6 +197,13 @@ public class AuctionMM {
 		
 		if(Tqty > 0) {
 			
+			System.out.println("[6] inbuyNum ="+inbuyNum);
+			System.out.println("[6] id ="+id);
+			System.out.println("[6] price ="+price);
+			System.out.println("[6] qty ="+qty);
+			System.out.println("[6] Tqty ="+Tqty);
+			System.out.println("[6] totalPrice ="+totalPrice);
+			
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
@@ -219,28 +218,20 @@ public class AuctionMM {
 		String id = (String)session.getAttribute("id");
 		String view = null;
 		int price = 0;
-		String chk = null;
 		AuctionTender at= new AuctionTender();
 		at.setAut_aunum(tenderNum);
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
-		//price =
-		chk = aDao.auctionTenderSel(at);
-		if(chk == null) {
-			price = 0;
-		} else {
-		price = Integer.parseInt(chk);
-		}
-		
-		
-		mav.addObject("au_num",tenderNum);
+		price = aDao.auctionTenderSel(at);
+
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
-			//aDao.setAuctionUTT(at); 입찰하기 
+			aDao.setAuctionUTT(at);
 			
-			view = "redirect:/auctionRead";
+			view = "redirect:/auctionMyOrderList";
 		}
 		if(price >= tenderPrice) {
+			mav.addObject("au_num",tenderNum);
 			view = "redirect:/auctionRead";
 		}
 		mav.setViewName(view);
