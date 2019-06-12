@@ -5,6 +5,7 @@ import java.util.List;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
+import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
 
@@ -33,4 +34,10 @@ public interface IRevAuctionDao {
 	boolean revAuctionApplyInsert(RevAuctionTender rat);
 
 	List<RevAuctionTender> getDecideCheckSelect(RevAuction ra);
+
+	int reqDecisionUpdate(revAuctionProgress rap);
+
+	int reqDecisionInsert(revAuctionProgress rap);
+
+	int reqDecisionSelect(revAuctionProgress rap);
 }
