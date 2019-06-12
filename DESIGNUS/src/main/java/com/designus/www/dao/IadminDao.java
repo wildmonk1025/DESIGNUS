@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.Major;
 import com.designus.www.bean.Report;
 
 //import org.springframework.stereotype.Repository;
@@ -15,6 +16,8 @@ public interface IadminDao {
 
 
 	List<Report> getrepInfo();
+
+	List<Major> gettransInfo();
   
   
 }

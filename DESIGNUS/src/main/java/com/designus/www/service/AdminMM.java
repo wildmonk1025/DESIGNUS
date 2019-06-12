@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Major;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
 import com.google.gson.Gson;
@@ -40,7 +41,16 @@ public class AdminMM {
 		System.out.println("여기는??");
 	return jsonObj;
 	}
+	public String transformList() {
+		List<Major> rList=iDao.gettransInfo();
 
+        System.out.println("이거는되나");
+		Gson gs=new Gson();
+		String jsonObj=gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+	return jsonObj;
+	}
 	
 
 }

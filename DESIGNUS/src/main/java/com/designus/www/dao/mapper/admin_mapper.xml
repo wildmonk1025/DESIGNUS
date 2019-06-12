@@ -8,5 +8,8 @@
      <select id="getrepInfo" parameterType="report" resultType="report">
 		SELECT * FROM RP_LIST ORDER BY RP_NUM ASC
 	</select>
+     <select id="gettransInfo" parameterType="major" resultType="major">
+		SELECT * FROM MJ
+	</select>
       
 </mapper>

@@ -31,4 +31,12 @@ public class AjaxAdminController {
 			return check;
 			
 		}
+		@RequestMapping(value = "/transformList", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
+		public String transformList() {
+			String check = am.transformList();
+			System.out.println("cm="+am.transformList());
+			System.out.println("aList="+check);
+			return check;
+			
+		}
 }
