@@ -712,11 +712,11 @@ function shippingInfo(even) {
 		    	   +"연락처: <input type='text' name='aup_phone'>"
 		    	   +"<input type='submit' value='요청'><input id='back' type='button' value='취소'>";
 		    	   if(data.aut_kind==I){
-		    	   +"즉시구매:<input type='hidden' name='aut_kind'>"   
+		    	   sub+="즉시구매:<input type='hidden' name='aut_kind'>"   
 		    	   }else if(data.aut_kind==O){
-		    	   +"낙찰:<input type='hidden' name='aut_kind'>"   
+		    	   sub+=+"낙찰:<input type='hidden' name='aut_kind'>"   
 		    	   }else{
-		    	   +"입찰:<input type='hidden' name='aut_kind'>" 
+		    	   sub+=+"입찰:<input type='hidden' name='aut_kind'>" 
 		    	   }
 		    	$('#total').css("display", "inline");
 		    	$('#l1').css("display", "inline");
