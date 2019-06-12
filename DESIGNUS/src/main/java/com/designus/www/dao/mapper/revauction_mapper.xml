@@ -67,7 +67,7 @@
 	</select>
 	
 	<update id="reqDecisionUpdate" parameterType="revauctionprogress">
-		UPDATE RAT SET RAT_DECIDE='O' WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{RAP_MBID_W}
+		UPDATE RAT SET RAT_DECIDE='O' WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w}
 	</update>
 	
 	<insert id="reqDecisionInsert" parameterType="revauctionprogress" useGeneratedKeys="true" keyProperty="rap_ptnum">

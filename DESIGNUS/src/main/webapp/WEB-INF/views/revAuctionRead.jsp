@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 
 <!DOCTYPE html>
 <html>
@@ -303,8 +304,8 @@ div {
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
 			<div id="middle_img_lv2">
-				<img src="resources/images/${raInfo.ra_image}"
-					alt="${raInfo.ra_image}" />
+				<%-- <img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" /> --%>
+				<img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/>
 			</div>
 		</div>
 		<div id="middle_contents1">
@@ -501,7 +502,7 @@ $(".subtn").click(function() {
  			  buttons: {
  			    cancel: "뒤로가기",
  			    
- 			    catch: {
+ 			    catch: { 
  			    	text: "네, 의뢰합니다.",
  					value: "go",
  			    },

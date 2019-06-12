@@ -3,9 +3,12 @@ package com.designus.www.bean;
 import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Alias("revauctionprogress")
-@Data
+@Getter
+@Setter
 public class revAuctionProgress {
 	int    rap_ptnum;
 	int    rap_ranum;
