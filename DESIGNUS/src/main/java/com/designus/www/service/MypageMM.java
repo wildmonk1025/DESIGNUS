@@ -190,8 +190,8 @@ public class MypageMM {
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 
 		Major mj = new Major();
-		mj.setMj_id(id);
-		mj.setMj_cg_code(cate);
+		mj.setMj_mbid(id);
+		mj.setMj_cgcode(cate);
 		mj.setMj_contents(conten);
 
 		boolean f = false;
@@ -201,7 +201,7 @@ public class MypageMM {
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
 			f = upload.swfileUp(multi, mj);
 			if (f) {
-				boolean b = pDao.nortowriapplyupdate(mj.getMj_id());
+				boolean b = pDao.nortowriapplyupdate(mj.getMj_mbid());
 				if (b) {
 					view = "myPage";
 				} else {
