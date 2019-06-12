@@ -18,6 +18,6 @@
 		INSERT INTO SSI
 		VALUES(${ss_num},#{imgInput})
 	</insert>
-
+    
 
 </mapper>

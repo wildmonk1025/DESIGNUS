@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Sponsor;
-import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.IsponsorDao;
 import com.designus.www.userClass.UploadFile;
 
@@ -38,6 +37,12 @@ public class SponsorMM {
 		sp.setSs_price(ssprice);
 		sp.setSs_goalqty(ssqty);
 		sp.setSs_contents(scontents);
+		
+		System.out.println("id=" + id);
+		System.out.println("title=" + title);
+		System.out.println("ssprice=" + ssprice);
+		System.out.println("ssqty=" + ssqty);
+		System.out.println("scontents=" + scontents);
 
 		num = sDao.getSponserwri(sp);
 		upload.fileUpsponsor(multi, sp);
