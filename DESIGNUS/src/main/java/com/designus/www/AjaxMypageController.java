@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.service.MypageMM;
@@ -30,24 +31,52 @@ public class AjaxMypageController {
 		return a;
 
 	}
-	@RequestMapping(value = "/sends", method = { RequestMethod.GET, RequestMethod.POST },produces="application/json;charset=utf8")
 
-	public String sends(@RequestParam int ptnum) {
-		System.out.println("여기로 와라 제발111...");
-		System.out.println("이게 작가 아이디인데1111....=" + ptnum);
-		String json = pm.sends(ptnum);
+	@RequestMapping(value = "/sends", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+
+	public String sends(@RequestBody AuctionProgress ap) {
+		System.out.println("여기로 와라 제발111...ㅠㅠ");
+		System.out.println("이게 작가 아이디인데1111...ㅠㅠ.=" + ap);
+		String json = pm.sends(ap);
 		return json;
 
 	}
-	
-	
-	/*
-	 * @RequestMapping(value =
-	 * "/ajax/lbspon",produces="application/json;charset=utf8")
-	 * 
-	 * public Map<String, Object> lbspon(Integer pageNum ,String kind) {
-	 * System.out.println("여기로 와라 제발...ㅜㅜ"); Map<String,
-	 * Object>sMap=pm.lbspon(pageNum,kind); return sMap; }
-	 */
 
+	@RequestMapping(value = "/enter", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String enter(@RequestBody AuctionProgress ap) {
+		System.out.println("여기로 와라 제발111...");
+		System.out.println(ap.getAup_ptnum());
+		// System.out.println(map.get("pnum"));
+		// System.out.println("이게 작가 아이디인데1111....=" + pnum);
+		// int pnum1 = Integer.parseInt(pnum.substring(5,5));
+		// System.out.println(pnum1);
+		// int pnum = map.get("pnum");
+		String json = pm.enter(ap);
+		System.out.println("5번째 시도....");
+		return json;
+
+	}
+
+	@RequestMapping(value = "/scheck", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String scheck(@RequestBody AuctionProgress ap) {
+		System.out.println("(컨트롤러)의뢰인 배송정보 시작!!!");
+		System.out.println(ap.getAup_ptnum());
+		String json = pm.scheck(ap);
+		System.out.println("(컨트롤러)의뢰인 배송정보 마무으리!!!");
+		return json;
+
+	}
+	@RequestMapping(value = "/reviewboard", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String reviewboard(@RequestBody AuctionProgress ap) {
+		System.out.println("(컨트롤러)수령확인 및 구매후기 작성 시작!!!");
+		System.out.println(ap.getAup_ptnum());
+		//String json = pm.reviewboard(ap);
+		System.out.println("(컨트롤러)수령확인 및 구매후기 작성 마무으리!!!");
+		return null;
+
+	}
 }

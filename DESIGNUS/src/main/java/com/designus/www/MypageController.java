@@ -123,9 +123,8 @@ public class MypageController {
 	public ModelAndView aucapply(AuctionProgress ap) {
 		System.out.println("일단 여기로 와야 하는디....1123123");
 		mav = new ModelAndView();
-		
 		 mav=pm.aucapply(ap);
-		 System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...123123123???");
+		 System.out.println("아니...인간적으로 여기 와야 되는거 아님??123123123???");
 		return mav;
 	}
 	@RequestMapping(value = "/reviewBoardWrite", method = {RequestMethod.GET,RequestMethod.POST})
@@ -139,11 +138,12 @@ public class MypageController {
 	}
 	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
 
-	public ModelAndView auccancel(int ranum) {
+	public ModelAndView auccancel(AuctionProgress ap) {
 		mav=new ModelAndView();
-		System.out.println("여기로 와라 제발...");
-		System.out.println("이게 작가 아이디인데....=" + ranum);
-		mav=pm.auccancel(ranum);
+		System.out.println("(컨트롤러)출품구매 취소 시작");
+		System.out.println("이게 작가 아이디인데....=" + ap);
+		mav=pm.auccancel(ap);
+		System.out.println("(컨트롤러)출품구매 취소 마무의리");
 		return mav;
 
 	}

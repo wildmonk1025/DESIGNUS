@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+div{
+	margin: auto;
+}
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
@@ -176,7 +181,7 @@
 #inbuyLB-shadow {
 	position: absolute;
 	width: 100%;
-	height: 1200px;
+	height: 100%;
 	background-color: black;
 	z-index: 1001;
 	opacity: 0.75;

@@ -11,11 +11,11 @@
             margin: auto;
             width: 1520px;
             height: auto;
+            
         }
 
         div {
             margin: auto;
-            border: 1px solid blue;
         }
 
         ul {
@@ -39,6 +39,16 @@
             align-content: center;
             width: 1216px;
             height: 500px;
+        }
+     
+        
+        
+        #trans{
+        	float: left;
+            align-content: center;
+            width: 1216px;
+            height: 500px;
+        
         }
 
         .opt {
@@ -66,70 +76,107 @@
             height: 170px;
             overflow-y: scroll;
             border: 1px solid grey;
+            
+            
         }
         
-        #transformlist td{
-            width: 200px;
-        }
 
+.lipont{
+	font-size:20px;
+}
+.best {
+	border: 1px solid blue;
+	color: black; display : inline;
+	float: left;
+	width: 320px;
+	heigth: 55px;
+	display: inline;
+}
     </style>
 </head>
 <body>
     <div id="mainheader">
-
+<div id="mainheader">
+		<jsp:include page="main.jsp" />
+	</div>
     </div>
     <div id="adminmenu">
-        <ul>
-            <li style="text-align: center; font-size: 20px">관리내역</li>
-            <li>게시판/댓글</li>
-            <li>신고내역</li>
-            <li>1:1문의</li>
-            <li>회원관리</li>
-            <li>작가 전환신청</li>
-            <li>작가 가입신청</li>
-            <li>카테고리 관리</li>
-            <li>게시판/댓글</li>
-            <li>게시판/댓글</li>
-
-        </ul>
+        <jsp:include page="admininclud.jsp"></jsp:include>
     </div>
     <div id="adminopt">
         <div class="opt">
-            <h3>신고내역</h3>
-            <div id="declarelist">
-                <table id="declareinfo">
-
-                </table>
-            </div>
+            <h3 style="text-align: center; font-size: 25px; background-color: orange;">신고내역</h3><hr/>
+            <div id="declarelist"> </div>
         </div>
+     
+    
         <div class="opt">
-            <h3>판매자 전환신청</h3>
+            <h3 style="text-align: center; font-size: 25px; background-color: orange;">판매자 전환신청</h3>
             <div id="transformlist">
-                <table id="transforminfo">
-                    
-                </table>
+                
             </div>
-        </div>
-    </div>
+            </div>
+      </div>
+        
 </body>
 <script>
-    var x="";
-    var y="";
-    $("#declareinfo").addClass(function(){
-        for(var j=0;j<4;j++) {
-            x+="<tr><td>신고번호</td><td>신고유형</td><td>사유</td><td>피해자ID</td><td>피의자ID</td>"
-                            +"<td>제목</td><td>신고일</td><td rowspan=\"2\">첨부파일 확인<br><button>첨부 파일</button></td></tr><tr>"
-                            +"<td colspan=\"8\" style=\"text-align: center\">[내용]</td></tr><br>";
-        }
-        $("#declareinfo").html(x);
-    });
-    $("#transforminfo").addClass(function(){
-        for(var j=0;j<3;j++) {
-            y+="<tr><td>신청번호</td><td>아이디</td><td>전공분야</td><td>자료여부(O,X)</td>"
-                            +"<td rowspan=\"3\">첨부파일 확인<br><button>첨부파일</button></td></tr>"
-                            +"<tr><td>내용</td></tr><tr><td>파일명</td><td>사진</td></tr>";
-        }
-        $("#transforminfo").html(y);
-    });
+$(document).ready(function() {
+	$.ajax({
+		url : 'Declarelist',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"
+					  +"신고번호:" +data[i].rp_num+"<br>"
+					  +"신고자아이디:"+data[i].rp_mbid_d+"<br>"
+					  +"가해자아이디:"+data[i].rp_mbid_a+"<br>"
+					  +"신고위치:"+data[i].rp_locate+"<br>"
+					  +"</div>";
+					  }
+			$("#declarelist").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
+$(document).ready(function() {
+	$.ajax({
+		url : 'transformList ',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"
+					  +"아이디:" +data[i].mj_mbid+"<br>"
+					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
+					  +"포트폴리오:"+data[i].mj_contents+"<br>"
+					  +"파일설명:"+data[i].mj_portf+"<br>"
+					  +"</div>";
+					  }
+			$("#transformlist").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
+ 
+    
 </script>
 </html>

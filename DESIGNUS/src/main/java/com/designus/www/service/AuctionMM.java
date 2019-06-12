@@ -55,18 +55,16 @@ public class AuctionMM {
 		au.setAu_contents(contents);
 		num = aDao.getAuctionWriteSel(au);
 		au.setAu_num(num);
-		upload.fileUpImage(multi, au);
 		if(aDao.getAuctionWriteInsert(au)) { 
 			num = aDao.getAuctionWriteSel(au);
 			au.setAu_num(num);
+			upload.fileUpImage(multi, au);
 			aDao.setAuctionTenderIns(au);
 			mav.addObject("au_num",num);
 		  view = "redirect:/auctionRead"; 
 		  } else { 
 		  view = "auctionWrite";
 		  }
-		
-		
 		
 		mav.setViewName(view);
 		return mav;
@@ -198,6 +196,14 @@ public class AuctionMM {
 		at.setAut_price(totalPrice);
 		
 		if(Tqty > 0) {
+			
+			System.out.println("[6] inbuyNum ="+inbuyNum);
+			System.out.println("[6] id ="+id);
+			System.out.println("[6] price ="+price);
+			System.out.println("[6] qty ="+qty);
+			System.out.println("[6] Tqty ="+Tqty);
+			System.out.println("[6] totalPrice ="+totalPrice);
+			
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);

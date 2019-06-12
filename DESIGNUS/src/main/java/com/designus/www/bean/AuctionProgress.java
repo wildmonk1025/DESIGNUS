@@ -25,4 +25,5 @@ public class AuctionProgress {
     String aut_kind;
     int ponitN;
     int ponitW;
+    String aut_date;
 }

@@ -376,14 +376,14 @@ public class MypageMM {
 	public ModelAndView aucapply(AuctionProgress ap) {
 		mav=new ModelAndView();
 		int ponitN=mDao.memberNpoint(ap);
-		int ponitW=mDao.memberWpoint(ap);
+		System.out.println("ponitN"+ponitN);
 		boolean a=pDao.aucapplyupdate(ap);
+		System.out.println("여기 까지는 오는 건가요//????");
 		  ap.setPonitN(ponitN);
-		  ap.setPonitW(ponitW);
 			if(a) {
 				boolean b=pDao.aucapplyMbNupdate(ap);
-				boolean c=pDao.aucapplyMbWupdate(ap);
-				if(b && c) {
+				System.out.println("여기 까지는 오는 건가요11//????");
+				if(b ) {
 				  mav.addObject("msg", 1);
 				}else {
 					mav.addObject("msg", 2);
@@ -449,14 +449,19 @@ public class MypageMM {
 		return a;
 	}
 
-	public ModelAndView auccancel(int ranum) {
+	public ModelAndView auccancel(AuctionProgress ap) {
 		mav=new ModelAndView();
-		System.out.println("내마음 오지고 지리고 레릿고 : ");
-		String id=session.getAttribute("id").toString();
-		System.out.println("ididididi :"+id);
-		boolean a = pDao.auccancelDelete(ranum,id);
+		System.out.println("(서비스클래스)출품구매 취소 시작 ");
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : "+ap.getAup_ptnum());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autnum: "+ap.getAup_ranum());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: "+ap.getAup_mbid_n());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: "+ap.getAut_date());
+		boolean a = pDao.auccancelDelete(ap);
+		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :"+a);
 		System.out.println("aaaaa : "+a);
+		
 		if(a) {
+			 boolean b= pDao.autcancelDelete(ap);
 			mav.addObject("check", 1);
 		}else {
 			mav.addObject("check", 2);
@@ -469,20 +474,13 @@ public class MypageMM {
 		mav = new ModelAndView();
 		String id=session.getAttribute("id").toString();
 		List<AuctionProgress> apwList = null;
-		
 		String view=null;
-       
         int num = (pageNum == null) ? 1 : pageNum;
-	
-		
-		
 		apwList=pDao.auctionMyAcceptListSelect(id,num);
 		Gson gson=new Gson();
 		String str=gson.toJson(apwList);
 		System.out.println("size"+apwList.size());
-		System.out.println("????"+apwList.get(0).getAup_ptnum());
-		System.out.println("????"+apwList.get(1).getAup_ptnum());
-		System.out.println("????"+apwList.get(2).getAup_ptnum());
+		
 		mav.addObject("apwList", str);
 		mav.addObject("pagMPWing", getMPWaging(num,kind));
 		System.out.println("사망띠....");
@@ -533,10 +531,10 @@ public class MypageMM {
 		return mav;
 	}
 
-	public String sends(int ptnum) {
+	public String sends(AuctionProgress ap) {
 		String id=session.getAttribute("id").toString();
 		String json = null;
-		AuctionProgress ap=pDao.sendsSelect(ptnum,id);
+		ap=pDao.sendsSelect(ap);
 		if(ap != null) {
 		json = new Gson().toJson(ap);
 		System.out.println("json=" + json);
@@ -544,6 +542,31 @@ public class MypageMM {
 			json = null;
 
 		}
+		return json;
+	}
+
+	public String enter(AuctionProgress ap) {
+		
+		String json = null;
+		ap=pDao.enterSelect(ap);
+		System.out.println(ap.getAu_mbid_w());
+		if(ap != null) {
+		json = new Gson().toJson(ap);
+		System.out.println("json=" + json);
+		}
+		return json;
+	}
+
+	public String scheck(AuctionProgress ap) {
+		System.out.println("(메니저먼트) 스타트");
+		String json = null;
+		ap=pDao.scheckSelect(ap);
+		System.out.println(ap.getAu_mbid_w());
+		if(ap != null) {
+		json = new Gson().toJson(ap);
+		System.out.println("json=" + json);
+		}
+		System.out.println("(메니저먼트) 마무의리");
 		return json;
 	}
 

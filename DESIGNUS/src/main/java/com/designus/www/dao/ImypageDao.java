@@ -66,7 +66,7 @@ public interface ImypageDao {
 
 	boolean reviewBoardyhWriteupDate(int ptnum);
 
-	boolean auccancelDelete(@Param("ranum") int ranum, @Param("id") String id);
+	boolean auccancelDelete(AuctionProgress ap);
 
 	List<AuctionProgress> auctionMyAcceptListSelect(@Param("id") String id,@Param("num") int num);
 
@@ -74,7 +74,13 @@ public interface ImypageDao {
 
 	boolean delinumuploadupdate(AuctionProgress ap);
 
-	AuctionProgress sendsSelect(@Param("ptnum") int ptnum,@Param("id") String id);
+	AuctionProgress enterSelect(AuctionProgress ap);
+
+	boolean autcancelDelete(AuctionProgress ap);
+
+	AuctionProgress sendsSelect(AuctionProgress ap);
+
+	AuctionProgress scheckSelect(AuctionProgress ap);
 
   
 }
