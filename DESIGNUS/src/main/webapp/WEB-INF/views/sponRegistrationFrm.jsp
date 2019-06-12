@@ -122,16 +122,15 @@ input {
 					</tr>
 					<tr style="height: 50">
 						<td>이미지</td>
-						<td colspan="3"><input type="file" id="imgAttach" name="imgAttach"
-							style="width: 700px; float: left;" onchange="LoadImg(this);">
-							<!-- <button
+						<td colspan="3"><input type="file" id="imgInput"
+							style="width: 700px; float: left;"> <!-- <button
 								style="width: 6%; height: 48; float: right; border-radius: 100px">╉</button>
 							<button style="width: 14%; height: 48; float: right;">파일첨부</button> -->
 						</td>
 					</tr>
 					<tr style="height: 100">
 						<td colspan="4" rowspan="2"><div id="img_wrap">
-								<img id="LoadImg2" />
+								<img id="LoadImg2" src="*" alt="your image" />
 							</div></td>
 					</tr>
 					<tr>
@@ -152,15 +151,21 @@ input {
 
 </body>
 <script src="jquery.min.js">
+	function readURL(input) {
 
-	function LoadImg(value) {
-		if (value.files && value.files[0]) {
+		if (input.files && input.files[0]) {
 			var reader = new FileReader();
+
 			reader.onload = function(e) {
 				$('#LoadImg2').attr('src', e.target.result);
 			}
-			reader.readAsDataURL(value.files[0]);
+
+			reader.readAsDataURL(input.files[0]);
 		}
 	}
+
+	$("#imgInput").change(function() {
+		readURL(this);
+	});
 </script>
 </html>
