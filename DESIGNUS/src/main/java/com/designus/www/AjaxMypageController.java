@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.service.MypageMM;
@@ -39,7 +40,20 @@ public class AjaxMypageController {
 		return json;
 
 	}
-	
+	@RequestMapping(value = "/enter", method = { RequestMethod.GET, RequestMethod.POST },produces="application/json;charset=utf8")
+	public String enter(@RequestBody AuctionProgress ap) {
+		System.out.println("여기로 와라 제발111...");
+		System.out.println(ap.getAup_ptnum());
+		//System.out.println(map.get("pnum"));
+		//System.out.println("이게 작가 아이디인데1111....=" + pnum);
+		//int pnum1 = Integer.parseInt(pnum.substring(5,5));
+		//System.out.println(pnum1);
+		//int pnum = map.get("pnum");
+		String json = pm.enter(ap);
+		System.out.println("5번째 시도....");
+		return json;
+
+	}
 	
 	/*
 	 * @RequestMapping(value =
