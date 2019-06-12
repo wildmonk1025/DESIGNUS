@@ -133,12 +133,12 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"
+				result+="<div class='best'>"+"<a href='declareWrite'>"
 					  +"신고번호:" +data[i].rp_num+"<br>"
 					  +"신고자아이디:"+data[i].rp_mbid_d+"<br>"
 					  +"가해자아이디:"+data[i].rp_mbid_a+"<br>"
 					  +"신고위치:"+data[i].rp_locate+"<br>"
-					  +"</div>";
+					  +"</a>"+"</div>";
 					  }
 			$("#declarelist").html(result);
 		},
@@ -161,12 +161,12 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"
+				result+="<div class='best'>"+"<a href='permitWriApply'>"
 					  +"아이디:" +data[i].mj_mbid+"<br>"
 					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
 					  +"포트폴리오:"+data[i].mj_contents+"<br>"
 					  +"파일설명:"+data[i].mj_portf+"<br>"
-					  +"</div>";
+					  +"</a>"+"</div>";
 					  }
 			$("#transformlist").html(result);
 		},
