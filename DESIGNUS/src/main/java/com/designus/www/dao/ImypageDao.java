@@ -76,5 +76,9 @@ public interface ImypageDao {
 
 	AuctionProgress sendsSelect(@Param("ptnum") int ptnum,@Param("id") String id);
 
+	AuctionProgress enterSelect(AuctionProgress ap);
+
+	boolean autcancelDelete(int ranum, String id);
+
   
 }

@@ -435,7 +435,13 @@ a:hover {
 
 <body>
 	<div id="total"></div>
+	<form action="aucapply" method="post">
+	<div id="l1">
+		
+		  </div>
+	</form>
 	<div id="mainheader">
+	
 		<jsp:include page="main.jsp" />
 	</div>
 
@@ -497,9 +503,13 @@ a:hover {
 			<div id="notice">
 				<h2>출품작 구매 내역</h2>
 				<hr>
-			</div>
+			
 			<div id="setp">
 				<div id="setpT">
+				</div>
+				${paging}
+				</div>
+				
 				<%-- 	<c:forEach var="apList" items="${apList}">
 						<div id="2list">
 							<div id="sangimg" align="left">
@@ -582,10 +592,10 @@ a:hover {
 					</c:forEach> --%>
 
 				</div>
-				${paging}
+				
 			</div>
 		</div>
-	</div>
+
 	<div id="lightbox-shadow">
 
 		<div id="lightbox">
@@ -624,30 +634,7 @@ a:hover {
 	</div>
 	
 </body>
-<script type="text/javascript">
-
-/*function ShippingInfo(eles) {
-	 $.ajax({
-			url: "enter",
-			type:"post",
-		    data:{pnum:eles},
-		    dataType:"json",
-		    success:function(data){
-		    	alert('해당 상품을 추천하였습니다.');
-		    	console.log("123456"+data);
-		    	//btn.disabled = 'disabled'
-		    	var bu=document.getElementById('butt');
-		    		bu.disabled =true;
-		
-		    },
-		    error:function(error){
-		    	alert('정상적인 추천이 실패했습니다.');
-		    	console.log(error);
-		    }
-			 
-		 });//end ajax
-}*/
-
+<script>
 
 var apList = ${apList};
 console.log(apList);
@@ -669,7 +656,7 @@ for (var i = 0; i < apList.length; i++) {
 			+ apList[i].aup_qty + "</td></tr>"
             +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>";
             
-		main +="<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"ShippingInfo('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
+		main +="<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
              +"<input  type='button' onclick=\"location.href='auccancel?ranum="+apList[i].aup_ptnum+"')\" value='취소'/></td></tr></table>";
              
 	} else if(apList[i].aup_step==2){
@@ -697,29 +684,53 @@ for (var i = 0; i < apList.length; i++) {
 		    +"<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
 		} 
 }
-console.log(1, main);
+
 
 $('#setpT').html(main);
 
-/* function ShippingInfo(eles) {
-var sub="";
-$('#total').css("display", "inline");
-$('#l1').css("display", "inline");
- for(var i = 0; i < apList.length; i++){
-	sub+="<form action='aucapply' method='post'>상품 이름 :"+apList[i].au_title+"<br/>"
-	   + "아이디 :"+ apList.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' id='aup_mbid_n' value='"+${apList.aup_mbid_n}+"'>"
-       + "이름 : <input type='text' name='aup_name' id='aup_name'><br/>"
- 	   + "주소 : <input type='text' name='aup_address' id='aup_address'><br />"
- 	   +"연락처 :<input type='text' name='aup_phone' id='aup_phone'>"
- 	   +"<input type='hidden' name='aup_ptnum' id='aup_ptnum' value='"+apList[i].aup_ptnum+"'>"
- 	   +"<input type='hidden' name='aup_price' id='aup_price' value='"+apList[i].aup_price}+"'>"
- }
+function shippingInfo(even) {
+	
+	var form = {
+		aup_ptnum:even
+		 }
+	var sub="";
+	 $.ajax({
 
-		
- console.log(2, sub);
- $('#l1').html(sub);
- 
- } */
+			url: 'enter',
+			type:'post',
+		    data:JSON.stringify(form),
+		    contentType:"application/json; charset=utf-8;",
+		    dataType:'json',
+		    success:function(data){
+		    	alert('해당 상품을 추천하였습니다.');
+		    	console.log("1234567"+data.aup_ptnum);
+		    	
+		    	sub+="상품이름 :"+data.au_title+"<br>"
+		    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n'>"
+		    	   +"이름 :<input type='text' name='aup_name'>"
+		    	   +"주소 :<input type='text' name='aup_address'>"
+		    	   +"연락처: <input type='text' name='aup_phone'>"
+		    	   +"<input type='submit' value='요청'><input id='back' type='button' value='취소'>";
+		    	   if(data.aut_kind==I){
+		    	   +"즉시구매:<input type='hidden' name='aut_kind'>"   
+		    	   }else if(data.aut_kind==O){
+		    	   +"낙찰:<input type='hidden' name='aut_kind'>"   
+		    	   }else{
+		    	   +"입찰:<input type='hidden' name='aut_kind'>" 
+		    	   }
+		    	$('#total').css("display", "inline");
+		    	$('#l1').css("display", "inline");
+		    	
+		    	$('#l1').html(sub);
+		    },
+		    
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+	
+}
 
 $('#setpT').html(main);
 function good(data) {
@@ -743,6 +754,8 @@ function good(data) {
 			 
 		 });//end ajax
 }
+
+
 
 /*$("#btzRevM").click(function() {
 	$('#total').css("display", "inline")
@@ -770,19 +783,7 @@ $("#backSetp").click(function() {
 	$("#Q1").css("display", "none");
 });	
 
-	$("#action").click(function() {
-
-		$('#lightbox-shadow').css("display", "inline")
-		$('#lightbox').css("display", "inline")
-	});
-	$("#cancel").click(function() {
-		$('#lightbox-shadow1').css("display", "inline")
-		$('#lightbox1').css("display", "inline")
-	});
-	$("#service").click(function() {
-		$('#lightbox-shadow2').css("display", "inline")
-		$('#lightbox2').css("display", "inline")
-	});
+	
 	function fileChk(elem) {
 		console.dir(elem);
 		if(elem.value==""){

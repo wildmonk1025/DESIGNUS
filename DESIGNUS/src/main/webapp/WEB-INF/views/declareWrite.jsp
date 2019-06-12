@@ -15,7 +15,6 @@
 
         div {
             margin: auto;
-            border: 1px solid blue;
         }
 
         ul {
@@ -63,23 +62,15 @@
     </style>
 </head>
 <body>
-    <div id="mainheader">
 
+    <div id="mainheader">
+<div id="mainheader">
+		<jsp:include page="main.jsp" />
+	</div>
     </div>
     <div id="adminmenu">
-        <ul>
-            <li style="text-align: center; font-size: 20px">관리내역</li>
-            <li>게시판/댓글</li>
-            <li style="background-color: skyblue">신고내역</li>
-            <li>1:1문의</li>
-            <li>회원관리</li>
-            <li>작가 전환신청</li>
-            <li>작가 가입신청</li>
-            <li>카테고리 관리</li>
-            <li>게시판/댓글</li>
-            <li>게시판/댓글</li>
+                <jsp:include page="admininclud.jsp"></jsp:include>
 
-        </ul>
     </div>
     <div id="adminopt">
         <div class="opt">
