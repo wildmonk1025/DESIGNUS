@@ -70,6 +70,7 @@ ul {
 tr, td {
 	width: 200px;
 }
+
 </style>
 </head>
 
