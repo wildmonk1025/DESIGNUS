@@ -1,5 +1,11 @@
 package com.designus.www.bean;
 
+import org.apache.ibatis.type.Alias;
+
+import lombok.Data;
+
+@Alias("revauctionprogress")
+@Data
 public class revAuctionProgress {
 	int    rap_ptnum;
 	int    rap_ranum;
@@ -10,5 +16,6 @@ public class revAuctionProgress {
 	String rap_mbid_w;
 	int    rap_price;
 	String rap_track;
+	int	   rap_days;
 	int    rap_step;
 }
