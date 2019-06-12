@@ -292,10 +292,24 @@
         </div>
     </div>
     <button id="revauctionbtn" onclick="location.href='revauctionWrite'">제작의뢰 요청하기</button>
-		<button id="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
+	<c:choose>
+	<c:when test="${grade=='W'}">
+	<button id="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
+	</c:when>
+	<c:when test="${grade!='W'}">
+	<button id="auctionbtn" onclick="nonono()">출품등록하기</button>
+	</c:when>
+	
+	</c:choose>
+
+
 </body>
 <script>
 var a="";
+function nonono() {
+	alert("작가가 아니면 NoNoNo");
+}
+
 function logout(){
 	$('#logout').submit();
 }
