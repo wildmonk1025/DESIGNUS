@@ -90,8 +90,6 @@
 	</div>
 
 	<div id="homeMain">
-		<button id="revauctionbtn" class="btn">제작의뢰 요청하기</button>
-		<button id="auctionbtn" class="btn">출품등록하기</button>
 		<div id="title">
             후원 상품 등록
         </div>
