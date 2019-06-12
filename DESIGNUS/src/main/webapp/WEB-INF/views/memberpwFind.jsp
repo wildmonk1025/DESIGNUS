@@ -410,7 +410,7 @@ input {
 							<th>
 								변경할 비밀번호<br/><br/>
 							<th>
-							<td><input type="password" name="mb_pw" id="pwd1"
+							<td><input type="password" name="mb_pw" id="pwd1" maxlength="14"
 								class="signUpInput" placeholder="Type your username" autofocus required /><br/><br/> </td>
 
 						</tr>
@@ -419,7 +419,7 @@ input {
 						<tr>
 							<th>비밀번호 재입력<br/><br/>
 							<th>
-							<td><input type="password"   id="pwd2"
+							<td><input type="password"   id="pwd2" maxlength="14"
 								class="signUpInput" placeholder="Type your username" autofocus required required /><br/><br/></td>
 
 						</tr>

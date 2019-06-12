@@ -622,7 +622,7 @@ a:hover {
 				onclick="location.href='auctionMyOrderList.html' ">취소</button>
 		</div>
 	</div>
-	</div>
+	
 </body>
 <script type="text/javascript">
 
@@ -701,7 +701,7 @@ console.log(1, main);
 
 $('#setpT').html(main);
 
-function ShippingInfo(eles) {
+/* function ShippingInfo(eles) {
 var sub="";
 $('#total').css("display", "inline");
 $('#l1').css("display", "inline");
@@ -719,7 +719,7 @@ $('#l1').css("display", "inline");
  console.log(2, sub);
  $('#l1').html(sub);
  
- }
+ } */
 
 $('#setpT').html(main);
 function good(data) {
