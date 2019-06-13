@@ -99,5 +99,9 @@ public interface ImypageDao {
 
 	revAuctionProgress revauccancelSelect(revAuctionProgress rap);
 
+	boolean revaucinfocancelDelete(revAuctionProgress rap);
+
+	boolean revaucinfocancelupDate(revAuctionProgress rap);
+
   
 }

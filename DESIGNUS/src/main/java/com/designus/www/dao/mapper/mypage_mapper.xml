@@ -239,13 +239,15 @@
 		RAP_NAME=#{rap_name},RAP_address=#{rap_address},RAP_phone=#{rap_phone},RAP_step=2
 		where RAP_PTNUM=${rap_ptnum}
 	</update>
-	<update id="requestbyREVupdate" parameterType="revauctionprogress">
+	<update id="requestbyREVupdate"
+		parameterType="revauctionprogress">
 		update MB SET
 		mb_point=#{pointN}-#{rap_price}
-		where mb_id=#{rap_mbid_n}
+		where
+		mb_id=#{rap_mbid_n}
 	</update>
-	<select id="revauccancelSelect" parameterType="revauctionprogress"
-		resultType="revauctionprogress">
+	<select id="revauccancelSelect"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK
@@ -255,4 +257,13 @@
      ) where RankNo=1
   ]]>
 	</select>
+	<delete id="autcancelDelete">
+		delete from rap
+		where rap_ptnum=${rap_ptnum}
+	</delete>
+	<update id="revaucinfocancelupDate" parameterType="revauctionprogress">
+		UPDATE RAP SET
+		RAP_NAME=#{rap_name},RAP_address=#{rap_address},RAP_phone=#{rap_phone},RAP_step=2
+		where RAP_PTNUM=${rap_ptnum}
+	</update>
 </mapper>

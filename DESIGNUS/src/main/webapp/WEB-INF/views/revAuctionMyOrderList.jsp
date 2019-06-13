@@ -404,6 +404,20 @@ position: absolute;
 	left: 900px;
 
 }
+#c1{
+position: absolute;
+	width: 400px;
+	height: 370px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 </style>
 
 </head>
@@ -532,6 +546,8 @@ position: absolute;
 						onclick="location.href='revAuctionMyOrderList.html' ">취소</button>
 				</div>
 			</div> -->
+			
+			${ROpaging}
 		</div>
 	</div>
 </body>
@@ -619,7 +635,7 @@ function requested(even) {
 			    	alert('해당 상품을 추천하였습니다.');
 			    	console.log("1234567"+data);
 			    	   sub+="<form action='requestby' method='post'>"
-			    	      +"<div id='r2'>"
+			    	      +"<div id='r2'>"+data.rap_mbid_w+"님에게 의뢰 요청(배송정보입력)<br>"
 			    	 if(data.ra_oc=="O"){
 				    	   sub+="공개<input type='hidden' name='ra_oc'><br>"   
 				    	   }else{
@@ -664,27 +680,28 @@ function requested(even) {
 				    success:function(data){
 				    	alert('해당 상품을 추천하였습니다.');
 				    	console.log("1234567"+data);
-				    	   /*sub+="<form action='requestby' method='post'>"
-				    	      +"<div id='r2'>"
+				    	cub+="<form action='revaucinfocancel' method='post'>"
+				    	      +"<div id='c2'>제작의뢰 요청 취소"
 				    	 if(data.ra_oc=="O"){
-					    	   sub+="공개<input type='hidden' name='ra_oc'><br>"   
+				    		 cub+="공개<input type='hidden' name='ra_oc'><br>"   
 					    	   }else{
-					    	   sub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
+					    		   cub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
 					    	   };
-				    	sub+="거래번호 :"+data.rap_ptnum+"<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
+					    	   cub+="<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
 				    	   +"상품이름 :"+data.ra_title+"<br>"
 		                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
-				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br><hr>"
-				    	   +"이름 :<input type='text' name='rap_name'><br>"
-				    	   +"주소 :<input type='text' name='rap_address'><br>"
-				    	   +"연락처: <input type='text' name='rap_phone'><br>"
-				    	   +"<input type='submit' value='요청'><br>"
-				    	   +"<input type='button' id='back' value='취소'></div></form>";
+				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br>"
+				    	   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
+				    	   +"<input type='hidden' name='ra_mbid' value='"+data.ra_mbid+"'><hr>"
+				    	   +"의뢰 취소 사유<br>" 
+				    	   +"<textarea rows='7' cols='40' name='nf_contents'></textarea><br>"
+				    	   +"<input type='submit' value='취소하기'>"
+				    	   +"<input type='button' id='back' value='돌아가기'></div></form>";
 				    	  
 				    	$('#total').css("display", "inline");
-				    	$('#r1').css("display", "inline");
+				    	$('#c1').css("display", "inline");
 				    	
-				    	$('#r1').html(cub);*/
+				    	$('#c1').html(cub);
 				    },
 				    
 				    error:function(error){
