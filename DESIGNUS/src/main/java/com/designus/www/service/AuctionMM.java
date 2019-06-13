@@ -59,7 +59,6 @@ public class AuctionMM {
 			num = aDao.getAuctionWriteSel(au);
 			au.setAu_num(num);
 			upload.fileUpImage(multi, au);
-			aDao.setAuctionTenderIns(au);
 			mav.addObject("au_num",num);
 		  view = "redirect:/auctionRead"; 
 		  } else { 
@@ -186,15 +185,12 @@ public class AuctionMM {
 		int totalPrice =0;
 		int qty = inbuyQty;
 		int Tqty = 0;
-		String date = null;
 		AuctionTender at = new AuctionTender();
 		at.setAut_aunum(inbuyNum);
 		at.setAut_mbid(id);
 		at.setAut_qty(qty);
 		Tqty = aDao.getAuctionTenderQty(at);
 		price = aDao.getAuctionTenderPrice(at);
-		date = aDao.getAuctionTenderDate(at);
-		at.setSut_date(date);
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
 		
@@ -215,14 +211,20 @@ public class AuctionMM {
 		String id = (String)session.getAttribute("id");
 		String view = null;
 		int price = 0;
-		String date = null;
 		AuctionTender at= new AuctionTender();
 		at.setAut_aunum(tenderNum);
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
-		price = aDao.auctionTenderSel(at);
-		date = aDao.getAuctionTenderDate(at);
-		at.setSut_date(date);
+		
+		if(aDao.auctionTenderSel(at) == null) {
+			price = 0;
+		} else {
+			price = Integer.parseInt(aDao.auctionTenderSel(at));
+		}
+		 
+		
+		
+		
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
 			aDao.setAuctionUTT(at);
