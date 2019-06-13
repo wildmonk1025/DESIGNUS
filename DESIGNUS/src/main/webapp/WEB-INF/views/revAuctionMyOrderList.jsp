@@ -692,6 +692,7 @@ function requested(even) {
 		                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
 				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br>"
 				    	   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
+				    	   +"<input type='hidden' name='rap_ranum' value='"+data.rap_ranum+"'>"
 				    	   +"<input type='hidden' name='ra_mbid' value='"+data.ra_mbid+"'><hr>"
 				    	   +"의뢰 취소 사유<br>" 
 				    	   +"<textarea rows='7' cols='40' name='nf_contents'></textarea><br>"

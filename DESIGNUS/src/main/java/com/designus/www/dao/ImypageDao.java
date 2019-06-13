@@ -10,6 +10,7 @@ import com.designus.www.bean.Basket;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
@@ -102,6 +103,8 @@ public interface ImypageDao {
 	boolean revaucinfocancelDelete(revAuctionProgress rap);
 
 	boolean revaucinfocancelupDate(revAuctionProgress rap);
+
+	boolean revaucinfocancelInsert(Notify ni);
 
   
 }

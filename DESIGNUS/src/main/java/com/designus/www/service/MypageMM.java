@@ -17,7 +17,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
-
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
@@ -687,15 +687,41 @@ public class MypageMM {
 	}
 
 	@Transactional
-	public ModelAndView revaucinfocancel(revAuctionProgress rap) {
+	public ModelAndView revaucinfocancel(revAuctionProgress rap, Notify ni) {
 		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 시작");
+		String view=null;
+		String nf_mbid_r=rap.getRap_mbid_w();
+    	String nf_mbid_s=rap.getRap_mbid_n();
+    	ni.setNf_mbid_r(nf_mbid_r);
+    	ni.setNf_mbid_s(nf_mbid_s);
 		mav = new ModelAndView();
-		boolean can = pDao.revaucinfocancelDelete(rap);
+     boolean can = pDao.revaucinfocancelDelete(rap);
+     System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트1 can 값 :"+can);
 		if (can) {
+			System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트2 위치 확인");
 			if (rap.getRa_mbid() == rap.getRap_mbid_n()) {
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트3 위치 확인");
                 boolean up=pDao.revaucinfocancelupDate(rap);
+                System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트4 up 값 :"+up);
+                if(up) {
+                	System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트5 위치 확인");
+                	
+                	pDao.revaucinfocancelInsert(ni);
+                	  System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트6 위치 확인");
+                	view="redirect:/revAuctionMyOrderList";
+                }
+			}else {
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트7 위치 확인");
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트8 getNf_mbid_r:"+ni.getNf_mbid_r());
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트9 getNf_mbid_s:"+ni.getNf_mbid_s());
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트10 getNf_contents:"+ni.getNf_contents());
+				pDao.revaucinfocancelInsert(ni);
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트11 위치 확인");
+				view="redirect:/revAuctionMyOrderList";
 			}
 		}
+		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 마무리");
+		mav.setViewName(view);
 		return mav;
 	}
 

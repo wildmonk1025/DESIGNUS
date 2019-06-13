@@ -184,10 +184,14 @@ public class MypageController {
 	}
 	@RequestMapping(value = "/revaucinfocancel", method = {RequestMethod.GET,RequestMethod.POST})
 
-	public ModelAndView revaucinfocancel(revAuctionProgress rap) {
+	public ModelAndView revaucinfocancel(revAuctionProgress rap,Notify ni) {
 		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 시작");
 		mav = new ModelAndView();
-		 mav=pm.revaucinfocancel(rap);
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 1 ranum:"+rap.getRap_ranum());
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 2 mbidw:"+rap.getRap_mbid_w());
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 3 contents:"+ni.getNf_contents());
+		
+		 mav=pm.revaucinfocancel(rap,ni);
 		 System.out.println("(컨트롤러)제작의뢰 스텝1 취소 마무리");
 		return mav;
 	}
