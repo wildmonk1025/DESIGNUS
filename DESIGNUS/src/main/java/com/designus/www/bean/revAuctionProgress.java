@@ -12,7 +12,7 @@ import lombok.Setter;
 public class revAuctionProgress {
 	int    rap_ptnum;//거래번호
 	int    rap_ranum;//상품번호
-	String rap_mbid_n;//일반 아이디
+	String rap_mbid_n;//구매자 아이디
 	String rap_name;//이름
 	String rap_address;//주소
 	String rap_phone;//핸드폰 번호

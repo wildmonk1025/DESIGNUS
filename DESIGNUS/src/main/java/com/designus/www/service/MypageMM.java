@@ -356,7 +356,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
@@ -510,7 +510,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpWCount(id);
 		System.out.println("전체 글의 개수" + maxNum);

@@ -615,7 +615,7 @@ function shippingInfo(even) {
 			    	   }else{
 			    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
 			    	   };
-		    	sub+="상품번호 :"+data.aup_price+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+		    	sub+="거래번호 :"+data.aup_ptnum+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
 		    	   +"상품이름 :"+data.au_title+"<br>"
                    +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
 		    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"

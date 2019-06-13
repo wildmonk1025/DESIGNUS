@@ -591,18 +591,16 @@ function requested(even) {
 			    dataType:'json',
 			    success:function(data){
 			    	alert('해당 상품을 추천하였습니다.');
-			    	console.log("1234567"+data.aup_ptnum);
-			    	 /*if(data.aut_kind=="I"){
-				    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
-				    	   }else if(data.aut_kind=="O"){
-				    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+			    	console.log("1234567"+data);
+			    	 if(data.ra_oc=="O"){
+				    	   sub+="공개<input type='hidden' name='ra_oc'><br>"   
 				    	   }else{
-				    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   sub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
 				    	   };
-			    	sub+="상품번호 :"+data.aup_price+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
-			    	   +"상품이름 :"+data.au_title+"<br>"
-	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
-			    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
+			    	sub+="거래번호 :"+data.rap_ptnum+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+			    	   +"상품이름 :"+data.ra_title+"<br>"
+	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
+			    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
 			    	   +"이름 :<input type='text' name='aup_name'><br>"
 			    	   +"주소 :<input type='text' name='aup_address'><br>"
 			    	   +"연락처: <input type='text' name='aup_phone'><br>"
@@ -612,7 +610,7 @@ function requested(even) {
 			    	$('#total').css("display", "inline");
 			    	$('#l1').css("display", "inline");
 			    	
-			    	$('#r1').html(sub);*/
+			    	$('#r1').html(sub);
 			    },
 			    
 			    error:function(error){
@@ -622,7 +620,7 @@ function requested(even) {
 			 });//end ajax
 		
 	}//end sho	
-}  
+ 
 
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
