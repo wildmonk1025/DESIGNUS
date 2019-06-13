@@ -244,4 +244,15 @@
 		mb_point=#{pointN}-#{rap_price}
 		where mb_id=#{rap_mbid_n}
 	</update>
+	<select id="revauccancelSelect" parameterType="revauctionprogress"
+		resultType="revauctionprogress">
+		<![CDATA[
+		select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK
+    ,RAP_DAYS,RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
 </mapper>

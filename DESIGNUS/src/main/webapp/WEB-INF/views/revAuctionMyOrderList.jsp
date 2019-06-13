@@ -415,6 +415,7 @@ position: absolute;
 	</div>
 <div id="total"></div>
 <div id="r1"></div>
+<div id="c1"></div>
 	<div id="mypagemain">
 
 		<div id="leftmain">
@@ -557,7 +558,7 @@ for (var i = 0; i < revList.length; i++) {
 			}            
 		main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
 			 +"<input id='btzRevM' type='button' onclick=\"javascript:requested('"+revList[i].rap_ptnum+"')\" value='요청'/>"
-             +"<input type='button' onclick=\"location.href='ravcancel?rap_ptnum="+revList[i].rap_ptnum+"&rap_ranum="+revList[i].rap_ranum+"&aup_mbid_n="+revList[i].rap_mbid_n+"&ra_mbid="+revList[i].ra_mbid+"&rap_mbid_w="+revList[i].rap_ptnum+"'\" value='취소'/>"
+             +"<input type='button' onclick=\"javascript:ravcancel('"+revList[i].rap_ptnum+"')\" value='취소'/>"
              +"</div>";
              
 	} else if(revList[i].rap_step==2){
@@ -601,6 +602,7 @@ for (var i = 0; i < revList.length; i++) {
 
 $('#rightmain').html(main);
   
+ //스텝1 요청 라이트 박스(ajax) 
 function requested(even) {
 	var form = {
 			rap_ptnum:even
@@ -646,7 +648,51 @@ function requested(even) {
 			 });//end ajax
 		
 	}//end sho	
- 
+
+//스텝 1 취소 라이트박스(ajax)
+	function ravcancel(even) {
+		var form = {
+				rap_ptnum:even
+				 }
+			var cub="";
+			 $.ajax({
+					url: 'revauccancel',
+					type:'post',
+				    data:JSON.stringify(form),
+				    contentType:"application/json; charset=utf-8;",
+				    dataType:'json',
+				    success:function(data){
+				    	alert('해당 상품을 추천하였습니다.');
+				    	console.log("1234567"+data);
+				    	   /*sub+="<form action='requestby' method='post'>"
+				    	      +"<div id='r2'>"
+				    	 if(data.ra_oc=="O"){
+					    	   sub+="공개<input type='hidden' name='ra_oc'><br>"   
+					    	   }else{
+					    	   sub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
+					    	   };
+				    	sub+="거래번호 :"+data.rap_ptnum+"<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
+				    	   +"상품이름 :"+data.ra_title+"<br>"
+		                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
+				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br><hr>"
+				    	   +"이름 :<input type='text' name='rap_name'><br>"
+				    	   +"주소 :<input type='text' name='rap_address'><br>"
+				    	   +"연락처: <input type='text' name='rap_phone'><br>"
+				    	   +"<input type='submit' value='요청'><br>"
+				    	   +"<input type='button' id='back' value='취소'></div></form>";
+				    	  
+				    	$('#total').css("display", "inline");
+				    	$('#r1').css("display", "inline");
+				    	
+				    	$('#r1').html(cub);*/
+				    },
+				    
+				    error:function(error){
+				    	alert('정상적인 추천이 실패했습니다.');
+				    	console.log(error);
+				    }
+				 });//end ajax
+	}
 
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")

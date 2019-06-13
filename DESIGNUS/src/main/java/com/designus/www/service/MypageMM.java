@@ -466,9 +466,6 @@ public class MypageMM {
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: " + ap.getAup_mbid_n());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " +ap.getAut_date().substring(0,19) );
 		boolean a = pDao.auccancelDelete(ap);
-		
-		
-		
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
 		System.out.println("aaaaa : " + a);
 
@@ -665,9 +662,25 @@ public class MypageMM {
 
 		}
 
-		mav.setViewName("redirect:/auctionMyOrderList");
+		mav.setViewName("redirect:/revAuctionMyOrderList");
 
 		return mav;
+	}
+
+	public String revauccancel(revAuctionProgress rap) {
+		mav = new ModelAndView();
+		System.out.println("(서비스클래스)제작의로 취소폼 시작 ");
+		
+		String json = null;
+		rap = pDao.revauccancelSelect(rap);
+		System.out.println("(서비스클래스)제작의로 취소폼 시작 중간 테스트1 ptnum="+rap.getRap_ptnum());
+		if (rap != null) {
+			json = new Gson().toJson(rap);
+			System.out.println("(서비스클래스)제작의로 취소폼 시작 중간 테스트2 json=" + json);
+		}
+		System.out.println("(서비스클래스)제작의로 취소폼 마무리 ");
+		
+		return json;
 	}
 
 }
