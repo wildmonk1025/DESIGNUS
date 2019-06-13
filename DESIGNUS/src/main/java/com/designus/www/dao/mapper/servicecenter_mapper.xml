@@ -5,7 +5,16 @@
 <mapper namespace="com.designus.www.dao.IServiceCenterDao">  
      
       
-     
+     <insert id="setAloneQuestion" parameterType="questionreply">
+		INSERT INTO AQ VALUES(AQ_SEQ.NEXTVAL,#{qr_mbid},#{qr_type},#{qr_title},#{qr_contents},DEFAULT)
+	 </insert>
       
+     <insert id="QuestionImageInsert" parameterType="questionreply">
+		INSERT INTO AQI VALUES(${qr_aqnum},#{aqi_imgSysName})
+	 </insert>
+
+     <select id="getQuestionSel" parameterType="questionreply" resultType="Integer">
+		SELECT MAX(AQ_NUM) FROM AQ
+	 </select>
        
 </mapper>
