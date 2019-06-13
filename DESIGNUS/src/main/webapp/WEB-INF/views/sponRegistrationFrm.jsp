@@ -143,7 +143,7 @@ input {
 					</tr>
 				</table>
 				<div id="btn2">
-					<input type="submit" class="btn2" value="후원등록" />
+					<button class="btn2">후원등록</button>
 					<button class="btn2">돌아가기</button>
 				</div>
 			</form>
