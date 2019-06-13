@@ -59,17 +59,17 @@ public class AdminMM {
 		Report rp = new Report();
 		System.out.println("와?zz"+rp);
 		
-		rp = iDao.getWriteCheck();
+		rp = iDao.getWriteCheck(rp_num);
 		rp.setRp_num(rp_num);
 		if(rp_num==rp.getRp_num()) {
 		mav.addObject("rp_num", rp.getRp_num());
-		mav.addObject("rp_num", rp.getRp_mbid_d());
-		mav.addObject("rp_num", rp.getRp_mbid_a());
-		mav.addObject("rp_num", rp.getRp_locate());
-		mav.addObject("rp_num", rp.getRp_reason());
-		mav.addObject("rp_num", rp.getRp_title());
-		mav.addObject("rp_num", rp.getRp_contents());
-		mav.addObject("rp_num", rp.getRpi_img());
+		mav.addObject("rp_nmbid_d", rp.getRp_mbid_d());
+		mav.addObject("rp_mbid_a", rp.getRp_mbid_a());
+		mav.addObject("rp_locate", rp.getRp_locate());
+		mav.addObject("rp_reason", rp.getRp_reason());
+		mav.addObject("rp_title", rp.getRp_title());
+		mav.addObject("rp_contents", rp.getRp_contents());
+		mav.addObject("rp_img", rp.getRpi_img());
 		mav.addObject("rp_num", rp.getRp_date());
 		view = "declareWriteCheck";
 		}else {

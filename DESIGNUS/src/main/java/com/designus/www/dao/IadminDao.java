@@ -19,7 +19,7 @@ public interface IadminDao {
 
 	List<Major> gettransInfo();
 
-	Report getWriteCheck();
+	Report getWriteCheck(int rp_num);
   
   
 }
