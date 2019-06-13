@@ -28,7 +28,7 @@ public class AuctionControllerspon {
 		return mav;
 	}
 
-	@RequestMapping(value = "/sponsor")
+	@RequestMapping(value = "/sponsor", method = RequestMethod.GET)
 	public String sponsor() {
 
 		return "sponsor";
