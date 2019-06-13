@@ -509,6 +509,59 @@ a:hover {
 	</div>
 </body>
 <script type="text/javascript">
+var revList = ${revList};
+console.log(revList);
+
+var main = "";
+
+/* for (var i = 0; i < apList.length; i++) {
+	 if (apList[i].aup_step == 1) {
+	main += "<table style=\"border:1px solid orange\" ><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
+			+ "<tr><td>상품번호 :"
+			+ apList[i].aup_ptnum
+			+ "</td><td>상품명:"
+			+ apList[i].au_title
+			+ "</td></tr>"
+			+ "<tr><td colspan='2'>구매 금액 : "
+			+ apList[i].aup_price
+			+ "</td></tr>"
+			+ "<tr><td colspan='2'>상품 수량 : "
+			+ apList[i].aup_qty + "</td></tr>"
+            +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>";
+            
+		main +="<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
+             +"<input type='button' onclick=\"location.href='auccancel?aup_ptnum="+apList[i].aup_ptnum+"&aup_ranum="+apList[i].aup_ranum+"&aup_mbid_n="+apList[i].aup_mbid_n+"&aut_date="+apList[i].aut_date+"'\" value='취소'/></td></tr></table>";
+             
+	} else if(apList[i].aup_step==2){
+			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
+		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
+		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
+		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
+		    +"<tr><td colspan='3'><h3>배송대기중...</h3></td></tr></table>";
+		    
+		}else if(apList[i].aup_step==3){
+			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
+		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
+		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
+		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
+		    +"<tr><td colspan='3'><input type='button' onclick=\"btzRevQ('"+apList[i].aup_ptnum+"')\" value='고객센터 문의'/>"
+            +"<input type='button' onclick=\"review('"+apList[i].aup_ptnum+"')\" value='수령확인구매후기 쓰기'/></td></tr></table>";
+		    
+			
+		} else if(apList[i].aup_step==4){
+			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
+		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
+		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
+		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
+		    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
+		    +"<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
+		}  */
+//}
+
+
+//$('#setpT').html(main);
+  
+
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")

@@ -86,7 +86,9 @@ public interface ImypageDao {
 
 	boolean memberpointup(AuctionProgress ap);
 
-	List<AuctionProgress> revAuctionMyOrderListSelect(String id, int num);
+	List<AuctionProgress> revAuctionMyOrderListSelect(@Param("id") String id,@Param("num") int num);
+
+	int getreSetpCount(String id);
 
   
 }
