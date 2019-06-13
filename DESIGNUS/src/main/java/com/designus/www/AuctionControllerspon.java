@@ -33,12 +33,6 @@ public class AuctionControllerspon {
 	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
 		System.out.println("넘어가나?");
-
-		Sponsor ss = new Sponsor();
-		/*
-		 * ss.setSs_mbid_w(id); ss.setSs_contents(scontents); ss.setSs_goalqty(ssqty);
-		 * ss.setSs_title(sstitle); ss.setSs_price(ssprice);
-		 */
 		mav = sm.sponupload(multi);
 		return mav;
 	}

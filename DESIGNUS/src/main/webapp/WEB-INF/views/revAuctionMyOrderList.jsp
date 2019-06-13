@@ -22,8 +22,8 @@ div {
 	margin: 10px;
 	border: 1px solid orange;
 	width: 1080px;
-	height: 100px;
-	text-align: center;
+	height: 250px;
+	text-align: left;
 	font-size: 20px;
 	float: left;
 }
@@ -389,6 +389,8 @@ a:hover {
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
+<div id="total"></div>
+<div id="r1"></div>
 	<div id="mypagemain">
 
 		<div id="leftmain">
@@ -444,32 +446,32 @@ a:hover {
 			</div>
 		</div>
 		<div id="rightmain">
-			<div id="notice">
+			<!-- <div id="notice">
 				<h2>제작의뢰내역</h2>
-			</div>
-			<div id="renking">
+			</div> -->
+			<!-- <div id="renking">
 				<h1>문의 구매후기</h1>
 				<div class="bt01">
 					<button id="service" class="bt">고객센터문의</button>
 					<button id="review" class="bt">구매후기쓰기</button>
 				</div>
-			</div>
+			</div> -->
 
-			<div id="auction">
+			<!-- <div id="auction">
 				<h1>배송정보입력</h1>
 				<div class="bt02">
 					<button id="action" class="bt">제작의뢰요청</button>
 					<button id="cancel" class="bt">제작의뢰취소</button>
 				</div>
-			</div>
-			<div id="spon">
+			<!-- </div> -->
+			<!--  <div id="spon">
 				<h1>배송정보</h1>
 				<div class="bt03">
 					<h4>배송번호</h4>
 					<h1>완료</h1>
 				</div>
-			</div>
-			<div id="lightbox-shadow">
+			</div> -->
+		<!-- 	<div id="lightbox-shadow">
 
 				<div id="lightbox">
 					<h1>배송정보입력</h1>
@@ -477,8 +479,8 @@ a:hover {
 					<button type="button"
 						onclick="location.href='revAuctionMyOrderList.jsp' ">취소</button>
 				</div>
-			</div>
-			<div id="lightbox-shadow1">
+			</div> -->
+			<!-- <div id="lightbox-shadow1">
 
 				<div id="lightbox1">
 					<h1>제작의뢰 요청 취소</h1>
@@ -486,8 +488,8 @@ a:hover {
 					<button type="button"
 						onclick="location.href='revAuctionMyOrderList.jsp' ">돌아가기</button>
 				</div>
-			</div>
-			<div id="lightbox-shadow2">
+			</div> -->
+			<!-- <div id="lightbox-shadow2">
 
 				<div id="lightbox2">
 					<h1>제작의뢰 관련1:1문의</h1>
@@ -495,8 +497,8 @@ a:hover {
 					<button type="button"
 						onclick="location.href='revAuctionMyOrderList.html' ">취소</button>
 				</div>
-			</div>
-			<div id="lightbox-shadow3">
+			</div> -->
+			<!-- <div id="lightbox-shadow3">
 
 				<div id="lightbox3">
 					<h1>수령확인 맟 구매후기</h1>
@@ -504,7 +506,7 @@ a:hover {
 					<button type="button"
 						onclick="location.href='revAuctionMyOrderList.html' ">취소</button>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </body>
@@ -514,52 +516,66 @@ console.log(revList);
 
 var main = "";
 
-/* for (var i = 0; i < apList.length; i++) {
-	 if (apList[i].aup_step == 1) {
-	main += "<table style=\"border:1px solid orange\" ><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
-			+ "<tr><td>상품번호 :"
-			+ apList[i].aup_ptnum
-			+ "</td><td>상품명:"
-			+ apList[i].au_title
-			+ "</td></tr>"
-			+ "<tr><td colspan='2'>구매 금액 : "
-			+ apList[i].aup_price
-			+ "</td></tr>"
-			+ "<tr><td colspan='2'>상품 수량 : "
-			+ apList[i].aup_qty + "</td></tr>"
-            +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>";
-            
-		main +="<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"+apList[i].aup_ptnum+"')\" value='배송정보입력'/>"
-             +"<input type='button' onclick=\"location.href='auccancel?aup_ptnum="+apList[i].aup_ptnum+"&aup_ranum="+apList[i].aup_ranum+"&aup_mbid_n="+apList[i].aup_mbid_n+"&aut_date="+apList[i].aut_date+"'\" value='취소'/></td></tr></table>";
+for (var i = 0; i < revList.length; i++) {
+	 if (revList[i].rap_step == 1) {
+	main += "<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"
+			+ "상품번호 :"
+			+ revList[i].rap_ptnum+"</br>"
+			+ "상품명:"
+			+ revList[i].ra_title+"</br>"
+			+ "구매 금액 : "
+			+ revList[i].rap_price+"</br>"
+			+ "구매 종류 : "
+			if(revList[i].ra_oc=="O"){
+		     main +="공개</br>"	
+			}else{
+			 main +="비공개</br>"	
+			}            
+		main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
+			 +"<input id='btzRevM' type='button' onclick=\"javascript:requested('"+revList[i].rap_ptnum+"')\" value='요청'/>"
+             +"<input type='button' onclick=\"location.href='ravcancel?rap_ptnum="+revList[i].rap_ptnum+"&rap_ranum="+revList[i].rap_ranum+"&aup_mbid_n="+revList[i].rap_mbid_n+"&ra_mbid="+revList[i].ra_mbid+"&rap_mbid_w="+revList[i].rap_ptnum+"'\" value='취소'/>"
+             +"</div>";
              
-	} else if(apList[i].aup_step==2){
-			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
-		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
-		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
-		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
-		    +"<tr><td colspan='3'><h3>배송대기중...</h3></td></tr></table>";
+	} else if(revList[i].rap_step==2){
+			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revList[i].rap_price+"</br>"
+		    if(revList[i].ra_oc=="O"){
+			     main +="구매 종류 : 공개</br>"	
+				}else{
+				 main +="구매 종류 : 비공개</br>"	
+				}            
+		    main +="<h3>배송대기중...</h3></div>";
 		    
-		}else if(apList[i].aup_step==3){
-			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
-		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
-		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
-		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
-		    +"<tr><td colspan='3'><input type='button' onclick=\"btzRevQ('"+apList[i].aup_ptnum+"')\" value='고객센터 문의'/>"
-            +"<input type='button' onclick=\"review('"+apList[i].aup_ptnum+"')\" value='수령확인구매후기 쓰기'/></td></tr></table>";
+		}else if(revList[i].rap_step==3){
+			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revList[i].rap_price+"</br>"
+		    if(revList[i].ra_oc=="O"){
+			     main +="구매 종류 : 공개</br>"	
+				}else{
+				 main +="구매 종류 : 비공개</br>"	
+				}           
+		    main +="<input type='button' onclick=\"btzRevMy('"+revList[i].rap_ptnum+"')\" value='고객센터 문의'/>"
+                 +"<input type='button' onclick=\"RevMyreview('"+revList[i].rap_ptnum+"')\" value='수령확인구매후기 쓰기'/></div>";
 		    
 			
-		} else if(apList[i].aup_step==4){
-			main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"              
-		    + "<tr><td>상품번호 :"+apList[i].aup_ptnum+"</td><td>상품명:"+apList[i].au_title+"</td></tr>"
-		    +"<tr><td colspan='2'>구매 금액 : "+apList[i].aup_price+"</td></tr>"
-		    +"<tr><td colspan='2'>상품 수량 : "+apList[i].aup_qty+"</td></tr>"
-		    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
-		    +"<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
-		}  */
-//}
+		} else if(revList[i].rap_step==4){
+			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revList[i].rap_price+"</br>"
+		    if(revList[i].ra_oc=="O"){
+			     main +="구매 종류 : 공개</br>"	
+				}else{
+				 main +="구매 종류 : 비공개</br>"	
+				}       
+		    main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
+		    	 +"<h3>완료</h3></div>";
+		}  
+}
 
 
-//$('#setpT').html(main);
+$('#rightmain').html(main);
   
 
 	$("#action").click(function() {
