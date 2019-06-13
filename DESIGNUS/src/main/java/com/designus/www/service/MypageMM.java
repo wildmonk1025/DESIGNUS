@@ -17,6 +17,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
@@ -355,7 +356,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
@@ -509,7 +510,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpWCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
@@ -598,11 +599,14 @@ public class MypageMM {
 		mav = new ModelAndView();
 		System.out.println("(서비스클래스)제작의뢰  시작");
 		String id = session.getAttribute("id").toString();
-		List<AuctionProgress> revList = null;
+		List<revAuctionProgress> revList = null;
 		String view = null;
 		int num = (pageNum == null) ? 1 : pageNum;
 		revList = pDao.revAuctionMyOrderListSelect(id, num);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 1 revList.size(): "+revList.size());
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1-2 revList.size(): "+revList.get(0).getRap_mbid_w());
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1-3 revList.size(): "+revList.get(0).getRap_ptnum());
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1-1 revList.size(): "+revList.get(0).getRa_title());
 		Gson gson = new Gson();
 		String str = gson.toJson(revList);
 		mav.addObject("revList", str);
@@ -627,6 +631,19 @@ public class MypageMM {
 	com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
 				pageCount, boardName, kind);
 		return paging.makeHtmlPaging();
+	}
+
+	public String request(revAuctionProgress rap) {
+		System.out.println("(서비스클래스)제작의뢰내역 스타트!!!");
+		String json = null;
+		rap = pDao.requestSelect(rap);
+		System.out.println("(서비스클래스)제작의뢰내역 1차 중간 테스트 pt_num의 값 :"+rap.getRap_ptnum());
+		if (rap != null) {
+			json = new Gson().toJson(rap);
+			System.out.println("(서비스클래스)제작의뢰내역 2차 중간 테스트 json의 값 :json=" + json);
+		}
+		System.out.println("(서비스클래스)제작의뢰내역 마무리!!!");
+		return json;
 	}
 
 }

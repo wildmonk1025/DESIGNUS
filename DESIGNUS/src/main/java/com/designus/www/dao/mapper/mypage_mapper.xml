@@ -101,7 +101,7 @@
 		resultType="Integer">
 		select count(*) from ISP where SB_MBID=#{id}
 	</select>
-	<select id="auctionMyOrderListSelect" 
+	<select id="auctionMyOrderListSelect"
 		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
@@ -112,12 +112,12 @@
      ) where rn>=#{num}*4-3 AND RankNo=1 
   ]]>
 	</select>
-	
+
 	<select id="getSetpCount" resultType="Integer">
 		select count(*) from
 		AUPVIEWTEST where AUP_MBID_N=#{id}
 	</select>
-	
+
 	<update id="aucapplyupdate" parameterType="auctionprogress">
 		update AUP SET
 		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
@@ -128,15 +128,16 @@
 		mb_point=#{ponitN}-#{aup_price}
 		where mb_id=#{aup_mbid_n}
 	</update>
-	<update id="reviewBoardyhWriteupDate" parameterType="auctionprogress">
+	<update id="reviewBoardyhWriteupDate"
+		parameterType="auctionprogress">
 		update AUP SET aup_step=4
 		where aup_ptnum=${aup_ptnum}
 	</update>
-	<delete id="auccancelDelete" >
-		  DELETE FROM AUP 
-         WHERE AUP_PTNUM=${aup_ptnum}
+	<delete id="auccancelDelete">
+		DELETE FROM AUP
+		WHERE AUP_PTNUM=${aup_ptnum}
 	</delete>
-	<select id="auctionMyAcceptListSelect" 
+	<select id="auctionMyAcceptListSelect"
 		resultType="auctionprogress">
 		<![CDATA[
 		select * from(
@@ -154,9 +155,9 @@
 	<update id="delinumuploadupdate" parameterType="auctionprogress">
 		update AUP SET
 		aup_track=#{aup_track},aup_step=3
-		where aup_ptnum=#{aup_ptnum}   
+		where aup_ptnum=#{aup_ptnum}
 	</update>
-	<select id="sendsSelect"  resultType="auctionprogress">
+	<select id="sendsSelect" resultType="auctionprogress">
 		<![CDATA[
 		select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -166,7 +167,8 @@
      ) where  RankNo=1  
   ]]>
 	</select>
-	<select id="enterSelect" parameterType="auctionprogress" resultType="auctionprogress">
+	<select id="enterSelect" parameterType="auctionprogress"
+		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -176,12 +178,14 @@
      ) where RankNo=1
   ]]>
 	</select>
-	<delete id="autcancelDelete" >
-		  DELETE FROM AUT 
-     WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND AUT_DATE=to_char()#{aut_date})
+	<delete id="autcancelDelete">
+		DELETE FROM AUT
+		WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND
+		AUT_DATE=to_char()#{aut_date})
 	</delete>
-	
-	<select id="scheckSelect" parameterType="auctionprogress" resultType="auctionprogress">
+
+	<select id="scheckSelect" parameterType="auctionprogress"
+		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -191,7 +195,8 @@
      ) where RankNo=1
   ]]>
 	</select>
-	<select id="reviewboardSelect" parameterType="auctionprogress" resultType="auctionprogress">
+	<select id="reviewboardSelect" parameterType="auctionprogress"
+		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -206,11 +211,12 @@
 		mb_point=#{ponitW}+#{aup_price}
 		where mb_id=#{au_mbid_w}
 	</update>
-	<select id="revAuctionMyOrderListSelect" parameterType="auctionprogress" resultType="auctionprogress">
+	<select id="revAuctionMyOrderListSelect"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
 		<![CDATA[
 		select * from(
-    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS
-    RAP_STEP,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
      from RAPVIEW
        where RAP_MBID_N=#{id} and rownum<=${num}*4
      ) where rn>=${num}*4-3 AND RankNo=1
@@ -220,5 +226,12 @@
 		select count(*) from
 		RAPVIEW where RAP_MBID_N=#{id}
 	</select>
-	
+	<select id="requestSelect" parameterType="revauctionprogress"
+		resultType="revauctionprogress">
+		<![CDATA[
+		SELECT * FROM RAPVIEW
+         where  RAP_PTNUM=${rap_ptnum}  
+  ]]>
+	</select>
+
 </mapper>

@@ -6,7 +6,7 @@
 
 	<select id="getSponserwri" parameterType="sponsor"
 		resultType="Integer">
-		SELECT MAX(SS_NUM) SS
+		SELECT MAX(SS_NUM) FROM SS
 	</select>
 
 	<insert id="getSponserwriterinsert" parameterType="sponsor">
@@ -16,7 +16,7 @@
 
 	<insert id="SponsorImageInsert" parameterType="sponsor">
 		INSERT INTO SSI
-		VALUES(${ss_num},#{imgInput})
+		VALUES(${ss_num},#{ssi_imgSysName})
 	</insert>
     
 

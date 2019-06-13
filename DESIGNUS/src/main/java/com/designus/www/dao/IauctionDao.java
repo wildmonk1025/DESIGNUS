@@ -5,7 +5,6 @@ import java.util.List;
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
-import com.designus.www.bean.Sponsor;
 
 //import org.springframework.stereotype.Repository;
 
@@ -30,7 +29,7 @@ public interface IauctionDao {
 
 	void setAuctionTenderDel(AuctionTender at);
 
-	int auctionTenderSel(AuctionTender at);
+	String auctionTenderSel(AuctionTender at);
 
 	void setAuctionTenderT(AuctionTender at);
 
@@ -62,7 +61,6 @@ public interface IauctionDao {
 
 	String getAuctionImgSel(Auction au);
 
-	String getAuctionTenderDate(AuctionTender at);
 
 	
 
