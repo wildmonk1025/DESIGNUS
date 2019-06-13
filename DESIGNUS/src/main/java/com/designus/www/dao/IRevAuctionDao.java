@@ -40,4 +40,6 @@ public interface IRevAuctionDao {
 	int reqDecisionInsert(revAuctionProgress rap);
 
 	int reqDecisionSelect(revAuctionProgress rap);
+
+	RevAuctionTender myCurbaMountSelect(RevAuction ra);
 }
