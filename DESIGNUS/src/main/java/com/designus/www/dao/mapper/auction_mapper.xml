@@ -22,9 +22,9 @@
 
 	<select id="getAuctionListSelect" parameterType="auction" resultType="auction">
 	  <![CDATA[
-		SELECT a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty,
-		a.au_minprice, a.au_inprice, a.au_contents, a.au_date, b.aut_price FROM AU a
-		LEFT OUTER JOIN (select aut_num,MAX(aut_price)as aut_price FROM aut group by aut_num) b
+		SELECT a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
+		a.au_contents, a.au_date, b.aut_price FROM AU a LEFT OUTER JOIN 
+		(select aut_num,MAX(aut_price)as aut_price FROM aut where aut_kind != 'I' group by aut_num) b
 		ON  a.AU_NUM = b.AUT_NUM
 		where a.au_cgcode = ${au_cgcode}
 		ORDER BY a.AU_NUM
