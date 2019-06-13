@@ -26,6 +26,7 @@ public class SponsorMM {
 
 	public ModelAndView sponupload(MultipartHttpServletRequest multi) {
 		System.out.println("넘어와라ㅏ");
+
 		mav = new ModelAndView();
 		String view = null;
 
