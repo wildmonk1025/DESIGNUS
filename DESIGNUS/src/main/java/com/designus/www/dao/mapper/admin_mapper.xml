@@ -12,7 +12,7 @@
 		SELECT * FROM MJ
 	</select>
      <select id="getWriteCheck" parameterType="major" resultType="major">
-		SELECT * FROM RP_LIST WHERE RP_NUM =#{rp_num}
+		SELECT * FROM RP_LIST WHERE RP_NUM =${rp_num}
 	</select>
       
 </mapper>
