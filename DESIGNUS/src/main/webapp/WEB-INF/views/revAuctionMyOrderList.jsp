@@ -577,6 +577,52 @@ for (var i = 0; i < revList.length; i++) {
 
 $('#rightmain').html(main);
   
+function requested(even) {
+	var form = {
+			rap_ptnum:even
+			 }
+		var sub="";
+		 $.ajax({
+
+				url: 'request',
+				type:'post',
+			    data:JSON.stringify(form),
+			    contentType:"application/json; charset=utf-8;",
+			    dataType:'json',
+			    success:function(data){
+			    	alert('해당 상품을 추천하였습니다.');
+			    	console.log("1234567"+data.aup_ptnum);
+			    	 /*if(data.aut_kind=="I"){
+				    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+				    	   }else if(data.aut_kind=="O"){
+				    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+				    	   }else{
+				    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   };
+			    	sub+="상품번호 :"+data.aup_price+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+			    	   +"상품이름 :"+data.au_title+"<br>"
+	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
+			    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
+			    	   +"이름 :<input type='text' name='aup_name'><br>"
+			    	   +"주소 :<input type='text' name='aup_address'><br>"
+			    	   +"연락처: <input type='text' name='aup_phone'><br>"
+			    	   +"<input type='submit' value='요청'><br>"
+			    	   +"<input type='button' id='back' value='취소'>";
+			    	  
+			    	$('#total').css("display", "inline");
+			    	$('#l1').css("display", "inline");
+			    	
+			    	$('#r1').html(sub);*/
+			    },
+			    
+			    error:function(error){
+			    	alert('정상적인 추천이 실패했습니다.');
+			    	console.log(error);
+			    }
+			 });//end ajax
+		
+	}//end sho	
+}  
 
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")

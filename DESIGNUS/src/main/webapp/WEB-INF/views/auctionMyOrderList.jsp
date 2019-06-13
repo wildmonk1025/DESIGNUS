@@ -529,7 +529,7 @@ position: absolute;
 			<div id="setp">
 				<div id="setpT">
 				</div>
-				${paging}
+				${MPpaging}
 				</div>
 
 				</div>

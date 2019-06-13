@@ -91,5 +91,7 @@ public interface ImypageDao {
 
 	int getreSetpCount(String id);
 
+	revAuctionProgress requestSelect(revAuctionProgress rap);
+
   
 }
