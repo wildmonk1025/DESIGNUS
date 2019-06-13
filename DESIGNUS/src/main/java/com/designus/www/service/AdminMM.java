@@ -80,6 +80,20 @@ public class AdminMM {
 		mav.setViewName(view);
 		return mav;
 	}
+	public ModelAndView declarenonpermit(int rp_num) {
+		String view=null;
+		System.out.println("[1] rp_num ="+rp_num);
+		mav= new ModelAndView();
+		Report rp = new Report();
+		System.out.println("오/..왔내?");
+		iDao.getpermit(rp_num);
+		iDao.getperfmit(rp_num);
+		System.out.println("올성공");
+		view = "declareWrite";
+		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
+		mav.setViewName(view);
+		return mav;
+	}
 	
 
 }

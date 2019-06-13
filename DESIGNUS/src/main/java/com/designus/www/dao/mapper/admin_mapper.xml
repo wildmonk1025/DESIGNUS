@@ -14,5 +14,11 @@
      <select id="getWriteCheck" parameterType="Integer" resultType="report">
 		SELECT * FROM RP_LIST WHERE RP_NUM =${rp_num}
 	</select>
+     <delete id="getpermit" parameterType="Integer">
+		DELETE FROM RP WHERE RP_NUM =${rp_num}
+	</delete>
+     <delete id="getperfmit" parameterType="Integer">
+		DELETE FROM RPI WHERE RPI_NUM =${rp_num}
+	</delete>
       
 </mapper>
