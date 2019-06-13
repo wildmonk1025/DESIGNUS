@@ -144,7 +144,7 @@
             </div>
             <div class="btnArray" id="btn1"><input type="submit" value="적합" onclick="javascipt: form.action='gogo'"></div>
             <div class="btnArray" id="btn2"><input type="submit" value="부적합" formaction="gogo"/></div>
-            <div class="btnArray" id="btn3"><input type="button" onclick="goBack()" value="돌아가기"/></div>
+            <div class="btnArray" id="btn3"><button><a href="declareWrite">돌아가기<br/></a></button></div>
             <!-- <div class="btnArray" id="btn3"><input type="button" onclick="location.href='home'" value="돌아가기"></div> -->
         </div>
         </form>

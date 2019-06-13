@@ -54,7 +54,7 @@
 	</update>
 
 	<select id="auctionTenderSel" parameterType="auctiontender" resultType="String">
-		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_num = ${aut_aunum}
+		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_num = ${aut_aunum} AND aut_kind != 'I'
 	</select>
 
 	<select id="getAuctionTenderQty" parameterType="auctiontender" resultType="Integer">
@@ -85,12 +85,12 @@
 
 	<insert id="setAuctionUTI" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,#{sut_date})
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
 
 	<insert id="setAuctionUTT" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,#{sut_date})
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
  
 	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
@@ -119,11 +119,6 @@
 	</insert>
 	<!-- 출품 이미지 등록 -->
 	
-	<insert id="setAuctionTenderIns" parameterType="auction">
-		INSERT INTO AUT
-        VALUES(${au_num},'AAAA',0,'T',DEFAULT)
-	</insert>
-	
 	<select id="getAuctionImgSel" parameterType="auction" resultType="String">
 		<![CDATA[
 		SELECT * FROM (
@@ -134,8 +129,6 @@
 		]]>
 	</select>
 	
-	<select id="getAuctionTenderDate" parameterType="auctiontender" resultType="String">
-		select TO_CHAR(sysdate,'YY/MM/DD/HH24:MI:SS') from dual
-	</select>
+	
 	
 </mapper>

@@ -46,6 +46,13 @@ public class AdminController {
 
 		return "categoryEdit";
 	}
+	
+	@RequestMapping(value = "/permitWriApply", method = RequestMethod.GET)
+	public String permitWriApply() {
+		
+		return "permitWriApply";
+	}
+	
 	@RequestMapping(value = "/declareWriteCheck", method = RequestMethod.GET)
 	public ModelAndView declareWriteCheck(int rp_num) {
 		System.out.println("이거찍히니?"+rp_num);
