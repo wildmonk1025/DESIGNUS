@@ -494,53 +494,40 @@ public class UploadFile {
 
 	}
 
-	public void fileUpsponsor(MultipartHttpServletRequest multi, Sponsor sp) {
-		System.out.println("multi 파라미터와 ra받는 fileUp");
-		// 1.이클립스의 물리적 저장경로 찾기
-		String root = multi.getSession().getServletContext().getRealPath("/");
+	public String fileUpsponsor(MultipartHttpServletRequest multi, Sponsor sp) {
+		String root = multi.getServletContext().getRealPath("/");
+		System.out.println("폴더 업로드!!!!!되고있니 ");
 		System.out.println("root=" + root);
 		String path = root + "resources/sponupload/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
-		if (!dir.isDirectory()) { // sponupload폴더 없다면
+		if (!dir.isDirectory()) { // upload폴더 없다면
 			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
 		}
-		MultipartFile file = multi.getFile("imgInput");
+		// 3.파일을 가져오기-파일태그 이름들 반환
+		// String files=multi.getFileNames(); //파일태그가 2개이상일때
+		// List<MultipartFile> file = multi.getFiles("b_files");
 
-		String oriFileName = file.getOriginalFilename();
-
-		System.out.println(oriFileName);
-
+		MultipartFile files = multi.getFile("ssi_imgSysName");
+		// 파일 메모리에 저장
+		String oriFileName = files.getOriginalFilename(); // a.txt
 		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
-		String sysFileName = (System.currentTimeMillis() + 1) + "."
-				+ oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
-
-		sp.setSsi_imgSysName(sysFileName);
-
+		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+		System.out.println("ori=" + oriFileName);
 		System.out.println("sys=" + sysFileName);
-
-		sDao.SponsorImageInsert(sp);
-
 		// 5.메모리->실제 파일 업로드
 		/*
 		 * System.out.println(session.getAttribute("id").toString());
 		 * System.out.println("세션 확인");
 		 */
-
 		try {
-			file.transferTo(new File(path + sysFileName));
+			files.transferTo(new File(path + sysFileName));
 
-			System.out.println("PC로컬경로에 파일 업로드 완료");
-
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		// for End
 
-		// flag는 원래 insert여부를 확인하기 위함 이였으나, 게시한 글 번호를 selectKey로 반환하기 위한 겸용으로 사용하였다.
-		// System.out.println("ra_num값="+ra.getRa_num());
-
+		return sysFileName;
 	}
-
 }

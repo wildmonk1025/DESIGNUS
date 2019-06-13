@@ -178,7 +178,7 @@
 	</select>
 	<delete id="autcancelDelete" >
 		  DELETE FROM AUT 
-     WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND AUT_DATE=#{aut_date}
+     WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND AUT_DATE=to_char()#{aut_date})
 	</delete>
 	
 	<select id="scheckSelect" parameterType="auctionprogress" resultType="auctionprogress">
@@ -206,4 +206,19 @@
 		mb_point=#{ponitW}+#{aup_price}
 		where mb_id=#{au_mbid_w}
 	</update>
+	<select id="revAuctionMyOrderListSelect" parameterType="revauctionprogress" resultType="revauctionprogress">
+		<![CDATA[
+		select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_MBID_N=#{id} and rownum<=${num}*4
+     ) where rn>=${num}*4-3 AND RankNo=1
+  ]]>
+	</select>
+	<select id="getreSetpCount" resultType="Integer">
+		select count(*) from
+		RAPVIEW where RAP_MBID_N=#{id}
+	</select>
+	
 </mapper>

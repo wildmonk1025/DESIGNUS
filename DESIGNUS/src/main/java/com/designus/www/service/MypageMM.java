@@ -17,6 +17,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
@@ -47,7 +48,7 @@ public class MypageMM {
 
 		System.out.println("sddd:" + list);
 		if (list.equals("rev")) {
-			view = "revAuctionMyOrderList";
+			view = "redirect:/revAuctionMyOrderList";
 		} else if (list.equals("revre")) {
 			view = "revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
@@ -338,7 +339,7 @@ public class MypageMM {
 		String str = gson.toJson(apList);
 		System.out.println("size" + apList.size());
 		mav.addObject("apList", str);
-		mav.addObject("paging", getMPaging(num, kind));
+		mav.addObject("MPpaging", getMPaging(num, kind));
 		System.out.println("사망띠....");
 		System.out.println("apList" + apList.size());
 
@@ -456,15 +457,18 @@ public class MypageMM {
 		System.out.println("aaaaa : " + a);
 		return a;
 	}
-
+	@Transactional
 	public ModelAndView auccancel(AuctionProgress ap) {
 		mav = new ModelAndView();
 		System.out.println("(서비스클래스)출품구매 취소 시작 ");
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : " + ap.getAup_ptnum());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autnum: " + ap.getAup_ranum());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: " + ap.getAup_mbid_n());
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " + ap.getAut_date());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " +ap.getAut_date().substring(0,19) );
 		boolean a = pDao.auccancelDelete(ap);
+		
+		
+		
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
 		System.out.println("aaaaa : " + a);
 
@@ -589,6 +593,44 @@ public class MypageMM {
 		}
 		System.out.println("(메니저먼트) reviewboard 마무의리");
 		return json;
+	}
+
+	public ModelAndView revAuctionMyOrderList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		System.out.println("(서비스클래스)제작의뢰  시작");
+		String id = session.getAttribute("id").toString();
+		List<revAuctionProgress> revList = null;
+		String view = null;
+		int num = (pageNum == null) ? 1 : pageNum;
+		revList = pDao.revAuctionMyOrderListSelect(id, num);
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1 revList.size(): "+revList.size());
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1-2 revList.size(): "+revList.get(0).getRap_mbid_w());
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1-3 revList.size(): "+revList.get(0).getRap_ptnum());
+		System.out.println("(서비스클래스)제작의뢰  중간지점 1-1 revList.size(): "+revList.get(0).getRa_title());
+		Gson gson = new Gson();
+		String str = gson.toJson(revList);
+		mav.addObject("revList", str);
+		mav.addObject("ROpaging", getROaging(num, kind));
+		System.out.println("(서비스클래스)제작의뢰  중간지점 3 페이지징 완료 ");
+		view = "revAuctionMyOrderList";
+		mav.setViewName(view);
+		System.out.println("(서비스클래스)제작의뢰  마무리");
+		return mav;
+	}
+
+	private Object getROaging(int pageNum, String kind) {
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
+		int listCount = 5; // 페이지당 글의 수
+		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum = pDao.getreSetpCount(id);
+		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: "+maxNum);
+		String boardName = "revAuctionMyOrderList";
+
+	com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
+		return paging.makeHtmlPaging();
 	}
 
 }

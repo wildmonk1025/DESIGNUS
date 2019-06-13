@@ -116,16 +116,14 @@ ul {
 						console.log("성공");
 
 						for ( var i in data) {
-							result += "<div class='best'>" + "신고번호:"
+							result += "<div class='best'>" +"<a href='declareWriteCheck?rp_num="+data[i].rp_num+"'>"
+									+"신고번호:"
 									+ data[i].rp_num + "<br>" + "신고자아이디:"
 									+ data[i].rp_mbid_d + "<br>" + "가해자아이디:"
 									+ data[i].rp_mbid_a + "<br>" + "신고위치:"
 									+ data[i].rp_locate + "<br>" + "신고사유:"
-									+ data[i].rp_reason + "<br>" + "제목:"
-									+ data[i].rp_title + "<br>" + "내용:"
 									+ data[i].rp_contents + "<br>" + "등록일:"
-									+ data[i].rp_date + "<br>" + "첨부파일:"
-									+ data[i].rpi_img + "<br>" + "</div>";
+									+ data[i].rp_date + "<br>" +"</a>"+"</div>";
 						}
 						$("#declarelist").html(result);
 					},

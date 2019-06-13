@@ -155,25 +155,20 @@ public class MypageController {
 		mav=pm.auctionMyAcceptList(pageNum,kind);
 		return mav;
 	}
-
-	/*
-	 * @RequestMapping(value = "/auctionMyAcceptList", method =
-	 * {RequestMethod.GET,RequestMethod.POST})
-	 * 
-	 * public ModelAndView auctionMyAcceptList(Integer pageNum ,String kind) { mav =
-	 * new ModelAndView();
-	 * System.out.println("여기로 오는 거 맞지??? 여기가 어디냐면 옥션 마이엑...어쩌구");
-	 * //mav=pm.auctionMyAcceptList(pageNum,kind);
-	 * System.out.println("aup_ptnum이 인트라고 오류가 나는데 여기까지는 실행이 된다? 말이 안되는데...." );
-	 * return mav; }
-	 */
 	@RequestMapping(value = "/delinumupload", method = {RequestMethod.GET,RequestMethod.POST})
-
 	public ModelAndView delinumupload(AuctionProgress ap) {
 		System.out.println("아니 여긴 오는거 맞아??");
 		mav = new ModelAndView();
 		 mav=pm.delinumupload(ap);
 		 
+		return mav;
+	}
+	@RequestMapping(value = "/revAuctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView revAuctionMyOrderList(Integer pageNum ,String kind) {
+		System.out.println("(컨트롤러)제작의뢰  시작");
+		mav = new ModelAndView();
+		 mav=pm.revAuctionMyOrderList(pageNum,kind);
+		 System.out.println("(컨트롤러)제작의뢰  마무리"); 
 		return mav;
 	}
 }

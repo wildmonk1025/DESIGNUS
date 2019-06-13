@@ -122,8 +122,9 @@ input {
 					</tr>
 					<tr style="height: 50">
 						<td>이미지</td>
-						<td colspan="3"><input type="file" id="imgInput"
-							name="imgInput" style="width: 700px; float: left;"> <!-- <button
+						<td colspan="3"><input type="file" id="ssi_imgSysName"
+							name="ssi_imgSysName" style="width: 700px; float: left;">
+							<!-- <button
 								style="width: 6%; height: 48; float: right; border-radius: 100px">╉</button>
 							<button style="width: 14%; height: 48; float: right;">파일첨부</button> -->
 						</td>
@@ -144,7 +145,8 @@ input {
 				</table>
 				<div id="btn2">
 					<button class="btn2">후원등록</button>
-					<button class="btn2">돌아가기</button>
+					<button type="button" class="btn2"
+						onclick="location.href = 'sponsor'" value="돌아가기">돌아가기</button>
 				</div>
 			</form>
 		</div>
@@ -167,7 +169,7 @@ input {
 		}
 	}
 
-	$("#imgInput").change(function() {
+	$("#ssi_imgSysName").change(function() {
 		readURL(this);
 	});
 </script>
