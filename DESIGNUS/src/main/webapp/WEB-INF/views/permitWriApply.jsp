@@ -40,7 +40,7 @@ ul {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: 500px;
+	height: auto;
 }
 
 .writerjoin {
@@ -64,7 +64,7 @@ ul {
 	left: 40px;
 	float: left;
 	width: 900px;
-	height: 320px;
+	height: auto;
 }
 
 tr, td {
@@ -91,7 +91,7 @@ tr, td {
 			</div>
 			<div id="writerjoinlist">
 				<div id="writerjoin">
-					<table>
+					<table border="1">
 						<tr align="center">
 							<td>신청번호</td>
 							<td>예비아이디</td>
@@ -110,46 +110,8 @@ tr, td {
 						</tr>
 					</table>
 				</div>
-				<div id="writerjoin">
-					<table>
-						<tr align="center">
-							<td>신청번호</td>
-							<td>예비아이디</td>
-							<td>전공</td>
-							<td>자료 여부(O,X)</td>
-						</tr>
-						<tr>
-							<td colspan="4">내용</td>
-						</tr>
-						<tr>
-							<td colspan="2">파일이름</td>
-							<td colspan="2">..ddd.pdf</td>
-						</tr>
-						<tr>
-							<td colspan="4">이미지</td>
-						</tr>
-					</table>
-				</div>
-				<div id="writerjoin">
-					<table>
-						<tr align="center">
-							<td>신청번호</td>
-							<td>예비아이디</td>
-							<td>전공</td>
-							<td>자료 여부(O,X)</td>
-						</tr>
-						<tr>
-							<td colspan="4">내용</td>
-						</tr>
-						<tr>
-							<td colspan="2">파일이름</td>
-							<td colspan="2">..ddd.pdf</td>
-						</tr>
-						<tr>
-							<td colspan="4">이미지</td>
-						</tr>
-					</table>
-				</div>
+			
+				
 			</div>
 		</div>
 	</div>
