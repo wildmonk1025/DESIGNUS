@@ -85,12 +85,12 @@
 
 	<insert id="setAuctionUTI" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,#{sut_date})
 	</insert>
 
 	<insert id="setAuctionUTT" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
-        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,DEFAULT)
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,#{sut_date})
 	</insert>
  
 	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
@@ -132,6 +132,10 @@
 		FROM AUI WHERE AUI_NUM = ${au_num}
 		) WHERE AUI = 1
 		]]>
+	</select>
+	
+	<select id="getAuctionTenderDate" parameterType="auctiontender" resultType="String">
+		select TO_CHAR(sysdate,'YY/MM/DD/HH24:MI:SS') from dual
 	</select>
 	
 </mapper>
