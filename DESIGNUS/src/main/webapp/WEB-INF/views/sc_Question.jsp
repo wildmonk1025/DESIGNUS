@@ -48,17 +48,7 @@
 	margin-top: 10px;
 }
 
-/* #text1 {
-	width: 400px;
-	height: 30px;
-	float: left;
-} 
-#text2 {
-	margin-top: 30px;
-	width: 400px;
-	height: 30px;
-	float: left;
-} */
+
 #footercheck {
 	border: 1px solid black;
 	width: 1520px;
@@ -107,7 +97,7 @@ select {
 	float: left;
 }
 
-#aq_title {
+#qr_title {
 	font-size: 25px;
 	text-align-last: center;
 	width: 1000px;
@@ -161,8 +151,7 @@ textarea {
 	font-size: 25px;
 	width: 250px;
 	height: 45px;
-	left: 445px;
-	float: left;
+	float: right;
 }
 
 #Sctext {
@@ -180,7 +169,6 @@ textarea {
 	</div>
 
 	<div id="homeMain">
-		<form action="questionapply" name="QuestionFrm" method="post">
 			<div id="Sctext">
 				<h2 id="h">고객센터</h2>
 				<br> <br>
@@ -193,24 +181,24 @@ textarea {
 					<li class="questionmenu"><a class="menuLink" href="scdeclare">신고하기</a></li>
 				</ul>
 			</div>
-
+			<form action="sc_questionFrm" name="sc_questionFrm" method="post" enctype="multipart/form-data">
 			<div id="list">
-				<select>
+				<select name="qr_type">
 					<option>질문 유형</option>
 					<option>거래</option>
 					<option>판매</option>
-					<option>등등...</option>
+					<option>이수원</option>
+					<option>정병남</option>
+					<option>조용환</option>
 				</select>
 				<p id="title">제목</p>
-				<input id="aq_title" type="text" name="aq_title">
-				<textarea>여기에 내용을 적습니다.</textarea>
-				<input class="c1" type="file" name="aqi_imgSysName"
-					id="aqi_imgSysName"> <span class="c1" style="color: red">사진은
-					jpg,png 파일들만 등록할 수 있습니다.</span>
+				<input id="qr_title" type="text" name="qr_title">
+				<textarea placeholder="이곳에 내용을 적어주세요" name="qr_contents"></textarea>
+				<input class="c1" type="file" name="aqi_imgSysName" id="aqi_imgSysName"> 
+				<span class="c1" style="color: red">사진은 jpg,png 파일들만 등록할 수 있습니다.</span>
 				<button class="c1" id="apply">문의하기</button>
 			</div>
 		</form>
-
 	</div>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include></div>
