@@ -11,4 +11,28 @@ public class WBSController {
 		
 		return "freeboard";
 	}
+	
+	@RequestMapping(value = "/scquestion", method = RequestMethod.GET)
+	public String scquestion() {
+		
+		return "sc_Question";
+	}
+	
+	@RequestMapping(value = "/scqna", method = RequestMethod.GET)
+	public String scqna() {
+		
+		return "sc_QnA";
+	}
+
+	@RequestMapping(value = "/scdeclare", method = RequestMethod.GET)
+	public String scdeclare() {
+		
+		return "sc_112";
+	}
+	
+	
+	
+	
+	
+	
 }
