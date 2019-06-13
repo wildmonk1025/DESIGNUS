@@ -55,4 +55,7 @@
 	<select id="memberWpoint" parameterType="auctionprogress" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
 	</select>
+	<select id="ravmemberNpoint" parameterType="revAuctionProgress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{rap_mbid_n}
+	</select>
 </mapper>

@@ -180,16 +180,19 @@ public class UploadFile {
 	}
 
 	// 파일 다운로드
-	public void download(String fullPath, String oriFileName, HttpServletResponse resp) throws Exception {
-
+	public boolean download(String fullPath, String oriFileName, HttpServletResponse resp) throws Exception {
+		//실제 파일 있는지 확인
+		boolean f = false;
+		
 		// 한글파일 깨짐 방지
 		String downFile = URLEncoder.encode(oriFileName, "UTF-8");
 		// 파일명 뒤에 이상한 문자가 붙는 경우 아래코드 해결
 		// downFile=downFile.replaceAll("//+","");
-		System.out.println("왜 나만 안되는 거야...ㅠㅠ=" + oriFileName);
 		// 파일 객체 생성
 		File file = new File(fullPath);
 		// 다운로드 경로 파일을 읽어 들임
+		if(file.exists()) {
+			f = true;
 		InputStream is = new FileInputStream(file);
 		// 반환객체설정
 		resp.setContentType("application/octet-stream");
@@ -206,6 +209,8 @@ public class UploadFile {
 		os.flush();
 		os.close();
 		is.close();
+		}
+		return f;
 	}
 
 	public boolean fileUp(MultipartHttpServletRequest multi, Member mb, String kind, Major mj) {

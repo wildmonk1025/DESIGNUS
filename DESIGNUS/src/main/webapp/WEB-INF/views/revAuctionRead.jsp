@@ -7,8 +7,7 @@
 <html>
 <head>
 <title>제작의뢰 상세보기</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 div {
@@ -324,18 +323,19 @@ div {
 				<table style="margin: 10px 0px 0px 10px; line-height: 200%">
 					<tr>
 						<th>작성자 :</th>
-						<td><input id="ra_mbid2" type="text" value="${raInfo.ra_mbid}" readonly="readonly">님</td>
-						<td></td>
+						<td><input id="ra_mbid2" type="text" value="${raInfo.ra_mbid}" readonly="readonly"></td>
+						<td style="text-align:left;">님</td>
 					</tr>
 					<tr>
 						<th>수량 :</th>
-						<td style="font-size: 15px;">1EA(짝/켤레/쌍)</td>
-						<td style="color: gray; font-size: 11px;">제작의뢰 수량은 DEFAULT 1개
-							입니다.</td>
+						<td style="font-size: 15px; text-align:center;">1EA(짝/켤레/쌍)</td>
+						<td style="color: gray; font-size: 11px; text-align:left;">제작의뢰 수량은 DEFAULT 1개 입니다.</td>
 					</tr>
 					<tr>
-						<th>회원님이 낙찰한 금액 :</th>
-						<td colspan="2"><div id="tender_result">0원</div></td>
+						<th>의뢰인의 낙찰 금액 :</th>
+						<td style="text-align:center;">${raCurPrice.rat_price}</td>
+						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td>
+						<td style="text-align:left; color:blue;"></td>
 					</tr>
 				</table>
 				<div id="middle_contents1_lv4">경매 남은 시간 표시</div>
@@ -350,7 +350,7 @@ div {
 			</c:if>
 			<c:if test="${decidechk eq 'HIDE'}">
 				<button id="middle_contents2_btn2">
-					작가 의뢰 접수 <br> 및 견적서 첨부
+					의뢰접수 권한이 <br> 없습니다.
 				</button>
 			</c:if>
 		</div>
@@ -366,7 +366,8 @@ div {
 			<div id="middle_contents4_lv1">
 				<p style="font-size: 20px; color: blue;">제작 의뢰 도안(첨부파일)</p>
 				<div id="middle_contents4_lv2">
-					${raInfo.ra_file} <button id="middle_contents4_btn">다운로드</button>
+					<c:set var="ttt" value="${msgfile}"/>
+					<div>${raInfo.ra_file}<button id="middle_contents4_btn" onclick="location.href='ratfiledownload?rat_file=${raInfo.ra_file}&ra_num=${raInfo.ra_num}'">다운로드</button></div>
 				</div>
 			</div>
 			<div id="middle_contents4_lv3">
@@ -451,7 +452,7 @@ $(".subtn").click(function() {
 					var wprice = data[i].rat_price;
 					var wdays = data[i].rat_days;
 					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
-							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
+							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file+"&ra_num="+${raInfo.ra_num}
 							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days
 							+"일</td><td width='200'><input class='decisionbtn' type='button' onclick=\"revdecision('"+wid+"','"+wprice+"','"+wdays+"');\" value='의뢰하기'></td></tr>";
 					}
@@ -547,7 +548,6 @@ $(".subtn").click(function() {
  			  }
  			});
  	}
- 	
 // $("#middle_contents2_btn").attr('disabled',true);
 // $(".decisionbtn").css("display","none");
 </script>

@@ -8,6 +8,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style>
+div{
+	margin: auto;
+}
+
 #header {
 	padding: 3px;
 	width: 1510px;
