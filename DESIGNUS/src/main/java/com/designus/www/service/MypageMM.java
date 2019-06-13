@@ -338,7 +338,7 @@ public class MypageMM {
 		String str = gson.toJson(apList);
 		System.out.println("size" + apList.size());
 		mav.addObject("apList", str);
-		mav.addObject("paging", getMPaging(num, kind));
+		mav.addObject("MPpaging", getMPaging(num, kind));
 		System.out.println("사망띠....");
 		System.out.println("apList" + apList.size());
 
@@ -463,8 +463,11 @@ public class MypageMM {
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : " + ap.getAup_ptnum());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autnum: " + ap.getAup_ranum());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: " + ap.getAup_mbid_n());
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " +ap.getAut_date() );
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " +ap.getAut_date());
 		boolean a = pDao.auccancelDelete(ap);
+		
+		
+		
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
 		System.out.println("aaaaa : " + a);
 
