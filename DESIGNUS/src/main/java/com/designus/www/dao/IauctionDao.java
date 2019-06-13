@@ -62,6 +62,8 @@ public interface IauctionDao {
 
 	String getAuctionImgSel(Auction au);
 
+	String getAuctionTenderDate(AuctionTender at);
+
 	
 
 

@@ -186,23 +186,20 @@ public class AuctionMM {
 		int totalPrice =0;
 		int qty = inbuyQty;
 		int Tqty = 0;
+		String date = null;
 		AuctionTender at = new AuctionTender();
 		at.setAut_aunum(inbuyNum);
 		at.setAut_mbid(id);
 		at.setAut_qty(qty);
 		Tqty = aDao.getAuctionTenderQty(at);
 		price = aDao.getAuctionTenderPrice(at);
+		date = aDao.getAuctionTenderDate(at);
+		at.setSut_date(date);
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
 		
 		if(Tqty > 0) {
 			
-			System.out.println("[6] inbuyNum ="+inbuyNum);
-			System.out.println("[6] id ="+id);
-			System.out.println("[6] price ="+price);
-			System.out.println("[6] qty ="+qty);
-			System.out.println("[6] Tqty ="+Tqty);
-			System.out.println("[6] totalPrice ="+totalPrice);
 			
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
@@ -218,12 +215,14 @@ public class AuctionMM {
 		String id = (String)session.getAttribute("id");
 		String view = null;
 		int price = 0;
+		String date = null;
 		AuctionTender at= new AuctionTender();
 		at.setAut_aunum(tenderNum);
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
 		price = aDao.auctionTenderSel(at);
-
+		date = aDao.getAuctionTenderDate(at);
+		at.setSut_date(date);
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
 			aDao.setAuctionUTT(at);
