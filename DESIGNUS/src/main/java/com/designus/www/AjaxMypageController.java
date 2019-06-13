@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.MypageMM;
 
 @RestController
@@ -78,5 +79,23 @@ public class AjaxMypageController {
 		System.out.println("(컨트롤러)수령확인 및 구매후기 작성 마무으리!!!");
 		return json;
 
+	}
+	@RequestMapping(value = "/request", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String request(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스타트!!!");
+		System.out.println(rap.getRap_ptnum());
+		String json = pm.request(rap);
+		System.out.println("(컨트롤러)제작의뢰내역 스타트!!!");
+		return json;
+	}
+	@RequestMapping(value = "/revauccancel", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String revauccancel(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼!!! 시작!!!");
+		System.out.println(rap.getRap_ptnum());
+		String json = pm.revauccancel(rap);
+		System.out.println("(컨트롤러)제작의뢰내역  스텝 1 취소폼 마무리!!!");
+		return json;
 	}
 }

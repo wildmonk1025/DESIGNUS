@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.MemberMM;
 import com.designus.www.service.MypageMM;
 
@@ -169,6 +170,15 @@ public class MypageController {
 		mav = new ModelAndView();
 		 mav=pm.revAuctionMyOrderList(pageNum,kind);
 		 System.out.println("(컨트롤러)제작의뢰  마무리"); 
+		return mav;
+	}
+	@RequestMapping(value = "/requestby", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView requestby(revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰 스텝1 요청 시작");
+		mav = new ModelAndView();
+		 mav=pm.requestby(rap);
+		 System.out.println("(컨트롤러)제작의뢰 스텝1 요청 마무리");
 		return mav;
 	}
 }

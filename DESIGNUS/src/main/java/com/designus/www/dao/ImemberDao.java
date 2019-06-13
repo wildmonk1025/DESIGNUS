@@ -7,6 +7,7 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
 
@@ -39,6 +40,8 @@ public interface ImemberDao {
 	int getMemberPwUpdate(Member mb);
 
 	int memberWpoint(AuctionProgress ap);
+
+	int ravmemberNpoint(revAuctionProgress rap);
 
 
 

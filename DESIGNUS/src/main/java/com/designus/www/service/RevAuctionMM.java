@@ -108,6 +108,9 @@ public class RevAuctionMM {
 		mav.addObject("decidechk", decidechk);
 		mav.addObject("nb", bk.getRab_ranum());
 		mav.addObject("raInfo", ra);
+		//회원이 낙찰한 금액 확인하기
+		RevAuctionTender rat = rDao.myCurbaMountSelect(ra);
+		mav.addObject("raCurPrice",rat);
 		if (ra_num == ra.getRa_num()) {
 			view = "revAuctionRead";
 			mav.addObject("ra_num", ra_num);
@@ -155,16 +158,23 @@ public class RevAuctionMM {
 		return jsonStr;
 	}
 
-	public void ratFileDownload(Map<String, Object> params) throws Exception {
+	public ModelAndView ratFileDownload(Map<String, Object> params) throws Exception {
+		mav = new ModelAndView();
 		String root = (String) params.get("root");
 		String rat_file = (String) params.get("rat_file");
+		//파일 없을경우 넘길 글번호
 		String fullPath = root + "/resources/upload/" + rat_file;
 		System.out.println(fullPath);
 
 		HttpServletResponse resp = (HttpServletResponse) params.get("response");
-
 		//실제 다운로드
-		upload.download(fullPath, rat_file, resp);
+		boolean chk = upload.download(fullPath, rat_file, resp);
+		if(chk==false) {
+			int ra_num = Integer.parseInt(params.get("ra_num").toString());
+			mav.addObject("ra_num", ra_num);
+			mav.setViewName("redirect:/revauctionread");
+		}
+		return mav;
 	}
 
 	public String revAuctionApply(MultipartHttpServletRequest multi) {
