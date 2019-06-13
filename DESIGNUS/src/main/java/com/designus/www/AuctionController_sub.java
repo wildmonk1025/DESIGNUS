@@ -1,6 +1,5 @@
 package com.designus.www;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,14 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.designus.www.bean.RevAuction;
 import com.designus.www.service.RevAuctionMM;
 
 @Controller
@@ -50,13 +47,14 @@ public class AuctionController_sub {
 		}
 	
 	@RequestMapping(value = "/ratfiledownload", method = RequestMethod.GET)
-	public void download(@RequestParam Map<String,Object> params,HttpServletRequest request,HttpServletResponse response)
+	public ModelAndView download(@RequestParam Map<String,Object> params,HttpServletRequest request,HttpServletResponse response)
 	throws Exception{
-		//mav = new ModelAndView();
 		System.out.println("rat_file="+params.get("rat_file"));
 		params.put("root",request.getSession().getServletContext().getRealPath("/")); //다운로드할 파일이 있는 경로를 설정
 		
 		params.put("response", response);
-		ram.ratFileDownload(params);
+		mav = ram.ratFileDownload(params);
+		
+		return mav;
 	}
 }

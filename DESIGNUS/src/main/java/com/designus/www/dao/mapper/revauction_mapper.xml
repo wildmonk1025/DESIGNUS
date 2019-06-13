@@ -80,4 +80,10 @@
 	<select id="reqDecisionSelect" parameterType="revauctionprogress" resultType="int">
 		SELECT COUNT(*) FROM RAP WHERE RAP_MBID_W=#{rap_mbid_w} AND RAP_MBID_N=#{rap_mbid_n} AND RAP_RANUM=${rap_ranum}
 	</select>
+	
+	<select id="myCurbaMountSelect" parameterType="revauction" resultType="revauctiontender">
+		SELECT * FROM RAT
+		WHERE RAT_PRICE=(SELECT MIN(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num} AND RAT_DECIDE='O') AND RAT_NUM=${ra_num} AND RAT_DECIDE='O'
+	</select>
+	
 </mapper>
