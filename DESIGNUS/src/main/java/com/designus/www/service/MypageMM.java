@@ -61,7 +61,7 @@ public class MypageMM {
 		} else {
 			view = "redirect:/basketFrm?kind=A";
 		}
-		//System.out.println("view"+view);
+		// System.out.println("view"+view);
 		mav.setViewName(view);
 		return mav;
 	}
@@ -190,8 +190,8 @@ public class MypageMM {
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 
 		Major mj = new Major();
-		mj.setMj_id(id);
-		mj.setMj_cg_code(cate);
+		mj.setMj_mbid(id);
+		mj.setMj_cgcode(cate);
 		mj.setMj_contents(conten);
 
 		boolean f = false;
@@ -201,7 +201,7 @@ public class MypageMM {
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
 			f = upload.swfileUp(multi, mj);
 			if (f) {
-				boolean b = pDao.nortowriapplyupdate(mj.getMj_id());
+				boolean b = pDao.nortowriapplyupdate(mj.getMj_mbid());
 				if (b) {
 					view = "myPage";
 				} else {
@@ -217,19 +217,19 @@ public class MypageMM {
 		mav.setViewName(view);
 		return mav;
 	}
-	
+
 	public ModelAndView basketFrmrev(Integer pageNum, String kind) {
-	
+
 		mav = new ModelAndView();
 		String view = null;
 		List<Basket> rList = null;
-		String id=session.getAttribute("id").toString();
+		String id = session.getAttribute("id").toString();
 		int num = (pageNum == null) ? 1 : pageNum;
-		System.out.println("id="+id);
-		System.out.println("num="+num);
-		rList = pDao.basketFrmRSelect(num,id);
+		System.out.println("id=" + id);
+		System.out.println("num=" + num);
+		rList = pDao.basketFrmRSelect(num, id);
 		mav.addObject("rList", rList);
-		mav.addObject("paging", getPaging(num,kind));// 현재 페이지 번호 ${paging}
+		mav.addObject("paging", getPaging(num, kind));// 현재 페이지 번호 ${paging}
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(rList);
 		mav.addObject("jsonStr", jsonStr);
@@ -237,10 +237,7 @@ public class MypageMM {
 		mav.setViewName(view);
 		return mav;
 
-
 	}
-
-
 
 	/*
 	 * private String gettPaging(int pageNum, String kind) { String
@@ -255,17 +252,17 @@ public class MypageMM {
 	 */
 
 	public ModelAndView basketFrmspon(Integer pageNum, String kind) {
-		
+
 		mav = new ModelAndView();
 		String view = null;
 		List<Basket> sList = null;
-		String id=session.getAttribute("id").toString();
+		String id = session.getAttribute("id").toString();
 		int num = (pageNum == null) ? 1 : pageNum;
-		System.out.println("id="+id);
-		System.out.println("num="+num);
-		sList = pDao.basketFrmSSelect(num,id);
+		System.out.println("id=" + id);
+		System.out.println("num=" + num);
+		sList = pDao.basketFrmSSelect(num, id);
 		mav.addObject("sList", sList);
-		mav.addObject("paging", getPaging(num,kind));// 현재 페이지 번호 ${paging}
+		mav.addObject("paging", getPaging(num, kind));// 현재 페이지 번호 ${paging}
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(sList);
 		mav.addObject("jsonStr", jsonStr);
@@ -289,13 +286,13 @@ public class MypageMM {
 		mav = new ModelAndView();
 		String view = null;
 		List<Basket> bList = null;
-		String id=session.getAttribute("id").toString();
+		String id = session.getAttribute("id").toString();
 		int num = (pageNum == null) ? 1 : pageNum;
-		System.out.println("id="+id);
-		System.out.println("num="+num);
-		bList = pDao.basketFrmSelect(num,id);
+		System.out.println("id=" + id);
+		System.out.println("num=" + num);
+		bList = pDao.basketFrmSelect(num, id);
 		mav.addObject("bList", bList);
-		mav.addObject("paging", getPaging(num,kind));// 현재 페이지 번호 ${paging}
+		mav.addObject("paging", getPaging(num, kind));// 현재 페이지 번호 ${paging}
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(bList);
 		mav.addObject("jsonStr", jsonStr);
@@ -304,166 +301,177 @@ public class MypageMM {
 		return mav;
 	}
 
-	private Object getPaging(int pageNum,String kind) {
+	private Object getPaging(int pageNum, String kind) {
 		String a = null;
-		String id=session.getAttribute("id").toString();
-		System.out.println("dddddddd="+id);
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
 		int maxNum = pDao.getBoardCount(id); // 전체 글의 개수
 		int listCount = 5; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
-		if(kind.equals("A")) {
-		    a="basketFrm";
-		}else if(kind.equals("R")) {
-			a="basketFrmrev";
-		}else {
-			a="basketFrmspon";
+		if (kind.equals("A")) {
+			a = "basketFrm";
+		} else if (kind.equals("R")) {
+			a = "basketFrmrev";
+		} else {
+			a = "basketFrmspon";
 		}
-			String boardName = a;// 개시판이 여러개 일때
-		
-		com.designus.www.userClass.Paging paging = 
-				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
+		String boardName = a;// 개시판이 여러개 일때
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
 		return paging.makeHtmlPaging();
 	}
 
 	public ModelAndView auctionMyOrderList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
-		String id=session.getAttribute("id").toString();
+		String id = session.getAttribute("id").toString();
 		List<AuctionProgress> apList = null;
-		
-		
-		String view=null;
-        System.out.println("kind"+kind);
-        int num = (pageNum == null) ? 1 : pageNum;
-	
-		
+
+		String view = null;
+		System.out.println("kind" + kind);
+		int num = (pageNum == null) ? 1 : pageNum;
+
 		System.out.println("여기까지 오나????....");
-		//AuctionProgress ap=new AuctionProgress();
-		apList=pDao.auctionMyOrderListSelect(id,num);
-		Gson gson=new Gson();
-		String str=gson.toJson(apList);
-		System.out.println("size"+apList.size());
+		// AuctionProgress ap=new AuctionProgress();
+		apList = pDao.auctionMyOrderListSelect(id, num);
+		Gson gson = new Gson();
+		String str = gson.toJson(apList);
+		System.out.println("size" + apList.size());
 		mav.addObject("apList", str);
-		mav.addObject("paging", getMPaging(num,kind));
+		mav.addObject("paging", getMPaging(num, kind));
 		System.out.println("사망띠....");
-		System.out.println("apList"+apList.size());
-		
+		System.out.println("apList" + apList.size());
+
 		System.out.println("여기까지가 끝인가보오....");
-		
-		view="auctionMyOrderList";
-		
+
+		view = "auctionMyOrderList";
+
 		mav.setViewName(view);
 		System.out.println("여기 진짜 와야 돼... 안그럼 나 프로젝트 접어.....");
 		return mav;
 	}
 
 	private Object getMPaging(int pageNum, String kind) {
-		String id=session.getAttribute("id").toString();
-		System.out.println("dddddddd="+id);
-		 // 전체 글의 개수
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
 		int listCount = 5; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
-		int maxNum =pDao.getSetpCount(id);
-		System.out.println("전체 글의 개수"+maxNum);
+		int maxNum = pDao.getSetpCount(id);
+		System.out.println("전체 글의 개수" + maxNum);
 		String boardName = "auctionMyOrderList";
-		
-		
-		com.designus.www.userClass.Paging paging = 
-				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
 		return paging.makeHtmlPaging();
 	}
-	
+
 	@Transactional
 	public ModelAndView aucapply(AuctionProgress ap) {
-		mav=new ModelAndView();
-		int ponitN=mDao.memberNpoint(ap);
-		System.out.println("ponitN"+ponitN);
-		boolean a=pDao.aucapplyupdate(ap);
+		mav = new ModelAndView();
+		int ponitN = mDao.memberNpoint(ap);
+		System.out.println("ponitN" + ponitN);
+		boolean a = pDao.aucapplyupdate(ap);
 		System.out.println("여기 까지는 오는 건가요//????");
-		  ap.setPonitN(ponitN);
-			if(a) {
-				boolean b=pDao.aucapplyMbNupdate(ap);
-				System.out.println("여기 까지는 오는 건가요11//????");
-				if(b ) {
-				  mav.addObject("msg", 1);
-				}else {
-					mav.addObject("msg", 2);
-				}
-			   	
+		ap.setPonitN(ponitN);
+		if (a) {
+			boolean b = pDao.aucapplyMbNupdate(ap);
+			System.out.println("여기 까지는 오는 건가요11//????");
+			if (b) {
+				mav.addObject("msg", 1);
+			} else {
+				mav.addObject("msg", 2);
 			}
-				
-			mav.setViewName("redirect:/auctionMyOrderList");
-		
+
+		}
+
+		mav.setViewName("redirect:/auctionMyOrderList");
+
 		return mav;
 	}
+
 	@Transactional
 	public ModelAndView reviewBoardyhWrite(MultipartHttpServletRequest multi) {
 		System.out.println("뭐지?? 또 시작이네...");
-		String view =null;
-		String bd_kind="이용후기"; 
-		int ptnum =Integer.parseInt(multi.getParameter("aup_ptnum"));
-		String id=session.getAttribute("id").toString();
-		String title=multi.getParameter("bd_title");
-		String contents=multi.getParameter("bd_contents");
+
+		String view = null;
+		String bd_kind = "이용후기";
+		int ptnum = Integer.parseInt(multi.getParameter("aup_ptnum"));
+		String id = session.getAttribute("id").toString();
+		String title = multi.getParameter("bd_title");
+		String contents = multi.getParameter("bd_contents");
+		String aumbidw = multi.getParameter("au_mbid_w");
+		int priceN = Integer.parseInt(multi.getParameter("aup_price"));
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		System.out.println("title=" + title);
 		System.out.println("contents=" + contents);
 		System.out.println("check=" + check);
-	     com.designus.www.bean.Board b= new com.designus.www.bean.Board();
-		
-	     b.setBd_mbid(id);
-	     b.setBd_title(title);
-	     b.setBd_contents(contents);
-	     b.setBd_kind(bd_kind);
-	     
-	     boolean a = bDao.reviewBoardyhWrite(b);
-	     System.out.println("boardnum=" + b.getBd_num());
-	     boolean f = false;
-			if (check == 1) { // 첨부된 파일이 있다면....
-				// upload=new UploadFile(); //프로토타입
-				// 이클립스 서버에 파일을 업로드 한 후,
-				// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
-				f = upload.fileboardUp(multi, b.getBd_num(),b.getBd_kind());
-				if (f) {
-					boolean d=pDao.reviewBoardyhWriteupDate(ptnum); 
-					if(d) {
-						view = "redirect:/auctionMyOrderList";	
+		com.designus.www.bean.Board b = new com.designus.www.bean.Board();
+
+		b.setBd_mbid(id);
+		b.setBd_title(title);
+		b.setBd_contents(contents);
+		b.setBd_kind(bd_kind);
+
+		boolean a = bDao.reviewBoardyhWrite(b);
+		System.out.println("[컨트롤러].reviewBoardWrite:a값 확인 : " + a);
+		System.out.println("boardnum=" + b.getBd_num());
+		AuctionProgress ap = new AuctionProgress();
+		ap.setAup_ptnum(ptnum);
+		ap.setAu_mbid_w(aumbidw);
+		ap.setAup_price(priceN);
+		int ponitW = mDao.memberWpoint(ap);
+		System.out.println("[컨트롤러].reviewBoardWrite:ponitW값 확인 : " + ponitW);
+		ap.setPonitW(ponitW);
+		boolean f = false;
+		if (check == 1) { // 첨부된 파일이 있다면....
+			// upload=new UploadFile(); //프로토타입
+			// 이클립스 서버에 파일을 업로드 한 후,
+			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+			f = upload.fileboardUp(multi, b.getBd_num(), b.getBd_kind());
+			System.out.println("[컨트롤러].reviewBoardWrite:f값 확인 : " + f);
+			if (f) {
+				boolean c = pDao.memberpointup(ap);
+				if (c) {
+					boolean d = pDao.reviewBoardyhWriteupDate(ap);
+					if (d) {
+						view = "redirect:/auctionMyOrderList";
+					}else{
+						view = "myPage";
 					}
-					
 				}
+
 			}
-			if (a) { // 글쓰기 성공
-				view = "redirect:/auctionMyOrderList";
-			} else {
-				view = "myPage";
-			}
-			mav.setViewName(view);
-			return mav;
-		
+		}
 	
+		System.out.println("[서비스].reviewBoardWrite:마무리");
+		mav.setViewName(view);
+		return mav;
+
 	}
 
 	public boolean goods(String idw) {
 		System.out.println("내마음 오지고 지리고 레릿고 : ");
 		boolean a = bDao.goods(idw);
-		System.out.println("aaaaa : "+a);
+		System.out.println("aaaaa : " + a);
 		return a;
 	}
 
 	public ModelAndView auccancel(AuctionProgress ap) {
-		mav=new ModelAndView();
+		mav = new ModelAndView();
 		System.out.println("(서비스클래스)출품구매 취소 시작 ");
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : "+ap.getAup_ptnum());
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autnum: "+ap.getAup_ranum());
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: "+ap.getAup_mbid_n());
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: "+ap.getAut_date());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : " + ap.getAup_ptnum());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autnum: " + ap.getAup_ranum());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: " + ap.getAup_mbid_n());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " + ap.getAut_date());
 		boolean a = pDao.auccancelDelete(ap);
-		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :"+a);
-		System.out.println("aaaaa : "+a);
-		
-		if(a) {
-			 boolean b= pDao.autcancelDelete(ap);
+		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
+		System.out.println("aaaaa : " + a);
+
+		if (a) {
+			boolean b = pDao.autcancelDelete(ap);
 			mav.addObject("check", 1);
-		}else {
+		} else {
 			mav.addObject("check", 2);
 		}
 		mav.setViewName("redirect:/auctionMyOrderList");
@@ -472,73 +480,73 @@ public class MypageMM {
 
 	public ModelAndView auctionMyAcceptList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
-		String id=session.getAttribute("id").toString();
+		String id = session.getAttribute("id").toString();
 		List<AuctionProgress> apwList = null;
-		String view=null;
-        int num = (pageNum == null) ? 1 : pageNum;
-		apwList=pDao.auctionMyAcceptListSelect(id,num);
-		Gson gson=new Gson();
-		String str=gson.toJson(apwList);
-		System.out.println("size"+apwList.size());
-		
+		String view = null;
+		int num = (pageNum == null) ? 1 : pageNum;
+		apwList = pDao.auctionMyAcceptListSelect(id, num);
+		Gson gson = new Gson();
+		String str = gson.toJson(apwList);
+		System.out.println("size" + apwList.size());
+
 		mav.addObject("apwList", str);
-		mav.addObject("pagMPWing", getMPWaging(num,kind));
+		mav.addObject("pagMPWing", getMPWaging(num, kind));
 		System.out.println("사망띠....");
-		
+
 		System.out.println("여기까지가 끝인가보오....");
-		
-		view="auctionMyAcceptList";
-		
+
+		view = "auctionMyAcceptList";
+
 		mav.setViewName(view);
 		System.out.println("여기 진짜 와야 돼... 안그럼 나 프로젝트 접어.....");
 		return mav;
 	}
 
 	private Object getMPWaging(int pageNum, String kind) {
-		String id=session.getAttribute("id").toString();
-		System.out.println("dddddddd="+id);
-		 // 전체 글의 개수
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
 		int listCount = 5; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
-		int maxNum =pDao.getSetpWCount(id);
-		System.out.println("전체 글의 개수"+maxNum);
+		int maxNum = pDao.getSetpWCount(id);
+		System.out.println("전체 글의 개수" + maxNum);
 		String boardName = "auctionMyAcceptList";
-		
-		
-		com.designus.www.userClass.Paging paging = 
-				 new com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount, boardName,kind);
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
 		return paging.makeHtmlPaging();
 	}
+
 	@Transactional
 	public ModelAndView delinumupload(AuctionProgress ap) {
-		mav=new ModelAndView();
+		mav = new ModelAndView();
 		System.out.println("그럼 여기는??");
-		boolean a=pDao.delinumuploadupdate(ap);
-		System.out.println("nnnnuuuummmm::::"+ap.getAup_ptnum());
-		System.out.println("getAup_track::::"+ap.getAup_track());
-		 
-			if(a) {
-				System.out.println("ㅎㅎ");
-				  mav.addObject("msg", 1);
-   	
-			}else {
-				System.out.println("실패?? 왜?? 뒤질래??");
-				mav.addObject("msg", 2);
-			}
-				
-			mav.setViewName("redirect:/auctionMyAcceptList");
+		boolean a = pDao.delinumuploadupdate(ap);
+		System.out.println("nnnnuuuummmm::::" + ap.getAup_ptnum());
+		System.out.println("getAup_track::::" + ap.getAup_track());
+
+		if (a) {
+			System.out.println("ㅎㅎ");
+			mav.addObject("msg", 1);
+
+		} else {
+			System.out.println("실패?? 왜?? 뒤질래??");
+			mav.addObject("msg", 2);
+		}
+
+		mav.setViewName("redirect:/auctionMyAcceptList");
 		System.out.println("된거야??");
 		return mav;
 	}
 
 	public String sends(AuctionProgress ap) {
-		String id=session.getAttribute("id").toString();
+		String id = session.getAttribute("id").toString();
 		String json = null;
-		ap=pDao.sendsSelect(ap);
-		if(ap != null) {
-		json = new Gson().toJson(ap);
-		System.out.println("json=" + json);
-		}else {
+		ap = pDao.sendsSelect(ap);
+		if (ap != null) {
+			json = new Gson().toJson(ap);
+			System.out.println("json=" + json);
+		} else {
 			json = null;
 
 		}
@@ -546,13 +554,13 @@ public class MypageMM {
 	}
 
 	public String enter(AuctionProgress ap) {
-		
+
 		String json = null;
-		ap=pDao.enterSelect(ap);
+		ap = pDao.enterSelect(ap);
 		System.out.println(ap.getAu_mbid_w());
-		if(ap != null) {
-		json = new Gson().toJson(ap);
-		System.out.println("json=" + json);
+		if (ap != null) {
+			json = new Gson().toJson(ap);
+			System.out.println("json=" + json);
 		}
 		return json;
 	}
@@ -560,22 +568,27 @@ public class MypageMM {
 	public String scheck(AuctionProgress ap) {
 		System.out.println("(메니저먼트) 스타트");
 		String json = null;
-		ap=pDao.scheckSelect(ap);
+		ap = pDao.scheckSelect(ap);
 		System.out.println(ap.getAu_mbid_w());
-		if(ap != null) {
-		json = new Gson().toJson(ap);
-		System.out.println("json=" + json);
+		if (ap != null) {
+			json = new Gson().toJson(ap);
+			System.out.println("json=" + json);
 		}
 		System.out.println("(메니저먼트) 마무의리");
 		return json;
 	}
 
-	
-		
-		
-		
-
-
-
+	public String reviewboard(AuctionProgress ap) {
+		System.out.println("(메니저먼트) reviewboard 스타트");
+		String json = null;
+		ap = pDao.reviewboardSelect(ap);
+		System.out.println("(메니저먼트) reviewboard 중간 테스트 :" + ap.getAu_mbid_w());
+		if (ap != null) {
+			json = new Gson().toJson(ap);
+			System.out.println("json=" + json);
+		}
+		System.out.println("(메니저먼트) reviewboard 마무의리");
+		return json;
+	}
 
 }

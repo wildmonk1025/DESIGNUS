@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 
 <!DOCTYPE html>
 <html>
@@ -150,28 +151,30 @@ div {
 
 #middle_contents4_lv1 {
 	border: 1px solid blue;
-	padding: 30px;
-	width: 1300px;
-	height: 100px;
+	padding: 10px;
+	width: 1480px;
+	height: 80px;
 }
 
 #middle_contents4_lv2 {
 	border: 1px solid green;
-	width: 1000px;
-	height: 80px;
+	width: 500px;
+	height: 50px;
 	float: left;
 }
 
 #middle_contents4_btn {
 	width: 150px;
+	height: 30px;
+	margin-right: 10px;
 	float: right;
 }
 
 #middle_contents4_lv3 {
 	border: 1px solid blue;
-	width: 1492px;
+	width: 1500px;
 	heigth: auto;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-top: 15px;
 	float: left;
 }
@@ -240,6 +243,14 @@ div {
 .decisionbtn {
 	width: 150px;
 }
+
+#ra_mbid2 {
+	border: none;
+	height: 25px;
+	width: 150px;
+	font-size: 25px;
+	text-align: center;
+}
 </style>
 </head>
 
@@ -293,8 +304,8 @@ div {
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
 			<div id="middle_img_lv2">
-				<img src="resources/images/${raInfo.ra_image}"
-					alt="${raInfo.ra_image}" />
+				<%-- <img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" /> --%>
+				<img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/>
 			</div>
 		</div>
 		<div id="middle_contents1">
@@ -313,7 +324,7 @@ div {
 				<table style="margin: 10px 0px 0px 10px; line-height: 200%">
 					<tr>
 						<th>작성자 :</th>
-						<td>'${raInfo.ra_mbid}' 님</td>
+						<td><input id="ra_mbid2" type="text" value="${raInfo.ra_mbid}" readonly="readonly">님</td>
 						<td></td>
 					</tr>
 					<tr>
@@ -355,18 +366,20 @@ div {
 			<div id="middle_contents4_lv1">
 				<p style="font-size: 20px; color: blue;">제작 의뢰 도안(첨부파일)</p>
 				<div id="middle_contents4_lv2">
-					${raInfo.ra_file}
-					<button id="middle_contents4_btn">DOWNLOAD</button>
+					${raInfo.ra_file} <button id="middle_contents4_btn">다운로드</button>
 				</div>
 			</div>
 			<div id="middle_contents4_lv3">
-				<p style="font-size: 25px;">작성예시 및 유의사항
-				<p>${raInfo.ra_contents}</p>
+				<p style="font-size: 25px; padding-left:5px">작가님께 요청드릴 사항</p><br>
+				<c:set var="contents" value="${raInfo.ra_contents}"/>
+				<c:if test="${contents ne null}">
+				<p>${raInfo.ra_contents}</p></c:if>
+				<c:if test="${contents eq null}">
+				<p><br>추가 요청내역이 없습니다.</p></c:if>
 			</div>
 		</div>
 		<div id="footer">여기는 푸터 입니다.</div>
 	</div>
-
 </body>
 
 <script>
@@ -415,7 +428,7 @@ $(".subtn").click(function() {
 		$('#lightbox_contents1').css("display", "none")
 	});
 	$("#nopermitapply").click(function() {
-		alert("접근 권한이 없습니다.");
+		swal("접근 권한이 없습니다.");
 		$('#lightboxshadow').css("display", "none")
 		$('#lightbox_contents1').css("display", "none")
 	});
@@ -453,7 +466,7 @@ $(".subtn").click(function() {
 			//}, 300);
 		});
 		/* 여기까지 */
-
+	var ra_mbid=$("#ra_mbid2").val();
 	function revauctionapply() {
 			//var formData = new FormData(document.getElementById("#tenderlightbox"));
 			var $file = $("#revfile");
@@ -471,12 +484,12 @@ $(".subtn").click(function() {
 				data: formData,
 				dataType:'json',
 				success: function(data) {
-					alert(data);
+					swal(data);
 					$('#lightboxshadow').css("display", "none");
 					$('#lightbox_contents1').css("display", "none");
 				},
 				error: function(error) {
-					alert("해당 정보를 다시 입력하여 주시기 바랍니다.");
+					swal("해당 정보를 다시 입력하여 주시기 바랍니다.");
 				}
 			}); //ajax End
 		}
@@ -489,7 +502,7 @@ $(".subtn").click(function() {
  			  buttons: {
  			    cancel: "뒤로가기",
  			    
- 			    catch: {
+ 			    catch: { 
  			    	text: "네, 의뢰합니다.",
  					value: "go",
  			    },
@@ -497,12 +510,13 @@ $(".subtn").click(function() {
  			}).then((value) => {
  			  switch (value) {
  			    case "go":
- 			      swal("마이페이지-[제작의뢰 내역]을 확인해주세요!");
  			      console.log(str);
  			      var form = {
- 			    		  rat_mbid_w:wid,
- 			    		  rat_price:wprice,
- 			    		  rat_days:wdays
+ 			    		  rap_ranum:ra_num,
+ 			    		  rap_mbid_w:wid,
+ 			    		  rap_price:wprice,
+ 			    		  rap_days:wdays,
+ 			    		  rap_mbid_n:ra_mbid
  			      }
  			      $.ajax({
  						type:'POST',
@@ -511,7 +525,18 @@ $(".subtn").click(function() {
  						data: JSON.stringify(form),
  						dataType:'json',
  						success: function(data) {
- 							alert(data);
+ 							console.log(data);
+ 							if(data == '0') {
+ 								swal("의뢰접수한 작가님 본인은 신청 할 수 없습니다.");
+ 							} else if(data == '1') {
+ 								swal("의뢰한 본인의 의뢰하기 완료");
+ 							} else if(data == '2') {
+ 								swal("다른사람의 의뢰하기 완료");
+ 							} else if(data == '3') {
+ 								swal("의뢰완료! 마이페이지-[제작의뢰 내역]을 확인해주세요.");
+ 							} else if(data == '4') {
+ 								swal("이미 해당 작가님께 의뢰중인 접수내역이 있습니다!");
+ 							}							
  						},
  						error: function(error) {
  						}

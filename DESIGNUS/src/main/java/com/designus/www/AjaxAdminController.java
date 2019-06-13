@@ -23,4 +23,20 @@ public class AjaxAdminController {
 			return check;
 
 		}
+		@RequestMapping(value = "/Declarelist", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
+		public String Declarelist() {
+			String check = am.Declarelist();
+			System.out.println("cm="+am.declarewritecheck());
+			System.out.println("aList="+check);
+			return check;
+			
+		}
+		@RequestMapping(value = "/transformList", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
+		public String transformList() {
+			String check = am.transformList();
+			System.out.println("cm="+am.transformList());
+			System.out.println("aList="+check);
+			return check;
+			
+		}
 }

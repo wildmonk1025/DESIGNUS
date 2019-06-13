@@ -58,8 +58,8 @@ public class MemberMM {
 		mb.setMb_pw(pwdEncoder.encode(pw));// 암호화
 
 		Major mj = new Major();
-		mj.setMj_id(wriid);
-		mj.setMj_cg_code(wricate);
+		mj.setMj_mbid(wriid);
+		mj.setMj_cgcode(wricate);
 		/* mj.setMj_contents(wricon); */
 		/* mj.setMj_like(wriLike); */
 

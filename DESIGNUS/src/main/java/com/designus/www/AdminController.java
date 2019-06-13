@@ -35,10 +35,9 @@ public class AdminController {
 		return "memberList";
 	}
 
-
 	@RequestMapping(value = "/categoryEdit", method = RequestMethod.GET)
 	public String categoryEdit() {
-		
+
 		return "categoryEdit";
 	}
 

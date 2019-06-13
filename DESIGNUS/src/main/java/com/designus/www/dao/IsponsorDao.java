@@ -5,10 +5,16 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.Sponsor;
+
 //import org.springframework.stereotype.Repository;
 
 //@Repository
 public interface IsponsorDao {
-  
-  
+
+	int getSponserwri(Sponsor sp);
+
+	void getSponserwriterinsert(Sponsor sp);
+
+	void SponsorImageInsert(Sponsor sp);
 }

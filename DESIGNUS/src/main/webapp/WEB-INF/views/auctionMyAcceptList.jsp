@@ -110,6 +110,20 @@ position: absolute;
 	left: 900px;
 
 }
+#l2{
+position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 </style>
 
 </head>
@@ -126,6 +140,7 @@ position: absolute;
 
 			</div>
 		</form>
+   <div id="l2"></div>		
 	<div id="notice">
 		<h2>출품작 판매 내역</h2>
 		<hr>
@@ -255,25 +270,24 @@ position: absolute;
 			    	alert('성공');
 			    	console.log("1234567"+data.aup_ptnum);
 			    	$('#total').css("display", "inline");
-			    	$('#l1').css("display", "inline");
-			    	 /*  if(data.aut_kind=="I"){
-				    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+			    	$('#l2').css("display", "inline");
+			    	   if(data.aut_kind=="I"){
+				    	   aa+="즉시구매<input type='hidden' name='aut_kind'><br>"   
 				    	   }else if(data.aut_kind=="O"){
-				    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+				    	   aa+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
 				    	   }else{
-				    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   aa+=+"입찰<input type='hidden' name='aut_kind'><br>" 
 				    	   };
-			    	sub+="<h2>운송장 입력</h2><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
-			    	   +"상품이름 :"+data.au_title+"<br>"
-	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
-			    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br><hr>"
-			    	   +"운송장번호<br/><input type='text' name='aup_track'><br>"
-			    	   +"<input type='submit' value='보내기'>"
-			    	   +"<input type='button' id='back' value='취소'>";
+			    	aa+="<h2>의뢰인 배송정보</h2><br><hr>"
+			    	   +"아이디 : "+data.aup_mbid_n+"<br>"
+			    	   +"이름 : "+data.aup_name+"<br>"
+			    	   +"주소 :"+data.aup_address+"<br>"
+			    	   +"연락처 :"+data.aup_phone+"<br>"
+			    	   +"<input type='button' id='back' value='확인'>";
 			    	  
 			    	
 			    	
-			    	$('#l1').html(sub); */
+			    	$('#l2').html(aa); 
 			    },
 			    
 			    error:function(error){
@@ -344,6 +358,7 @@ position: absolute;
 	$("#total").click(function() {
 		$("#total").css("display", "none");
 		$("#l1").css("display", "none");
+		$("#l2").css("display", "none");
 	});
 	$("#back").click(function() {
 		$("#total").css("display", "none");

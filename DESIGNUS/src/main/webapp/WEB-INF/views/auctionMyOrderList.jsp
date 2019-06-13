@@ -379,6 +379,20 @@ position: absolute;
 	left: 900px;
 
 }
+#l3{
+position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 
 #Q1 {
 	width: 500px;
@@ -444,6 +458,9 @@ position: absolute;
 	<div id="l1">
 		
 		  </div>
+	</form>
+	<form action="reviewBoardWrite" method="post" enctype="multipart/form-data">
+	 <div id="l3"></div>
 	</form>
 	<div id="mainheader">
 	
@@ -622,6 +639,52 @@ function shippingInfo(even) {
 	
 }//end sho
 
+function review(even) {
+	
+	var form = {
+			aup_ptnum:even
+			 }
+	var bb="";
+	 $.ajax({
+			url: 'reviewboard',
+			type:'post',
+		    data:JSON.stringify(form),
+		    contentType:"application/json; charset=utf-8;",
+		    dataType:'json',
+		    success:function(data){
+		    	alert('해당 상품을 추천하였습니다.');
+		    	console.log("1234567"+data.aup_ptnum);
+		    	 if(data.aut_kind=="I"){
+			    	   bb+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+			    	   }else if(data.aut_kind=="O"){
+			    	   bb+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+			    	   }else{
+			    	   bb+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+			    	   };
+		    	bb+="<h2>수령 확인 및구매 후기 쓰기</h2><br/></hr><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+		    	   +"상품이름 :"+data.au_title+"<input type='button' id='butt' value='추천하기' onclick=\"good('"+data.au_mbid_w+"')\"><br><hr>"
+                   +"<input type='hidden' name='au_mbid_w' value='"+data.au_mbid_w+"')>"
+                   +"<input type='hidden' name='aup_price' value='"+data.aup_price+"')>"
+		    	   +"구매후기 제목 :<input type='text' name='bd_title'><br>"    	
+		    	   +"내용</br>"
+		    	   +"<textarea rows='10' cols='70' name='bd_contents'></textarea><br>"
+		    	   +"<input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple><br>"
+		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'><br>"
+		    	   +"<input type='submit' value='완료'>"
+		    	   +"<input type='button' id='backSetp' value='취소'>";
+		    	  
+		    	$('#total').css("display", "inline");
+		    	$('#l3').css("display", "inline");
+		    	
+		    	$('#l3').html(bb);
+		    },
+		    
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+}//end review
 $('#setpT').html(main);
 function good(data) {
 	var btn = $('#butt');

@@ -19,7 +19,7 @@
 	</insert>
 	
 	<select id="getRevAuctionListSelect" parameterType="revauction" resultType="revauction">
-		SELECT * FROM RA WHERE RA_CGCODE = ${ra_cgcode}
+		SELECT * FROM RA WHERE RA_CGCODE = ${ra_cgcode} AND RA_OC='O'
 	</select>
 		
 	<select id="revAuctionReadSelect" parameterType="revauction" resultType="revauction">
@@ -64,5 +64,20 @@
 
 	<select id="getDecideCheckSelect" parameterType="revauction" resultType="revauctiontender">
 		SELECT RAT_DECIDE FROM RAT WHERE RAT_NUM=${ra_num}
+	</select>
+	
+	<update id="reqDecisionUpdate" parameterType="revauctionprogress">
+		UPDATE RAT SET RAT_DECIDE='O' WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w}
+	</update>
+	
+	<insert id="reqDecisionInsert" parameterType="revauctionprogress" useGeneratedKeys="true" keyProperty="rap_ptnum">
+		<selectKey keyProperty = "rap_ptnum" resultType="int" order="AFTER">
+			SELECT RAP_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+		INSERT INTO RAP VALUES(RAP_SEQ.NEXTVAL,${rap_ranum},#{rap_mbid_n},DEFAULT,DEFAULT,DEFAULT,#{rap_mbid_w},${rap_price},DEFAULT,${rap_days},DEFAULT)
+	</insert>
+	
+	<select id="reqDecisionSelect" parameterType="revauctionprogress" resultType="int">
+		SELECT COUNT(*) FROM RAP WHERE RAP_MBID_W=#{rap_mbid_w} AND RAP_MBID_N=#{rap_mbid_n} AND RAP_RANUM=${rap_ranum}
 	</select>
 </mapper>

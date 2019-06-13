@@ -2,10 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.designus.www.dao.IsponsorDao">  
-     
-      
-     
-      
-       
+<mapper namespace="com.designus.www.dao.IsponsorDao">
+
+	<select id="getSponserwri" parameterType="sponsor"
+		resultType="Integer">
+		SELECT MAX(SS_NUM) SS
+	</select>
+
+	<insert id="getSponserwriterinsert" parameterType="sponsor">
+		INSERT INTO SS
+		VALUES(SS_SEQ.NEXTVAL,#{ss_mbid_w},#{ss_title},#{ss_price},#{ss_goalqty},#{ss_contents},DEFAULT)
+	</insert>
+
+	<insert id="SponsorImageInsert" parameterType="sponsor">
+		INSERT INTO SSI
+		VALUES(${ss_num},#{imgInput})
+	</insert>
+    
+
 </mapper>

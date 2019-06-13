@@ -1,9 +1,6 @@
 package com.designus.www;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.designus.www.bean.RevAuctionTender;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.AuctionMM;
 import com.designus.www.service.RevAuctionMM;
 import com.google.gson.Gson;
@@ -61,15 +59,17 @@ public class AjaxAuctionController {
 	}
 
 	@RequestMapping(value = "/reqdecision", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
-	public @ResponseBody String reqDecision(@RequestBody RevAuctionTender ra) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(ra.getRat_mbid_w());
-		System.out.println(ra.getRat_price());
-		System.out.println(ra.getRat_days());
-		map.put("rat_mbid_w", ra.getRat_mbid_w());
-		map.put("rat_price",ra.getRat_price());
-		map.put("rat_days", ra.getRat_days());
+	public @ResponseBody String reqDecision(@RequestBody revAuctionProgress rap) {
+		System.out.println(rap.getRap_ranum());
+		System.out.println(rap.getRap_mbid_w());
+		System.out.println(rap.getRap_price());
+		System.out.println(rap.getRap_days());
+		System.out.println(rap.getRap_mbid_n());
+		String jsonStr = null;
+		//Map<String, Object> map = new HashMap<String, Object>();
+		jsonStr = new Gson().toJson(ram.reqDecision(rap));
+
 		//String jsonStr = new Gson().toJson(str);
-		return null;
+		return jsonStr;
 	}
 }

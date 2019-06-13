@@ -31,7 +31,7 @@ div {
 }
 
 #coklist {
-	width: 1000px;
+	width: 1450px;
 	height: 150px;
 	float: left;
 	display: block;
@@ -39,7 +39,7 @@ div {
 }
 
 #bestlist {
-	width: 1000px;
+	width: 1450px;
 	height: 150px;
 	float: left;
 	display: block;
@@ -81,7 +81,16 @@ div {
 	width: 320px;
 	heigth:55px;
 }
-
+#bestitem{
+width:150px;
+height: 150px;
+border: 1px solid black;
+float: left;
+}
+#img1{
+width: 145px;
+height: 145px;
+}
 </style>
 <title>Home</title>
 </head>
@@ -94,11 +103,10 @@ div {
 		
 		<br> <br>
 		<div id="list">
-			<div id="text1" align="center" onclick="Ajbest1()">오늘의 추천 작품</div>
+			<div id="text1" align="center" >오늘의 추천 작품</div>
 			<div id="coklist" ></div>
 			<br> <br>
-			<div id="text2" align="center" onclick="Ajbest()">베스트 상품</div>
-			<div id="text2" align="center" onclick="Ajbest2()">제발되라</div>
+			<div id="text2" align="center">베스트 상품</div>
 			<div id="bestlist">
 			
 			</div>
@@ -111,7 +119,7 @@ div {
 </body>
 <script>
 //var rList = ${rList}
-function Ajbest() {
+$(document).ready(function() {
 	$.ajax({
 		url : 'bestajax',
 		type: 'post',
@@ -121,13 +129,12 @@ function Ajbest() {
 			var result = "";
 			console.dir(data);
 			console.log("성공");
-
+							
 			for(var i=0; i<3; i++){
-				result+="<div class='best'>"
-					  +"이미지 :"
-					  +"<img src=./image/"+data[i].au_mbid_w+"/>"+"<br>"
-					  +"작가아이디:"
-					  +data[i].au_mbid_w+"<br>"
+				result+=
+					"<div id='bestitem'>"+"<img src='resources/images/su1.jpg' id='img1'>"+"</div>"+
+					"<div class='best'>"
+					  +"작가아이디:"+data[i].au_mbid_w+"<br>"
 					  +"상품번호:"+data[i].au_num+"<br>"
 					  +"상품설명:"+data[i].au_contents+"<br>"
 					  +"추천수:"+data[i].au_count+"<br>"
@@ -139,8 +146,9 @@ function Ajbest() {
 		console.log(error);
 	}
 	});
-}
-function Ajbest1() {
+});
+
+$(document).ready(function() {
 	$.ajax({
 		url : 'newajax',
 		type: 'post',
@@ -153,7 +161,7 @@ function Ajbest1() {
 
 			for(var i=0; i<3; i++){
 				result+=
-					"<div class='best'>"+"작가아이디:"
+					"<div id='bestitem'>"+"<img src='resources/images/yyy.jpg' id='img1'>"+"</div>"+"<div class='best'>"+"작가아이디:"
 					   +data[i].au_mbid_w+"<br>"+"상품번호:"+data[i].au_num+"<br>"
 				+"상품설명:"+data[i].au_contents+"<br>"+"신상:"+data[i].au_date+"<br>"
 				+"</div>"}
@@ -164,32 +172,8 @@ function Ajbest1() {
 		console.log(error);
 	}
 	});
-}
-function Ajbest2() {
-	$.ajax({
-		url : 'imgajax',
-		type: 'post',
-		dataType : 'json',
-		//contentType:'application/json',
-		success:function(data){
-			var result = "";
-			console.dir(data);
-			console.log("성공");
+});
 
-			for(var i=0; i<3; i++){
-				result+=
-					"<div class='best'>"+"작가아이디:"
-					   +data[i].au_mbid_w+"<br>"+"상품번호:"+data[i].au_num+"<br>"
-				+"상품설명:"+data[i].au_contents+"<br>"+"추천수:"+data[i].au_count+"<br>"
-				+"</div>"}
-			$("#bestlist").html(result);
-		},
-	error:function(error){
-		console.log("실패");
-		console.log(error);
-	}
-	});
-}
 
 </script>
 </html>
