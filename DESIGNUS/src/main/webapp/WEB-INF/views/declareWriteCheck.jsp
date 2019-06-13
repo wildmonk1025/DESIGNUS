@@ -15,7 +15,6 @@
 
         div {
             margin: auto;
-            border: 1px solid blue;
         }
 
         ul {
@@ -98,14 +97,14 @@
 
 <body>
     <div id="mainheader">
+			<div id="mainheader">
+				<jsp:include page="main.jsp" />
+			</div>
+		</div>
+		<div id="adminmenu">
+			<jsp:include page="admininclud.jsp"></jsp:include>
 
-    </div>
-    <div id="adminmenu">
-        <ul>
-                    <jsp:include page="admininclud.jsp"></jsp:include>
-
-
-        </ul>
+		</div>
     </div>
     <div id="adminopt">
        <form name="form" method="post">

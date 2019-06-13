@@ -18,6 +18,8 @@ public interface IadminDao {
 	List<Report> getrepInfo();
 
 	List<Major> gettransInfo();
+
+	Report getWriteCheck();
   
   
 }
