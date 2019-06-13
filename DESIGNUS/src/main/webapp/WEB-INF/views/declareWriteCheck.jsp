@@ -114,7 +114,7 @@
             <div id="declarelist">
                 <table id="declareinfo">
                     <tr>
-                        <td colspan="5" width="500" height="20">신고번호</td>
+                        <td colspan="5" width="500" height="20">신고번호 ${rp_num}</td>
                     </tr>
                     <tr>
                         <td width="100" height="20">신고위치</td>
@@ -123,21 +123,22 @@
                         <td width="100" height="20">신고대상ID</td>
                         <td width="100" height="20">신고일</td>
                     </tr>
-                    <tr>
-                        <td width="100" height="20">Dummy1</td>
-                        <td width="100" height="20">Dummy2</td>
-                        <td width="100" height="20">Dummy3</td>
-                        <td width="100" height="20">Dummy4</td>
-                        <td width="100" height="20">Dummy5</td>
+               
+       	             <tr>
+                        <td width="100" height="20">${rp_locate}</td>
+                        <td width="100" height="20">${rp_reason}</td>
+                        <td width="100" height="20">${rp_mbid_d}</td>
+                        <td width="100" height="20">${rp_mbid_d}</td>
+                        <td width="100" height="20">${rp_date}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" width="500" height="40">제목</td>
+                        <td colspan="5" width="500" height="40">제목:${rp_title}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" width="500" height="170">내용</td>
+                        <td colspan="5" width="500" height="170">내용 : ${rp_contents}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" width="500" height="30">첨부사진</td>
+                        <td colspan="5" width="500" height="30">첨부사진 : ${rp_img}</td>
                     </tr>
                 </table>
             </div>

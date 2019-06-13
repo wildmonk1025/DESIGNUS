@@ -192,7 +192,7 @@ public class MypageMM {
 
 		Major mj = new Major();
 		mj.setMj_mbid(id);
-		mj.setMj_cg_code(cate);
+		mj.setMj_cgcode(cate);
 		mj.setMj_contents(conten);
 
 		boolean f = false;
