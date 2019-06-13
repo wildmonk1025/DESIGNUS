@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.designus.www.bean.Report;
 import com.designus.www.service.AdminMM;
-import com.designus.www.service.AuctionMM;
+
 
 @Controller
 public class AdminController {

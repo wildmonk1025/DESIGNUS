@@ -1,8 +1,8 @@
 package com.designus.www.service;
 
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +17,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
-import com.designus.www.bean.Notify;
+
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
@@ -687,7 +687,7 @@ public class MypageMM {
 	}
 
 	@Transactional
-	public ModelAndView revaucinfocancel(revAuctionProgress rap, Notify nt) {
+	public ModelAndView revaucinfocancel(revAuctionProgress rap) {
 		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 시작");
 		mav = new ModelAndView();
 		boolean can = pDao.revaucinfocancelDelete(rap);

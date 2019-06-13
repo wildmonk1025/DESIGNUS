@@ -1,6 +1,5 @@
 package com.designus.www.service;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,9 +17,10 @@ import com.google.gson.Gson;
 public class AdminMM {
 	@Autowired
 	private HttpSession session;
+	
 	private ModelAndView mav;
 	@Autowired
-		IadminDao iDao;
+	private IadminDao iDao;
 	
 	public String declarewritecheck() {
 		List<Report> rList=iDao.getrepInfo();

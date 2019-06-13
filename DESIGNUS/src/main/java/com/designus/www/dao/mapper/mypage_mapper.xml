@@ -257,7 +257,7 @@
      ) where RankNo=1
   ]]>
 	</select>
-	<delete id="autcancelDelete">
+	<delete id="revaucinfocancelDelete">
 		delete from rap
 		where rap_ptnum=${rap_ptnum}
 	</delete>

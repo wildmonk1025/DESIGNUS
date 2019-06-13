@@ -13,8 +13,6 @@ import com.designus.www.bean.Report;
 //@Repository
 public interface IadminDao {
 
-
-
 	List<Report> getrepInfo();
 
 	List<Major> gettransInfo();
