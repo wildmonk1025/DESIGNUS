@@ -31,10 +31,10 @@ public class SponsorMM {
 		String view = null;
 		int num = 10000;
 		String id = (String) session.getAttribute("id");
-		String sstitle = ss.getParameter("ss_title");
-		int ssprice = Integer.parseInt(ss.getParameter("ss_price"));
-		int ssqty = Integer.parseInt(ss.getParameter("ss_goalqty"));
-		String scontents = ss.getParameter("ss_contents");
+		String sstitle = ss.getSs_title();
+		int ssprice = ss.getSs_price();
+		int ssqty = ss.getSs_goalqty();
+		String scontents = ss.getSs_contents();
 
 		Sponsor sp = new Sponsor();
 
@@ -56,7 +56,7 @@ public class SponsorMM {
 		if (sDao.getSponserwriterinsert(sp)) {
 			num = sDao.getSponserwri(sp);
 			sp.setSs_num(num);
-			upload.fileUpsponsor(ss, sp);
+			upload.fileUpsponsor(multi, sp);
 			mav.addObject("ss_num", num);
 			view = "redirect:/sponsor";
 			System.out.println("num=" + num);

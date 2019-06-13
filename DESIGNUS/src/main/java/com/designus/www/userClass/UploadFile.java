@@ -494,7 +494,7 @@ public class UploadFile {
 
 	}
 
-	public void fileUpsponsor(MultipartHttpServletRequest ss, Sponsor sp) {
+	public void fileUpsponsor(MultipartHttpServletRequest multi, Sponsor sp) {
 		System.out.println("multi 파라미터와 ra받는 fileUp");
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
