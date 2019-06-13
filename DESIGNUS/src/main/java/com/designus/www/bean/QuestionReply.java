@@ -9,5 +9,5 @@ public class QuestionReply {
 	int    qr_rnum;
 	int    qr_aqnum;
 	String qr_contents;
-	Timestamp qr_date;
+	String qr_date;
 }
