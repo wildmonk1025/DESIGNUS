@@ -23,11 +23,12 @@ public class AuctionControllerspon {
 	@RequestMapping(value = "/sponupload")
 	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
+		System.out.println("넘어가나?");
 		mav = spm.sponupload(multi);
 		return mav;
 	}
 
-	@RequestMapping(value = "/sponsor")
+	@RequestMapping(value = "/sponsor", method = RequestMethod.GET)
 	public String sponsor() {
 
 		return "sponsor";

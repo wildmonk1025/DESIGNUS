@@ -47,7 +47,7 @@ public class MypageMM {
 
 		System.out.println("sddd:" + list);
 		if (list.equals("rev")) {
-			view = "revAuctionMyOrderList";
+			view = "redirect:/revAuctionMyOrderList";
 		} else if (list.equals("revre")) {
 			view = "revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
@@ -338,7 +338,7 @@ public class MypageMM {
 		String str = gson.toJson(apList);
 		System.out.println("size" + apList.size());
 		mav.addObject("apList", str);
-		mav.addObject("paging", getMPaging(num, kind));
+		mav.addObject("MPpaging", getMPaging(num, kind));
 		System.out.println("사망띠....");
 		System.out.println("apList" + apList.size());
 
@@ -456,15 +456,18 @@ public class MypageMM {
 		System.out.println("aaaaa : " + a);
 		return a;
 	}
-
+	@Transactional
 	public ModelAndView auccancel(AuctionProgress ap) {
 		mav = new ModelAndView();
 		System.out.println("(서비스클래스)출품구매 취소 시작 ");
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : " + ap.getAup_ptnum());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autnum: " + ap.getAup_ranum());
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 mbidn: " + ap.getAup_mbid_n());
-		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " + ap.getAut_date());
+		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " +ap.getAut_date());
 		boolean a = pDao.auccancelDelete(ap);
+		
+		
+		
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
 		System.out.println("aaaaa : " + a);
 
@@ -589,6 +592,35 @@ public class MypageMM {
 		}
 		System.out.println("(메니저먼트) reviewboard 마무의리");
 		return json;
+	}
+
+	public ModelAndView revAuctionMyOrderList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		String id = session.getAttribute("id").toString();
+		List<AuctionProgress> revList = null;
+
+		String view = null;
+		System.out.println("kind" + kind);
+		int num = (pageNum == null) ? 1 : pageNum;
+
+		System.out.println("여기까지 오나????....");
+		// AuctionProgress ap=new AuctionProgress();
+		revList = pDao.revAuctionMyOrderListSelect(id, num);
+		Gson gson = new Gson();
+		String str = gson.toJson(apList);
+		System.out.println("size" + apList.size());
+		mav.addObject("apList", str);
+		mav.addObject("paging", getMPaging(num, kind));
+		System.out.println("사망띠....");
+		System.out.println("apList" + apList.size());
+
+		System.out.println("여기까지가 끝인가보오....");
+
+		view = "auctionMyOrderList";
+
+		mav.setViewName(view);
+		System.out.println("여기 진짜 와야 돼... 안그럼 나 프로젝트 접어.....");
+		return mav;
 	}
 
 }

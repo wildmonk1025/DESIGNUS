@@ -86,5 +86,7 @@ public interface ImypageDao {
 
 	boolean memberpointup(AuctionProgress ap);
 
+	List<AuctionProgress> revAuctionMyOrderListSelect(String id, int num);
+
   
 }
