@@ -24,18 +24,17 @@ public class SponsorMM {
 
 	private ModelAndView mav;
 
-	public ModelAndView sponupload(MultipartHttpServletRequest multi) {
+	public ModelAndView sponupload(MultipartHttpServletRequest multi, Sponsor ss) {
 		System.out.println("넘어와라ㅏ");
 
 		mav = new ModelAndView();
 		String view = null;
-
-		String id = (String) session.getAttribute("id");
 		int num = 10000;
-		String sstitle = multi.getParameter("ss_title");
-		int ssprice = Integer.parseInt(multi.getParameter("ss_price"));
-		int ssqty = Integer.parseInt(multi.getParameter("ss_goalqty"));
-		String scontents = multi.getParameter("ss_contents");
+		String id = (String) session.getAttribute("id");
+		String sstitle = ss.getParameter("ss_title");
+		int ssprice = Integer.parseInt(ss.getParameter("ss_price"));
+		int ssqty = Integer.parseInt(ss.getParameter("ss_goalqty"));
+		String scontents = ss.getParameter("ss_contents");
 
 		Sponsor sp = new Sponsor();
 
@@ -57,7 +56,7 @@ public class SponsorMM {
 		if (sDao.getSponserwriterinsert(sp)) {
 			num = sDao.getSponserwri(sp);
 			sp.setSs_num(num);
-			upload.fileUpsponsor(multi, sp);
+			upload.fileUpsponsor(ss, sp);
 			mav.addObject("ss_num", num);
 			view = "redirect:/sponsor";
 			System.out.println("num=" + num);
