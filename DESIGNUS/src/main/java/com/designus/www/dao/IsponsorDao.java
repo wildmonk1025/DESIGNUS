@@ -14,7 +14,7 @@ public interface IsponsorDao {
 
 	int getSponserwri(Sponsor sp);
 
-	void getSponserwriterinsert(Sponsor sp);
+	boolean getSponserwriterinsert(Sponsor sp);
 
 	void SponsorImageInsert(Sponsor sp);
 }

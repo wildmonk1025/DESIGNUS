@@ -18,13 +18,6 @@ public class AuctionController {
 	private AuctionMM aum;
 	
 	ModelAndView mav;
-	
-	@RequestMapping(value = "/sponsor", method = RequestMethod.GET)
-	public String sponsor() {
-		
-		return "sponsor";
-	}	
-	
 	@RequestMapping(value = "/auctionWrite" )
 	public ModelAndView auctionWrite() {
 		mav = new ModelAndView();
