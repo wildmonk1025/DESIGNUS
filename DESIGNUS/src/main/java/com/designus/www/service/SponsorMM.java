@@ -3,6 +3,7 @@ package com.designus.www.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,6 +14,7 @@ import com.designus.www.userClass.UploadFile;
 
 import lombok.Data;
 
+@Service
 public class SponsorMM {
 
 	@Autowired
@@ -22,19 +24,29 @@ public class SponsorMM {
 	@Autowired
 	private UploadFile upload;
 
+	Sponsor sp;
+
 	private ModelAndView mav;
 
-	public ModelAndView sponupload(MultipartHttpServletRequest multi, Sponsor ss) {
+	public ModelAndView sponupload(MultipartHttpServletRequest multi) {
 		System.out.println("넘어와라ㅏ");
 
 		mav = new ModelAndView();
 		String view = null;
 		int num = 10000;
 		String id = (String) session.getAttribute("id");
-		String sstitle = ss.getSs_title();
-		int ssprice = ss.getSs_price();
-		int ssqty = ss.getSs_goalqty();
-		String scontents = ss.getSs_contents();
+		String sstitle = multi.getParameter("ss_title");
+		int ssprice = Integer.parseInt(multi.getParameter("ss_price"));
+		int ssqty = Integer.parseInt(multi.getParameter("ss_goalqty"));
+		String scontents = multi.getParameter("ss_contents");
+
+		System.out.println("id2=" + id);
+		System.out.println("title2=" + sstitle);
+		/*
+		 * String id = (String) session.getAttribute("id"); String sstitle =
+		 * ss.getSs_title(); int ssprice = ss.getSs_price(); int ssqty =
+		 * ss.getSs_goalqty(); String scontents = ss.getSs_contents();
+		 */
 
 		Sponsor sp = new Sponsor();
 

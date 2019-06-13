@@ -20,6 +20,7 @@ public class AuctionControllerspon {
 	@Autowired
 	private HttpSession session;
 
+	@Autowired
 	SponsorMM sm;
 
 	@RequestMapping(value = "/sponregistration", method = RequestMethod.GET)
@@ -32,20 +33,13 @@ public class AuctionControllerspon {
 	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
 		System.out.println("넘어가나?");
-		String id = (String) session.getAttribute("id");
-		String sstitle = multi.getParameter("ss_title");
-		int ssprice = Integer.parseInt(multi.getParameter("ss_price"));
-		int ssqty = Integer.parseInt(multi.getParameter("ss_goalqty"));
-		String scontents = multi.getParameter("ss_contents");
-		System.out.println("id=" + id);
-		System.out.println("title=" + sstitle);
+
 		Sponsor ss = new Sponsor();
-		ss.setSs_mbid_w(id);
-		ss.setSs_contents(scontents);
-		ss.setSs_goalqty(ssqty);
-		ss.setSs_title(sstitle);
-		ss.setSs_price(ssprice);
-		mav = sm.sponupload(multi, ss);
+		/*
+		 * ss.setSs_mbid_w(id); ss.setSs_contents(scontents); ss.setSs_goalqty(ssqty);
+		 * ss.setSs_title(sstitle); ss.setSs_price(ssprice);
+		 */
+		mav = sm.sponupload(multi);
 		return mav;
 	}
 

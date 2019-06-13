@@ -122,8 +122,8 @@ input {
 					</tr>
 					<tr style="height: 50">
 						<td>이미지</td>
-						<td colspan="3"><input type="file" id="imgInput"
-							name="imgInput" style="width: 700px; float: left;"> <!-- <button
+						<td colspan="3"><input type="file" id="ssi_imgSysName"
+							name="ssi_imgSysName" style="width: 700px; float: left;"> <!-- <button
 								style="width: 6%; height: 48; float: right; border-radius: 100px">╉</button>
 							<button style="width: 14%; height: 48; float: right;">파일첨부</button> -->
 						</td>

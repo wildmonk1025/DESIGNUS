@@ -505,7 +505,7 @@ public class UploadFile {
 		if (!dir.isDirectory()) { // sponupload폴더 없다면
 			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
 		}
-		MultipartFile file = multi.getFile("imgInput");
+		MultipartFile file = multi.getFile("ssi_imgSysName");
 
 		String oriFileName = file.getOriginalFilename();
 
