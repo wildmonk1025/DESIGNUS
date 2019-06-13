@@ -22,6 +22,7 @@ public class SponsorMM {
 	private ModelAndView mav;
 
 	public ModelAndView sponupload(MultipartHttpServletRequest multi) {
+		
 		mav = new ModelAndView();
 
 		String id = (String) session.getAttribute("id");
