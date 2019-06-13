@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Sponsor;
+import com.designus.www.bean.SponsorProgress;
 
 //import org.springframework.stereotype.Repository;
 
@@ -17,4 +18,6 @@ public interface IsponsorDao {
 	boolean getSponserwriterinsert(Sponsor sp);
 
 	void SponsorImageInsert(Sponsor sp);
+
+	List<SponsorProgress> productinfo();
 }

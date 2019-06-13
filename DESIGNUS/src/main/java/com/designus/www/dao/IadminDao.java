@@ -13,13 +13,15 @@ import com.designus.www.bean.Report;
 //@Repository
 public interface IadminDao {
 
-
-
 	List<Report> getrepInfo();
 
 	List<Major> gettransInfo();
 
 	Report getWriteCheck(@Param("rp_num") int rp_num);
+
+	boolean getpermit(@Param("rp_num") int rp_num);
+
+	boolean getperfmit(@Param("rp_num")  int rp_num);
   
   
 }

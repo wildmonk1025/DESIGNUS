@@ -105,13 +105,15 @@
 			<jsp:include page="admininclud.jsp"></jsp:include>
 
 		</div>
-    </div>
+             
+  
     <div id="adminopt">
-       <form name="form" method="post">
+        <form action="declarenonpermit?rp_num=${rp_num}" name="form" method="post">
         <div class="opt">
             <h3 style="margin-left:  20px; font-size: 25px; background-color: orange;">신고 상세내역</h3>
             <hr>
             <div id="declarelist">
+            
                 <table id="declareinfo">
                     <tr>
                         <td colspan="5" width="500" height="20">신고번호 ${rp_num}</td>
@@ -143,12 +145,15 @@
                 </table>
             </div>
             <div class="btnArray" id="btn1"><input type="submit" value="적합" onclick="javascipt: form.action='gogo'"></div>
-            <div class="btnArray" id="btn2"><input type="submit" value="부적합" formaction="gogo"/></div>
+           
+            <div class="btnArray" id="btn2">
+            <button>부적합</button></div>
             <div class="btnArray" id="btn3"><button><a href="declareWrite">돌아가기<br/></a></button></div>
             <!-- <div class="btnArray" id="btn3"><input type="button" onclick="location.href='home'" value="돌아가기"></div> -->
         </div>
         </form>
     </div>
+    
 </body>
 <script>
 function goBack() {
