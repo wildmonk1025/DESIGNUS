@@ -10,6 +10,7 @@ import com.designus.www.bean.Basket;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
 
@@ -86,7 +87,7 @@ public interface ImypageDao {
 
 	boolean memberpointup(AuctionProgress ap);
 
-	List<AuctionProgress> revAuctionMyOrderListSelect(@Param("id") String id,@Param("num") int num);
+	List<revAuctionProgress> revAuctionMyOrderListSelect(@Param("id") String id,@Param("num") int num);
 
 	int getreSetpCount(String id);
 
