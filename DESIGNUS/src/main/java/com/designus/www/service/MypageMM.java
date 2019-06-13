@@ -372,7 +372,7 @@ public class MypageMM {
 		mav = new ModelAndView();
 		int ponitN = mDao.memberNpoint(ap);
 		System.out.println("ponitN" + ponitN);
-		boolean a = pDao.aucapplyupdate(ap);
+		boolean a = pDao.aucapplyMbWupdate(ap);
 		System.out.println("여기 까지는 오는 건가요//????");
 		ap.setPonitN(ponitN);
 		if (a) {
@@ -644,6 +644,30 @@ public class MypageMM {
 		}
 		System.out.println("(서비스클래스)제작의뢰내역 마무리!!!");
 		return json;
+	}
+	@Transactional
+	public ModelAndView requestby(revAuctionProgress rap) {
+		mav = new ModelAndView();
+		System.out.println("(서비스클래스)제작의뢰 스텝1 요청 시작");
+		int point = mDao.ravmemberNpoint(rap);
+		System.out.println("(서비스클래스)제작의뢰 스텝1 요청 1차 중간 확인 !ponitN :" + point);
+		boolean a = pDao.requestbyupdate(rap);
+		System.out.println("여기 까지는 오는 건가요//????");
+		rap.setPointN(point);
+		if (a) {
+			boolean b = pDao.requestbyREVupdate(rap);
+			System.out.println("여기 까지는 오는 건가요11//????");
+			if (b) {
+				mav.addObject("msg", 1);
+			} else {
+				mav.addObject("msg", 2);
+			}
+
+		}
+
+		mav.setViewName("redirect:/auctionMyOrderList");
+
+		return mav;
 	}
 
 }

@@ -59,7 +59,7 @@ public interface ImypageDao {
 
 
 
-	boolean aucapplyupdate(AuctionProgress ap);
+	boolean requestby(AuctionProgress ap);
 
 	boolean aucapplyMbNupdate(AuctionProgress ap);
 
@@ -92,6 +92,10 @@ public interface ImypageDao {
 	int getreSetpCount(String id);
 
 	revAuctionProgress requestSelect(revAuctionProgress rap);
+
+	boolean requestbyupdate(revAuctionProgress rap);
+
+	boolean requestbyREVupdate(revAuctionProgress rap);
 
   
 }

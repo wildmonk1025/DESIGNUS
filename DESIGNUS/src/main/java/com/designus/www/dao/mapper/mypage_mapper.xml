@@ -180,7 +180,8 @@
 	</select>
 	<delete id="autcancelDelete">
 		DELETE FROM AUT
-		WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND
+		WHERE AUT_NUM=${aup_ranum} AND
+		AUT_MBID=#{aup_mbid_n} AND
 		AUT_DATE=to_char()#{aut_date})
 	</delete>
 
@@ -233,5 +234,14 @@
          where  RAP_PTNUM=${rap_ptnum}  
   ]]>
 	</select>
-
+	<update id="requestbyupdate" parameterType="revauctionprogress">
+		UPDATE RAP SET
+		RAP_NAME=#{rap_name},RAP_address=#{rap_address},RAP_phone=#{rap_phone},RAP_step=2
+		where RAP_PTNUM=${rap_ptnum}
+	</update>
+	<update id="requestbyREVupdate" parameterType="revauctionprogress">
+		update MB SET
+		mb_point=#{pointN}-#{rap_price}
+		where mb_id=#{rap_mbid_n}
+	</update>
 </mapper>

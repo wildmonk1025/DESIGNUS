@@ -380,6 +380,30 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
+#total {
+	position : absolute;
+	width: 100%;
+	height: 200%;
+	background-color: black;
+	z-index: 1001;
+	opacity: 0.75;
+	display: none;
+}
+#r1 {
+position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+
+}
 </style>
 
 </head>
@@ -592,23 +616,25 @@ function requested(even) {
 			    success:function(data){
 			    	alert('해당 상품을 추천하였습니다.');
 			    	console.log("1234567"+data);
+			    	   sub+="<form action='requestby' method='post'>"
+			    	      +"<div id='r2'>"
 			    	 if(data.ra_oc=="O"){
 				    	   sub+="공개<input type='hidden' name='ra_oc'><br>"   
 				    	   }else{
 				    	   sub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
 				    	   };
-			    	sub+="거래번호 :"+data.rap_ptnum+"<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+			    	sub+="거래번호 :"+data.rap_ptnum+"<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
 			    	   +"상품이름 :"+data.ra_title+"<br>"
-	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
-			    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
-			    	   +"이름 :<input type='text' name='aup_name'><br>"
-			    	   +"주소 :<input type='text' name='aup_address'><br>"
-			    	   +"연락처: <input type='text' name='aup_phone'><br>"
+	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
+			    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br><hr>"
+			    	   +"이름 :<input type='text' name='rap_name'><br>"
+			    	   +"주소 :<input type='text' name='rap_address'><br>"
+			    	   +"연락처: <input type='text' name='rap_phone'><br>"
 			    	   +"<input type='submit' value='요청'><br>"
-			    	   +"<input type='button' id='back' value='취소'>";
+			    	   +"<input type='button' id='back' value='취소'></div></form>";
 			    	  
 			    	$('#total').css("display", "inline");
-			    	$('#l1').css("display", "inline");
+			    	$('#r1').css("display", "inline");
 			    	
 			    	$('#r1').html(sub);
 			    },
