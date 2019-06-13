@@ -95,4 +95,34 @@ div {
 		<jsp:include page="footer.jsp"></jsp:include></div>
 
 </body>
+<script>
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : 'productinfo',
+					type : 'post',
+					dataType : 'json',
+					contentType : 'application/json',
+					success : function(data) {
+						var result = "";
+						console.dir(data);
+						console.log("성공");
+						for (var i = 0; i < 5; i++) {
+							result += "<div id='sponproduct'>"
+									+ "<img src='resources/images/>"data[i].ssi_img + "</div>"
+									+ "<div class='best'>" + "작가아이디:"
+									+ data[i].au_mbid_w + "<br>" + "상품번호:"
+									+ data[i].au_num + "<br>" + "상품설명:"
+									+ data[i].au_contents + "<br>" + "신상:"
+									+ data[i].au_date + "<br>" + "</div>"
+						}
+						$("#sponList").html(result);
+					},
+					error : function(error) {
+						console.log("실패");
+						console.log(error);
+					}
+				});
+			});
+</script>
 </html>

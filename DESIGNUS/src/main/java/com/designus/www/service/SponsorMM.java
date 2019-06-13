@@ -1,5 +1,7 @@
 package com.designus.www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.Sponsor;
+import com.designus.www.bean.SponsorProgress;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IsponsorDao;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 import lombok.Data;
 
@@ -80,4 +85,16 @@ public class SponsorMM {
 		return mav;
 	}
 
+	public String productinfo() {
+		mav = new ModelAndView();
+		System.out.println("후원리스트 불러오기");
+		String id = session.getAttribute("id").toString();
+		List<SponsorProgress> spList = sDao.productinfo();
+		System.out.println(id);
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(spList);
+		System.out.println(jsonObj);
+
+		return jsonObj;
+	}
 }
