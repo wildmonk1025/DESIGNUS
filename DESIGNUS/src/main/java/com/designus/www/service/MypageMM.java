@@ -356,7 +356,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
@@ -510,7 +510,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpWCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
@@ -631,6 +631,19 @@ public class MypageMM {
 	com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
 				pageCount, boardName, kind);
 		return paging.makeHtmlPaging();
+	}
+
+	public String request(revAuctionProgress rap) {
+		System.out.println("(서비스클래스)제작의뢰내역 스타트!!!");
+		String json = null;
+		rap = pDao.requestSelect(rap);
+		System.out.println("(서비스클래스)제작의뢰내역 1차 중간 테스트 pt_num의 값 :"+rap.getRap_ptnum());
+		if (rap != null) {
+			json = new Gson().toJson(rap);
+			System.out.println("(서비스클래스)제작의뢰내역 2차 중간 테스트 json의 값 :json=" + json);
+		}
+		System.out.println("(서비스클래스)제작의뢰내역 마무리!!!");
+		return json;
 	}
 
 }
