@@ -392,6 +392,60 @@ a:hover {
 	width: 1520px;
 	height: 170px;
 }
+#notice {
+	padding-top: 5px;
+	margin: 10px;
+	border: 1px solid orange;
+	width: 1080px;
+	height: 250px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+#pageing{
+   position: absolute;
+	top: 1050px;
+	left: 800px;
+}
+#total {
+	position : absolute;
+	width: 100%;
+	height: 200%;
+	background-color: black;
+	z-index: 1001;
+	opacity: 0.75;
+	display: none;
+}
+
+#l1 {
+position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+
+}
+#c1{
+position: absolute;
+	width: 400px;
+	height: 370px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 </style>
 
 </head>
@@ -403,7 +457,9 @@ a:hover {
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
 		</div>
-
+<div id="total"></div>
+<div id="l1"></div>
+<div id="c1"></div>
 		<div id="leftmain">
 			<div id="img">
 				<h1>프로필사진</h1>
@@ -458,7 +514,9 @@ a:hover {
 		</div>
 
 		<div id="rightmain">
-			<div id="notice">
+		<div id="revA"></div>
+		
+			<!-- <div id="notice">
 				<h2>제작의뢰 접수내역</h2>
 			</div>
 			<div id="renking">
@@ -500,11 +558,161 @@ a:hover {
 				<button type="button"
 					onclick="location.href='revAuctionMyAcceptList.jsp'">취소</button>
 			</div>
+		</div> -->
+		<div id="pageing">${RApaging}</div> 
 		</div>
+		
 	</div>
 
 </body>
 <script type="text/javascript">
+var revAList = ${revAList};
+console.log(revAList);
+
+var main = "";
+
+for (var i = 0; i < revAList.length; i++) {
+	 if (revAList[i].rap_step == 1) {
+	main += "<div id='notice'><a href='imgRevA'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"
+			+ "상품번호 :"
+			+ revAList[i].rap_ptnum+"</br>"
+			+ "상품명:"
+			+ revAList[i].ra_title+"</br>"
+			+ "구매 금액 : "
+			+ revAList[i].rap_price+"</br>"
+			+ "구매 종류 : "
+			if(revAList[i].ra_oc=="O"){
+		     main +="공개</br>"	
+			}else{
+			 main +="비공개</br>"	
+			}            
+		main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
+             +"<h3>의뢰 결정을 <br> 기다리는 중입니다.</h3></div>";
+             
+	} else if(revAList[i].rap_step==2){
+			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
+		    if(revAList[i].ra_oc=="O"){
+			     main +="구매 종류 : 공개</br>"	
+				}else{
+				 main +="구매 종류 : 비공개</br>"	
+				}            
+		    main +="<input id='btzRevM' type='button' onclick=\"javascript:deliinRav('"+revAList[i].rap_ptnum+"')\" value='배송보내기'/>"
+                 +"<input type='button' onclick=\"javascript:revdelinum('"+revAList[i].rap_ptnum+"')\" value='의뢰인 배송정보'/>";
+		    
+		}else if(revAList[i].rap_step==3){
+			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
+		    if(revAList[i].ra_oc=="O"){
+			     main +="구매 종류 : 공개</br>"	
+				}else{
+				 main +="구매 종류 : 비공개</br>"	
+				}           
+			main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
+	             +"<h3>수령 확인 <br> 대기중입니다.</h3></div>";
+			
+		} else if(revAList[i].rap_step==4){
+			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revList[i].revAList+"</br>상품명:"+revAList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revList[i].revAList+"</br>"
+		    if(revAList[i].ra_oc=="O"){
+			     main +="구매 종류 : 공개</br>"	
+				}else{
+				 main +="구매 종류 : 비공개</br>"	
+				}       
+		    main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
+		    	 +"<h3>완료</h3></div>";
+		}  
+}
+$('#revA').html(main);
+
+function deliinRav(even) {
+	var form = {
+			rap_ptnum:even
+			 }
+		var sub="";
+		 $.ajax({
+
+				url: 'delinumSelect',
+				type:'post',
+			    data:JSON.stringify(form),
+			    contentType:"application/json; charset=utf-8;",
+			    dataType:'json',
+			    success:function(data){
+			    	alert('해당 상품을 추천하였습니다.');
+			    	console.log("1234567"+data.rap_ptnum);
+			    	 $('#total').css("display", "inline");
+			    	$('#l1').css("display", "inline");
+			    	 sub+="<form action='revdelinumupload' method='post'>"
+			    	    +"<div id='l2'>"
+			    	  if(data.ra_oc=="O"){
+			    		  sub+="공개<input type='hidden' name='ra_oc'><br>"   
+				    	   }else {
+				    		   sub+=+"비공개<input type='hidden' name='ra_oc'><br>" 
+				    	   };
+			    	sub+="<h2>운송장 입력</h2><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
+			    	   +"상품이름 :"+data.ra_title+"<br>"
+	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='aup_price' value='"+data.rap_price+"' ><br>"    	
+			    	   +data.rap_mbid_n+"님에게 운송장 번호전송.<br><hr>"
+			    	   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
+			    	   +"운송장번호<br/><input type='text' id='rap_track' name='rap_track'><br>"
+			    	   +"<input type='submit' value='보내기'>"
+			    	   +"<input type='button' id='back' value='취소'></div></form>"; 
+			    	  
+			    	
+			    	
+			    	$('#l1').html(sub);
+			    },
+			    
+			    error:function(error){
+			    	alert('정상적인 추천이 실패했습니다.');
+			    	console.log(error);
+			    }
+			 });//end ajax
+}//End deliinRav
+
+function revdelinum(even) {
+	var form = {
+			rap_ptnum:even
+			 }
+		var cub="";
+	 $.ajax({
+			url: 'delinumSelect',
+			type:'post',
+		    data:JSON.stringify(form),
+		    contentType:"application/json; charset=utf-8;",
+		    dataType:'json',
+		    success:function(data){
+		    	alert('해당 상품을 추천하였습니다.');
+		    	console.log("1234567"+data.rap_ptnum);
+		    	 $('#total').css("display", "inline");
+		    	$('#c1').css("display", "inline");
+		    	 cub+="<div id='c2'>"
+		    	  if(data.ra_oc=="O"){
+		    		  cub+="공개<input type='hidden' name='ra_oc'><br>"   
+			    	   }else {
+			    		   
+			    		   cub+=+"비공개<input type='hidden' name='ra_oc'><br>" 
+			    	   };
+		    	cub+="<h2>의뢰인 배송정보</h2><br>"
+		    	   +"아이디 :"+data.rap_mbid_n+"<br>"
+                   +"이름: "+data.rap_name+"<br>"    	
+		    	   +"주소:"+data.rap_address+"<br>"
+		    	   +"연락처:"+data.rap_phone+"<br>"
+		    	   +"<input type='button' id='back' value='취소'></div>"; 
+
+		    	$('#c1').html(cub);
+		    },
+		    
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+}//end revdelinum
+
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")

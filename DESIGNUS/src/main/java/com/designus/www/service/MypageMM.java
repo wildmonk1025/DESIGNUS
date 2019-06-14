@@ -51,7 +51,7 @@ public class MypageMM {
 		if (list.equals("rev")) {
 			view = "redirect:/revAuctionMyOrderList";
 		} else if (list.equals("revre")) {
-			view = "revAuctionMyAcceptList";
+			view = "redirect:/revAuctionMyAcceptList";
 		} else if (list.equals("auc")) {
 			view = "redirect:/auctionMyOrderList";
 		} else if (list.equals("aucre")) {
@@ -470,7 +470,8 @@ public class MypageMM {
 		boolean a = pDao.auccancelDelete(ap);
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
 		System.out.println("aaaaa : " + a);
-
+		String date=ap.getAut_date().substring(0, 19);
+		ap.setAut_date(date);
 		if (a) {
 			boolean b = pDao.autcancelDelete(ap);
 			mav.addObject("check", 1);
@@ -621,7 +622,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 4; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getreSetpCount(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
@@ -721,6 +722,138 @@ public class MypageMM {
 			}
 		}
 		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 마무리");
+		mav.setViewName(view);
+		return mav;
+	}
+	@Transactional
+	public ModelAndView revAuctionMyAcceptList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		System.out.println("(서비스클래스)제작의뢰 접수내역 시작");
+		String id = session.getAttribute("id").toString();
+		List<revAuctionProgress> revAList = null;
+		String view = null;
+		int num = (pageNum == null) ? 1 : pageNum;
+		revAList = pDao.revAuctionMyAcceptList(id, num);
+		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1 revList.size(): " + revAList.size());
+		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1-2 revList.size(): " + revAList.get(0).getRap_mbid_w());
+		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1-3 revList.size(): " + revAList.get(0).getRap_ptnum());
+		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1-1 revList.size(): " + revAList.get(0).getRa_title());
+		Gson gson = new Gson();
+		String str = gson.toJson(revAList);
+		mav.addObject("revAList", str);
+		mav.addObject("RApaging", getRAaging(num, kind));
+		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 3 페이지징 완료 ");
+		view = "revAuctionMyAcceptList";
+		mav.setViewName(view);
+		System.out.println("(서비스클래스)제작의뢰 접수내역 마무리");
+		return mav;
+	}
+
+	private Object getRAaging(int pageNum, String kind) {
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
+		int listCount = 3; // 페이지당 글의 수
+		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum = pDao.getreASetpCount(id);
+		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
+		String boardName = "revAuctionMyAcceptList";
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
+		return paging.makeHtmlPaging();
+	}
+
+	public String delinumSelect(revAuctionProgress rap) {
+		String json = null;
+		rap = pDao.delinumSelect(rap);
+		if (rap != null) {
+			json = new Gson().toJson(rap);
+			System.out.println("json=" + json);
+		} else {
+			json = null;
+
+		}
+		return json;
+	}
+
+	public ModelAndView revdelinumupload(revAuctionProgress rap) {
+		mav = new ModelAndView();
+		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 시작");
+		boolean a = pDao.revdelinumupload(rap);		
+		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 마무리");
+		mav.setViewName("redirect:/revAuctionMyAcceptList");
+
+		return mav;
+	}
+
+	public String boardwrite(revAuctionProgress rap) {
+		System.out.println("(메니저먼트) 제작의뢰 스텝3 구매 후기및 수령확인 스타트");
+		String json = null;
+		rap = pDao.boardwriteSelect(rap);
+		System.out.println("(메니저먼트) 구매 후기및 수령확인 중간 테스트1 pnum 확인 :" + rap.getRap_ptnum());
+		if (rap != null) {
+			json = new Gson().toJson(rap);
+			System.out.println("json=" + json);
+		}
+		System.out.println("(메니저먼트) 구매 후기및 수령확인 마무의리");
+		return json;
+	}
+
+	public ModelAndView boardapply(MultipartHttpServletRequest multi) {
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 스타트");
+
+		String view = null;
+		String bd_kind = "이용후기";
+		int ptnum = Integer.parseInt(multi.getParameter("rap_ptnum"));
+		String id = session.getAttribute("id").toString();
+		String title = multi.getParameter("bd_title");
+		String contents = multi.getParameter("bd_contents");
+		String aumbidw = multi.getParameter("rap_mbid_w");
+		int priceN = Integer.parseInt(multi.getParameter("rap_price"));
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 1 title=" + title);
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 2 contents=" + contents);
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 3 check=" + check);
+		com.designus.www.bean.Board b = new com.designus.www.bean.Board();
+
+		b.setBd_mbid(id);
+		b.setBd_title(title);
+		b.setBd_contents(contents);
+		b.setBd_kind(bd_kind);
+
+		boolean a = bDao.boardapply(b);
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 4 a값 확인 : " + a);
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 5 boardnum=" + b.getBd_num());
+		AuctionProgress ap = new AuctionProgress();
+		ap.setAup_ptnum(ptnum);
+		ap.setAu_mbid_w(aumbidw);
+		ap.setAup_price(priceN);
+		int ponitW = mDao.memberWpoint(ap);
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 6 ponitW값 확인 : " + ponitW);
+		ap.setPonitW(ponitW);
+		boolean f = false;
+		if (check == 1) { // 첨부된 파일이 있다면....
+			// upload=new UploadFile(); //프로토타입
+			// 이클립스 서버에 파일을 업로드 한 후,
+			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
+			f = upload.fileboardUp(multi, b.getBd_num(), b.getBd_kind());
+			System.out.println("[컨트롤러].reviewBoardWrite:f값 확인 : " + f);
+			if (f) {
+				boolean c = pDao.memberpointup(ap);
+				if (c) {
+					boolean d = pDao.reviewBoardyhWriteupDate(ap);
+					if (d) {
+						view = "redirect:/auctionMyOrderList";
+					} else {
+						view = "myPage";
+					}
+				}
+
+			}
+		}
+
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 마무리");
 		mav.setViewName(view);
 		return mav;
 	}
