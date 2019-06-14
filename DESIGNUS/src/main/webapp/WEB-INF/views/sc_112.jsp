@@ -63,8 +63,8 @@
 
 #footercheck {
 	border: 1px solid black;
-	width: 1510px;
-	height: 400px;
+	width: 1520px;
+	height: 200px;
 }
 
 .menuLink {
@@ -108,11 +108,31 @@ select {
 	left: 170px;
 	float: left;
 }
+#repoID {
+	font-size: 20px;
+	text-align-last: center;
+	width: 150px;
+	height: 47px;
+	border: 1px solid black;
+	top: -105px;
+	left: 170px;
+	float: left;
+}
 
+#rp_mbid_a {
+	font-size: 25px;
+	text-align-last: center;
+	width: 200px;
+	height: 47px;
+	border: 1px solid black;
+	top: -178px;
+	left: 340px;
+	float: left;
+}
 #rp_title {
 	font-size: 25px;
 	text-align-last: center;
-	width: 850px;
+	width: 500px;
 	height: 47px;
 	border: 1px solid black;
 	top: -178px;
@@ -153,7 +173,7 @@ textarea {
 	float: left;
 }
 
-#aqi_imgSysName {
+#rqi_imgSysName {
 	font-size: 25px;
 	width: 320px;
 	height: 45px;
@@ -179,7 +199,7 @@ textarea {
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
-	<form action="scdeclareapply" name="scdeclareFrm" method="post">
+	
 		<div id="homeMain">
 
 			<div id="homemain">
@@ -191,16 +211,15 @@ textarea {
 					</div>
 					<div id="questionm">
 						<ul>
-							<li class="questionmenu"><a class="menuLink"
-								href="scquestion">1:1문의</a></li>
+							<li class="questionmenu"><a class="menuLink" href="scquestion">1:1문의</a></li>
 							<li class="questionmenu"><a class="menuLink" href="scqna">QnA</a></li>
-							<li class="questionmenu"><a class="menuLink"
-								href="scdeclare">신고하기</a></li>
+							<li class="questionmenu"><a class="menuLink" href="scdeclare">신고하기</a></li>
 						</ul>
 					</div>
 
 				</div>
 				<div id="list">
+				<form action="sc_reportFrm" name="sc_reportFrm" method="post" enctype="multipart/form-data">
 					<select name="rp_locate">
 						<option>질문 유형</option>
 						<option>거래</option>
@@ -212,18 +231,20 @@ textarea {
 						<option>욕설/비방</option>
 						<option>등등...</option>
 					</select>
+					
+					<p id="repoID">신고대상아이디</p>
+					<input id="rp_mbid_a" type="text" name="rp_mbid_a">
 					<p id="title">제목</p>
 					<input id="rp_title" type="text" name="rp_title">
 					<hr>
-					<textarea name="rp_contents">여기에 내용을 적습니다.</textarea>
-					<input class="c1" type="file" name="aqi_imgSysName"
-						id="aqi_imgSysName"> <span class="c1" style="color: red">사진은
-						jpg,png 파일들만 등록할 수 있습니다.</span>
+					<textarea name="rp_contents" placeholder="여기에 내용을 적습니다."></textarea>
+					<input class="c1" type="file" name="rqi_imgSysName" id="rqi_imgSysName"> 
+					<span class="c1" style="color: red">사진은 jpg,png 파일들만 등록할 수 있습니다.</span>
 					<button class="c1" id="apply">신고하기</button>
+					</form>
 				</div>
 			</div>
 		</div>
-	</form>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include></div>
 	-
