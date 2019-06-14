@@ -43,6 +43,8 @@ public interface ImemberDao {
 
 	int ravmemberNpoint(revAuctionProgress rap);
 
+	int memberWrevpoint(revAuctionProgress rap);
+
 
 
 }

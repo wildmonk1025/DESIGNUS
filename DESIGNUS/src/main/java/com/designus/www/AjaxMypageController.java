@@ -47,15 +47,10 @@ public class AjaxMypageController {
 	@RequestMapping(value = "/enter", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String enter(@RequestBody AuctionProgress ap) {
-		System.out.println("여기로 와라 제발111...");
+		System.out.println("(Ajax 컨트롤러)배송정보입력 시작!!");
 		System.out.println(ap.getAup_ptnum());
-		// System.out.println(map.get("pnum"));
-		// System.out.println("이게 작가 아이디인데1111....=" + pnum);
-		// int pnum1 = Integer.parseInt(pnum.substring(5,5));
-		// System.out.println(pnum1);
-		// int pnum = map.get("pnum");
 		String json = pm.enter(ap);
-		System.out.println("5번째 시도....");
+		System.out.println("(Ajax 컨트롤러)배송정보입력 시작!!");
 		return json;
 
 	}

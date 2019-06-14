@@ -371,6 +371,7 @@ public class MypageMM {
 	@Transactional
 	public ModelAndView aucapply(AuctionProgress ap) {
 		mav = new ModelAndView();
+		System.out.println("(서비스클래스) 배송정보 입력 하기 시작!!!");
 		int ponitN = mDao.memberNpoint(ap);
 		System.out.println("ponitN" + ponitN);
 		boolean a = pDao.aucapplyMbWupdate(ap);
@@ -386,7 +387,7 @@ public class MypageMM {
 			}
 
 		}
-
+		System.out.println("(컨트롤러) 배송정보 입력 하기 마무리!!!");
 		mav.setViewName("redirect:/auctionMyOrderList");
 
 		return mav;
@@ -734,16 +735,19 @@ public class MypageMM {
 		String view = null;
 		int num = (pageNum == null) ? 1 : pageNum;
 		revAList = pDao.revAuctionMyAcceptList(id, num);
-		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1 revList.size(): " + revAList.size());
-		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1-2 revList.size(): " + revAList.get(0).getRap_mbid_w());
-		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1-3 revList.size(): " + revAList.get(0).getRap_ptnum());
-		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 1-1 revList.size(): " + revAList.get(0).getRa_title());
+		if(revAList.size() !=0) {
+			
 		Gson gson = new Gson();
 		String str = gson.toJson(revAList);
 		mav.addObject("revAList", str);
 		mav.addObject("RApaging", getRAaging(num, kind));
 		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 3 페이지징 완료 ");
 		view = "revAuctionMyAcceptList";
+		
+		}else if(revAList.size()==0) {
+			System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 4 위치확인 ");
+			view="revAuctionMyAcceptList";
+		}
 		mav.setViewName(view);
 		System.out.println("(서비스클래스)제작의뢰 접수내역 마무리");
 		return mav;
@@ -799,19 +803,26 @@ public class MypageMM {
 		System.out.println("(메니저먼트) 구매 후기및 수령확인 마무의리");
 		return json;
 	}
-
+	@Transactional
 	public ModelAndView boardapply(MultipartHttpServletRequest multi) {
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 스타트");
 
 		String view = null;
 		String bd_kind = "이용후기";
 		int ptnum = Integer.parseInt(multi.getParameter("rap_ptnum"));
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -7 title=" + ptnum);
 		String id = session.getAttribute("id").toString();
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -6 title=" + id);
 		String title = multi.getParameter("bd_title");
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -5 title=" + title);
 		String contents = multi.getParameter("bd_contents");
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -4 title=" + contents);
 		String aumbidw = multi.getParameter("rap_mbid_w");
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -3 title=" + aumbidw);
 		int priceN = Integer.parseInt(multi.getParameter("rap_price"));
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -2 title=" + priceN);
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
+		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -1 title=" + check);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 1 title=" + title);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 2 contents=" + contents);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 3 check=" + check);
@@ -822,16 +833,16 @@ public class MypageMM {
 		b.setBd_contents(contents);
 		b.setBd_kind(bd_kind);
 
-		boolean a = bDao.boardapply(b);
+		boolean a = bDao.reviewBoardyhWrite(b);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 4 a값 확인 : " + a);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 5 boardnum=" + b.getBd_num());
-		AuctionProgress ap = new AuctionProgress();
-		ap.setAup_ptnum(ptnum);
-		ap.setAu_mbid_w(aumbidw);
-		ap.setAup_price(priceN);
-		int ponitW = mDao.memberWpoint(ap);
+		revAuctionProgress rap = new revAuctionProgress();
+		rap.setRap_ptnum(ptnum);
+		rap.setRap_mbid_w(aumbidw);
+		rap.setRap_price(priceN);
+		int ponitW = mDao.memberWrevpoint(rap);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 6 ponitW값 확인 : " + ponitW);
-		ap.setPonitW(ponitW);
+		rap.setPointW(ponitW);
 		boolean f = false;
 		if (check == 1) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
@@ -840,11 +851,13 @@ public class MypageMM {
 			f = upload.fileboardUp(multi, b.getBd_num(), b.getBd_kind());
 			System.out.println("[컨트롤러].reviewBoardWrite:f값 확인 : " + f);
 			if (f) {
-				boolean c = pDao.memberpointup(ap);
+				boolean c = pDao.revmemberpointup(rap);
 				if (c) {
-					boolean d = pDao.reviewBoardyhWriteupDate(ap);
+					System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 8 c :확인 "+c );
+					boolean d = pDao.revBoardyhWriteupDate(rap);
 					if (d) {
-						view = "redirect:/auctionMyOrderList";
+						System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 7 위치값 확인 " );
+						view = "redirect:/revAuctionMyOrderList";
 					} else {
 						view = "myPage";
 					}

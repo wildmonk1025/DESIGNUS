@@ -113,20 +113,19 @@ public class MypageController {
 	@RequestMapping(value = "/auctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView auctionMyOrderList(Integer pageNum ,String kind) {
-		//System.out.println("일단 여기로 와야 하는디....");
+		System.out.println("(컨트롤러)출품 구매 내역 리스트 시작!!");
 		mav = new ModelAndView();
-		
 		 mav=pm.auctionMyOrderList(pageNum,kind);
-		 //System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		 System.out.println("(컨트롤러)출품 구매 내역 리스트 마무리!!");
 		return mav;
 	}
 	@RequestMapping(value = "/aucapply", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView aucapply(AuctionProgress ap) {
-		System.out.println("일단 여기로 와야 하는디....1123123");
+		System.out.println("(컨트롤러) 배송정보 입력 하기 시작!!!");
 		mav = new ModelAndView();
 		 mav=pm.aucapply(ap);
-		 System.out.println("아니...인간적으로 여기 와야 되는거 아님??123123123???");
+		 System.out.println("(컨트롤러) 배송정보 입력 하기 마무리!!!");
 		return mav;
 	}
 	@RequestMapping(value = "/reviewBoardWrite", method = {RequestMethod.GET,RequestMethod.POST})

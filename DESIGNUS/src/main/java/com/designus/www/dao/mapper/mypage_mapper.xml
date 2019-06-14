@@ -118,11 +118,7 @@
 		AUPVIEWTEST where AUP_MBID_N=#{id}
 	</select>
 
-	<update id="aucapplyupdate" parameterType="auctionprogress">
-		update AUP SET
-		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
-		where aup_ptnum=#{aup_ptnum}
-	</update>
+	
 	<update id="aucapplyMbNupdate" parameterType="auctionprogress">
 		update MB SET
 		mb_point=#{ponitN}-#{aup_price}
@@ -308,4 +304,19 @@
      ) where RankNo=1
   ]]>
 	</select>
+	<update id="revmemberpointup" parameterType="revAuctionProgress">
+		update MB SET
+		mb_point=#{pointW}+#{rap_price}
+		where mb_id=#{rap_mbid_w}
+	</update>
+	<update id="revBoardyhWriteupDate"
+		parameterType="revauctionprogress">
+		update RAP SET RAP_STEP=4
+		where rap_ptnum=${rap_ptnum}
+	</update>
+	<update id="aucapplyMbWupdate" parameterType="auctionprogress">
+		update AUP SET
+		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
+		where aup_ptnum=#{aup_ptnum}
+	</update>
 </mapper>
