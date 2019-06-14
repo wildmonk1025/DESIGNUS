@@ -1,7 +1,5 @@
 package com.designus.www.bean;
 
-import java.security.Timestamp;
-
 import org.apache.ibatis.type.Alias;
 
 import lombok.Getter;
