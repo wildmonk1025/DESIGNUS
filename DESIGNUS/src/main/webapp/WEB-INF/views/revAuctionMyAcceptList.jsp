@@ -625,6 +625,16 @@ for (var i = 0; i < revAList.length; i++) {
 				}       
 		    main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
 		    	 +"<h3>완료</h3></div>";
+		}else{
+			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
+		    if(revAList[i].ra_oc=="C"){
+			     main +="구매 종류 : 비공개</br>"	
+				}            
+		    main +="<input id='btzRevM' type='button' onclick=\"javascript:stepf('"+revAList[i].rap_ptnum+"')\" value='승인'/>"
+                 +"<input type='button' onclick=\"javascript:stepDele('"+revAList[i].rap_ptnum+"')\" value='거절'/>";
+		    
 		}  
 }
 $('#revA').html(main);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -194,6 +195,7 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
+
 </style>
 
 </head>
@@ -205,56 +207,57 @@ a:hover {
 			<jsp:include page="main.jsp" />
 		</div>
 		<div id="leftmain">
-			<div id="img">
+			<!--  <div id="img">
 				<h1>프로필사진</h1>
 				<img src="${mb.mb_id}">
-			</div>
+			</div>-->
 
-			<div id="point">
+			<!--<div id="point">
 				<h1>포인트:${mb.mb_point}</h1>
-			</div>
+			</div>-->
 
 			<div id="info">
-				<table width="1000">
+			<jsp:include page="Mapagemain.jsp" />
+				<!--  <table width="1000">
 
-					<tr>
+					<tr id="m1">
 						<td style="font-size: 27px"><a href="historylist?list=rev">제작의뢰
 								내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m2">
 						<td style="font-size: 27px"><a href="historylist?list=revre">제작의뢰
 								접수내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m3">
 						<td style="font-size: 27px"><a href="historylist?list=auc">출품작
 								구매 내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m4">
 						<td style="font-size: 27px"><a href="historylist?list=aucre">출품작
 								판매 내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m5">
 						<td style="font-size: 27px"><a href="historylist?list=spon">후원진행
 								내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m6">
 						<td style="font-size: 27px"><a href="historylist?list=sponre">후원요청
 								내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m7">
 						<td style="font-size: 27px"><a href="historylist?list=basket">꿍
 								내역</a></td>
 					</tr>
-					<tr>
+					<tr id="m8">
 						<td style="font-size: 27px"><a href="privacyedit">개인정보 수정</a></td>
 					</tr>
-					<tr>
+					<tr id="m9">
 						<td style="font-size: 27px"><a href="memberout">회원탈퇴 신청</a></td>
 					</tr>
-					<tr>
+					<tr id="m10">
 						<td style="font-size: 27px"><a href="nortowri">작가전환 신청</a></td>
 					</tr>
-				</table>
+				</table>-->
 			</div>
 		</div>
 		<div id="rightmain">
@@ -274,5 +277,7 @@ a:hover {
 		</div>
 	</div>
 </body>
+
+
 
 </html>
