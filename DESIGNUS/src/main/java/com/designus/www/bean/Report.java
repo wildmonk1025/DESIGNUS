@@ -18,4 +18,5 @@ public class Report {
 	String rp_contents;
 	String rpi_img;
 	String rp_date;
+	String rqi_imgSysName;
 }

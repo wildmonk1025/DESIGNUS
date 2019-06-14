@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
 import com.designus.www.dao.ImemberDao;
@@ -26,7 +27,7 @@ public class AdminMM {
 	private IadminDao iDao;
 	
 	public String declarewritecheck() {
-		List<Report> rList = iDao.getrepInfo();
+		List<MemberSearch> rList = iDao.getrepInfo();
 
 		System.out.println("이거는되나");
 		Gson gs = new Gson();
@@ -37,7 +38,7 @@ public class AdminMM {
 	}
 
 	public String Declarelist() {
-		List<Report> rList = iDao.getrepInfo();
+		List<MemberSearch> rList = iDao.getrepInfo();
 
 		System.out.println("이거는되나");
 		Gson gs = new Gson();
@@ -48,7 +49,7 @@ public class AdminMM {
 	}
 
 	public String transformList() {
-		List<Major> rList = iDao.gettransInfo();
+		List<MemberSearch> rList = iDao.gettransInfo();
 
 		System.out.println("이거는되나");
 		Gson gs = new Gson();
@@ -126,6 +127,17 @@ public class AdminMM {
 		}
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public String transformwridetail() {
+		List<MemberSearch> rList = iDao.gettransforInfo();
+
+		System.out.println("이거는되나");
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+		return jsonObj;
 	}
 
 }

@@ -16,5 +16,22 @@
      <select id="getQuestionSel" parameterType="questionreply" resultType="Integer">
 		SELECT MAX(AQ_NUM) FROM AQ
 	 </select>
+
+     <select id="QnAselect" parameterType="qna" resultType="qna">
+		SELECT * FROM QNA WHERE QNA_KIND = #{qna_kind}
+	 </select>
+
+     <insert id="setReport" parameterType="report">
+		INSERT INTO RP VALUES(RP_SEQ.NEXTVAL,#{rp_mbid_d},#{rp_mbid_a},#{rp_locate},#{rp_reason},#{rp_title},#{rp_contents},DEFAULT)
+	 </insert>
+
+     <select id="getReportSel" parameterType="report" resultType="Integer">
+		SELECT MAX(RP_NUM) FROM RP
+	 </select>
+
+     <insert id="ReportImageInsert" parameterType="report">
+		INSERT INTO RPI VALUES(${rp_num},#{rqi_imgSysName})
+	 </insert>
+
        
 </mapper>

@@ -871,4 +871,21 @@ public class MypageMM {
 		return mav;
 	}
 
+	public ModelAndView mypagemove() {
+		mav=new ModelAndView();
+		String view=null;
+		String id=session.getAttribute("id").toString();
+		//String grade=session.getAttribute("grade").toString();
+		Member mb=new Member();
+		mb=pDao.mypagemoveSelect(id);
+		if(mb != null) {
+			mav.addObject("mb",mb);
+			view="myPage";
+		}else {
+			view="home";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
 }

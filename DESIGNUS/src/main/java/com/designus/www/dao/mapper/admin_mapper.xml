@@ -8,8 +8,11 @@
      <select id="getrepInfo" parameterType="report" resultType="report">
 		SELECT * FROM RP_LIST ORDER BY RP_NUM ASC
 	</select>
-     <select id="gettransInfo" parameterType="major" resultType="major">
-		SELECT * FROM MJ
+     <select id="gettransInfo" parameterType="membersearch" resultType="membersearch">
+		SELECT * FROM MBS WHERE MB_GRADE='X'OR MB_GRADE='S'
+	</select>
+     <select id="gettransforInfo" parameterType="membersearch" resultType="membersearch">
+		SELECT * FROM MBS WHERE MB_GRADE='X'OR MB_GRADE='S'
 	</select>
      <select id="getWriteCheck" parameterType="Integer" resultType="report">
 		SELECT * FROM RP_LIST WHERE RP_NUM =${rp_num}
@@ -23,5 +26,5 @@
 	<update id="getwarning" parameterType="member">
 		UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = #{mb_id}
 	</update>
-     <!--  UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = 'BBBB' -->
+  
 </mapper>

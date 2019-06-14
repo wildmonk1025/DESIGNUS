@@ -2,11 +2,14 @@ package com.designus.www;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.QnA;
 import com.designus.www.service.ServiceMM;
 
 @Controller
@@ -40,20 +43,35 @@ public class WBSController {
 	}
 	
 	@RequestMapping(value = "/scqna", method = RequestMethod.GET)
-	public ModelAndView scqna() {
+	public ModelAndView scqna(String qnakind) {
 		mav = new ModelAndView();
 		String view = "sc_QnA";
-		System.out.println("이수원 그것도~ 모르냐~~~아!");
 		
 		
 		mav.setViewName(view);
 		return mav;
 	}
 
-	@RequestMapping(value = "/scdeclare", method = RequestMethod.GET)
-	public String scdeclare() {
-		
+	@RequestMapping(value = "/scdeclare" )
+	public String scdeclare() {  
 		return "sc_112";
+	}
+	
+	//ajax
+	@RequestMapping(value = "/qnaselect",  method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public @ResponseBody String qnaselect(@RequestBody QnA qna) {
+		String json = sem.qnaselect(qna);
+		
+		
+		return json;
+	}
+
+	@RequestMapping(value = "/sc_reportFrm" )
+	public ModelAndView sc_reportFrm(MultipartHttpServletRequest multi) {  
+		mav = new ModelAndView();
+		mav = sem.sc_reportFrm(multi);
+		return mav;
 	}
 	
 	

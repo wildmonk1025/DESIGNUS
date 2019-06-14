@@ -1,5 +1,7 @@
 package com.designus.www.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.QnA;
 import com.designus.www.bean.QuestionReply;
+import com.designus.www.bean.Report;
 import com.designus.www.dao.IServiceCenterDao;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 @Service
 public class ServiceMM {
@@ -64,6 +69,60 @@ public class ServiceMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+	public String qnaselect(QnA qna) {
+		String json =null;
+		List<QnA> qList = null;
+		qList = hDao.QnAselect(qna);
+		if(qList != null) {
+			json = new Gson().toJson(qList);
+		}
+		return json;
+	}
+
+	public ModelAndView sc_reportFrm(MultipartHttpServletRequest multi) {
+		mav = new ModelAndView();
+		String view = null;
+		String id_d = (String)session.getAttribute("id");
+		String id_a =multi.getParameter("rp_mbid_a"); 
+		String locate =multi.getParameter("rp_locate"); 
+		String reason = multi.getParameter("rp_reason"); 
+		String title = multi.getParameter("rp_title"); 
+		String contents = multi.getParameter("rp_contents"); 
+		int num = 0;
+		
+		System.out.println("[8] id_d = "+id_d);
+		System.out.println("[8] id_a = "+id_a);
+		System.out.println("[8] locate = "+locate);
+		System.out.println("[8] reason = "+reason);
+		System.out.println("[8] title = "+title);
+		System.out.println("[8] contents = "+contents);
+		
+		Report rp = new Report();
+		
+		rp.setRp_mbid_d(id_d);
+		rp.setRp_mbid_a(id_a);
+		rp.setRp_locate(locate);
+		rp.setRp_reason(reason);
+		rp.setRp_title(title);
+		rp.setRp_contents(contents);
+		if(!id_d.equals(id_a)) {
+		if(hDao.setReport(rp)) {
+			num =  hDao.getReportSel(rp);
+			rp.setRp_num(num);
+			upload.ReportUpload(multi,rp);
+			view = "home";
+			mav.setViewName(view);
+		}else {
+			view = "redirect:/servicecenter";
+			mav.setViewName(view);
+		}
+		}
+		view = "redirect:/servicecenter";
+		mav.setViewName(view);
+		return mav;
+	}
+
 	
 	
 	

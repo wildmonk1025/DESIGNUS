@@ -106,13 +106,13 @@ td {
 				</tr>
 				<tr>
 					<td>등록일</td>
-					<td colspan="3">sysdate</td>
+					<td colspan="3">${ss_date}</td>
 				</tr>
 			</table>
 			<table border="1" style="text-align: center" class="ts">
 				<tr>
 					<td class="ts1">후원 목표량</td>
-					<td class="ts2">Sponsor table</td>
+					<td class="ts2">${ss_goalqty}</td>
 					<td class="ts1">후원 기간</td>
 					<td class="ts2">Sponsor table</td>
 					<td class="ts1">현제 주문량</td>
@@ -137,4 +137,7 @@ td {
 	-
 
 </body>
+<script>
+
+</script>
 </html>

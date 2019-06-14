@@ -80,7 +80,7 @@ div {
 	width: 280px;
 	height: 60px;
 	text-align: left;
-	font-size: 20px;
+	font-size: 15px;
 	float: left;
 }
 
@@ -207,10 +207,11 @@ a:hover {
 		<div id="leftmain">
 			<div id="img">
 				<h1>프로필사진</h1>
+				<img src="${mb.mb_id}">
 			</div>
 
 			<div id="point">
-				<h1>포인트:</h1>
+				<h1>포인트:${mb.mb_point}</h1>
 			</div>
 
 			<div id="info">

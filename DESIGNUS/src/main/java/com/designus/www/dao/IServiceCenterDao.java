@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.QnA;
 import com.designus.www.bean.QuestionReply;
+import com.designus.www.bean.Report;
 
 //import org.springframework.stereotype.Repository;
 
@@ -17,4 +19,13 @@ public interface IServiceCenterDao {
 	void QuestionImageInsert(QuestionReply qr);
 
 	int getQuestionSel(QuestionReply qr);
+
+	List<QnA> QnAselect(QnA qna);
+
+	boolean setReport(Report rp);
+
+	int getReportSel(Report rp);
+
+	void ReportImageInsert(Report rp);
+
 }

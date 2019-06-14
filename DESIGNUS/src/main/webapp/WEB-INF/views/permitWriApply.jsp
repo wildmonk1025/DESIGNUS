@@ -66,10 +66,15 @@ ul {
 	width: 900px;
 	height: auto;
 }
-
-tr, td {
-	width: 200px;
+.best {
+	border: 1px solid coral;
+	color: black; display : inline;
+	float: left;
+	width: 320px;
+	heigth: 55px;
+	display: inline;
 }
+
 
 </style>
 </head>
@@ -90,25 +95,8 @@ tr, td {
 				<p>작가 가입신청 리스트</p>
 			</div>
 			<div id="writerjoinlist">
-				<div id="writerjoin">
-					<table border="1">
-						<tr align="center">
-							<td>신청번호</td>
-							<td>예비아이디</td>
-							<td>전공</td>
-							<td>자료 여부(O,X)</td>
-						</tr>
-						<tr>
-							<td colspan="4">내용</td>
-						</tr>
-						<tr>
-							<td colspan="2">파일이름</td>
-							<td colspan="2">..ddd.pdf</td>
-						</tr>
-						<tr>
-							<td colspan="4">이미지</td>
-						</tr>
-					</table>
+				<div id="transformlist">
+					
 				</div>
 			
 				
@@ -117,7 +105,34 @@ tr, td {
 	</div>
 </body>
 <script>
-	
+$(document).ready(function() {
+	$.ajax({
+		url : 'transformwridetail ',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id=${mb_id}'>"
+					  +"아이디:" +data[i].mb_id+"<br>"
+					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
+					  +"포트폴리오:"+data[i].mj_contents+"<br>"
+					  +"파일설명:"+data[i].mj_portf+"<br>"
+					  +"</a>"+"</div>";
+					  }
+			$("#transformlist").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
 </script>
 
 </html>
