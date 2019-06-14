@@ -87,7 +87,7 @@
 	</select>
 	
 	<select id="wriListSelect" parameterType="membersearch" resultType="membersearch">
-		SELECT * FROM MBS WHERE MB_ID LIKE #{mb_id}||'%'
+		SELECT * FROM MBS WHERE MB_ID LIKE #{mb_id}||'%' AND MB_GRADE='W'
 	</select>
 	
 </mapper>
