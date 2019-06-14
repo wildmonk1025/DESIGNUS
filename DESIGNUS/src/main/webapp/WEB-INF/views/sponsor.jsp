@@ -17,6 +17,13 @@ div {
 	height: 170px;
 }
 
+#sponproduct {
+	width: 200px;
+	height: 170px;
+	margin: 15px;
+	float: left;
+}
+
 #homeMain {
 	border: 1px solid black;
 	width: 1520px;
@@ -74,6 +81,14 @@ div {
 	height: 500px;
 	overflow-y: scroll;
 }
+
+#spon {
+	border: 1px solid black;
+	width: 300px;
+	height: 180px;
+	margin:10px 20px;
+	float: left;
+}
 </style>
 <title>Sponsor</title>
 </head>
@@ -102,19 +117,23 @@ div {
 					url : 'productinfo',
 					type : 'post',
 					dataType : 'json',
-					contentType : 'application/json',
+					contentType : "application/json; charset=utf-8;",
 					success : function(data) {
 						var result = "";
 						console.dir(data);
 						console.log("성공");
-						for (var i = 0; i < 5; i++) {
-							result += "<div id='sponproduct'>"
-									+ "<img src='resources/images/>"data[i].ssi_img + "</div>"
-									+ "<div class='best'>" + "작가아이디:"
-									+ data[i].au_mbid_w + "<br>" + "상품번호:"
-									+ data[i].au_num + "<br>" + "상품설명:"
-									+ data[i].au_contents + "<br>" + "신상:"
-									+ data[i].au_date + "<br>" + "</div>"
+						for (var i = 0; i < data[i].length; i++) {
+							result += "<div id='spon'>"
+									+ "<div id='sponproduct'>"
+									+ "<img src='resources/images/>"
+									+ data[i].ssi_img + "</div>"
+									+ "<div class='sponpro'>" + "아이디:"
+									+ data[i].ss_mbid_w + "<br>" + "후원번호:"
+									+ data[i].ss_num + "<br>" + "목표수량:"
+									+ data[i].ss_goalqty + "<br>" + "후원제품가격:"
+									+ data[i].ss_price + "후원날짜:"
+									+ data[i].ss_date + "<br>" + "</div>"
+									+ "</div>"
 						}
 						$("#sponList").html(result);
 					},
