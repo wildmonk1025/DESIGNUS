@@ -118,8 +118,8 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='permitWriDetail '>"
-					  +"아이디:" +data[i].mj_mbid+"<br>"
+				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id=${mb_id}'>"
+					  +"아이디:" +data[i].mb_id+"<br>"
 					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
 					  +"포트폴리오:"+data[i].mj_contents+"<br>"
 					  +"파일설명:"+data[i].mj_portf+"<br>"
