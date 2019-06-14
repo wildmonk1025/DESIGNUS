@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
@@ -245,9 +246,13 @@ public class RevAuctionMM {
 		return msg;
 	}
 
-	public String wriList(Member mb) {
-		List<Member> mList = rDao.wriListSelect(mb);
-		String str = new Gson().toJson(mList); 
+	public String wriList(MemberSearch mbs) {
+		//if(mb.getMb_id().length()>0) 
+		List<MemberSearch> mList = rDao.wriListSelect(mbs);
+		for(int i=0;i<mList.size();i++) {
+		System.out.println("mList"+i+"번째 ID:"+mList.get(i).getMb_id());
+			}
+			String str = new Gson().toJson(mList);
 		return str;
 	}
 }

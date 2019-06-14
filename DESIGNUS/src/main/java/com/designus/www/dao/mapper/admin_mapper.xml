@@ -11,6 +11,9 @@
      <select id="gettransInfo" parameterType="major" resultType="major">
 		SELECT * FROM MJ
 	</select>
+     <select id="gettransforInfo" parameterType="major" resultType="major">
+		SELECT * FROM MJ
+	</select>
      <select id="getWriteCheck" parameterType="Integer" resultType="report">
 		SELECT * FROM RP_LIST WHERE RP_NUM =${rp_num}
 	</select>
@@ -23,5 +26,5 @@
 	<update id="getwarning" parameterType="member">
 		UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = #{mb_id}
 	</update>
-     <!--  UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = 'BBBB' -->
+  
 </mapper>
