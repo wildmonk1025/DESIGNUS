@@ -142,6 +142,7 @@ div {
 										console.log("성공");
 										for ( var i in data) {
 											result += "<div id='spon'>"
+													+ "<a href='sponproduct'>"
 													+ "<div id='sponproduct'>"
 													+ "<img src='resources/images/"
 									+ data[i].ssi_imgSysName +"'>"
@@ -157,7 +158,7 @@ div {
 													+ data[i].ss_price + "<br>"
 													+ "후원날짜:" + data[i].ss_date
 													+ "</div>" + "<br>"
-													+ "</div>"
+													+ "</a>" + "</div>"
 										}
 										$("#sponList").html(result);
 									},
@@ -167,5 +168,9 @@ div {
 									}
 								});
 					});
+
+	$('#spon').click(function() {
+		$('#spon')
+	})
 </script>
 </html>

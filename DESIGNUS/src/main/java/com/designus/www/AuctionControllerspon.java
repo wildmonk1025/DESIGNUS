@@ -42,4 +42,10 @@ public class AuctionControllerspon {
 
 		return "sponsor";
 	}
+
+	@RequestMapping(value = "/sponproduct", method = RequestMethod.GET)
+	public String sponProductFrm() {
+
+		return "sponProductFrm";
+	}
 }
