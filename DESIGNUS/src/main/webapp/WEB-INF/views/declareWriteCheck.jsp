@@ -166,7 +166,7 @@ function a(){
 	}
 	function b(){
 	var f=document.formName;
-	f.action = "declarepermit?rp_num=${rp_num}&rp_mbid_a={rp_mbid_a}";
+	f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
 	f.submit();
 	}
 function goBack() {

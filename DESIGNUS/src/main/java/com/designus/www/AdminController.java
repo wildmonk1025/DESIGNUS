@@ -61,15 +61,15 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value = "/declarenonpermit", method = RequestMethod.POST)
-	public ModelAndView declareNonPermit(int rp_num) {
-		System.out.println("ㅇㅇ?");
+	public ModelAndView declareNonPermit(int rp_num,String rp_mbid_a) {
+		System.out.println("ㅇㅇ?"+rp_mbid_a);
 		mav = adm.declareNonPermit(rp_num);
 		return mav;
 	}
 	@RequestMapping(value = "/declarepermit", method = RequestMethod.POST)
-	public ModelAndView declarepermit(int rp_num ,String rp_mbid_a,Member mb) {
+	public ModelAndView declarepermit(int rp_num ,String mb_id) {
 		System.out.println("hh?");
-		mav = adm.declarepermit(rp_num,mb,rp_mbid_a);
+		mav = adm.declarepermit(rp_num,mb_id);
 		return mav;
 	}
 

@@ -24,7 +24,7 @@ public interface IadminDao {
 
 	boolean getPerfmit(@Param("rp_num") int rp_num);
 
-	Member getwarning(Member mb_id);
+	boolean getwarning(@Param("mb_id")String mb_id);
   
   
 }
