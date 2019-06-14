@@ -20,5 +20,8 @@
      <delete id="getPerfmit" parameterType="Integer">
 		DELETE FROM RPI WHERE RPI_NUM =${rp_num}
 	</delete>
-      
+	<update id="getwarning" parameterType="member">
+		UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = #{mb_id}
+	</update>
+     <!--  UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = 'BBBB' -->
 </mapper>

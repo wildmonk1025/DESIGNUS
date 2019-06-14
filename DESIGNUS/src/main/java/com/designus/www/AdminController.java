@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Member;
 import com.designus.www.service.AdminMM;
 
 
@@ -63,6 +64,12 @@ public class AdminController {
 	public ModelAndView declareNonPermit(int rp_num) {
 		System.out.println("ㅇㅇ?");
 		mav = adm.declareNonPermit(rp_num);
+		return mav;
+	}
+	@RequestMapping(value = "/declarepermit", method = RequestMethod.POST)
+	public ModelAndView declarepermit(int rp_num ,String rp_mbid_a,Member mb) {
+		System.out.println("hh?");
+		mav = adm.declarepermit(rp_num,mb,rp_mbid_a);
 		return mav;
 	}
 

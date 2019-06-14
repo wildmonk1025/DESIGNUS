@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Major;
+import com.designus.www.bean.Member;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
+import com.designus.www.dao.ImemberDao;
 import com.google.gson.Gson;
 
 @Service
@@ -22,7 +24,7 @@ public class AdminMM {
 	private ModelAndView mav;
 	@Autowired
 	private IadminDao iDao;
-
+	
 	public String declarewritecheck() {
 		List<Report> rList = iDao.getrepInfo();
 
@@ -102,6 +104,29 @@ public class AdminMM {
 			view = "home";
 		}
 		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView declarepermit(int rp_num, Member mb, String rp_mbid_a) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean f2 = iDao.getPerfmit(rp_num);
+		boolean f = iDao.getPermit(rp_num);
+		System.out.println(" rp_mbid_a"+rp_mbid_a);
+		Report rp = new Report();
+		/* String dd=mb.setMb_id(rp.getRp_mbid_a); */
+		System.out.println("ggg");
+		mb=iDao.getwarning(mb);
+		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
+		
+		if(f && f2) {
+			mav.addObject("rp_num", rp_num);
+			System.out.println("성공이다"+mb);
+			view = "declareWrite";
+		} else {
+			System.out.println("삭제 실패");
+			view = "home";
+		}
 		return mav;
 	}
 
