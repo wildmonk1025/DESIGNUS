@@ -116,5 +116,9 @@ public interface ImypageDao {
 
 	revAuctionProgress boardwriteSelect(revAuctionProgress rap);
 
+	boolean revmemberpointup(revAuctionProgress rap);
+
+	boolean revBoardyhWriteupDate(revAuctionProgress rap);
+
   
 }

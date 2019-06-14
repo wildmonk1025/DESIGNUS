@@ -147,6 +147,7 @@ input[type="file"] {
 	width: 410px;
 	height: 350px;
 	border: 1px solid red;
+	display: none;
 }
 
 #middle_contents2_writer {
@@ -156,6 +157,17 @@ input[type="file"] {
 	height: 280px;
 	border: 1px solid gray;
 	box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);
+	overflow: auto;
+	display: none;
+}
+
+#middle_contents2_writer>div {
+	margin: 10px;
+	width: 320px;
+	height: 70px;
+	border: 1px solid red;
+	float: left;
+	display: none;
 }
 
 
@@ -240,9 +252,15 @@ input[type="file"] {
 			<input type="button" id="unlock" name="ra_oc" value="공개의뢰" />
 		</div>
 			<div id="middle_contents2_searching">
-			<div id="searching"><input id="auto" autocomplete="on" type="text" style="width:250px; height:30px; margin-left:20px; padding-left:30px; box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);"
-			placeholder="의뢰할 작가님의 ID 또는 이름를 검색하세요"/><button style="width:80px; height:33px;">검색</button></div>
-			<div id="middle_contents2_writer"></div>
+			<div id="searching"><input id="auto" type="text" style="width:250px; height:30px; margin-left:20px; padding-left:10px; box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);"
+			placeholder="의뢰할 작가님의 ID를 검색"/><button style="width:80px; height:33px;">검색</button></div>
+			<div id="middle_contents2_writer">
+				<div id="writer_Info0"></div>
+				<div id="writer_Info1"></div>
+				<div id="writer_Info2"></div>
+				<div id="writer_Info3"></div>
+				<div id="writer_Info4"></div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -254,14 +272,14 @@ input[type="file"] {
 	$("#lock").click(function() {
 		$("#middle_title1").css("display","none");
 		$("#middle_title2").css("display","inline");
-		$("#searching").css("display","block");
+		$("#middle_contents2_searching").css("display","block");
 		$("#middle_contents2_writer").css("display","block");
 	});
 	
 	$("#unlock").click(function() {
 		$("#middle_title1").css("display","inline");
 		$("#middle_title2").css("display","none");
-		$("#searching").css("display","none");
+		$("#middle_contents2_searching").css("display","none");
 		$("#middle_contents2_writer").css("display","none");
 	});
 	/* 뒤로가기 */
@@ -298,16 +316,27 @@ input[type="file"] {
     	if(currentVal == oldVal) {
     		return;
     	}
-    	
-    	oldVal = currentVal;
+    	var oldVal = currentVal;
+    	console.log(currentVal);
     	$.ajax({
     		type:'POST',
-    		url:'ajax/revauction',
+    		url:'ajax/wrilist',
     		data: { mb_id:currentVal},
     		dataType:'json',
     		success: function(data) {
     			console.log("성공");
-    			console.log(data);
+    			var str='';
+    			for(var i in data) {
+    			str="<img src='"+data[i].mb_profile+"'>아이디:"+data[i].mb_id+"<br>이름:"+data[i].mb_name+"<br>전문분야:"+data[i].mj_cgcode+"<br>추천수:"+data[i].mj_like+"";
+    			$("#writer_Info"+i).html(str);
+
+    			for(var y=0;y<6;y++) {
+    				for(var z=0;z<=i;z++) {    					
+    				$("#writer_Info"+z).css("display","block");
+    				$("#writer_Info"+y).css("display","none");
+    						}
+    					}
+    			}
     		},
 			error: function(error) {
     		}

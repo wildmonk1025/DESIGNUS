@@ -615,8 +615,9 @@ for (var i = 0; i < revAList.length; i++) {
 			
 		} else if(revAList[i].rap_step==4){
 			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revList[i].revAList+"</br>상품명:"+revAList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revList[i].revAList+"</br>"
+		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>"
+		    + "상품명:"+revAList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
 		    if(revAList[i].ra_oc=="O"){
 			     main +="구매 종류 : 공개</br>"	
 				}else{

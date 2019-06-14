@@ -21,7 +21,7 @@
 
 	<select id="productinfo" parameterType="sponsor"
 		resultType="sponsor">
-		SELECT * FROM SPONVIEW
+		SELECT * FROM SPONVIEW ORDER BY SS_DATE DESC
 	</select>
 
 </mapper>

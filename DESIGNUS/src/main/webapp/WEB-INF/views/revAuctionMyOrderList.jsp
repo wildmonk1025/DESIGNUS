@@ -564,8 +564,8 @@ for (var i = 0; i < revList.length; i++) {
 			
 		} else if(revList[i].rap_step==4){
 			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revList[i].rap_price+"</br>"
+		    +"상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revList[i].rap_price+"</br>";
 		    if(revList[i].ra_oc=="O"){
 			     main +="구매 종류 : 공개</br>"	
 				}else{
@@ -686,18 +686,18 @@ function RevMyreview(even) {
 		    dataType:'json',
 		    success:function(data){
 		    	alert('앙앙!');
-		    	console.log("1234567"+data.aup_ptnum);
-		    	bb+="<div id='q2'>"
+		    	console.log("1234567"+data.ra_oc);
+		    	 bb+="<form action='boardapply' method='post' enctype='multipart/form-data'>"
+		    	   +"<div id='q2'>"
 		    	 if(data.ra_oc=="O"){
-		    		 bb+="<form action='boardapply' method='post'>"
 		    		   +"공개<input type='hidden' name='ra_oc'><br>"   
 			    	   }else{
 			    		   bb+=+"비공개<input type='hidden' name='ra_oc'><br>"   
 			    	   };
 		    	bb+="<h2>수령 확인 및 <br>구매 후기 쓰기</h2><br/></hr><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
 		    	   +"상품이름 :"+data.ra_title+"<input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"><br><hr>"
-                   +"<input type='hidden' name='au_mbid_w' value='"+data.rap_mbid_w+"')>"
-                   +"<input type='hidden' name='aup_price' value='"+data.rap_price+"')>"
+                   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"')>"
+                   +"<input type='hidden' name='rap_price' value='"+data.rap_price+"')>"
 		    	   +"구매후기 제목 :<input type='text' name='bd_title'><br>"    	
 		    	   +"내용</br>"
 		    	   +"<textarea rows='10' cols='70' name='bd_contents'></textarea><br>"
@@ -740,7 +740,16 @@ function good(data) {
 			 
 		 });//end good(ajax)
 }//end good
-	
+function fileChk(elem) {
+	console.dir(elem);
+	if(elem.value==""){
+		console.log("empty"); 
+		$('#fileCheck').val(0); //파일 첨부 안했음
+	}else{
+		console.log("Notempty")
+		$('#fileCheck').val(1);//파일 첨부 했음
+	}
+}//end fileChk
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")
