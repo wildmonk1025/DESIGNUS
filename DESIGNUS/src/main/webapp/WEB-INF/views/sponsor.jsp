@@ -103,7 +103,7 @@ div {
 	width: 280px;
 	height: 140px;
 	float: right;
-	margin: 20px;
+	margin-top: 40px;
 }
 </style>
 <title>Sponsor</title>
@@ -127,11 +127,8 @@ div {
 
 </body>
 <script>
-	$(document)
-			.ready(
-					function() {
-						$
-								.ajax({
+	$(document).ready(function() {
+				$.ajax({
 									url : 'productinfo',
 									type : 'post',
 									dataType : 'json',
@@ -142,7 +139,9 @@ div {
 										console.log("성공");
 										for ( var i in data) {
 											result += "<div id='spon'>"
-													+ "<a href='sponproduct'>"
+													+ "<a href='sponproduct?ss_num="
+													+ data[i].ss_num
+													+ "'>"
 													+ "<div id='sponproduct'>"
 													+ "<img src='resources/images/"
 									+ data[i].ssi_imgSysName +"'>"
@@ -150,14 +149,21 @@ div {
 													+ "<div class='sponpro'>"
 													+ "아이디:"
 													+ data[i].ss_mbid_w
-													+ "<br>" + "후원번호:"
-													+ data[i].ss_num + "<br>"
+													+ "<br>"
+													+ "후원번호:"
+													+ data[i].ss_num
+													+ "<br>"
 													+ "목표수량:"
 													+ data[i].ss_goalqty
-													+ "<br>" + "후원제품가격:"
-													+ data[i].ss_price + "<br>"
-													+ "후원날짜:" + data[i].ss_date
-													+ "</div>" + "<br>"
+													+ "<br>"
+													+ "후원제품가격:"
+													+ data[i].ss_price
+													+ "<br>"
+													+ "후원날짜:"
+													+ "<br>"
+													+ data[i].ss_date
+													+ "</div>"
+													+ "<br>"
 													+ "</a>" + "</div>"
 										}
 										$("#sponList").html(result);

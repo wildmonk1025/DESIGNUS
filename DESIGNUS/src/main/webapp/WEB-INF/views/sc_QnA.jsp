@@ -111,9 +111,8 @@
 }
 
 #l1 {
-	border: 1px solid black;
 	padding: 15px;
-	height: 368px;
+	height: 420px;
 	float: left;
 }
 
@@ -155,6 +154,68 @@
 	line-height: 40px;
 	text-align: center;
 }
+
+#buy{
+	float: left;
+	height: 450px;
+	width: 1080px;
+	text-align: left;
+}
+#sell{
+	float: left;
+	height: 450px;
+	width: 1080px;
+	text-align: left;
+	display: none;
+}
+#spon{
+	float: left;
+	height: 450px;
+	width: 1080px;
+	text-align: left;
+	display: none;
+}
+#mypage{
+	float: left;
+	height: 450px;
+	width: 1080px;
+	text-align: left;
+	display: none;
+}
+#other{
+	float: left;
+	height: 450px;
+	width: 1080px;
+	text-align: left;
+	display: none;
+}
+
+
+ul{
+	list-style: none;
+}
+.cl{
+	cursor: pointer;
+	border: none;
+	width: 1080px;
+	background-color:white;
+	font-size: 24px;
+	text-align: left;
+}
+.hide{
+	display: none;
+}
+.ul{
+	border-bottom: 0.5px solid orange;
+	height: 40px;
+}
+.li{
+	height: 200px;
+	width: 1079px;
+	font-size: 20px;
+	position: absolute;
+	background-color: white;
+}
 </style>
 </head>
 <body>
@@ -177,19 +238,35 @@
 		</div>
 		<div id="list">
 			<div id="l1">
-				<button class="b1"
-					onclick="qnalistajaxbuy(qnalist?qna_kind='구매'),'#selectt'">구매</button>
+				<button class="b1" id="btn1" onclick="buy('경매')">경매</button>
 				<br />
-				<button class="b1"
-					onclick="qnalistajaxsale(qnalist?qna_kind='판매'),'#selectt'">판매</button>
+				<button class="b1" id="btn2" onclick="sell('역경매')">역경매</button>
 				<br />
-				<button class="b1"
-					onclick="qnalistajaxaccount(qnalist?qna_kind='계정관련'),'#selectt'">계정관련</button>
+				<button class="b1" id="btn3" onclick="spon('후원')">후원</button>
 				<br />
-				<button class="b1"
-					onclick="qnalistajaxOther(qnalist?qna_kind='기타'),'#selectt'">기타</button>
+				<button class="b1" id="btn4" onclick="mypage('마이페이지')">마이페이지</button>
+				<br />
+				<button class="b1" id="btn5" onclick="other('기타')">기타</button>
 			</div>
-			<div id="selectt">ddd</div>
+			<div id="selectt">
+				<div id="buy">
+					
+				</div>
+				<div id="sell">
+				
+				</div>
+				<div id="spon">
+				
+				</div>
+				<div id="mypage">
+				
+				</div>
+				<div id="other">
+				
+				</div>
+			
+			
+			</div>
 		</div>
 
 	</div>
@@ -200,6 +277,7 @@
 
 </body>
 <script>
+/*
     function qnalistajaxbuy(url, position){
         $.ajax({
             url : url,
@@ -209,5 +287,265 @@
             }
         });//end ajax
     } 
+*/   
+    
+    
+    $("#btn1").click(function() {
+		$("#buy").css("display","inline");
+		$("#sell").css("display","none");
+		$("#spon").css("display","none");
+		$("#mypage").css("display","none");
+		$("#other").css("display","none");
+	});
+    $("#btn2").click(function() {
+    	$("#sell").css("display","inline");
+    	$("#buy").css("display","none");
+    	$("#spon").css("display","none");
+		$("#mypage").css("display","none");
+		$("#other").css("display","none");
+	});
+    $("#btn3").click(function() {
+    	$("#spon").css("display","inline");
+		$("#mypage").css("display","none");
+		$("#buy").css("display","none");
+		$("#sell").css("display","none");
+		$("#other").css("display","none");
+	});
+    $("#btn4").click(function() {
+    	$("#other").css("display","none");
+		$("#buy").css("display","none");
+		$("#sell").css("display","none");
+		$("#spon").css("display","none");
+		$("#mypage").css("display","inline");
+	});
+    $("#btn5").click(function() {
+    	$("#other").css("display","inline");
+		$("#buy").css("display","none");
+		$("#sell").css("display","none");
+		$("#spon").css("display","none");
+		$("#mypage").css("display","none");
+	});
+    
+   function buy(even) {
+	var form = {
+			qna_kind:even
+	}
+	var cub = "";
+	$.ajax({
+		url:'qnaselect',
+		type:'post',
+		data:JSON.stringify(form),
+		contentType:"application/json; charset=utf-8",
+		dataType:'json',
+		success:function(data){
+			for(var i = 0 ; i < data.length ; i++){
+				 cub += "<ul class='ul'>"
+				  	   +"<li class='list'>"
+					   +"<button class='cl'>"
+					   + data[i].qna_q 
+					   +"</button>"
+					   +"<ul class='hide'>"
+					   +"<li>"
+					   +"<div class='li' style='border:1px solid orange';>"
+					   + data[i].qna_a
+					   +"</div>"
+					   +"</li>"
+					   +"</ul>"
+					   +"</li>"
+					   +"</ul>" ;
+					   $('#buy').html(cub);
+				}
+			 $(document).ready(function() {
+					$(".cl").click(function() {
+						$(this).next("ul").toggleClass("hide");
+					});
+				});
+		},
+		error:function(error){
+			alert('점검중입니다.');
+			console.log(error);
+		}
+		
+	});
+	
+}
+   function sell(even) {
+	var form = {
+			qna_kind:even
+	}
+	var cub = "";
+	$.ajax({
+		url:'qnaselect',
+		type:'post',
+		data:JSON.stringify(form),
+		contentType:"application/json; charset=utf-8",
+		dataType:'json',
+		success:function(data){
+			for(var i = 0 ; i < data.length ; i++){
+			 cub += "<ul class='ul'>"
+			  	   + "<li class='list'>"
+			  	   +"<button class='cl'>"
+				   + data[i].qna_q 
+				   +"</button>"
+				   + "<ul class='hide'>"
+				   + "<li>"
+				   +"<div class='li' style='border:1px solid orange';>"
+				   + data[i].qna_a
+				   + "</div>"
+				   + "</li>"
+				   + "</ul>"
+				   + "</li>"
+				   + "</ul>" ;
+				   $('#sell').html(cub);
+			}
+			 $(document).ready(function() {
+					$(".cl").click(function() {
+						$(this).next("ul").toggleClass("hide");
+					});
+				});
+		},
+		error:function(error){
+			alert('점검중입니다.');
+			console.log(error);
+		}
+		
+	});
+
+}
+   function spon(even) {
+	var form = {
+			qna_kind:even
+	}
+	var cub = "";
+	$.ajax({
+		url:'qnaselect',
+		type:'post',
+		data:JSON.stringify(form),
+		contentType:"application/json; charset=utf-8",
+		dataType:'json',
+		success:function(data){
+			for(var i = 0 ; i < data.length ; i++){
+				 cub += "<ul class='ul'>"
+				  	   + "<li class='list'>"
+				       +"<button class='cl'>"
+					   + data[i].qna_q 
+					   +"</button>"
+					   + "<ul class='hide'>"
+					   + "<li>"
+					   +"<div class='li' style='border:1px solid orange';>"
+					   + data[i].qna_a
+					   + "</div>"
+					   + "</li>"
+					   + "</ul>"
+					   + "</li>"
+					   + "</ul>" ;
+					   $('#spon').html(cub);
+				}
+			 $(document).ready(function() {
+					$(".cl").click(function() {
+						$(this).next("ul").toggleClass("hide");
+					});
+				});
+		},
+		error:function(error){
+			alert('점검중입니다.');
+			console.log(error);
+		}
+		
+	});
+
+}
+   function mypage(even) {
+	var form = {
+			qna_kind:even
+	}
+	var cub = "";
+	$.ajax({
+		url:'qnaselect',
+		type:'post',
+		data:JSON.stringify(form),
+		contentType:"application/json; charset=utf-8",
+		dataType:'json',
+		success:function(data){
+			for(var i = 0 ; i < data.length ; i++){
+				 cub += "<ul class='ul'>"
+				  	   + "<li class='list'>"
+				  	   +"<button class='cl'>"
+					   + data[i].qna_q 
+					   +"</button>"
+					   + "<ul class='hide'>"
+					   + "<li>"
+					   +"<div class='li' style='border:1px solid orange';>"
+					   + data[i].qna_a
+					   + "</div>"
+					   + "</li>"
+					   + "</ul>"
+					   + "</li>"
+					   + "</ul>" ;
+					   $('#mypage').html(cub);
+				}
+			 $(document).ready(function() {
+					$(".cl").click(function() {
+						$(this).next("ul").toggleClass("hide");
+					});
+				});
+		},
+		error:function(error){
+			alert('점검중입니다.');
+			console.log(error);
+		}
+		
+	});
+
+}
+   function other(even) {
+	var form = {
+			qna_kind:even
+	}
+	var cub = "";
+	$.ajax({
+		url:'qnaselect',
+		type:'post',
+		data:JSON.stringify(form),
+		contentType:"application/json; charset=utf-8",
+		dataType:'json',
+		success:function(data){
+			for(var i = 0 ; i < data.length ; i++){
+				 cub += "<ul class='ul'>"
+				  	   + "<li class='list'>"
+				  	   +"<button class='cl'>"
+					   + data[i].qna_q 
+					   +"</button>"
+					   + "<ul class='hide'>"
+					   + "<li>"
+					   +"<div class='li' style='border:1px solid orange';>"
+					   + data[i].qna_a
+					   + "</div>"
+					   + "</li>"
+					   + "</ul>"
+					   + "</li>"
+					   + "</ul>" ;
+					   $('#other').html(cub);
+				}
+			 $(document).ready(function() {
+				$(".cl").click(function() {
+					$(this).next("ul").toggleClass("hide");
+				});
+			});
+		},
+		error:function(error){
+			alert('점검중입니다.');
+			console.log(error);
+		}
+		
+	});
+
+}
+	
+	
+	
+ 
+    
+    
     </script>
 </html>

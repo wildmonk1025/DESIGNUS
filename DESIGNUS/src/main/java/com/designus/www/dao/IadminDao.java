@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Report;
 
 //import org.springframework.stereotype.Repository;
@@ -14,9 +15,9 @@ import com.designus.www.bean.Report;
 //@Repository
 public interface IadminDao {
 
-	List<Report> getrepInfo();
+	List<MemberSearch> getrepInfo();
 
-	List<Major> gettransInfo();
+	List<MemberSearch> gettransInfo();
 
 	Report getWriteCheck(@Param("rp_num") int rp_num);
 
@@ -26,7 +27,7 @@ public interface IadminDao {
 
 	boolean getwarning(@Param("mb_id")String mb_id);
 
-	List<Major> gettransforInfo();
+	List<MemberSearch> gettransforInfo();
   
   
 }

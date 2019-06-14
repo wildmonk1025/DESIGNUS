@@ -24,4 +24,9 @@
 		SELECT * FROM SPONVIEW ORDER BY SS_DATE DESC
 	</select>
 
+	<select id="getSponcheck" parameterType="sponsor"
+		resultType="sponsor">
+		SELECT * FROM SPONVIEW WHERE SS_NUM =${ss_num}
+	</select>
+
 </mapper>

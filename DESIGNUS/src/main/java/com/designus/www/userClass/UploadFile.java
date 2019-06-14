@@ -26,6 +26,7 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.QuestionReply;
+import com.designus.www.bean.Report;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.Sponsor;
 import com.designus.www.dao.IRevAuctionDao;
@@ -559,6 +560,38 @@ public class UploadFile {
 		qr.setAqi_imgSysName(sysFileName);
 		System.out.println("sys=" + sysFileName);
 		hDao.QuestionImageInsert(qr);
+		
+		try {
+			file.transferTo(new File(path + sysFileName));
+			System.out.println("PC로컬경로에 파일 업로드 완료");
+			
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void ReportUpload(MultipartHttpServletRequest multi, Report rp) {
+		System.out.println("multi 파라미터와 ra받는 fileUp");
+		// 1.이클립스의 물리적 저장경로 찾기
+		String root = multi.getSession().getServletContext().getRealPath("/");
+		System.out.println("root=" + root);
+		String path = root + "resources/upload/";
+		// 2.폴더 생성을 꼭 할것...
+		File dir = new File(path);
+		if (!dir.isDirectory()) { // upload폴더 없다면
+			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
+		}
+		MultipartFile file = multi.getFile("rqi_imgSysName");
+		String oriFileName = file.getOriginalFilename();
+		System.out.println(oriFileName);
+		String sysFileName = (System.currentTimeMillis() + 1) + "."
+				+ oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+		rp.setRqi_imgSysName(sysFileName);
+		System.out.println("sys=" + sysFileName);
+		hDao.ReportImageInsert(rp);
 		
 		try {
 			file.transferTo(new File(path + sysFileName));

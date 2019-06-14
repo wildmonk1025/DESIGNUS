@@ -44,8 +44,12 @@ public class AuctionControllerspon {
 	}
 
 	@RequestMapping(value = "/sponproduct", method = RequestMethod.GET)
-	public String sponProductFrm() {
+	public ModelAndView sponProductFrm(int ss_num) {
 
-		return "sponProductFrm";
+		mav = new ModelAndView();
+		mav = sm.sponproduct(ss_num);
+		System.out.println(sm.sponproduct(ss_num));
+
+		return mav;
 	}
 }
