@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Major;
+import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
+import com.designus.www.dao.ImemberDao;
 import com.google.gson.Gson;
 
 @Service
@@ -22,9 +25,9 @@ public class AdminMM {
 	private ModelAndView mav;
 	@Autowired
 	private IadminDao iDao;
-
+	
 	public String declarewritecheck() {
-		List<Report> rList = iDao.getrepInfo();
+		List<MemberSearch> rList = iDao.getrepInfo();
 
 		System.out.println("이거는되나");
 		Gson gs = new Gson();
@@ -35,7 +38,7 @@ public class AdminMM {
 	}
 
 	public String Declarelist() {
-		List<Report> rList = iDao.getrepInfo();
+		List<MemberSearch> rList = iDao.getrepInfo();
 
 		System.out.println("이거는되나");
 		Gson gs = new Gson();
@@ -46,7 +49,7 @@ public class AdminMM {
 	}
 
 	public String transformList() {
-		List<Major> rList = iDao.gettransInfo();
+		List<MemberSearch> rList = iDao.gettransInfo();
 
 		System.out.println("이거는되나");
 		Gson gs = new Gson();
@@ -103,6 +106,38 @@ public class AdminMM {
 		}
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public ModelAndView declarepermit(int rp_num,  String mb_id) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean f2 = iDao.getPerfmit(rp_num);
+		boolean f = iDao.getPermit(rp_num);
+		System.out.println(" rp_mbid_a"+mb_id);
+		
+		boolean k=iDao.getwarning(mb_id);
+		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
+		
+		if(f && f2) {
+			mav.addObject("rp_num", rp_num);
+			view = "declareWrite";
+		} else {
+			System.out.println("삭제 실패");
+			view = "home";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public String transformwridetail() {
+		List<MemberSearch> rList = iDao.gettransforInfo();
+
+		System.out.println("이거는되나");
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+		return jsonObj;
 	}
 
 }

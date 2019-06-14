@@ -47,15 +47,10 @@ public class AjaxMypageController {
 	@RequestMapping(value = "/enter", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String enter(@RequestBody AuctionProgress ap) {
-		System.out.println("여기로 와라 제발111...");
+		System.out.println("(Ajax 컨트롤러)배송정보입력 시작!!");
 		System.out.println(ap.getAup_ptnum());
-		// System.out.println(map.get("pnum"));
-		// System.out.println("이게 작가 아이디인데1111....=" + pnum);
-		// int pnum1 = Integer.parseInt(pnum.substring(5,5));
-		// System.out.println(pnum1);
-		// int pnum = map.get("pnum");
 		String json = pm.enter(ap);
-		System.out.println("5번째 시도....");
+		System.out.println("(Ajax 컨트롤러)배송정보입력 시작!!");
 		return json;
 
 	}
@@ -97,5 +92,25 @@ public class AjaxMypageController {
 		String json = pm.revauccancel(rap);
 		System.out.println("(컨트롤러)제작의뢰내역  스텝 1 취소폼 마무리!!!");
 		return json;
+	}
+	@RequestMapping(value = "/delinumSelect", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String delinumSelect(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 취소폼!!! 시작!!!");
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 취소폼!!! 중간테스트1 pnum확인 :" + rap.getRap_ptnum());
+		String json = pm.delinumSelect(rap);
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 배송보내기!!! 마무리!!!");
+		return json;
+
+	}
+	@RequestMapping(value = "/boardwrite", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String boardwrite(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 구매후기및 수령확인!!! 시작!!!");
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 취소폼!!! 중간테스트1 pnum확인 :" + rap.getRap_ptnum());
+		String json = pm.boardwrite(rap);
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 구매후기및 수령확인 마무리!!!");
+		return json;
+
 	}
 }

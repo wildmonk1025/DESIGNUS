@@ -3,9 +3,12 @@ package com.designus.www.dao;
 import java.util.List;
 
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
+import com.google.gson.JsonElement;
 
 //import org.springframework.stereotype.Repository;
 
@@ -42,4 +45,6 @@ public interface IRevAuctionDao {
 	int reqDecisionSelect(revAuctionProgress rap);
 
 	RevAuctionTender myCurbaMountSelect(RevAuction ra);
+
+	List<MemberSearch> wriListSelect(MemberSearch mbs);
 }

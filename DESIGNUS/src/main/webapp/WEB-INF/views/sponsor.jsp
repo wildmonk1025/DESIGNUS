@@ -17,6 +17,13 @@ div {
 	height: 170px;
 }
 
+#sponproduct {
+	width: 200px;
+	height: 170px;
+	margin: 15px;
+	float: left;
+}
+
 #homeMain {
 	border: 1px solid black;
 	width: 1520px;
@@ -74,6 +81,30 @@ div {
 	height: 500px;
 	overflow-y: scroll;
 }
+
+#spon {
+	border: 1px solid black;
+	width: 350px;
+	height: 180px;
+	margin: 10px 20px;
+	float: left;
+}
+
+#sponproduct {
+	border: 1px solid black;
+	width: 100px;
+	height: 120px;
+	margin: 30px;
+	float: left;
+}
+
+#sponpro {
+	border: 1px solid black;
+	width: 280px;
+	height: 140px;
+	float: right;
+	margin: 20px;
+}
 </style>
 <title>Sponsor</title>
 </head>
@@ -96,33 +127,50 @@ div {
 
 </body>
 <script>
-	$(document).ready(
-			function() {
-				$.ajax({
-					url : 'productinfo',
-					type : 'post',
-					dataType : 'json',
-					contentType : 'application/json',
-					success : function(data) {
-						var result = "";
-						console.dir(data);
-						console.log("성공");
-						for (var i = 0; i < 5; i++) {
-							result += "<div id='sponproduct'>"
-									+ "<img src='resources/images/>"data[i].ssi_img + "</div>"
-									+ "<div class='best'>" + "작가아이디:"
-									+ data[i].au_mbid_w + "<br>" + "상품번호:"
-									+ data[i].au_num + "<br>" + "상품설명:"
-									+ data[i].au_contents + "<br>" + "신상:"
-									+ data[i].au_date + "<br>" + "</div>"
-						}
-						$("#sponList").html(result);
-					},
-					error : function(error) {
-						console.log("실패");
-						console.log(error);
-					}
-				});
-			});
+	$(document)
+			.ready(
+					function() {
+						$
+								.ajax({
+									url : 'productinfo',
+									type : 'post',
+									dataType : 'json',
+									contentType : "application/json; charset=utf-8;",
+									success : function(data) {
+										var result = "";
+										console.dir(data);
+										console.log("성공");
+										for ( var i in data) {
+											result += "<div id='spon'>"
+													+ "<a href='sponproduct'>"
+													+ "<div id='sponproduct'>"
+													+ "<img src='resources/images/"
+									+ data[i].ssi_imgSysName +"'>"
+													+ "</div>"
+													+ "<div class='sponpro'>"
+													+ "아이디:"
+													+ data[i].ss_mbid_w
+													+ "<br>" + "후원번호:"
+													+ data[i].ss_num + "<br>"
+													+ "목표수량:"
+													+ data[i].ss_goalqty
+													+ "<br>" + "후원제품가격:"
+													+ data[i].ss_price + "<br>"
+													+ "후원날짜:" + data[i].ss_date
+													+ "</div>" + "<br>"
+													+ "</a>" + "</div>"
+										}
+										$("#sponList").html(result);
+									},
+									error : function(error) {
+										console.log("실패");
+										console.log(error);
+									}
+								});
+					});
+
+	$('#spon').click(function() {
+		$('#spon')
+	})
 </script>
 </html>

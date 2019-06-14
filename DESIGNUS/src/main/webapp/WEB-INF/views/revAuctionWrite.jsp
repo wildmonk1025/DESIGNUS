@@ -1,59 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-
+<title>제작의뢰 요청페이지</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <style>
+#main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
+}
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
+	position: fixed;
+	background-color: white;
 }
 
-div {
-	margin: auto;
+#middle {
+	margin-top: 50px;
+	width: 1518px;
+	height: 700px;
+	border: 1px solid blue;
 }
 
-#revauctionmain {
-	width: 1500px;
-	height: 600px;
-}
-
-#revauctiontop {
-	padding-top: 30px;
-	width: 1400px;
-	height: 100px;
-	font-size: 30px;
-	padding-top: 50px;
-	padding-left: 30px;
-	background-color: orange;
+#middle_title1 {
+	width: 1310px;
+	height: 60px;
+	margin-left: 100px;
+	margin-right: 100px;
+	padding-top: 20px;
+	padding-left: 10px;
+	background-color: coral;
+	font-size: 35px;
 	color: white;
+	float: left;
 }
 
-#mainheader {
-	width: 1500px;
-	height: 170;
-	border: 1px solid black;
-}
-
-#revauctionunlock {
-	padding-top: 10px;
-	width: 800px;
+#middle_title2 {
+	width: 1310px;
+	height: 60px;
+	margin-left: 100px;
+	margin-right: 100px;
+	padding-top: 20px;
+	padding-left: 10px;
+	background-color: coral;
+	font-size: 35px;
+	color: white;
+	float: left;
 	display: none;
 }
 
-#revauctionlock {
-	padding-top: 10px;
-	width: 800px;
-	display: block;
-}
-
-tr, td {
-	width: 150px;
+#middle_contents {
+	margin-left: 100px;
+	margin-top: 10px;
+	width: 850px;
+	height: 600px;
+	border: 1px solid red;
+	float: left;
 }
 
 input[type="text"] {
@@ -61,137 +72,278 @@ input[type="text"] {
 	height: 25px;
 }
 
+select {
+	width: 170px;
+	height: 30px;
+}
+
 input[type="file"] {
 	width: 250px;
 	height: 25px;
 }
 
-#btn {
-	width: 250px;
+#middle_contents_unlock {
+	padding: 20px;
+	width: 800px;
+	height: 800px;
+	display: block;
+}
+#middle_contents_btn1 {
+	width: 500px;
+	height: 100px;
+	margin-left: 10px;
+	padding-left: 200px;
+	padding-top: 10px;
 }
 
-button {
-	width: 100px;
-	height: 30px;
-	background-color: orange;
-	color: white
-}
-
-p {
-	color: deepskyblue;
-	height: auto;
-	font-size: 12px;
-}
-
-select {
+#middle_contents_btn1 button {
 	width: 150px;
-	height: 25px;
-}
-
-#revamiddle {
-	padding-top: 30px;
-	width: 700;
-}
-
-#lock, #unlock {
-	width: 80px;
-	height: 30px;
-	background-color: yellowgreen;
+	height: 40px;
+	background-color: coral;
+	border-radius: 5px;
+	font-style: italic;
+	font-weight: 900;
 	color: white;
 }
+
+.temp{
+	border: 1px solid #D8D8D8;
+	height: 30px;
+	width: 100px;
+	margin-right: 10px;
+	border-radius: 10px;
+	color: coral;
+}
+#middle_contents2 {
+	margin-right: 100px;
+	margin-top: 10px;
+	width: 450px;
+	height: 600px;
+	border: 1px solid red;
+	float: right;
+}
+#middle_contents2_btn2 {
+	padding: 20px 40px 20px 40px;
+	width: 370px;
+	height: 70px;
+	border: 1px solid red;
+}
+
+#middle_contents2_btn2 input[type="button"] {
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	margin: 10px 40px 10px 40px;
+	text-align: center;
+	color: black;
+	border-radius: 10px;
+	font-weight: 900;
+	box-shadow: -60px 0px 30px -90px #000000,
+                 60px 0px 30px -90px #000000;
+}
+
+#middle_contents2_searching {
+	padding: 20px;
+	width: 410px;
+	height: 350px;
+	border: 1px solid red;
+	display: none;
+}
+
+#middle_contents2_writer {
+	padding: 20px;
+	margin-top: 10px;
+	width: 360px;
+	height: 280px;
+	border: 1px solid gray;
+	box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);
+	overflow: auto;
+	display: none;
+}
+
+#middle_contents2_writer>div {
+	margin: 10px;
+	width: 320px;
+	height: 70px;
+	border: 1px solid red;
+	float: left;
+	display: none;
+}
+
+
 </style>
 </head>
 
 <body>
-	<div id="mainheader">
-		<jsp:include page="main.jsp" /></div>
-	<div id="revauctionmain">
-		<div id="revauctiontop">제작의뢰 페이지</div>
-		<div id="revamiddle">
-			<input type="button" id="lock" name="ra_oc" value="비공개" />
-			<input type="button" id="unlock" name="ra_oc" value="공개" />
+	<div id="main">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
-		<div id="revauctionlock">
+	</div>
+	<div id="middle">
+		<div id="middle_title1">제작의뢰 페이지 (공개 의뢰)</div>
+		<div id="middle_title2">제작의뢰 페이지 (비공개 의뢰)</div>
+		<div id="middle_contents">
+			<div id="middle_contents_unlock">
+				<form action="revauctionsubmit" id="revauction" method="post"
+					enctype="multipart/form-data">
+					<table style="margin: 10px 0px 0px 10px; line-height: 210%;">
+						<tr align="center">
+							<th><div class="temp">요청제목</div></th>
+							<td><input type="text" name="ra_title"></td>
+							<td rowspan="7" style="width: 370px; margin-left: 20px">
+							<div id="pht1"><img id="LoadImg" src="#" alt="미리보기" /></div>
+							</td>
+						</tr>
+						<tr>
+							<th><div class="temp">카테고리</div></th>
+							<td><select id="ra_cgcode" name="ra_cgcode">
+									<option selected>선택</option>
+									<option value="100">귀금속 공예</option>
+									<option value="110">원목 공예</option>
+									<option value="120">종이 공예</option>
+									<option value="130">가죽 공예</option>
+									<option value="140">천 공예</option>
+									<option value="150">플라스틱 공예</option>
+									<option value="160">도자기 공예</option>
+									<option value="170">가공 식품</option>
+									<option value="180">휴대폰 액세서리</option>
+									<option value="190">페인팅,캐리커쳐,캘리</option>
+									<option value="200">유아 용품</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th><div class="temp">대표이미지</div></th>
+							<td><input id="imgIn" type="file" name="ra_image"></td>
+						</tr>
+						<tr>
+							<th><div class="temp">제작사항</div></th>
+							<td><input type="file" name="ra_file"></td>
+						</tr>
+						<tr>
+							<th><div class="temp">수량</div></th>
+							<td style="color: mediumvioletred">1 EA(짝/켤레/쌍)</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="check"> 개인정보동의</td>
+							<td><p style="color:deepskyblue; font-size:12px;">자세히보기</p></td>
+						</tr>
+					</table>
 
-			<form action="revauctionsubmit" id="revauction" method="post" enctype="multipart/form-data">
-				<table class="revauctable">
-					<tr align="center">
-						<td>요청 제목</td>
-						<td><input type="text" id="reva_Ltitle" name="ra_title">
-						</td>
-					</tr>
-					<tr>
-						<td align="center">카테고리</td>
-						<td><select id="reva_Lcate" name="ra_cgcode">
-								<option selected>선택</option>
-								<option value="100">귀금속 공예</option>
-								<option value="110">원목 공예</option>
-								<option value="120">종이 공예</option>
-								<option value="130">가죽 공예</option>
-								<option value="140">천 공예</option>
-								<option value="150">플라스틱 공예</option>
-								<option value="160">도자기 공예</option>
-								<option value="170">가공 식품</option>
-								<option value="180">휴대폰 액세서리</option>
-								<option value="190">페인팅,캐리커쳐,캘리</option>
-								<option value="200">유아 용품</option>
-								
-						</select></td>
-					</tr>
-					<tr align="center">
-						<td>대표이미지</td>
-						<td><input type="file" id="reva_Limg" name="ra_image">
-						</td>
-					</tr>
-					<tr align="center">
-						<td>제작사항</td>
-						<td><input type="file" id="reva_Lfile" name="ra_file">
-						</td>
-					</tr>
-<!-- 					<tr align="center">
-						<td>작가</td>
-						<td><input type="text" id="reva_Lmade" name="ra_mbid_w"
-							placeholder="검색어를 입력해주세요."></td>
-					</tr> -->
-					<tr align="center">
-						<td>수량</td>
-						<td align="left" style="color: mediumvioletred">1개</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" value="selfcheck"> 개인정보동의</td>
-						<td>
-							<p>자세히보기</p>
-						</td>
-					</tr>
+					<textarea id="reva_contents" cols="30" rows="10" name="ra_contents"
+						style="margin-left: 10px; margin-top: 10px; width: 795px; height: 200px; resize: none;"
+						placeholder="&nbsp;작가에게 전달할 말을 적어주세요"></textarea>
 
-				</table>
-				<textarea id="reva_contents" cols="30" rows="10" name="ra_contents"
-					style="width: 700; height: 150" placeholder="작가에게 전달할 말을 적어주세요"></textarea>
 
-				<br>
-				<div id="btn">
-					<button id="submit">제출하기</button>
-					<button id="back">돌아가기</button>
-				</div>
-
-			</form>
+					<div id="middle_contents_btn1">
+						<button onclick="">제출하기</button>
+						<button type="button" onclick="goBack();">돌아가기</button>
+					</div>
+				</form>
+			</div>
 		</div>
-		<div id="revauctionunlock">
-
+		<div id="middle_contents2">
+		<div id="middle_contents2_btn2">
+			<input type="button" id="lock" name="ra_oc" value="비공개의뢰" />
+			<input type="button" id="unlock" name="ra_oc" value="공개의뢰" />
+		</div>
+			<div id="middle_contents2_searching">
+			<div id="searching"><input id="auto" type="text" style="width:250px; height:30px; margin-left:20px; padding-left:10px; box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);"
+			placeholder="의뢰할 작가님의 ID를 검색"/><button style="width:80px; height:33px;">검색</button></div>
+			<div id="middle_contents2_writer">
+				<div id="writer_Info0"></div>
+				<div id="writer_Info1"></div>
+				<div id="writer_Info2"></div>
+				<div id="writer_Info3"></div>
+				<div id="writer_Info4"></div>
+			</div>
+			</div>
 		</div>
 	</div>
 
 
 </body>
 <script>
+	/* 버튼클릭 이벤트 */
 	$("#lock").click(function() {
-		$("#revauctionlock").css("display", "block");
-		$("#revauctionunlock").css("display", "none");
+		$("#middle_title1").css("display","none");
+		$("#middle_title2").css("display","inline");
+		$("#middle_contents2_searching").css("display","block");
+		$("#middle_contents2_writer").css("display","block");
 	});
+	
 	$("#unlock").click(function() {
-		$("#revauctionlock").css("display", "block");
-		$("#revauctionunlock").css("display", "inline");
+		$("#middle_title1").css("display","inline");
+		$("#middle_title2").css("display","none");
+		$("#middle_contents2_searching").css("display","none");
+		$("#middle_contents2_writer").css("display","none");
 	});
+	/* 뒤로가기 */
+	function goBack() {
+		window.history.back();
+	}
+	
+	/* 이미지 미리보기 */
+	$(document).ready(function() {
+		$('#imgIn').change(function() {
+			addPreview($(this));
+		});
+	});
+	function addPreview(input) {
+		if (input[0].files) {
+			for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
+				var file = input[0].files[fileIndex];
+				var reader = new FileReader();
+
+				reader.onload = function(img) {
+					$("#pht1")
+							.html("<img src=\"" + img.target.result + "\"\ style='height: 230px; width: 260px; padding-top:10px; padding-bottom:10px;'/>");
+				};
+				reader.readAsDataURL(file);
+			}
+		} else
+			alert('invalid file input');
+	}
+	/* 이미지 미리보기 끝 */
+	
+    // 작가검색
+    $("#auto").on("propertychange change keyup paste input", function() {
+    	var currentVal = $(this).val();
+    	if(currentVal == oldVal) {
+    		return;
+    	}
+    	var oldVal = currentVal;
+    	console.log(currentVal);
+    	$.ajax({
+    		type:'POST',
+    		url:'ajax/wrilist',
+    		data: { mb_id:currentVal},
+    		dataType:'json',
+    		success: function(data) {
+    			console.log("성공");
+    			var str='';
+    			for(var i in data) {
+    			str="<img src='"+data[i].mb_profile+"'>아이디:"+data[i].mb_id+"<br>이름:"+data[i].mb_name+"<br>전문분야:"+data[i].mj_cgcode+"<br>추천수:"+data[i].mj_like+"";
+    			$("#writer_Info"+i).html(str);
+
+    			for(var y=0;y<6;y++) {
+    				for(var z=0;z<=i;z++) {    					
+    				$("#writer_Info"+z).css("display","block");
+    				$("#writer_Info"+y).css("display","none");
+    						}
+    					}
+    			}
+    		},
+			error: function(error) {
+    		}
+    	}); //ajax End
+   	});
+   /* 여기까지 */
+       
 </script>
 
 </html>

@@ -116,9 +116,10 @@ ul {
 						console.log("성공");
 
 						for ( var i in data) {
-							result += "<div class='best'>" +"<a href='declareWriteCheck?rp_num="+data[i].rp_num+"'>"
-									+"신고번호:"
-									+ data[i].rp_num + "<br>" + "신고자아이디:"
+							result += "<div class='best'>" +
+									"<a href='declareWriteCheck?rp_num="+data[i].rp_num+"&mb_id="
+									+ data[i].rp_mbid_a+"'>"
+									+"신고번호:"+ data[i].rp_num + "<br>" + "신고자아이디:"
 									+ data[i].rp_mbid_d + "<br>" + "가해자아이디:"
 									+ data[i].rp_mbid_a + "<br>" + "신고위치:"
 									+ data[i].rp_locate + "<br>" + "신고사유:"

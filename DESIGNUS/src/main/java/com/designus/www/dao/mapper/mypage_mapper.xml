@@ -34,11 +34,11 @@
 	</delete>
 	<insert id="nortowriapplyInsert" parameterType="major">
 		INSERT INTO MAJOR
-		VALUES(#{mj_id},#{mj_cg_code},#{mj_portf},#{mj_contents},DEFAULT)
+		VALUES(#{mj_mbid},#{mj_cgcode},#{mj_portf},#{mj_contents},DEFAULT)
 	</insert>
-	<update id="nortowriapplyupdate" parameterType="member">
+	<update id="nortowriapplyupdate" parameterType="major">
 		UPDATE MB SET
-		MB_GRADE='X' WHERE MB_ID=#{mj_id}
+		MB_GRADE='X' WHERE MB_ID=#{mj_mbid}
 	</update>
 
 	<select id="basketAuctionselect" parameterType="String"
@@ -118,11 +118,7 @@
 		AUPVIEWTEST where AUP_MBID_N=#{id}
 	</select>
 
-	<update id="aucapplyupdate" parameterType="auctionprogress">
-		update AUP SET
-		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
-		where aup_ptnum=#{aup_ptnum}
-	</update>
+	
 	<update id="aucapplyMbNupdate" parameterType="auctionprogress">
 		update MB SET
 		mb_point=#{ponitN}-#{aup_price}
@@ -182,7 +178,7 @@
 		DELETE FROM AUT
 		WHERE AUT_NUM=${aup_ranum} AND
 		AUT_MBID=#{aup_mbid_n} AND
-		AUT_DATE=to_char()#{aut_date})
+		AUT_DATE=to_date(#{aut_date}, 'RR/MM/DD HH24:MI:SS')
 	</delete>
 
 	<select id="scheckSelect" parameterType="auctionprogress"
@@ -269,4 +265,65 @@
 	<insert id="revaucinfocancelInsert" parameterType="notify">
 		INSERT INTO NF VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_contents},0,DEFAULT)
 	</insert>
+	<select id="revAuctionMyAcceptList"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
+		<![CDATA[
+     select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_MBID_W=#{id} and rownum<=${num}*3
+     ) where rn>=${num}*3-2 AND RankNo=1
+  ]]>
+  </select>
+  <select id="getreASetpCount" resultType="Integer">
+		select count(*) from
+		RAPVIEW where RAP_MBID_W=#{id}
+	</select>
+	<select id="delinumSelect" resultType="revauctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum}
+     ) where RankNo=1
+  ]]>
+	</select>
+	<update id="revdelinumupload" parameterType="revauctionprogress">
+		 UPDATE RAP SET RAP_TRACK=#{rap_track},RAP_STEP=3
+        WHERE RAP_PTNUM=${rap_ptnum}
+	</update>
+	<select id="boardwriteSelect" resultType="revauctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum}
+     ) where RankNo=1
+  ]]>
+	</select>
+	<update id="revmemberpointup" parameterType="revAuctionProgress">
+		update MB SET
+		mb_point=#{pointW}+#{rap_price}
+		where mb_id=#{rap_mbid_w}
+	</update>
+	<update id="revBoardyhWriteupDate"
+		parameterType="revauctionprogress">
+		update RAP SET RAP_STEP=4
+		where rap_ptnum=${rap_ptnum}
+	</update>
+	<update id="aucapplyMbWupdate" parameterType="auctionprogress">
+		update AUP SET
+		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
+		where aup_ptnum=#{aup_ptnum}
+	</update>
+	<select id="mypagemoveSelect" parameterType="String"
+		resultType="member">
+		
+		SELECT * FROM MB
+         WHERE  MB_ID=#{id} 
+
+	</select>
 </mapper>

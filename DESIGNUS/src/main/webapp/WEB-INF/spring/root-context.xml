@@ -7,28 +7,32 @@
 
 
 	<!-- gmail -->
+<bean id="mailSender"
 
-	<bean id="email" class="com.designus.www.email.Email">
-	</bean>
-	<bean id="emailSender" class="com.designus.www.email.EmailSender">
-	</bean>
-
-	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+
 		<property name="host" value="smtp.gmail.com" />
+
 		<property name="port" value="587" />
-		<property name="username" value="fourwea23124@gmail.com" />
-		<property name="password" value="qhflckQkqka" />
+
+		<property name="username" value="wsl548360@gmail.com" /><!-- //실제있는아이디 -->
+
+		<property name="password" value="kbs15923" /><!-- //비밀번호 -->
 
 		<property name="javaMailProperties">
+
 			<props>
-				<prop key="mail.transport.protocol">smtp</prop>
+
 				<prop key="mail.smtp.auth">true</prop>
+
 				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.debug">true</prop>
+
 			</props>
+
 		</property>
-	</bean> 
+
+	</bean>
+	
 
 
 </beans>

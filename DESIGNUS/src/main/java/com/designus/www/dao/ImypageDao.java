@@ -106,5 +106,21 @@ public interface ImypageDao {
 
 	boolean revaucinfocancelInsert(Notify ni);
 
+	List<revAuctionProgress> revAuctionMyAcceptList(@Param("id") String id,@Param("num") int num);
+
+	int getreASetpCount(String id);
+
+	revAuctionProgress delinumSelect(revAuctionProgress ap);
+
+	boolean revdelinumupload(revAuctionProgress rap);
+
+	revAuctionProgress boardwriteSelect(revAuctionProgress rap);
+
+	boolean revmemberpointup(revAuctionProgress rap);
+
+	boolean revBoardyhWriteupDate(revAuctionProgress rap);
+
+	Member mypagemoveSelect(String id);
+
   
 }

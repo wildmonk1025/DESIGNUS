@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,8 @@ import javax.xml.ws.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -30,6 +33,7 @@ import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
+import com.designus.www.service.MypageMM;
 
 /**
  * Handles requests for the application home page.
@@ -40,12 +44,17 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private MemberMM mm;
+	@Autowired
 	private CommonMM cm;
+	@Autowired
+	private MypageMM pm;
 	@Autowired
 	private ImemberDao mDao;
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
+	@Autowired
+    private JavaMailSender mailSender;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -140,9 +149,10 @@ public class HomeController {
 	 */
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage() {
-
-		return "myPage";
+	public ModelAndView mypage() {
+      mav=new ModelAndView();
+      mav=pm.mypagemove();
+		return mav;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -216,4 +226,39 @@ public class HomeController {
 		mav = mm.memberpwupdate(mb);
 		return mav;	
 	} 
+	@ResponseBody
+    @RequestMapping(value = "/sendrndnum")
+   public String sendRndNum(String mb_email) {
+		System.out.println("메일 보내기");
+		String setfrom = "wsl548360@gmail.com"; // 보내는 아이디
+		String title = "Designus 인증번호"; // 제목
+		//String mb_email = (String) session.getAttribute("m_id"); // 세션 가져오자 받는사람아이디
+
+		String certification = mm.getRamdomPassword(10);// 내용 인증번호 디비에 저장
+
+		System.out.println(mb_email);
+
+		try {
+
+			MimeMessage message = mailSender.createMimeMessage();
+
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			messageHelper.setFrom(setfrom); // 보내는사람 생략하거나 하면 정상작동을 안함
+			messageHelper.setTo(mb_email); // 받는사람 이메일
+			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+			messageHelper.setText("인증번호 : " + certification); // 메일 내용,인증번호
+
+			mailSender.send(message);
+
+		} catch (Exception e) {
+
+			System.out.println(e);
+
+		}
+
+ 
+
+		return certification;
+
+	}
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.AuctionMM;
@@ -70,6 +72,14 @@ public class AjaxAuctionController {
 		jsonStr = new Gson().toJson(ram.reqDecision(rap));
 
 		//String jsonStr = new Gson().toJson(str);
+		return jsonStr;
+	}
+	
+	@RequestMapping(value = "/wrilist", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
+	public @ResponseBody String wriList(MemberSearch mbs) {
+		System.out.println(mbs.getMb_id());
+		String jsonStr = null;
+		jsonStr = ram.wriList(mbs);
 		return jsonStr;
 	}
 }

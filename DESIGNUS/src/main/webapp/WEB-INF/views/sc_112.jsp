@@ -215,7 +215,7 @@ textarea {
 							<li class="questionmenu"><a class="menuLink" href="scqna">QnA</a></li>
 							<li class="questionmenu"><a class="menuLink" href="scdeclare">신고하기</a></li>
 						</ul>
-					</div>
+					</div> 
 
 				</div>
 				<div id="list">
