@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.designus.www.bean.Report;
+import com.designus.www.bean.Member;
 import com.designus.www.service.AdminMM;
-import com.designus.www.service.AuctionMM;
+
 
 @Controller
 public class AdminController {
@@ -58,6 +58,18 @@ public class AdminController {
 		System.out.println("이거찍히니?"+rp_num);
 		mav = new ModelAndView();
 		mav = adm.declareWriteCheck(rp_num);
+		return mav;
+	}
+	@RequestMapping(value = "/declarenonpermit", method = RequestMethod.POST)
+	public ModelAndView declareNonPermit(int rp_num) {
+		System.out.println("ㅇㅇ?");
+		mav = adm.declareNonPermit(rp_num);
+		return mav;
+	}
+	@RequestMapping(value = "/declarepermit", method = RequestMethod.POST)
+	public ModelAndView declarepermit(int rp_num ,String rp_mbid_a,Member mb) {
+		System.out.println("hh?");
+		mav = adm.declarepermit(rp_num,mb,rp_mbid_a);
 		return mav;
 	}
 

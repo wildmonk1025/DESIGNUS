@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
+import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.MemberMM;
 import com.designus.www.service.MypageMM;
 
@@ -169,6 +171,28 @@ public class MypageController {
 		mav = new ModelAndView();
 		 mav=pm.revAuctionMyOrderList(pageNum,kind);
 		 System.out.println("(컨트롤러)제작의뢰  마무리"); 
+		return mav;
+	}
+	@RequestMapping(value = "/requestby", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView requestby(revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰 스텝1 요청 시작");
+		mav = new ModelAndView();
+		 mav=pm.requestby(rap);
+		 System.out.println("(컨트롤러)제작의뢰 스텝1 요청 마무리");
+		return mav;
+	}
+	@RequestMapping(value = "/revaucinfocancel", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView revaucinfocancel(revAuctionProgress rap,Notify ni) {
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 시작");
+		mav = new ModelAndView();
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 1 ranum:"+rap.getRap_ranum());
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 2 mbidw:"+rap.getRap_mbid_w());
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 3 contents:"+ni.getNf_contents());
+		
+		 mav=pm.revaucinfocancel(rap,ni);
+		 System.out.println("(컨트롤러)제작의뢰 스텝1 취소 마무리");
 		return mav;
 	}
 }

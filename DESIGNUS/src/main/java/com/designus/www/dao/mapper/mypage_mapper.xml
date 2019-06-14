@@ -180,7 +180,8 @@
 	</select>
 	<delete id="autcancelDelete">
 		DELETE FROM AUT
-		WHERE AUT_NUM=${aup_ranum} AND AUT_MBID=#{aup_mbid_n} AND
+		WHERE AUT_NUM=${aup_ranum} AND
+		AUT_MBID=#{aup_mbid_n} AND
 		AUT_DATE=to_char()#{aut_date})
 	</delete>
 
@@ -233,5 +234,39 @@
          where  RAP_PTNUM=${rap_ptnum}  
   ]]>
 	</select>
-
+	<update id="requestbyupdate" parameterType="revauctionprogress">
+		UPDATE RAP SET
+		RAP_NAME=#{rap_name},RAP_address=#{rap_address},RAP_phone=#{rap_phone},RAP_step=2
+		where RAP_PTNUM=${rap_ptnum}
+	</update>
+	<update id="requestbyREVupdate"
+		parameterType="revauctionprogress">
+		update MB SET
+		mb_point=#{pointN}-#{rap_price}
+		where
+		mb_id=#{rap_mbid_n}
+	</update>
+	<select id="revauccancelSelect"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
+		<![CDATA[
+		select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK
+    ,RAP_DAYS,RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
+	<delete id="revaucinfocancelDelete">
+		delete from rap
+		where rap_ptnum=${rap_ptnum}
+	</delete>
+	<update id="revaucinfocancelupDate" parameterType="revauctionprogress">
+		UPDATE RAT SET
+		RAT_DECIDE='N'
+		WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w}
+	</update>
+	<insert id="revaucinfocancelInsert" parameterType="notify">
+		INSERT INTO NF VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_contents},0,DEFAULT)
+	</insert>
 </mapper>

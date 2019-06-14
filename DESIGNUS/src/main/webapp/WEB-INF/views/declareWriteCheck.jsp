@@ -105,13 +105,15 @@
 			<jsp:include page="admininclud.jsp"></jsp:include>
 
 		</div>
-    </div>
+             
+  
     <div id="adminopt">
-       <form name="form" method="post">
+        <form  name="formName" method="post">
         <div class="opt">
             <h3 style="margin-left:  20px; font-size: 25px; background-color: orange;">신고 상세내역</h3>
             <hr>
             <div id="declarelist">
+            
                 <table id="declareinfo">
                     <tr>
                         <td colspan="5" width="500" height="20">신고번호 ${rp_num}</td>
@@ -128,7 +130,7 @@
                         <td width="100" height="20">${rp_locate}</td>
                         <td width="100" height="20">${rp_reason}</td>
                         <td width="100" height="20">${rp_mbid_d}</td>
-                        <td width="100" height="20">${rp_mbid_d}</td>
+                        <td width="100" height="20">${rp_mbid_a}</td>
                         <td width="100" height="20">${rp_date}</td>
                     </tr>
                     <tr>
@@ -142,15 +144,31 @@
                     </tr>
                 </table>
             </div>
-            <div class="btnArray" id="btn1"><input type="submit" value="적합" onclick="javascipt: form.action='gogo'"></div>
-            <div class="btnArray" id="btn2"><input type="submit" value="부적합" formaction="gogo"/></div>
+            <div class="btnArray" id="btn1">
+            <input type="button" value="적합" onclick="b();"/></div>
+           
+            <div class="btnArray" id="btn2">
+            <input type="button" value="부적합" onclick="a();"/></div>
             <div class="btnArray" id="btn3"><button><a href="declareWrite">돌아가기<br/></a></button></div>
             <!-- <div class="btnArray" id="btn3"><input type="button" onclick="location.href='home'" value="돌아가기"></div> -->
         </div>
         </form>
     </div>
+    
 </body>
 <script>
+function a(){
+	var f=document.formName;
+	f.action = "declarenonpermit?rp_num=${rp_num}";
+	// 파일 전송이 필요할 경우만 씀.
+	f.encoding = "multipart/form-data";
+	f.submit();
+	}
+	function b(){
+	var f=document.formName;
+	f.action = "declarepermit?rp_num=${rp_num}&rp_mbid_a={rp_mbid_a}";
+	f.submit();
+	}
 function goBack() {
     window.history.forward();
 }

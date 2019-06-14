@@ -18,6 +18,10 @@
 		INSERT INTO SSI
 		VALUES(${ss_num},#{ssi_imgSysName})
 	</insert>
-    
+
+	<select id="productinfo" parameterType="sponsor"
+		resultType="sponsor">
+		SELECT * FROM SPONVIEW
+	</select>
 
 </mapper>

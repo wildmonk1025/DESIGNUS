@@ -10,6 +10,7 @@ import com.designus.www.bean.Basket;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
@@ -59,7 +60,7 @@ public interface ImypageDao {
 
 
 
-	boolean aucapplyupdate(AuctionProgress ap);
+	boolean requestby(AuctionProgress ap);
 
 	boolean aucapplyMbNupdate(AuctionProgress ap);
 
@@ -92,6 +93,18 @@ public interface ImypageDao {
 	int getreSetpCount(String id);
 
 	revAuctionProgress requestSelect(revAuctionProgress rap);
+
+	boolean requestbyupdate(revAuctionProgress rap);
+
+	boolean requestbyREVupdate(revAuctionProgress rap);
+
+	revAuctionProgress revauccancelSelect(revAuctionProgress rap);
+
+	boolean revaucinfocancelDelete(revAuctionProgress rap);
+
+	boolean revaucinfocancelupDate(revAuctionProgress rap);
+
+	boolean revaucinfocancelInsert(Notify ni);
 
   
 }

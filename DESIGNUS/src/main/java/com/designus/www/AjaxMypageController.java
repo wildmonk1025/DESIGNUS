@@ -89,4 +89,13 @@ public class AjaxMypageController {
 		System.out.println("(컨트롤러)제작의뢰내역 스타트!!!");
 		return json;
 	}
+	@RequestMapping(value = "/revauccancel", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String revauccancel(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼!!! 시작!!!");
+		System.out.println(rap.getRap_ptnum());
+		String json = pm.revauccancel(rap);
+		System.out.println("(컨트롤러)제작의뢰내역  스텝 1 취소폼 마무리!!!");
+		return json;
+	}
 }

@@ -14,5 +14,14 @@
      <select id="getWriteCheck" parameterType="Integer" resultType="report">
 		SELECT * FROM RP_LIST WHERE RP_NUM =${rp_num}
 	</select>
-      
+     <delete id="getPermit" parameterType="Integer" >
+		DELETE FROM RP WHERE RP_NUM =${rp_num}
+	</delete>
+     <delete id="getPerfmit" parameterType="Integer">
+		DELETE FROM RPI WHERE RPI_NUM =${rp_num}
+	</delete>
+	<update id="getwarning" parameterType="member">
+		UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = #{mb_id}
+	</update>
+     <!--  UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = 'BBBB' -->
 </mapper>
