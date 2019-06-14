@@ -22,6 +22,11 @@ public class AdminController {
 
 		return "adminInfo";
 	}
+	@RequestMapping(value = "/permitWriDetail", method = RequestMethod.GET)
+	public String permitWriDetail() {
+		
+		return "permitWriDetail";
+	}
 
 	@RequestMapping(value = "/declareWrite", method = RequestMethod.GET)
 	public String declareWrite() {

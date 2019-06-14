@@ -39,4 +39,11 @@ public class AjaxAdminController {
 			return check;
 			
 		}
+		@RequestMapping(value = "/transformwridetail", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
+		public String transformwridetail() {
+			String check = am.transformwridetail();
+			System.out.println("aList="+check);
+			return check;
+			
+		}
 }

@@ -128,4 +128,15 @@ public class AdminMM {
 		return mav;
 	}
 
+	public String transformwridetail() {
+		List<Major> rList = iDao.gettransforInfo();
+
+		System.out.println("이거는되나");
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+		return jsonObj;
+	}
+
 }

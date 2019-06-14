@@ -25,6 +25,8 @@ public interface IadminDao {
 	boolean getPerfmit(@Param("rp_num") int rp_num);
 
 	boolean getwarning(@Param("mb_id")String mb_id);
+
+	List<Major> gettransforInfo();
   
   
 }
