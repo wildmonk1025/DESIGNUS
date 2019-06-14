@@ -107,27 +107,24 @@ public class AdminMM {
 		return mav;
 	}
 
-	public ModelAndView declarepermit(int rp_num, Member mb, String rp_mbid_a) {
+	public ModelAndView declarepermit(int rp_num,  String mb_id) {
 		mav = new ModelAndView();
 		String view = null;
 		boolean f2 = iDao.getPerfmit(rp_num);
 		boolean f = iDao.getPermit(rp_num);
-		System.out.println(" rp_mbid_a"+rp_mbid_a);
-		Report rp = new Report();
-		mb=rp_mbid_a;
-		String dd=mb.setMb_id(rp.getRp_mbid_a); 
-		System.out.println("ggg");
-		mb=iDao.getwarning(mb);
+		System.out.println(" rp_mbid_a"+mb_id);
+		
+		boolean k=iDao.getwarning(mb_id);
 		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
 		
 		if(f && f2) {
 			mav.addObject("rp_num", rp_num);
-			System.out.println("성공이다"+mb);
 			view = "declareWrite";
 		} else {
 			System.out.println("삭제 실패");
 			view = "home";
 		}
+		mav.setViewName(view);
 		return mav;
 	}
 
