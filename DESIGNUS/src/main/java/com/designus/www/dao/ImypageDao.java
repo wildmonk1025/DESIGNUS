@@ -120,5 +120,7 @@ public interface ImypageDao {
 
 	boolean revBoardyhWriteupDate(revAuctionProgress rap);
 
+	Member mypagemoveSelect(String id);
+
   
 }

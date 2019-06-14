@@ -34,11 +34,11 @@
 	</delete>
 	<insert id="nortowriapplyInsert" parameterType="major">
 		INSERT INTO MAJOR
-		VALUES(#{mj_id},#{mj_cg_code},#{mj_portf},#{mj_contents},DEFAULT)
+		VALUES(#{mj_mbid},#{mj_cgcode},#{mj_portf},#{mj_contents},DEFAULT)
 	</insert>
-	<update id="nortowriapplyupdate" parameterType="member">
+	<update id="nortowriapplyupdate" parameterType="major">
 		UPDATE MB SET
-		MB_GRADE='X' WHERE MB_ID=#{mj_id}
+		MB_GRADE='X' WHERE MB_ID=#{mj_mbid}
 	</update>
 
 	<select id="basketAuctionselect" parameterType="String"
@@ -319,4 +319,11 @@
 		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
 		where aup_ptnum=#{aup_ptnum}
 	</update>
+	<select id="mypagemoveSelect" parameterType="String"
+		resultType="member">
+		
+		SELECT * FROM MB
+         WHERE  MB_ID=#{id} 
+
+	</select>
 </mapper>

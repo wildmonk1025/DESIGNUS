@@ -230,8 +230,12 @@ div {
 						<th>이메일</th>
 						<td><input id="mb_email" type="text" name="mb_email"
 							class="memberN"></td>
-						<td><input id="Echeck" type="button" value="이메일 인증"
-							onclick="emailcheck()"></td>
+						
+						<td><input id="sendRndNum" type="button" value="이메일 인증"></td>
+						
+						<td><input id="emailNum" type="text"></td>
+						
+						<td><input id="sendRndNumCheck" type="button" value="인증 확인"></td>
 					</tr>
 					<tr>
 						<td><input id="joinhidden" type="hidden"></td>
@@ -246,7 +250,7 @@ div {
 				</div>
 
 				<div id="joinbox">
-					<input class="btz2" type="submit" value="회원가입"> <input
+					<input id="joinbtn" class="btz2" type="submit" value="회원가입"> <input
 						class="btz2" type="reset" value="취소">
 				</div>
 
@@ -305,7 +309,7 @@ div {
 		var mbaddr = $("#addr1").val();
 		var mbaddr2 = $("#addr2").val();
 		var mbaddr3 = $("#addr3").val();
-		
+
 		var chk1 = $("#chk2").val();
 		var chk2 = $("#chk3").val();
 		var email = $("#mb_email").val()
@@ -332,7 +336,7 @@ div {
 			$("#mb_name").focus();
 			return false;
 		}
-		
+
 		if (mbbirth.length == 0) {
 			alert("생일을 입력해주세요.")
 			$("#mb_birth").focus();
@@ -436,5 +440,49 @@ div {
 			}
 		}).open();
 	}
+	//인증메일전송
+	var mail = null;
+	$('#sendRndNum').click(function() {
+		$.ajax({
+			url : "sendrndnum",
+			type : "post",
+			data :{"mb_email" : $("#mb_email").val()},
+			dataType : "html",
+			/*data:{m_id : $('#m_id').val(), sdf:"sdfsdfdfsdf"},*/
+			success : function(data) {
+				mail = data;
+				console.log("data" + data);
+				console.log("mail" + mail);
+				alert("인증번호를  발송하였습니다")
+		},
+
+			error : function(error) {
+
+				console.log(error);
+
+				alert(" 실패 ");
+
+			}
+		});//end ajax
+	});//end click
+	//인증번호 체크
+
+	$("#sendRndNumCheck").click(function() {
+
+		console.log(mail);
+
+		if ($("#emailNum").val() == mail) {
+
+			$('#joinbtn').prop("disabled", false);
+
+			alert("인증되었습니다")
+
+		} else {
+
+			alert("인증번호를 다시 확인해주세요")
+
+		}
+
+	});
 </script>
 </html>
