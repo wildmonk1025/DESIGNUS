@@ -83,8 +83,10 @@ div {
 }
 
 #spon {
+	border: 1px solid black;
 	width: 300px;
 	height: 180px;
+	margin:10px 20px;
 	float: left;
 }
 </style>
@@ -115,13 +117,14 @@ div {
 					url : 'productinfo',
 					type : 'post',
 					dataType : 'json',
-					contentType : 'application/json',
+					contentType : "application/json; charset=utf-8;",
 					success : function(data) {
 						var result = "";
 						console.dir(data);
 						console.log("성공");
 						for (var i = 0; i < data[i].length; i++) {
-							result += "<div id='spon'><div id='sponproduct'>"
+							result += "<div id='spon'>"
+									+ "<div id='sponproduct'>"
 									+ "<img src='resources/images/>"
 									+ data[i].ssi_img + "</div>"
 									+ "<div class='sponpro'>" + "아이디:"
@@ -129,7 +132,8 @@ div {
 									+ data[i].ss_num + "<br>" + "목표수량:"
 									+ data[i].ss_goalqty + "<br>" + "후원제품가격:"
 									+ data[i].ss_price + "후원날짜:"
-									+ data[i].ss_date + "<br>" + "</div></div>"
+									+ data[i].ss_date + "<br>" + "</div>"
+									+ "</div>"
 						}
 						$("#sponList").html(result);
 					},
