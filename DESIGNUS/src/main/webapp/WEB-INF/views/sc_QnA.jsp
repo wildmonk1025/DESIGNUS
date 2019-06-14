@@ -41,10 +41,11 @@
 }
 
 #list {
-	width: 1100px;
-	height: 400px;
+	width: 1320px;
+	height: 450px;
 	float: left;
-	margin: 50px;
+	margin-left: 100px;
+	margin-top: 10px;
 }
 
 #text1 {
@@ -70,13 +71,14 @@
 	text-decoration: none;
 	color: black;
 	display: block;
-	width: 261px;
+	width: 450px;
 	font-size: 25px;
 	font-weight: bold;
 	font-family: "Trebuchet MS", Dotum, Arial;
+	text-align: center;
 }
 
-ul li {
+.questionmenu {
 	border: 1px solid black;
 	width: 450px;
 	list-style: none;
@@ -87,28 +89,25 @@ ul li {
 	text-align: center;
 }
 
-li {
-	text-align-last: right;
-}
-
 #h, #s {
-	position: relative;
 	top: 10px;
 	left: 50px;
+	float: left;
 }
 
 #s {
-	position: relative;
 	color: red;
 	top: -6px;
+	float: left;
 }
 
 #list {
+	width: 1300px;
+	height: 450px;
+	float: left;
+	margin-left: 100px;
+	margin-top: 10px;
 	border: 1px solid black;
-	width: 1355px;
-	position: relative;
-	top: -20px;
-	left: -10px;
 }
 
 #l1 {
@@ -126,9 +125,18 @@ li {
 	padding: 15px;
 }
 
+#questionm {
+	width: 1360px;
+	height: 40px;
+	float: left;
+	margin-left: 55px;
+	margin-top: 20px;
+}
+
 #selectt {
 	text-align: center;
 }
+
 #Sctext {
 	width: 1300px;
 	height: 80px;
@@ -136,6 +144,7 @@ li {
 	margin-left: 100px;
 	margin-top: 20px;
 }
+
 .questionmenu {
 	border: 1px solid black;
 	width: 450px;
@@ -146,7 +155,6 @@ li {
 	line-height: 40px;
 	text-align: center;
 }
-
 </style>
 </head>
 <body>

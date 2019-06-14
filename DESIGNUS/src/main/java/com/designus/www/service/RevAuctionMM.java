@@ -21,6 +21,7 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 @Service
 public class RevAuctionMM {
@@ -242,5 +243,11 @@ public class RevAuctionMM {
 			}
 		}
 		return msg;
+	}
+
+	public String wriList(Member mb) {
+		List<Member> mList = rDao.wriListSelect(mb);
+		String str = new Gson().toJson(mList); 
+		return str;
 	}
 }

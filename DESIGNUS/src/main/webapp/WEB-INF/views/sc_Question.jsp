@@ -171,8 +171,8 @@ textarea {
 	<div id="homeMain">
 			<div id="Sctext">
 				<h2 id="h">고객센터</h2>
-				<br> <br>
-				<p id="s">여러분 고민에 귀 기울이겠습니다.</p>
+			<br> <br>
+			<p id="s">여러분 고민에 귀 기울이겠습니다.</p>
 			</div>
 			<div id="questionm">
 				<ul>

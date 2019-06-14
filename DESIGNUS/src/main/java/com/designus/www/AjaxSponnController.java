@@ -17,7 +17,7 @@ import com.designus.www.service.SponsorMM;
 import com.google.gson.Gson;
 
 @RestController
-@RequestMapping(value = "/ajax")
+/* @RequestMapping(value = "/ajax") */
 public class AjaxSponnController {
 	/*
 	 * @RequestMapping() public String norJoinFrm() { return "norjoinFrm"; }
@@ -29,7 +29,7 @@ public class AjaxSponnController {
 	@Autowired
 	SponsorMM spm;
 
-	@RequestMapping(value = "/productinfo", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productinfo",  produces = "application/json;charset=utf8",method = { RequestMethod.POST, RequestMethod.GET })
 	public String productinfo() {
 
 		System.out.println("후원정보 불러오기");
