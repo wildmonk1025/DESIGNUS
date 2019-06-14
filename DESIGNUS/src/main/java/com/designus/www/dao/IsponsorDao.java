@@ -20,4 +20,6 @@ public interface IsponsorDao {
 	void SponsorImageInsert(Sponsor sp);
 
 	List<Sponsor> productinfo();
+
+	Sponsor getSponcheck(@Param("ss_num") int ss_num);
 }
