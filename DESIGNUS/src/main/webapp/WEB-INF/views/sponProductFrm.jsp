@@ -92,17 +92,19 @@ td {
 		<div id="board">
 			<table border="1" style="text-align: center">
 				<tr>
-					<td colspan="2" rowspan="4" style="width: 200; height: 200">[사진]</td>
+					<td colspan="2" rowspan="4" style="width: 200; height: 200"><img
+						src="resources/images/${ssi_imgSysName}" width="150px"
+						height="180px"></td>
 					<td style="width: 100; height: 50;">제품명</td>
-					<td colspan="3" style="width: 700">Sponsor table title</td>
+					<td colspan="3" style="width: 700">${ss_title}</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td colspan="3">session ID</td>
+					<td colspan="3">${ss_mbid_w}</td>
 				</tr>
 				<tr>
 					<td>가격</td>
-					<td colspan="3">Sponsor table price</td>
+					<td colspan="3">${ss_price}</td>
 				</tr>
 				<tr>
 					<td>등록일</td>
@@ -116,10 +118,10 @@ td {
 					<td class="ts1">후원 기간</td>
 					<td class="ts2">Sponsor table</td>
 					<td class="ts1">현제 주문량</td>
-					<td class="ts2">Sponsor table</td>
+					<td class="ts2">0</td>
 				</tr>
 				<tr>
-					<td colspan="6" style="height: 150">Sponsor table 상세정보</td>
+					<td colspan="6" style="height: 150">${ss_contents}</td>
 				</tr>
 				<tr>
 					<td colspan="4"><button class="bt22">밀어주기</button></td>
@@ -138,6 +140,6 @@ td {
 
 </body>
 <script>
-
+	
 </script>
 </html>

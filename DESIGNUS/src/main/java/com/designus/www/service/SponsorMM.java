@@ -100,10 +100,10 @@ public class SponsorMM {
 		String view = null;
 		mav = new ModelAndView();
 
-		List<Sponsor> spList = sDao.productinfo();
-		Gson gs = new Gson();
-		String jsonObj = gs.toJson(spList);
-		System.out.println(jsonObj);
+		/*
+		 * List<Sponsor> spList = sDao.productinfo(); Gson gs = new Gson(); String
+		 * jsonObj = gs.toJson(spList); System.out.println(jsonObj);
+		 */
 
 		Sponsor sm = new Sponsor();
 		// ss.setSs_num(ss_num);
@@ -115,11 +115,12 @@ public class SponsorMM {
 			mav.addObject("ss_num", sm.getSs_num());
 			mav.addObject("ss_mbid_w", sm.getSs_mbid_w());
 			mav.addObject("ss_title", sm.getSs_title());
-			mav.addObject("ssi_img", sm.getSsi_imgSysName());
+			mav.addObject("ssi_ssi_imgSysName", sm.getSsi_imgSysName());
 			mav.addObject("ss_contents", sm.getSs_contents());
 			mav.addObject("ss_price", sm.getSs_price());
 			mav.addObject("ss_goalqty", sm.getSs_goalqty());
-			view = "sponproduct";
+			mav.addObject("ss_date", sm.getSs_date());
+			view = "sponProductFrm";
 		} else {
 			view = "sponsor";
 		}

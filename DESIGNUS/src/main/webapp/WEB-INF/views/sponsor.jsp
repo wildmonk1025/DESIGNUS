@@ -127,11 +127,8 @@ div {
 
 </body>
 <script>
-	$(document)
-			.ready(
-					function() {
-						$
-								.ajax({
+	$(document).ready(function() {
+				$.ajax({
 									url : 'productinfo',
 									type : 'post',
 									dataType : 'json',
@@ -163,6 +160,7 @@ div {
 													+ data[i].ss_price
 													+ "<br>"
 													+ "후원날짜:"
+													+ "<br>"
 													+ data[i].ss_date
 													+ "</div>"
 													+ "<br>"
