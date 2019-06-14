@@ -195,4 +195,29 @@ public class MypageController {
 		 System.out.println("(컨트롤러)제작의뢰 스텝1 취소 마무리");
 		return mav;
 	}
+	@RequestMapping(value = "/revAuctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView revAuctionMyAcceptList(Integer pageNum ,String kind) {
+		System.out.println("(컨트롤러)제작의뢰 접수내역  시작");
+		mav = new ModelAndView();
+		 mav=pm.revAuctionMyAcceptList(pageNum,kind);
+		 System.out.println("(컨트롤러)제작의뢰 접수내역   마무리"); 
+		return mav;
+	}
+	@RequestMapping(value = "/revdelinumupload", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView revdelinumupload(revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰 스텝3 배송보내기 시작");
+		mav = new ModelAndView();
+		 mav=pm.revdelinumupload(rap);
+		 System.out.println("(컨트롤러)제작의뢰 스텝1 배송보내기 마무리");
+		return mav;
+	}
+	@RequestMapping(value = "/boardapply", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView boardapply(MultipartHttpServletRequest multi) {
+		mav = new ModelAndView();
+	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		 mav=pm.boardapply(multi);
+		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		return mav;
+	}
 }

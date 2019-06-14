@@ -98,4 +98,24 @@ public class AjaxMypageController {
 		System.out.println("(컨트롤러)제작의뢰내역  스텝 1 취소폼 마무리!!!");
 		return json;
 	}
+	@RequestMapping(value = "/delinumSelect", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String delinumSelect(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 취소폼!!! 시작!!!");
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 취소폼!!! 중간테스트1 pnum확인 :" + rap.getRap_ptnum());
+		String json = pm.delinumSelect(rap);
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 배송보내기!!! 마무리!!!");
+		return json;
+
+	}
+	@RequestMapping(value = "/boardwrite", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String boardwrite(@RequestBody revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 구매후기및 수령확인!!! 시작!!!");
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 취소폼!!! 중간테스트1 pnum확인 :" + rap.getRap_ptnum());
+		String json = pm.boardwrite(rap);
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 구매후기및 수령확인 마무리!!!");
+		return json;
+
+	}
 }

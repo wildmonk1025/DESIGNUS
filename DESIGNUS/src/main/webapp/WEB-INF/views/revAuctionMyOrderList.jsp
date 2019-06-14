@@ -418,6 +418,25 @@ position: absolute;
 	top : 500px;
 	left: 900px;
 }
+#pageing{
+   position: absolute;
+	top: 1050px;
+	left: 800px;
+}
+#q1{
+position: absolute;
+	width: 600px;
+	height: 570px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top : 500px;
+	left: 900px;
+}
 </style>
 
 </head>
@@ -430,6 +449,7 @@ position: absolute;
 <div id="total"></div>
 <div id="r1"></div>
 <div id="c1"></div>
+<div id="q1"></div>
 	<div id="mypagemain">
 
 		<div id="leftmain">
@@ -485,69 +505,10 @@ position: absolute;
 			</div>
 		</div>
 		<div id="rightmain">
-			<!-- <div id="notice">
-				<h2>제작의뢰내역</h2>
-			</div> -->
-			<!-- <div id="renking">
-				<h1>문의 구매후기</h1>
-				<div class="bt01">
-					<button id="service" class="bt">고객센터문의</button>
-					<button id="review" class="bt">구매후기쓰기</button>
-				</div>
-			</div> -->
-
-			<!-- <div id="auction">
-				<h1>배송정보입력</h1>
-				<div class="bt02">
-					<button id="action" class="bt">제작의뢰요청</button>
-					<button id="cancel" class="bt">제작의뢰취소</button>
-				</div>
-			<!-- </div> -->
-			<!--  <div id="spon">
-				<h1>배송정보</h1>
-				<div class="bt03">
-					<h4>배송번호</h4>
-					<h1>완료</h1>
-				</div>
-			</div> -->
-		<!-- 	<div id="lightbox-shadow">
-
-				<div id="lightbox">
-					<h1>배송정보입력</h1>
-					<button>요청</button>
-					<button type="button"
-						onclick="location.href='revAuctionMyOrderList.jsp' ">취소</button>
-				</div>
-			</div> -->
-			<!-- <div id="lightbox-shadow1">
-
-				<div id="lightbox1">
-					<h1>제작의뢰 요청 취소</h1>
-					<button>취소하기</button>
-					<button type="button"
-						onclick="location.href='revAuctionMyOrderList.jsp' ">돌아가기</button>
-				</div>
-			</div> -->
-			<!-- <div id="lightbox-shadow2">
-
-				<div id="lightbox2">
-					<h1>제작의뢰 관련1:1문의</h1>
-					<button>문의하기</button>
-					<button type="button"
-						onclick="location.href='revAuctionMyOrderList.html' ">취소</button>
-				</div>
-			</div> -->
-			<!-- <div id="lightbox-shadow3">
-
-				<div id="lightbox3">
-					<h1>수령확인 맟 구매후기</h1>
-					<button>완료</button>
-					<button type="button"
-						onclick="location.href='revAuctionMyOrderList.html' ">취소</button>
-				</div>
-			</div> -->
+		<div id="revA"></div>
+		
 			
-			${ROpaging}
+			<div id="pageing">${ROpaging}</div>
 		</div>
 	</div>
 </body>
@@ -616,7 +577,7 @@ for (var i = 0; i < revList.length; i++) {
 }
 
 
-$('#rightmain').html(main);
+$('#revA').html(main);
   
  //스텝1 요청 라이트 박스(ajax) 
 function requested(even) {
@@ -712,6 +673,74 @@ function requested(even) {
 				 });//end ajax
 	}
 
+function RevMyreview(even) {
+	var form = {
+			rap_ptnum:even
+			 }
+	var bb="";
+	 $.ajax({
+			url: 'boardwrite',
+			type:'post',
+		    data:JSON.stringify(form),
+		    contentType:"application/json; charset=utf-8;",
+		    dataType:'json',
+		    success:function(data){
+		    	alert('앙앙!');
+		    	console.log("1234567"+data.aup_ptnum);
+		    	bb+="<div id='q2'>"
+		    	 if(data.ra_oc=="O"){
+		    		 bb+="<form action='boardapply' method='post'>"
+		    		   +"공개<input type='hidden' name='ra_oc'><br>"   
+			    	   }else{
+			    		   bb+=+"비공개<input type='hidden' name='ra_oc'><br>"   
+			    	   };
+		    	bb+="<h2>수령 확인 및 <br>구매 후기 쓰기</h2><br/></hr><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
+		    	   +"상품이름 :"+data.ra_title+"<input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"><br><hr>"
+                   +"<input type='hidden' name='au_mbid_w' value='"+data.rap_mbid_w+"')>"
+                   +"<input type='hidden' name='aup_price' value='"+data.rap_price+"')>"
+		    	   +"구매후기 제목 :<input type='text' name='bd_title'><br>"    	
+		    	   +"내용</br>"
+		    	   +"<textarea rows='10' cols='70' name='bd_contents'></textarea><br>"
+		    	   +"<input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple><br>"
+		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'><br>"
+		    	   +"<input type='submit' value='완료'>"
+		    	   +"<input type='button' id='backSetp' value='취소'></div></form>";
+		    	  
+		    	$('#total').css("display", "inline");
+		    	$('#q1').css("display", "inline");
+		    	
+		    	$('#q1').html(bb); 
+		    },
+		    
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+
+}//end RevMyreview
+function good(data) {
+	var btn = $('#butt');
+	 $.ajax({
+			url: "goods",
+			type:"post",
+		    data:{idw:data},
+		    success:function(data){
+		    	alert('해당 상품을 추천하였습니다.');
+		    	console.log("123456"+data);
+		    	//btn.disabled = 'disabled'
+		    	var bu=document.getElementById('butt');
+		    		bu.disabled =true;
+		
+		    },
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+			 
+		 });//end good(ajax)
+}//end good
+	
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")
