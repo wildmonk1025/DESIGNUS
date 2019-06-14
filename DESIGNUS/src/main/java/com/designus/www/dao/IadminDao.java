@@ -19,9 +19,9 @@ public interface IadminDao {
 
 	Report getWriteCheck(@Param("rp_num") int rp_num);
 
-	boolean getpermit(int rp_num);
+	boolean getPermit(@Param("rp_num") int rp_num);
 
-	boolean getperfmit(int rp_num);
+	boolean getPerfmit(@Param("rp_num") int rp_num);
   
   
 }
