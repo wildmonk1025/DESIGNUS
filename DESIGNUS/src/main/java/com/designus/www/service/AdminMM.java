@@ -86,12 +86,19 @@ public class AdminMM {
 		mav= new ModelAndView();
 		Report rp = new Report();
 		System.out.println("오/..왔내?");
-		iDao.getpermit(rp_num);
-		iDao.getperfmit(rp_num);
-		System.out.println("올성공");
-		view = "declareWrite";
-		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
-		mav.setViewName(view);
+		boolean k1 = iDao.getpermit(rp_num);
+		boolean k2 = iDao.getperfmit(rp_num);
+	
+		if(k1 && k2) {
+			System.out.println("올성공");
+			view = "declareWrite";
+			System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
+			mav.setViewName(view);
+		}else {
+			System.out.println("실패");
+		}
+	
+		
 		return mav;
 	}
 	

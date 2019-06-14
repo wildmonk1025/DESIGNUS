@@ -1,5 +1,6 @@
 package com.designus.www.bean;
 
+
 import org.apache.ibatis.type.Alias;
 
 import lombok.Getter;
