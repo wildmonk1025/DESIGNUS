@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
@@ -45,5 +46,5 @@ public interface IRevAuctionDao {
 
 	RevAuctionTender myCurbaMountSelect(RevAuction ra);
 
-	List<Member> wriListSelect(Member mb);
+	List<MemberSearch> wriListSelect(MemberSearch mbs);
 }

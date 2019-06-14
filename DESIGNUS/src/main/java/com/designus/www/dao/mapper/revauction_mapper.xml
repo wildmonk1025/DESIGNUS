@@ -86,4 +86,8 @@
 		WHERE RAT_PRICE=(SELECT MIN(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num} AND RAT_DECIDE='O') AND RAT_NUM=${ra_num} AND RAT_DECIDE='O'
 	</select>
 	
+	<select id="wriListSelect" parameterType="membersearch" resultType="membersearch">
+		SELECT * FROM MBS WHERE MB_ID LIKE #{mb_id}||'%'
+	</select>
+	
 </mapper>
