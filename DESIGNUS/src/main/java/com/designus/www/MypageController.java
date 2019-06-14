@@ -113,20 +113,19 @@ public class MypageController {
 	@RequestMapping(value = "/auctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView auctionMyOrderList(Integer pageNum ,String kind) {
-		//System.out.println("일단 여기로 와야 하는디....");
+		System.out.println("(컨트롤러)출품 구매 내역 리스트 시작!!");
 		mav = new ModelAndView();
-		
 		 mav=pm.auctionMyOrderList(pageNum,kind);
-		 //System.out.println("아니...인간적으로 여기 와야 되는거 아님?? 기계새끼라 그런가...???");
+		 System.out.println("(컨트롤러)출품 구매 내역 리스트 마무리!!");
 		return mav;
 	}
 	@RequestMapping(value = "/aucapply", method = {RequestMethod.GET,RequestMethod.POST})
 
 	public ModelAndView aucapply(AuctionProgress ap) {
-		System.out.println("일단 여기로 와야 하는디....1123123");
+		System.out.println("(컨트롤러) 배송정보 입력 하기 시작!!!");
 		mav = new ModelAndView();
 		 mav=pm.aucapply(ap);
-		 System.out.println("아니...인간적으로 여기 와야 되는거 아님??123123123???");
+		 System.out.println("(컨트롤러) 배송정보 입력 하기 마무리!!!");
 		return mav;
 	}
 	@RequestMapping(value = "/reviewBoardWrite", method = {RequestMethod.GET,RequestMethod.POST})
@@ -193,6 +192,31 @@ public class MypageController {
 		
 		 mav=pm.revaucinfocancel(rap,ni);
 		 System.out.println("(컨트롤러)제작의뢰 스텝1 취소 마무리");
+		return mav;
+	}
+	@RequestMapping(value = "/revAuctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView revAuctionMyAcceptList(Integer pageNum ,String kind) {
+		System.out.println("(컨트롤러)제작의뢰 접수내역  시작");
+		mav = new ModelAndView();
+		 mav=pm.revAuctionMyAcceptList(pageNum,kind);
+		 System.out.println("(컨트롤러)제작의뢰 접수내역   마무리"); 
+		return mav;
+	}
+	@RequestMapping(value = "/revdelinumupload", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView revdelinumupload(revAuctionProgress rap) {
+		System.out.println("(컨트롤러)제작의뢰 스텝3 배송보내기 시작");
+		mav = new ModelAndView();
+		 mav=pm.revdelinumupload(rap);
+		 System.out.println("(컨트롤러)제작의뢰 스텝1 배송보내기 마무리");
+		return mav;
+	}
+	@RequestMapping(value = "/boardapply", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView boardapply(MultipartHttpServletRequest multi) {
+		mav = new ModelAndView();
+	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		 mav=pm.boardapply(multi);
+		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
 		return mav;
 	}
 }
