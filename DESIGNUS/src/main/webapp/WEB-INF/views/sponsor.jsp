@@ -111,8 +111,7 @@ div {
 
 </body>
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 				$.ajax({
 					url : 'productinfo',
 					type : 'post',
@@ -122,7 +121,7 @@ div {
 						var result = "";
 						console.dir(data);
 						console.log("성공");
-						for (var i = 0; i < data[i].length; i++) {
+						for (var i = 0; i < 3; i++) {
 							result += "<div id='spon'>"
 									+ "<div id='sponproduct'>"
 									+ "<img src='resources/images/>"

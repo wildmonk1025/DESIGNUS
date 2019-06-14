@@ -86,11 +86,8 @@ public class SponsorMM {
 	}
 
 	public String productinfo() {
-		mav = new ModelAndView();
 		System.out.println("후원리스트 불러오기");
-		String id = session.getAttribute("id").toString();
-		List<SponsorProgress> spList = sDao.productinfo();
-		System.out.println(id);
+		List<Sponsor> spList = sDao.productinfo();
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(spList);
 		System.out.println(jsonObj);

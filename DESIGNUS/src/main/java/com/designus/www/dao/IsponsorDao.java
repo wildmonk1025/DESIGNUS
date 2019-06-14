@@ -19,5 +19,5 @@ public interface IsponsorDao {
 
 	void SponsorImageInsert(Sponsor sp);
 
-	List<SponsorProgress> productinfo();
+	List<Sponsor> productinfo();
 }

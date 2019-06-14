@@ -114,7 +114,8 @@ public class AdminMM {
 		boolean f = iDao.getPermit(rp_num);
 		System.out.println(" rp_mbid_a"+rp_mbid_a);
 		Report rp = new Report();
-		/* String dd=mb.setMb_id(rp.getRp_mbid_a); */
+		mb=rp_mbid_a;
+		String dd=mb.setMb_id(rp.getRp_mbid_a); 
 		System.out.println("ggg");
 		mb=iDao.getwarning(mb);
 		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
