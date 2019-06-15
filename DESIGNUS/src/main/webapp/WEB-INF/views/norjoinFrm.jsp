@@ -141,6 +141,10 @@ div {
 	height: 100px;
 	text-align: left;
 }
+#eacheck{
+  display: none;
+}
+
 </style>
 </head>
 <body>
@@ -232,9 +236,11 @@ div {
 							class="memberN"></td>
 						
 						<td><input id="sendRndNum" type="button" value="이메일 인증"></td>
-						
-						<td><input id="emailNum" type="text"></td>
-						
+					</tr>
+					<tr id="eacheck">
+					<th>인증번호 입력</th>
+					<td><input id="emailNum" type="text"
+					     style="width: 300px; height: 30px"></td>
 						<td><input id="sendRndNumCheck" type="button" value="인증 확인"></td>
 					</tr>
 					<tr>
@@ -453,7 +459,9 @@ div {
 				mail = data;
 				console.log("data" + data);
 				console.log("mail" + mail);
-				alert("인증번호를  발송하였습니다")
+				$("#eacheck").show();
+				alert("인증번호를  발송하였습니다");
+		
 		},
 
 			error : function(error) {

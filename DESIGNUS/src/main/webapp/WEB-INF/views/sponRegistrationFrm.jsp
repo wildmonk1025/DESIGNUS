@@ -122,8 +122,9 @@ input {
 					</tr>
 					<tr style="height: 50">
 						<td>이미지</td>
-						<td colspan="3"><input type="file" id="ssi_imgSysName"
-							name="ssi_imgSysName" style="width: 700px; float: left;">
+						<td colspan="3"><input type="file" id="ssi_imgSysName" name="ssi_imgSysName" style="width: 700px; float: left;"
+						                  value='파일 첨부'  onchange='fileChk(this)' multiple>
+							            <input type='hidden' id='fileCheck' value='0' name='fileCheck'>
 							<!-- <button
 								style="width: 6%; height: 48; float: right; border-radius: 100px">╉</button>
 							<button style="width: 14%; height: 48; float: right;">파일첨부</button> -->
@@ -144,7 +145,7 @@ input {
 					</tr>
 				</table>
 				<div id="btn2">
-					<button class="btn2">후원등록</button>
+				    <input class="btn2" type="submit" value="후원 등록" >
 					<button type="button" class="btn2"
 						onclick="location.href = 'sponsor'" value="돌아가기">돌아가기</button>
 				</div>
@@ -172,5 +173,16 @@ input {
 	$("#ssi_imgSysName").change(function() {
 		readURL(this);
 	});
+	
+	function fileChk(elem) {
+		console.dir(elem);
+		if(elem.value==""){
+			console.log("empty"); 
+			$('#fileCheck').val(0); //파일 첨부 안했음
+		}else{
+			console.log("Notempty")
+			$('#fileCheck').val(1);//파일 첨부 했음
+		}
+	}
 </script>
 </html>

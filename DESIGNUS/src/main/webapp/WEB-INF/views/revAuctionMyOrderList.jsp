@@ -446,19 +446,19 @@ position: absolute;
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
+	<div id="leftmain">
+
+			<jsp:include page="Mapagemain.jsp" />
+				
+			</div>
 <div id="total"></div>
 <div id="r1"></div>
 <div id="c1"></div>
 <div id="q1"></div>
-	<div id="mypagemain">
+	
 
-		<div id="leftmain">
-
-			<div id="info">
-			<jsp:include page="Mapagemain.jsp" />
-				
-			</div>
-		</div>
+		
+		
 		<div id="rightmain">
 		<div id="revA"></div>
 		

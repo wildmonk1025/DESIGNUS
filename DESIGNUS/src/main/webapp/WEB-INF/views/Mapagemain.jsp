@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 #leftmain {
+margin: 15px 0px 0px 0px;
 	width: 310px;
-	height: 950x;
-	border: 1px solid black;
+	height: 900x;
+	/*border: 1px solid black;*/
 	float: left;
 }
     #point {
@@ -30,6 +31,15 @@
 	height: 290px;
 	text-align: left;
 	font-size: 15px;
+	float: left;
+}
+#info {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 552px;
+	font-size: 20px;
+	text-align: left;
 	float: left;
 }
 

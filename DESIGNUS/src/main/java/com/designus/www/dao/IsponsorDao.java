@@ -22,4 +22,8 @@ public interface IsponsorDao {
 	List<Sponsor> productinfo();
 
 	Sponsor getSponcheck(@Param("ss_num") int ss_num);
+
+	boolean sponuploadInsert(Sponsor sp);
+
+	boolean sponuploadfileup(Map<String, String> fMap);
 }
