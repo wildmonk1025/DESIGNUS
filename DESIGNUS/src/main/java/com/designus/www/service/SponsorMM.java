@@ -53,15 +53,15 @@ public class SponsorMM {
 		sp.setSs_price(ssprice);
 		sp.setSs_goalqty(ssqty);
 		sp.setSs_contents(scontents);
-		
+
 		sDao.sponuploadInsert(sp);
 		num = sDao.getSponserwri(sp);
 
 		sp.setSs_num(num);
-		boolean f=false;
-		if (check == 1) { 
-			f = upload.fileUpsponsor(multi,sp);
-			view="sponsor";
+		boolean f = false;
+		if (check == 1) {
+			f = upload.fileUpsponsor(multi, sp);
+			view = "sponsor";
 		}
 
 		mav.setViewName(view);
