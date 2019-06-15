@@ -15,9 +15,7 @@ body {
 	height: auto;
 }
 
-div {
-	margin: auto;
-}
+
 
 ul {
 	list-style: none;
@@ -40,7 +38,8 @@ ul {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: auto;
+	height: 600px;
+	overflow-y: scroll;
 }
 
 .writerjoin {
@@ -68,13 +67,11 @@ ul {
 }
 .best {
 	border: 1px solid coral;
-	color: black; display : inline;
+	display : inline;
 	float: left;
-	width: 320px;
-	heigth: 55px;
-	display: inline;
+	width: 900px;
+	heigth: 150px;
 }
-
 
 </style>
 </head>
