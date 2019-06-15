@@ -337,9 +337,9 @@ public class MypageMM {
 		// AuctionProgress ap=new AuctionProgress();
 		apList = pDao.auctionMyOrderListSelect(id, num);
 		Gson gson = new Gson();
-		String str = gson.toJson(apList);
+		String apListjson = gson.toJson(apList);
 		System.out.println("size" + apList.size());
-		mav.addObject("apList", str);
+		mav.addObject("apList", apListjson);
 		mav.addObject("MPpaging", getMPaging(num, kind));
 		System.out.println("사망띠....");
 		System.out.println("apList" + apList.size());
@@ -861,15 +861,52 @@ public class MypageMM {
 	public ModelAndView mypagemove() {
 		mav=new ModelAndView();
 		String view=null;
+		List<Notify> NoList = null;
 		String id=session.getAttribute("id").toString();
 		//String grade=session.getAttribute("grade").toString();
 		Member mb=new Member();
 		mb=pDao.mypagemoveSelect(id);
-		if(mb != null) {
+		NoList=pDao.notismypageSelect(id);
+		Gson gson = new Gson();
+		String str = gson.toJson(NoList);
+		if(mb != null && NoList != null) {
 			mav.addObject("mb",mb);
+			mav.addObject("NoList", str);
 			view="myPage";
 		}else {
 			view="home";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView fullDelete() {
+		mav=new ModelAndView();
+		String view=null;
+		String id=session.getAttribute("id").toString();
+		boolean d=pDao.fullDelete(id);
+		if(d) {
+			//mav.addObject("check", 1);
+			view="myPage";
+		}else {
+			//mav.addObject("check", 2);
+			view="myPage";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView nodelete(Notify nf) {
+		mav=new ModelAndView();
+		String view=null;
+		String id=session.getAttribute("id").toString();
+		boolean d=pDao.nodelete(nf);
+		if(d) {
+			mav.addObject("check", 1);
+			view="myPage";
+		}else {
+			mav.addObject("check", 2);
+			view="myPage";
 		}
 		mav.setViewName(view);
 		return mav;

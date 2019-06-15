@@ -219,4 +219,22 @@ public class MypageController {
 		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
 		return mav;
 	}
+	@RequestMapping(value = "/fullDelete", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView fullDelete() {
+		mav = new ModelAndView();
+	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		 mav=pm.fullDelete();
+		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/nodelete", method = {RequestMethod.GET,RequestMethod.POST})
+
+	public ModelAndView nodelete(Notify nf) {
+		mav = new ModelAndView();
+	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		 mav=pm.nodelete(nf);
+		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		return mav;
+	}
 }

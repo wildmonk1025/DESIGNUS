@@ -455,11 +455,8 @@ a:hover {
 
 </body>
 <script>
-	var apList = $
-	{
-		apList
-	};
-	console.log(apList);
+	var apList = ${apList};
+	console.log(11,apList);
 
 	var main = "";
 
@@ -552,9 +549,7 @@ a:hover {
 			aup_ptnum : even
 		}
 		var sub = "";
-		$
-				.ajax({
-
+		$.ajax({
 					url : 'enter',
 					type : 'post',
 					data : JSON.stringify(form),
@@ -605,12 +600,9 @@ a:hover {
 
 	function review(even) {
 
-		var form = {
-			aup_ptnum : even
-		}
+		var form = {aup_ptnum : even}
 		var bb = "";
-		$
-				.ajax({
+		$.ajax({
 					url : 'reviewboard',
 					type : 'post',
 					data : JSON.stringify(form),

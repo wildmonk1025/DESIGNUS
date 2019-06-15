@@ -122,5 +122,11 @@ public interface ImypageDao {
 
 	Member mypagemoveSelect(String id);
 
+	List<Notify> notismypageSelect(String id);
+
+	boolean fullDelete(String id);
+
+	boolean nodelete(Notify nf);
+
   
 }
