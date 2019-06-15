@@ -13,8 +13,6 @@ import com.designus.www.bean.SponsorProgress;
 //@Repository
 public interface IsponsorDao {
 
-	int getSponserwri(Sponsor sp);
-
 	boolean getSponserwriterinsert(Sponsor sp);
 
 	void SponsorImageInsert(Sponsor sp);
@@ -26,4 +24,6 @@ public interface IsponsorDao {
 	boolean sponuploadInsert(Sponsor sp);
 
 	boolean sponuploadfileup(Map<String, String> fMap);
+
+	int getSponserwri(Sponsor sp);
 }
