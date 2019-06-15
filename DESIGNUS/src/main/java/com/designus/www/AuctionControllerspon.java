@@ -32,8 +32,9 @@ public class AuctionControllerspon {
 	@RequestMapping(value = "/sponupload")
 	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
-		System.out.println("넘어가나?");
+		System.out.println("(컨트롤러) 스폰 상품 등록 시작");
 		mav = sm.sponupload(multi);
+		System.out.println("(컨트롤러) 스폰 상품 등록 마무리");
 		return mav;
 	}
 

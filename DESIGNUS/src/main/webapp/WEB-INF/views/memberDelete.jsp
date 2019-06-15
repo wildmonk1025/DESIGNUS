@@ -14,6 +14,7 @@
 	width: 1520px;
 	height: 170px;
 }
+
 #articleView_layer {
 	display: none;
 	position: fixed;
@@ -24,10 +25,10 @@
 	height: 100%
 }
 
- #articleView_layer.open {
+#articleView_layer.open {
 	display: block;
 	color: red
-} 
+}
 
 #articleView_layer #bg_layer {
 	position: absolute;
@@ -156,30 +157,27 @@
 	left: 150px;
 }
 
-  #point {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 80px;
-            text-align: left;
-            left: 190px;
-            top: 508px;
+#point {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 80px;
+	text-align: left;
+	left: 190px;
+	top: 508px;
+	font-size: 20px;
+}
 
-            font-size: 20px;
-        }
-
-        #img {
-            border: 1px solid orange;
-            position: absolute;
-            width: 300px;
-            height: 310px;
-            text-align: left;
-            left: 190px;
-            top: 188px;
-
-            font-size: 20px;
-
-        }
+#img {
+	border: 1px solid orange;
+	position: absolute;
+	width: 300px;
+	height: 310px;
+	text-align: left;
+	left: 190px;
+	top: 188px;
+	font-size: 20px;
+}
 
 #one {
 	position: relative;
@@ -374,18 +372,20 @@ a:hover {
 	height: 50px;
 	margin-left: 10px;
 }
-#mb_pw,#Delecheck{
- border : 1px solid black;
-   color : black;
-  position: relative;
+
+#mb_pw, #Delecheck {
+	border: 1px solid black;
+	color: black;
+	position: relative;
 	top: 350px;
 	left: 850px;
 	font-size: 25px;
 	z-index: 202;
 }
-p{
-color : black;
-  position: relative;
+
+p {
+	color: black;
+	position: relative;
 	top: 350px;
 	left: 850px;
 	font-size: 25px;
@@ -399,67 +399,21 @@ color : black;
 </head>
 
 <body>
-	<div id="one">
+	
 
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
 		</div>
+		<div id="leftmain">
+			<jsp:include page="Mapagemain.jsp" />
 
+		</div>
 		<div id="notice">
 			<h2>회원탈퇴 신청</h2>
 			<hr>
 		</div>
-		<div id="info">
-			<table width="1000">
-
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=rev">제작의뢰
-							내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=revre">제작의뢰
-							접수내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=auc">출품작
-							구매 내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=aucre">출품작
-							판매 내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=spon">후원진행
-							내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=sponre">후원요청
-							내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="historylist?list=basket">꿍
-							내역</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="privacyedit">개인정보 수정</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="memberout">회원탈퇴 신청</a></td>
-				</tr>
-				<tr>
-					<td style="font-size: 30px"><a href="nortowri">작가전환 신청</a></td>
-				</tr>
-			</table>
-		</div>
 
 
-		<div id="point">
-			<h1>포인트:</h1>
-		</div>
-		<div id="img">
-			<h1>프로필사진</h1>
-		</div>
-	</div>
 
 	<div id="spon">
 
@@ -480,33 +434,34 @@ color : black;
 	</div>
 
 	<div id="articleView_layer">
-	<form action="withdrawalconfirm" method="POST">
-	<p>정말로 탈퇴하시겠습니까?</p><br/>
-	<p>정말 탈퇴를 원하시면 <br/>현재 사용중인 비밀번호를 입력해주세요.</p>
-		<input type="password" name="mb_pw" id="mb_pw">
-		 <button id="Delecheck">탈퇴하기</button>
-		 </form>
-		<div id="bg_layer">
-		</div>
+		<form action="withdrawalconfirm" method="POST">
+			<p>정말로 탈퇴하시겠습니까?</p>
+			<br />
+			<p>
+				정말 탈퇴를 원하시면 <br />현재 사용중인 비밀번호를 입력해주세요.
+			</p>
+			<input type="password" name="mb_pw" id="mb_pw">
+			<button id="Delecheck">탈퇴하기</button>
+		</form>
+		<div id="bg_layer"></div>
 		<div id="contents_layer"></div>
 	</div>
-	
+
 </body>
 
 <script>
-function MemberDelete() {
-	$('#articleView_layer').addClass('open');
-      //$("#articleView_layer").css('display','inline');
-      //$('#bg_layer').html('<input type="password" name="mb_pw" id="mb_pw">')
-}
-//ModalBox 해제
-var $layerWindow= $('#articleView_layer');
-$layerWindow.find('#bg_layer').on('mousedown',function(event){
-	console.log(event);
-	$layerWindow.removeClass('open');
-	
-});//function End
+	function MemberDelete() {
+		$('#articleView_layer').addClass('open');
+		//$("#articleView_layer").css('display','inline');
+		//$('#bg_layer').html('<input type="password" name="mb_pw" id="mb_pw">')
+	}
+	//ModalBox 해제
+	var $layerWindow = $('#articleView_layer');
+	$layerWindow.find('#bg_layer').on('mousedown', function(event) {
+		console.log(event);
+		$layerWindow.removeClass('open');
 
+	});//function End
 </script>
 </html>
 

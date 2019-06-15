@@ -14,6 +14,7 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.dao.ImemberDao;
+import com.designus.www.dao.ImypageDao;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 
@@ -23,6 +24,8 @@ public class MemberMM {
 	private ImemberDao mDao;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private ImypageDao pDao;
 
 	ModelAndView mav;
 	@Autowired
@@ -239,6 +242,18 @@ public class MemberMM {
 		}
 
 		return sb.toString();
+	}
+
+	public String mem() {
+		System.out.println("여기와요??ㅎㅎ");
+		String id=session.getAttribute("id").toString();
+		
+		System.out.println("여기는 올것 같은데...??ㅎㅎ");
+		Member mb=pDao.mypagemoveSelect(id);
+		System.out.println("과연 mb의 값은???"+mb);
+		Gson gsonObj = new Gson();
+		String jsonStr = gsonObj.toJson(mb);
+		return jsonStr;
 	}
 
 
