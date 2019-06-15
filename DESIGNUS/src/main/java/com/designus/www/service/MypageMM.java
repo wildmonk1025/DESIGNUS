@@ -862,13 +862,16 @@ public class MypageMM {
 		mav=new ModelAndView();
 		String view=null;
 		List<Notify> NoList = null;
+		List<AuctionProgress> apsList = null;
 		String id=session.getAttribute("id").toString();
 		//String grade=session.getAttribute("grade").toString();
 		Member mb=new Member();
 		mb=pDao.mypagemoveSelect(id);
 		NoList=pDao.notismypageSelect(id);
+		//apsList=pDao.AuctionProSelect(id);
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
+		
 		if(mb != null && NoList != null) {
 			mav.addObject("mb",mb);
 			mav.addObject("NoList", str);
