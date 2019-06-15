@@ -68,7 +68,7 @@ public class SponsorMM {
 		System.out.println("ssqty=" + ssqty);
 		System.out.println("scontents=" + scontents);
 
-		num = sDao.getSponserwri(sp);
+		/* num = sDao.getSponserwri(sp); */
 
 		sp.setSs_num(num);
 		if (sDao.getSponserwriterinsert(sp)) {

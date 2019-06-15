@@ -4,10 +4,10 @@
 
 <mapper namespace="com.designus.www.dao.IsponsorDao">
 
-	<select id="getSponserwri" parameterType="sponsor"
+<!-- 	<select id="getSponserwri" parameterType="sponsor"
 		resultType="Integer">
 		SELECT MAX(SS_NUM) FROM SS
-	</select>
+	</select> -->
 
 	<insert id="getSponserwriterinsert" parameterType="sponsor">
 		INSERT INTO SS
