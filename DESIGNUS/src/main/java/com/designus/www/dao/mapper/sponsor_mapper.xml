@@ -4,7 +4,8 @@
 
 <mapper namespace="com.designus.www.dao.IsponsorDao">
 
-	<select id="getSponserwri" parameterType="sponsor" resultType="Integer">
+	<select id="getSponserwri" parameterType="sponsor"
+		resultType="Integer">
 		SELECT MAX(SS_NUM) FROM SS
 	</select>
 
@@ -28,6 +29,9 @@
 		SELECT * FROM SPONVIEW WHERE SS_NUM =${ss_num}
 	</select>
 
+	<insert id="sponTenderInsert" parameterType="sponsor">
+		INSERT INTO SPONSORTENDER VALUES(${ss_num},#{ss_id})
+	</insert>
 
 	<insert id="sponuploadInsert" parameterType="sponsor">
 		INSERT INTO SS

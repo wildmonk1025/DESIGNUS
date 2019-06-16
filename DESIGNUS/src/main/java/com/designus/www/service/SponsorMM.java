@@ -115,11 +115,18 @@ public class SponsorMM {
 	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
 
 		Sponsor sm = new Sponsor();
+		Member mb = new Member();
 
 		System.out.println("후원 밀어주기??");
 		String view = null;
+
 		sm.setSs_num(ss_num);
 		String id = (String) session.getAttribute("id");
+
+		//
+
+		sm = sDao.sponTenderInsert(ss_num, id);
+
 		System.out.println(ss_num);
 		System.out.println(id);
 
