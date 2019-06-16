@@ -109,4 +109,16 @@ public class SponsorMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
+		System.out.println(ss_num);
+		System.out.println(ss_mbid);
+
+		Sponsor sm = new Sponsor();
+
+		sm.setSs_num(ss_num);
+		String id = (String) session.getAttribute("id");
+
+		return mav;
+	}
 }
