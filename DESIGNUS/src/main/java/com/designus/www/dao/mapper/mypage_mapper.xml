@@ -326,4 +326,16 @@
          WHERE  MB_ID=#{id} 
 
 	</select>
+	<select id="notismypageSelect" parameterType="String"
+		resultType="notify">
+		SELECT * FROM NF WHERE NF_MBID_R=#{id}
+	</select>
+	<delete id="fullDelete">
+		DELETE FROM NF
+		WHERE NF_MBID_R=#{id}
+	</delete>
+	<delete id="nodelete" parameterType="notify">
+		DELETE FROM NF
+		WHERE NF_NUM=${nf_num}
+	</delete>
 </mapper>

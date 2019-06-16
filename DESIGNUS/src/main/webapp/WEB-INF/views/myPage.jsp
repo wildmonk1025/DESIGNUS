@@ -27,6 +27,7 @@ div {
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	overflow: auto;
 }
 
 
@@ -173,7 +174,11 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
-
+#full{
+  position: absolute;
+	top: 210px;
+	left: 1100px;
+}
 </style>
 
 </head>
@@ -190,7 +195,7 @@ a:hover {
 		
 		<div id="rightmain">
 			<div id="notice">
-				<h2>알림</h2>
+				
 			</div>
 			<div id="renking">
 				<h1>랭킹</h1>
@@ -205,7 +210,32 @@ a:hover {
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+var nolist=${NoList};
+console.log(nolist);
+var main = "";
 
+    main+="<h2>알림</h2><a id='full' href='fullDelete'>전체 삭제</a><hr>"
+for (var i = 0; i < nolist.length; i++){
+	main+="<table border= 1px solid black><tr><th>보낸 아이디</th><th>받은 아이디</th><th>알림내용</th><th>삭제</th></tr>"
+	    +"<tr><td>"+nolist[i].nf_mbid_s+"</td><td>"+nolist[i].nf_mbid_r+"</td><td>"+nolist[i].nf_contents+"</td>"
+	    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr></table>"
+
+}
+$("#notice").html(main)
+
+var check=${check}
+console.log(1,check);
+$('#nod').click(function() {
+	if(check==1){
+		alert("삭제 성공 했습니다.");
+	}else{
+		alert("삭제 도중 오류가 발생 했습니다 1:1문의로 문의하세요.");
+	}
+});
+
+
+</script>
 
 
 </html>
