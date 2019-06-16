@@ -57,6 +57,14 @@ public class WBSController {
 		return "sc_112";
 	}
 	
+
+	@RequestMapping(value = "/sc_reportFrm" )
+	public ModelAndView sc_reportFrm(MultipartHttpServletRequest multi) {  
+		mav = new ModelAndView();
+		mav = sem.sc_reportFrm(multi);
+		return mav;
+	}
+	
 	//ajax
 	@RequestMapping(value = "/qnaselect",  method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
@@ -66,14 +74,6 @@ public class WBSController {
 		
 		return json;
 	}
-
-	@RequestMapping(value = "/sc_reportFrm" )
-	public ModelAndView sc_reportFrm(MultipartHttpServletRequest multi) {  
-		mav = new ModelAndView();
-		mav = sem.sc_reportFrm(multi);
-		return mav;
-	}
-	
 	
 	
 	
