@@ -53,4 +53,15 @@ public class AuctionControllerspon {
 
 		return mav;
 	}
+
+	@RequestMapping(value = "/sponbuy", method = RequestMethod.GET)
+	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
+
+		System.out.println("되고있나");
+		mav = new ModelAndView();
+		mav = sm.sponbuy(ss_num, ss_mbid);
+		System.out.println(sm.sponbuy(ss_num, ss_mbid));
+
+		return mav;
+	}
 }

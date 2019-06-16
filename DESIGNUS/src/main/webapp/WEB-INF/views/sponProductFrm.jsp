@@ -117,15 +117,17 @@ td {
 					<td class="ts2">${ss_goalqty}</td>
 					<td class="ts1">후원 기간</td>
 					<td class="ts2">Sponsor table</td>
-					<td class="ts1">현제 주문량</td>
+					<td class="ts1">현재 주문량</td>
 					<td class="ts2">0</td>
 				</tr>
 				<tr>
 					<td colspan="6" style="height: 150">${ss_contents}</td>
 				</tr>
 				<tr>
-					<td colspan="4"><button class="bt22">밀어주기</button></td>
-					<td colspan="2"><button class="bt22">목록보기</button></td>
+					<td colspan="4"><button class="bt22"
+							onclick="location.href='sponbuy'">밀어주기</button></td>
+					<td colspan="2"><button class="bt22"
+							onclick="location.href='sponsor'">목록보기</button></td>
 				</tr>
 			</table>
 			<table>
