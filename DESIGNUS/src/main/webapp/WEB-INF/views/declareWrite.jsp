@@ -90,15 +90,7 @@ ul {
 	</form>
 </body>
 <script>
-	/*     var x="";
-	 $("#declareinfo").addClass(function(){
-	 for(var j=0;j<10;j++) {
-	 x+="<tr><td>일반</td><td>번호</td><td>제목</td><td>피해자ID</td><td>피의자ID</td>"
-	 +"<td>위치</td><td>신고사유</td></tr><tr><td colspan=\"7\">내용</td></tr><tr>"
-	 +"<td colspan=\"7\">[첨부사진]</td></tr><br>";
-	 }
-	 $("#declareinfo").html(x);
-	 }); */
+
 	$(document).ready(
 			function() {
 				$.ajax({

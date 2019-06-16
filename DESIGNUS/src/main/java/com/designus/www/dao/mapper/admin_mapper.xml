@@ -26,5 +26,7 @@
 	<update id="getwarning" parameterType="member">
 		UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = #{mb_id}
 	</update>
-  
+	<select id="permitWriDetail" parameterType="membersearch" resultType="membersearch">
+		SELECT * FROM MBS WHERE MB_ID = #{mb_id}
+	</select>
 </mapper>
