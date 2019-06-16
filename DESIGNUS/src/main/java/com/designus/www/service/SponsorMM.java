@@ -123,9 +123,10 @@ public class SponsorMM {
 		sm.setSs_num(ss_num);
 		String id = (String) session.getAttribute("id");
 
-		//
+		//포인트 있을때만 밀어주기 가능하게 바꿔야함 
 
 		sm = sDao.sponTenderInsert(ss_num, id);
+		// 밀어주기 insert
 
 		System.out.println(ss_num);
 		System.out.println(id);
