@@ -146,6 +146,9 @@ div {
 	height: 100px;
 	text-align: left;
 }
+#eacheck{
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -255,9 +258,14 @@ div {
 							<option value="google">google.com</option>
 					</select></td> -->
 
-						<td><input id="Echeck" type="button" value="이메일 인증"
-							onclick="emailcheck()"></td>
+						<td><input id="sendRndNum" type="button" value="이메일 인증"></td>
 						<td><input id="joinhidden" type="hidden"></td>
+					</tr>
+					<tr id="eacheck">
+					<th>인증번호 입력</th>
+					<td><input id="emailNum" type="text"
+					     style="width: 300px; height: 30px"></td>
+						<td><input id="sendRndNumCheck" type="button" value="인증 확인"></td>
 					</tr>
 				</table>
 				<div id="checkbx">
@@ -487,5 +495,51 @@ div {
 			}
 		}).open();
 	}
+	//인증메일전송
+	var mail = null;
+	$('#sendRndNum').click(function() {
+		$.ajax({
+			url : "sendrndnum",
+			type : "post",
+			data :{"mb_email" : $("#mb_email").val()},
+			dataType : "html",
+			/*data:{m_id : $('#m_id').val(), sdf:"sdfsdfdfsdf"},*/
+			success : function(data) {
+				mail = data;
+				console.log("data" + data);
+				console.log("mail" + mail);
+				$("#eacheck").show();
+				alert("인증번호를  발송하였습니다");
+		
+		},
+
+			error : function(error) {
+
+				console.log(error);
+
+				alert(" 실패 ");
+
+			}
+		});//end ajax
+	});//end click
+	//인증번호 체크
+
+	$("#sendRndNumCheck").click(function() {
+
+		console.log(mail);
+
+		if ($("#emailNum").val() == mail) {
+
+			$('#joinbtn').prop("disabled", false);
+
+			alert("인증되었습니다")
+
+		} else {
+
+			alert("인증번호를 다시 확인해주세요")
+
+		}
+
+	});
 </script>
 </html>

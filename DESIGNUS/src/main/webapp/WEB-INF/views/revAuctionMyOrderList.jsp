@@ -446,64 +446,19 @@ position: absolute;
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
+	<div id="leftmain">
+
+			<jsp:include page="Mapagemain.jsp" />
+				
+			</div>
 <div id="total"></div>
 <div id="r1"></div>
 <div id="c1"></div>
 <div id="q1"></div>
-	<div id="mypagemain">
+	
 
-		<div id="leftmain">
-			<div id="img">
-				<h1>프로필사진</h1>
-			</div>
-
-			<div id="point">
-				<h1>포인트:</h1>
-			</div>
-
-			<div id="info">
-				<table width="1000">
-
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=rev">제작의뢰
-								내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=revre">제작의뢰
-								접수내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=auc">출품작
-								구매 내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=aucre">출품작
-								판매 내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=spon">후원진행
-								내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=sponre">후원요청
-								내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="historylist?list=basket">꿍
-								내역</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="privacyedit">개인정보 수정</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="memberout">회원탈퇴 신청</a></td>
-					</tr>
-					<tr>
-						<td style="font-size: 27px"><a href="nortowri">작가전환 신청</a></td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		
+		
 		<div id="rightmain">
 		<div id="revA"></div>
 		
@@ -573,7 +528,15 @@ for (var i = 0; i < revList.length; i++) {
 				}       
 		    main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
 		    	 +"<h3>완료</h3></div>";
-		}  
+		}else{
+			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
+		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
+		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
+		    if(revAList[i].ra_oc=="C"){
+			     main +="구매 종류 : 비공개</br>"	
+				}            
+		    main +="비공개 제작의뢰 요청중입니다... "
+		}    
 }
 
 

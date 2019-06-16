@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.Member;
+import com.designus.www.bean.Report;
 import com.designus.www.bean.Sponsor;
 import com.designus.www.bean.SponsorProgress;
 import com.designus.www.bean.revAuctionProgress;
@@ -30,6 +32,7 @@ public class SponsorMM {
 	private UploadFile upload;
 
 	Sponsor sp;
+	Member mb;
 
 	private ModelAndView mav;
 
@@ -44,41 +47,23 @@ public class SponsorMM {
 		int ssprice = Integer.parseInt(multi.getParameter("ss_price"));
 		int ssqty = Integer.parseInt(multi.getParameter("ss_goalqty"));
 		String scontents = multi.getParameter("ss_contents");
-
-		System.out.println("id2=" + id);
-		System.out.println("title2=" + sstitle);
-		/*
-		 * String id = (String) session.getAttribute("id"); String sstitle =
-		 * ss.getSs_title(); int ssprice = ss.getSs_price(); int ssqty =
-		 * ss.getSs_goalqty(); String scontents = ss.getSs_contents();
-		 */
+		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 
 		Sponsor sp = new Sponsor();
-
 		sp.setSs_mbid_w(id);
 		sp.setSs_title(sstitle);
 		sp.setSs_price(ssprice);
 		sp.setSs_goalqty(ssqty);
 		sp.setSs_contents(scontents);
 
-		System.out.println("id=" + id);
-		System.out.println("title=" + sstitle);
-		System.out.println("ssprice=" + ssprice);
-		System.out.println("ssqty=" + ssqty);
-		System.out.println("scontents=" + scontents);
-
+		sDao.sponuploadInsert(sp);
 		num = sDao.getSponserwri(sp);
 
 		sp.setSs_num(num);
-		if (sDao.getSponserwriterinsert(sp)) {
-			num = sDao.getSponserwri(sp);
-			sp.setSs_num(num);
-			upload.fileUpsponsor(multi, sp);
-			mav.addObject("ss_num", num);
-			view = "redirect:/sponsor";
-			System.out.println("num=" + num);
-		} else {
-			view = "sponregistration";
+		boolean f = false;
+		if (check == 1) {
+			f = upload.fileUpsponsor(multi, sp);
+			view = "sponsor";
 		}
 
 		mav.setViewName(view);
@@ -93,5 +78,59 @@ public class SponsorMM {
 		System.out.println(jsonObj);
 
 		return jsonObj;
+	}
+
+	public ModelAndView sponproduct(int ss_num) {
+		String view = null;
+		mav = new ModelAndView();
+
+		/*
+		 * List<Sponsor> spList = sDao.productinfo(); Gson gs = new Gson(); String
+		 * jsonObj = gs.toJson(spList); System.out.println(jsonObj);
+		 */
+
+		Sponsor sm = new Sponsor();
+		// ss.setSs_num(ss_num);
+		System.out.println("넘어오나용" + ss_num);
+		sm = sDao.getSponcheck(ss_num);
+		sm.setSs_num(ss_num);
+		if (ss_num == sm.getSs_num()) {
+			System.out.println("여긴뭐지");
+			mav.addObject("ss_num", sm.getSs_num());
+			mav.addObject("ss_mbid_w", sm.getSs_mbid_w());
+			mav.addObject("ss_title", sm.getSs_title());
+			mav.addObject("ssi_ssi_imgSysName", sm.getSsi_imgSysName());
+			mav.addObject("ss_contents", sm.getSs_contents());
+			mav.addObject("ss_price", sm.getSs_price());
+			mav.addObject("ss_goalqty", sm.getSs_goalqty());
+			mav.addObject("ss_date", sm.getSs_date());
+			view = "sponProductFrm";
+		} else {
+			view = "sponsor";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
+
+		Sponsor sm = new Sponsor();
+		Member mb = new Member();
+
+		System.out.println("후원 밀어주기??");
+		String view = null;
+
+		sm.setSs_num(ss_num);
+		String id = (String) session.getAttribute("id");
+
+		//포인트 있을때만 밀어주기 가능하게 바꿔야함 
+
+		sm = sDao.sponTenderInsert(ss_num, id);
+		// 밀어주기 insert
+
+		System.out.println(ss_num);
+		System.out.println(id);
+
+		return mav;
 	}
 }

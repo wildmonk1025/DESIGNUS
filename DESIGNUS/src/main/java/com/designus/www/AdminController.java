@@ -21,17 +21,20 @@ public class AdminController {
 	public String admininfo() {
 
 		return "adminInfo";
+		//관리자메인
 	}
 	@RequestMapping(value = "/permitWriDetail", method = RequestMethod.GET)
 	public String permitWriDetail() {
 		
 		return "permitWriDetail";
+		//작가전환신청
 	}
 
 	@RequestMapping(value = "/declareWrite", method = RequestMethod.GET)
 	public String declareWrite() {
 
 		return "declareWrite";
+		//신고하기
 	}
 
 	@RequestMapping(value = "/questionList", method = RequestMethod.GET)
@@ -70,11 +73,20 @@ public class AdminController {
 		System.out.println("ㅇㅇ?"+rp_mbid_a);
 		mav = adm.declareNonPermit(rp_num);
 		return mav;
+		//신고하기 부적합
 	}
 	@RequestMapping(value = "/declarepermit", method = RequestMethod.POST)
 	public ModelAndView declarepermit(int rp_num ,String mb_id) {
 		System.out.println("hh?");
 		mav = adm.declarepermit(rp_num,mb_id);
+		return mav;
+		//신고하기 적합
+	}
+	@RequestMapping(value = "/transformwridlist", method = RequestMethod.GET)
+	public ModelAndView transformwridlist(String mb_id) {
+		System.out.println("이거찍히니?"+mb_id);
+		mav = new ModelAndView();
+		mav = adm.transformwridlist(mb_id);
 		return mav;
 	}
 

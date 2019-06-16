@@ -326,4 +326,26 @@
          WHERE  MB_ID=#{id} 
 
 	</select>
+	<select id="notismypageSelect" parameterType="String"
+		resultType="notify">
+		SELECT * FROM NF WHERE NF_MBID_R=#{id}
+	</select>
+	<delete id="fullDelete">
+		DELETE FROM NF
+		WHERE NF_MBID_R=#{id}
+	</delete>
+	<delete id="nodelete" parameterType="notify">
+		DELETE FROM NF
+		WHERE NF_NUM=${nf_num}
+	</delete>
+	<select id="auctionInfoSelect" parameterType="notify" resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum}
+     ) where RankNo=1
+  ]]>
+	</select>
 </mapper>

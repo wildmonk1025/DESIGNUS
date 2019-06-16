@@ -504,41 +504,47 @@ public class UploadFile {
 
 	}
 
-	public String fileUpsponsor(MultipartHttpServletRequest multi, Sponsor sp) {
-		String root = multi.getServletContext().getRealPath("/");
-		System.out.println("폴더 업로드!!!!!되고있니 ");
+	public boolean fileUpsponsor(MultipartHttpServletRequest multi, Sponsor sp) {
+		System.out.println("fileUp");
+		// 1.이클립스의 물리적 저장경로 찾기
+		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
-		String path = root + "resources/sponupload/";
+		String path = root + "resources/upload/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
 			dir.mkdirs(); // upload폴더 생성 //s붙일경우 상위 지정폴더까지 생성해줌
 		}
 		// 3.파일을 가져오기-파일태그 이름들 반환
-		// String files=multi.getFileNames(); //파일태그가 2개이상일때
+		Iterator<String> files = multi.getFileNames(); // 파일태그가 2개이상일때
 		// List<MultipartFile> file = multi.getFiles("b_files");
+		List<MultipartFile> file = multi.getFiles("ssi_imgSysName");
+		Map<String, String> fMap = new HashMap<String, String>();
+		fMap.put("bnum", String.valueOf(sp.getSs_num()));
+		boolean f = false;
+		for (int i = 0; i < file.size(); i++) {
+			// 파일 메모리에 저장
+			MultipartFile mf = file.get(i); // 실제 업로드될 파일
+			String oriFileName = file.get(i).getOriginalFilename(); // a.txt
+			fMap.put("oriFileName", oriFileName);
+			// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
+			String sysFileName = System.currentTimeMillis() + "."
+					+ oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+			fMap.put("sysFileName", sysFileName);
 
-		MultipartFile files = multi.getFile("ssi_imgSysName");
-		// 파일 메모리에 저장
-		String oriFileName = files.getOriginalFilename(); // a.txt
-		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
-		String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
-		System.out.println("ori=" + oriFileName);
-		System.out.println("sys=" + sysFileName);
-		// 5.메모리->실제 파일 업로드
-		/*
-		 * System.out.println(session.getAttribute("id").toString());
-		 * System.out.println("세션 확인");
-		 */
-		try {
-			files.transferTo(new File(path + sysFileName));
+			// 5.메모리->실제 파일 업로드
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// for End
+			try {
+				mf.transferTo(new File(path + sysFileName));
+				f = sDao.sponuploadfileup(fMap);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} // for End
 
-		return sysFileName;
+		if (f)
+			return true;
+		return false;
 	}
 
 	public void ServiceUpload(MultipartHttpServletRequest multi, QuestionReply qr) {

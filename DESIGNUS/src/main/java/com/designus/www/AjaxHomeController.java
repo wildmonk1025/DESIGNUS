@@ -21,6 +21,7 @@ public class AjaxHomeController {
 	
 	@Autowired
 	private CommonMM cm;
+	@Autowired
 	private MemberMM mm;
 	
 	ModelAndView mav;
@@ -51,5 +52,13 @@ public class AjaxHomeController {
 		System.out.println("이거는??????");
 		return aa;	
 	} 
+	@RequestMapping(value = "/mem", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
+	public String mem() {
+     System.out.println("여기는 와야 정상인디... 아!! 메소드 방시 적어야 된다...ㅠㅠ");
+		String ab = mm.mem();
+	
+		return ab;
+
+	}
 	
 }

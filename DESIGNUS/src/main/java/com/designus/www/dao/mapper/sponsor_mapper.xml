@@ -24,4 +24,23 @@
 		SELECT * FROM SPONVIEW ORDER BY SS_DATE DESC
 	</select>
 
+	<select id="getSponcheck" parameterType="sponsor"
+		resultType="sponsor">
+		SELECT * FROM SPONVIEW WHERE SS_NUM =${ss_num}
+	</select>
+
+	<insert id="sponTenderInsert" parameterType="sponsor">
+		INSERT INTO SPONSORTENDER VALUES(${ss_num},#{ss_id})
+	</insert>
+
+	<insert id="sponuploadInsert" parameterType="sponsor">
+		INSERT INTO SS
+		VALUES
+		(SS_SEQ.NEXTVAL,#{ss_mbid_w},#{ss_title},${ss_price},${ss_goalqty},#{ss_contents},DEFAULT)
+	</insert>
+
+	<insert id="sponuploadfileup" parameterType="HashMap">
+		INSERT INTO SSI
+		VALUES (#{bnum},#{sysFileName})
+	</insert>
 </mapper>
