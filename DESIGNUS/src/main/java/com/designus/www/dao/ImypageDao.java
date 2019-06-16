@@ -128,5 +128,7 @@ public interface ImypageDao {
 
 	boolean nodelete(Notify nf);
 
+	List<AuctionProgress> auctionInfoSelect(String id);
+
   
 }

@@ -869,6 +869,8 @@ public class MypageMM {
 		mb=pDao.mypagemoveSelect(id);
 		NoList=pDao.notismypageSelect(id);
 		//apsList=pDao.AuctionProSelect(id);
+		apsList=pDao.auctionInfoSelect(id);
+		
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
 		

@@ -13,5 +13,6 @@ public class AuctionTender {
 	int    aut_price;
 	String aut_kind;
 	int    aut_qty;
-	String sut_date;
+	String aut_date;
+	
 }
