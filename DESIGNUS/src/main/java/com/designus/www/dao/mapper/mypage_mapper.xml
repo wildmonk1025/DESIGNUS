@@ -176,7 +176,7 @@
 	</select>
 	<delete id="autcancelDelete">
 		DELETE FROM AUT
-		WHERE AUT_NUM=${aup_ranum} AND
+		WHERE AUT_AUNUM=${aup_ranum} AND
 		AUT_MBID=#{aup_mbid_n} AND
 		AUT_DATE=to_date(#{aut_date}, 'RR/MM/DD HH24:MI:SS')
 	</delete>
