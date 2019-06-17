@@ -30,8 +30,6 @@ div {
 	overflow: auto;
 }
 
-
-
 #renking {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
@@ -142,6 +140,7 @@ a:hover {
 	width: 1400px;
 	height: 50px
 }
+
 #msg {
 	width: 50px;
 	height: 50px;
@@ -174,11 +173,24 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
-#full{
-  position: absolute;
-	top: 210px;
-	left: 1100px;
+
+#full {
+	float: right;
 }
+#nonw{
+  color: #BDBDBD;
+}
+#Participation{
+ margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+#sk{
+margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+
 </style>
 
 </head>
@@ -189,14 +201,12 @@ a:hover {
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
 		</div>
-		
+
 		<jsp:include page="Mapagemain.jsp" />
-			
-		
+
+
 		<div id="rightmain">
-			<div id="notice">
-				
-			</div>
+			<div id="notice"></div>
 			<div id="renking">
 				<h1>랭킹</h1>
 			</div>
@@ -212,15 +222,20 @@ a:hover {
 </body>
 <script type="text/javascript">
 var nolist=${NoList};
-console.log(nolist);
+console.log(1,nolist);
 var main = "";
 
-    main+="<h2>알림</h2><a id='full' href='fullDelete'>전체 삭제</a><hr>"
-for (var i = 0; i < nolist.length; i++){
-	main+="<table border= 1px solid black><tr><th>보낸 아이디</th><th>받은 아이디</th><th>알림내용</th><th>삭제</th></tr>"
-	    +"<tr><td>"+nolist[i].nf_mbid_s+"</td><td>"+nolist[i].nf_mbid_r+"</td><td>"+nolist[i].nf_contents+"</td>"
-	    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr></table>"
 
+    main+="<h3 id='hh2'>알림</h3><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
+        +"<table id='sk' border= 1px solid black><tr><th>보낸 아이디</th><th>받은 아이디</th><th>알림내용</th><th>삭제</th></tr>"
+for (var i = 0; i < nolist.length; i++){
+	  if(nolist[i].nf_check==0){
+	main+="<tr ><td>"+nolist[i].nf_mbid_s+"</td><td>"+nolist[i].nf_mbid_r+"</td><td>"+nolist[i].nf_contents+"</td>"
+	    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr></table>"
+  }else if(nolist[i].nf_check==1){
+	  main+="<tr id='nonw'><td>"+nolist[i].nf_mbid_s+"</td><td>"+nolist[i].nf_mbid_r+"</td><td>"+nolist[i].nf_contents+"</td>"
+		    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr></table>"
+  }
 }
 $("#notice").html(main)
 
@@ -237,20 +252,24 @@ $('#nod').click(function() {
 var toMap=${toMap};
 
 var str="";
-console.log(23,toMap.apsList);
-console.log(24,toMap.maxpList);
-   for(var i=0;i<toMap.apsList.lenght;i++){
-    for(var j=0;j<toMap.maxpList.lenght;j++ ){
-    	str+="<h3>참여중인 출품경매</h3>"
-    	   +"상품명 :"+toMap.apsList[i].au_title
-    	   +"나의 금액 :"+toMap.apsList[i].aut_price
-    	   +"최고금액 :"+toMap.maxpList[j]
-    	   +"<a href='moveAuction'>경매장으로가기</a>"
-    	   +"<a href='AuctionGiveUp'>경매포기하기ㅠㅠ</a> "
-    	   +"종료일 :"+toMap.apsList[i].au_date+"<br><hr>"
+console.log(12,toMap)
+str+="<h3>참여중인 출품경매</h3>"
+   +"<table id='Participation' border= 1px solid black><tr><td>상품명</td><td>나의금액</td><td>최고금액</td><td>경매장으로가기</td><td>경매포기하기</td><td>경매종료일</td></tr>"
+   for(var i=0;i<toMap.apsList.length;i++){
+	   for(var j=0;j<toMap.maxpList.length;j++ ){
+    	   str+="<tr><td>"+toMap.apsList[i].au_title+"</td>"
+    	   +"<td>"+toMap.apsList[i].aut_price+"</td>"
+    	   +"<td>"+toMap.maxpList[j]+"</td>"
+    	   +"<td><a href='auctionRead?au_num="+toMap.apsList[i].aut_aunum+"'>移動</a></td>"
+    	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap.apsList[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
+    	   +"<td>"+toMap.apsList[i].au_date+"</td></tr>";
     }
-} 
+   }
+   str+="</table>";
    $('#auction').html(str)
+   
+    	
+   
 </script>
 
 

@@ -91,4 +91,28 @@
 		SELECT * FROM MBS WHERE MB_ID LIKE #{mb_id}||'%' AND MB_GRADE='W'
 	</select>
 	
+	<insert id="setNotifyrevAuctionW" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_w},#{rap_mbid_n},#{rap_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyrevAuctionN" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_n},#{rap_mbid_n},#{rap_notify},0,DEFAULT)
+	</insert>
+
+	<select id="selectNID" parameterType="revauctiontender" resultType="String">
+		SELECT RA_MBID FROM RA WHERE RA_NUM = ${rat_ranum}
+	</select>
+
+	<insert id="setNotifyrevAuctionApply" parameterType="revauctiontender">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rat_mbid_n},#{rat_mbid_w},#{rat_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyrevAuctionPickN" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_n},DEFAULT,#{rap_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyrevAuctionPickW" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_w},#{rap_mbid_n},#{rap_notify},0,DEFAULT)
+	</insert>
+
 </mapper>

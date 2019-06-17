@@ -28,12 +28,61 @@ div{
 
 #search {
 	margin-left: 100px;
-	padding-left: 120px;
+	padding-left: 60px;
 	padding-right: 20px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 550px;
+	height: 50px;
 	float: left;
+}
+
+#searchbox {
+	width: 390px;
+	height: 40px;
+	float: left;
+}
+
+#searchtxt {
+	width: 370px;
+	height: 40px;
+	align: center;
+	background-color: none;
+	border: 2px solid coral;
+}
+
+#searchtxt:focus {
+	outline: none;
+}
+
+#searchbtn {
+	width: 50px;
+	height: 40px;
+	margin-left: -75px;
+	display: inline;
+	font-size: 1.1em;
+	font-style: italic;
+	box-sizing: border-box;
+	outline: none;
+	background: none;
+	border: none;
+	color: gray;
+}
+#searchbtn:hover {
+	color: coral;
+}
+
+#searchbtn:active {
+	position:relative;
+	top:1px;
+}
+
+#ranking {
+	width: 150px;
+	height: 30px;
+	float: left;
+	padding-top: 12px;
+	font-size: 12px;
 }
 
 #loginwriter {
@@ -50,17 +99,12 @@ div{
 	height: 50px;
 }
 
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
-}
+
 
 #subcategory {
 	width: 50px;
 	height: 50px;
-	background-color: orange;
+	background-color: coral;
 	color: white;
 	font-size: 30px;
 	float: left;
@@ -134,15 +178,13 @@ nav {
 }
 
 .menu-item {
-	background: #fff;
+	background: coral;
 	width: 200px;
 }
 
 /*Menu Header Styles*/
 .menu-item h4 {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
-	color: #fff;
+	color: white;
 	font-size: 15px;
 	font-weight: 500;
 	padding: 7px 12px;
@@ -150,8 +192,9 @@ nav {
 
 /*ul Styles*/
 .menu-item ul {
-	background: orange;
+	background: #FFC19E;
 	font-size: 13px;
+	font-weight: 400;
 	line-height: 30px;
 	height: 0px;
 	list-style-type: none;
@@ -181,9 +224,9 @@ nav {
 	transition: height 1s ease;
 }
 
-/*li Styles*/
-.menu-item li {
-	border-bottom: 1px solid #eee;
+.menu-item li:hover{
+	font-weight: 900;
+	background-color: white;
 }
 
 a:active {
@@ -207,12 +250,14 @@ a:hover {
 }
 
 #revauctionbtn, #auctionbtn {
-	background-color: orange;
+	background-color: coral;
 	width: 150px;
 	height: 30px;
 	color: white;
 	float: right;
 }
+
+
 </style>
 <meta charset="UTF-8">
 
@@ -228,8 +273,13 @@ a:hover {
 		</div>
 
 		<div id="search">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
-			<button id="searchbtn" onclick="asd()">검색</button>
+			<div id="searchbox">
+			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
+			<button id="searchbtn" onclick="asd()">Search</button>
+			</div>
+			<div id="ranking">
+			가나다다라마바사
+			</div>
 		</div>
 		<div id="loginwriter">
 			<div id="adminpage">
@@ -292,7 +342,7 @@ a:hover {
 	<div id="category">
 		<div id="subcategory" align="center" class="menu-item">
 			<h4>
-				<a href="#"><h2>三</h2></a>
+				<a href="#"><h2>≡</h2></a>
 			</h4>
 			<nav>
 				<ul>
@@ -362,6 +412,37 @@ a:hover {
 		console.log(a);
 	}
 	console.log(a);
-	console.log('새로고침')
+	console.log('새로고침');
+	
+	
+	$(document).ready(function() {
+		$.ajax({
+    		type:'POST',
+    		url:'ajax/searchranking',
+    		dataType:'json',
+    		success: function(data) {
+    			console.log("성공");
+    			var str='';
+    			var major='';
+
+    			for(var i in data) {
+    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
+    			var n = data[i].mj_cgcode;
+    			str+="<div class='writerInfo_lv3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
+    			$("#writer_Info"+i).html(str);
+    			}
+    			
+    			for(var y=0;y<6;y++) {
+    				for(var z=0;z<=i;z++) {    					
+    				$("#writer_Info"+z).css("display","block");
+    				$("#writer_Info"+y).css("display","none");
+    					}
+    				}
+    		},
+			error: function(error) {
+    		}
+    	}); //ajax End
+	});
+	
 </script>
 </html>

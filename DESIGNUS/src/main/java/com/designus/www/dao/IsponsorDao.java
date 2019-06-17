@@ -30,6 +30,6 @@ public interface IsponsorDao {
 
 	Sponsor sponTenderInsert(SponsorTender st);
 
-	Sponsor sponbuy(SponsorTender st);
+	Sponsor sponbuy(SponsorProgress sp);
 
 }
