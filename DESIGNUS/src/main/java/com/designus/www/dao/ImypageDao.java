@@ -133,5 +133,7 @@ public interface ImypageDao {
 
 	List<Integer> auctionMaxSelect(@Param("aut_aunum") int aut_aunum);
 
+	boolean AuctionGiveUpDelete(AuctionTender at);
+
   
 }

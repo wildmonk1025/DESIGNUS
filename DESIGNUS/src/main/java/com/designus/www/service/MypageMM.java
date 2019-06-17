@@ -1,6 +1,5 @@
 package com.designus.www.service;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -473,7 +472,7 @@ public class MypageMM {
 		boolean a = pDao.auccancelDelete(ap);
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
 		System.out.println("aaaaa : " + a);
-		String date=ap.getAut_date().substring(0, 19);
+		String date = ap.getAut_date().substring(0, 19);
 		ap.setAut_date(date);
 		if (a) {
 			boolean b = pDao.autcancelDelete(ap);
@@ -693,41 +692,42 @@ public class MypageMM {
 	@Transactional
 	public ModelAndView revaucinfocancel(revAuctionProgress rap, Notify ni) {
 		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 시작");
-		String view=null;
-		String nf_mbid_r=rap.getRap_mbid_w();
-    	String nf_mbid_s=rap.getRap_mbid_n();
-    	ni.setNf_mbid_r(nf_mbid_r);
-    	ni.setNf_mbid_s(nf_mbid_s);
+		String view = null;
+		String nf_mbid_r = rap.getRap_mbid_w();
+		String nf_mbid_s = rap.getRap_mbid_n();
+		ni.setNf_mbid_r(nf_mbid_r);
+		ni.setNf_mbid_s(nf_mbid_s);
 		mav = new ModelAndView();
-     boolean can = pDao.revaucinfocancelDelete(rap);
-     System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트1 can 값 :"+can);
+		boolean can = pDao.revaucinfocancelDelete(rap);
+		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트1 can 값 :" + can);
 		if (can) {
 			System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트2 위치 확인");
 			if (rap.getRa_mbid() == rap.getRap_mbid_n()) {
 				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트3 위치 확인");
-                boolean up=pDao.revaucinfocancelupDate(rap);
-                System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트4 up 값 :"+up);
-                if(up) {
-                	System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트5 위치 확인");
-                	
-                	pDao.revaucinfocancelInsert(ni);
-                	  System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트6 위치 확인");
-                	view="redirect:/revAuctionMyOrderList";
-                }
-			}else {
+				boolean up = pDao.revaucinfocancelupDate(rap);
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트4 up 값 :" + up);
+				if (up) {
+					System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트5 위치 확인");
+
+					pDao.revaucinfocancelInsert(ni);
+					System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트6 위치 확인");
+					view = "redirect:/revAuctionMyOrderList";
+				}
+			} else {
 				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트7 위치 확인");
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트8 getNf_mbid_r:"+ni.getNf_mbid_r());
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트9 getNf_mbid_s:"+ni.getNf_mbid_s());
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트10 getNf_contents:"+ni.getNf_contents());
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트8 getNf_mbid_r:" + ni.getNf_mbid_r());
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트9 getNf_mbid_s:" + ni.getNf_mbid_s());
+				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트10 getNf_contents:" + ni.getNf_contents());
 				pDao.revaucinfocancelInsert(ni);
 				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트11 위치 확인");
-				view="redirect:/revAuctionMyOrderList";
+				view = "redirect:/revAuctionMyOrderList";
 			}
 		}
 		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 마무리");
 		mav.setViewName(view);
 		return mav;
 	}
+
 	@Transactional
 	public ModelAndView revAuctionMyAcceptList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
@@ -737,18 +737,18 @@ public class MypageMM {
 		String view = null;
 		int num = (pageNum == null) ? 1 : pageNum;
 		revAList = pDao.revAuctionMyAcceptList(id, num);
-		if(revAList.size() !=0) {
-			
-		Gson gson = new Gson();
-		String str = gson.toJson(revAList);
-		mav.addObject("revAList", str);
-		mav.addObject("RApaging", getRAaging(num, kind));
-		System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 3 페이지징 완료 ");
-		view = "revAuctionMyAcceptList";
-		
-		}else if(revAList.size()==0) {
+		if (revAList.size() != 0) {
+
+			Gson gson = new Gson();
+			String str = gson.toJson(revAList);
+			mav.addObject("revAList", str);
+			mav.addObject("RApaging", getRAaging(num, kind));
+			System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 3 페이지징 완료 ");
+			view = "revAuctionMyAcceptList";
+
+		} else if (revAList.size() == 0) {
 			System.out.println("(서비스클래스)제작의뢰 접수내역 중간지점 4 위치확인 ");
-			view="revAuctionMyAcceptList";
+			view = "revAuctionMyAcceptList";
 		}
 		mav.setViewName(view);
 		System.out.println("(서비스클래스)제작의뢰 접수내역 마무리");
@@ -786,7 +786,7 @@ public class MypageMM {
 	public ModelAndView revdelinumupload(revAuctionProgress rap) {
 		mav = new ModelAndView();
 		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 시작");
-		boolean a = pDao.revdelinumupload(rap);		
+		boolean a = pDao.revdelinumupload(rap);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 마무리");
 		mav.setViewName("redirect:/revAuctionMyAcceptList");
 
@@ -805,6 +805,7 @@ public class MypageMM {
 		System.out.println("(메니저먼트) 구매 후기및 수령확인 마무의리");
 		return json;
 	}
+
 	@Transactional
 	public ModelAndView boardapply(MultipartHttpServletRequest multi) {
 		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 스타트");
@@ -842,10 +843,10 @@ public class MypageMM {
 			if (f) {
 				boolean c = pDao.revmemberpointup(rap);
 				if (c) {
-					System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 8 c :확인 "+c );
+					System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 8 c :확인 " + c);
 					boolean d = pDao.revBoardyhWriteupDate(rap);
 					if (d) {
-						System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 7 위치값 확인 " );
+						System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 7 위치값 확인 ");
 						view = "redirect:/revAuctionMyOrderList";
 					} else {
 						view = "myPage";
@@ -861,74 +862,89 @@ public class MypageMM {
 	}
 
 	public ModelAndView mypagemove() {
-		mav=new ModelAndView();
-		String view=null;
+		mav = new ModelAndView();
+		String view = null;
 		List<Notify> NoList = null;
 		List<AuctionTender> apsList = null;
-		List<Integer> maxpList=null;
-        HashMap<Object,Object> apsMap=new HashMap<Object, Object>();
-		String id=session.getAttribute("id").toString();
-		//String grade=session.getAttribute("grade").toString();
-		Member mb=new Member();
-		mb=pDao.mypagemoveSelect(id);
-		NoList=pDao.notismypageSelect(id);
-		//apsList=pDao.AuctionProSelect(id);
-		apsList=pDao.auctionInfoSelect(id);
-		
-		
-		 for(int i=0; i<apsList.size(); i++) {
-		 maxpList=pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()); 
-		 }
-		 
+		List<Integer> maxpList = null;
+		HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
+		String id = session.getAttribute("id").toString();
+		// String grade=session.getAttribute("grade").toString();
+		Member mb = new Member();
+		mb = pDao.mypagemoveSelect(id);
+		NoList = pDao.notismypageSelect(id);
+		// apsList=pDao.AuctionProSelect(id);
+		apsList = pDao.auctionInfoSelect(id);
+
+		for (int i = 0; i < apsList.size(); i++) {
+			maxpList = pDao.auctionMaxSelect(apsList.get(i).getAut_aunum());
+		}
+
 		apsMap.put("apsList", apsList);
 		apsMap.put("maxpList", maxpList);
-		
-		//apsMap.put("maxpList",maxpList);
+
+		// apsMap.put("maxpList",maxpList);
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
-		
+
 		String toMap = gson.toJson(apsMap);
-		
-		if(mb != null && NoList != null && apsMap!=null) {
-			mav.addObject("mb",mb);
+
+		if (mb != null && NoList != null && apsMap != null) {
+			mav.addObject("mb", mb);
 			mav.addObject("NoList", str);
 			mav.addObject("toMap", toMap);
-			view="myPage";
-		}else {
-			view="home";
+			view = "myPage";
+		} else {
+			view = "home";
 		}
 		mav.setViewName(view);
 		return mav;
 	}
 
 	public ModelAndView fullDelete() {
-		mav=new ModelAndView();
-		String view=null;
-		String id=session.getAttribute("id").toString();
-		boolean d=pDao.fullDelete(id);
-		if(d) {
-			//mav.addObject("check", 1);
-			view="myPage";
-		}else {
-			//mav.addObject("check", 2);
-			view="myPage";
+		mav = new ModelAndView();
+		String view = null;
+		String id = session.getAttribute("id").toString();
+		boolean d = pDao.fullDelete(id);
+		if (d) {
+			// mav.addObject("check", 1);
+			view = "redirect:/mypage";
+		} else {
+			// mav.addObject("check", 2);
+			view = "myPage";
 		}
 		mav.setViewName(view);
 		return mav;
 	}
 
 	public ModelAndView nodelete(Notify nf) {
-		mav=new ModelAndView();
-		String view=null;
-		String id=session.getAttribute("id").toString();
-		boolean d=pDao.nodelete(nf);
-		if(d) {
+		mav = new ModelAndView();
+		String view = null;
+
+		boolean d = pDao.nodelete(nf);
+		if (d) {
 			mav.addObject("check", 1);
-			view="myPage";
-		}else {
+			view = "redirect:/mypage";
+		} else {
 			mav.addObject("check", 2);
-			view="myPage";
+			view = "myPage";
 		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView AuctionGiveUp(AuctionTender at, String kind) {
+		mav = new ModelAndView();
+		String view = null;
+		String id = session.getAttribute("id").toString();
+		at.setAut_mbid(id);
+		if (kind.equals("Aut")) {
+			boolean f = pDao.AuctionGiveUpDelete(at);
+			if (f) {
+				view = "redirect:/mypage";
+			}
+		}
+
 		mav.setViewName(view);
 		return mav;
 	}

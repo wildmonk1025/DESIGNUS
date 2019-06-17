@@ -163,6 +163,28 @@ public class AdminMM {
 		return jsonObj;
 	}
 
+	public ModelAndView tcommentandrefuse(String mb_id) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean k=iDao.getreAuthorfuse(mb_id);
+		System.out.println("아이디와?"+mb_id);
+		
+		view = "permitWriApply";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView tcommentandapply(String mb_id) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean k=iDao.getreAuthoragree(mb_id);
+		System.out.println("아이디와?"+mb_id);
+		
+		view = "permitWriApply";
+		mav.setViewName(view);
+		return mav;
+	}
+
 	
 
 }

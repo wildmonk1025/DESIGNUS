@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.AuctionProgress;
+import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
@@ -85,156 +86,182 @@ public class MypageController {
 
 	@RequestMapping(value = "/basketFrm", method = RequestMethod.GET)
 
-	public ModelAndView basketFrm(Integer pageNum ,String kind) {
+	public ModelAndView basketFrm(Integer pageNum, String kind) {
 		System.out.println("여기로 와야 하는데..111122..");
-		System.out.println("카인드 뭐야??"+kind);
+		System.out.println("카인드 뭐야??" + kind);
 		mav = new ModelAndView();
-		 mav=pm.basketFrm(pageNum,kind);
+		mav = pm.basketFrm(pageNum, kind);
 		return mav;
 	}
+
 	@RequestMapping(value = "/basketFrmrev", method = RequestMethod.GET)
 
-	public ModelAndView lbrev(Integer pageNum ,String kind) {
+	public ModelAndView lbrev(Integer pageNum, String kind) {
 		System.out.println("여기로 와야 하는데...2222.");
-		System.out.println("카인드 뭐야??"+kind);
+		System.out.println("카인드 뭐야??" + kind);
 		mav = new ModelAndView();
-		 mav=pm.basketFrmrev(pageNum,kind);
+		mav = pm.basketFrmrev(pageNum, kind);
 		return mav;
 	}
+
 	@RequestMapping(value = "/basketFrmspon", method = RequestMethod.GET)
 
-	public ModelAndView basketFrmspon(Integer pageNum ,String kind) {
+	public ModelAndView basketFrmspon(Integer pageNum, String kind) {
 		System.out.println("여기로 와야 하는데....1111");
-		System.out.println("카인드 뭐야??"+kind);
+		System.out.println("카인드 뭐야??" + kind);
 		mav = new ModelAndView();
-		 mav=pm.basketFrmspon(pageNum,kind);
+		mav = pm.basketFrmspon(pageNum, kind);
 		return mav;
 	}
-	@RequestMapping(value = "/auctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
 
-	public ModelAndView auctionMyOrderList(Integer pageNum ,String kind) {
+	@RequestMapping(value = "/auctionMyOrderList", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView auctionMyOrderList(Integer pageNum, String kind) {
 		System.out.println("(컨트롤러)출품 구매 내역 리스트 시작!!");
 		mav = new ModelAndView();
-		 mav=pm.auctionMyOrderList(pageNum,kind);
-		 System.out.println("(컨트롤러)출품 구매 내역 리스트 마무리!!");
+		mav = pm.auctionMyOrderList(pageNum, kind);
+		System.out.println("(컨트롤러)출품 구매 내역 리스트 마무리!!");
 		return mav;
 	}
-	@RequestMapping(value = "/aucapply", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/aucapply", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView aucapply(AuctionProgress ap) {
 		System.out.println("(컨트롤러) 배송정보 입력 하기 시작!!!");
 		mav = new ModelAndView();
-		 mav=pm.aucapply(ap);
-		 System.out.println("(컨트롤러) 배송정보 입력 하기 마무리!!!");
+		mav = pm.aucapply(ap);
+		System.out.println("(컨트롤러) 배송정보 입력 하기 마무리!!!");
 		return mav;
 	}
-	@RequestMapping(value = "/reviewBoardWrite", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/reviewBoardWrite", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView reviewBoardWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
-	    System.out.println("[컨트롤러].reviewBoardWrite:시작");
-		 mav=pm.reviewBoardyhWrite(multi);
-		 System.out.println("[컨트롤러].reviewBoardWrite:마무리!!");
+		System.out.println("[컨트롤러].reviewBoardWrite:시작");
+		mav = pm.reviewBoardyhWrite(multi);
+		System.out.println("[컨트롤러].reviewBoardWrite:마무리!!");
 		return mav;
 	}
+
 	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView auccancel(AuctionProgress ap) {
-		mav=new ModelAndView();
+		mav = new ModelAndView();
 		System.out.println("(컨트롤러)출품구매 취소 시작");
 		System.out.println("이게 작가 아이디인데....=" + ap);
-		mav=pm.auccancel(ap);
+		mav = pm.auccancel(ap);
 		System.out.println("(컨트롤러)출품구매 취소 마무의리");
 		return mav;
 
 	}
-	@RequestMapping(value = "/auctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
 
-	public ModelAndView auctionMyAcceptList(Integer pageNum ,String kind) {
+	@RequestMapping(value = "/auctionMyAcceptList", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView auctionMyAcceptList(Integer pageNum, String kind) {
 		System.out.println("아니 여긴 오는거 맞아??");
 		mav = new ModelAndView();
-		mav=pm.auctionMyAcceptList(pageNum,kind);
+		mav = pm.auctionMyAcceptList(pageNum, kind);
 		return mav;
 	}
-	@RequestMapping(value = "/delinumupload", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/delinumupload", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView delinumupload(AuctionProgress ap) {
 		System.out.println("아니 여긴 오는거 맞아??");
 		mav = new ModelAndView();
-		 mav=pm.delinumupload(ap);
-		 
+		mav = pm.delinumupload(ap);
+
 		return mav;
 	}
-	@RequestMapping(value = "/revAuctionMyOrderList", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView revAuctionMyOrderList(Integer pageNum ,String kind) {
+
+	@RequestMapping(value = "/revAuctionMyOrderList", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView revAuctionMyOrderList(Integer pageNum, String kind) {
 		System.out.println("(컨트롤러)제작의뢰  시작");
 		mav = new ModelAndView();
-		 mav=pm.revAuctionMyOrderList(pageNum,kind);
-		 System.out.println("(컨트롤러)제작의뢰  마무리"); 
+		mav = pm.revAuctionMyOrderList(pageNum, kind);
+		System.out.println("(컨트롤러)제작의뢰  마무리");
 		return mav;
 	}
-	@RequestMapping(value = "/requestby", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/requestby", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView requestby(revAuctionProgress rap) {
 		System.out.println("(컨트롤러)제작의뢰 스텝1 요청 시작");
 		mav = new ModelAndView();
-		 mav=pm.requestby(rap);
-		 System.out.println("(컨트롤러)제작의뢰 스텝1 요청 마무리");
+		mav = pm.requestby(rap);
+		System.out.println("(컨트롤러)제작의뢰 스텝1 요청 마무리");
 		return mav;
 	}
-	@RequestMapping(value = "/revaucinfocancel", method = {RequestMethod.GET,RequestMethod.POST})
 
-	public ModelAndView revaucinfocancel(revAuctionProgress rap,Notify ni) {
+	@RequestMapping(value = "/revaucinfocancel", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView revaucinfocancel(revAuctionProgress rap, Notify ni) {
 		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 시작");
 		mav = new ModelAndView();
-		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 1 ranum:"+rap.getRap_ranum());
-		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 2 mbidw:"+rap.getRap_mbid_w());
-		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 3 contents:"+ni.getNf_contents());
-		
-		 mav=pm.revaucinfocancel(rap,ni);
-		 System.out.println("(컨트롤러)제작의뢰 스텝1 취소 마무리");
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 1 ranum:" + rap.getRap_ranum());
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 2 mbidw:" + rap.getRap_mbid_w());
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 중간테스트 3 contents:" + ni.getNf_contents());
+
+		mav = pm.revaucinfocancel(rap, ni);
+		System.out.println("(컨트롤러)제작의뢰 스텝1 취소 마무리");
 		return mav;
 	}
-	@RequestMapping(value = "/revAuctionMyAcceptList", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView revAuctionMyAcceptList(Integer pageNum ,String kind) {
+
+	@RequestMapping(value = "/revAuctionMyAcceptList", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView revAuctionMyAcceptList(Integer pageNum, String kind) {
 		System.out.println("(컨트롤러)제작의뢰 접수내역  시작");
 		mav = new ModelAndView();
-		 mav=pm.revAuctionMyAcceptList(pageNum,kind);
-		 System.out.println("(컨트롤러)제작의뢰 접수내역   마무리"); 
+		mav = pm.revAuctionMyAcceptList(pageNum, kind);
+		System.out.println("(컨트롤러)제작의뢰 접수내역   마무리");
 		return mav;
 	}
-	@RequestMapping(value = "/revdelinumupload", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/revdelinumupload", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView revdelinumupload(revAuctionProgress rap) {
 		System.out.println("(컨트롤러)제작의뢰 스텝3 배송보내기 시작");
 		mav = new ModelAndView();
-		 mav=pm.revdelinumupload(rap);
-		 System.out.println("(컨트롤러)제작의뢰 스텝1 배송보내기 마무리");
+		mav = pm.revdelinumupload(rap);
+		System.out.println("(컨트롤러)제작의뢰 스텝1 배송보내기 마무리");
 		return mav;
 	}
-	@RequestMapping(value = "/boardapply", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/boardapply", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView boardapply(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
-	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
-		 mav=pm.boardapply(multi);
-		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		mav = pm.boardapply(multi);
+		System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
 		return mav;
 	}
-	@RequestMapping(value = "/fullDelete", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/fullDelete", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView fullDelete() {
 		mav = new ModelAndView();
-	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
-		 mav=pm.fullDelete();
-		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		mav = pm.fullDelete();
+		System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
 		return mav;
 	}
-	@RequestMapping(value = "/nodelete", method = {RequestMethod.GET,RequestMethod.POST})
+
+	@RequestMapping(value = "/nodelete", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView nodelete(Notify nf) {
 		mav = new ModelAndView();
-	    System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
-		 mav=pm.nodelete(nf);
-		 System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		mav = pm.nodelete(nf);
+		System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		return mav;
+	}
+
+	@RequestMapping(value = "/AuctionGiveUp", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView AuctionGiveUp(AuctionTender at,String kind) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
+		mav = pm.AuctionGiveUp(at,kind);
+		System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
 		return mav;
 	}
 }

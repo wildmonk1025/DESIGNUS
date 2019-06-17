@@ -110,8 +110,9 @@ height: 60px;
 		</ul>
 	</div>
 	<div id="adminwriterjoinfrm">
+	<form name="formName" method="post">
 		<div class="writerjoinfrm">
-		<form name="formName" method="post">
+		
 			<div id="writerjointitlefrm">
 			
 				<p>작가 가입요청 관리</p>
@@ -136,13 +137,14 @@ height: 60px;
 					</tr>
 					
 				</table>
-				
+			<input type="button" value="가입 거절" onclick="a();" class="btn"/>
+			<input type="button" value="가입 승인" onclick="b();" class="btn"/>
 			</div>
-			<button id="writerjoinno" onclick="a();">가입 거절</button>
+		
 			
-			<button id="writerjoinok" onclick="b();">가입 승인</button>
-			</form>
+			
 		</div>
+		</form>
 	</div>
 </body>
 <script>
@@ -158,9 +160,7 @@ function b() {
 	f.action = "tcommentandapply?mb_id=${mb_id}";
 	f.submit();
 }
-function goBack() {
-	window.history.forward();
-}
+
 </script>
 
 </html>
