@@ -23,12 +23,6 @@ public class AdminController {
 		return "adminInfo";
 		//관리자메인
 	}
-	@RequestMapping(value = "/permitWriDetail", method = RequestMethod.GET)
-	public String permitWriDetail() {
-		
-		return "permitWriDetail";
-		//작가전환신청상세
-	}
 
 	@RequestMapping(value = "/declareWrite", method = RequestMethod.GET)
 	public String declareWrite() {
@@ -82,12 +76,12 @@ public class AdminController {
 		return mav;
 		//신고하기 적합
 	}
-	@RequestMapping(value = "/transformwridlist", method = RequestMethod.GET)
-	public ModelAndView transformwridlist(String mb_id) {
+	@RequestMapping(value = "/permitWriDetail", method = RequestMethod.GET)
+	public ModelAndView permitWriDetail(String mb_id) {
 		System.out.println("이거찍히니?"+mb_id);
 		mav = new ModelAndView();
-		mav = adm.transformwridlist(mb_id);
+		mav = adm.permitWriDetail(mb_id);
 		return mav;
 	}
-		//
+		
 }
