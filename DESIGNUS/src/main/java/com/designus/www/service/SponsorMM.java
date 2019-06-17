@@ -14,6 +14,7 @@ import com.designus.www.bean.Member;
 import com.designus.www.bean.Report;
 import com.designus.www.bean.Sponsor;
 import com.designus.www.bean.SponsorProgress;
+import com.designus.www.bean.SponsorTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IsponsorDao;
 import com.designus.www.userClass.UploadFile;
@@ -125,21 +126,22 @@ public class SponsorMM {
 		String grade = (String) session.getAttribute("grade");
 
 		System.out.println("회원등급=" + grade);
+		SponsorTender st = new SponsorTender();
+
+		st.setSst_mbid(id);
+		st.setSst_ssnum(ss_num);
 
 		// 포인트 있을때만 밀어주기 가능하게 바꿔야함
-		if (ss_num == sm.getSs_num()) {
-			sm = sDao.sponTenderInsert(ss_num, id);
-			// 밀어주기 insert
-			sm = sDao.sponbuy(ss_num, id);
-			// 후원 거래내역 insert
-			view = "sponsor";
-		} else {
-			System.out.println("안되고있음");
-			view = "sponsor";
-		}
+		sDao.sponTenderInsert(st);
+		// 밀어주기 insert
+		sDao.sponbuy(st);
+		// 후원 거래내역 insert
+		view = "sponsor";
+
 		System.out.println(ss_num);
 		System.out.println(id);
 
+		mav.setViewName(view);
 		return mav;
 	}
 }

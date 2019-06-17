@@ -45,6 +45,8 @@ public interface ImemberDao {
 
 	int memberWrevpoint(revAuctionProgress rap);
 
+	void setNotifyAuctionApply(Member mb);
+
 
 
 }
