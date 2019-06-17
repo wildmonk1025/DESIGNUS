@@ -235,7 +235,7 @@ public class AuctionMM {
 		
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
-			aDao.setAuctionUTT(at);
+			/* aDao.setAuctionUTT(at); */  //aup 등록 sql 
 			
 			view = "redirect:/auctionMyOrderList";
 		}

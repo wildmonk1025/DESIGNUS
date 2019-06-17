@@ -89,10 +89,13 @@
         VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)
 	</insert>
 
+	<!-- aup 등록 sql 
 	<insert id="setAuctionUTT" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
         VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,DEFAULT)
-	</insert>
+	</insert> 
+	
+	--> 
  
 	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
 		SELECT MAX(AU_NUM) FROM AU

@@ -30,6 +30,10 @@ public interface IadminDao {
 	List<MemberSearch> gettransforInfo();
 
 	MemberSearch permitWriDetail(@Param("mb_id")String mb_id);
+
+	boolean getreAuthorfuse(@Param("mb_id")String mb_id);
+
+	boolean getreAuthoragree(@Param("mb_id")String mb_id);
   
   
 }
