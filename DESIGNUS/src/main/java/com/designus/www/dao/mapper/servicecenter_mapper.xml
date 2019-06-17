@@ -33,5 +33,12 @@
 		INSERT INTO RPI VALUES(${rp_num},#{rqi_imgSysName})
 	 </insert>
 
+	<insert id="setNotifyQuestionInsert" parameterType="questionreply">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{qr_mbid},#{qr_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyReportInsert" parameterType="report">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{rp_mbid_d},#{rp_notify},0,DEFAULT)
+	</insert>
        
 </mapper>
