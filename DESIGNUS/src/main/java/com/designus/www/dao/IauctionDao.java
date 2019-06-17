@@ -62,6 +62,10 @@ public interface IauctionDao {
 
 	String getAuctionImgSel(Auction au);
 
+	void setNotifyAuctionInsert(Auction au);
+
+	void setNotifyAuctionTender(AuctionTender at);
+
 
 
 	
