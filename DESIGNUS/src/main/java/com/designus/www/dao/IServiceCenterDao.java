@@ -28,4 +28,8 @@ public interface IServiceCenterDao {
 
 	void ReportImageInsert(Report rp);
 
+	void setNotifyQuestionInsert(QuestionReply qr);
+
+	void setNotifyReportInsert(Report rp);
+
 }

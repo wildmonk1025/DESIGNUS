@@ -284,6 +284,10 @@ public class UploadFile {
 			if (kind.equals("S")) {
 				System.out.println("일로 넘어오나?");
 				f = mDao.wrimemberapplyInsert(mb);
+				mb.setMb_notify(mb.getMb_id()+" 님이 작가 회원가입을 신청하였습니다.");
+				mDao.setNotifyAuctionWriInsert(mb);
+				mb.setMb_notify(mb.getMb_id()+" 님 DISIGNUS 가입을 진심으로 환영합니다.");
+				mDao.setNotifyAuctionWriFLogin(mb);
 				if (f) {
 					System.out.println("major테이블에 추가한다");
 					f = mDao.wrimajorInsert(mj);

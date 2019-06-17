@@ -47,6 +47,10 @@ public interface ImemberDao {
 
 	void setNotifyAuctionApply(Member mb);
 
+	void setNotifyAuctionWriInsert(Member mb);
+
+	void setNotifyAuctionWriFLogin(Member mb);
+
 
 
 }
