@@ -46,16 +46,11 @@ public class RevAuctionMM {
 		String ra_title = multi.getParameter("ra_title");
 		String ra_contents = multi.getParameter("ra_contents");
 		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
-		
-		String rat_mbid_w = multi.getParameter("ra_mbid");
-		int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
-		int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
 		String ra_oc = "O";
 
 
 
 		RevAuction ra = new RevAuction();
-		ra.setRa_num(0);
 		ra.setRa_mbid(ra_mbid);
 		ra.setRa_title(ra_title);
 		ra.setRa_contents(ra_contents);
@@ -67,7 +62,11 @@ public class RevAuctionMM {
 		//raFile 등록을 위해 DB에서 글번호가져옴
 
 		int currval = upload.fileUp(multi, ra);
-		if(!rat_mbid_w.equals(null)) {
+		
+		if(!multi.getParameter("ra_mbid").isEmpty()) {
+			String rat_mbid_w = multi.getParameter("ra_mbid");
+			int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
+			int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
 			ra_oc = "C";
 			RevAuctionTender rat = new RevAuctionTender();
 			rat.setRat_ranum(currval);
@@ -87,8 +86,7 @@ public class RevAuctionMM {
 				rap.setRap_price(rat_price);
 				rap.setRap_days(rat_days);
 				
-				int conf = rDao.reqDecisionInsert(rap);
-				System.out.println("conf 확인="+conf);
+				rDao.reqDecisionInsert(rap);
 			} else
 				System.out.println("비공개가 rat테이블에 insert안됨");
 		}
@@ -264,7 +262,7 @@ public class RevAuctionMM {
 			int cnt = rDao.reqDecisionSelect(rap);
 			System.out.println("cnt확인=" + cnt);
 			if (cnt == 0) {
-				int flag2 = rDao.reqDecisionInsert(rap);
+				rDao.reqDecisionInsert(rap);
 				msg = 3; //의뢰접수 완료
 			} else {
 				msg = 4; //이미 의뢰한 접수내역이 존재합니다.
