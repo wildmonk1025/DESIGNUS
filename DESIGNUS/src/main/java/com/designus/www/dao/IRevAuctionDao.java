@@ -51,4 +51,16 @@ public interface IRevAuctionDao {
 	List<MemberSearch> wriListSelect(MemberSearch mbs);
 
 	int revAuctionSubmitInsert2(RevAuctionTender rat);
+
+	void setNotifyrevAuctionW(revAuctionProgress rap);
+
+	void setNotifyrevAuctionN(revAuctionProgress rap);
+
+	void setNotifyrevAuctionApply(RevAuctionTender rat);
+
+	String selectNID(RevAuctionTender rat);
+
+	void setNotifyrevAuctionPickN(revAuctionProgress rap);
+
+	void setNotifyrevAuctionPickW(revAuctionProgress rap);
 }

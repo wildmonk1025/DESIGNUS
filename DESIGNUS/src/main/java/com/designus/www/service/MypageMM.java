@@ -876,7 +876,6 @@ public class MypageMM {
 		apsList=pDao.auctionInfoSelect(id);
 		
 		
-		
 		 for(int i=0; i<apsList.size(); i++) {
 		 maxpList=pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()); 
 		 }

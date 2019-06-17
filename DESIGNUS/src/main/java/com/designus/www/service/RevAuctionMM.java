@@ -87,6 +87,13 @@ public class RevAuctionMM {
 				rap.setRap_price(rat_price);
 				rap.setRap_days(rat_days);
 				rDao.reqDecisionInsert2(rap);
+				rap.setRap_notify(ra_mbid+" 님이 비공개 제작의뢰 '" +ra_title+"'을(를) 신청 합니다." );
+				rDao.setNotifyrevAuctionW(rap);
+				rap.setRap_notify(rat_mbid_w+" 님에게 비공개 제작의뢰 '"+ra_title+"'을(를) 신청을 하였습니다. ");
+				rDao.setNotifyrevAuctionN(rap);
+				
+				
+				
 			} else
 				System.out.println("비공개가 rat테이블에 insert안됨");
 		}
@@ -99,6 +106,7 @@ public class RevAuctionMM {
 		} else if (currval == 0) {
 			view = "revAuctionWrite";
 		}
+		
 		mav.setViewName(view);
 		return mav;
 	}
@@ -229,7 +237,10 @@ public class RevAuctionMM {
 
 			System.out.println(rat.getRat_file());
 			boolean f = rDao.revAuctionApplyInsert(rat);
-
+			rat.setRat_mbid_n(rDao.selectNID(rat));
+			rat.setRat_notify(rat.getRat_mbid_w()+" 님이  견적서를 등록하였습니다.");
+			rDao.setNotifyrevAuctionApply(rat);
+			
 			if (f) {
 				tenderchk += "의뢰 접수가 정상적으로 등록되었습니다.";
 			} else {
@@ -251,6 +262,13 @@ public class RevAuctionMM {
 		if (!rap.getRap_mbid_w().equals(id)) {
 			if (revwriter.equals(id)) {
 				int flag1 = rDao.reqDecisionUpdate(rap);
+				
+				rap.setRap_notify(" 제작의뢰 접수가 완료 되었습니다. ");
+				rDao.setNotifyrevAuctionPickN(rap);
+				rap.setRap_notify(id+" 님의 작품의뢰 에 선택 되었습니다. ");
+				rDao.setNotifyrevAuctionPickW(rap);
+				
+				
 				msg = 1; //의뢰한 본인의 의뢰하기 완료
 				System.out.println("flag1의 값=" + flag1);
 				System.out.println("의뢰한 본인의 의뢰하기 완료. O로 변경");
