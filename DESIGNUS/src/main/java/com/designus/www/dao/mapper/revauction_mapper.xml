@@ -74,6 +74,10 @@
 		INSERT INTO RAP VALUES(RAP_SEQ.NEXTVAL,${rap_ranum},#{rap_mbid_n},DEFAULT,DEFAULT,DEFAULT,#{rap_mbid_w},${rap_price},DEFAULT,${rap_days},DEFAULT)
 	</insert>
 	
+		<insert id="reqDecisionInsert2" parameterType="revauctionprogress">
+		INSERT INTO RAP VALUES(RAP_SEQ.NEXTVAL,${rap_ranum},#{rap_mbid_n},DEFAULT,DEFAULT,DEFAULT,#{rap_mbid_w},${rap_price},DEFAULT,${rap_days},5)
+	</insert>
+	
 	<select id="reqDecisionSelect" parameterType="revauctionprogress" resultType="int">
 		SELECT COUNT(*) FROM RAP WHERE RAP_MBID_W=#{rap_mbid_w} AND RAP_MBID_N=#{rap_mbid_n} AND RAP_RANUM=${rap_ranum}
 	</select>
