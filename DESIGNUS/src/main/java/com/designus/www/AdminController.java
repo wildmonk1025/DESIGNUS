@@ -83,5 +83,19 @@ public class AdminController {
 		mav = adm.permitWriDetail(mb_id);
 		return mav;
 	} //작가전환신청상세보기
+	@RequestMapping(value = "/tcommentandrefuse", method = RequestMethod.POST)
+	public ModelAndView tcommentandrefuse(String mb_id) {
+		System.out.println("이거찍히니?"+mb_id);
+		mav = new ModelAndView();
+		mav = adm.tcommentandrefuse(mb_id);
+		return mav;
+	} //작가전환신청가입거절
+	@RequestMapping(value = "/tcommentandapply", method = RequestMethod.POST)
+	public ModelAndView tcommentandapply(String mb_id) {
+		System.out.println("이거찍히니?"+mb_id);
+		mav = new ModelAndView();
+		mav = adm.tcommentandapply(mb_id);
+		return mav;
+	} //작가전환신청가입승인
 		
 }

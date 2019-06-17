@@ -29,4 +29,10 @@
 	<select id="permitWriDetail" parameterType="String" resultType="membersearch">
 		SELECT * FROM MBS WHERE MB_ID = #{mb_id}
 	</select>
+	<update id="getreAuthorfuse" parameterType="membersearch">
+		UPDATE MB SET MB_GRADE='N' WHERE MB_ID= #{mb_id}
+	</update>
+	<update id="getreAuthoragree" parameterType="membersearch">
+		UPDATE MB SET MB_GRADE='W' WHERE MB_ID= #{mb_id}
+	</update>
 </mapper>
