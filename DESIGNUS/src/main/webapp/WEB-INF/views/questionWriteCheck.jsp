@@ -9,6 +9,13 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+body {
+	margin: auto;
+	width: 1520px;
+	height: auto;
+	overflow: auto;
+}
+
 div {
 	margin: auto;
 }
@@ -73,7 +80,7 @@ ul {
 	height: 30px;
 }
 
-button {
+.button {
 	margin: 10px 10px 10px 10px;
 	width: 200px;
 	height: 50px;
@@ -94,45 +101,52 @@ input[type=submit] {
 </head>
 
 <body>
-	<div id="mainheader"></div>
+	<div id="mainheader">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
+	</div>
 	<div id="adminmenu">
 		<ul>
-			<li style="text-align: center; font-size: 20px">관리내역</li>
-			<li>게시판/댓글</li>
-			<li>신고내역</li>
-			<li style="background-color: skyblue">1:1문의</li>
-			<li>회원관리</li>
-			<li>작가 전환신청</li>
-			<li>작가 가입신청</li>
-			<li>카테고리 관리</li>
-			<li>게시판/댓글</li>
-			<li>게시판/댓글</li>
+			<jsp:include page="admininclud.jsp"></jsp:include>
 
 		</ul>
-
 	</div>
 	<div id="onequestionmain">
+	<form name="formName" method="post">
 		<div id="onequestion">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
 		<div id="questionread">
-			<button id="pageback">돌아가기</button>
-			<button id="delete">글 삭제</button>
-			<div id="questiontitle">글 제목</div>
-			<div id="questioncontents">글 내용</div>
-			<div id="questionfile">첨부파일 :: 23049235.pdf</div>
-			<form action="">
+			<input type="button" value="돌아가기"  class="button">
+			<input type="button" value="삭제" onclick="a();" class="button">
+			<div id="questiontitle">글 제목: ${aq_title}</div>
+			<div id="questioncontents">글 내용: ${aq_contents}</div>
+			<div id="questionfile">첨부파일 : ${aqi_img}</div>
+			
 				<textarea rows="30" cols="20"
 					style="margin: 5px; width: 800px; height: 100px;"
 					placeholder="여기에 답글을 달 수 있습니다"></textarea>
 				<input type="submit" value="답변하기" />
 			</form>
+			
 		</div>
+	
 
-	</div>
 
 </body>
 <script>
-	
+function a() {
+	var f = document.formName;
+	f.action = "questionWriteDelete?aq_num=${aq_num}";
+	// 파일 전송이 필요할 경우만 씀.
+	f.encoding = "multipart/form-data";
+	f.submit();
+}
+function b() {
+	var f = document.formName;
+	f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
+	f.submit();
+}
 </script>
 
 </html>

@@ -62,6 +62,9 @@ public class ServiceMM {
 			num = hDao.getQuestionSel(qr);
 			qr.setQr_aqnum(num);
 			upload.ServiceUpload(multi,qr);
+			qr.setQr_notify(id+" 님이 신고를 문의를 접수 하였습니다. ");
+			hDao.setNotifyQuestionInsert(qr);
+			
 			view = "home";
 		} else {
 			view = "redirect:/servicecenter";
@@ -111,6 +114,9 @@ public class ServiceMM {
 			num =  hDao.getReportSel(rp);
 			rp.setRp_num(num);
 			upload.ReportUpload(multi,rp);
+			rp.setRp_notify(id_d+" 님 이 "+id_a+" 님 을 신고 하였습니다.");
+			hDao.setNotifyReportInsert(rp);
+			
 			view = "home";
 			mav.setViewName(view);
 		}else {

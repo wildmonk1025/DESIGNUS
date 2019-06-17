@@ -113,4 +113,14 @@ public class AjaxMypageController {
 		return json;
 
 	}
+	@RequestMapping(value = "/auccancelDelete", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String auccancelDelete(@RequestBody AuctionProgress ap) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼!!! 시작!!!");
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼!!! 중간테스트1 pnum확인 :" + ap.getAup_ptnum());
+		String json = pm.auccancelDelete(ap);
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼 마무리!!!");
+		return json;
+
+	}
 }

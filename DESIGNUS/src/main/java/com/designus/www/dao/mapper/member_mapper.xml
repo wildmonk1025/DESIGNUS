@@ -65,4 +65,13 @@
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{mb_id},DEFAULT,#{mb_notify},0,DEFAULT)
 	</insert>
 	
+	<insert id="setNotifyAuctionWriInsert" parameterType="member">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{mb_id},#{mb_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyAuctionWriFLogin" parameterType="member">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{mb_id},DEFAULT,#{mb_notify},0,DEFAULT)
+	</insert>
+	
+	
+	
 </mapper>

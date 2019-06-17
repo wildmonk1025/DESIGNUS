@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
+import com.designus.www.bean.Question;
+import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
 
 //import org.springframework.stereotype.Repository;
@@ -34,6 +36,15 @@ public interface IadminDao {
 	boolean getreAuthorfuse(@Param("mb_id")String mb_id);
 
 	boolean getreAuthoragree(@Param("mb_id")String mb_id);
+
+	boolean getreAuthordelete(@Param("mb_id")String mb_id);
+
+	List<Question> getquestionInfo();
+
+	Question getquestionCheck(@Param("aq_num") int aq_num);
+	
+	
+	
   
   
 }

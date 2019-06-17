@@ -611,7 +611,7 @@ function requested(even) {
 					    	   }else{
 					    		   cub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
 					    	   };
-					    	   cub+="<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
+					    cub+="<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
 				    	   +"상품이름 :"+data.ra_title+"<br>"
 		                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
 				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br>"

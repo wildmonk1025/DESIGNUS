@@ -135,5 +135,13 @@ public interface ImypageDao {
 
 	boolean AuctionGiveUpDelete(AuctionTender at);
 
+	int gold(String id);
+
+	int silver(String id);
+
+	int copper(String id);
+
+	AuctionProgress auccancelDeleteDel(AuctionProgress ap);
+
   
 }
