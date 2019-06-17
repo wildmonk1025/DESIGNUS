@@ -38,35 +38,51 @@ div{
 }
 
 #searchbox {
-	width: 350px;
+	width: 390px;
 	height: 40px;
 	float: left;
 }
 
 #searchtxt {
-	width: 330px;
+	width: 370px;
 	height: 40px;
 	align: center;
+	background-color: none;
+	border: 2px solid coral;
+}
+
+#searchtxt:focus {
+	outline: none;
 }
 
 #searchbtn {
 	width: 50px;
 	height: 40px;
-	margin-left: -60px;
-	font-style: oblique;
+	margin-left: -75px;
 	display: inline;
-
-	font-size: 1em;
+	font-size: 1.1em;
+	font-style: italic;
 	box-sizing: border-box;
 	outline: none;
-	background-color: none;
+	background: none;
 	border: none;
+	color: gray;
+}
+#searchbtn:hover {
 	color: coral;
-	
 }
 
-#searchbtn:active{
+#searchbtn:active {
+	position:relative;
+	top:1px;
+}
 
+#ranking {
+	width: 150px;
+	height: 30px;
+	float: left;
+	padding-top: 12px;
+	font-size: 12px;
 }
 
 #loginwriter {
@@ -258,8 +274,11 @@ a:hover {
 
 		<div id="search">
 			<div id="searchbox">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
+			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
 			<button id="searchbtn" onclick="asd()">Search</button>
+			</div>
+			<div id="ranking">
+			가나다다라마바사
 			</div>
 		</div>
 		<div id="loginwriter">
@@ -393,6 +412,12 @@ a:hover {
 		console.log(a);
 	}
 	console.log(a);
-	console.log('새로고침')
+	console.log('새로고침');
+	
+	
+	$(document).ready(function() {
+		$.ajax()
+	});
+	
 </script>
 </html>
