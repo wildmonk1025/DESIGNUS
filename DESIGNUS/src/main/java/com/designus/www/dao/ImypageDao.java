@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.AuctionProgress;
+import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
@@ -128,7 +129,9 @@ public interface ImypageDao {
 
 	boolean nodelete(Notify nf);
 
-	List<AuctionProgress> auctionInfoSelect(String id);
+	List<AuctionTender> auctionInfoSelect(String id);
+
+	List<Integer> auctionMaxSelect(int aut_aunum);
 
   
 }
