@@ -23,7 +23,7 @@
 	</select>
 		
 	<select id="getRevAuctionListSelect2" parameterType="String" resultType="revauction">
-	   SELECT * FROM RA WHERE RA_TITLE LIKE '%'||#{word}||'%' OR RA_CONTENTS LIKE '%'||#{word}||'%'
+	   SELECT * FROM RA WHERE UPPER(RA_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(RA_CONTENTS) LIKE UPPER('%'||#{word}||'%')
 	</select>
 	
 	<select id="revAuctionReadSelect" parameterType="revauction" resultType="revauction">

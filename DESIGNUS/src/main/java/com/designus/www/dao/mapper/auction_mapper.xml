@@ -33,7 +33,7 @@
 	</select>
 
 	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
-	   SELECT * FROM AU WHERE AU_TITLE LIKE '%'||#{word}||'%' OR AU_CONTENTS LIKE '%'||#{word}||'%'
+	   SELECT * FROM AU WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%')
 	</select>
 
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
