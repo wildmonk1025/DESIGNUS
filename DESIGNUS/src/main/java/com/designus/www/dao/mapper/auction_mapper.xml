@@ -134,11 +134,11 @@
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{au_mbid_w},DEFAULT,#{au_contents},0,DEFAULT)
 	</insert>
 
-	<select id="getAuctionWID" parameterType="auctiontender" resultType="auctiontender">
+	<select id="getAuctionWID" parameterType="auctiontender" resultType="String">
 		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${aut_aunum}
 	</select>
 	
-	<select id="getAuctionTitle" parameterType="auctiontender" resultType="auctiontender">
+	<select id="getAuctionTitle" parameterType="auctiontender" resultType="String">
 		SELECT AU_TITLE FROM AU WHERE AU_NUM = ${aut_aunum}
 	</select>
 

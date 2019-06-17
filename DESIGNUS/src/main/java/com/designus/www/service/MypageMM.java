@@ -874,8 +874,7 @@ public class MypageMM {
 		NoList=pDao.notismypageSelect(id);
 		//apsList=pDao.AuctionProSelect(id);
 		apsList=pDao.auctionInfoSelect(id);
-		System.out.println("apsList"+apsList.get(0).getAut_aunum());
-		System.out.println("apsList"+apsList.get(0).getAut_kind());
+		
 		
 		
 		 for(int i=0; i<apsList.size(); i++) {
