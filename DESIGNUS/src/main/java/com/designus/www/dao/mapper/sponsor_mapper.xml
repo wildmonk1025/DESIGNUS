@@ -34,9 +34,9 @@
 		SPONSORTENDER VALUES(${sst_ssnum},#{sst_mbid})
 	</insert>
 
-	<insert id="sponbuy" parameterType="sponpro">
+	<insert id="sponbuy" parameterType="sponsortender">
 		INSERT INTO SSP
-		VALUES(SSP_SEQ.NEXTVAL,${ssp_ssnum},#{ssp_mbid_n},DEFAULT,DEFAULT,DEFAULT,DEFAULT,1)
+		VALUES(SSP_SEQ.NEXTVAL,${sst_ssnum},#{sst_mbid},DEFAULT,DEFAULT,DEFAULT,DEFAULT,1)
 	</insert>
 
 	<insert id="sponuploadInsert" parameterType="sponsor">
