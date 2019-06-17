@@ -119,6 +119,8 @@ public class MemberMM {
 			f = upload.fileUp(multi, mb, kind);
 			if (f) {
 				System.out.println("일단 여기까지는 된건데....");
+				mb.setMb_notify(id + " 님의 DISIGNUS 가입을 진심으로 감사합니다.");
+				mDao.setNotifyAuctionApply(mb);
 				view = "loginBox";
 			} else {
 				System.out.println("인설트 실패인데....");

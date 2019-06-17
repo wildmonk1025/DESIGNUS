@@ -110,50 +110,56 @@ height: 60px;
 		</ul>
 	</div>
 	<div id="adminwriterjoinfrm">
+	<form name="formName" method="post">
 		<div class="writerjoinfrm">
+		
 			<div id="writerjointitlefrm">
+			
 				<p>작가 가입요청 관리</p>
 			</div>
 			<div id="writerjoincontents">
 				<table id="customers">
 					<tr  class="alt">
-						<td>신청번호:</td>
-						<td>전문분야:${mj_cgcode}</td>
+						<td colspan="2">전문분야:${mj_cgcode}</td>
 						<td>아이디 : ${mb_id}</td>
 					</tr>
-					<tr>
-						<td colspan="3">제목 :</td>
-					</tr>
-					<tr class="alt">
+				
+					<tr >
 						<td colspan="1" rowspan="3">설명 :</td>
 						<td colspan="2" rowspan="3">${mj_contents}</td>
 					</tr>
 					</table>
+				
 					<table id="customers">
-					<tr>
-						<td >사진</td>
-						<td colspan="2"></td>
-					</tr>
 					<tr class="alt">
-						<td  colspan="1" rowspan="3">답글 : </td>
-						<td colspan="2" rowspan="3"></td>
-					</tr>
-					</table>
-					<table id="customers">
-					<tr>
-						<td>첨부파일</td>
+						<td>포트폴리오</td>
 						<td colspan="2">${mj_portf}</td>
 					</tr>
 					
 				</table>
+			<input type="button" value="가입 거절" onclick="a();" class="btn"/>
+			<input type="button" value="가입 승인" onclick="b();" class="btn"/>
 			</div>
-			<button id="writerjoinno">가입 거절</button>
+		
 			
-			<button id="writerjoinok">가입 승인</button>
+			
 		</div>
+		</form>
 	</div>
 </body>
 <script>
+function a() {
+	var f = document.formName;
+	f.action = "tcommentandrefuse?mb_id=${mb_id}";
+	// 파일 전송이 필요할 경우만 씀.
+	f.encoding = "multipart/form-data";
+	f.submit();
+}
+function b() {
+	var f = document.formName;
+	f.action = "tcommentandapply?mb_id=${mb_id}";
+	f.submit();
+}
 
 </script>
 

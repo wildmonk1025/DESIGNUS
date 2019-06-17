@@ -61,5 +61,8 @@
 	<select id="memberWrevpoint" parameterType="revAuctionProgress" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{rap_mbid_w}
 	</select>
+	<insert id="setNotifyAuctionApply" parameterType="member">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{mb_id},DEFAULT,#{mb_notify},0,DEFAULT)
+	</insert>
 	
 </mapper>
