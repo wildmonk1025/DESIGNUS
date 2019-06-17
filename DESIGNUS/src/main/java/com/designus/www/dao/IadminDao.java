@@ -42,6 +42,10 @@ public interface IadminDao {
 	List<Question> getquestionInfo();
 
 	Question getquestionCheck(@Param("aq_num") int aq_num);
+
+	QuestionReply getquestionReply(Map<String,Object> map);
+
+
 	
 	
 	
