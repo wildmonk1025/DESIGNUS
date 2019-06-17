@@ -366,7 +366,8 @@
 	</delete>
 	<select id="gold" resultType="Integer">
 		select count(aw_kind) from aw
-		where aw_mbid=#{id} and aw_kind='금'
+		where
+		aw_mbid=#{id} and aw_kind='금'
 	</select>
 	<select id="silver" resultType="Integer">
 		select count(aw_kind) from aw
@@ -376,8 +377,8 @@
 		select count(aw_kind) from aw
 		where aw_mbid=#{id} and aw_kind='동'
 	</select>
-	<select id="auccancelDeleteDel"
-		parameterType="auctionprogress" resultType="auctionprogress">
+	<select id="auccancelDeleteDel" parameterType="auctionprogress"
+		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -386,5 +387,9 @@
        where AUP_PTNUM=${aup_ptnum}
      ) where RankNo=1
   ]]>
+	</select>
+	<select id="questionlist" parameterType="String" resultType="alonequestion">
+		select * from aq
+		where aq_mbid=#{id}
 	</select>
 </mapper>

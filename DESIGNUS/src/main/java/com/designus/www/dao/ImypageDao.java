@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
@@ -142,6 +143,8 @@ public interface ImypageDao {
 	int copper(String id);
 
 	AuctionProgress auccancelDeleteDel(AuctionProgress ap);
+
+	List<AloneQuestion> questionlist(String id);
 
   
 }

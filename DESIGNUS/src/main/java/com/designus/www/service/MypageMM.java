@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
@@ -462,7 +463,7 @@ public class MypageMM {
 	}
 
 	@Transactional
-	public ModelAndView auccancel(AuctionProgress ap) {
+	public ModelAndView auccancel(AuctionProgress ap, Notify ni) {
 		mav = new ModelAndView();
 		System.out.println("(서비스클래스)출품구매 취소 시작 ");
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인ranum : " + ap.getAup_ptnum());
@@ -471,12 +472,23 @@ public class MypageMM {
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " + ap.getAut_date().substring(0, 19));
 		boolean a = pDao.auccancelDelete(ap);
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
-		System.out.println("aaaaa : " + a);
+		
 		String date = ap.getAut_date().substring(0, 19);
 		ap.setAut_date(date);
 		if (a) {
 			boolean b = pDao.autcancelDelete(ap);
-			mav.addObject("check", 1);
+			System.out.println("bbbb : " + b);
+			if(b) {
+				
+				String nf_mbid_r = ap.getAu_mbid_w();
+				String nf_mbid_s = ap.getAup_mbid_n();
+				ni.setNf_mbid_r(nf_mbid_r);
+				ni.setNf_mbid_s(nf_mbid_s);
+				pDao.revaucinfocancelInsert(ni);
+				mav.addObject("check", 1);
+				System.out.println("끝날때까지 끝난게 아니다!!!");
+			}
+			
 		} else {
 			mav.addObject("check", 2);
 		}
@@ -699,27 +711,16 @@ public class MypageMM {
 		ni.setNf_mbid_s(nf_mbid_s);
 		mav = new ModelAndView();
 		boolean can = pDao.revaucinfocancelDelete(rap);
-		System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트1 can 값 :" + can);
 		if (can) {
-			System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트2 위치 확인");
 			if (rap.getRa_mbid() == rap.getRap_mbid_n()) {
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트3 위치 확인");
 				boolean up = pDao.revaucinfocancelupDate(rap);
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트4 up 값 :" + up);
 				if (up) {
-					System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트5 위치 확인");
 
 					pDao.revaucinfocancelInsert(ni);
-					System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트6 위치 확인");
 					view = "redirect:/revAuctionMyOrderList";
 				}
 			} else {
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트7 위치 확인");
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트8 getNf_mbid_r:" + ni.getNf_mbid_r());
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트9 getNf_mbid_s:" + ni.getNf_mbid_s());
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트10 getNf_contents:" + ni.getNf_contents());
 				pDao.revaucinfocancelInsert(ni);
-				System.out.println("(서비스클래스)제작의뢰 스텝1 취소 중간 테스트11 위치 확인");
 				view = "redirect:/revAuctionMyOrderList";
 			}
 		}
@@ -972,6 +973,24 @@ public class MypageMM {
 		System.out.println("(서비스클래스)제작의로 취소폼 마무리 ");
 
 		return json;
+	}
+
+	public ModelAndView questionlist() {
+		mav = new ModelAndView();
+      String id=session.getAttribute("id").toString();
+       String view=null;
+       List<AloneQuestion>aqList=null;
+       aqList=pDao.questionlist(id);
+       if(aqList != null) {
+    	   
+    	   Gson gson = new Gson();
+   		String aqgList = gson.toJson(aqList);
+   	 mav.addObject("aqgList", aqgList);
+   		view="questionaList";
+   		
+       }
+      mav.setViewName(view);
+		return mav;
 	}
 
 }
