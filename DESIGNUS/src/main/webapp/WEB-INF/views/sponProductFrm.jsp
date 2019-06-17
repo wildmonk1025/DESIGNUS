@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
+
 <style>
 div {
 	margin: auto;
@@ -78,6 +79,11 @@ td {
 	width: 100%;
 	height: 48px;
 }
+
+.bt21 {
+	width: 100%;
+	height: 48px;
+}
 </style>
 <title>Home</title>
 </head>
@@ -124,8 +130,8 @@ td {
 					<td colspan="6" style="height: 150">${ss_contents}</td>
 				</tr>
 				<tr>
-					<td colspan="4"><button class="bt22"
-							onclick="location.href='sponbuy?ss_num='${ss_num}">밀어주기</button></td>
+					<td colspan="4"><button class="bt21"
+							onclick="location.href='sponbuy?ss_num=${ss_num}'">밀어주기</button></td>
 					<td colspan="2"><button class="bt22"
 							onclick="location.href='sponsor'">목록보기</button></td>
 				</tr>
