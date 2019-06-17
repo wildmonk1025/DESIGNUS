@@ -41,4 +41,8 @@
 	<select id="getquestionInfo" parameterType="question" resultType="question">
 		SELECT * FROM AQ_LIST 
 	</select>
+	<select id="getquestionCheck" parameterType="question" resultType="question">
+		SELECT * FROM AQ_LIST WHERE AQ_NUM=${aq_num}
+	</select>
+	
 </mapper>
