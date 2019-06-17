@@ -122,13 +122,21 @@ public class SponsorMM {
 
 		sm.setSs_num(ss_num);
 		String id = (String) session.getAttribute("id");
+		String grade = (String) session.getAttribute("grade");
+
+		System.out.println("회원등급=" + grade);
 
 		// 포인트 있을때만 밀어주기 가능하게 바꿔야함
-
-		sm = sDao.sponTenderInsert(ss_num, id);
-		// 밀어주기 insert
-		sm = sDao.sponbuy(ss_num, id);
-
+		if (ss_num == sm.getSs_num()) {
+			sm = sDao.sponTenderInsert(ss_num, id);
+			// 밀어주기 insert
+			sm = sDao.sponbuy(ss_num, id);
+			// 후원 거래내역 insert
+			view = "sponsor";
+		} else {
+			System.out.println("안되고있음");
+			view = "sponsor";
+		}
 		System.out.println(ss_num);
 		System.out.println(id);
 
