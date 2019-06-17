@@ -61,6 +61,10 @@
 		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_aunum = ${aut_aunum} AND aut_kind != 'I'
 	</select>
 
+	<select id="auctionTenderPriceSel" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_MINPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+
 	<select id="getAuctionTenderQty" parameterType="auctiontender" resultType="Integer">
 		SELECT AU_QTY-${aut_qty} FROM AU WHERE au_num = ${aut_aunum}
 	</select>

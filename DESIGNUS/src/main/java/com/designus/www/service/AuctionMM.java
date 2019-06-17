@@ -125,6 +125,7 @@ public class AuctionMM {
 		List<Auction> auwList = null;
 		String chkID = null;
 		int nb = 1;
+		int price = 0;
 		Auction au = new Auction();
 		Basket bk = new Basket();
 		AuctionTender at = new AuctionTender();
@@ -138,11 +139,11 @@ public class AuctionMM {
 		bk.setAb_aunum(nb);
 		chkID = aDao.getAuctionInfoID(au);
 		
-		
 		Wid = aDao.getAuctionWriteIdSel(au);
 		au.setAu_mbid_w(Wid);
 		auwList = aDao.getAuctionWriterListSel(au);
-		
+
+		mav.addObject("peice",price);
 		mav.addObject("chkID",chkID);
 		mav.addObject("auInfo",au);
 		mav.addObject("nb",bk.getAb_aunum());
@@ -224,14 +225,12 @@ public class AuctionMM {
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
 		
+		
 		if(aDao.auctionTenderSel(at) == null) {
-			price = 0;
+			price = aDao.auctionTenderPriceSel(at);
 		} else {
 			price = Integer.parseInt(aDao.auctionTenderSel(at));
 		}
-		 
-		
-		
 		
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
