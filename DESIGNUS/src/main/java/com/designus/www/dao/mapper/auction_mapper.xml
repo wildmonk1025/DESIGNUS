@@ -32,7 +32,7 @@
 		
 	</select>
 
-	<select id="getAuctionListSelect2" parameterType="Object" resultType="auction">
+	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
 	   SELECT * FROM AU WHERE AU_TITLE LIKE '%'||#{word}||'%' OR AU_CONTENTS LIKE '%'||#{word}||'%'
 	</select>
 

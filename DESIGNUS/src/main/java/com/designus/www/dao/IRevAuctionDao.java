@@ -66,5 +66,5 @@ public interface IRevAuctionDao {
 
 	void setNotifyrevAuctionPickW(revAuctionProgress rap);
 
-	List<RevAuction> getRevAuctionListSelect2(@Param("word") Object word);
+	List<RevAuction> getRevAuctionListSelect2(@Param("word") String word);
 }

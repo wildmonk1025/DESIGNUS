@@ -76,9 +76,8 @@ public class CommonMM {
 		String json = new Gson().toJson(sList);
 		return json;
 	}
-	public ModelAndView searching(Object word) {
+	public ModelAndView searching(String word) {
 		mav = new ModelAndView();
-		String view = null;
 		
 		List<Auction> auList = aDao.getAuctionListSelect2(word);
 		List<RevAuction> raList = rDao.getRevAuctionListSelect2(word);
