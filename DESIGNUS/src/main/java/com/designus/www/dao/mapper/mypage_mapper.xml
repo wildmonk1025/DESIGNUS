@@ -341,19 +341,14 @@
 	<select id="auctionInfoSelect" parameterType="String" resultType="auctiontender">
 		<![CDATA[
 		 select * from(
-    select  AUT_NUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_NUM ORDER BY AUT_PRICE DESC) AS RankNo
+    select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
      from AU_AUT
        where AUT_MBID=#{id} AND AUT_KIND != 'I'
      )  where  RankNo=1
   ]]>
 	</select>
-	<select id="auctionMaxSelect" parameterType="Integer" resultType="Integer">
-		<![CDATA[
-		select * from(
-    select  AUT_NUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_NUM ORDER BY AUT_PRICE DESC) AS RankNo
-     from AU_AUT
-       where AUT_NUM=${aut_aunum} AND AUT_KIND != 'I'
-     )  where  RankNo=1
-  ]]>
+	<select id="auctionMaxSelect"  resultType="Integer">
+		SELECT MAX(AUT_PRICE) FROM AUT
+       WHERE AUT_AUNUM=${aut_aunum}
 	</select>
 </mapper>

@@ -234,6 +234,9 @@ $('#nod').click(function() {
 	}
 });
 
+var toMap=${toMap};
+
+console.log(23,toMap);
 
 </script>
 
