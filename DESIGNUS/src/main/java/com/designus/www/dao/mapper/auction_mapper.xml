@@ -24,11 +24,12 @@
 	  <![CDATA[
 		SELECT a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
 		a.au_contents, a.au_date, b.aut_price FROM AU a LEFT OUTER JOIN 
-		(select aut_num,MAX(aut_price)as aut_price FROM aut where aut_kind != 'I' group by aut_num) b
-		ON  a.AU_NUM = b.AUT_NUM
+		(select aut_aunum,MAX(aut_price)as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
+		ON  a.AU_NUM = b.AUT_AUNUM
 		where a.au_cgcode = ${au_cgcode}
 		ORDER BY a.AU_NUM
       ]]>
+		
      
 	</select>
 
@@ -54,7 +55,7 @@
 	</update>
 
 	<select id="auctionTenderSel" parameterType="auctiontender" resultType="String">
-		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_num = ${aut_aunum} AND aut_kind != 'I'
+		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_aunum = ${aut_aunum} AND aut_kind != 'I'
 	</select>
 
 	<select id="getAuctionTenderQty" parameterType="auctiontender" resultType="Integer">
@@ -67,9 +68,9 @@
 
 	<select id="getAuctionTenderList" parameterType="auctiontender" resultType="auctiontender">
 		  <![CDATA[
-		SELECT *FROM(SELECT ROWNUM AS A, AUT_NUM, AUT_MBID, AUT_PRICE, AUT_KIND 
+		SELECT *FROM(SELECT ROWNUM AS A, AUT_AUNUM, AUT_MBID, AUT_PRICE, AUT_KIND 
         FROM AUT  
-        WHERE AUT_NUM = ${aut_aunum} AND AUT_KIND != 'I' AND AUT_KIND !='O'
+        WHERE AUT_AUNUM = ${aut_aunum} AND AUT_KIND != 'I' AND AUT_KIND !='O'
         ORDER BY AUT_PRICE DESC
         )WHERE  ROWNUM <=3
  		]]>
@@ -133,9 +134,21 @@
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{au_mbid_w},DEFAULT,#{au_contents},0,DEFAULT)
 	</insert>
 
+	<select id="getAuctionWID" parameterType="auctiontender" resultType="auctiontender">
+		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+	
+	<select id="getAuctionTitle" parameterType="auctiontender" resultType="auctiontender">
+		SELECT AU_TITLE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+
 	<insert id="setNotifyAuctionTender" parameterType="auctiontender">
-		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{au_contents},0,DEFAULT)
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{aut_notify},0,DEFAULT)
 	</insert>
 	
+
+
+
+
 	
 </mapper>
