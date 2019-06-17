@@ -28,8 +28,8 @@ public interface IsponsorDao {
 
 	int getSponserwri(Sponsor sp);
 
-	Sponsor sponTenderInsert(SponsorTender st);
+	boolean sponTenderInsert(SponsorTender st);
 
-	Sponsor sponbuy(SponsorProgress sp);
+	boolean sponbuy(SponsorTender st);
 
 }

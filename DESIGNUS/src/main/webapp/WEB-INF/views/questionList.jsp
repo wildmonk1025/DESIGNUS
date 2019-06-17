@@ -115,7 +115,7 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='questionWriteCheck?ap_num="+data[i].aq_num+"'>"
+				result+="<div class='best'>"+"<a href='questionWriteCheck?aq_num="+data[i].aq_num+"'>"
 					  +"문의번호:" +data[i].aq_num+"<br>"
 					  +"문의자아이디:"+data[i].aq_mbid+"<br>"
 					  +"질문유형:"+data[i].aq_type+"<br>"

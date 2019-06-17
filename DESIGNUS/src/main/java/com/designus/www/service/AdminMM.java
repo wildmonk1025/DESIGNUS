@@ -200,6 +200,24 @@ public class AdminMM {
 		return jsonObj;
 	}
 
+	public ModelAndView questionWriteCheck(int aq_num) {
+		mav = new ModelAndView();
+		String view = null;
+		Question n = new Question();
+		System.out.println("여기까진 온다이거지?");
+		n=iDao.getquestionCheck(aq_num);
+		mav.addObject("aq_num", n.getAq_num());
+		mav.addObject("aq_mbid", n.getAq_mbid());
+		mav.addObject("aq_type", n.getAq_type());
+		mav.addObject("aq_title", n.getAq_title());
+		mav.addObject("aq_contents", n.getAq_contents());
+		mav.addObject("aqi_img", n.getAqi_img());
+		System.out.println("오....성공??");
+		view = "questionWriteCheck";
+		mav.setViewName(view);
+		return mav;
+	}
+
 	
 
 }

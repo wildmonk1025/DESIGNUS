@@ -22,6 +22,10 @@
 		SELECT * FROM RA WHERE RA_CGCODE = ${ra_cgcode} AND RA_OC='O'
 	</select>
 		
+	<select id="getRevAuctionListSelect2" parameterType="String" resultType="revauction">
+	   SELECT * FROM RA WHERE RA_TITLE LIKE '%'||#{word}||'%' OR RA_CONTENTS LIKE '%'||#{word}||'%'
+	</select>
+	
 	<select id="revAuctionReadSelect" parameterType="revauction" resultType="revauction">
 		SELECT * FROM RA WHERE RA_NUM = ${ra_num}
 	</select>

@@ -79,11 +79,15 @@ div{
 
 #ranking {
 	width: 150px;
-	height: 30px;
+	height: 20px;
 	float: left;
+	padding-left: 10px;
 	padding-top: 12px;
-	font-size: 12px;
+	font-size: 15px;
+	font-weight:bolder;
+	font-family: Verdana, sans-serif; 
 }
+
 
 #loginwriter {
 	padding: 3px;
@@ -116,7 +120,7 @@ div{
 	height: 50px
 }
 
-#submenu {
+.submenu {
 	margin-left: 100px;
 	width: 150px;
 	float: left;
@@ -271,16 +275,16 @@ a:hover {
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 		</div>
-
+		<form action="searching" method="POST">
 		<div id="search">
 			<div id="searchbox">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
-			<button id="searchbtn" onclick="asd()">Search</button>
+			<input type="text" id="searchtxt" name="word" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
+			<button id="searchbtn">Search</button>
 			</div>
 			<div id="ranking">
-			가나다다라마바사
 			</div>
 		</div>
+		</form>
 		<div id="loginwriter">
 			<div id="adminpage">
 				<a href="adminInfo">관리자</a><br/><br/>
@@ -368,16 +372,16 @@ a:hover {
 			</nav>
 		</div>
 		<div id="menu">
-			<div id="submenu">
+			<div class="submenu">
 				<a href="sponsor">후원</a>
 			</div>
-			<div id="submenu">
-				<a href="boardlist">게시판</a>
+			<div class="submenu">
+				<a href="boardlist">이용후기</a>
 			</div>
-			<div id="submenu">
-				<a href="bestwriter">인기작가</a>
+			<div class="submenu">
+				<a href="bestwriter">공지사항</a>
 			</div>
-			<div id="submenu">
+			<div class="submenu">
 				<a href="servicecenter">고객센터</a>
 			</div>
 
@@ -399,7 +403,6 @@ a:hover {
 
 </body>
 <script>
-	var a = "";
 	function nonono() {
 		alert("작가가 아니면 NoNoNo");
 	}
@@ -407,42 +410,37 @@ a:hover {
 	function logout() {
 		$('#logout').submit();
 	}
-	function asd() {
-		a = $('#searchtxt').val();
-		console.log(a);
-	}
-	console.log(a);
-	console.log('새로고침');
+/* 	function asd() {
+		var word = $('#searchtxt').val();
+		location.href="searching/"+word;
+	} */
 	
-	
-	$(document).ready(function() {
+	var i=0;
+	setInterval( function() {
 		$.ajax({
     		type:'POST',
     		url:'ajax/searchranking',
     		dataType:'json',
     		success: function(data) {
-    			console.log("성공");
     			var str='';
-    			var major='';
-
-    			for(var i in data) {
-    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
-    			var n = data[i].mj_cgcode;
-    			str+="<div class='writerInfo_lv3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
-    			$("#writer_Info"+i).html(str);
+    			if(i<10) {
+    			str="<span>"+(i+1)+". "+data[i].rtsr_word+"</span>";
+    			$("#ranking").html(str);
+    			$('#ranking').show();
+    			$('#ranking').fadeIn('slow');
+    			$('#ranking').slideUp(3200);
+    			i++;
     			}
-    			
-    			for(var y=0;y<6;y++) {
-    				for(var z=0;z<=i;z++) {    					
-    				$("#writer_Info"+z).css("display","block");
-    				$("#writer_Info"+y).css("display","none");
-    					}
-    				}
+    			else if(i==10) {
+    				i=0;
+    			}
     		},
 			error: function(error) {
     		}
     	}); //ajax End
-	});
+	},3300);
+
 	
+
 </script>
 </html>
