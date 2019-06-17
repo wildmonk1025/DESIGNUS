@@ -30,7 +30,7 @@
 	</select>
 
 	<insert id="sponTenderInsert" parameterType="sponsor">
-		INSERT INTO SPONSORTENDER VALUES(${ss_num},#{ss_id})
+		INSERT INTO SPONSORTENDER VALUES(${ss_num},#{id})
 	</insert>
 
 	<insert id="sponuploadInsert" parameterType="sponsor">
