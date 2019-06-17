@@ -874,17 +874,27 @@ public class MypageMM {
 		NoList=pDao.notismypageSelect(id);
 		//apsList=pDao.AuctionProSelect(id);
 		apsList=pDao.auctionInfoSelect(id);
+		System.out.println("apsList"+apsList.get(0).getAut_aunum());
+		System.out.println("apsList"+apsList.get(0).getAut_kind());
 		
-		for(int i=0; i<apsList.size(); i++) {
-			maxpList=pDao.auctionMaxSelect(apsList.get(i).getAut_aunum());
-		}
+		
+		 for(int i=0; i<apsList.size(); i++) {
+		 maxpList=pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()); 
+		 }
+		 
 		apsMap.put("apsList", apsList);
+		apsMap.put("maxpList", maxpList);
+		
+		//apsMap.put("maxpList",maxpList);
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
 		
-		if(mb != null && NoList != null) {
+		String toMap = gson.toJson(apsMap);
+		
+		if(mb != null && NoList != null && apsMap!=null) {
 			mav.addObject("mb",mb);
 			mav.addObject("NoList", str);
+			mav.addObject("toMap", toMap);
 			view="myPage";
 		}else {
 			view="home";
