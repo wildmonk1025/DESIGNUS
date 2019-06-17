@@ -67,7 +67,7 @@ public class RevAuctionMM {
 		//raFile 등록을 위해 DB에서 글번호가져옴
 
 		int currval = upload.fileUp(multi, ra);
-		if(rat_mbid_w.equals(null)) {
+		if(!rat_mbid_w.equals(null)) {
 			ra_oc = "C";
 			RevAuctionTender rat = new RevAuctionTender();
 			rat.setRat_ranum(currval);
