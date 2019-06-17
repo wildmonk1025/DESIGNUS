@@ -94,12 +94,14 @@ div{
 	font-size: 16px;
 	font-weight:bolder;
 	font-family: Verdana, sans-serif;
-/* 	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75); */
+
 }
 #ranking span {
 	text-align: center;
 	height: 30px;
 	line-height: 30px;
+	background-color: aqua;
+	/* 	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75); */
 }
 
 #loginwriter {
@@ -444,7 +446,7 @@ a:hover {
 /*     			$('#ranking').show();
     			$('#ranking').fadeIn('slow');
     			$('#ranking').slideUp(3200); */
-    	        $("#rankingbox").delay(2870).animate({top:10},function(){
+    	        $("#rankingbox").delay(2850).animate({top:8},function(){
     	        	$("#ranking span:first");
     	        	$("#rankingbox").css({top:0});
     	        });
@@ -452,7 +454,8 @@ a:hover {
     			}
     			else if(i==10) {
     				i=0;
-    				str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>";
+    				/* str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>"; */
+    				str="<span>실시간 검색순위</span>";
         			$("#ranking").html(str);
     			}
     		},
