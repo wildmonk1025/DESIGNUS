@@ -210,7 +210,7 @@ input[type="file"] {
 	position: absolute;
 	background-color: white;
 	left: 40%;
-	top: 30%;
+	top: 40%;
 	padding: 50px;
 	text-align: center;
 	width: 350px;
@@ -252,6 +252,13 @@ input[type="file"] {
 	color: coral;
 	border-radius: 5px;
 	text-align: right;
+	background-color: #F6F6F6;
+}
+
+#conf{
+	width: 100px;
+	height: 30px;
+	margin-top: 10px;
 	background-color: #F6F6F6;
 }
 
@@ -405,12 +412,6 @@ input[type="file"] {
 		$("#lightbox_contents_box").css("display","block");
 	});
 	$("#writer_Info2").click(function(){
-		var x = $(".writerInfo2").text();
-		$("#ra_mbid").val(x);
-		$("#lightbox_contents_shadow").css("display","block");
-		$("#lightbox_contents_box").css("display","block");
-	});
-	$("#writer_Info3").click(function(){
 		var x = $(".writerInfo2").text();
 		$("#ra_mbid").val(x);
 		$("#lightbox_contents_shadow").css("display","block");
