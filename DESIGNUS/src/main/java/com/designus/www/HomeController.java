@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -249,16 +250,16 @@ public class HomeController {
 			messageHelper.setText("인증번호 : " + certification); // 메일 내용,인증번호
 
 			mailSender.send(message);
-
 		} catch (Exception e) {
-
 			System.out.println(e);
-
 		}
-
- 
-
 		return certification;
-
+	}
+	
+	@RequestMapping(value = "/searching",method = RequestMethod.POST)
+	public ModelAndView searching(String word) {
+		System.out.println(word);
+		mav = cm.searching(word);
+		return mav;
 	}
 }

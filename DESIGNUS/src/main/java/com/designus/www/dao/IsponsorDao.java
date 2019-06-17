@@ -30,6 +30,6 @@ public interface IsponsorDao {
 
 	boolean sponTenderInsert(SponsorTender st);
 
-	boolean sponbuy(SponsorProgress sp);
+	boolean sponbuy(SponsorTender st);
 
 }
