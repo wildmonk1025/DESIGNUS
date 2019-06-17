@@ -159,6 +159,7 @@ input[type="file"] {
 	box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);
 	overflow: auto;
 	display: none;
+	z-index: 500px;
 }
 
 #middle_contents2_writer>div {
@@ -168,8 +169,9 @@ input[type="file"] {
 	border: 1px solid red;
 	float: left;
 	display: none;
+	z-index: 200px;
 }
-.writerInfo1 {
+.writerInfo_lv1 {
 	padding: 1px;
 	float: left;
 	width: 65px;
@@ -177,7 +179,7 @@ input[type="file"] {
 	border: 1px solid green;
 }
 
-.writerInfo2 {
+.writerInfo_lv2 {
 	padding: 5px 5px 2px 5px;
 	float: left;
 	width: 230px;
@@ -185,12 +187,12 @@ input[type="file"] {
 	font-size: 20px;
 }
 
-.writerInfo3{
+.writerInfo_lv3{
 	padding: 2px 5px 5px 5px;
 	float: left;
 	width: 230px;
 	height : 20px;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 #lightbox_contents_shadow {
@@ -210,7 +212,7 @@ input[type="file"] {
 	position: absolute;
 	background-color: white;
 	left: 40%;
-	top: 30%;
+	top: 40%;
 	padding: 50px;
 	text-align: center;
 	width: 350px;
@@ -252,6 +254,13 @@ input[type="file"] {
 	color: coral;
 	border-radius: 5px;
 	text-align: right;
+	background-color: #F6F6F6;
+}
+
+#conf{
+	width: 100px;
+	height: 30px;
+	margin-top: 10px;
 	background-color: #F6F6F6;
 }
 
@@ -361,11 +370,11 @@ input[type="file"] {
 			<div id="searching"><input id="auto" type="text" style="width:250px; height:30px; margin-left:20px; padding-left:10px; box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);"
 			placeholder="의뢰할 작가님의 ID를 검색"/><button style="width:80px; height:33px;">검색</button></div>
 			<div id="middle_contents2_writer">
-				<div id="writer_Info0" onclick="go()"></div>
-				<div id="writer_Info1" onclick="go()"></div>
-				<div id="writer_Info2" onclick="go()"></div>
-				<div id="writer_Info3" onclick="go()"></div>
-				<div id="writer_Info4" onclick="go()"></div>
+				<div id="writer_Info0"></div>
+				<div id="writer_Info1"></div>
+				<div id="writer_Info2"></div>
+				<div id="writer_Info3"></div>
+				<div id="writer_Info4"></div>
 			</div>
 			</div>
 		</div>
@@ -393,31 +402,24 @@ input[type="file"] {
 
 	/* 작가 가격관련 요청 */
 	$("#writer_Info0").click(function(){
-		var x = $(".writerInfo2").text();
-		$("#ra_mbid").val(x);
+		var am = $(this).children(".writerInfo_lv2").text();
+		$("#ra_mbid").val(am);
 		$("#lightbox_contents_shadow").css("display","block");
 		$("#lightbox_contents_box").css("display","block");
 	});
 	$("#writer_Info1").click(function(){
-		var x = $(".writerInfo2").text();
-		$("#ra_mbid").val(x);
+		var an = $(this).children(".writerInfo_lv2").text();
+		$("#ra_mbid").val(an);
 		$("#lightbox_contents_shadow").css("display","block");
 		$("#lightbox_contents_box").css("display","block");
 	});
 	$("#writer_Info2").click(function(){
-		var x = $(".writerInfo2").text();
-		$("#ra_mbid").val(x);
-		$("#lightbox_contents_shadow").css("display","block");
-		$("#lightbox_contents_box").css("display","block");
-	});
-	$("#writer_Info3").click(function(){
-		var x = $(".writerInfo2").text();
-		$("#ra_mbid").val(x);
+		var aj = $(this).children(".writerInfo_lv2").text();
+		$("#ra_mbid").val(aj);
 		$("#lightbox_contents_shadow").css("display","block");
 		$("#lightbox_contents_box").css("display","block");
 	});
 	$("#conf").click(function(){
-		var x = $(".writerInfo2").text();
 		$("#lightbox_contents_shadow").css("display","none");
 		$("#lightbox_contents_box").css("display","none");
 	});
@@ -469,7 +471,7 @@ input[type="file"] {
     			var major='';
 
     			for(var i in data) {
-    			str="<div class='writerInfo1'><img src='"+data[i].mb_profile+"' alt='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo2'>"+data[i].mb_id+"</div>";
+    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
     			var n = data[i].mj_cgcode;
     			switch(n) {
     				case 100:
@@ -506,16 +508,16 @@ input[type="file"] {
         			major="유아 용품";
         			break;
     			}
-    			str+="<div class='writerInfo3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
+    			str+="<div class='writerInfo_lv3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
     			$("#writer_Info"+i).html(str);
-
+    			}
+    			
     			for(var y=0;y<6;y++) {
     				for(var z=0;z<=i;z++) {    					
     				$("#writer_Info"+z).css("display","block");
     				$("#writer_Info"+y).css("display","none");
-    						}
     					}
-    			}
+    				}
     		},
 			error: function(error) {
     		}

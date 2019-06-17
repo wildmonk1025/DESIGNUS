@@ -1,8 +1,9 @@
 package com.designus.www.service;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.AuctionProgress;
+import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
@@ -862,7 +864,9 @@ public class MypageMM {
 		mav=new ModelAndView();
 		String view=null;
 		List<Notify> NoList = null;
-		List<AuctionProgress> apsList = null;
+		List<AuctionTender> apsList = null;
+		List<Integer> maxpList=null;
+        HashMap<Object,Object> apsMap=new HashMap<Object, Object>();
 		String id=session.getAttribute("id").toString();
 		//String grade=session.getAttribute("grade").toString();
 		Member mb=new Member();
@@ -871,6 +875,10 @@ public class MypageMM {
 		//apsList=pDao.AuctionProSelect(id);
 		apsList=pDao.auctionInfoSelect(id);
 		
+		for(int i=0; i<apsList.size(); i++) {
+			maxpList=pDao.auctionMaxSelect(apsList.get(i).getAut_aunum());
+		}
+		apsMap.put("apsList", apsList);
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
 		

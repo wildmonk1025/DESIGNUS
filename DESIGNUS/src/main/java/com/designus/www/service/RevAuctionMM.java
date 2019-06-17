@@ -46,13 +46,13 @@ public class RevAuctionMM {
 		String ra_title = multi.getParameter("ra_title");
 		String ra_contents = multi.getParameter("ra_contents");
 		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
+		
+		String rat_mbid_w = multi.getParameter("ra_mbid");
+		int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
+		int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
 		String ra_oc = "O";
 
-		//		if(ra_oc.equals("비공개")) {
-		//			ra_oc="C";
-		//		} else
-		//			ra_oc="O";
-		//			System.out.println("공개/비공개 여부를 확인해야합니다.");
+
 
 		RevAuction ra = new RevAuction();
 		ra.setRa_num(0);
@@ -67,17 +67,44 @@ public class RevAuctionMM {
 		//raFile 등록을 위해 DB에서 글번호가져옴
 
 		int currval = upload.fileUp(multi, ra);
+		if(!rat_mbid_w.equals(null)) {
+			ra_oc = "C";
+			RevAuctionTender rat = new RevAuctionTender();
+			rat.setRat_ranum(currval);
+			rat.setRat_mbid_w(rat_mbid_w);
+			rat.setRat_price(rat_price);
+			rat.setRat_days(rat_days);
+			//비공개 의뢰일 경우, none으로 설정하기
+			rat.setRat_file("none");
+			
+			boolean f = rDao.revAuctionApplyInsert(rat);
+			
+			if(f) {
+				revAuctionProgress rap = new revAuctionProgress();
+				rap.setRap_ranum(currval);
+				rap.setRap_mbid_n(ra_mbid);
+				rap.setRap_mbid_w(rat_mbid_w);
+				rap.setRap_price(rat_price);
+				rap.setRap_days(rat_days);
+				
+				int conf = rDao.reqDecisionInsert(rap);
+				System.out.println("conf 확인="+conf);
+			} else
+				System.out.println("비공개가 rat테이블에 insert안됨");
+		}
+		
+		
 		if (currval != 0) {
 			//글쓰기 성공 view = "redirect:boardList";
 			mav.addObject("ra_num", currval);
 			view = "redirect:/revauctionread";
-			///"+currval
 		} else if (currval == 0) {
 			view = "revAuctionWrite";
 		}
 		mav.setViewName(view);
 		return mav;
 	}
+
 
 	public ModelAndView revAuctionRead(int ra_num) {
 		mav = new ModelAndView();
