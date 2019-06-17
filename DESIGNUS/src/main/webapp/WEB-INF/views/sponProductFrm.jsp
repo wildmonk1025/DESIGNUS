@@ -96,7 +96,7 @@ td {
 						src="resources/images/${ssi_imgSysName}" width="150px"
 						height="180px"></td>
 					<td style="width: 100; height: 50;">제품명</td>
-					<td colspan="3" style="width: 700">${ss_title}</td>
+					<td colspan="3" style="width: 700">(${ss_num})${ss_title}</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
@@ -125,13 +125,12 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4"><button class="bt22"
-							onclick="location.href='sponbuy'">밀어주기</button></td>
+							onclick="location.href='sponbuy?ss_num='${ss_num}">밀어주기</button></td>
 					<td colspan="2"><button class="bt22"
 							onclick="location.href='sponsor'">목록보기</button></td>
 				</tr>
 			</table>
 			<table>
-
 			</table>
 		</div>
 

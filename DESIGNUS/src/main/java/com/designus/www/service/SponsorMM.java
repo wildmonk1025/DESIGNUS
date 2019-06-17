@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.Member;
 import com.designus.www.bean.Report;
 import com.designus.www.bean.Sponsor;
 import com.designus.www.bean.SponsorProgress;
@@ -31,6 +32,7 @@ public class SponsorMM {
 	private UploadFile upload;
 
 	Sponsor sp;
+	Member mb;
 
 	private ModelAndView mav;
 
@@ -111,13 +113,23 @@ public class SponsorMM {
 	}
 
 	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
-		System.out.println(ss_num);
-		System.out.println(ss_mbid);
 
 		Sponsor sm = new Sponsor();
+		Member mb = new Member();
+
+		System.out.println("후원 밀어주기??");
+		String view = null;
 
 		sm.setSs_num(ss_num);
 		String id = (String) session.getAttribute("id");
+
+		//포인트 있을때만 밀어주기 가능하게 바꿔야함 
+
+		sm = sDao.sponTenderInsert(ss_num, id);
+		// 밀어주기 insert
+
+		System.out.println(ss_num);
+		System.out.println(id);
 
 		return mav;
 	}

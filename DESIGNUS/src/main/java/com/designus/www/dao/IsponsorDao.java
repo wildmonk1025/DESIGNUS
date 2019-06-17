@@ -26,4 +26,6 @@ public interface IsponsorDao {
 	boolean sponuploadfileup(Map<String, String> fMap);
 
 	int getSponserwri(Sponsor sp);
+
+	Sponsor sponTenderInsert(@Param("ss_num") int ss_num, String id);
 }
