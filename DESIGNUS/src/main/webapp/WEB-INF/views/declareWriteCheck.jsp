@@ -176,7 +176,6 @@ td {
 						</tr>
 					</table>
 				</div>
-				<div class="btnArray" id="btn1">
 					<input type="button" value="적합" onclick="b();" />
 				</div>
 

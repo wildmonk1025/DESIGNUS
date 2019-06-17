@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Sponsor;
 import com.designus.www.bean.SponsorProgress;
+import com.designus.www.bean.SponsorTender;
 
 //import org.springframework.stereotype.Repository;
 
@@ -27,7 +28,8 @@ public interface IsponsorDao {
 
 	int getSponserwri(Sponsor sp);
 
-	Sponsor sponTenderInsert(@Param("ss_num") int ss_num, @Param("id") String id);
+	Sponsor sponTenderInsert(SponsorTender st);
 
-	Sponsor sponbuy(@Param("ss_num") int ss_num, @Param("id") String id);
+	Sponsor sponbuy(SponsorTender st);
+
 }

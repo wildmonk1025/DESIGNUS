@@ -28,12 +28,45 @@ div{
 
 #search {
 	margin-left: 100px;
-	padding-left: 120px;
+	padding-left: 60px;
 	padding-right: 20px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 550px;
+	height: 50px;
 	float: left;
+}
+
+#searchbox {
+	width: 350px;
+	height: 40px;
+	float: left;
+}
+
+#searchtxt {
+	width: 330px;
+	height: 40px;
+	align: center;
+}
+
+#searchbtn {
+	width: 50px;
+	height: 40px;
+	margin-left: -60px;
+	font-style: oblique;
+	display: inline;
+
+	font-size: 1em;
+	box-sizing: border-box;
+	outline: none;
+	background-color: none;
+	border: none;
+	color: coral;
+	
+}
+
+#searchbtn:active{
+
 }
 
 #loginwriter {
@@ -50,17 +83,12 @@ div{
 	height: 50px;
 }
 
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
-}
+
 
 #subcategory {
 	width: 50px;
 	height: 50px;
-	background-color: orange;
+	background-color: coral;
 	color: white;
 	font-size: 30px;
 	float: left;
@@ -134,15 +162,13 @@ nav {
 }
 
 .menu-item {
-	background: #fff;
+	background: coral;
 	width: 200px;
 }
 
 /*Menu Header Styles*/
 .menu-item h4 {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
-	color: #fff;
+	color: white;
 	font-size: 15px;
 	font-weight: 500;
 	padding: 7px 12px;
@@ -150,8 +176,9 @@ nav {
 
 /*ul Styles*/
 .menu-item ul {
-	background: orange;
+	background: #FFC19E;
 	font-size: 13px;
+	font-weight: 400;
 	line-height: 30px;
 	height: 0px;
 	list-style-type: none;
@@ -181,9 +208,9 @@ nav {
 	transition: height 1s ease;
 }
 
-/*li Styles*/
-.menu-item li {
-	border-bottom: 1px solid #eee;
+.menu-item li:hover{
+	font-weight: 900;
+	background-color: white;
 }
 
 a:active {
@@ -207,12 +234,14 @@ a:hover {
 }
 
 #revauctionbtn, #auctionbtn {
-	background-color: orange;
+	background-color: coral;
 	width: 150px;
 	height: 30px;
 	color: white;
 	float: right;
 }
+
+
 </style>
 <meta charset="UTF-8">
 
@@ -228,8 +257,10 @@ a:hover {
 		</div>
 
 		<div id="search">
+			<div id="searchbox">
 			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
-			<button id="searchbtn" onclick="asd()">검색</button>
+			<button id="searchbtn" onclick="asd()">Search</button>
+			</div>
 		</div>
 		<div id="loginwriter">
 			<div id="adminpage">
@@ -292,7 +323,7 @@ a:hover {
 	<div id="category">
 		<div id="subcategory" align="center" class="menu-item">
 			<h4>
-				<a href="#"><h2>三</h2></a>
+				<a href="#"><h2>≡</h2></a>
 			</h4>
 			<nav>
 				<ul>

@@ -205,7 +205,7 @@ public class AuctionMM {
 
 			at.setAut_mbid(aDao.getAuctionWID(at));
 			at.setAu_title(aDao.getAuctionTitle(at));
-			at.setAut_notify(id+" 님이 " + at.getAu_title() + " 상품을" + at.getAut_qty() +" 개 구입 하셧습니다.");
+			at.setAut_notify(id+" 님이 " + at.getAu_title() + " 상품을 " + at.getAut_qty() +" 개 구입 하셧습니다.");
 			aDao.setNotifyAuctionTender(at);
 			
 		}
