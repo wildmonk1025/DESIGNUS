@@ -44,5 +44,7 @@
 	<select id="getquestionCheck" parameterType="question" resultType="question">
 		SELECT * FROM AQ_LIST WHERE AQ_NUM=${aq_num}
 	</select>
-	
+	<insert id="getquestionReply" parameterType="map" >
+		INSERT INTO QR VALUES(QR_SEQ.nextval,${aq_num},#{qr_contents},DEFAULT)
+	</insert>
 </mapper>
