@@ -28,6 +28,8 @@ public interface IadminDao {
 	boolean getwarning(@Param("mb_id")String mb_id);
 
 	List<MemberSearch> gettransforInfo();
+
+	MemberSearch gettransformwrInfo(@Param("mb_id")String mb_id);
   
   
 }

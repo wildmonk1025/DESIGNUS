@@ -50,18 +50,6 @@ public class AjaxHomeControllerjy {
 	 * System.out.println("이거는??????"); return aa; }
 	 */
 
-	/*
-	 * @RequestMapping(value = "/memberidfind", produces =
-	 * "application/json;charset=utf-8") public String memberidfind(@RequestBody
-	 * String email, String name, HttpServletResponse response) {
-	 * 
-	 * String ab = mm.memberidfind(); System.out.println("아이디 찾기");
-	 * 
-	 * System.out.println(email); System.out.println(name);
-	 * 
-	 * System.out.println("email"); return ab;
-	 * 
-	 * }
-	 */
+	
 
 }

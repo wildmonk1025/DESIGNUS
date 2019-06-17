@@ -14,9 +14,7 @@
             
         }
 
-        div {
-            margin: auto;
-        }
+    
 
         ul {
             list-style: none;
@@ -88,7 +86,7 @@
 	border: 1px solid blue;
 	color: black; display : inline;
 	float: left;
-	width: 320px;
+	width: 800px;
 	heigth: 55px;
 	display: inline;
 }

@@ -21,7 +21,7 @@ public class AjaxAdminController {
 			 System.out.println("cm="+am.declarewritecheck());
 			  System.out.println("aList="+check);
 			return check;
-
+			//관리자페이지 신고하기 정보
 		}
 		@RequestMapping(value = "/Declarelist", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
 		public String Declarelist() {
@@ -29,7 +29,7 @@ public class AjaxAdminController {
 			System.out.println("cm="+am.declarewritecheck());
 			System.out.println("aList="+check);
 			return check;
-			
+			//신고내역페이지 신고정보
 		}
 		@RequestMapping(value = "/transformList", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
 		public String transformList() {
@@ -37,13 +37,13 @@ public class AjaxAdminController {
 			System.out.println("cm="+am.transformList());
 			System.out.println("aList="+check);
 			return check;
-			
+			//관리자페이지 작가신청정보
 		}
 		@RequestMapping(value = "/transformwridetail", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
 		public String transformwridetail() {
 			String check = am.transformwridetail();
 			System.out.println("aList="+check);
 			return check;
-			
+			//작가전환페이지 신청정보
 		}
 }

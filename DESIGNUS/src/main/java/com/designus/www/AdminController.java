@@ -21,17 +21,20 @@ public class AdminController {
 	public String admininfo() {
 
 		return "adminInfo";
+		//관리자메인
 	}
 	@RequestMapping(value = "/permitWriDetail", method = RequestMethod.GET)
 	public String permitWriDetail() {
 		
 		return "permitWriDetail";
+		//작가전환신청상세
 	}
 
 	@RequestMapping(value = "/declareWrite", method = RequestMethod.GET)
 	public String declareWrite() {
 
 		return "declareWrite";
+		//신고하기
 	}
 
 	@RequestMapping(value = "/questionList", method = RequestMethod.GET)
@@ -39,43 +42,52 @@ public class AdminController {
 
 		return "questionList";
 	}
-
+		//1:1문의
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
 	public String memberList() {
 
 		return "memberList";
 	}
-
+		//회원관리
 	@RequestMapping(value = "/categoryEdit", method = RequestMethod.GET)
 	public String categoryEdit() {
 
 		return "categoryEdit";
 	}
-	
+		//카테고리관리
 	@RequestMapping(value = "/permitWriApply", method = RequestMethod.GET)
 	public String permitWriApply() {
 		
 		return "permitWriApply";
 	}
-	
+		//작가 전환가입신청
 	@RequestMapping(value = "/declareWriteCheck", method = RequestMethod.GET)
 	public ModelAndView declareWriteCheck(int rp_num) {
 		System.out.println("이거찍히니?"+rp_num);
 		mav = new ModelAndView();
 		mav = adm.declareWriteCheck(rp_num);
 		return mav;
-	}
+	}//신고하기 상세보기 정보
 	@RequestMapping(value = "/declarenonpermit", method = RequestMethod.POST)
 	public ModelAndView declareNonPermit(int rp_num,String rp_mbid_a) {
 		System.out.println("ㅇㅇ?"+rp_mbid_a);
 		mav = adm.declareNonPermit(rp_num);
 		return mav;
+		//신고하기 부적합
 	}
 	@RequestMapping(value = "/declarepermit", method = RequestMethod.POST)
 	public ModelAndView declarepermit(int rp_num ,String mb_id) {
 		System.out.println("hh?");
 		mav = adm.declarepermit(rp_num,mb_id);
 		return mav;
+		//신고하기 적합
 	}
-
+	@RequestMapping(value = "/transformwridlist", method = RequestMethod.GET)
+	public ModelAndView transformwridlist(String mb_id) {
+		System.out.println("이거찍히니?"+mb_id);
+		mav = new ModelAndView();
+		mav = adm.transformwridlist(mb_id);
+		return mav;
+	}
+		//
 }

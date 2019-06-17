@@ -32,8 +32,9 @@ public class AuctionControllerspon {
 	@RequestMapping(value = "/sponupload")
 	public ModelAndView auctionWrite(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
-		System.out.println("넘어가나?");
+		System.out.println("(컨트롤러) 스폰 상품 등록 시작");
 		mav = sm.sponupload(multi);
+		System.out.println("(컨트롤러) 스폰 상품 등록 마무리");
 		return mav;
 	}
 
@@ -49,6 +50,17 @@ public class AuctionControllerspon {
 		mav = new ModelAndView();
 		mav = sm.sponproduct(ss_num);
 		System.out.println(sm.sponproduct(ss_num));
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/sponbuy", method = RequestMethod.GET)
+	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
+
+		System.out.println("되고있나");
+		mav = new ModelAndView();
+		mav = sm.sponbuy(ss_num, ss_mbid);
+		System.out.println(sm.sponbuy(ss_num, ss_mbid));
 
 		return mav;
 	}

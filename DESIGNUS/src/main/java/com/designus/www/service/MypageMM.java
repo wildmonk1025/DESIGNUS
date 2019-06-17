@@ -337,9 +337,9 @@ public class MypageMM {
 		// AuctionProgress ap=new AuctionProgress();
 		apList = pDao.auctionMyOrderListSelect(id, num);
 		Gson gson = new Gson();
-		String str = gson.toJson(apList);
+		String apListjson = gson.toJson(apList);
 		System.out.println("size" + apList.size());
-		mav.addObject("apList", str);
+		mav.addObject("apList", apListjson);
 		mav.addObject("MPpaging", getMPaging(num, kind));
 		System.out.println("사망띠....");
 		System.out.println("apList" + apList.size());
@@ -810,22 +810,12 @@ public class MypageMM {
 		String view = null;
 		String bd_kind = "이용후기";
 		int ptnum = Integer.parseInt(multi.getParameter("rap_ptnum"));
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -7 title=" + ptnum);
 		String id = session.getAttribute("id").toString();
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -6 title=" + id);
 		String title = multi.getParameter("bd_title");
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -5 title=" + title);
 		String contents = multi.getParameter("bd_contents");
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -4 title=" + contents);
 		String aumbidw = multi.getParameter("rap_mbid_w");
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -3 title=" + aumbidw);
 		int priceN = Integer.parseInt(multi.getParameter("rap_price"));
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -2 title=" + priceN);
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 -1 title=" + check);
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 1 title=" + title);
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 2 contents=" + contents);
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 3 check=" + check);
 		com.designus.www.bean.Board b = new com.designus.www.bean.Board();
 
 		b.setBd_mbid(id);
@@ -834,14 +824,11 @@ public class MypageMM {
 		b.setBd_kind(bd_kind);
 
 		boolean a = bDao.reviewBoardyhWrite(b);
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 4 a값 확인 : " + a);
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 5 boardnum=" + b.getBd_num());
 		revAuctionProgress rap = new revAuctionProgress();
 		rap.setRap_ptnum(ptnum);
 		rap.setRap_mbid_w(aumbidw);
 		rap.setRap_price(priceN);
 		int ponitW = mDao.memberWrevpoint(rap);
-		System.out.println("(서비스클래스)제작의뢰 스텝2 구매후기 및 수령확인 중간 확인 6 ponitW값 확인 : " + ponitW);
 		rap.setPointW(ponitW);
 		boolean f = false;
 		if (check == 1) { // 첨부된 파일이 있다면....
@@ -874,15 +861,57 @@ public class MypageMM {
 	public ModelAndView mypagemove() {
 		mav=new ModelAndView();
 		String view=null;
+		List<Notify> NoList = null;
+		List<AuctionProgress> apsList = null;
 		String id=session.getAttribute("id").toString();
 		//String grade=session.getAttribute("grade").toString();
 		Member mb=new Member();
 		mb=pDao.mypagemoveSelect(id);
-		if(mb != null) {
+		NoList=pDao.notismypageSelect(id);
+		//apsList=pDao.AuctionProSelect(id);
+		apsList=pDao.auctionInfoSelect(id);
+		
+		Gson gson = new Gson();
+		String str = gson.toJson(NoList);
+		
+		if(mb != null && NoList != null) {
 			mav.addObject("mb",mb);
+			mav.addObject("NoList", str);
 			view="myPage";
 		}else {
 			view="home";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView fullDelete() {
+		mav=new ModelAndView();
+		String view=null;
+		String id=session.getAttribute("id").toString();
+		boolean d=pDao.fullDelete(id);
+		if(d) {
+			//mav.addObject("check", 1);
+			view="myPage";
+		}else {
+			//mav.addObject("check", 2);
+			view="myPage";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView nodelete(Notify nf) {
+		mav=new ModelAndView();
+		String view=null;
+		String id=session.getAttribute("id").toString();
+		boolean d=pDao.nodelete(nf);
+		if(d) {
+			mav.addObject("check", 1);
+			view="myPage";
+		}else {
+			mav.addObject("check", 2);
+			view="myPage";
 		}
 		mav.setViewName(view);
 		return mav;

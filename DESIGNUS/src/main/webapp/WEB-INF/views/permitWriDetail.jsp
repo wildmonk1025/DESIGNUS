@@ -15,28 +15,20 @@ body {
 	width: 1520px;
 }
 
-div {
-	margin: auto;
-}
+
 
 ul {
 	list-style: none;
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1518px;
 	height: 170px;
 }
 
-#adminmenu {
-	float: left;
-	width: 300px;
-	height: 500px;
-}
+
 
 #adminwriterjoinfrm {
-	border: 1px solid red;
 	float: left;
 	align-content: center;
 	width: 1216px;
@@ -47,7 +39,7 @@ ul {
 	padding: inherit;
 	margin-top: 30px;
 	width: 1000px;
-	height: 450px;
+	height: 600px;
 }
 
 #writerjointitlefrm {
@@ -69,39 +61,22 @@ ul {
 }
 
 #writerjoincontents {
-	float: left;
-	border: 1px solid red;
 	width: 99%;
-	height: 370;
-}
-
-#writerjoinnum {
-	border: 1px solid red;
-	float: left;
-	width: 200px;
-	height: 32px;
+	height:600px;
 }
 
 
-#writerjoinno, #writerjoinok {
-	margin-top: 650px;
-	float: right;
-	background-color: orange;
-	width: 90px;
-	height: 40px;
-	color: white;
-}
+
+
+
 
 #customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 600px;
+	width: 900px;
 	border-collapse: collapse;
 }
 
 #customers td, #customers th {
 	font-size: 1em;
-	border: 1px solid #98bf21;
-	padding: 3px 7px 2px 7px;
 }
 
 #customers th {
@@ -116,6 +91,10 @@ ul {
 #customers tr.alt td {
 	color: #000000;
 	background-color: #EAF2D3;
+}
+tr{
+width: 300px;
+height: 60px;
 }
 </style>
 </head>
@@ -137,71 +116,45 @@ ul {
 			</div>
 			<div id="writerjoincontents">
 				<table id="customers">
-					<tr>
-						<th>Company</th>
-						<th>Contact</th>
-						<th>Country</th>
+					<tr  class="alt">
+						<td>신청번호:</td>
+						<td>전문분야:${mj_cgcode}</td>
+						<td>아이디 : ${mb_id}</td>
 					</tr>
 					<tr>
-						<td>Alfreds Futterkiste</td>
-						<td>Maria Anders</td>
-						<td>Germany</td>
+						<td colspan="3">제목 :</td>
 					</tr>
 					<tr class="alt">
-						<td>Berglunds snabbköp</td>
-						<td>Christina Berglund</td>
-						<td>Sweden</td>
+						<td colspan="1" rowspan="3">설명 :</td>
+						<td colspan="2" rowspan="3">${mj_contents}</td>
 					</tr>
+					</table>
+					<table id="customers">
 					<tr>
-						<td>Centro comercial Moctezuma</td>
-						<td>Francisco Chang</td>
-						<td>Mexico</td>
+						<td >사진</td>
+						<td colspan="2"></td>
 					</tr>
 					<tr class="alt">
-						<td>Ernst Handel</td>
-						<td>Roland Mendel</td>
-						<td>Austria</td>
+						<td  colspan="1" rowspan="3">답글 : </td>
+						<td colspan="2" rowspan="3"></td>
 					</tr>
+					</table>
+					<table id="customers">
 					<tr>
-						<td>Island Trading</td>
-						<td>Helen Bennett</td>
-						<td>UK</td>
+						<td>첨부파일</td>
+						<td colspan="2">${mj_portf}</td>
 					</tr>
-					<tr class="alt">
-						<td>Königlich Essen</td>
-						<td>Philip Cramer</td>
-						<td>Germany</td>
-					</tr>
-					<tr>
-						<td>Laughing Bacchus Winecellars</td>
-						<td>Yoshi Tannamuri</td>
-						<td>Canada</td>
-					</tr>
-					<tr class="alt">
-						<td>Magazzini Alimentari Riuniti</td>
-						<td>Giovanni Rovelli</td>
-						<td>Italy</td>
-					</tr>
-					<tr>
-						<td>North/South</td>
-						<td>Simon Crowther</td>
-						<td>UK</td>
-					</tr>
-					<tr class="alt">
-						<td>Paris spécialités</td>
-						<td>Marie Bertrand</td>
-						<td>France</td>
-					</tr>
+					
 				</table>
 			</div>
 			<button id="writerjoinno">가입 거절</button>
-			<br>
+			
 			<button id="writerjoinok">가입 승인</button>
 		</div>
 	</div>
 </body>
 <script>
-	
+
 </script>
 
 </html>

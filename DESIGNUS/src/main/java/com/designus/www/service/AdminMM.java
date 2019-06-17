@@ -140,4 +140,30 @@ public class AdminMM {
 		return jsonObj;
 	}
 
+	public ModelAndView transformwridlist(String mb_id) {
+		String view = null;
+		mav = new ModelAndView();
+
+		MemberSearch ms=new MemberSearch();
+		// rp.setRp_num(rp_num);
+		System.out.println("zzzzzzzz" + mb_id);
+
+		ms = iDao.gettransformwrInfo(mb_id);
+		ms.setMb_id(mb_id);
+		if (mb_id == ms.getMb_id()) {
+			System.out.println("ffffffff ㅋㅋㅋㅋ");
+			mav.addObject("mb_id", ms.getMb_id());
+			mav.addObject("mj_cgcode", ms.getMj_cgcode());
+			mav.addObject("mj_contents", ms.getMj_contents());
+			mav.addObject("mj_portf", ms.getMj_portf());
+			
+			view = "permitWriDetail";
+		} else {
+			view = "permitWriDetail";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+	
+
 }

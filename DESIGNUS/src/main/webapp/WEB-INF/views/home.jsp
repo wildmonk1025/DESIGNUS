@@ -71,7 +71,7 @@ div {
 
 #footercheck {
 	border: 1px solid black;
-	width: 1510px;
+	width: 1520px;
 	height: 200px;
 }
 .best{
