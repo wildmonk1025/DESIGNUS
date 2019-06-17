@@ -118,7 +118,7 @@
 		AUPVIEWTEST where AUP_MBID_N=#{id}
 	</select>
 
-	
+
 	<update id="aucapplyMbNupdate" parameterType="auctionprogress">
 		update MB SET
 		mb_point=#{ponitN}-#{aup_price}
@@ -178,7 +178,8 @@
 		DELETE FROM AUT
 		WHERE AUT_AUNUM=${aup_ranum} AND
 		AUT_MBID=#{aup_mbid_n} AND
-		AUT_DATE=to_date(#{aut_date}, 'RR/MM/DD HH24:MI:SS')
+		AUT_DATE=to_date(#{aut_date}, 'RR/MM/DD
+		HH24:MI:SS')
 	</delete>
 
 	<select id="scheckSelect" parameterType="auctionprogress"
@@ -257,13 +258,16 @@
 		delete from rap
 		where rap_ptnum=${rap_ptnum}
 	</delete>
-	<update id="revaucinfocancelupDate" parameterType="revauctionprogress">
+	<update id="revaucinfocancelupDate"
+		parameterType="revauctionprogress">
 		UPDATE RAT SET
 		RAT_DECIDE='N'
-		WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w}
+		WHERE RAT_NUM=${rap_ranum}
+		AND RAT_MBID_W=#{rap_mbid_w}
 	</update>
 	<insert id="revaucinfocancelInsert" parameterType="notify">
-		INSERT INTO NF VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_contents},0,DEFAULT)
+		INSERT INTO NF
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_contents},0,DEFAULT)
 	</insert>
 	<select id="revAuctionMyAcceptList"
 		parameterType="revauctionprogress" resultType="revauctionprogress">
@@ -275,8 +279,8 @@
        where RAP_MBID_W=#{id} and rownum<=${num}*3
      ) where rn>=${num}*3-2 AND RankNo=1
   ]]>
-  </select>
-  <select id="getreASetpCount" resultType="Integer">
+	</select>
+	<select id="getreASetpCount" resultType="Integer">
 		select count(*) from
 		RAPVIEW where RAP_MBID_W=#{id}
 	</select>
@@ -291,8 +295,9 @@
   ]]>
 	</select>
 	<update id="revdelinumupload" parameterType="revauctionprogress">
-		 UPDATE RAP SET RAP_TRACK=#{rap_track},RAP_STEP=3
-        WHERE RAP_PTNUM=${rap_ptnum}
+		UPDATE RAP SET
+		RAP_TRACK=#{rap_track},RAP_STEP=3
+		WHERE RAP_PTNUM=${rap_ptnum}
 	</update>
 	<select id="boardwriteSelect" resultType="revauctionprogress">
 		<![CDATA[
@@ -321,9 +326,9 @@
 	</update>
 	<select id="mypagemoveSelect" parameterType="String"
 		resultType="member">
-		
+
 		SELECT * FROM MB
-         WHERE  MB_ID=#{id} 
+		WHERE MB_ID=#{id}
 
 	</select>
 	<select id="notismypageSelect" parameterType="String"
@@ -331,14 +336,16 @@
 		SELECT * FROM NF WHERE NF_MBID_R=#{id}
 	</select>
 	<delete id="fullDelete">
-		DELETE FROM NF
+		UPDATE NF SET NF_CHECK=2
 		WHERE NF_MBID_R=#{id}
 	</delete>
 	<delete id="nodelete" parameterType="notify">
-		DELETE FROM NF
+		UPDATE NF SET NF_CHECK=2
 		WHERE NF_NUM=${nf_num}
+
 	</delete>
-	<select id="auctionInfoSelect" parameterType="String" resultType="auctiontender">
+	<select id="auctionInfoSelect" parameterType="String"
+		resultType="auctiontender">
 		<![CDATA[
 		 select * from(
     select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE+3 as AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
@@ -347,8 +354,13 @@
      )  where  RankNo=1
   ]]>
 	</select>
-	<select id="auctionMaxSelect"  resultType="Integer">
-		SELECT MAX(AUT_PRICE) FROM AUT
-       WHERE AUT_AUNUM=${aut_aunum}
+	<select id="auctionMaxSelect" resultType="Integer">
+		SELECT MAX(AUT_PRICE)
+		FROM AUT
+		WHERE AUT_AUNUM=${aut_aunum}
 	</select>
+	<delete id="AuctionGiveUpDelete">
+		DELETE FROM AUT
+		WHERE AUT_AUNUM=${aut_aunum} AND AUT_MBID=#{aut_mbid} AND AUT_KIND !='I'
+	</delete>
 </mapper>
