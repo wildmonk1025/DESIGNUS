@@ -426,9 +426,9 @@ a:hover {
     			if(i<10) {
     			str="<span>"+(i+1)+". "+data[i].rtsr_word+"</span>";
     			$("#ranking").html(str);
-    			$('#ranking').show();
+/*     			$('#ranking').show();
     			$('#ranking').fadeIn('slow');
-    			$('#ranking').slideUp(3200);
+    			$('#ranking').slideUp(3200); */
     			i++;
     			}
     			else if(i==10) {
