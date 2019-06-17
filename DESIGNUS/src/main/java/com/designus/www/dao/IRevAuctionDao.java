@@ -2,6 +2,8 @@ package com.designus.www.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
@@ -63,4 +65,6 @@ public interface IRevAuctionDao {
 	void setNotifyrevAuctionPickN(revAuctionProgress rap);
 
 	void setNotifyrevAuctionPickW(revAuctionProgress rap);
+
+	List<RevAuction> getRevAuctionListSelect2(@Param("word") Object word);
 }

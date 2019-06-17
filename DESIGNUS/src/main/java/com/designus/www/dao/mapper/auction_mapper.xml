@@ -30,7 +30,10 @@
 		ORDER BY a.AU_NUM
       ]]>
 		
-     
+	</select>
+
+	<select id="getAuctionListSelect2" parameterType="Object" resultType="auction">
+	   SELECT * FROM AU WHERE AU_TITLE LIKE '%'||#{word}||'%' OR AU_CONTENTS LIKE '%'||#{word}||'%'
 	</select>
 
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
@@ -148,10 +151,5 @@
 	<insert id="setNotifyAuctionTender" parameterType="auctiontender">
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{aut_notify},0,DEFAULT)
 	</insert>
-	
-
-
-
-
 	
 </mapper>
