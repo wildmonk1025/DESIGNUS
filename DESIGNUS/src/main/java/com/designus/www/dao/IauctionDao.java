@@ -2,6 +2,8 @@ package com.designus.www.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
@@ -65,6 +67,10 @@ public interface IauctionDao {
 	void setNotifyAuctionInsert(Auction au);
 
 	void setNotifyAuctionTender(AuctionTender at);
+
+	String getAuctionWID(AuctionTender at);
+
+	String getAuctionTitle(AuctionTender at);
 
 
 

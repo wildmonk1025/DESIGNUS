@@ -131,7 +131,7 @@ public interface ImypageDao {
 
 	List<AuctionTender> auctionInfoSelect(String id);
 
-	List<Integer> auctionMaxSelect(int aut_aunum);
+	List<Integer> auctionMaxSelect(@Param("aut_aunum") int aut_aunum);
 
   
 }
