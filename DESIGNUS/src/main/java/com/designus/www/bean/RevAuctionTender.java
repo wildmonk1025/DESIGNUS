@@ -13,4 +13,7 @@ public class RevAuctionTender {
 	String rat_file;
 	int    rat_days;
 	String rat_decide;
+	
+	String rat_mbid_n;
+	String rat_notify;
 }

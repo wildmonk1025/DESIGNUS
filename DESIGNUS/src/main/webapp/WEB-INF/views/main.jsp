@@ -38,35 +38,51 @@ div{
 }
 
 #searchbox {
-	width: 350px;
+	width: 390px;
 	height: 40px;
 	float: left;
 }
 
 #searchtxt {
-	width: 330px;
+	width: 370px;
 	height: 40px;
 	align: center;
+	background-color: none;
+	border: 2px solid coral;
+}
+
+#searchtxt:focus {
+	outline: none;
 }
 
 #searchbtn {
 	width: 50px;
 	height: 40px;
-	margin-left: -60px;
-	font-style: oblique;
+	margin-left: -75px;
 	display: inline;
-
-	font-size: 1em;
+	font-size: 1.1em;
+	font-style: italic;
 	box-sizing: border-box;
 	outline: none;
-	background-color: none;
+	background: none;
 	border: none;
+	color: gray;
+}
+#searchbtn:hover {
 	color: coral;
-	
 }
 
-#searchbtn:active{
+#searchbtn:active {
+	position:relative;
+	top:1px;
+}
 
+#ranking {
+	width: 150px;
+	height: 30px;
+	float: left;
+	padding-top: 12px;
+	font-size: 12px;
 }
 
 #loginwriter {
@@ -258,8 +274,11 @@ a:hover {
 
 		<div id="search">
 			<div id="searchbox">
-			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." />
+			<input type="text" id="searchtxt" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
 			<button id="searchbtn" onclick="asd()">Search</button>
+			</div>
+			<div id="ranking">
+			가나다다라마바사
 			</div>
 		</div>
 		<div id="loginwriter">
@@ -393,6 +412,37 @@ a:hover {
 		console.log(a);
 	}
 	console.log(a);
-	console.log('새로고침')
+	console.log('새로고침');
+	
+	
+	$(document).ready(function() {
+		$.ajax({
+    		type:'POST',
+    		url:'ajax/searchranking',
+    		dataType:'json',
+    		success: function(data) {
+    			console.log("성공");
+    			var str='';
+    			var major='';
+
+    			for(var i in data) {
+    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
+    			var n = data[i].mj_cgcode;
+    			str+="<div class='writerInfo_lv3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
+    			$("#writer_Info"+i).html(str);
+    			}
+    			
+    			for(var y=0;y<6;y++) {
+    				for(var z=0;z<=i;z++) {    					
+    				$("#writer_Info"+z).css("display","block");
+    				$("#writer_Info"+y).css("display","none");
+    					}
+    				}
+    		},
+			error: function(error) {
+    		}
+    	}); //ajax End
+	});
+	
 </script>
 </html>

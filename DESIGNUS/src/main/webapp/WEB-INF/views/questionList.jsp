@@ -45,15 +45,6 @@
             height: 500px;
         }
 
-        .opt {
-            padding: inherit;
-            position: relative;
-            margin-top: 5px;
-            width: 1000px;
-            height: 450px;
-
-        }
-
         #declarelist {
             margin-left: 20px;
             width: 960px;
@@ -62,28 +53,24 @@
             float: left;
         }
 
-        .declareinfo{
-            width: 960px;
-            height: 320px;
-            border: 1px solid red;
-        }
-        
-        .declareinfo>tr{
-            border: 1px solid yellow;
-        }
+     
 
-        .btnArray {
-            margin-left: 10px;
-            position: absolute;
-            float: left;
-            width: 120px;
-        }
-        td {
-            text-align: center;
-        }
-.lipont{
-	font-size:20px;
+.best {
+	border: 1px solid blue;
+	color: black; display : inline;
+	float: left;
+	width: 800px;
+	heigth: 55px;
+	display: inline;
 }
+ #questionlist {
+            width: 990px;
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid grey;
+            
+            
+        }
     </style>
 </head>
 
@@ -104,88 +91,45 @@
             <div class="opt">
                 <h3 style="margin-left:  20px; font-size: 25px; background-color: orange;">1:1문의 접수 리스트</h3>
                 <hr>
-                <div id="declarelist">
-                    <table class="declareinfo">
-                        <tr>
-                            <td>[문의번호]</td>
-                            <td>[회원등급]</td>
-                            <td>[ID]</td>
-                            <td>[질문유형]</td>
-                            <td>[등록일]</td>
-                            <td>[첨부파일 확인]</td>
-                        </tr>
-                        <tr>
-                            <td>12345</td>
-                            <td>작가회원</td>
-                            <td>BBDD</td>
-                            <td>카테고리 관련</td>
-                            <td>2019-05-31</td>
-                            <td rowspan="3" height="80"><button>첨부파일</button></td>
-                        </tr>
-                        <tr>
-                            <td>[제목]</td>
-                            <td colspan="4" height="20">카테고리좀 추가할 수 있을까요?</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" height="20">내용이다 내용요요요용요요요요요요용.....</td>
-                        </tr>
-                        <tr>
-                            <td>[문의번호]</td>
-                            <td>[회원등급]</td>
-                            <td>[ID]</td>
-                            <td>[질문유형]</td>
-                            <td>[등록일]</td>
-                            <td>[첨부파일 확인]</td>
-                        </tr>
-                        <tr>
-                            <td>12345</td>
-                            <td>작가회원</td>
-                            <td>BBDD</td>
-                            <td>카테고리 관련</td>
-                            <td>2019-05-31</td>
-                            <td rowspan="3"><button>첨부파일</button></td>
-                        </tr>
-                        <tr>
-                            <td>[제목]</td>
-                            <td colspan="4">카테고리좀 추가할 수 있을까요?</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">내용이다 내용요요요용요요요요요요용.....</td>
-                        </tr>
-                        <tr>
-                            <td>[문의번호]</td>
-                            <td>[회원등급]</td>
-                            <td>[ID]</td>
-                            <td>[질문유형]</td>
-                            <td>[등록일]</td>
-                            <td>[첨부파일 확인]</td>
-                        </tr>
-                        <tr>
-                            <td>12345</td>
-                            <td>작가회원</td>
-                            <td>BBDD</td>
-                            <td>카테고리 관련</td>
-                            <td>2019-05-31</td>
-                            <td rowspan="3"><button>첨부파일</button></td>
-                        </tr>
-                        <tr>
-                            <td>[제목]</td>
-                            <td colspan="4">카테고리좀 추가할 수 있을까요?</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">내용이다 내용요요요용요요요요요요용.....</td>
-                        </tr>
-                    </table>
+                <div id="questionlist">
+                
+              
                 </div>
                 <h3 style="text-align: center; color:blue;">페이징</h3>
             </div>
         </form>
         </div>
-    </div>
+    
 </body>
 <script>
-    function goBack() {
-        window.history.forward();
-    }
+$(document).ready(function() {
+	$.ajax({
+		url : 'questionWrite',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"+"<a href='questionWriteCheck?ap_num="+data[i].aq_num+"'>"
+					  +"문의번호:" +data[i].aq_num+"<br>"
+					  +"문의자아이디:"+data[i].aq_mbid+"<br>"
+					  +"질문유형:"+data[i].aq_type+"<br>"
+					  +"제목:"+data[i].aq_title+"<br>"
+					  +"등록일:"+data[i].aq_date+"<br>"
+					  +"</a>"+"</div>";
+					  }
+			$("#questionlist").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
 </script>
 </html>

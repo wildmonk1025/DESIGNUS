@@ -27,5 +27,6 @@ public class revAuctionProgress {
 	String ra_mbid;//상품 올린 아이디
 	int pointN;//일반 아이디 포인트
 	int pointW;//작가 아이디 포인트
+	String rap_notify;
 	
 }

@@ -35,4 +35,10 @@
 	<update id="getreAuthoragree" parameterType="membersearch">
 		UPDATE MB SET MB_GRADE='W' WHERE MB_ID= #{mb_id}
 	</update>
+	<delete id="getreAuthordelete" parameterType="membersearch">
+		DELETE FROM MJ WHERE MJ_MBID=#{mb_id}
+	</delete>
+	<select id="getquestionInfo" parameterType="question" resultType="question">
+		SELECT * FROM AQ_LIST 
+	</select>
 </mapper>

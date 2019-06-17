@@ -97,5 +97,9 @@ public class AdminController {
 		mav = adm.tcommentandapply(mb_id);
 		return mav;
 	} //작가전환신청가입승인
-		
+	@RequestMapping(value = "/questionWriteCheck", method = RequestMethod.GET)
+	public String questionWriteCheck() {
+
+		return "questionWriteCheck";
+	}
 }

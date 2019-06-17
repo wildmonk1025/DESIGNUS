@@ -9,10 +9,16 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-div {
-	margin: auto;
-}
+ body {
+            margin: auto;
+            width: 1520px;
+            height: auto;
+            overflow: auto;
+        }
 
+        div {
+            margin: auto;
+        }
 ul {
 	list-style: none;
 }
@@ -94,23 +100,17 @@ input[type=submit] {
 </head>
 
 <body>
-	<div id="mainheader"></div>
-	<div id="adminmenu">
-		<ul>
-			<li style="text-align: center; font-size: 20px">관리내역</li>
-			<li>게시판/댓글</li>
-			<li>신고내역</li>
-			<li style="background-color: skyblue">1:1문의</li>
-			<li>회원관리</li>
-			<li>작가 전환신청</li>
-			<li>작가 가입신청</li>
-			<li>카테고리 관리</li>
-			<li>게시판/댓글</li>
-			<li>게시판/댓글</li>
-
-		</ul>
-
+	  <div id="mainheader">
+<div id="mainheader">
+		<jsp:include page="main.jsp" />
 	</div>
+    </div>
+    <div id="adminmenu">
+        <ul>
+                 <jsp:include page="admininclud.jsp"></jsp:include>
+
+        </ul>
+    </div>
 	<div id="onequestionmain">
 		<div id="onequestion">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
