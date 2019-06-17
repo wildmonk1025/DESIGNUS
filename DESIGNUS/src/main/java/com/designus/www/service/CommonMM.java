@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.RealTimeSearchRanking;
 import com.designus.www.dao.IcommonDao;
 import com.designus.www.dao.ImemberDao;
 import com.google.gson.Gson;
@@ -63,6 +64,11 @@ public class CommonMM {
 		System.out.println(jsonObj);
 		System.out.println("여기는??");
 	return jsonObj;
+	}
+	public String searchRanking() {
+		List<RealTimeSearchRanking> sList = cDao.getSearchRankingSelect();
+		String json = new Gson().toJson(sList);
+		return json;
 	}
 	
 }

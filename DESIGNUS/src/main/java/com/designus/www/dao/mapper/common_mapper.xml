@@ -14,7 +14,12 @@
 	<select id="getimgInfo" parameterType="auction" resultType="auction">
             SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
 	</select>
-
+	
+	<select id="getSearchRankingSelect" resultType="rtsr">
+            <![CDATA[
+            SELECT * FROM (SELECT * FROM RTSR) WHERE ROWNUM<=10 ORDER BY RTSR_CNT DESC
+            ]]>
+	</select>
 
 </mapper>
 <!-- 		SELECT AUI_NUM, AUI_IMG FROM AUI  JOIN(SELECT AU_NUM FROM 

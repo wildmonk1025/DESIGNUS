@@ -79,11 +79,15 @@ div{
 
 #ranking {
 	width: 150px;
-	height: 30px;
+	height: 20px;
 	float: left;
+	padding-left: 10px;
 	padding-top: 12px;
-	font-size: 12px;
+	font-size: 15px;
+	font-weight:bolder;
+	font-family: Verdana, sans-serif; 
 }
+
 
 #loginwriter {
 	padding: 3px;
@@ -278,7 +282,6 @@ a:hover {
 			<button id="searchbtn" onclick="asd()">Search</button>
 			</div>
 			<div id="ranking">
-			가나다다라마바사
 			</div>
 		</div>
 		<div id="loginwriter">
@@ -399,7 +402,6 @@ a:hover {
 
 </body>
 <script>
-	var a = "";
 	function nonono() {
 		alert("작가가 아니면 NoNoNo");
 	}
@@ -408,41 +410,40 @@ a:hover {
 		$('#logout').submit();
 	}
 	function asd() {
-		a = $('#searchtxt').val();
-		console.log(a);
+		var word = $('#searchtxt').val();
+		location.href="/searching?word="+word;
 	}
 	console.log(a);
 	console.log('새로고침');
 	
-	
-	$(document).ready(function() {
+	var i=0;
+	setInterval( function() {
+		if(i<10) {
 		$.ajax({
     		type:'POST',
     		url:'ajax/searchranking',
     		dataType:'json',
     		success: function(data) {
-    			console.log("성공");
     			var str='';
-    			var major='';
-
-    			for(var i in data) {
-    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
-    			var n = data[i].mj_cgcode;
-    			str+="<div class='writerInfo_lv3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
-    			$("#writer_Info"+i).html(str);
+    			var str2='';
+    			console.log("성공");
+    			str="<span>"+(i+1)+". "+data[i].rtsr_word+"</span>";
+    			$("#ranking").html(str);
+    			i++;
+    			$('#ranking').show();
+    			$('#ranking').fadeIn('slow');
+    			$('#ranking').slideUp(3200);
+    			if(i==10) {
+    				i=0;
     			}
-    			
-    			for(var y=0;y<6;y++) {
-    				for(var z=0;z<=i;z++) {    					
-    				$("#writer_Info"+z).css("display","block");
-    				$("#writer_Info"+y).css("display","none");
-    					}
-    				}
     		},
 			error: function(error) {
     		}
     	}); //ajax End
-	});
+		}
+	},3300);
+
 	
+
 </script>
 </html>
