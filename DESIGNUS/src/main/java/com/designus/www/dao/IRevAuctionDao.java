@@ -41,6 +41,8 @@ public interface IRevAuctionDao {
 	int reqDecisionUpdate(revAuctionProgress rap);
 
 	int reqDecisionInsert(revAuctionProgress rap);
+	
+	int reqDecisionInsert2(revAuctionProgress rap);
 
 	int reqDecisionSelect(revAuctionProgress rap);
 

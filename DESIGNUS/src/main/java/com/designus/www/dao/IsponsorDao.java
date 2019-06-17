@@ -27,5 +27,7 @@ public interface IsponsorDao {
 
 	int getSponserwri(Sponsor sp);
 
-	Sponsor sponTenderInsert(@Param("ss_num") int ss_num, String id);
+	Sponsor sponTenderInsert(@Param("ss_num") int ss_num, @Param("id") String id);
+
+	Sponsor sponbuy(@Param("ss_num") int ss_num, @Param("id") String id);
 }

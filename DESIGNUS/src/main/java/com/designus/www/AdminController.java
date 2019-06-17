@@ -82,6 +82,6 @@ public class AdminController {
 		mav = new ModelAndView();
 		mav = adm.permitWriDetail(mb_id);
 		return mav;
-	}
+	} //작가전환신청상세보기
 		
 }

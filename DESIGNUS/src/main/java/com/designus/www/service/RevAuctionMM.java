@@ -1,5 +1,6 @@
 package com.designus.www.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -85,8 +86,7 @@ public class RevAuctionMM {
 				rap.setRap_mbid_w(rat_mbid_w);
 				rap.setRap_price(rat_price);
 				rap.setRap_days(rat_days);
-				
-				rDao.reqDecisionInsert(rap);
+				rDao.reqDecisionInsert2(rap);
 			} else
 				System.out.println("비공개가 rat테이블에 insert안됨");
 		}
