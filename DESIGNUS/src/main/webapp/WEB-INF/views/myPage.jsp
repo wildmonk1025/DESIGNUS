@@ -236,8 +236,21 @@ $('#nod').click(function() {
 
 var toMap=${toMap};
 
-console.log(23,toMap);
-
+var str="";
+console.log(23,toMap.apsList);
+console.log(24,toMap.maxpList);
+   for(var i=0;i<toMap.apsList.lenght;i++){
+    for(var j=0;j<toMap.maxpList.lenght;j++ ){
+    	str+="<h3>참여중인 출품경매</h3>"
+    	   +"상품명 :"+toMap.apsList[i].au_title
+    	   +"나의 금액 :"+toMap.apsList[i].aut_price
+    	   +"최고금액 :"+toMap.maxpList[j]
+    	   +"<a href='moveAuction'>경매장으로가기</a>"
+    	   +"<a href='AuctionGiveUp'>경매포기하기ㅠㅠ</a> "
+    	   +"종료일 :"+toMap.apsList[i].au_date+"<br><hr>"
+    }
+} 
+   $('#auction').html(str)
 </script>
 
 
