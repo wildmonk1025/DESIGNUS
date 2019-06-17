@@ -110,13 +110,13 @@ public class MypageMM {
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		String id = session.getAttribute("id").toString();
 		String pw = (multi.getParameter("mb_pw"));
-		String address = (multi.getParameter("mb_address"));
+		String address = multi.getParameter("addr1")+multi.getParameter("addr2")+multi.getParameter("addr3");;
 		String email = (multi.getParameter("mb_email"));
 		String profile = multi.getParameter("mb_profile");
-		System.out.println("id" + id);
-		System.out.println("id" + pw);
-		System.out.println("id" + address);
-		System.out.println("id" + email);
+		System.out.println("id1:" + id);
+		System.out.println("id3:" + pw);
+		System.out.println("id4:" + address);
+		System.out.println("id5:" + email);
 		Member mb = new Member();
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
@@ -132,7 +132,7 @@ public class MypageMM {
 			f = upload.fileUp(multi, mb, kind);
 			if (f) {
 				System.out.println("일단 여기까지는 된건데....");
-				view = "redirect:myPage";
+				view = "redirect:/mypage";
 			} else {
 				System.out.println("인설트 실패인데....");
 				view = "memberEdit";
@@ -875,6 +875,14 @@ public class MypageMM {
 		NoList = pDao.notismypageSelect(id);
 		// apsList=pDao.AuctionProSelect(id);
 		apsList = pDao.auctionInfoSelect(id);
+		
+		//금,은,동
+		int g=pDao.gold(id);
+		int s=pDao.silver(id);
+		int c=pDao.copper(id);
+		mav.addObject("g", g);
+		mav.addObject("s", s);
+		mav.addObject("c", c);
 
 		for (int i = 0; i < apsList.size(); i++) {
 			maxpList = pDao.auctionMaxSelect(apsList.get(i).getAut_aunum());
@@ -894,7 +902,8 @@ public class MypageMM {
 			mav.addObject("NoList", str);
 			mav.addObject("toMap", toMap);
 			view = "myPage";
-		} else {
+		} else if(id == null) {
+			mav.addObject("idnull", "i");
 			view = "home";
 		}
 		mav.setViewName(view);
@@ -947,6 +956,22 @@ public class MypageMM {
 
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public String auccancelDelete(AuctionProgress ap) {
+		mav = new ModelAndView();
+		System.out.println("(서비스클래스)제작의로 취소폼 시작 ");
+
+		String json = null;
+		ap = pDao.auccancelDeleteDel(ap);
+		System.out.println("(서비스클래스)제작의로 취소폼 시작 중간 테스트1 ptnum=" + ap.getAup_ptnum());
+		if (ap != null) {
+			json = new Gson().toJson(ap);
+			System.out.println("(서비스클래스)제작의로 취소폼 시작 중간 테스트2 json=" + json);
+		}
+		System.out.println("(서비스클래스)제작의로 취소폼 마무리 ");
+
+		return json;
 	}
 
 }

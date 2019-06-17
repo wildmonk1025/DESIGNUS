@@ -17,4 +17,5 @@ public class QuestionReply {
 	String qr_date;
 	String aqi_imgSysName;
 	
+	String qr_notify;
 }
