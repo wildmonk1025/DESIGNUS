@@ -47,4 +47,6 @@ public interface IRevAuctionDao {
 	RevAuctionTender myCurbaMountSelect(RevAuction ra);
 
 	List<MemberSearch> wriListSelect(MemberSearch mbs);
+
+	int revAuctionSubmitInsert2(RevAuctionTender rat);
 }
