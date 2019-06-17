@@ -129,6 +129,13 @@
 		]]>
 	</select>
 	
+	<insert id="setNotifyAuctionInsert" parameterType="auction">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{au_mbid_w},DEFAULT,#{au_contents},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyAuctionTender" parameterType="auctiontender">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{au_contents},0,DEFAULT)
+	</insert>
 	
 	
 </mapper>

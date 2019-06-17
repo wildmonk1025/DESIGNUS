@@ -176,7 +176,7 @@
 	</select>
 	<delete id="autcancelDelete">
 		DELETE FROM AUT
-		WHERE AUT_NUM=${aup_ranum} AND
+		WHERE AUT_AUNUM=${aup_ranum} AND
 		AUT_MBID=#{aup_mbid_n} AND
 		AUT_DATE=to_date(#{aut_date}, 'RR/MM/DD HH24:MI:SS')
 	</delete>
@@ -338,14 +338,17 @@
 		DELETE FROM NF
 		WHERE NF_NUM=${nf_num}
 	</delete>
-	<select id="auctionInfoSelect" parameterType="notify" resultType="auctionprogress">
+	<select id="auctionInfoSelect" parameterType="String" resultType="auctiontender">
 		<![CDATA[
 		 select * from(
-    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
-    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
-     from RAPVIEW
-       where RAP_PTNUM=${rap_ptnum}
-     ) where RankNo=1
+    select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
+     from AU_AUT
+       where AUT_MBID=#{id} AND AUT_KIND != 'I'
+     )  where  RankNo=1
   ]]>
+	</select>
+	<select id="auctionMaxSelect"  resultType="Integer">
+		SELECT MAX(AUT_PRICE) FROM AUT
+       WHERE AUT_AUNUM=${aut_aunum}
 	</select>
 </mapper>

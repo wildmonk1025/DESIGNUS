@@ -29,7 +29,7 @@ public interface IadminDao {
 
 	List<MemberSearch> gettransforInfo();
 
-	MemberSearch gettransformwrInfo(@Param("mb_id")String mb_id);
+	MemberSearch permitWriDetail(@Param("mb_id")String mb_id);
   
   
 }

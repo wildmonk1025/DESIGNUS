@@ -48,14 +48,9 @@ public class RevAuctionMM {
 		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
 		String ra_oc = "O";
 
-		//		if(ra_oc.equals("비공개")) {
-		//			ra_oc="C";
-		//		} else
-		//			ra_oc="O";
-		//			System.out.println("공개/비공개 여부를 확인해야합니다.");
+
 
 		RevAuction ra = new RevAuction();
-		ra.setRa_num(0);
 		ra.setRa_mbid(ra_mbid);
 		ra.setRa_title(ra_title);
 		ra.setRa_contents(ra_contents);
@@ -67,17 +62,47 @@ public class RevAuctionMM {
 		//raFile 등록을 위해 DB에서 글번호가져옴
 
 		int currval = upload.fileUp(multi, ra);
+		
+		if(!multi.getParameter("ra_mbid").isEmpty()) {
+			String rat_mbid_w = multi.getParameter("ra_mbid");
+			int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
+			int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
+			ra_oc = "C";
+			RevAuctionTender rat = new RevAuctionTender();
+			rat.setRat_ranum(currval);
+			rat.setRat_mbid_w(rat_mbid_w);
+			rat.setRat_price(rat_price);
+			rat.setRat_days(rat_days);
+			//비공개 의뢰일 경우, none으로 설정하기
+			rat.setRat_file("none");
+			
+			boolean f = rDao.revAuctionApplyInsert(rat);
+			
+			if(f) {
+				revAuctionProgress rap = new revAuctionProgress();
+				rap.setRap_ranum(currval);
+				rap.setRap_mbid_n(ra_mbid);
+				rap.setRap_mbid_w(rat_mbid_w);
+				rap.setRap_price(rat_price);
+				rap.setRap_days(rat_days);
+				
+				rDao.reqDecisionInsert(rap);
+			} else
+				System.out.println("비공개가 rat테이블에 insert안됨");
+		}
+		
+		
 		if (currval != 0) {
 			//글쓰기 성공 view = "redirect:boardList";
 			mav.addObject("ra_num", currval);
 			view = "redirect:/revauctionread";
-			///"+currval
 		} else if (currval == 0) {
 			view = "revAuctionWrite";
 		}
 		mav.setViewName(view);
 		return mav;
 	}
+
 
 	public ModelAndView revAuctionRead(int ra_num) {
 		mav = new ModelAndView();
@@ -237,7 +262,7 @@ public class RevAuctionMM {
 			int cnt = rDao.reqDecisionSelect(rap);
 			System.out.println("cnt확인=" + cnt);
 			if (cnt == 0) {
-				int flag2 = rDao.reqDecisionInsert(rap);
+				rDao.reqDecisionInsert(rap);
 				msg = 3; //의뢰접수 완료
 			} else {
 				msg = 4; //이미 의뢰한 접수내역이 존재합니다.
