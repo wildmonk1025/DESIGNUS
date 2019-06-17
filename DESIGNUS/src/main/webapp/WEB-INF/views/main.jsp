@@ -416,7 +416,32 @@ a:hover {
 	
 	
 	$(document).ready(function() {
-		$.ajax()
+		$.ajax({
+    		type:'POST',
+    		url:'ajax/searchranking',
+    		dataType:'json',
+    		success: function(data) {
+    			console.log("성공");
+    			var str='';
+    			var major='';
+
+    			for(var i in data) {
+    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
+    			var n = data[i].mj_cgcode;
+    			str+="<div class='writerInfo_lv3'>"+"전문분야: "+major+" / 추천수: "+data[i].mj_like+"</div>";
+    			$("#writer_Info"+i).html(str);
+    			}
+    			
+    			for(var y=0;y<6;y++) {
+    				for(var z=0;z<=i;z++) {    					
+    				$("#writer_Info"+z).css("display","block");
+    				$("#writer_Info"+y).css("display","none");
+    					}
+    				}
+    		},
+			error: function(error) {
+    		}
+    	}); //ajax End
 	});
 	
 </script>

@@ -58,7 +58,11 @@ public class AjaxHomeController {
 		String ab = mm.mem();
 	
 		return ab;
-
 	}
 	
+	@RequestMapping(value = "ajax/searchranking", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
+	public String searchRanking() {
+	
+		return null;
+	}
 }
