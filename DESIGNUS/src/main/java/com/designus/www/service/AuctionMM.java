@@ -60,6 +60,10 @@ public class AuctionMM {
 			au.setAu_num(num);
 			upload.fileUpImage(multi, au);
 			mav.addObject("au_num",num);
+			au.setAu_contents(id+" 작가님의 상품 "+au.getAu_title()+" 이(가) 정상적으로 등록되었습니다.");
+			aDao.setNotifyAuctionInsert(au);
+
+			
 		  view = "redirect:/auctionRead"; 
 		  } else { 
 		  view = "auctionWrite";
@@ -200,6 +204,8 @@ public class AuctionMM {
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
+			aDao.setNotifyAuctionTender(at);
+			
 		}
 		mav.setViewName(view);
 		return mav;
