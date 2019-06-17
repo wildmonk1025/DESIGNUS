@@ -98,8 +98,10 @@ public class AdminController {
 		return mav;
 	} //작가전환신청가입승인
 	@RequestMapping(value = "/questionWriteCheck", method = RequestMethod.GET)
-	public String questionWriteCheck() {
+	public ModelAndView questionWriteCheck(int aq_num) {
+		mav = new ModelAndView();
+		mav = adm.questionWriteCheck(aq_num);
+		return mav;
+	}//1:1문의 상세내역
 
-		return "questionWriteCheck";
-	}
 }

@@ -40,6 +40,11 @@ public interface IadminDao {
 	boolean getreAuthordelete(@Param("mb_id")String mb_id);
 
 	List<Question> getquestionInfo();
+
+	Question getquestionCheck(@Param("aq_num") int aq_num);
+	
+	
+	
   
   
 }
