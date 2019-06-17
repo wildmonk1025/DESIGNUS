@@ -213,7 +213,7 @@ div {
 							</div></td>
 					</tr>
 					<tr>
-						<th></th>
+						<th>상세주소</th>
 						<td><div class="form-group">
 								<input class="form-control"
 									style="top: 5px; width: 300px; height: 30px"
