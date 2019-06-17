@@ -76,18 +76,33 @@ div{
 	position:relative;
 	top:1px;
 }
+#rankingbox{
+	width: 150px;
+	height: 30px;
+	padding-left: 10px;
+	padding-top: 10px;
+	position: relative;
+	float: left;
 
+}
 #ranking {
 	width: 150px;
-	height: 20px;
-	float: left;
-	padding-left: 10px;
-	padding-top: 12px;
-	font-size: 15px;
+	height: 30px;
+	position: absolute;
+	top: 5;
+	left: 5;
+	font-size: 16px;
 	font-weight:bolder;
-	font-family: Verdana, sans-serif; 
-}
+	font-family: Verdana, sans-serif;
 
+}
+#ranking span {
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	background-color: aqua;
+	/* 	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75); */
+}
 
 #loginwriter {
 	padding: 3px;
@@ -275,13 +290,15 @@ a:hover {
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 		</div>
-		<form action="searching" method="POST">
+		<form name="searchingfct" action="searching" method="POST">
 		<div id="search">
 			<div id="searchbox">
 			<input type="text" id="searchtxt" name="word" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
 			<button id="searchbtn">Search</button>
 			</div>
+			<div id="rankingbox">
 			<div id="ranking">
+			</div>
 			</div>
 		</div>
 		</form>
@@ -421,25 +438,43 @@ a:hover {
     		type:'POST',
     		url:'ajax/searchranking',
     		dataType:'json',
-    		success: function(data) {
+    		success: function play(data) {
     			var str='';
     			if(i<10) {
-    			str="<span>"+(i+1)+". "+data[i].rtsr_word+"</span>";
+    			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>";
     			$("#ranking").html(str);
-    			$('#ranking').show();
+/*     			$('#ranking').show();
     			$('#ranking').fadeIn('slow');
-    			$('#ranking').slideUp(3200);
+    			$('#ranking').slideUp(3200); */
+    	        $("#rankingbox").delay(2850).animate({top:8},function(){
+    	        	$("#ranking span:first");
+    	        	$("#rankingbox").css({top:0});
+    	        });
     			i++;
     			}
     			else if(i==10) {
     				i=0;
+    				/* str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>"; */
+    				str="<span>실시간 검색순위</span>";
+        			$("#ranking").html(str);
     			}
     		},
 			error: function(error) {
     		}
     	}); //ajax End
 	},3300);
-
+	
+	
+	function searchingfct(word) {
+	      	var f = document.searchingfct;
+	        // input태그의 값들을 전송하는 주소
+	        f.action = "searching"
+	        
+	       	f.word.value = word;
+	        // 전송 방식 : post
+	        f.method = "post"
+	        f.submit();
+	}
 	
 
 </script>

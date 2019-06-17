@@ -1,6 +1,7 @@
 package com.designus.www.service;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.List; 
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -214,6 +215,22 @@ public class AdminMM {
 		mav.addObject("aqi_img", n.getAqi_img());
 		System.out.println("오....성공??");
 		view = "questionWriteCheck";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView questionreply(int aq_num, String qr_contents ) {
+		mav = new ModelAndView();
+		String view = null;
+		QuestionReply qr=new QuestionReply();
+		System.out.println("일단여기까진오는거지?"+aq_num);
+		System.out.println("일단여기까진오는거지?"+qr_contents);
+		Map<String,Object> map= new HashMap<>();
+		map.put("aq_num",aq_num);
+		map.put("qr_contents",qr_contents);
+		qr=iDao.getquestionReply(map);
+		
+		view = "questionList";
 		mav.setViewName(view);
 		return mav;
 	}

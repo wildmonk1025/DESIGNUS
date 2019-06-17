@@ -113,20 +113,18 @@ input[type=submit] {
 		</ul>
 	</div>
 	<div id="onequestionmain">
-	<form name="formName" method="post">
+	<form name="formName" method="get">
 		<div id="onequestion">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
-		<div id="questionread">
-			<input type="button" value="돌아가기"  class="button">
-			<input type="button" value="삭제" onclick="a();" class="button">
+		<button class="button"><a href="questionList">돌아가기</a></button>
 			<div id="questiontitle">글 제목: ${aq_title}</div>
 			<div id="questioncontents">글 내용: ${aq_contents}</div>
 			<div id="questionfile">첨부파일 : ${aqi_img}</div>
 			
 				<textarea rows="30" cols="20"
-					style="margin: 5px; width: 800px; height: 100px;"
-					placeholder="여기에 답글을 달 수 있습니다"></textarea>
-				<input type="submit" value="답변하기" />
+					style="margin: 5px; width: 800px; height: 100px;" id="ff"
+					placeholder="여기에 답글을 달 수 있습니다" name="qr_contents"></textarea>
+				<input type="submit" value="답변하기" onclick="a();"/>
 			</form>
 			
 		</div>
@@ -136,8 +134,10 @@ input[type=submit] {
 </body>
 <script>
 function a() {
+	var x = ${aq_num};
+	console.log(x);
 	var f = document.formName;
-	f.action = "questionWriteDelete?aq_num=${aq_num}";
+	f.action = "questionreply?aq_num="+x+"&qr_contents="+$('#ff').val();
 	// 파일 전송이 필요할 경우만 씀.
 	f.encoding = "multipart/form-data";
 	f.submit();
