@@ -68,6 +68,8 @@ public class UploadFile {
 		System.out.println("address=" + mb.getMb_address());
 		System.out.println("email=" + mb.getMb_email());
 		System.out.println("mb_profile=" + mb.getMb_profile());
+		System.out.println("A=" + kind);
+		
 		// Major
 
 		System.out.println("fileUp");

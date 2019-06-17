@@ -23,7 +23,7 @@ div {
 	margin: 10px;
 	border: 1px solid orange;
 	width: 1080px;
-	height: 100px;
+	height: 150px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -34,7 +34,7 @@ div {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 200px;
+	height: 150px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -190,7 +190,11 @@ margin-left:40px;
  margin-top:20px;
  width: 1000px;
 }
-
+#gsc{
+margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
 </style>
 
 </head>
@@ -207,8 +211,11 @@ margin-left:40px;
 
 		<div id="rightmain">
 			<div id="notice"></div>
+			
 			<div id="renking">
-				<h1>랭킹</h1>
+				<h3>랭킹</h3>
+				<table id="gsc" border= 1px solid black><tr><th>금</th><th>은</th><th>동</th></tr>
+				<tr><td>${g}</td><td>${s}</td><td>${c}</td></tr></table>
 			</div>
 			<div id="spon">
 				<h1>펀딩/후원</h1>
@@ -221,6 +228,12 @@ margin-left:40px;
 	</div>
 </body>
 <script type="text/javascript">
+var grade='${grade}';
+if(grade != 'W'){
+	$('#renking').hide();
+	$('#notice').css("height","300px");
+}
+
 var nolist=${NoList};
 console.log(1,nolist);
 var main = "";
@@ -267,6 +280,7 @@ str+="<h3>참여중인 출품경매</h3>"
    }
    str+="</table>";
    $('#auction').html(str)
+ 
    
     	
    

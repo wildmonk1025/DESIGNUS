@@ -370,6 +370,20 @@ a:hover {
 	top: 500px;
 	left: 900px;
 }
+#w3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
 
 #Q1 {
 	width: 500px;
@@ -431,6 +445,7 @@ a:hover {
 		enctype="multipart/form-data">
 		<div id="l3"></div>
 	</form>
+	<div id="w3"></div>
 	<div id="mypagemain">
 		<div id="mainheader">
 
@@ -479,14 +494,7 @@ a:hover {
 			main += "<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"
 					+ apList[i].aup_ptnum
 					+ "')\" value='배송정보입력'/>"
-					+ "<input type='button' onclick=\"location.href='auccancel?aup_ptnum="
-					+ apList[i].aup_ptnum
-					+ "&aup_ranum="
-					+ apList[i].aup_ranum
-					+ "&aup_mbid_n="
-					+ apList[i].aup_mbid_n
-					+ "&aut_date="
-					+ apList[i].aut_date + "'\" value='취소'/></td></tr></table>";
+					+ "<input type='button' onclick=\"javascript:auccancel('"+apList[i].aup_ptnum+"')\" value='취소'/></td></tr></table>";
 
 		} else if (apList[i].aup_step == 2) {
 			main += "<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
@@ -598,7 +606,7 @@ a:hover {
 
 	}//end sho
 
-	function review(even) {
+	function review(even) {auccancel
 
 		var form = {aup_ptnum : even}
 		var bb = "";
@@ -651,6 +659,50 @@ a:hover {
 					}
 				});//end ajax
 	}//end review
+	
+	function auccancel(even) {
+
+		var form = {aup_ptnum : even}
+		var cc = "";
+		$.ajax({
+					url : 'auccancelDelete',
+					type : 'post',
+					data : JSON.stringify(form),
+					contentType : "application/json; charset=utf-8;",
+					dataType : 'json',
+					success : function(data) {
+						alert('해당 상품을 추천하였습니다.');
+						console.log("1234567" + data.aup_ptnum);
+						cc+="<form action='auccancel' method='post'>"
+						if (data.aut_kind == "I") {
+							cc += "즉시구매<input type='hidden' name='aut_kind'><br>"
+						} else if (data.aut_kind == "O") {
+							cc += +"낙찰<input type='hidden' name='aut_kind'><br>"
+						} ;
+					    cc += "<h2>취소하기</h2><br/></hr><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+						   + "상품이름 :"+ data.au_title
+						   +"가격 : "+data.aup_price+	"<input type='hidden' name='rap_price' value='"+data.aup_price+"' ><br>"    	
+						   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.aup_mbid_n+"'><br>"
+						   +"<input type='hidden' name='aup_ranum' value='"+data.aup_ranum+"'>"
+						   +"<input type='hidden' name='aut_date' value='"+data.aut_date+"'>"
+						   +"의뢰 취소 사유<br>"
+						   +"<textarea rows='7' cols='40' name='nf_contents'></textarea><br>"
+						   + "<input type='submit' value='취소'>"
+						   + "<input type='button' id='backSetp' value='취소'></form>";
+
+						$('#total').css("display", "inline");
+						$('#w3').css("display", "inline");
+
+						$('#w3').html(cc);
+					},
+
+					error : function(error) {
+						alert('정상적인 추천이 실패했습니다.');
+						console.log(error);
+					}
+				});//end ajax
+	}//end review
+	
 	$('#setpT').html(main);
 	function good(data) {
 		var btn = $('#butt');
