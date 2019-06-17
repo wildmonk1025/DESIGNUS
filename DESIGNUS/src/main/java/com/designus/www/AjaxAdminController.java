@@ -1,9 +1,10 @@
 package com.designus.www;
 
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.designus.www.service.AdminMM;
@@ -42,4 +43,11 @@ public class AjaxAdminController {
 			return check;
 			//작가전환페이지 신청정보
 		}
+		@RequestMapping(value = "/questionWrite", method = RequestMethod.POST, produces="application/json; charset=utf-8;")
+		public @ResponseBody String questionwritecheck() {
+			String check = am.questionwritecheck();
+			return check;
+			
+			//1:1문의 리스트
+}
 }
