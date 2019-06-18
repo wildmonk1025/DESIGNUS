@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
 import com.designus.www.bean.QuestionReply;
+import com.designus.www.bean.SponsorProgress;
+import com.designus.www.bean.SponsorTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
@@ -60,7 +63,7 @@ public class MypageMM {
 		} else if (list.equals("aucre")) {
 			view = "redirect:/auctionMyAcceptList";
 		} else if (list.equals("spon")) {
-			view = "fundingAcceptList";
+			view = "redirect:/fundingAcceptList";
 		} else if (list.equals("sponre")) {
 			view = "fundingOrderList";
 		} else {
@@ -982,8 +985,6 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		String view = null;
 		List<AloneQuestion> aqList = null;
-		List<QuestionReply> qrList = null;
-		HashMap<Object, Object> aqMap = new HashMap<Object, Object>();
 		int num = (pageNum == null) ? 1 : pageNum;
 		aqList = pDao.questionlist(id, num);
 		System.out.println("ddddd=" + aqList.get(0).getAq_date());
@@ -1033,6 +1034,53 @@ public class MypageMM {
 		mav.addObject("quest", quest);
 		mav.setViewName("questionCheck");
 		return mav;
+	}
+
+	public void download(Map<String, Object> params) throws Exception {
+	       String root=(String) params.get("root");
+	       String sysFileName=(String)params.get("aqi_img");
+	       String oriFileName=(String)params.get("aqi_img");
+	       String fullPath=root+"/resources/upload/"+sysFileName;
+	       
+	       HttpServletResponse resp=(HttpServletResponse)params.get("responce");
+	       //실제 다운로드
+	       upload.download(fullPath, oriFileName, resp);
+		}
+
+	public ModelAndView fundingAcceptList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		String id = session.getAttribute("id").toString();
+		String view = null;
+		List<SponsorProgress> spList = null;
+		List<SponsorTender> stList = null;
+		int num = (pageNum == null) ? 1 : pageNum;
+		spList=pDao.fundingAcceptListSelect(id,num);
+		 for(int i=0;i<spList.size();i++) {
+			 stList+=pDao.SponsorTenderSelect(spList.get(i).getSsp_ssnum());
+		 }
+		Gson gson = new Gson();
+		String spgList = gson.toJson(spList);
+		mav.addObject("spgList", spgList);
+		mav.addObject("Spaging", getSpaging(num, kind));
+		view = "fundingAcceptList";
+
+		mav.setViewName(view);
+		return mav;
+	}
+
+	private Object getSpaging(int pageNum, String kind) {
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
+		int listCount = 4; // 페이지당 글의 수
+		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum = pDao.getSuwonCountt(id);
+		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
+		String boardName = "fundingAcceptList";
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
+		return paging.makeHtmlPaging();
 	}
 
 }
