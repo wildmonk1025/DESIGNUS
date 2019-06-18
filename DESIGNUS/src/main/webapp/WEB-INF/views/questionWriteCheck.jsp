@@ -135,35 +135,7 @@ input[type=submit] {
 
 </body>
 <script>
-/* function a() {
-	var x = ${aq_num};
-	var y = $("#ff").val();
-	var f = document.formName;
-	f.action = "questionreply?aq_num="+x+"&qr_contents="+y;
-	// 파일 전송이 필요할 경우만 씀.
-	//f.encoding = "multipart/form-data";
-	f.method = "get";
-	f.submit();
-} */"declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}"
 
-/* function a(num) {
-	var y = $("#ff").val();
-	console.log(num);
-	console.log(y);
-	var f = document.formName;
-	f.action = "questionreply?aq_num="+num+"&";
-	f.aq_num.value = num;
-	f.qr_contents.value = y;
-	// 파일 전송이 필요할 경우만 씀.
-	//f.encoding = "multipart/form-data";
-	f.method = "GET";
-	f.submit();
-} */
-/* function b() {
-	var f = document.formName;
-	f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
-	f.submit();
-} */
 </script>
 
 </html>

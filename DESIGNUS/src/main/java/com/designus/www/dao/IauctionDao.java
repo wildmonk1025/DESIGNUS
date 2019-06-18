@@ -16,7 +16,7 @@ public interface IauctionDao {
 
 	boolean getAuctionWriteInsert(Auction au);
 
-	List<Auction> getAuctionListSelect(@Param("cgcode")int cgcode, @Param("num")int num);
+	List<Auction> getAuctionListSelect(@Param("cgcode")int cgcode, @Param("num1")int num1);
 
 	Auction getAuctionReadSelect(Auction au);
 
@@ -77,6 +77,13 @@ public interface IauctionDao {
 	int auctionTenderPriceSel(AuctionTender at);
 
 	int getListCount(@Param("cgcode") int cgcode);
+
+	String getAuctionImg1(@Param("au_num") int au_num);
+	String getAuctionImg2(@Param("au_num") int au_num);
+	String getAuctionImg3(@Param("au_num") int au_num);
+	String getAuctionImg4(@Param("au_num") int au_num);
+
+
 
 
 

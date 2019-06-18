@@ -164,10 +164,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logout() {
+	public ModelAndView logout() {
+		mav = new ModelAndView();
 		session.invalidate();
-
-		return "home";
+		mav.addObject("logout", 1);
+		mav.setViewName("home");
+		return mav;
 	}
 
 	@ResponseBody

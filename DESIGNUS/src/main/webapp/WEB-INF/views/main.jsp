@@ -154,20 +154,26 @@ div{
 	width: 50px;
 	height: 50px;
 	margin-left: 10px;
+	margin-bottom: 10px;
 	float: left;
 }
 
-#mypageimg {
+#mypage {
 	float: left;
 	width: 50px;
 	height: 50px;
-	margin-left: 5px;
+	margin-bottom: 30px;
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: 700;
+	text-align: center;
 }
 
 .loginmsg {
 	float: left;
 	width: 250px;
 	height: 50px;
+	margin-top: 10px;
 	margin-left: 10px;
 }
 
@@ -312,17 +318,18 @@ a:hover {
 		</form>
 		<div id="loginwriter">						
 
-			<div id="mypageimg">
+			<div id="mypage">
 				<c:set var="perm" value="${grade}"/>
-				<c:if test="${empty perm}"></c:if>
-				<c:if test="${perm eq M}">
-				<a href="adminInfo">관리자</a></c:if>
-				<c:if test="${perm ne M}">
-				<a href="mypage">마이페이지</a></c:if>
-
+				<c:choose>
+				<c:when test="${empty perm}"></c:when>
+				<c:when test="${perm eq 'M'}">
+				<a href="adminInfo">관리자<br>페이지</a></c:when>
+				<c:when test="${perm ne 'M'}">
+				<a href="mypage">마이<br>페이지</a></c:when>
+				</c:choose>
 			</div>
 			<div id="msg">
-				<img src="resources/images/writer.png" width="40px" height="40px" />
+				<img src="resources/images/notify_img0.png" width="50px" height="50px" />
 			</div>
 			<c:set var="check" value="${id}" />
 			<c:if test="${check eq null}">
