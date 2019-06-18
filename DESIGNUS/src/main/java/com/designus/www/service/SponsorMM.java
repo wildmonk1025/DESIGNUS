@@ -116,6 +116,7 @@ public class SponsorMM {
 	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
 
 		SponsorTender st = new SponsorTender();
+		mav = new ModelAndView();
 
 		System.out.println("후원 밀어주기??");
 		String view = null;
