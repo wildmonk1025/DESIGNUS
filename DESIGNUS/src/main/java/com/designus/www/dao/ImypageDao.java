@@ -13,6 +13,7 @@ import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
+import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
@@ -144,7 +145,13 @@ public interface ImypageDao {
 
 	AuctionProgress auccancelDeleteDel(AuctionProgress ap);
 
-	List<AloneQuestion> questionlist(String id);
+	List<AloneQuestion> questionlist(@Param("id") String id,@Param("num") int num);
+
+	 List<QuestionReply> questionalistSelect(@Param("aq_num") int aq_num);
+
+	int getAqpagingCount(String id);
+
+	AloneQuestion questionreadSelct(AloneQuestion aq);
 
   
 }

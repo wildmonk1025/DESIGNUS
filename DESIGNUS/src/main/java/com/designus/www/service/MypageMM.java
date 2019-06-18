@@ -20,6 +20,7 @@ import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
+import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
@@ -111,7 +112,8 @@ public class MypageMM {
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		String id = session.getAttribute("id").toString();
 		String pw = (multi.getParameter("mb_pw"));
-		String address = multi.getParameter("addr1")+multi.getParameter("addr2")+multi.getParameter("addr3");;
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
+		;
 		String email = (multi.getParameter("mb_email"));
 		String profile = multi.getParameter("mb_profile");
 		System.out.println("id1:" + id);
@@ -472,14 +474,14 @@ public class MypageMM {
 		System.out.println("(서비스클래스)출품구매 취소 파라미터 넘겨온 값 확인 autdate: " + ap.getAut_date().substring(0, 19));
 		boolean a = pDao.auccancelDelete(ap);
 		System.out.println("(서비스클래스)출품구매 취소 a 값 확인 :" + a);
-		
+
 		String date = ap.getAut_date().substring(0, 19);
 		ap.setAut_date(date);
 		if (a) {
 			boolean b = pDao.autcancelDelete(ap);
 			System.out.println("bbbb : " + b);
-			if(b) {
-				
+			if (b) {
+
 				String nf_mbid_r = ap.getAu_mbid_w();
 				String nf_mbid_s = ap.getAup_mbid_n();
 				ni.setNf_mbid_r(nf_mbid_r);
@@ -488,7 +490,7 @@ public class MypageMM {
 				mav.addObject("check", 1);
 				System.out.println("끝날때까지 끝난게 아니다!!!");
 			}
-			
+
 		} else {
 			mav.addObject("check", 2);
 		}
@@ -876,11 +878,11 @@ public class MypageMM {
 		NoList = pDao.notismypageSelect(id);
 		// apsList=pDao.AuctionProSelect(id);
 		apsList = pDao.auctionInfoSelect(id);
-		
-		//금,은,동
-		int g=pDao.gold(id);
-		int s=pDao.silver(id);
-		int c=pDao.copper(id);
+
+		// 금,은,동
+		int g = pDao.gold(id);
+		int s = pDao.silver(id);
+		int c = pDao.copper(id);
 		mav.addObject("g", g);
 		mav.addObject("s", s);
 		mav.addObject("c", c);
@@ -903,7 +905,7 @@ public class MypageMM {
 			mav.addObject("NoList", str);
 			mav.addObject("toMap", toMap);
 			view = "myPage";
-		} else if(id == null) {
+		} else if (id == null) {
 			mav.addObject("idnull", "i");
 			view = "home";
 		}
@@ -975,21 +977,61 @@ public class MypageMM {
 		return json;
 	}
 
-	public ModelAndView questionlist() {
+	public ModelAndView questionlist(Integer pageNum, String kind) {
 		mav = new ModelAndView();
-      String id=session.getAttribute("id").toString();
-       String view=null;
-       List<AloneQuestion>aqList=null;
-       aqList=pDao.questionlist(id);
-       if(aqList != null) {
-    	   
-    	   Gson gson = new Gson();
-   		String aqgList = gson.toJson(aqList);
-   	 mav.addObject("aqgList", aqgList);
-   		view="questionaList";
-   		
-       }
-      mav.setViewName(view);
+		String id = session.getAttribute("id").toString();
+		String view = null;
+		List<AloneQuestion> aqList = null;
+		List<QuestionReply> qrList = null;
+		HashMap<Object, Object> aqMap = new HashMap<Object, Object>();
+		int num = (pageNum == null) ? 1 : pageNum;
+		aqList = pDao.questionlist(id, num);
+		System.out.println("ddddd=" + aqList.get(0).getAq_date());
+		if (aqList != null) {
+			for (int i = 0; i < aqList.size(); i++) {
+				if (aqList.get(i).getAbc() != null) {
+					aqList.get(i).setAbc("처리 완료");
+				} else {
+					aqList.get(i).setAbc("처리 대기중");
+				}
+			}
+		}
+		System.out.println("ddd+9" + aqList.get(0).getAq_num());
+		// qrList = pDao.questionalistSelect(aqList.get(i).getAq_num());
+
+		Gson gson = new Gson();
+		String aqgList = gson.toJson(aqList);
+		System.out.println("11111:"+aqList.get(0).getAbc());
+		mav.addObject("aqgList", aqgList);
+		mav.addObject("Aqpaging", getAqpaging(num, kind));
+		view = "questionaList";
+
+		mav.setViewName(view);
+		return mav;
+	}
+
+	private Object getAqpaging(int pageNum, String kind) {
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
+		int listCount = 8; // 페이지당 글의 수
+		int pageCount = 3;// 그룹당 페이지 수
+		int maxNum = pDao.getAqpagingCount(id);
+		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
+		String boardName = "revAuctionMyAcceptList";
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
+		return paging.makeHtmlPaging();
+	}
+
+	public ModelAndView questionread(AloneQuestion aq) {
+		mav = new ModelAndView();
+		aq=pDao.questionreadSelct(aq);
+		Gson gson = new Gson();
+		String quest = gson.toJson(aq);
+		mav.addObject("quest", quest);
+		mav.setViewName("questionCheck");
 		return mav;
 	}
 

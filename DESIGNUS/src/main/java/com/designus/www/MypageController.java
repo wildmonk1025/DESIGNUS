@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Board;
@@ -266,11 +267,20 @@ public class MypageController {
 	}
 	@RequestMapping(value = "/questionlist", method = { RequestMethod.GET, RequestMethod.POST })
 
-	public ModelAndView questionlist() {
+	public ModelAndView questionlist(Integer pageNum, String kind) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러].1:1 문의 리스트:시작");
-		mav = pm.questionlist();
+		mav = pm.questionlist(pageNum,kind);
 		System.out.println("[컨트롤러].1:1 문의 리스트:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/questionread", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView questionread(AloneQuestion aq) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러].1:1 문의  상세보기:시작");
+		mav = pm.questionread(aq);
+		System.out.println("[컨트롤러].1:1 문의 상세보기:마무리!!");
 		return mav;
 	}
 }

@@ -17,4 +17,6 @@ public class AloneQuestion {
 	String aq_contents;
 	String aq_date;
 	String aqi_img;
+	int kind;
+	String abc;
 }
