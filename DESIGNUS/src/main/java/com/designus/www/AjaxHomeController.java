@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
 import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
 
@@ -72,4 +73,19 @@ public class AjaxHomeController {
 		String jsonStr = cm.category();
 		return jsonStr;
 	}
+	
+	@RequestMapping(value = "ajax/notification", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
+	public String notification() {
+		String jsonStr = cm.notification();
+		return jsonStr;
+	}
+	
+	@RequestMapping(value = "ajax/updatearm", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updatearm(Notify nf) {
+		String jsonStr = cm.updateArm(nf);
+		return jsonStr;
+	}
+	
+	
+	
 }

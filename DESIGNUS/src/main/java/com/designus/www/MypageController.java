@@ -1,11 +1,16 @@
 package com.designus.www;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -281,6 +286,30 @@ public class MypageController {
 		System.out.println("[컨트롤러].1:1 문의  상세보기:시작");
 		mav = pm.questionread(aq);
 		System.out.println("[컨트롤러].1:1 문의 상세보기:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public void download(
+			@RequestParam Map<String,Object> params,
+			HttpServletRequest req,
+			HttpServletResponse responce
+			
+			                      ) throws Exception {
+        System.out.println("of"+params.get("aqi_img"));
+        System.out.println("sf"+params.get("aqi_img"));
+        params.put("root",req.getSession().getServletContext().getRealPath("/"));
+        params.put("responce",responce);
+        pm.download(params);
+        
+		//return mav; 
+	}
+	@RequestMapping(value = "/fundingAcceptList", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView fundingAcceptList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러].후원 진행 내역:시작");
+		mav = pm.fundingAcceptList(pageNum,kind);
+		System.out.println("[컨트롤러].후원 진행 내역:마무리!!");
 		return mav;
 	}
 }

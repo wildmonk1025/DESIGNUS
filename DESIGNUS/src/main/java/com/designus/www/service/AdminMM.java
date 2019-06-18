@@ -30,33 +30,27 @@ public class AdminMM {
 	public String declarewritecheck() {
 		List<MemberSearch> rList = iDao.getrepInfo();
 
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
 	public String Declarelist() {
 		List<MemberSearch> rList = iDao.getrepInfo();
 
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
 	public String transformList() {
 		List<MemberSearch> rList = iDao.gettransInfo();
 
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
@@ -71,7 +65,6 @@ public class AdminMM {
 		rp = iDao.getWriteCheck(rp_num);
 		rp.setRp_num(rp_num);
 		if (rp_num == rp.getRp_num()) {
-			System.out.println("여기와? ㅋㅋㅋㅋ");
 			mav.addObject("rp_num", rp.getRp_num());
 			mav.addObject("rp_mbid_d", rp.getRp_mbid_d());
 			mav.addObject("rp_mbid_a", rp.getRp_mbid_a());
@@ -95,7 +88,6 @@ public class AdminMM {
 
 		MemberSearch ms = new MemberSearch();
 		// rp.setRp_num(rp_num);
-		System.out.println("zzzzzzzz" + mb_id);
 
 		ms = iDao.permitWriDetail(mb_id);
 		ms.setMb_id(mb_id);
@@ -116,17 +108,13 @@ public class AdminMM {
 	public ModelAndView declareNonPermit(int rp_num) {
 		mav = new ModelAndView();
 		String view = null;
-		System.out.println("[1] rp_num =" + rp_num);
-		System.out.println("오/..왔내?");
 		boolean f2 = iDao.getPerfmit(rp_num);
 		boolean f = iDao.getPermit(rp_num);
-		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
 
 		if (f && f2) {
 			mav.addObject("rp_num", rp_num);
 			view = "declareWrite";
 		} else {
-			System.out.println("삭제 실패");
 			view = "home";
 		}
 		mav.setViewName(view);
@@ -157,11 +145,9 @@ public class AdminMM {
 	public String transformwridetail() {
 		List<MemberSearch> rList = iDao.gettransforInfo();
 
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
@@ -169,7 +155,6 @@ public class AdminMM {
 		mav = new ModelAndView();
 		String view = null;
 		boolean k = iDao.getreAuthorfuse(mb_id);
-		System.out.println("아이디와?" + mb_id);
 
 		view = "permitWriApply";
 		mav.setViewName(view);
@@ -179,11 +164,8 @@ public class AdminMM {
 	public ModelAndView tcommentandapply(String mb_id) {
 		mav = new ModelAndView();
 		String view = null;
-		System.out.println("ㅋㅋㅋㅋㅋ" + mb_id);
 		boolean k = iDao.getreAuthoragree(mb_id);
 		boolean n = iDao.getreAuthordelete(mb_id);
-		System.out.println("ZZZZZZZ");
-		System.out.println("아이디와?" + mb_id);
 
 		view = "permitWriApply";
 		mav.setViewName(view);
@@ -192,11 +174,9 @@ public class AdminMM {
 
 	public String questionwritecheck() {
 		List<Question> rList = iDao.getquestionInfo();
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
@@ -204,7 +184,6 @@ public class AdminMM {
 		mav = new ModelAndView();
 		String view = null;
 		Question n = new Question();
-		System.out.println("여기까진 온다이거지?");
 		n = iDao.getquestionCheck(aq_num);
 		mav.addObject("aq_num", n.getAq_num());
 		mav.addObject("aq_mbid", n.getAq_mbid());
@@ -212,7 +191,6 @@ public class AdminMM {
 		mav.addObject("aq_title", n.getAq_title());
 		mav.addObject("aq_contents", n.getAq_contents());
 		mav.addObject("aqi_img", n.getAqi_img());
-		System.out.println("오....성공??");
 		view = "questionWriteCheck";
 		mav.setViewName(view);
 		return mav;
@@ -222,8 +200,6 @@ public class AdminMM {
 		mav = new ModelAndView();
 		String view = null;
 		QuestionReply qr = new QuestionReply();
-		System.out.println("일단여기까진오는거지?" + aq_num);
-		System.out.println("일단여기까진오는거지?" + qr_contents);
 		Map<String, Object> map = new HashMap<>();
 		map.put("aq_num", aq_num);
 		map.put("qr_contents", qr_contents);
@@ -238,31 +214,25 @@ public class AdminMM {
 
 	public String memberseclist() {
 		List<Member> rList = iDao.getmemberList();
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
 	public String memberAuthorlist() {
 		List<Member> rList = iDao.getmemberAuthorList();
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
 	public String memberBlacklist() {
 		List<Member> rList = iDao.getmemberBlackList();
-		System.out.println("이거는되나");
 		Gson gs = new Gson();
 		String jsonObj = gs.toJson(rList);
 		System.out.println(jsonObj);
-		System.out.println("여기는??");
 		return jsonObj;
 	}
 
@@ -270,13 +240,13 @@ public class AdminMM {
 		String view = null;
 		mav = new ModelAndView();
 
-		Member mb = new Member();
+		MemberSearch ms = new MemberSearch();
 		// rp.setRp_num(rp_num);
 		System.out.println("와?zz" + mb_id);
 
-		mb = iDao.getMemberCheck(mb_id);
+		ms = iDao.getMemberCheck(mb_id);
 		System.out.println("여기와? ㅋㅋㅋㅋ");
-		mav.addObject("mbInfo", mb);
+		mav.addObject("mbInfo", ms);
 //		mav.addObject("mb_id", mb.getMb_id());
 //		mav.addObject("mb_name", mb.getMb_name());
 //		mav.addObject("mb_birth", mb.getMb_birth());
@@ -284,6 +254,30 @@ public class AdminMM {
 //		mav.addObject("mb_point", mb.getMb_point());
 //		mav.addObject("mb_ccnt", mb.getMb_ccnt());
 		view = "memberListMM";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView membercaution(String mb_id) {
+		mav = new ModelAndView();
+		String view = null;
+		System.out.println("dddd?"+mb_id);
+
+		boolean m=iDao.getmembercouet(mb_id);
+		System.out.println("성공이지?"+mb_id);
+		view = "memberList";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView membercautioncnt(String mb_id) {
+		mav = new ModelAndView();
+		String view = null;
+		System.out.println("dddd?"+mb_id);
+
+		boolean m=iDao.getmemberminuscouet(mb_id);
+		System.out.println("성공이지?"+mb_id);
+		view = "memberList";
 		mav.setViewName(view);
 		return mav;
 	}

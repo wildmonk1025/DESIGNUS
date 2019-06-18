@@ -1,9 +1,13 @@
 package com.designus.www;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -60,8 +64,9 @@ public class AuctionControllerspon {
 		System.out.println("자 어디한번 보자~~~");
 		mav = new ModelAndView();
 		mav = sm.sponbuy(ss_num, ss_mbid);
-		//System.out.println(sm.sponbuy(ss_num, ss_mbid));
-		System.out.println("자 마감 한버 찍어 보자~~~");
+		// System.out.println(sm.sponbuy(ss_num, ss_mbid));
+		System.out.println("자 마감 한번 찍어 보자~~~");
+
 		return mav;
 	}
 }

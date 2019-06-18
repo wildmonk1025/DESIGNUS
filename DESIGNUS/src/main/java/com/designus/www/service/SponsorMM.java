@@ -114,7 +114,7 @@ public class SponsorMM {
 	}
 
 	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
-     System.out.println("자 서비스 클래스 시작해보자~~~");
+		System.out.println("자 서비스 클래스 시작해보자~~~");
 		SponsorTender st = new SponsorTender();
 		mav = new ModelAndView();
 
@@ -124,12 +124,14 @@ public class SponsorMM {
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
 
-		System.out.println("회원등급=" + grade);
-
 		st.setSst_ssnum(ss_num);
 		st.setSst_mbid(id);
 
+		System.out.println("회원등급=" + grade);
+		System.out.println("넘버=" + ss_num);
+
 		// 포인트 있을때만 밀어주기 가능하게 바꿔야함
+
 		boolean f = sDao.sponTenderInsert(st);
 		System.out.println("밀어주기 insert");
 		// 밀어주기 insert
@@ -137,13 +139,13 @@ public class SponsorMM {
 			sDao.sponbuy(st);
 			System.out.println("거래내역 insert");
 			// 후원 거래내역 insert
-			view = "sponproduct";
+			view = "redirect:/sponproduct?ss_num=" + ss_num;
 		} else {
 			System.out.println("insert 실패");
-			view = "sponsor";
+			view = "/sponsor";
 		}
-		System.out.println("왜 한 번 더 도는거지?");
 		mav.setViewName(view);
 		return mav;
+
 	}
 }

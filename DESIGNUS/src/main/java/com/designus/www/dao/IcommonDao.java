@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.Category;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.RealTimeSearchRanking;
 import com.google.gson.JsonElement;
 
@@ -32,6 +33,10 @@ public interface IcommonDao {
 	void searchingUpdate(@Param("word") String word);
 
 	List<Category> categorySelect();
+
+	List<Notify> notificationSelect(@Param("id") String id);
+
+	int updateArmUpdate(Notify nf);
 
 
   

@@ -14,6 +14,8 @@ import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
 import com.designus.www.bean.QuestionReply;
+import com.designus.www.bean.SponsorProgress;
+import com.designus.www.bean.SponsorTender;
 import com.designus.www.bean.revAuctionProgress;
 
 //import org.springframework.stereotype.Repository;
@@ -152,6 +154,14 @@ public interface ImypageDao {
 	int getAqpagingCount(String id);
 
 	AloneQuestion questionreadSelct(AloneQuestion aq);
+
+List<SponsorProgress> fundingAcceptListSelect(@Param("id") String id,@Param("num") int num);
+
+int getSuwonCountt(String id);
+
+List<Integer> SponsorTenderSelect(@Param("ssp_ssnum") int ssp_ssnum);
+
+	/* int getSppagingCountt(String id); */
 
   
 }

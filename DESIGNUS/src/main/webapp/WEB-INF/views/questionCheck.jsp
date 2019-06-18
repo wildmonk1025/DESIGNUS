@@ -205,7 +205,7 @@ width: 900px;
 	font-size: 20px;
 	float: left;
 }
-#pp{
+.pp{
   color: #D5D5D5;
 }
 #back{
@@ -216,6 +216,10 @@ width: 900px;
 	text-align: right;
 	font-size: 20px;
 	float: left;
+}
+.aqiimg{
+position: absolute;
+bottom: 100px;
 }
 </style>
 
@@ -265,12 +269,15 @@ var st="";
  $("#renking").html(h)
 
  que+=quest.aq_contents
+ if(quest.aqi_img !=null){
+	 que+="<div class='aqiimg'><a href='download?aqi_img="+quest.aqi_img+"'>"+quest.aqi_img+"</a></div>"
+ }
  $("#spon").html(que)
  
  if(quest.abc != null){
 	 st+=quest.abc
  }else{
-	 st+="<p id='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p>"
+	 st+="<p class='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p>"
  }
  $("#auction").html(st)
 </script>
