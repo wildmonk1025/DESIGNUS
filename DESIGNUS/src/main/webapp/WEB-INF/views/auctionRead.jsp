@@ -34,7 +34,7 @@ div{
 	border: 1px solid black;
 	margin: 20px;
 	width: 1480px;
-	height: 775px;
+	height: 1425px;
 	width: 1480px;
 }
 
@@ -113,6 +113,12 @@ div{
 	border: 1px soild orange;
 	width: 1480px;
 	height: 270px;
+	float: left;
+}
+#middle_contents1_lv6 {
+	border: 1px soild orange;
+	width: 1480px;
+	height: 650px;
 	float: left;
 }
 
@@ -258,6 +264,21 @@ div{
 	float: left;
 	text-align: left;
 }
+.contentsImg{
+	border: 1px solid gray;
+	float: left;
+	margin: 0px 20px 10px 20px;
+	width: 328px;
+	height: 250px;
+}
+#contents{
+	border: 1px solid gray;
+	float: left;
+	margin: 0px 20px 0px 20px;
+	width: 1438px;
+	height: 340px;
+}
+
 </style>
 </head>
 
@@ -407,6 +428,14 @@ div{
 						</div>
 					</c:forEach>
 				</div>
+			</div>
+			<div id="middle_contents1_lv6">
+				<h2>작품설명</h2>
+				<div class="contentsImg">${auInfo.aui_imgSysName1}</div>				
+				<div class="contentsImg">${auInfo.aui_imgSysName2}</div>				
+				<div class="contentsImg">${auInfo.aui_imgSysName3}</div>				
+				<div class="contentsImg">${auInfo.aui_imgSysName4}</div>				
+				<div id="contents">${auInfo.au_contents }</div>
 			</div>
 
 

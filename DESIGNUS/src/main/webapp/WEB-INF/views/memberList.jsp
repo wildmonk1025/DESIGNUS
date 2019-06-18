@@ -166,7 +166,7 @@ margin-top: 10px;
             <div id="declarelist">
             <div id="ListView1"></div>
             <div id="ListView2" class="view"></div>
-            <div id="ListView3" class="view">ㅋㅋㅋㅋ</div>
+            <div id="ListView3" class="view"></div>
                
             </div>
             <h3 style="text-align: center; color: blue;">페이징</h3>

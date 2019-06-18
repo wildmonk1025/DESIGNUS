@@ -18,7 +18,7 @@ public interface IRevAuctionDao {
 
 	int revAuctionSubmitInsert(RevAuction ra);
 
-	List<RevAuction> getRevAuctionListSelect(@Param("cgcode")int cgcode, @Param("num")int num);
+	List<RevAuction> getRevAuctionListSelect(@Param("cgcode")int cgcode, @Param("num2")int num2);
 
 	RevAuction revAuctionReadSelect(RevAuction ra_num);
 
