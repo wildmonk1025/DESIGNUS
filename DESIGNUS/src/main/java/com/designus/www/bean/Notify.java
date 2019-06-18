@@ -16,5 +16,5 @@ public class Notify {
 	String nf_mbid_s;
 	String nf_contents;
 	int    nf_check;
-	Timestamp nf_date;
+	String nf_date;
 }
