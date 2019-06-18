@@ -16,7 +16,7 @@ public interface IauctionDao {
 
 	boolean getAuctionWriteInsert(Auction au);
 
-	List<Auction> getAuctionListSelect(@Param("cgcode")int cgcode, @Param("num")int num);
+	List<Auction> getAuctionListSelect(@Param("cgcode")int cgcode, @Param("num1")int num1);
 
 	Auction getAuctionReadSelect(Auction au);
 

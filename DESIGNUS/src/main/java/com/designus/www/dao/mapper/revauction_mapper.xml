@@ -23,8 +23,8 @@
 		SELECT * FROM (
 		SELECT rownum as rn, RA_NUM, RA_MBID, RA_TITLE, RA_CGCODE, RA_IMAGE, RA_FILE, RA_OC, RA_DATE, RA_CONTENTS,
 		ROW_NUMBER() OVER(PARTITION BY RA_NUM ORDER BY RA_NUM DESC) AS rankNo 
-		FROM RA WHERE RA_CGCODE = #{cgcode} AND RA_OC='O' AND rownum <= ${num}*9 
-		)where rn >= ${num}*9-8
+		FROM RA WHERE RA_CGCODE = #{cgcode} AND RA_OC='O' AND rownum <= ${num2}*9 
+		)where rn >= ${num2}*9-8
 		]]>
 	</select>
 		

@@ -244,12 +244,13 @@ var main = "";
 for (var i = 0; i < nolist.length; i++){
 	  if(nolist[i].nf_check==0){
 	main+="<tr ><td>"+nolist[i].nf_mbid_s+"</td><td>"+nolist[i].nf_mbid_r+"</td><td>"+nolist[i].nf_contents+"</td>"
-	    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr></table>"
+	    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr>"
   }else if(nolist[i].nf_check==1){
 	  main+="<tr id='nonw'><td>"+nolist[i].nf_mbid_s+"</td><td>"+nolist[i].nf_mbid_r+"</td><td>"+nolist[i].nf_contents+"</td>"
-		    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr></table>"
+		    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr>"
   }
 }
+        main+="</table>";
 $("#notice").html(main)
 
 var check=${check}

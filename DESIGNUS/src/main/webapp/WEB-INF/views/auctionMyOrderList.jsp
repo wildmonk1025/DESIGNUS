@@ -672,7 +672,7 @@ a:hover {
 					dataType : 'json',
 					success : function(data) {
 						alert('해당 상품을 추천하였습니다.');
-						console.log("1234567" + data.aup_ptnum);
+						console.log("12" + data.aut_date);
 						cc+="<form action='auccancel' method='post'>"
 						if (data.aut_kind == "I") {
 							cc += "즉시구매<input type='hidden' name='aut_kind'><br>"
@@ -681,10 +681,11 @@ a:hover {
 						} ;
 					    cc += "<h2>취소하기</h2><br/></hr><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
 						   + "상품이름 :"+ data.au_title
-						   +"가격 : "+data.aup_price+	"<input type='hidden' name='rap_price' value='"+data.aup_price+"' ><br>"    	
-						   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.aup_mbid_n+"'><br>"
+						   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
+						   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br>"
 						   +"<input type='hidden' name='aup_ranum' value='"+data.aup_ranum+"'>"
 						   +"<input type='hidden' name='aut_date' value='"+data.aut_date+"'>"
+						   +"<input type='hidden' name='au_mbid_w' value='"+data.au_mbid_w+"'>"
 						   +"의뢰 취소 사유<br>"
 						   +"<textarea rows='7' cols='40' name='nf_contents'></textarea><br>"
 						   + "<input type='submit' value='취소'>"

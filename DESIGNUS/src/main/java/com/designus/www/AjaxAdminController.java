@@ -51,4 +51,25 @@ public class AjaxAdminController {
 
 		//1:1문의 리스트
 	}
+	@RequestMapping(value = "/memberseclist", method = RequestMethod.POST, produces = "application/json; charset=utf-8;")
+	public @ResponseBody String memberseclist() {
+		String check = adm.memberseclist();
+		return check;
+		
+		//일반회원 리스트
+	}
+	@RequestMapping(value = "/memberAuthorlist", method = RequestMethod.POST, produces = "application/json; charset=utf-8;")
+	public @ResponseBody String memberAuthorlist() {
+		String check = adm.memberAuthorlist();
+		return check;
+		
+		//작가회원 리스트
+	}
+	@RequestMapping(value = "/memberBlacklist", method = RequestMethod.POST, produces = "application/json; charset=utf-8;")
+	public @ResponseBody String memberBlacklist() {
+		String check = adm.memberBlacklist();
+		return check;
+		
+		//블랙 리스트
+	}
 }

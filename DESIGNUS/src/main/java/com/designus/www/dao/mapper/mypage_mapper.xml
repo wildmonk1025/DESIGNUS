@@ -366,7 +366,8 @@
 	</delete>
 	<select id="gold" resultType="Integer">
 		select count(aw_kind) from aw
-		where aw_mbid=#{id} and aw_kind='금'
+		where
+		aw_mbid=#{id} and aw_kind='금'
 	</select>
 	<select id="silver" resultType="Integer">
 		select count(aw_kind) from aw
@@ -376,8 +377,8 @@
 		select count(aw_kind) from aw
 		where aw_mbid=#{id} and aw_kind='동'
 	</select>
-	<select id="auccancelDeleteDel"
-		parameterType="auctionprogress" resultType="auctionprogress">
+	<select id="auccancelDeleteDel" parameterType="auctionprogress"
+		resultType="auctionprogress">
 		<![CDATA[
 		 select * from(
     select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
@@ -386,5 +387,27 @@
        where AUP_PTNUM=${aup_ptnum}
      ) where RankNo=1
   ]]>
+	</select>
+	<select id="questionlist" resultType="alonequestion">
+		<![CDATA[
+		 select * from( select rownum AS RN,AQ_NUM,AQ_MBID,AQ_TYE,AQ_TITLE,
+		 AQ_CONTENTS,AQ_DATE,ABC from AQ_QR 
+		 where aq_mbid=#{id} and rownum<=${num}*8 ) where rn>=${num}*8-7
+		 order by AQ_NUM desc
+		]]>
+	</select>
+	<select id="questionalistSelect" parameterType="Integer"
+		resultType="questionreply">
+		select * from qr
+		where QR_AQNUM=#{aq_num}
+	</select>
+	<select id="getAqpagingCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from aq
+		where aq_mbid=#{id}
+	</select>
+	<select id="questionreadSelct" resultType="alonequestion">
+		select * from AQ_QR
+		where aq_num=${aq_num}
 	</select>
 </mapper>
