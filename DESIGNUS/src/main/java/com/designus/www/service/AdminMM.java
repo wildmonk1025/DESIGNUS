@@ -10,14 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.designus.www.bean.Major;
-import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
-import com.designus.www.dao.ImemberDao;
 import com.google.gson.Gson;
 
 @Service

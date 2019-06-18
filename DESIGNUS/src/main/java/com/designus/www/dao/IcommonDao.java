@@ -23,6 +23,11 @@ public interface IcommonDao {
 
 	List<RealTimeSearchRanking> getSearchRankingSelect();
 
+	List<RealTimeSearchRanking> getSearchingSelect(@Param("word") String word);
+
+	void searchingInsert(@Param("word") String word);
+
+	void searchingUpdate(@Param("word") String word);
 
 
   

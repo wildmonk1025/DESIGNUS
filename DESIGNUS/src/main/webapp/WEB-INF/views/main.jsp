@@ -433,7 +433,7 @@ a:hover {
 	} */
 	
 	var i=0;
-	setInterval( function() {
+/* 	 setInterval(  function() {
 		$.ajax({
     		type:'POST',
     		url:'ajax/searchranking',
@@ -443,9 +443,6 @@ a:hover {
     			if(i<10) {
     			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>";
     			$("#ranking").html(str);
-/*     			$('#ranking').show();
-    			$('#ranking').fadeIn('slow');
-    			$('#ranking').slideUp(3200); */
     	        $("#rankingbox").delay(2850).animate({top:8},function(){
     	        	$("#ranking span:first");
     	        	$("#rankingbox").css({top:0});
@@ -454,7 +451,6 @@ a:hover {
     			}
     			else if(i==10) {
     				i=0;
-    				/* str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>"; */
     				str="<span>실시간 검색순위</span>";
         			$("#ranking").html(str);
     			}
@@ -462,7 +458,7 @@ a:hover {
 			error: function(error) {
     		}
     	}); //ajax End
-	},3300);
+	} ,3300); */
 	
 	
 	function searchingfct(word) {

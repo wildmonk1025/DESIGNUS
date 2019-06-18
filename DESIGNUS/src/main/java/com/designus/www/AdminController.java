@@ -103,7 +103,7 @@ public class AdminController {
 		mav = adm.questionWriteCheck(aq_num);
 		return mav;
 	}//1:1문의 상세내역
-	@RequestMapping(value = "/questionreply", method = RequestMethod.GET)
+	@RequestMapping(value = "/questionreply", method = RequestMethod.POST)
 	public ModelAndView questionreply(int aq_num, String qr_contents) {
 		mav = new ModelAndView();
 		mav = adm.questionreply(aq_num,qr_contents);
