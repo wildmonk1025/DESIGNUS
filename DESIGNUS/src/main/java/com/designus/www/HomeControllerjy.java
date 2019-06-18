@@ -33,8 +33,6 @@ public class HomeControllerjy {
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
-	ImemberDao mDao;
-
 	/*
 	 * @RequestMapping(value = "/", method = RequestMethod.GET) public String
 	 * home(Locale locale, Model model) {

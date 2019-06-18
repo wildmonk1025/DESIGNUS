@@ -29,7 +29,7 @@
             INSERT INTO RTSR VALUES(RTSR_SEQ.NEXTVAL,#{word},DEFAULT)
 	</insert>
 	
-	<insert id="searchingInsert" parameterType="String">
+	<insert id="searchingUpdate" parameterType="String">
             UPDATE RTSR SET RTSR_CNT=RTSR_CNT+1 WHERE RTSR_WORD=#{word}
 	</insert>
 

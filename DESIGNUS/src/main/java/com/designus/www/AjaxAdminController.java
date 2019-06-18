@@ -13,11 +13,6 @@ public class AjaxAdminController {
 	@Autowired
 	private AdminMM adm;
 
-	@RequestMapping()
-	public String norJoinFrm() {
-		return "norjoinFrm";
-	}
-
 	@RequestMapping(value = "/declarewritecheck", method = RequestMethod.POST, produces = "application/json; charset=utf-8;")
 	public String declarewritecheck() {
 		String check = adm.declarewritecheck();
