@@ -36,4 +36,14 @@
 	<select id="categorySelect" resultType="category">
             SELECT * FROM CG ORDER BY CG_CODE ASC
 	</select>
+
+	<select id="notificationSelect" parameterType="String" resultType="notify">
+            SELECT * FROM NF WHERE NF_MBID_R = #{id} AND NF_CHECK = 0 ORDER BY NF_DATE DESC
+	</select>
+	
+	<update id="updateArmUpdate" parameterType="notify">
+            UPDATE NF SET NF_CHECK=NF_CHECK+1 WHERE NF_NUM=${nf_num}
+	</update>
+	
+	
 </mapper>

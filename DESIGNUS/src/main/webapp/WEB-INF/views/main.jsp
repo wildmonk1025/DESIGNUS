@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 ::-webkit-scrollbar{width: 2px;}
 ::-webkit-scrollbar-track {background-color:#FFC19E;}
@@ -38,19 +37,19 @@ div{
 	padding-right: 20px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	width: 550px;
+	width: 630px;
 	height: 50px;
 	float: left;
 }
 
 #searchbox {
-	width: 390px;
+	width: 470px;
 	height: 40px;
 	float: left;
 }
 
 #searchtxt {
-	width: 370px;
+	width: 430px;
 	height: 40px;
 	align: center;
 	background-color: none;
@@ -85,7 +84,6 @@ div{
 #rankingbox{
 	width: 150px;
 	height: 30px;
-	padding-left: 10px;
 	padding-top: 10px;
 	position: relative;
 	float: left;
@@ -97,7 +95,7 @@ div{
 	position: absolute;
 	top: 5;
 	left: 5;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight:bolder;
 	font-family: Verdana, sans-serif;
 
@@ -106,7 +104,6 @@ div{
 	text-align: center;
 	height: 30px;
 	line-height: 30px;
-	background-color: aqua;
 	/* 	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75); */
 }
 
@@ -186,11 +183,45 @@ div{
 .mark {
 	float: left;
 	width: 250px;
-	heigh: 35px;
+	height: 25px;
 	margin-left: auto;
 	margin-top: auto;
 	color: coral;
+	font-size: 15px;
+	font-weight: 700;
 }
+
+#alarmList {
+	position: absolute;
+	width: 240px;
+	heigth: auto;
+	background-color: white;
+	color: white;
+	padding:1px;
+	font-size: 10px;
+	display: none;
+	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75);
+	border: 1px solid black;
+}
+.alarmtitle {
+	text-align: center;
+	font-size: 20px;
+	background-color: #FFC19E;
+	color:gray;
+}
+
+.alarmcontents {
+	padding-left: 5px;
+	color: gray;
+	display: none;
+	border: 1px solid #FFC19E;
+}
+
+.alarmcontents:hover {
+	background-color: #D0F5A9;
+}
+
+
 
 * {
 	margin: 0px;
@@ -329,52 +360,49 @@ a:hover {
 				</c:choose>
 			</div>
 			<div id="msg">
-				<img src="resources/images/notify_img0.png" width="50px" height="50px" />
+			<c:set var="perm2" value="${id}"/>
+			<c:if test="${perm2 eq null}"></c:if>
+			<c:if test="${perm2 ne null}">
+				<div id="alarmBtn"><img src="resources/images/notify_img0.png" width="50px" height="50px" /></div></c:if>
 			</div>
 			<c:set var="check" value="${id}" />
 			<c:if test="${check eq null}">
 				<div class="loginmsg">
+					<div class="mark">로그인 해주시기 바랍니다.</div>
 					<input type="button" class="logbtn"
 						onclick="location.href='logingo'" value="로그인"><br>
-					<div class="mark">로그인 해주시기 바랍니다.</div>
 				</div>
 			</c:if>
 			<c:if test="${check ne null}">
 				<div class="loginmsg">
-					<form id="logout" action="logout" method="post">
-						<input type="button" class="logbtn" onclick="javascript:logout()"
-							value="로그아웃">
-					</form>
+					<div class="mark">
+					<div id="alarmList"></div>
 					<c:choose>
 						<c:when test="${grade=='N'}">
-							<div class="mark">
-								<img src="resources/images/letter-n.png">[일반]
+								<img src="resources/images/letter-n.png" width="20px" height="20px">[일반]
 								<c:out value="${check}" />
 								님 반가워요
-							</div>
 						</c:when>
 						<c:when test="${grade=='W'}">
-							<div class="mark">
-								<img src="resources/images/letter-w.png">[작가]
+								<img src="resources/images/letter-w.png" width="20px" height="20px">[작가]
 								<c:out value="${check}" />
 								님 반가워요
-							</div>
 						</c:when>
 						<c:when test="${grade=='M'}">
-							<div class="mark">
-								<img src="resources/images/letter-m.png">[관리자]
+								<img src="resources/images/letter-m.png" width="20px" height="20px">[관리자]
 								<c:out value="${check}" />
 								님 반가워요
-							</div>
 						</c:when>
 						<c:when test="${grade=='S'}">
-							<div class="mark">
-								<img src="resources/images/letter-s.png">[임시]
+								<img src="resources/images/letter-s.png" width="20px" height="20px">[임시]
 								<c:out value="${check}" />
 								님 반가워요
-							</div>
 						</c:when>
 					</c:choose>
+					</div>
+					<form id="logout" action="logout" method="post">
+						<input type="button" class="logbtn" onclick="javascript:logout()" value="로그아웃">
+					</form>
 				</div>
 			</c:if>
 		</div>
@@ -422,7 +450,7 @@ a:hover {
 </body>
 <script>
 	function nonono() {
-		alert("작가가 아니면 NoNoNo");
+		swal("권한이 없습니다.");
 	}
 
 	function logout() {
@@ -434,12 +462,12 @@ a:hover {
 	} */
 	
 	var i=0;
-/* 	 setInterval(  function() {
+/* 	setInterval(function() {
 		$.ajax({
     		type:'POST',
     		url:'ajax/searchranking',
     		dataType:'json',
-    		success: function play(data) {
+    		success: function(data) {
     			var str='';
     			if(i<10) {
     			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>";
@@ -460,7 +488,6 @@ a:hover {
     		}
     	}); //ajax End
 	} ,3300); */
-	
 	
 	function searchingfct(word) {
 	      	var f = document.searchingfct;
@@ -490,6 +517,55 @@ a:hover {
     		}
     	}); //ajax End
 	});
+	
+$("#alarmBtn").click(function() {
+	$('#alarmList').css('display','block');
+	$('.alarmcontents').css('display','block');
+	setTimeout(function() {
+		$('#alarmList').css('display','none');
+		$('.alarmcontents').css('display','none');		
+	},5000);
+});
 
+
+	function poll() {
+		$.ajax({
+			type:'POST',
+			url:'ajax/notification',
+			dataType:'json',
+			success: function(data) {
+				var str="<div class='alarmtitle'>알림</div>";
+				var str2='';
+				for(var i in data) {
+					str+="<div class='alarmcontents' onclick='updateArm("+data[i].nf_num+");'>["+data[i].nf_mbid_s+"] "+data[i].nf_contents+"<br>수신일 "+data[i].nf_date+"</div>";
+					}
+					if(data.length>6) {
+						str2="<img src='resources/images/notify_img6.png' width='50px' height='50px'/>";	
+					} else {
+						str2="<img src='resources/images/notify_img"+data.length+".png' width='50px' height='50px'/>";
+					}
+				$("#alarmList").html(str);
+				$("#alarmBtn").html(str2);
+				}
+			}); //ajax End
+	}
+	
+	setInterval(poll(),3000);
+	
+	
+	
+	function updateArm(num) {
+		$.ajax({
+			type:'POST',
+			url:'ajax/updatearm',
+			data: {nf_num:num},
+			dataType:'json',
+			success: function(data) {
+				console.log(data);
+				},
+			error: function(error) {
+				}
+			});
+		}
 </script>
 </html>

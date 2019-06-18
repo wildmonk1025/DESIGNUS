@@ -15,6 +15,7 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Category;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.RealTimeSearchRanking;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.dao.IRevAuctionDao;
@@ -104,6 +105,21 @@ public class CommonMM {
 		List<Category> cList = cDao.categorySelect();
 		String jsonStr = new Gson().toJson(cList);
 		System.out.println("jsonStr(카테고리 리스트)="+jsonStr);
+		return jsonStr;
+	}
+	public String notification() {
+		String id = session.getAttribute("id").toString();
+		List<Notify> nList = cDao.notificationSelect(id);
+		String jsonStr = new Gson().toJson(nList);
+		return jsonStr;
+	}
+	public String updateArm(Notify nf) {
+		String jsonStr = null;
+		int chk = cDao.updateArmUpdate(nf);
+		if(chk>0) {
+			jsonStr = "확인";
+		}
+		jsonStr = new Gson().toJson(jsonStr);
 		return jsonStr;
 	}
 	
