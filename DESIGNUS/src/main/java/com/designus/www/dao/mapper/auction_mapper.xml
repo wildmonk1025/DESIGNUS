@@ -20,16 +20,21 @@
 		SELECT NVL(max(ab_aunum),0)FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
 	</select>	
 
-	<select id="getAuctionListSelect" parameterType="auction" resultType="auction">
+	<select id="getAuctionListSelect"  resultType="auction">
 	  <![CDATA[
-		SELECT a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
-		a.au_contents, a.au_date, b.aut_price FROM AU a LEFT OUTER JOIN 
+		SELECT rownum AS rn, a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
+		a.au_contents, a.au_date, b.aut_price, ROW_NUMBER() OVER(PARTITION BY a.AU_NUM ORDER BY a.AU_NUM DESC) 
+        AS rankNo FROM AU a LEFT OUTER JOIN 
 		(select aut_aunum,MAX(aut_price)as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
 		ON  a.AU_NUM = b.AUT_AUNUM
-		where a.au_cgcode = ${au_cgcode}
-		ORDER BY a.AU_NUM
+		where a.au_cgcode = ${au_cgcode} AND rownum <=${num}*9
+        ) WHERE rn>=${num}*9-8
       ]]>
 		
+	</select>
+
+	<select id="getListCount" parameterType="Integer" resultType="Integer">
+	  SELECT COUNT(*) FROM AU WHERE AU_CGCODE = ${cgcode}
 	</select>
 
 	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">

@@ -16,6 +16,7 @@ import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
+import com.designus.www.userClass.PagingAuction;
 import com.designus.www.userClass.UploadFile;
 
 import javafx.scene.control.Alert;
@@ -74,7 +75,7 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionList(int cgcode) {
+	public ModelAndView auctionList(Integer pageNum,int cgcode) {
 		mav=new ModelAndView();
 		String view="null";
 		String auimg = null;
@@ -83,9 +84,12 @@ public class AuctionMM {
 		Auction au = new Auction();
 		RevAuction rau = new RevAuction();
 		AuctionTender at = new AuctionTender();
+		int num = (pageNum == null)? 1 : pageNum ;
+		System.out.println("111111111111111111111");
+
 		au.setAu_cgcode(cgcode);
 		rau.setRa_cgcode(cgcode);
-		auList = aDao.getAuctionListSelect(au);
+		auList = aDao.getAuctionListSelect(au,num);
 		raList = rDao.getRevAuctionListSelect(rau);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
@@ -103,16 +107,33 @@ public class AuctionMM {
 	                raList.get(i).setRa_max("-");
 	          }
 	       }
-	      
+		System.out.println("2222222222222222222222");
+
+	    mav.addObject("paging", getPaging(num,cgcode));  
 	    mav.addObject("auimg",auimg);
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
 		
 		view="auctionList";
-		
+		System.out.println("3333333333333333333333");
+
 		mav.setViewName(view);
 		return mav;
+	}
+
+
+	private Object getPaging(int pageNum, int cgcode) {
+		String a = "auctionList";
+		int maxNum = aDao.getListCount(cgcode);
+		System.out.println("[maxNum] : "+maxNum);
+		int listCount = 9;
+		int pageCount = 3;
+		String boardName = a;
+		
+		PagingAuction paging = 
+				new PagingAuction(maxNum, pageNum, listCount,pageCount, cgcode, boardName);
+		return paging.makeHtmlPaging();
 	}
 
 
