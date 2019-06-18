@@ -9,16 +9,17 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
- body {
-            margin: auto;
-            width: 1520px;
-            height: auto;
-            overflow: auto;
-        }
+body {
+	margin: auto;
+	width: 1520px;
+	height: auto;
+	overflow: auto;
+}
 
-        div {
-            margin: auto;
-        }
+div {
+	margin: auto;
+}
+
 ul {
 	list-style: none;
 }
@@ -79,7 +80,7 @@ ul {
 	height: 30px;
 }
 
-button {
+.button {
 	margin: 10px 10px 10px 10px;
 	width: 200px;
 	height: 50px;
@@ -100,39 +101,69 @@ input[type=submit] {
 </head>
 
 <body>
-	  <div id="mainheader">
-<div id="mainheader">
-		<jsp:include page="main.jsp" />
+	<div id="mainheader">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 	</div>
-    </div>
-    <div id="adminmenu">
-        <ul>
-                 <jsp:include page="admininclud.jsp"></jsp:include>
+	<div id="adminmenu">
+		<ul>
+			<jsp:include page="admininclud.jsp"></jsp:include>
 
-        </ul>
-    </div>
+		</ul>
+	</div>
 	<div id="onequestionmain">
+	<form name="formName"  action="questionreply" method="post">
 		<div id="onequestion">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
-		<div id="questionread">
-			<button id="pageback">돌아가기</button>
-			<button id="delete">글 삭제</button>
-			<div id="questiontitle">글 제목</div>
-			<div id="questioncontents">글 내용</div>
-			<div id="questionfile">첨부파일 :: 23049235.pdf</div>
-			<form action="">
+		<button class="button"><a href="questionList">돌아가기</a></button>
+			<div id="questiontitle">글 제목: ${aq_title}</div>
+			<div id="questioncontents">글 내용: ${aq_contents}</div>
+			<div id="questionfile">첨부파일 : ${aqi_img}</div>
+			<input type="hidden" name="aq_num" id="aq_num" value="${aq_num}">
+			
 				<textarea rows="30" cols="20"
-					style="margin: 5px; width: 800px; height: 100px;"
-					placeholder="여기에 답글을 달 수 있습니다"></textarea>
-				<input type="submit" value="답변하기" />
+					style="margin: 5px; width: 800px; height: 100px;" id="ff"
+					placeholder="여기에 답글을 달 수 있습니다" name="qr_contents"></textarea>
+				<input type="submit" value="답변하기">
+				
 			</form>
+			
 		</div>
+	
 
-	</div>
 
 </body>
 <script>
-	
+/* function a() {
+	var x = ${aq_num};
+	var y = $("#ff").val();
+	var f = document.formName;
+	f.action = "questionreply?aq_num="+x+"&qr_contents="+y;
+	// 파일 전송이 필요할 경우만 씀.
+	//f.encoding = "multipart/form-data";
+	f.method = "get";
+	f.submit();
+} */"declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}"
+
+/* function a(num) {
+	var y = $("#ff").val();
+	console.log(num);
+	console.log(y);
+	var f = document.formName;
+	f.action = "questionreply?aq_num="+num+"&";
+	f.aq_num.value = num;
+	f.qr_contents.value = y;
+	// 파일 전송이 필요할 경우만 씀.
+	//f.encoding = "multipart/form-data";
+	f.method = "GET";
+	f.submit();
+} */
+/* function b() {
+	var f = document.formName;
+	f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
+	f.submit();
+} */
 </script>
 
 </html>

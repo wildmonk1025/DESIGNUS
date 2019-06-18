@@ -98,8 +98,18 @@ public class AdminController {
 		return mav;
 	} //작가전환신청가입승인
 	@RequestMapping(value = "/questionWriteCheck", method = RequestMethod.GET)
-	public String questionWriteCheck() {
+	public ModelAndView questionWriteCheck(int aq_num) {
+		mav = new ModelAndView();
+		mav = adm.questionWriteCheck(aq_num);
+		return mav;
+	}//1:1문의 상세내역
+	@RequestMapping(value = "/questionreply", method = RequestMethod.POST)
+	public ModelAndView questionreply(int aq_num, String qr_contents) {
+		mav = new ModelAndView();
+		System.out.println("aq_num"+aq_num);
+		System.out.println("qr_contents"+qr_contents);
+		mav = adm.questionreply(aq_num,qr_contents);
+		return mav;
+	}//1:1문의 상세내역 답글달기
 
-		return "questionWriteCheck";
-	}
 }

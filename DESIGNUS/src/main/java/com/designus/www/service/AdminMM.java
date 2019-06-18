@@ -1,6 +1,7 @@
 package com.designus.www.service;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.List; 
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -9,14 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.designus.www.bean.Major;
-import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
-import com.designus.www.dao.ImemberDao;
 import com.google.gson.Gson;
 
 @Service
@@ -198,6 +196,40 @@ public class AdminMM {
 		System.out.println(jsonObj);
 		System.out.println("여기는??");
 		return jsonObj;
+	}
+
+	public ModelAndView questionWriteCheck(int aq_num) {
+		mav = new ModelAndView();
+		String view = null;
+		Question n = new Question();
+		System.out.println("여기까진 온다이거지?");
+		n=iDao.getquestionCheck(aq_num);
+		mav.addObject("aq_num", n.getAq_num());
+		mav.addObject("aq_mbid", n.getAq_mbid());
+		mav.addObject("aq_type", n.getAq_type());
+		mav.addObject("aq_title", n.getAq_title());
+		mav.addObject("aq_contents", n.getAq_contents());
+		mav.addObject("aqi_img", n.getAqi_img());
+		System.out.println("오....성공??");
+		view = "questionWriteCheck";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView questionreply(int aq_num, String qr_contents ) {
+		mav = new ModelAndView();
+		String view = null;
+		QuestionReply qr=new QuestionReply();
+		System.out.println("일단여기까진오는거지?"+aq_num);
+		System.out.println("일단여기까진오는거지?"+qr_contents);
+		Map<String,Object> map= new HashMap<>();
+		map.put("aq_num",aq_num);
+		map.put("qr_contents",qr_contents);
+		boolean a=iDao.getquestionReply(map);
+		
+		view = "questionList";
+		mav.setViewName(view);
+		return mav;
 	}
 
 	

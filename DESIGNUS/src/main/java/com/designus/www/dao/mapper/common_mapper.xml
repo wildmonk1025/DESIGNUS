@@ -14,9 +14,26 @@
 	<select id="getimgInfo" parameterType="auction" resultType="auction">
             SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
 	</select>
+	
+	<select id="getSearchRankingSelect" resultType="rtsr">
+            <![CDATA[
+            SELECT * FROM (SELECT * FROM RTSR ORDER BY RTSR_CNT DESC) WHERE ROWNUM<=10
+            ]]>
+	</select>
+	
+	<select id="getSearchingSelect" parameterType="String" resultType="rtsr">
+            SELECT * FROM RTSR WHERE RTSR_WORD LIKE '%'||#{word}||'%'
+	</select>
+	
+	<insert id="searchingInsert" parameterType="String">
+            INSERT INTO RTSR VALUES(RTSR_SEQ.NEXTVAL,#{word},DEFAULT)
+	</insert>
+	
+	<update id="searchingUpdate" parameterType="String">
+            UPDATE RTSR SET RTSR_CNT=RTSR_CNT+1 WHERE RTSR_WORD=#{word}
+	</update>
 
-
+	<select id="categorySelect" resultType="category">
+            SELECT * FROM CG ORDER BY CG_CODE ASC
+	</select>
 </mapper>
-<!-- 		SELECT AUI_NUM, AUI_IMG FROM AUI  JOIN(SELECT AU_NUM FROM 
-                        AU WHERE AU_NUM=${au_num}) AU
-                        ON AUI_NUM=AU_NUM -->

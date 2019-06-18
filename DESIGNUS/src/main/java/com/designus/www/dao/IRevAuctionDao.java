@@ -2,6 +2,8 @@ package com.designus.www.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
@@ -16,7 +18,7 @@ public interface IRevAuctionDao {
 
 	int revAuctionSubmitInsert(RevAuction ra);
 
-	List<RevAuction> getRevAuctionListSelect(RevAuction rau);
+	List<RevAuction> getRevAuctionListSelect(@Param("cgcode")int cgcode, @Param("num")int num);
 
 	RevAuction revAuctionReadSelect(RevAuction ra_num);
 
@@ -63,4 +65,8 @@ public interface IRevAuctionDao {
 	void setNotifyrevAuctionPickN(revAuctionProgress rap);
 
 	void setNotifyrevAuctionPickW(revAuctionProgress rap);
+
+	List<RevAuction> getRevAuctionListSelect2(@Param("word") String word);
+
+	int getrevListCount(@Param("cgcode") int cgcode);
 }

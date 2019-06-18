@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -61,8 +62,14 @@ public class AjaxHomeController {
 	}
 	
 	@RequestMapping(value = "ajax/searchranking", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
-	public String searchRanking() {
+	public @ResponseBody String searchRanking() {
+		String jsonStr = cm.searchRanking();
+		return jsonStr;
+	}
 	
-		return null;
+	@RequestMapping(value = "ajax/category", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
+	public String category() {
+		String jsonStr = cm.category();
+		return jsonStr;
 	}
 }

@@ -275,12 +275,12 @@ div{
 	<div id="inbuyLB-shadow"></div>
 	<div id="tenderLB">
 		<form action="auctiontender" method="post">
-			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격 : <input
-				type="number" id="tenderInput" name="tenderPrice" max="99999999"
+			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격 : 
+			<input type="number" id="tenderInput" name="tenderPrice" max="99999999"
 				min="1" maxlength="8" oninput="maxLengthCheck(this)"
-				placeholder="최대 입찰가 이상 입력"><br> <br> <input
-				type="submit" class="btn11" value="구입"> <input type="reset"
-				class="btn11" value="취소">
+				placeholder="최대 입찰가 이상 입력"> 
+				<br>  <br> 
+			<input type="submit" class="btn11" value="구입"> <input type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<div id="tenderLB-shadow"></div>
@@ -293,7 +293,20 @@ div{
 
 		<div id="List">
 			<div id="middle_img">
-				<div id="middle_img_lv1">카테고리 > ${auInfo.au_cgcode}</div>
+				<div id="middle_img_lv1">카테고리 >
+				 <c:set var="code" value="${auInfo.au_cgcode}" />
+					<c:if test="${code eq 100 }">귀금속공예</c:if>
+					<c:if test="${code eq 110 }">원목공예</c:if>
+					<c:if test="${code eq 120 }">종이공예</c:if>
+					<c:if test="${code eq 130 }">가죽공예</c:if>
+					<c:if test="${code eq 140 }">천공예</c:if>
+					<c:if test="${code eq 150 }">플라스틱공예</c:if>
+					<c:if test="${code eq 160 }">도자기</c:if>
+					<c:if test="${code eq 170 }">가공식품</c:if>
+					<c:if test="${code eq 180 }">휴대폰</c:if>
+					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
+					<c:if test="${code eq 200 }">유아</c:if>
+				 </div>
 				<div id="middle_img_lv2">여기에 이미지</div>
 			</div>
 			<div id="middle_contents1">
@@ -338,7 +351,7 @@ div{
 				<button class="submitbtn" id="btn2">경매참여</button>
 			</c:if>
 			<c:if test="${au_id eq se_id }">
-				
+				<button class="submitbtn">본인은 구매가 <br> 불가능 합니다.</button>
 			</c:if>
 			</div>
 			<div id="middle_contents1_lv4">
@@ -346,12 +359,12 @@ div{
 				<div id="middle_Person">
 					<c:forEach var="at" items="${atList}">
 						<table class="atList">
-							<tr style="height: 40px;">
-								<th style="width: 100px;">아이디 :</th>
-								<td style="width: 70px;">${at.aut_mbid }</td>
+							<tr style="height: 40px">
+								<th style="width: 100px">아이디 :</th>
+								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px;">${at.aut_price}</td>
+								<td style="width: 100px">${at.aut_price}</td>
 								<td style="width: 30px">원</td>
 							</tr>
 						</table>

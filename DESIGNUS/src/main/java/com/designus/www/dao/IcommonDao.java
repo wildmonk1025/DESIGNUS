@@ -6,6 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Auction;
+import com.designus.www.bean.Category;
+import com.designus.www.bean.RealTimeSearchRanking;
+import com.google.gson.JsonElement;
 
 //import org.springframework.stereotype.Repository;
 
@@ -20,6 +23,15 @@ public interface IcommonDao {
 
 	List<Auction> getimgInfo();
 
+	List<RealTimeSearchRanking> getSearchRankingSelect();
+
+	List<RealTimeSearchRanking> getSearchingSelect(@Param("word") String word);
+
+	void searchingInsert(@Param("word") String word);
+
+	void searchingUpdate(@Param("word") String word);
+
+	List<Category> categorySelect();
 
 
   

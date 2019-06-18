@@ -80,7 +80,7 @@ div {
 	position: relative;
 	top: 30px;
 	width: 1500px;
-	height: 550px;
+	height: 570px;
 }
 
 #ListView1 {
@@ -99,7 +99,29 @@ div {
 	top: 50px;
 	left: 10px;
 	width: 1480px;
-	height: 480px;
+	height: 470px;
+}
+
+.paging1{
+	border:1px solid red;
+	position:absolute;
+	float:left;
+	left:0px;
+	bottom:0px;
+	height: 50px;
+	width: 1500px;
+	text-align: center;
+}
+.paging2{
+	border:1px solid red;
+	position:absolute;
+	float:left;
+	left:0px;
+	bottom:0px;
+	height: 50px;
+	width: 1500px;
+	text-align: center;
+	display: none;
 }
 
 .raListFrm{
@@ -206,6 +228,10 @@ div {
 					</div>
 			</c:forEach>
 			</div>
+			<!-- 
+				▲역경매         ▼경매
+			 				  -->
+			
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
@@ -228,7 +254,12 @@ div {
 					</div>
 			</c:forEach>
 			</div>
-
+			<div class = paging1>
+				${paging1}
+			</div>
+			<div class = paging2>
+				${paging2}
+			</div>
 		</div>
 
 
@@ -245,11 +276,15 @@ div {
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");
 		$("#ListView2").css("display", "none");
+		$(".paging1").css("display", "inline");
+		$(".paging2").css("display", "none");
 	});
 
 	$("#Lbtn2").click(function() {
 		$("#ListView1").css("display", "none");
 		$("#ListView2").css("display", "inline");
+		$(".paging1").css("display", "none");
+		$(".paging2").css("display", "inline");
 	});
 	
 	
