@@ -51,6 +51,11 @@ public interface IadminDao {
 
 	List<Member> getmemberBlackList();
 
-	Member getMemberCheck(@Param("mb_id")String mb_id);
+	MemberSearch getMemberCheck(@Param("mb_id") String mb_id);
+
+	boolean getmembercouet(@Param("mb_id")String mb_id);
+
+	boolean getmemberminuscouet(@Param("mb_id")String mb_id);
+
   
 }

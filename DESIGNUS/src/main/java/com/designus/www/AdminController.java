@@ -130,17 +130,26 @@ public class AdminController {
 		mav = adm.questionreply(aq_num,qr_contents);
 		return mav;
 	}//1:1문의 상세내역 답글달기
+
 	@RequestMapping(value = "/memberListMM", method = RequestMethod.GET)
-	public String memberListMM() {
-		
-		return "memberListMM";
-	}
-	@RequestMapping(value = "/memberwritecheck", method = RequestMethod.GET)
 	public ModelAndView memberwritecheck(String mb_id) {
 		System.out.println("이거찍히니?"+mb_id);
 		mav = new ModelAndView();
 		mav = adm.memberwritecheck(mb_id);
 		return mav;
 	}//회원정보 상세보기
-
+	@RequestMapping(value = "/membercaution", method = RequestMethod.POST)
+	public ModelAndView membercaution(String mb_id) {
+		mav = new ModelAndView();
+		System.out.println("mb_id"+mb_id);
+		mav = adm.membercaution(mb_id);
+		return mav;
+	}//회원정보 상세보기 경고+1
+	@RequestMapping(value = "/membercautioncnt", method = RequestMethod.POST)
+	public ModelAndView membercautioncnt(String mb_id) {
+		mav = new ModelAndView();
+		System.out.println("mb_id"+mb_id);
+		mav = adm.membercautioncnt(mb_id);
+		return mav;
+	}//회원정보 상세보기 경고-1
 }
