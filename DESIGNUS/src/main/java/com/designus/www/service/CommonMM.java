@@ -79,9 +79,9 @@ public class CommonMM {
 	public ModelAndView searching(String word) {
 		mav = new ModelAndView();
 		
-		int check = cDao.getSearchingSelect(word);
+		List<RealTimeSearchRanking> check = cDao.getSearchingSelect(word);
 		System.out.println("검색어 체크결과="+check);
-		if(check>0) {
+		if(check.isEmpty()) {
 			cDao.searchingInsert(word);
 			System.out.println("검색어 insert 성공");
 		} else {
