@@ -131,7 +131,8 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4"><button class="bt21"
-							onclick="location.href='sponbuy?ss_num=${ss_num}'">밀어주기</button></td>
+							onclick="location.href='sponbuy?ss_num=${ss_num}'"
+							onsubmit="return false" style="cursor: pointer">밀어주기</button></td>
 					<td colspan="2"><button class="bt22"
 							onclick="location.href='sponsor'">목록보기</button></td>
 				</tr>
