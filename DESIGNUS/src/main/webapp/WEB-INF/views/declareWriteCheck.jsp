@@ -175,7 +175,8 @@ td {
 							<td colspan="5" width="500" height="30">첨부사진 : ${rp_img}</td>
 						</tr>
 					</table>
-				</div>
+				</div >
+				<div class="btnArray" id="btn1">
 					<input type="button" value="적합" onclick="b();" />
 				</div>
 
