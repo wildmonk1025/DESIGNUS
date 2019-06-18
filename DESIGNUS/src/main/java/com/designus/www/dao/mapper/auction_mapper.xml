@@ -45,8 +45,36 @@
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
 		SELECT * FROM AU WHERE AU_NUM = ${au_num}
 	</select>
-	
-
+	<!-- auctionRead Img Call -->
+	<select id="getAuctionImg1"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 1
+		]]>
+	</select>
+	<select id="getAuctionImg2"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 2
+		]]>
+	</select>
+	<select id="getAuctionImg3"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 3
+		]]>
+	</select>
+	<select id="getAuctionImg4"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 4
+		]]>
+	</select>
+	<!--  End  -->
 	<select id="getAuctionTenderPrice" parameterType="auctiontender" resultType="Integer">
 		SELECT AU_INPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
 	</select>

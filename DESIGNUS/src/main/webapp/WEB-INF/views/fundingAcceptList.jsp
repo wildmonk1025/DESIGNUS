@@ -20,216 +20,32 @@ div {
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	border: 1px solid orange;
 	width: 1080px;
-	height: 100px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#info {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 280px;
-	height: 580px;
-	font-size: 20px;
+	height: 50px;
 	text-align: left;
+	font-size: 20px;
 	float: left;
+	overflow: auto;
 }
 
 #renking {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 200px;
+	height: 875px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
 }
 
-#auction {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
 
-#spon {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-}
 
-.bt {
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 85px;
-	height: 35px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-}
 
-#leftmain {
-	width: 310px;
-	height: 950x;
-	border: 1px solid black;
-	float: left;
-}
-
-#rightmain {
-	width: 1200px;
-	height: 950px;
-	border: 1px solid black;
-	float: left;
-}
 
 #main {
 	width: 1520px;
 	height: 170px;
 	text-align: center;
-	height: 170px;
-	text-align: center;
-}
-
-.bt01 {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	width: 100px;
-	height: 80px;
-}
-
-.bt01 {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	width: 100px;
-	height: 80px;
-}
-
-.bt02 {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	margin-top: 50px;
-	width: 100px;
-	height: 80px;
-}
-
-a {
-	color: red
-}
-
-#lightbox {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
-}
-
-#lightbox1 {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow1 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
 }
 
 #point {
@@ -238,7 +54,7 @@ a {
 	width: 280px;
 	height: 60px;
 	text-align: left;
-	font-size: 20px;
+	font-size: 15px;
 	float: left;
 }
 
@@ -287,16 +103,6 @@ a:hover {
 	float: left;
 }
 
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
-
 #loginwriter {
 	padding: 3px;
 	padding-top: 20px;
@@ -311,35 +117,10 @@ a:hover {
 	height: 50px;
 }
 
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
-}
-
-#subcategory {
-	width: 50px;
-	height: 50px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
-	float: left;
-}
-
 #menu {
 	float: left;
 	width: 1400px;
 	height: 50px
-}
-
-#submenu {
-	margin-left: 100px;
-	width: 150px;
-	float: left;
-	height: 50px;
-	text-align: center;
-	font-size: 18px;
 }
 
 #msg {
@@ -374,66 +155,123 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
+
+#full {
+	float: right;
+}
+#nonw{
+  color: #BDBDBD;
+}
+#Participation{
+ margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+#sk{
+margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+#gsc{
+margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+.first{
+border: 1px solid orange;
+	margin: 10px 10px 10px 10px;
+	width: 1060px;
+	height: 250px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p1 {
+ width: 500px;
+ float: left;
+ text-align: left;
+}
+.p2{
+width: 500px;
+text-align: left;
+float: left;
+}
+.second{
+    background-color : #FFBB00;
+	margin: 10px 10px 10px 10px;
+	width: 1040px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.third{
+	margin: 5px 10px 10px 10px;
+	width: 270px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.fourth{
+	margin: 5px 10px 10px 10px;
+	width: 570px;
+	height: 175px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+.Fifth{
+	margin: 5px 10px 10px 10px;
+	width: 130px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p3{
+margin-top: 60px;
+}
 </style>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
-
-	
-		<div id="leftmain">
-			<jsp:include page="Mapagemain.jsp" />
+	<div id="mypagemain">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
+
+		<jsp:include page="Mapagemain.jsp" />
+
+
 		<div id="rightmain">
 			<div id="notice">
-				<h2>후원 진행 내역</h2>
+			 <h2>후원 진행내역</h2><hr>
 			</div>
+			
 			<div id="renking">
-				<h1>후원진행중</h1>
-				<br>
-				<h2>■■■■■□□□□□ 1000/510 51%</h2>
+				
+			</div>
 
-				<div class="bt01"></div>
-			</div>
-			<div id="auction">
-				<h1>후원마감</h1>
-				<h1>100%도달</h1>
-				<div class="bt01">
-					<button id="action" class="bt">배송정보입력</button>
-				</div>
-			</div>
-			<div id="spon">
-				<h1>배송정보</h1>
-				<div class="bt02">
-					<button id="cancel" class="bt">후원후기쓰기</button>
-					<h1>완료</h1>
-				</div>
-			</div>
-			<div id="lightbox-shadow">
-
-				<div id="lightbox">
-					<h1>의뢰인배송정보</h1>
-					<button>요청</button>
-					<button type="button"
-						onclick="location.href='fundingAcceptList.html' ">취소</button>
-				</div>
-			</div>
-			<div id="lightbox-shadow1">
-
-				<div id="lightbox1">
-					<h1>후원 후기 쓰기</h1>
-					<button>확인</button>
-					<button type="button"
-						onclick="location.href='fundingAcceptList.html' ">취소</button>
-				</div>
-			</div>
 		</div>
+	</div>
 </body>
 <script type="text/javascript">
+var spgList=${spgList}
+console.log(spgList);
+var cc="";
+for(var i=0; i<spgList.length;i++){
+	if(spgList[i].ssp_step==1){
+	cc+="<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+	  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+	  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : 현재 인원/"+spgList[i].ss_goalqty+"<br>후원 기간 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 :</div>"
+	  +"<div class='Fifth'><p class='p3'>후원진행중</p></div></div>"
+	}
+}
+$('#renking').html(cc)
+
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")

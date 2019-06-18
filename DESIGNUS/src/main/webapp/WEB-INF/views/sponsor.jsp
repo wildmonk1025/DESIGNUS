@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <style>
 div {
@@ -116,8 +118,15 @@ div {
 	<div id="homeMain">
 		<div id="titleAndbtn">
 			지금 후원 가능한 작품
-			<button id="btn1" class="btn"
-				onclick="location.href='sponregistration'">후원상품등록</button>
+			<c:choose>
+				<c:when test="${grade=='W'}">
+					<button id="btn1" class="btn"
+						onclick="location.href='sponregistration'">후원상품등록</button>
+				</c:when>
+				<c:when test="${grade!='W'}">
+					<button id="btn1" class="btn" onclick="msg()">후원상품등록</button>
+				</c:when>
+			</c:choose>
 		</div>
 		<div id="sponList"></div>
 	</div>
@@ -127,8 +136,14 @@ div {
 
 </body>
 <script>
-	$(document).ready(function() {
-				$.ajax({
+	function msg() {
+		alert("작가만 등록할 수 있습니다.")
+	}
+	$(document)
+			.ready(
+					function() {
+						$
+								.ajax({
 									url : 'productinfo',
 									type : 'post',
 									dataType : 'json',

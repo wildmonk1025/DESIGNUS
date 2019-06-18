@@ -391,7 +391,7 @@
 	<select id="questionlist" resultType="alonequestion">
 		<![CDATA[
 		 select * from( select rownum AS RN,AQ_NUM,AQ_MBID,AQ_TYE,AQ_TITLE,
-		 AQ_CONTENTS,AQ_DATE,ABC from AQ_QR 
+		 AQ_CONTENTS,AQ_DATE,ABC,AQI_IMG from AQ_QR 
 		 where aq_mbid=#{id} and rownum<=${num}*8 ) where rn>=${num}*8-7
 		 order by AQ_NUM desc
 		]]>
@@ -410,4 +410,29 @@
 		select * from AQ_QR
 		where aq_num=${aq_num}
 	</select>
+	<select id="fundingAcceptListSelect" parameterType="sponpro" 
+ 		resultType="sponpro"> 
+ 		<![CDATA[ 
+ 		select * from(
+ select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SST_MBID,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+     from ssp_ss_ssi
+       where SSP_MBID_N=#{id}  and rownum<=${num}*4
+     ) where rn>=${num}*4-3 AND RankNo=1
+   ]]>
+	</select> 
+	 <select id="getSuwonCountt" parameterType="String" 
+ 		resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from ssp_ss_ssi
+         where SSP_MBID_N=#{id} 
+   ]]> 
+	</select> 
+	 <select id="SponsorTenderSelect"
+ 		resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from ssp_ss_ssi
+         where SSP_MBID_N=#{id} 
+   ]]> 
+	</select> 
 </mapper>

@@ -125,9 +125,9 @@ public class AuctionMM {
 		int pageCount = 3;
 		String boardName = a;
 		
-		PagingAuction paging = 
+		PagingAuction paging1 = 
 				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName);
-		return paging.makeHtmlPaging();
+		return paging1.makeHtmlPaging1();
 	}
 
 	private Object getPaging2(int pageNum2, int cgcode) {
@@ -138,9 +138,9 @@ public class AuctionMM {
 		int pageCount = 3;
 		String boardName = a;
 		
-		PagingAuction paging = 
+		PagingAuction paging2 = 
 				new PagingAuction(maxNum, pageNum2, listCount,pageCount, cgcode, boardName);
-		return paging.makeHtmlPaging();
+		return paging2.makeHtmlPaging2();
 	}
 
 
@@ -148,12 +148,12 @@ public class AuctionMM {
 		mav=new ModelAndView();
 		String view = null;
 		String Wid = null;
+		int nb = 1;
+		int price = 0;
 		String id = (String)session.getAttribute("id");
 		List<AuctionTender> atList = null;
 		List<Auction> auwList = null;
 		String chkID = null;
-		int nb = 1;
-		int price = 0;
 		Auction au = new Auction();
 		Basket bk = new Basket();
 		AuctionTender at = new AuctionTender();
@@ -166,11 +166,14 @@ public class AuctionMM {
 		nb = aDao.getAuctionBasketSelect(bk);
 		bk.setAb_aunum(nb);
 		chkID = aDao.getAuctionInfoID(au);
-		
 		Wid = aDao.getAuctionWriteIdSel(au);
 		au.setAu_mbid_w(Wid);
 		auwList = aDao.getAuctionWriterListSel(au);
-
+		au.setAui_imgSysName1(aDao.getAuctionImg1(au_num));
+		au.setAui_imgSysName2(aDao.getAuctionImg2(au_num));
+		au.setAui_imgSysName3(aDao.getAuctionImg3(au_num));
+		au.setAui_imgSysName4(aDao.getAuctionImg4(au_num));
+		
 		mav.addObject("peice",price);
 		mav.addObject("chkID",chkID);
 		mav.addObject("auInfo",au);
@@ -182,7 +185,6 @@ public class AuctionMM {
 		mav.addObject("auwList",auwList);
 		view = "auctionRead";
 		mav.setViewName(view);
-		
 		return mav;
 	}
 
