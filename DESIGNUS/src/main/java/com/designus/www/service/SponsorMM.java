@@ -114,7 +114,7 @@ public class SponsorMM {
 	}
 
 	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
-
+     System.out.println("자 서비스 클래스 시작해보자~~~");
 		SponsorTender st = new SponsorTender();
 		mav = new ModelAndView();
 
