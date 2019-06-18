@@ -96,6 +96,9 @@ margin: 15px 0px 0px 0px;
 					<tr id="m10">
 						<td style="font-size: 27px"><a href="nortowri">작가전환 신청</a></td>
 					</tr>
+					<tr id="m11">
+						<td style="font-size: 27px"><a href="questionlist">1:1문의리스트</a></td>
+					</tr>
 				</table>
 			</div>
 		</div>

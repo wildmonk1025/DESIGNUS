@@ -66,4 +66,10 @@ public class AjaxHomeController {
 		String jsonStr = cm.searchRanking();
 		return jsonStr;
 	}
+	
+	@RequestMapping(value = "ajax/category", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
+	public String category() {
+		String jsonStr = cm.category();
+		return jsonStr;
+	}
 }

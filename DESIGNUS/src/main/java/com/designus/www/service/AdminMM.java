@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
@@ -226,10 +227,42 @@ public class AdminMM {
 		map.put("aq_num",aq_num);
 		map.put("qr_contents",qr_contents);
 		boolean a=iDao.getquestionReply(map);
-		
+		if(a) {
+			
+		}
 		view = "questionList";
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public String memberseclist() {
+		List<Member> rList = iDao.getmemberList();
+		System.out.println("이거는되나");
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+		return jsonObj;
+	}
+
+	public String memberAuthorlist() {
+		List<Member> rList = iDao.getmemberAuthorList();
+		System.out.println("이거는되나");
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+		return jsonObj;
+	}
+
+	public String memberBlacklist() {
+		List<Member> rList = iDao.getmemberBlackList();
+		System.out.println("이거는되나");
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		System.out.println("여기는??");
+		return jsonObj;
 	}
 
 	
