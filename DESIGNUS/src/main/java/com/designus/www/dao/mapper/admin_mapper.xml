@@ -8,44 +8,89 @@
      <select id="getrepInfo" parameterType="report" resultType="report">
 		SELECT * FROM RP_LIST ORDER BY RP_NUM ASC
 	</select>
+	
+	
      <select id="gettransInfo" parameterType="membersearch" resultType="membersearch">
 		SELECT * FROM MBS WHERE MB_GRADE='X'OR MB_GRADE='S'
 	</select>
+	
+	
      <select id="gettransforInfo" parameterType="membersearch" resultType="membersearch">
 		SELECT * FROM MBS WHERE MB_GRADE='X'OR MB_GRADE='S'
 	</select>
+	
+	
      <select id="getWriteCheck" parameterType="Integer" resultType="report">
 		SELECT * FROM RP_LIST WHERE RP_NUM =${rp_num}
 	</select>
+	
+	
      <delete id="getPermit" parameterType="Integer" >
 		DELETE FROM RP WHERE RP_NUM =${rp_num}
 	</delete>
+	
+	
      <delete id="getPerfmit" parameterType="Integer">
 		DELETE FROM RPI WHERE RPI_NUM =${rp_num}
 	</delete>
+	
+	
 	<update id="getwarning" parameterType="member">
 		UPDATE MB SET MB_CCNT=MB_CCNT+1 WHERE MB_ID = #{mb_id}
 	</update>
+	
+	
 	<select id="permitWriDetail" parameterType="String" resultType="membersearch">
 		SELECT * FROM MBS WHERE MB_ID = #{mb_id}
 	</select>
+	
+	
 	<update id="getreAuthorfuse" parameterType="membersearch">
 		UPDATE MB SET MB_GRADE='N' WHERE MB_ID= #{mb_id}
 	</update>
+	
+	
 	<update id="getreAuthoragree" parameterType="membersearch">
 		UPDATE MB SET MB_GRADE='W' WHERE MB_ID= #{mb_id}
 	</update>
+	
+	
 	<delete id="getreAuthordelete" parameterType="membersearch">
 		DELETE FROM MJ WHERE MJ_MBID=#{mb_id}
 	</delete>
+	
+	
 	<select id="getquestionInfo" parameterType="question" resultType="question">
-		SELECT * FROM AQ_LIST 
+		SELECT * FROM AQ_QR WHERE ABC IS NULL
 	</select>
+	
+	
 	<select id="getquestionCheck" parameterType="question" resultType="question">
-		SELECT * FROM AQ_LIST WHERE AQ_NUM=${aq_num}
+		SELECT * FROM AQ_QR WHERE AQ_NUM=${aq_num}
 	</select>
+	
+	
 	<insert id="getquestionReply" parameterType="map" >
 
 		INSERT INTO QR VALUES(QR_SEQ.nextval,${aq_num},#{qr_contents},DEFAULT)
 	</insert>
+	
+	
+	<select id="getmemberList" parameterType="member" resultType="member">
+		SELECT * FROM MB WHERE MB_GRADE IN ('N', 'S', 'X')
+	</select>
+	
+	
+	<select id="getmemberAuthorList" parameterType="member" resultType="member">
+		SELECT * FROM MB WHERE MB_GRADE='W'
+	</select>
+	
+	<select id="getmemberBlackList" resultType="member">
+		SELECT * FROM MB WHERE MB_CCNT BETWEEN 1 AND 10
+	</select>
+	
+	
+
+	
+	
 </mapper>

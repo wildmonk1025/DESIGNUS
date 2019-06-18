@@ -30,7 +30,6 @@
             float: left;
             width: 300px;
             height: 500px;
-            background-color: azure;
         }
 
         #adminopt {
@@ -38,7 +37,6 @@
             align-content: center;
             width: 1216px;
             height: 500px;
-            background-color: azure;
         }
 
         .opt {
@@ -71,10 +69,80 @@
             width:331px;
             height: auto;
             text-align: center;
-            background-color: azure;
         }
 .lipont{
 	font-size:20px;
+}
+.view{
+	display: none;
+
+}
+.btn2{
+margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 150px;
+	height: 40px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+.best {
+	border: 1px solid blue;
+	color: black; display : inline;
+	float: left;
+	width: 315px;
+	heigth: 55px;
+	display: inline;
 }
     </style>
 </head>
@@ -91,36 +159,128 @@
     <div id="adminopt">
         <div class="opt">
             <h3 style="text-align: center; font-size: 25px; background-color: orange;">회원관리</h3>
-            <div class="btnArray" id="normal">일반회원 리스트</div>
-            <div class="btnArray" id="writer">작가회원 리스트</div>
-            <div class="btnArray" id="blkmember">블랙회원 리스트</div>
-            <hr>
+            <div class="btnArray" id="normal"><button id="Lbtn1" class="btn2">일반회원 리스트</button></div>
+            <div class="btnArray" id="writer"><button id="Lbtn2" class="btn2">작가회원 리스트</button></div>
+            <div class="btnArray" id="blkmember"><button id="Lbtn3" class="btn2">블랙회원 리스트</button></div>
+            <hr><br/><br/><br/><br/>
             <div id="declarelist">
-                <table id="declareinfo">
-
-                </table>
+            <div id="ListView1"></div>
+            <div id="ListView2" class="view"></div>
+            <div id="ListView3" class="view">ㅋㅋㅋㅋ</div>
+               
             </div>
             <h3 style="text-align: center; color: blue;">페이징</h3>
         </div>
     </div>
 </body>
 <script>
-    var x="<h3>일반</h3>";
-    var y="<h3>작가</h3>";
-    $("#normal").addClass(function(){
-        for(var j=0;j<5;j++) {
-            x+="<tr><th>회원등급</th><td>아이디</td><td>이름</td><td>생년월일</td><td>이메일</td><td>포인트</td><td>경고횟수</td></tr>"
-                +"<tr><th>일반</th><td>AAAA</td><td>소떡</td><td>19930101</td><td>volvohi</td><td>100300</td><td>3회</td></tr>";
-        }
-        $("#declareinfo").html(x);
-    });
-    $("#writer").click(function(){
-        x="";
-        for(var j=0;j<5;j++) {
-            y+="<tr><th>회원등급</th><td>아이디</td><td>이름</td><td>생년월일</td><td>이메일</td><td>포인트</td><td>경고횟수</td></tr>"
-                +"<tr><th>일반</th><td>AAAA</td><td>소떡</td><td>19930101</td><td>volvohi</td><td>100300</td><td>3회</td></tr>";
-        }
-        $("#declareinfo").html(y);
-    });
+$("#Lbtn1").click(function() {
+	$("#ListView1").css("display", "inline");
+	$("#ListView2").css("display", "none");
+	$("#ListView3").css("display", "none");
+	$(".paging1").css("display", "inline");
+	$(".paging2").css("display", "none");
+	$(".paging3").css("display", "none");
+});
+$("#Lbtn2").click(function() {
+	$("#ListView1").css("display", "none");
+	$("#ListView2").css("display", "inline");
+	$("#ListView3").css("display", "none");
+	$(".paging1").css("display", "none");
+	$(".paging2").css("display", "inline");
+	$(".paging3").css("display", "none");
+});
+$("#Lbtn3").click(function() {
+	$("#ListView1").css("display", "none");
+	$("#ListView2").css("display", "none");
+	$("#ListView3").css("display", "inline");
+	$(".paging1").css("display", "none");
+	$(".paging2").css("display", "none");
+	$(".paging3").css("display", "inline");
+});
+$(document).ready(function() {
+	$.ajax({
+		url : 'memberseclist',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"+"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
+					  +"아이디:" +data[i].mb_id+"<br>"
+					  +"이름:"+data[i].mb_name+"<br>"
+					  +"회원등급:"+data[i].mb_grade+"<br>"
+					  +"경고횟수:"+data[i].mb_ccnt+"<br>"
+					  +"</a>"+"</div>";
+					  }
+			$("#ListView1").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
+$(document).ready(function() {
+	$.ajax({
+		url : 'memberAuthorlist',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"+"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
+					  +"아이디:" +data[i].mb_id+"<br>"
+					  +"이름:"+data[i].mb_name+"<br>"
+					  +"회원등급:"+data[i].mb_grade+"<br>"
+					  +"경고횟수:"+data[i].mb_ccnt+"<br>"
+					  +"</a>"+"</div>";
+					  }
+			$("#ListView2").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
+$(document).ready(function() {
+	$.ajax({
+		url : 'memberBlacklist',
+		type: 'post',
+		contentType:"application/json; charset=utf-8;",
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+
+			for(var i in data){
+				result+="<div class='best'>"+"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
+					  +"아이디:" +data[i].mb_id+"<br>"
+					  +"이름:"+data[i].mb_name+"<br>"
+					  +"회원등급:"+data[i].mb_grade+"<br>"
+					  +"경고횟수:"+data[i].mb_ccnt+"<br>"
+					  +"</a>"+"</div>";
+					  }
+			$("#ListView3").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+});
 </script>
 </html>
