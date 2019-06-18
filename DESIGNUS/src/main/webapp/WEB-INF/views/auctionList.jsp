@@ -228,6 +228,9 @@ div {
 					</div>
 			</c:forEach>
 			</div>
+			<div class = paging1>
+				${paging1}
+			</div>
 			<!-- 
 				▲역경매         ▼경매
 			 				  -->
@@ -254,9 +257,7 @@ div {
 					</div>
 			</c:forEach>
 			</div>
-			<div class = paging1>
-				${paging1}
-			</div>
+			
 			<div class = paging2>
 				${paging2}
 			</div>

@@ -78,6 +78,13 @@ public interface IauctionDao {
 
 	int getListCount(@Param("cgcode") int cgcode);
 
+	String getAuctionImg1(@Param("au_num") int au_num);
+	String getAuctionImg2(@Param("au_num") int au_num);
+	String getAuctionImg3(@Param("au_num") int au_num);
+	String getAuctionImg4(@Param("au_num") int au_num);
+
+
+
 
 
 
