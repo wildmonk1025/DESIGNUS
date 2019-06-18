@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
+import com.designus.www.bean.Category;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.RealTimeSearchRanking;
 import com.designus.www.bean.RevAuction;
@@ -98,6 +99,12 @@ public class CommonMM {
 		
 		mav.setViewName("auctionList");
 		return mav;
+	}
+	public String category() {
+		List<Category> cList = cDao.categorySelect();
+		String jsonStr = new Gson().toJson(cList);
+		System.out.println("jsonStr(카테고리 리스트)="+jsonStr);
+		return jsonStr;
 	}
 	
 }
