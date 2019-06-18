@@ -225,7 +225,7 @@ public class AdminMM {
 		Map<String,Object> map= new HashMap<>();
 		map.put("aq_num",aq_num);
 		map.put("qr_contents",qr_contents);
-		qr=iDao.getquestionReply(map);
+		boolean a=iDao.getquestionReply(map);
 		
 		view = "questionList";
 		mav.setViewName(view);

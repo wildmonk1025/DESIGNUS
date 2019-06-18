@@ -18,7 +18,7 @@ public interface IRevAuctionDao {
 
 	int revAuctionSubmitInsert(RevAuction ra);
 
-	List<RevAuction> getRevAuctionListSelect(RevAuction rau);
+	List<RevAuction> getRevAuctionListSelect(@Param("cgcode")int cgcode, @Param("num")int num);
 
 	RevAuction revAuctionReadSelect(RevAuction ra_num);
 
@@ -67,4 +67,6 @@ public interface IRevAuctionDao {
 	void setNotifyrevAuctionPickW(revAuctionProgress rap);
 
 	List<RevAuction> getRevAuctionListSelect2(@Param("word") String word);
+
+	int getrevListCount(@Param("cgcode") int cgcode);
 }

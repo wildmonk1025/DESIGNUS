@@ -102,6 +102,16 @@ div {
 	height: 470px;
 }
 
+.paging1{
+	border:1px solid red;
+	position:absolute;
+	float:left;
+	left:0px;
+	bottom:0px;
+	height: 50px;
+	width: 1500px;
+	text-align: center;
+}
 .paging2{
 	border:1px solid red;
 	position:absolute;
@@ -218,6 +228,10 @@ div {
 					</div>
 			</c:forEach>
 			</div>
+			<!-- 
+				▲역경매         ▼경매
+			 				  -->
+			
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
@@ -240,8 +254,11 @@ div {
 					</div>
 			</c:forEach>
 			</div>
+			<div class = paging1>
+				${paging1}
+			</div>
 			<div class = paging2>
-				${paging}
+				${paging2}
 			</div>
 		</div>
 
