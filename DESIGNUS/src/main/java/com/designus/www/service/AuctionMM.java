@@ -86,9 +86,8 @@ public class AuctionMM {
 		AuctionTender at = new AuctionTender();
 		int num = (pageNum == null)? 1 : pageNum ;
 
-		rau.setRa_cgcode(cgcode);
 		auList = aDao.getAuctionListSelect(cgcode,num);
-		raList = rDao.getRevAuctionListSelect(rau);
+		raList = rDao.getRevAuctionListSelect(cgcode,num);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
 	          //int ra_num=raList.get(i).getRa_num();
@@ -105,8 +104,8 @@ public class AuctionMM {
 	                raList.get(i).setRa_max("-");
 	          }
 	       }
-
-	    mav.addObject("paging", getPaging(num,cgcode));  
+	    mav.addObject("paging1", getPaging1(num,cgcode));  
+	    mav.addObject("paging2", getPaging2(num,cgcode));  
 	    mav.addObject("auimg",auimg);
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
@@ -118,9 +117,23 @@ public class AuctionMM {
 	}
 
 
-	private Object getPaging(int pageNum, int cgcode) {
+	private Object getPaging1(int pageNum, int cgcode) {
+		String a = "auctionList";
+		int maxNum = rDao.getrevListCount(cgcode);
+		int listCount = 9;
+		int pageCount = 3;
+		String boardName = a;
+		
+		PagingAuction paging = 
+				new PagingAuction(maxNum, pageNum, listCount,pageCount, cgcode, boardName);
+		return paging.makeHtmlPaging();
+	}
+
+
+	private Object getPaging2(int pageNum, int cgcode) {
 		String a = "auctionList";
 		int maxNum = aDao.getListCount(cgcode);
+
 		int listCount = 9;
 		int pageCount = 3;
 		String boardName = a;
