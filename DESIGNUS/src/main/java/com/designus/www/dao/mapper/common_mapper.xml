@@ -29,9 +29,9 @@
             INSERT INTO RTSR VALUES(RTSR_SEQ.NEXTVAL,#{word},DEFAULT)
 	</insert>
 	
-	<insert id="searchingUpdate" parameterType="String">
+	<update id="searchingUpdate" parameterType="String">
             UPDATE RTSR SET RTSR_CNT=RTSR_CNT+1 WHERE RTSR_WORD=#{word}
-	</insert>
+	</update>
 
 </mapper>
 <!-- 		SELECT AUI_NUM, AUI_IMG FROM AUI  JOIN(SELECT AU_NUM FROM 
