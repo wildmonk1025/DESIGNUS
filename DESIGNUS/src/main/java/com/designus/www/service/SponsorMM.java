@@ -137,10 +137,10 @@ public class SponsorMM {
 			sDao.sponbuy(st);
 			System.out.println("거래내역 insert");
 			// 후원 거래내역 insert
-			view = "redirect:/sponproduct";
+			view = "sponproduct";
 		} else {
 			System.out.println("insert 실패");
-			view = "/sponsor";
+			view = "sponsor";
 		}
 		System.out.println("왜 한 번 더 도는거지?");
 		mav.setViewName(view);

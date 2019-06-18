@@ -44,5 +44,11 @@ public interface IadminDao {
 	Question getquestionCheck(@Param("aq_num") int aq_num);
 
 	boolean getquestionReply(Map<String,Object> map);
+
+	List<Member> getmemberList();
+
+	List<Member> getmemberAuthorList();
+
+	List<Member> getmemberBlackList();
   
 }
