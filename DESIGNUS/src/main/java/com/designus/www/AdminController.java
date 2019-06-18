@@ -135,6 +135,12 @@ public class AdminController {
 		
 		return "memberListMM";
 	}
-	
+	@RequestMapping(value = "/memberwritecheck", method = RequestMethod.GET)
+	public ModelAndView memberwritecheck(String mb_id) {
+		System.out.println("이거찍히니?"+mb_id);
+		mav = new ModelAndView();
+		mav = adm.memberwritecheck(mb_id);
+		return mav;
+	}//회원정보 상세보기
 
 }

@@ -50,5 +50,7 @@ public interface IadminDao {
 	List<Member> getmemberAuthorList();
 
 	List<Member> getmemberBlackList();
+
+	Member getMemberCheck(@Param("mb_id")String mb_id);
   
 }

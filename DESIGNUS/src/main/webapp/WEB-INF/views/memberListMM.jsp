@@ -13,10 +13,6 @@
             overflow: auto;
         }
 
-        div {
-            margin: auto;
-            border: 1px solid blue;
-        }
 
         ul {
             list-style: none;
@@ -104,25 +100,16 @@
 </head>
 
 <body>
-    <div id="mainheader">
-
-    </div>
-    <div id="middle">
+   <div id="mainheader">
+		<jsp:include page="main.jsp"/>
+	</div>
     <div id="adminmenu">
         <ul>
-            <li style="text-align: center; font-size: 20px">관리내역</li>
-            <li>게시판/댓글</li>
-            <li>신고내역</li>
-            <li>1:1문의</li>
-            <li style="background-color: skyblue">회원관리</li>
-            <li>작가 전환신청</li>
-            <li>작가 가입신청</li>
-            <li>카테고리 관리</li>
-            <li>게시판/댓글</li>
-            <li>게시판/댓글</li>
+                <jsp:include page="admininclud.jsp"></jsp:include>
 
         </ul>
     </div>
+    <div id="adminopt">
     <div id="adminopt">
         <form name="form" method="get">
             <div class="opt">
@@ -142,12 +129,12 @@
                             <td width="100" height="20">경고횟수</td>
                         </tr>
                         <tr>
-                            <td width="100" height="20">AAAA</td>
-                            <td width="100" height="20">소떡</td>
-                            <td width="100" height="20">1993년 1월 1일</td>
-                            <td width="100" height="20">volvohi@naver.com</td>
-                            <td width="100" height="20">100300points</td>
-                            <td width="100" height="20">3회</td>
+                            <td width="100" height="20">${mbInfo.mb_id}</td>
+                            <td width="100" height="20">${mbInfo.mb_name}</td>
+                            <td width="100" height="20">${mbInfo.mb_birth}</td>
+                            <td width="100" height="20">${mbInfo.mb_email}</td>
+                            <td width="100" height="20">${mbInfo.mb_point}</td>
+                            <td width="100" height="20">${mbInfo.mb_ccnt}</td>
                         </tr>
                         <tr>
                             <td colspan="6" width="600" height="20">상세정보</td>
@@ -164,7 +151,9 @@
                 onclick="javascipt: form.action='test20190503.html'"></div>
                 <div class="btnArray" id="btn2"><input type="submit" value="해제" name="action"
                 onclick="javascipt: form.action='adminInfo.html'"></div>
-                <div class="btnArray" id="btn3"><input type="button" onclick="goBack()" value="돌아가기" /></div>
+                <div class="btnArray" id="btn3">
+                	<button><a href="memberList">돌아가기</a></button>
+                </div>
                 <!--<div class="btnArray" id="btn3"><button onclick="goBack()">돌아가기</button></div>-->
             </div>
         </form>
@@ -172,9 +161,7 @@
     </div>
 </body>
 <script>
-    function goBack() {
-        window.history.forward();
-    }
+  
 
 
 </script>

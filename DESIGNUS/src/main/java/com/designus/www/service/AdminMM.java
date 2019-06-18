@@ -1,7 +1,7 @@
 package com.designus.www.service;
 
 import java.util.HashMap;
-import java.util.List; 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -26,7 +26,7 @@ public class AdminMM {
 	private ModelAndView mav;
 	@Autowired
 	private IadminDao iDao;
-	
+
 	public String declarewritecheck() {
 		List<MemberSearch> rList = iDao.getrepInfo();
 
@@ -88,11 +88,12 @@ public class AdminMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
 	public ModelAndView permitWriDetail(String mb_id) {
 		String view = null;
 		mav = new ModelAndView();
 
-		MemberSearch ms=new MemberSearch();
+		MemberSearch ms = new MemberSearch();
 		// rp.setRp_num(rp_num);
 		System.out.println("zzzzzzzz" + mb_id);
 
@@ -111,7 +112,7 @@ public class AdminMM {
 		mav.setViewName(view);
 		return mav;
 	}
-	
+
 	public ModelAndView declareNonPermit(int rp_num) {
 		mav = new ModelAndView();
 		String view = null;
@@ -120,8 +121,8 @@ public class AdminMM {
 		boolean f2 = iDao.getPerfmit(rp_num);
 		boolean f = iDao.getPermit(rp_num);
 		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
-		
-		if(f && f2) {
+
+		if (f && f2) {
 			mav.addObject("rp_num", rp_num);
 			view = "declareWrite";
 		} else {
@@ -132,17 +133,17 @@ public class AdminMM {
 		return mav;
 	}
 
-	public ModelAndView declarepermit(int rp_num,  String mb_id) {
+	public ModelAndView declarepermit(int rp_num, String mb_id) {
 		mav = new ModelAndView();
 		String view = null;
 		boolean f2 = iDao.getPerfmit(rp_num);
 		boolean f = iDao.getPermit(rp_num);
-		System.out.println(" rp_mbid_a"+mb_id);
-		
-		boolean k=iDao.getwarning(mb_id);
+		System.out.println(" rp_mbid_a" + mb_id);
+
+		boolean k = iDao.getwarning(mb_id);
 		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
-		
-		if(f && f2) {
+
+		if (f && f2) {
 			mav.addObject("rp_num", rp_num);
 			view = "declareWrite";
 		} else {
@@ -167,9 +168,9 @@ public class AdminMM {
 	public ModelAndView tcommentandrefuse(String mb_id) {
 		mav = new ModelAndView();
 		String view = null;
-		boolean k=iDao.getreAuthorfuse(mb_id);
-		System.out.println("아이디와?"+mb_id);
-		
+		boolean k = iDao.getreAuthorfuse(mb_id);
+		System.out.println("아이디와?" + mb_id);
+
 		view = "permitWriApply";
 		mav.setViewName(view);
 		return mav;
@@ -178,12 +179,12 @@ public class AdminMM {
 	public ModelAndView tcommentandapply(String mb_id) {
 		mav = new ModelAndView();
 		String view = null;
-		System.out.println("ㅋㅋㅋㅋㅋ"+mb_id);
-		boolean k=iDao.getreAuthoragree(mb_id);
-		boolean n=iDao.getreAuthordelete(mb_id);
+		System.out.println("ㅋㅋㅋㅋㅋ" + mb_id);
+		boolean k = iDao.getreAuthoragree(mb_id);
+		boolean n = iDao.getreAuthordelete(mb_id);
 		System.out.println("ZZZZZZZ");
-		System.out.println("아이디와?"+mb_id);
-		
+		System.out.println("아이디와?" + mb_id);
+
 		view = "permitWriApply";
 		mav.setViewName(view);
 		return mav;
@@ -204,7 +205,7 @@ public class AdminMM {
 		String view = null;
 		Question n = new Question();
 		System.out.println("여기까진 온다이거지?");
-		n=iDao.getquestionCheck(aq_num);
+		n = iDao.getquestionCheck(aq_num);
 		mav.addObject("aq_num", n.getAq_num());
 		mav.addObject("aq_mbid", n.getAq_mbid());
 		mav.addObject("aq_type", n.getAq_type());
@@ -217,18 +218,18 @@ public class AdminMM {
 		return mav;
 	}
 
-	public ModelAndView questionreply(int aq_num, String qr_contents ) {
+	public ModelAndView questionreply(int aq_num, String qr_contents) {
 		mav = new ModelAndView();
 		String view = null;
-		QuestionReply qr=new QuestionReply();
-		System.out.println("일단여기까진오는거지?"+aq_num);
-		System.out.println("일단여기까진오는거지?"+qr_contents);
-		Map<String,Object> map= new HashMap<>();
-		map.put("aq_num",aq_num);
-		map.put("qr_contents",qr_contents);
-		boolean a=iDao.getquestionReply(map);
-		if(a) {
-			
+		QuestionReply qr = new QuestionReply();
+		System.out.println("일단여기까진오는거지?" + aq_num);
+		System.out.println("일단여기까진오는거지?" + qr_contents);
+		Map<String, Object> map = new HashMap<>();
+		map.put("aq_num", aq_num);
+		map.put("qr_contents", qr_contents);
+		boolean a = iDao.getquestionReply(map);
+		if (a) {
+
 		}
 		view = "questionList";
 		mav.setViewName(view);
@@ -265,6 +266,26 @@ public class AdminMM {
 		return jsonObj;
 	}
 
-	
+	public ModelAndView memberwritecheck(String mb_id) {
+		String view = null;
+		mav = new ModelAndView();
+
+		Member mb = new Member();
+		// rp.setRp_num(rp_num);
+		System.out.println("와?zz" + mb_id);
+
+		mb = iDao.getMemberCheck(mb_id);
+		System.out.println("여기와? ㅋㅋㅋㅋ");
+		mav.addObject("mbInfo", mb);
+//		mav.addObject("mb_id", mb.getMb_id());
+//		mav.addObject("mb_name", mb.getMb_name());
+//		mav.addObject("mb_birth", mb.getMb_birth());
+//		mav.addObject("mb_email", mb.getMb_email());
+//		mav.addObject("mb_point", mb.getMb_point());
+//		mav.addObject("mb_ccnt", mb.getMb_ccnt());
+		view = "memberListMM";
+		mav.setViewName(view);
+		return mav;
+	}
 
 }
