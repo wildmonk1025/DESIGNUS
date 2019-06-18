@@ -8,6 +8,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style>
+::-webkit-scrollbar{width: 2px;}
+::-webkit-scrollbar-track {background-color:#FFC19E;}
+::-webkit-scrollbar-thumb {background-color:#FFC19E;border-radius: 5px; height: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #FFC19E;}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:5px;height:5px;background:#FFC19E;} 
 div{
 	margin: auto;
 }
@@ -199,7 +205,6 @@ nav {
 .menu-item {
 	background: coral;
 	width: 200px;
-	overflow: hidden;
 }
 
 /*Menu Header Styles*/
@@ -218,7 +223,7 @@ nav {
 	line-height: 30px;
 	height: 0px;
 	list-style-type: none;
-	overflow-y: scroll;
+	overflow-y: auto;
 	padding: 0px;
 	width: 175px;
 	position: absolute;
@@ -233,7 +238,7 @@ nav {
 }
 
 .menu-item:hover ul {
-	overflow-y: scroll;
+	overflow: auto;
 	height: 335px;
 	width: 175px;
 	position: absolute;
@@ -305,12 +310,16 @@ a:hover {
 			</div>
 		</div>
 		</form>
-		<div id="loginwriter">
-			<div id="adminpage">
-				<a href="adminInfo">관리자</a><br/><br/>
-			</div>
+		<div id="loginwriter">						
+
 			<div id="mypageimg">
-				<a href="mypage">마이페이지</a>
+				<c:set var="perm" value="${grade}"/>
+				<c:if test="${empty perm}"></c:if>
+				<c:if test="${perm eq M}">
+				<a href="adminInfo">관리자</a></c:if>
+				<c:if test="${perm ne M}">
+				<a href="mypage">마이페이지</a></c:if>
+
 			</div>
 			<div id="msg">
 				<img src="resources/images/writer.png" width="40px" height="40px" />
@@ -369,26 +378,7 @@ a:hover {
 				<a href="#"><h2>≡</h2></a>
 			</h4>
 			<nav>
-				<ul>
-					<li class="li1"><a href="auctionList?cgcode=<%=100%>">귀금속
-							공예</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=110%>">원목
-							공예</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=120%>">종이
-							공예</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=130%>">가죽
-							공예</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=140%>">천 공예</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=150%>">플라스틱
-							공예</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=160%>">도자기</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=170%>">가공식품</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=180%>">휴대폰
-							악세서리</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=190%>">패인팅,캐리커쳐,캘리</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아용품</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아용품</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아용품</a></li>
+				<ul >
 				</ul>
 			</nav>
 		</div>
@@ -476,6 +466,23 @@ a:hover {
 	        f.submit();
 	}
 	
+	
+	$(document).ready(function() {
+		$.ajax({
+    		type:'POST',
+    		url:'ajax/category',
+    		dataType:'json',
+    		success: function(data) {
+    			var str='';
+    			for(var i in data) {
+				str+="<li><a href='auctionList?cgcode="+data[i].cg_code+"'>"+data[i].cg_name+"</a></li>";
+    			}
+    			$("#subcategory ul").html(str);
+    		},
+			error: function(error) {
+    		}
+    	}); //ajax End
+	});
 
 </script>
 </html>

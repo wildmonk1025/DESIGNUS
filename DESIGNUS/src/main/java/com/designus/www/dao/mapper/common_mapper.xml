@@ -33,7 +33,7 @@
             UPDATE RTSR SET RTSR_CNT=RTSR_CNT+1 WHERE RTSR_WORD=#{word}
 	</update>
 
+	<select id="categorySelect" resultType="category">
+            SELECT * FROM CG ORDER BY CG_CODE ASC
+	</select>
 </mapper>
-<!-- 		SELECT AUI_NUM, AUI_IMG FROM AUI  JOIN(SELECT AU_NUM FROM 
-                        AU WHERE AU_NUM=${au_num}) AU
-                        ON AUI_NUM=AU_NUM -->

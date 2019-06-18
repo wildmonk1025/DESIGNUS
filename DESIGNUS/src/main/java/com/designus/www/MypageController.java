@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Board;
@@ -146,11 +147,11 @@ public class MypageController {
 
 	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
 
-	public ModelAndView auccancel(AuctionProgress ap) {
+	public ModelAndView auccancel(AuctionProgress ap,Notify ni) {
 		mav = new ModelAndView();
 		System.out.println("(컨트롤러)출품구매 취소 시작");
 		System.out.println("이게 작가 아이디인데....=" + ap);
-		mav = pm.auccancel(ap);
+		mav = pm.auccancel(ap,ni);
 		System.out.println("(컨트롤러)출품구매 취소 마무의리");
 		return mav;
 
@@ -262,6 +263,24 @@ public class MypageController {
 		System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
 		mav = pm.AuctionGiveUp(at,kind);
 		System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/questionlist", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView questionlist(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러].1:1 문의 리스트:시작");
+		mav = pm.questionlist(pageNum,kind);
+		System.out.println("[컨트롤러].1:1 문의 리스트:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/questionread", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView questionread(AloneQuestion aq) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러].1:1 문의  상세보기:시작");
+		mav = pm.questionread(aq);
+		System.out.println("[컨트롤러].1:1 문의 상세보기:마무리!!");
 		return mav;
 	}
 }
