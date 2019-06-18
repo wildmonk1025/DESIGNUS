@@ -1052,15 +1052,21 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		String view = null;
 		List<SponsorProgress> spList = null;
-		List<SponsorTender> stList = null;
+		 List<Integer> stList=null;
+		HashMap<String, List<Integer>> soMap = new HashMap<String, List<Integer>>();
+		
 		int num = (pageNum == null) ? 1 : pageNum;
 		spList=pDao.fundingAcceptListSelect(id,num);
 		 for(int i=0;i<spList.size();i++) {
-			 stList+=pDao.SponsorTenderSelect(spList.get(i).getSsp_ssnum());
+			  stList=pDao.SponsorTenderSelect(spList.get(i).getSsp_ssnum());	
 		 }
+		 soMap.put("stList", stList);
 		Gson gson = new Gson();
 		String spgList = gson.toJson(spList);
+		
+		String Mapst = gson.toJson(soMap);
 		mav.addObject("spgList", spgList);
+		mav.addObject("stpList", Mapst);
 		mav.addObject("Spaging", getSpaging(num, kind));
 		view = "fundingAcceptList";
 
@@ -1072,7 +1078,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 4; // 페이지당 글의 수
+		int listCount = 8; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSuwonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);

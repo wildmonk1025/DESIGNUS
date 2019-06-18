@@ -261,14 +261,18 @@ margin-top: 60px;
 <script type="text/javascript">
 var spgList=${spgList}
 console.log(spgList);
+var stpList=${stpList}
+console.log(stpList);
 var cc="";
 for(var i=0; i<spgList.length;i++){
+	for(var j=0; j<stpList.length;j++){
 	if(spgList[i].ssp_step==1){
 	cc+="<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 	  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
-	  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : 현재 인원/"+spgList[i].ss_goalqty+"<br>후원 기간 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 :</div>"
+	  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+stpList[j]+"/"+spgList[i].ss_goalqty+"<br>후원 기간 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 :</div>"
 	  +"<div class='Fifth'><p class='p3'>후원진행중</p></div></div>"
 	}
+ }
 }
 $('#renking').html(cc)
 

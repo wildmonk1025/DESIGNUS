@@ -159,7 +159,7 @@ List<SponsorProgress> fundingAcceptListSelect(@Param("id") String id,@Param("num
 
 int getSuwonCountt(String id);
 
-List<SponsorTender> SponsorTenderSelect(int ssp_ssnum);
+List<Integer> SponsorTenderSelect(@Param("ssp_ssnum") int ssp_ssnum);
 
 	/* int getSppagingCountt(String id); */
 
