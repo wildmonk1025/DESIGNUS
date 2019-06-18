@@ -34,12 +34,7 @@ public class AuctionController {
 	@RequestMapping(value = "/auctionList" )
 	public ModelAndView auctionList(Integer pageNum ,int cgcode) {
 		mav = new ModelAndView();
-		System.out.println("111111111111111111111들어는 가냐?? ");
-		System.out.println("Integer pageNum  "+ pageNum+ "   int cgcode  " +cgcode);
-		mav = aum.auctionList(cgcode,pageNum);
-		System.out.println("111111111111111111111나오기는하냐??");
-		
-		
+		mav = aum.auctionList(pageNum,cgcode);
 		return mav;
 	}
 

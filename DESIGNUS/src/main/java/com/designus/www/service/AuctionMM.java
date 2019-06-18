@@ -85,11 +85,9 @@ public class AuctionMM {
 		RevAuction rau = new RevAuction();
 		AuctionTender at = new AuctionTender();
 		int num = (pageNum == null)? 1 : pageNum ;
-		System.out.println("111111111111111111111");
 
-		au.setAu_cgcode(cgcode);
 		rau.setRa_cgcode(cgcode);
-		auList = aDao.getAuctionListSelect(au,num);
+		auList = aDao.getAuctionListSelect(cgcode,num);
 		raList = rDao.getRevAuctionListSelect(rau);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
@@ -107,7 +105,6 @@ public class AuctionMM {
 	                raList.get(i).setRa_max("-");
 	          }
 	       }
-		System.out.println("2222222222222222222222");
 
 	    mav.addObject("paging", getPaging(num,cgcode));  
 	    mav.addObject("auimg",auimg);
@@ -116,8 +113,6 @@ public class AuctionMM {
 		//mav.addObject("paging", getPaging(num));
 		
 		view="auctionList";
-		System.out.println("3333333333333333333333");
-
 		mav.setViewName(view);
 		return mav;
 	}
@@ -126,7 +121,6 @@ public class AuctionMM {
 	private Object getPaging(int pageNum, int cgcode) {
 		String a = "auctionList";
 		int maxNum = aDao.getListCount(cgcode);
-		System.out.println("[maxNum] : "+maxNum);
 		int listCount = 9;
 		int pageCount = 3;
 		String boardName = a;
