@@ -433,7 +433,7 @@ a:hover {
 	} */
 	
 	var i=0;
-	setInterval( function() {
+	 setInterval(  function() {
 		$.ajax({
     		type:'POST',
     		url:'ajax/searchranking',
@@ -462,7 +462,7 @@ a:hover {
 			error: function(error) {
     		}
     	}); //ajax End
-	},3300);
+	} ,3300);
 	
 	
 	function searchingfct(word) {

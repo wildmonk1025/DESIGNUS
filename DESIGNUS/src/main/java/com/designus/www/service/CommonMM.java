@@ -79,6 +79,16 @@ public class CommonMM {
 	public ModelAndView searching(String word) {
 		mav = new ModelAndView();
 		
+		int check = cDao.getSearchingSelect(word);
+		System.out.println("검색어 체크결과="+check);
+		if(check>0) {
+			cDao.searchingInsert(word);
+			System.out.println("검색어 insert 성공");
+		} else {
+			cDao.searchingUpdate(word);
+			System.out.println("검색어 update 성공");
+		}
+		
 		List<Auction> auList = aDao.getAuctionListSelect2(word);
 		List<RevAuction> raList = rDao.getRevAuctionListSelect2(word);
 	      
