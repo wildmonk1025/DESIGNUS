@@ -106,6 +106,8 @@ public class AdminController {
 	@RequestMapping(value = "/questionreply", method = RequestMethod.POST)
 	public ModelAndView questionreply(int aq_num, String qr_contents) {
 		mav = new ModelAndView();
+		System.out.println("aq_num"+aq_num);
+		System.out.println("qr_contents"+qr_contents);
 		mav = adm.questionreply(aq_num,qr_contents);
 		return mav;
 	}//1:1문의 상세내역 답글달기

@@ -199,6 +199,7 @@ nav {
 .menu-item {
 	background: coral;
 	width: 200px;
+	overflow: hidden;
 }
 
 /*Menu Header Styles*/
@@ -217,11 +218,12 @@ nav {
 	line-height: 30px;
 	height: 0px;
 	list-style-type: none;
-	overflow: hidden;
+	overflow-y: scroll;
 	padding: 0px;
-	width: 200px;
+	width: 175px;
 	position: absolute;
-	top: 162px; \
+	z-index: 1000;
+	top: 160px; \
 	/*Animation*/
 	-webkit-transition: height 1s ease;
 	-moz-transition: height 1s ease;
@@ -231,10 +233,11 @@ nav {
 }
 
 .menu-item:hover ul {
-	height: 340px;
-	width: 200px;
+	overflow-y: scroll;
+	height: 335px;
+	width: 175px;
 	position: absolute;
-	top: 162px;
+	top: 160px;
 	z-index: 1002;
 	-webkit-transition: height 1s ease;
 	-moz-transition: height 1s ease;
@@ -383,8 +386,9 @@ a:hover {
 					<li class="li1"><a href="auctionList?cgcode=<%=180%>">휴대폰
 							악세서리</a></li>
 					<li class="li1"><a href="auctionList?cgcode=<%=190%>">패인팅,캐리커쳐,캘리</a></li>
-					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아
-							용품</a></li>
+					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아용품</a></li>
+					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아용품</a></li>
+					<li class="li1"><a href="auctionList?cgcode=<%=200%>">유아용품</a></li>
 				</ul>
 			</nav>
 		</div>
