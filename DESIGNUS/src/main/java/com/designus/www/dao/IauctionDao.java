@@ -74,6 +74,8 @@ public interface IauctionDao {
 
 	List<Auction> getAuctionListSelect2(@Param("word") String word);
 
+	int auctionTenderPriceSel(AuctionTender at);
+
 
 
 	

@@ -113,7 +113,7 @@ input[type=submit] {
 		</ul>
 	</div>
 	<div id="onequestionmain">
-	<form name="formName" method="get">
+	<form name="formName">
 		<div id="onequestion">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
 		<button class="button"><a href="questionList">돌아가기</a></button>
@@ -133,20 +133,34 @@ input[type=submit] {
 
 </body>
 <script>
+/* function a() {
+	var x = ${aq_num};
+	var y = $("#ff").val();
+	var f = document.formName;
+	f.action = "questionreply?aq_num="+x+"&qr_contents="+y;
+	// 파일 전송이 필요할 경우만 씀.
+	//f.encoding = "multipart/form-data";
+	f.method = "get";
+	f.submit();
+} */
+
 function a() {
 	var x = ${aq_num};
-	console.log(x);
+	var y = $("#ff").val();
 	var f = document.formName;
-	f.action = "questionreply?aq_num="+x+"&qr_contents="+$('#ff').val();
+	f.action = "questionreply"
+	f.aq_num.value = x;
+	f.qr_contents.value = y;
 	// 파일 전송이 필요할 경우만 씀.
-	f.encoding = "multipart/form-data";
+	//f.encoding = "multipart/form-data";
+	f.method = "post"
 	f.submit();
 }
-function b() {
+/* function b() {
 	var f = document.formName;
 	f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
 	f.submit();
-}
+} */
 </script>
 
 </html>
