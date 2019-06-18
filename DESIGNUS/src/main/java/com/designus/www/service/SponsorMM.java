@@ -114,7 +114,7 @@ public class SponsorMM {
 	}
 
 	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
-
+     System.out.println("자 서비스 클래스 시작해보자~~~");
 		SponsorTender st = new SponsorTender();
 		mav = new ModelAndView();
 
@@ -137,10 +137,10 @@ public class SponsorMM {
 			sDao.sponbuy(st);
 			System.out.println("거래내역 insert");
 			// 후원 거래내역 insert
-			view = "redirect:/sponproduct";
+			view = "sponproduct";
 		} else {
 			System.out.println("insert 실패");
-			view = "/sponsor";
+			view = "sponsor";
 		}
 		System.out.println("왜 한 번 더 도는거지?");
 		mav.setViewName(view);

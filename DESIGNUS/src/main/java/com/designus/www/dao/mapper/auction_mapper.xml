@@ -28,8 +28,8 @@
         AS rankNo FROM AU a LEFT OUTER JOIN 
 		(select aut_aunum,MAX(aut_price)as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
 		ON  a.AU_NUM = b.AUT_AUNUM
-		where a.au_cgcode = ${cgcode} AND rownum <=${num}*9
-        ) WHERE rn>=${num}*9-8
+		where a.au_cgcode = ${cgcode} AND rownum <=${num1}*9
+        ) WHERE rn>=${num1}*9-8
       ]]>
 		
 	</select>

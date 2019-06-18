@@ -19,4 +19,5 @@ public class AloneQuestion {
 	String aqi_img;
 	int kind;
 	String abc;
+	String qr_contents;
 }

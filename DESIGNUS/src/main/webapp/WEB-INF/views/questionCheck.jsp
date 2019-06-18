@@ -186,24 +186,37 @@ width: 900px;
  color: #D5D5D5;
 }
 #spon{
+     line-height: 80px;
     border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 600px;
 	float: left;
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
 }
 #auction {
+    line-height: 80px;
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 100px;
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	float: left;
 }
-
+#pp{
+  color: #D5D5D5;
+}
+#back{
+	
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 30px;
+	text-align: right;
+	font-size: 20px;
+	float: left;
+}
 </style>
 
 </head>
@@ -233,7 +246,9 @@ width: 900px;
 			<div id="auction">
 				
 			</div>
-            
+            <div id="back">
+             <a href="questionlist">돌아가기</a>
+            </div>
 		</div>
 	</div>
 </body>
@@ -251,5 +266,12 @@ var st="";
 
  que+=quest.aq_contents
  $("#spon").html(que)
+ 
+ if(quest.abc != null){
+	 st+=quest.abc
+ }else{
+	 st+="<p id='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p>"
+ }
+ $("#auction").html(st)
 </script>
 </html>
