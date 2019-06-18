@@ -12,7 +12,7 @@ public class PagingAuction {
 	private String boardName; // 게시판의 종류
 	private int cgcode; // 게시판의 종류
 
-	public PagingAuction(int maxNum, int pageNum, int listCount, int pageCount,int cgcode ,String boardName) {
+	public PagingAuction(int maxNum, int pageNum, int listCount, int pageCount, int cgcode, String boardName) {
 		this.maxNum = maxNum;
 		this.pageNum = pageNum;
 		this.listCount = listCount;
@@ -44,7 +44,7 @@ public class PagingAuction {
 			sb.append("[◀]");
 			sb.append("</a>");
 		}
-
+		
 		for (int i = start; i <= end; i++) {
 			if (pageNum != i) { // 현재 페이지가 아닌 경우 링크처리
 				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode + "'>");
@@ -61,11 +61,13 @@ public class PagingAuction {
 			}
 		}
 		if (end != totalPage) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&kind=" + cgcode + "'>");
+			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode + "'>");
 			sb.append("[▶]");
 			sb.append("</a>");
 		}
 		return sb.toString();
 	}
+	
+	
 
 }

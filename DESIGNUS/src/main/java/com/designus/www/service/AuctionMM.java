@@ -84,10 +84,11 @@ public class AuctionMM {
 		Auction au = new Auction();
 		RevAuction rau = new RevAuction();
 		AuctionTender at = new AuctionTender();
-		int num = (pageNum == null)? 1 : pageNum ;
+		int num1 = (pageNum == null)? 1 : pageNum ;
+		int num2 = (pageNum == null)? 1 : pageNum ;
 
-		auList = aDao.getAuctionListSelect(cgcode,num);
-		raList = rDao.getRevAuctionListSelect(cgcode,num);
+		auList = aDao.getAuctionListSelect(cgcode,num1);
+		raList = rDao.getRevAuctionListSelect(cgcode,num2);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
 	          //int ra_num=raList.get(i).getRa_num();
@@ -104,8 +105,8 @@ public class AuctionMM {
 	                raList.get(i).setRa_max("-");
 	          }
 	       }
-	    mav.addObject("paging1", getPaging1(num,cgcode));  
-	    mav.addObject("paging2", getPaging2(num,cgcode));  
+	    mav.addObject("paging1", getPaging1(num1,cgcode));  
+	    mav.addObject("paging2", getPaging2(num2,cgcode));  
 	    mav.addObject("auimg",auimg);
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
@@ -117,7 +118,7 @@ public class AuctionMM {
 	}
 
 
-	private Object getPaging1(int pageNum, int cgcode) {
+	private Object getPaging1(int pageNum1, int cgcode) {
 		String a = "auctionList";
 		int maxNum = rDao.getrevListCount(cgcode);
 		int listCount = 9;
@@ -125,12 +126,11 @@ public class AuctionMM {
 		String boardName = a;
 		
 		PagingAuction paging = 
-				new PagingAuction(maxNum, pageNum, listCount,pageCount, cgcode, boardName);
+				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName);
 		return paging.makeHtmlPaging();
 	}
 
-
-	private Object getPaging2(int pageNum, int cgcode) {
+	private Object getPaging2(int pageNum2, int cgcode) {
 		String a = "auctionList";
 		int maxNum = aDao.getListCount(cgcode);
 
@@ -139,7 +139,7 @@ public class AuctionMM {
 		String boardName = a;
 		
 		PagingAuction paging = 
-				new PagingAuction(maxNum, pageNum, listCount,pageCount, cgcode, boardName);
+				new PagingAuction(maxNum, pageNum2, listCount,pageCount, cgcode, boardName);
 		return paging.makeHtmlPaging();
 	}
 
