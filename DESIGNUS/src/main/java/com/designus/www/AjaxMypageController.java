@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
+import com.designus.www.bean.SponsorProgress;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.MypageMM;
 
@@ -120,6 +122,16 @@ public class AjaxMypageController {
 		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼!!! 중간테스트1 pnum확인 :" + ap.getAup_ptnum());
 		String json = pm.auccancelDelete(ap);
 		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 취소폼 마무리!!!");
+		return json;
+
+	}
+	@RequestMapping(value = "/support", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String support(@RequestBody SponsorProgress sp) {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 후원 진행 내역!!! 시작!!!");
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 후원 진행 내역!!! 중간테스트1 pnum확인 :" + sp.getSsp_ptnum());
+		String json = pm.support(sp);
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 1 후원 진행 내역 마무리!!!");
 		return json;
 
 	}
