@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Member;
 import com.designus.www.bean.QuestionReply;
 
 //import org.springframework.stereotype.Repository;
@@ -82,6 +83,8 @@ public interface IauctionDao {
 	String getAuctionImg2(@Param("au_num") int au_num);
 	String getAuctionImg3(@Param("au_num") int au_num);
 	String getAuctionImg4(@Param("au_num") int au_num);
+
+	int getPoint(Member mb);
 
 
 

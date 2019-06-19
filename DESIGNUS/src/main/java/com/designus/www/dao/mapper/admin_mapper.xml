@@ -121,4 +121,13 @@
 	<update id="getcotegoryChange" parameterType="String" >
 		UPDATE CG SET CG_NAME=#{cg_cname} WHERE CG_NAME=#{cg_name}
 	</update>
+	<select id="userSel"  resultType="String">
+		SELECT AQ_MBID FROM AQ WHERE AQ_NUM = ${nf_num}
+	</select>
+	
+	<insert id="setNotifyAdmin" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},DEFAULT,#{nf_notify},0,DEFAULT)
+	</insert>
+	
+	
 </mapper>

@@ -136,13 +136,31 @@ margin-top: 10px;
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
 }
+a:active {
+	text-decoration: none;
+	color: white;
+}
+
+a:visited {
+	text-decoration: none;
+	color: white;
+}
+a:link {
+	text-decoration: none;
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}
 .best {
-	border: 1px solid blue;
+	border: 1px solid black;
 	color: black; display : inline;
 	float: left;
 	width: 315px;
 	heigth: 55px;
 	display: inline;
+	background-color: coral;
 }
     </style>
 </head>
@@ -169,7 +187,6 @@ margin-top: 10px;
             <div id="ListView3" class="view"></div>
                
             </div>
-            <h3 style="text-align: center; color: blue;">페이징</h3>
         </div>
     </div>
 </body>

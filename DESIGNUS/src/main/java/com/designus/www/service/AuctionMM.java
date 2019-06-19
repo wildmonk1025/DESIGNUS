@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Member;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
@@ -157,8 +158,11 @@ public class AuctionMM {
 		String chkID = null;
 		Auction au = new Auction();
 		Basket bk = new Basket();
+		Member mb = new Member();
 		AuctionTender at = new AuctionTender();
 		at.setAut_aunum(au_num);
+		mb.setMb_id(id);
+		mb.setMb_point(aDao.getPoint(mb));
 		atList = aDao.getAuctionTenderList(at);
 		bk.setAb_mbid(id);
 		au.setAu_num(au_num);
@@ -175,6 +179,7 @@ public class AuctionMM {
 		au.setAui_imgSysName3(aDao.getAuctionImg3(au_num));
 		au.setAui_imgSysName4(aDao.getAuctionImg4(au_num));
 		
+		mav.addObject("point",mb.getMb_point());
 		mav.addObject("peice",price);
 		mav.addObject("chkID",chkID);
 		mav.addObject("auInfo",au);
@@ -217,12 +222,14 @@ public class AuctionMM {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view = null;
-		String massege = null;
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
 		int Tqty = 0;
+		int point = 0;
 		AuctionTender at = new AuctionTender();
+		Member mb = new Member();
+		mb.setMb_id(id);
 		at.setAut_aunum(inbuyNum);
 		at.setAut_mbid(id);
 		at.setAut_qty(qty);
@@ -230,8 +237,8 @@ public class AuctionMM {
 		price = aDao.getAuctionTenderPrice(at);
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
-		
-		
+		point = aDao.getPoint(mb);
+		if(totalPrice < point ) {
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
@@ -240,9 +247,9 @@ public class AuctionMM {
 			at.setAu_title(aDao.getAuctionTitle(at));
 			at.setAut_notify(id+" 님이 " + at.getAu_title() + " 상품을 " + at.getAut_qty() +" 개 구입 하셧습니다.");
 			aDao.setNotifyAuctionTender(at);
-			
-			view = "redirect:/auctionMyOrderList";
-		
+			mav.addObject("au_num",inbuyNum);
+			view = "redirect:/auctionRead";
+		}
 		mav.setViewName(view);
 		return mav;
 	}
@@ -268,8 +275,8 @@ public class AuctionMM {
 		if(price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
 			/* aDao.setAuctionUTT(at); */  //aup 등록 sql 
-			
-			view = "redirect:/auctionMyOrderList";
+			mav.addObject("au_num",tenderNum);
+			view = "redirect:/auctionRead";
 		}
 		if(price >= tenderPrice) {
 			mav.addObject("au_num",tenderNum);

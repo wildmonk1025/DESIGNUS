@@ -286,24 +286,22 @@ div {
 <body>
 	<div id="inbuyLB">
 		<form action="auctioninbuy" method="post" onsubmit="return checkk(${auInfo.au_qty -1})">
-			<input type="hidden" name="inbuyNum" value="${au_num}"> 구입수량
-			: <input type="number" id="inbuyInput" name="inbuyQty" max="999"
-				min="1" placeholder="최대  999EA" maxlength="3"
-				oninput="maxLengthCheck(this)"><br> <br> 
-				<input type="submit" class="btn11" value="구입"> 
-				<input type="reset" class="btn11" value="취소">
+			<input type="hidden" name="inbuyNum" value="${au_num}"> 
+			구입수량 :<input type="number" id="inbuyInput" name="inbuyQty" max="999"  min="1" 
+			placeholder="최대  999EA" maxlength="3" oninput="maxLengthCheck(this)"><br> <br> 
+			<input type="submit" class="btn11" value="구입"> 
+			<input type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<!--   -->
 	<div id="inbuyLB-shadow"></div>
 	<div id="tenderLB">
-		<form action="auctiontender" method="post">
-			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격
-			: <input type="number" id="tenderInput" name="tenderPrice"
-				max="99999999" min="1" maxlength="8" oninput="maxLengthCheck(this)"
-				placeholder="최대 입찰가 이상 입력"> <br> <br> <input
-				type="submit" class="btn11" value="구입"> <input type="reset"
-				class="btn11" value="취소">
+	<h3>최소 입찰금액 : ${auInfo.au_minprice}</h3>
+		<form action="auctiontender" method="post" onsubmit="return check2(${point})">
+			<input type="hidden" name="tenderNum" value="${au_num}"> 
+			입찰가격 :<input type="number" id="tenderInput" name="tenderPrice" max="99999999"  
+			min="${auInfo.au_minprice}" maxlength="8" oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"> <br> <br> 
+			 <input type="submit" class="btn11" value="구입"> <input type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<div id="tenderLB-shadow"></div>
@@ -332,7 +330,9 @@ div {
 					<c:if test="${code eq 200 }">유아</c:if>
 				</div>
 				<div id="middle_img_lv2">
-					여기에 이미지<br> ${auInfo.aui_imgSysName1}
+					여기에 이미지<br> 
+					${auInfo.aui_imgSysName1}<br>
+
 				</div>
 			</div>
 			<div id="middle_contents1">
@@ -460,11 +460,22 @@ div {
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+
  function checkk(even) {
 	console.log(1,even);
 	var inbuy=$("#inbuyInput").val();
 	if(even<inbuy){
 		alert("구입수량이 없습니다.");
+		return false;
+	}else{
+		return true;
+	}
+}
+ function check2(even) {
+	console.log(2,even);
+	var tender=$("#tenderInput").val();
+	if(even<tender){
+		alert("포인트가 없습니다.");
 		return false;
 	}else{
 		return true;

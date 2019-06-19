@@ -135,6 +135,46 @@ ul {
 	heigth: 55px;
 	display: inline;
 }
+.btn1{
+margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: coral;
+	
+	width: 220px;
+	height: 70px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	color:white;
+	
+}
 .btn2{
 margin-top: 10px;
 	/*General*/
@@ -241,7 +281,7 @@ margin-top: 10px;
 			<form action="categorychange" method="post">
 			<div id="catechange"><input type="submit" value="카테고리변경" class="btn2"></div>
 			<div id="cateone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" name="cg_name" class="signUpInput" 
+								<input type="text"  id="change" name="cg_name" class="signUpInput" 
 							placeholder="change Before name" autofocus required >
 								&nbsp;&nbsp;<input type="text" name="cg_cname" class="signUpInput" 
 							placeholder="change after name" autofocus required ></div></form>
@@ -250,6 +290,9 @@ margin-top: 10px;
 	</div>
 </body>
 <script>
+/* $("#atag").on("click", function(){
+	var dd = ${cg_name}
+}); */
 $(document).ready(function() {
 	$.ajax({
 		url : 'categorycurrent',
@@ -263,10 +306,10 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a hreh=''>"+
+				result+="<div class='best'>"+"<button class='btn1' onclick=\"catap('"+data[i].cg_name+"')\">"
 					  +"카테고리 번호:"+data[i].cg_code+"<br>"
 					  +"카테고리 종류:"+data[i].cg_name+"<br>"
-					  +"</a>"
+					  +"</button>"
 					  +"</div>";
 					  }
 			$("#writercatecontents").html(result);
@@ -277,6 +320,11 @@ $(document).ready(function() {
 	}
 	});
 });
+
+function catap(num) {
+	console.log(num);
+	$("#change").val(num);
+}
 </script>
 
 </html>

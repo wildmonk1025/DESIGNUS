@@ -66,13 +66,33 @@ ul {
 	height: auto;
 }
 .best {
-	border: 1px solid coral;
+	border: 1px solid black;
 	display : inline;
 	float: left;
-	width: 900px;
+	width: 400px;
 	heigth: 150px;
+	background-color: coral;
+	size: 20px;
+	
 }
 
+a:active {
+	text-decoration: none;
+	color: white;
+}
+
+a:visited {
+	text-decoration: none;
+	color: white;
+}
+a:link {
+	text-decoration: none;
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}   
 </style>
 </head>
 

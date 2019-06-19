@@ -9,6 +9,7 @@ import com.designus.www.bean.Category;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
@@ -67,6 +68,11 @@ public interface IadminDao {
 	boolean getcotegorydel(@Param("cg_name") String cg_name);
 
 	boolean getcotegoryChange(@Param("cg_name") String cg_name, @Param("cg_cname")String cg_cname);
+
+	String userSel(Notify nf);
+
+	void setNotifyAdmin(Notify nf);
+
 
   
 }
