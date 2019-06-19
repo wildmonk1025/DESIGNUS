@@ -190,4 +190,9 @@
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{aut_notify},0,DEFAULT)
 	</insert>
 	
+	<select id="getPoint" parameterType="member" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID = #{mb_id}
+	</select>
+
+	
 </mapper>

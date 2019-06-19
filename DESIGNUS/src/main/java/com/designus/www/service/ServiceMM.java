@@ -62,7 +62,7 @@ public class ServiceMM {
 			num = hDao.getQuestionSel(qr);
 			qr.setQr_aqnum(num);
 			upload.ServiceUpload(multi,qr);
-			qr.setQr_notify(id+" 님이 신고를 문의를 접수 하였습니다. ");
+			qr.setQr_notify(id+" 님이 문의를 접수 하였습니다. ");
 			hDao.setNotifyQuestionInsert(qr);
 			
 			view = "home";
