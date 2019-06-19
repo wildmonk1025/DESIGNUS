@@ -131,20 +131,18 @@ public class SponsorMM {
 		System.out.println("넘버=" + ss_num);
 
 		// 포인트 있을때만 밀어주기 가능하게 바꿔야함
-		if (grade == "N") {
-			boolean f = sDao.sponTenderInsert(st);
-			System.out.println("밀어주기 insert");
-			// 밀어주기 insert
-			if (f == true) {
-				sDao.sponbuy(st);
-				System.out.println("거래내역 insert");
-				// 후원 거래내역 insert
-				view = "redirect:/sponproduct?ss_num=" + ss_num;
 
-			} else {
-				System.out.println("insert 실패");
-				view = "sponsor";
-			}
+		boolean f = sDao.sponTenderInsert(st);
+		System.out.println("밀어주기 insert");
+		// 밀어주기 insert
+		if (f == true) {
+			sDao.sponbuy(st);
+			System.out.println("거래내역 insert");
+			// 후원 거래내역 insert
+			view = "redirect:/sponproduct?ss_num=" + ss_num;
+		} else {
+			System.out.println("insert 실패");
+			view = "/sponsor";
 		}
 		mav.setViewName(view);
 		return mav;

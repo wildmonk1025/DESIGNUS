@@ -130,10 +130,14 @@ td {
 					<td colspan="6" style="height: 150">${ss_contents}</td>
 				</tr>
 				<tr>
-					<td colspan="4"><button class="bt21" onclick="msgal()"
-							style="cursor: pointer">밀어주기</button></td>
-					<td colspan="2"><button class="bt22"
-							onclick="location.href='sponsor'">목록보기</button></td>
+					<td colspan="4">
+						<button class="bt21"
+							onclick="location.href='sponbuy?ss_num=${ss_num}'; return false"
+							style="cursor: pointer">밀어주기</button>
+					</td>
+					<td colspan="2">
+						<button class="bt22" onclick="location.href='sponsor'">목록보기</button>
+					</td>
 				</tr>
 			</table>
 			<table>
@@ -147,10 +151,6 @@ td {
 
 </body>
 <script>
-	function msgal() {
-		var msg = '${msg}';
-		alert(msg);
-		document.location.href = "sponbuy?ss_num=${ss_num}";
-	}
+	
 </script>
 </html>
