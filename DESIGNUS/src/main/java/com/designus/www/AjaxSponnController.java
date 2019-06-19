@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.Sponsor;
@@ -22,6 +23,7 @@ public class AjaxSponnController {
 	/*
 	 * @RequestMapping() public String norJoinFrm() { return "norjoinFrm"; }
 	 */
+	ModelAndView mav;
 	@Autowired
 	private AuctionMM aum;
 	@Autowired
@@ -29,7 +31,8 @@ public class AjaxSponnController {
 	@Autowired
 	SponsorMM spm;
 
-	@RequestMapping(value = "/productinfo",  produces = "application/json;charset=utf8",method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productinfo", produces = "application/json;charset=utf8", method = { RequestMethod.POST,
+			RequestMethod.GET })
 	public String productinfo() {
 
 		System.out.println("후원정보 불러오기");
@@ -37,6 +40,20 @@ public class AjaxSponnController {
 		String ajaxsponsor = spm.productinfo();
 		System.out.println(spm.productinfo());
 		return ajaxsponsor;
+	}
+
+	@RequestMapping(value = "/sponbuy", produces = "application/json;charset=utf8", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public ModelAndView sponbuy(int ss_num, String ss_mbid, Sponsor ss) {
+		System.out.println("도착했음!!");
+		int num = ss.getSs_num();
+		mav = new ModelAndView();
+		mav = spm.sponbuy(ss_num, ss_mbid);
+		System.out.println("ssnum=" + num);
+		System.out.println("ss_num=" + ss_num);
+		// String ajaxsponsor = spm.productinfo();
+
+		return mav;
 	}
 
 }

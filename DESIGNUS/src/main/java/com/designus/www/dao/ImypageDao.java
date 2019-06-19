@@ -1,5 +1,6 @@
 package com.designus.www.dao;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -160,6 +161,20 @@ List<SponsorProgress> fundingAcceptListSelect(@Param("id") String id,@Param("num
 int getSuwonCountt(String id);
 
 List<Integer> SponsorTenderSelect(SponsorProgress sponsorProgress);
+
+boolean supportupdate(SponsorProgress sp);
+
+List<Map<String, String>> getOpPeriodList();
+
+int expireOption(String op_code);
+
+List<SponsorProgress> fundingOrderListSelect(@Param("id") String id,@Param("num") int num);
+
+List<Integer> fundingOrderLisSelect(SponsorProgress sponsorProgress);
+
+int getSuonCountt(String id);
+
+void setNotifyWriApply(Notify nf);
 
 	/* int getSppagingCountt(String id); */
 

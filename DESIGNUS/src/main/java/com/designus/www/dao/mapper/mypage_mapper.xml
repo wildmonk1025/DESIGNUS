@@ -435,4 +435,48 @@
          where sst_ssnum=${ssp_ssnum}
    ]]> 
 	</select> 
+	<update id="supportupdate"
+		parameterType="sponpro">
+		UPDATE ssp SET ssp_step = 2
+         where ssp_ptnum=${ssp_ptnum}
+	</update>
+	<select id="getOpPeriodList"
+ 		resultType="map">
+ 		  select ss_date from ss
+	</select>
+	<update id="expireOption"
+		parameterType="String">
+		UPDATE ssp SET ssp_step = 3
+	</update>
+	<select id="fundingOrderListSelect" resultType="sponpro"> 
+ 		<![CDATA[ 
+ 	select * from(
+ select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SST_MBID,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+     from ssp_ss_ssi
+       where SS_MBID_W=#{id}  and rownum<=${num}*6
+     ) where rn>=${num}*6-5 AND RankNo=1
+   ]]>
+	</select> 
+	<select id="fundingOrderLisSelect"
+ 		resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from sst
+         where sst_ssnum=${ssp_ssnum}
+   ]]> 
+	</select>
+	<select id="getSuonCountt" parameterType="String" 
+ 		resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SST_MBID,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SS_MBID_W=#{id}
+         )where RankNo=1
+   ]]> 
+	</select> 
+	<insert id="setNotifyWriApply" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},DEFAULT,#{nf_notify},0,DEFAULT)
+	</insert>
 </mapper>

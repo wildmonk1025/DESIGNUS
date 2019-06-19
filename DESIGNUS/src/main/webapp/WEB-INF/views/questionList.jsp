@@ -132,7 +132,7 @@ $(document).ready(function() {
 				result+="<div class='best'>"+"<a href='questionWriteCheck?aq_num="+data[i].aq_num+"'>"
 					  +"문의번호:" +data[i].aq_num+"<br>"
 					  +"문의자아이디:"+data[i].aq_mbid+"<br>"
-					  +"질문유형:"+data[i].aq_type+"<br>"
+					  +"질문유형:"+data[i].aq_tye+"<br>"
 					  +"제목:"+data[i].aq_title+"<br>"
 					  +"등록일:"+data[i].aq_date+"<br>"
 					  +"</a>"+"</div>";

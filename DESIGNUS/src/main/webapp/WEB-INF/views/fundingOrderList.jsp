@@ -20,197 +20,32 @@ div {
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	border: 1px solid orange;
 	width: 1080px;
-	height: 100px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#info {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 280px;
-	height: 580px;
-	font-size: 20px;
+	height: 50px;
 	text-align: left;
+	font-size: 20px;
 	float: left;
+	overflow: auto;
 }
 
 #renking {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
-	height: 200px;
+	height: 875px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
 }
 
-#auction {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
 
-#spon {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-}
 
-.bt {
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 85px;
-	height: 35px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-}
 
-#leftmain {
-	width: 310px;
-	height: 950x;
-	border: 1px solid black;
-	float: left;
-}
-
-#rightmain {
-	width: 1200px;
-	height: 950px;
-	border: 1px solid black;
-	float: left;
-}
 
 #main {
 	width: 1520px;
 	height: 170px;
 	text-align: center;
-}
-
-.bt01 {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	width: 100px;
-	height: 80px;
-}
-
-a {
-	color: red;
-}
-
-#lightbox {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
-}
-
-#lightbox1 {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow1 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
 }
 
 #point {
@@ -219,7 +54,7 @@ a {
 	width: 280px;
 	height: 60px;
 	text-align: left;
-	font-size: 20px;
+	font-size: 15px;
 	float: left;
 }
 
@@ -268,16 +103,6 @@ a:hover {
 	float: left;
 }
 
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
-
 #loginwriter {
 	padding: 3px;
 	padding-top: 20px;
@@ -292,35 +117,10 @@ a:hover {
 	height: 50px;
 }
 
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
-}
-
-#subcategory {
-	width: 50px;
-	height: 50px;
-	background-color: orange;
-	color: white;
-	font-size: 30px;
-	float: left;
-}
-
 #menu {
 	float: left;
 	width: 1400px;
 	height: 50px
-}
-
-#submenu {
-	margin-left: 100px;
-	width: 150px;
-	float: left;
-	height: 50px;
-	text-align: center;
-	font-size: 18px;
 }
 
 #msg {
@@ -355,68 +155,177 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
+
+#full {
+	float: right;
+}
+#nonw{
+  color: #BDBDBD;
+}
+#Participation{
+ margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+#sk{
+margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+#gsc{
+margin-left:40px;
+ margin-top:20px;
+ width: 1000px;
+}
+.first{
+border: 1px solid orange;
+	margin: 10px 10px 10px 10px;
+	width: 1060px;
+	height: 250px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p1 {
+ width: 500px;
+ float: left;
+ text-align: left;
+}
+.p2{
+width: 500px;
+text-align: left;
+float: left;
+}
+.second{
+    background-color : #FFBB00;
+	margin: 10px 10px 10px 10px;
+	width: 1040px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.third{
+	margin: 5px 10px 10px 10px;
+	width: 270px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.fourth{
+	margin: 5px 10px 10px 10px;
+	width: 570px;
+	height: 175px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+.Fifth{
+	margin: 5px 10px 10px 10px;
+	width: 130px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p3{
+margin-top: 60px;
+}
+#sixth{
+ position: absolute;
+  top: 1080px;
+  left: 1150px;  
+}
 </style>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
-
-
-		<div id="leftmain">
-				<jsp:include page="Mapagemain.jsp" />
+	<div id="mypagemain">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
-		
+
+		<jsp:include page="Mapagemain.jsp" />
+
+
 		<div id="rightmain">
 			<div id="notice">
-				<h2>후원 요청 내역</h2>
+			 <h2>후원 요청내역</h2><hr>
 			</div>
+			
 			<div id="renking">
-				<h1>후원진행중</h1>
-				<br>
-				<h2>■■■■■□□□□□ 1000/510 51%</h2>
-
-				<div class="bt01"></div>
+				
 			</div>
-
-
-			<div id="auction">
-				<h1>후원마감</h1>
-				<h1>100%도달</h1>
-				<div class="bt01"></div>
-			</div>
-			<div id="spon">
-				<h1>배송정보</h1>
-				<div class="bt01">
-					<button class="bt" id="cancel">배송보내기</button>
-					<button class="bt" id="action">배송정보</button>
-
-				</div>
-			</div>
-			<div id="lightbox-shadow">
-
-				<div id="lightbox">
-					<h1>후원인들 배송정보 리스트</h1>
-					<button class="bt">확인</button>
-					<button class="bt" type="button"
-						onclick="location.href='fundingOrderList.html' ">돌아가기</button>
-				</div>
-			</div>
-			<div id="lightbox-shadow1">
-
-				<div id="lightbox1">
-					<h1>후원인들 운송장입력</h1>
-					<button>확인</button>
-					<button type="button"
-						onclick="location.href='fundingOrderList.html' ">취소</button>
-				</div>
-			</div>
+        <div id="sixth">${Spqging }</div>
 		</div>
+	</div>
 </body>
 <script type="text/javascript">
+var spgList=${spgList}
+console.log(spgList);
+var Mapst=${Mapst}
+console.log(Mapst);
+var cc="";
+var qq="";
+for(var j=0; j<Mapst.length;j++){
+	if(spgList[i].ssp_step==1){
+	qq+=Mapst[j]+","
+	}
+ }
+var ww=qq.split(",");
+for(var i=0; i<spgList.length;i++){
+	if(spgList[i].ssp_step==1){
+		cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+		  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+		  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+		  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress>("+ww[i]/spgList[i].ss_goalqty*100+"%)</div>"
+		  +"<div class='Fifth'><p class='p3'>후원진행중</p></div></div>"
+		  if(ww[i]==spgList[i].ss_goalqty){
+			  var ptnum=$('#ptnum').val();
+			  var form = {
+					  ssp_ptnum : ptnum
+					}
+			  $.ajax({
+					url : 'support',
+					type : 'post',
+					data : JSON.stringify(form),
+					contentType : "application/json; charset=utf-8;",
+					dataType : 'json',
+					success : function(data) {
+						alert('해당 상품을 추천하였습니다.');
+						console.log("1234567" + data.aup_ptnum);
+					
+					},
+
+					error : function(error) {
+						alert('정상적인 추천이 실패했습니다.');
+						console.log(error);
+					}
+				});//end ajax
+		  }
+		}else if(spgList[i].ssp_step==2){
+			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress>("+ww[i]/spgList[i].ss_goalqty*100+"%)</div>"
+			  +"<div class='Fifth'><p class='p3'>목표 후원에<br>도달하진 못했어요ㅜㅜ</p></div></div>"
+		}else if(spgList[i].ssp_step==3){
+			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br></div>"
+			  +"<div class='Fifth'><input type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
+		}
+	
+	
+}
+
+$('#renking').html(cc)
+
+
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")

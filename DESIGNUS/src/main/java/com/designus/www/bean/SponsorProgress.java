@@ -12,7 +12,7 @@ public class SponsorProgress {
 	int ssp_ptnum;//거래번호
 	int ssp_ssnum;//후원번호
 	String ssp_mbid_n;//후원인 ID
-	String ssp_name;//이름
+	String ssp_name;//이
 	String ssp_address;//주소
 	String ssp_phone;//연락처
 	String ssp_track;//운송장번호
