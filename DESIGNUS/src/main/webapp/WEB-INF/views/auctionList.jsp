@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -289,7 +289,16 @@ div {
 		$(".paging2").css("display", "inline");
 	});
 	
-	
+	var date = new Date(${raList[11].ra_date});
+/* 	var d = date.getDate();
+	var h = date.getHours();
+	var m = date.getMinutes();
+	var s = date.getSeconds(); */
+	console.log(d);
+	console.log(h);
+	console.log(m);
+	console.log(s);
+
 	
 </script>
 </html>
