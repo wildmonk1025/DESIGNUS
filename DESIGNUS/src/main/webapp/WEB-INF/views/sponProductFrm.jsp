@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 div {
 	margin: auto;
@@ -131,8 +132,7 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button class="bt21" id="sponajaxbtn"
-							onclick="location.href='sponbuy?ss_num=${ss_num}'; return false"
+						<button class="bt21" onclick="sponAj()"
 							style="cursor: pointer">밀어주기</button>
 					</td>
 					<td colspan="2">
@@ -151,20 +151,27 @@ td {
 
 </body>
 <script>
-	/* $("#sponajaxbtn").click function(){
-	 var ss_num = ${ss_num};
-	 $.ajax({
-	 type:'get',
-	 url:'sponbuy',
-	 data:ss_num,
-	 dataType:JSON,
-	 success(msg){
-	 alert("밀어주기 완료되었습니다.")
-	 }
-	 error(msg){
-	 alert("밀어주기 실패!")
-	 }
-	 })
-	 } */
+	/* window.onload = function() {
+		var msg = '${msg}';
+		alert(msg);
+	} */
+	function sponAj() {
+		var ss_num = ${ss_num};
+		$.ajax({
+			url : 'sponbuy',
+			type : 'get',
+			data : JSON.stringify(ss_num),
+			contentType : "application/json; charset=utf-8;",
+			dataType : 'json',
+			success : function(data) {
+				alert('성공');
+				console.log("1234567" + data.aup_ptnum);
+			},
+			error : function(error) {
+				alert('정상적인 추천이 실패했습니다.');
+				console.log(error);
+			}
+		});//end ajax
+	}
 </script>
 </html>
