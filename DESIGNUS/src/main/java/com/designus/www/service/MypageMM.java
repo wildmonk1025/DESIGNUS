@@ -1,5 +1,7 @@
 package com.designus.www.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,7 +68,7 @@ public class MypageMM {
 		} else if (list.equals("spon")) {
 			view = "redirect:/fundingAcceptList";
 		} else if (list.equals("sponre")) {
-			view = "fundingOrderList";
+			view = "redirect:/fundingOrderList";
 		} else {
 			view = "redirect:/basketFrm?kind=A";
 		}
@@ -1050,6 +1052,8 @@ public class MypageMM {
 
 	public ModelAndView fundingAcceptList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
+		
+		
 		String id = session.getAttribute("id").toString();
 		String view = null;
 		List<SponsorProgress> spList = null;
@@ -1087,6 +1091,57 @@ public class MypageMM {
 		int listCount = 6; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSuwonCountt(id);
+		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
+		String boardName = "fundingAcceptList";
+
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
+		return paging.makeHtmlPaging();
+	}
+
+	public String support(SponsorProgress sp) {
+		mav=new ModelAndView();
+		String json=null;
+		boolean a=pDao.supportupdate(sp);
+		if(a) {
+			json = new Gson().toJson(a);
+		}else {
+			json = new Gson().toJson(a);
+		}
+		return json;
+	}
+
+	public ModelAndView fundingOrderList(Integer pageNum, String kind) {
+		mav=new ModelAndView();
+		String id = session.getAttribute("id").toString();
+		String view=null;
+		List<SponsorProgress> spList = null;
+		List<Integer> stList= new ArrayList<Integer>();
+		int num = (pageNum == null) ? 1 : pageNum;
+		spList=pDao.fundingOrderListSelect(id,num);
+		for(int i=0;i<spList.size();i++) {
+			 stList.addAll( pDao.fundingOrderLisSelect(spList.get(i)));
+			System.out.println("구분하래="+stList.size());
+		 }
+		 System.out.println("그럼 마지막은??="+stList.size());
+		 Gson gson = new Gson();
+			String spgList = gson.toJson(spList);
+			String Mapst = gson.toJson(stList);
+			mav.addObject("Mapst", Mapst);
+			mav.addObject("spgList", spgList);
+			mav.addObject("Spqging", getSpqging(num, kind));
+	    view="fundingOrderList";
+	    mav.setViewName(view);
+		return mav;
+	}
+
+	private Object getSpqging(int pageNum, String kind) {
+		String id = session.getAttribute("id").toString();
+		System.out.println("dddddddd=" + id);
+		// 전체 글의 개수
+		int listCount = 6; // 페이지당 글의 수
+		int pageCount = 2;// 그룹당 페이지 수
+		int maxNum = pDao.getSuonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
 		String boardName = "fundingAcceptList";
 

@@ -73,6 +73,20 @@ public interface IadminDao {
 
 	void setNotifyAdmin(Notify nf);
 
+	String getRpUserRSel(Notify nf); // 신고자 아이디
+
+	String getRpUserSSel(Notify nf); // 신고 당한 아이디
+
+	String getRpUserTSel(Notify nf); // 신고 TITLE
+
+	void setNotifyDeclareNon(Notify nf);
+
+	int getRpUserCCNTSel(Notify nf);
+
+	void setNotifyDeclare(Notify nf);
+
+	void setNotifyDeclareReply(Notify nf);
+
 
   
 }

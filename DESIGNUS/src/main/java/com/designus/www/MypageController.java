@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,9 @@ public class MypageController {
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
-
+	
+	
+	
 	@RequestMapping(value = "/historylist", method = RequestMethod.GET)
 	public ModelAndView historylist(String list) {
 		mav = pm.historylist(list);
@@ -310,6 +313,15 @@ public class MypageController {
 		System.out.println("[컨트롤러].후원 진행 내역:시작");
 		mav = pm.fundingAcceptList(pageNum,kind);
 		System.out.println("[컨트롤러].후원 진행 내역:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/fundingOrderList", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public ModelAndView fundingOrderList(Integer pageNum, String kind) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러].1:1 문의 리스트:시작");
+		mav = pm.fundingOrderList(pageNum,kind);
+		System.out.println("[컨트롤러].1:1 문의 리스트:마무리!!");
 		return mav;
 	}
 }

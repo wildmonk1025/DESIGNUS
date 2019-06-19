@@ -22,7 +22,6 @@
         }
 
         #mainheader {
-            border: 1px solid black;
             width: 1518px;
             height: 170px;
         }
@@ -49,27 +48,43 @@
             margin-left: 20px;
             width: 960px;
             height: 320px;
-            border: 1px solid grey;
             float: left;
         }
 
      
 
-.best {
-	border: 1px solid blue;
-	color: black; display : inline;
-	float: left;
-	width: 800px;
-	heigth: 55px;
-	display: inline;
-}
+
  #questionlist {
             width: 990px;
             height: 400px;
             overflow-y: scroll;
-            border: 1px solid grey;
-            
-            
+            }
+  a:active {
+	text-decoration: none;
+	color: white;
+}
+
+a:visited {
+	text-decoration: none;
+	color: white;
+}
+a:link {
+	text-decoration: none;
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}          
+  .best {
+	border: 1px solid black;
+	color: black; display : inline;
+	float: left;
+	width: 98%;
+	heigth: 55px;
+	display: inline;
+	background-color: coral;
+}          
         }
     </style>
 </head>
@@ -95,7 +110,6 @@
                 
               
                 </div>
-                <h3 style="text-align: center; color:blue;">페이징</h3>
             </div>
         </form>
         </div>
@@ -118,7 +132,7 @@ $(document).ready(function() {
 				result+="<div class='best'>"+"<a href='questionWriteCheck?aq_num="+data[i].aq_num+"'>"
 					  +"문의번호:" +data[i].aq_num+"<br>"
 					  +"문의자아이디:"+data[i].aq_mbid+"<br>"
-					  +"질문유형:"+data[i].aq_type+"<br>"
+					  +"질문유형:"+data[i].aq_tye+"<br>"
 					  +"제목:"+data[i].aq_title+"<br>"
 					  +"등록일:"+data[i].aq_date+"<br>"
 					  +"</a>"+"</div>";

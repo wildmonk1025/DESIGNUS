@@ -110,9 +110,18 @@ public class AdminMM {
 	public ModelAndView declareNonPermit(int rp_num) {
 		mav = new ModelAndView();
 		String view = null;
+		
+		Notify nf = new Notify();
+		nf.setNf_num(rp_num);
+		nf.setNf_mbid_r(iDao.getRpUserRSel(nf)); //신고자
+		nf.setNf_mbid_s(iDao.getRpUserSSel(nf)); //신고당한 아이디
+		nf.setNf_contents(iDao.getRpUserTSel(nf)); // 신고 제목
+		nf.setNf_notify(nf.getNf_mbid_r() +" 님이 "+nf.getNf_mbid_s()+" 님에 대한 신고내용 "+nf.getNf_contents()+" 이(가) 신고 내용에 부적합 합니다");
+		iDao.setNotifyDeclareNon(nf);
+		
 		boolean f2 = iDao.getPerfmit(rp_num);
 		boolean f = iDao.getPermit(rp_num);
-
+		
 		if (f && f2) {
 			mav.addObject("rp_num", rp_num);
 			view = "declareWrite";
@@ -126,12 +135,23 @@ public class AdminMM {
 	public ModelAndView declarepermit(int rp_num, String mb_id) {
 		mav = new ModelAndView();
 		String view = null;
+		
+		Notify nf = new Notify();
+		nf.setNf_num(rp_num);
+		nf.setNf_mbid_r(iDao.getRpUserRSel(nf)); //신고자
+		nf.setNf_mbid_s(iDao.getRpUserSSel(nf)); //신고당한 아이디
+		nf.setNf_check(iDao.getRpUserCCNTSel(nf)); // 누적경고횟수
+		nf.setNf_contents(iDao.getRpUserTSel(nf)); // 신고 제목
+		nf.setNf_notify(nf.getNf_mbid_r() +" 님의 신고내용 "+nf.getNf_contents()+" 이(가) 신고에 적합 합니다 "+nf.getNf_mbid_s()+" 의 누적경고횟수는 "+nf.getNf_check()+" 회 입니다.");
+		iDao.setNotifyDeclare(nf);
+		nf.setNf_notify(nf.getNf_mbid_r() +" 님의 신고내용 "+nf.getNf_contents()+" 이(가) 신고에 적합 합니다 "+nf.getNf_mbid_s()+" 님에게 경고를 주어습니다.");
+		iDao.setNotifyDeclareReply(nf);
+		
 		boolean f2 = iDao.getPerfmit(rp_num);
 		boolean f = iDao.getPermit(rp_num);
 		System.out.println(" rp_mbid_a" + mb_id);
 
 		boolean k = iDao.getwarning(mb_id);
-		System.out.println("와라진짜 ㅡㅡ 다른거좀하자");
 
 		if (f && f2) {
 			mav.addObject("rp_num", rp_num);

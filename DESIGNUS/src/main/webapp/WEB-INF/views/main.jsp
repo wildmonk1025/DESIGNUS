@@ -7,12 +7,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
-::-webkit-scrollbar{width: 2px;}
+/* ::-webkit-scrollbar{width: 2px;}
 ::-webkit-scrollbar-track {background-color:#FFC19E;}
 ::-webkit-scrollbar-thumb {background-color:#FFC19E;border-radius: 5px; height: 10px;}
 ::-webkit-scrollbar-thumb:hover {background: #FFC19E;}
 ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-width:5px;height:5px;background:#FFC19E;} 
+width:5px;height:5px;background:#FFC19E;} */
 div{
 	margin: auto;
 }
@@ -527,7 +527,7 @@ $("#alarmBtn").click(function() {
 });
 
 
-$(document).ajaxStart(function() {
+/* $(document).ajaxStart(function() {
 	poll();
 });
 
@@ -569,7 +569,7 @@ setInterval(poll,6000);
 			error: function(error) {
 				}
 			});
-		}
+		} */
 
 </script>
 </html>

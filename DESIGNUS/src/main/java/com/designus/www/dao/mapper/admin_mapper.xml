@@ -124,8 +124,29 @@
 	<select id="userSel"  resultType="String">
 		SELECT AQ_MBID FROM AQ WHERE AQ_NUM = ${nf_num}
 	</select>
+	<select id="getRpUserRSel"  resultType="String">
+		SELECT RP_MBID_D FROM RP WHERE RP_NUM = ${nf_num}
+	</select>
+	<select id="getRpUserTSel"  resultType="String">
+		SELECT RP_TITLE FROM RP WHERE RP_NUM = ${nf_num}
+	</select>
+	<select id="getRpUserSSel"  resultType="String">
+		SELECT RP_MBID_A FROM RP WHERE RP_NUM = ${nf_num}
+	</select>
+	<select id="getRpUserCCNTSel"  resultType="Integer">
+		SELECT MB_CCNT FROM MB WHERE MB_ID = #{nf_mbid_s}
+	</select>
 	
 	<insert id="setNotifyAdmin" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},DEFAULT,#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyDeclareNon" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},DEFAULT,#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyDeclare" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_s},DEFAULT,#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyDeclareReply" parameterType="notify">
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},DEFAULT,#{nf_notify},0,DEFAULT)
 	</insert>
 	

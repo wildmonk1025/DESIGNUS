@@ -22,7 +22,6 @@ ul {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1518px;
 	height: 170px;
 }
@@ -34,7 +33,6 @@ ul {
 }
 
 #adminwriterjoinfrm {
-	border: 1px solid red;
 	float: left;
 	align-content: center;
 	width: 1216px;
@@ -63,13 +61,11 @@ ul {
 	left: 40px;
 	float: left;
 	width: 900px;
-	border: 1px solid red;
 	height: 500px;
 }
 
 #writercatecontents {
 	margin: 10px 40px;
-	border: 1px solid red;
 	width: 800px;
 	height: 200px;
 	float: left;
