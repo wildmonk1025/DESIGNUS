@@ -174,6 +174,8 @@ List<Integer> fundingOrderLisSelect(SponsorProgress sponsorProgress);
 
 int getSuonCountt(String id);
 
+void setNotifyWriApply(Notify nf);
+
 	/* int getSppagingCountt(String id); */
 
   
