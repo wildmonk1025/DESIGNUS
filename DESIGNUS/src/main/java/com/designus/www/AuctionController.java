@@ -1,5 +1,7 @@
 package com.designus.www;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +34,7 @@ public class AuctionController {
 	}
 	
 	@RequestMapping(value = "/auctionList" )
-	public ModelAndView auctionList(Integer pageNum ,int cgcode) {
+	public ModelAndView auctionList(Integer pageNum ,int cgcode) throws ParseException {
 		mav = new ModelAndView();
 		mav = aum.auctionList(pageNum,cgcode);
 		return mav;

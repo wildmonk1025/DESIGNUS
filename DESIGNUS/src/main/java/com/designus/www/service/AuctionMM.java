@@ -1,5 +1,8 @@
 package com.designus.www.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -77,7 +80,7 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionList(Integer pageNum,int cgcode) {
+	public ModelAndView auctionList(Integer pageNum,int cgcode) throws ParseException {
 		mav=new ModelAndView();
 		String view="null";
 		String auimg = null;
@@ -106,6 +109,12 @@ public class AuctionMM {
 	             else
 	                raList.get(i).setRa_max("-");
 	          }
+	          	SimpleDateFormat original = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        		SimpleDateFormat new_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+               
+        		Date original_date = original.parse(raList.get(i).getRa_date());
+        		String new_date = new_format.format(original_date);
+        		raList.get(i).setRa_date(new_date);
 	       }
 	    mav.addObject("paging1", getPaging1(num1,cgcode));  
 	    mav.addObject("paging2", getPaging2(num2,cgcode));  
