@@ -206,6 +206,15 @@ public class MypageMM {
 		mj.setMj_cgcode(cate);
 		mj.setMj_contents(conten);
 
+		Notify nf = new Notify();
+		nf.setNf_mbid_r(id);
+		nf.setNf_notify(id+" 님이 작가 전환신청을 하였습니다.");
+		pDao.setNotifyWriApply(nf);
+		
+		
+		
+		
+		
 		boolean f = false;
 		if (check == 1) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입

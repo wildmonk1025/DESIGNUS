@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Question {
 	int aq_num;
 	String aq_mbid;
-	String aq_type;
+	String aq_tye;
 	String aq_title;
 	String aq_contents;
 	String aq_date;
