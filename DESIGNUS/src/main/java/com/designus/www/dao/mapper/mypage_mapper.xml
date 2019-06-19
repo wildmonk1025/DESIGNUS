@@ -417,8 +417,8 @@
  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SST_MBID,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
      from ssp_ss_ssi
-       where SSP_MBID_N=#{id}  and rownum<=${num}*8
-     ) where rn>=${num}*8-7 AND RankNo=1
+       where SSP_MBID_N=#{id}  and rownum<=${num}*6
+     ) where rn>=${num}*6-5 AND RankNo=1
    ]]>
 	</select> 
 	 <select id="getSuwonCountt" parameterType="String" 

@@ -264,20 +264,27 @@ $('#nod').click(function() {
 });
 
 var toMap=${toMap};
-
+var maxList=${maxList};
 var str="";
+var tt="";
 console.log(12,toMap)
+console.log(13,maxList)
+
+for(var j=0; j<maxList.length;j++){
+	
+	tt+=maxList[j]+","
+	
+	}
+var ww=tt.split(","); 
 str+="<h3>참여중인 출품경매</h3>"
    +"<table id='Participation' border= 1px solid black><tr><td>상품명</td><td>나의금액</td><td>최고금액</td><td>경매장으로가기</td><td>경매포기하기</td><td>경매종료일</td></tr>"
-   for(var i=0;i<toMap.apsList.length;i++){
-	   for(var j=0;j<toMap.maxpList.length;j++ ){
-    	   str+="<tr><td>"+toMap.apsList[i].au_title+"</td>"
-    	   +"<td>"+toMap.apsList[i].aut_price+"</td>"
-    	   +"<td>"+toMap.maxpList[j]+"</td>"
-    	   +"<td><a href='auctionRead?au_num="+toMap.apsList[i].aut_aunum+"'>移動</a></td>"
-    	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap.apsList[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
-    	   +"<td>"+toMap.apsList[i].au_date+"</td></tr>";
-    }
+   for(var i=0;i<toMap.length;i++){
+    	   str+="<tr><td>"+toMap[i].au_title+"</td>"
+    	   +"<td>"+toMap[i].aut_price+"</td>"
+    	   +"<td>"+ww[i]+"</td>"
+    	   +"<td><a href='auctionRead?au_num="+toMap[i].aut_aunum+"'>移動</a></td>"
+    	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
+    	   +"<td>"+toMap[i].au_date+"</td></tr>";
    }
    str+="</table>";
    $('#auction').html(str)
