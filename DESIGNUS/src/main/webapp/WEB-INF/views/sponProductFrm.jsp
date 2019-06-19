@@ -4,6 +4,7 @@
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 div {
 	margin: auto;
@@ -123,7 +124,8 @@ td {
 					<td class="ts1">후원 목표량</td>
 					<td class="ts2">${ss_goalqty}</td>
 					<td class="ts1">후원 기간</td>
-					<td class="ts2">Sponsor table</td>
+					<td class="ts2"><fmt:parseDate var="startdate"
+							value="${ss_date}" apttern="yyyy-MM-dd" /></td>
 					<td class="ts1">현재 주문량</td>
 					<td class="ts2">0</td>
 				</tr>
@@ -132,8 +134,7 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button class="bt21" onclick="sponAj()"
-							style="cursor: pointer">밀어주기</button>
+						<button class="bt21" onclick="sponAj()" style="cursor: pointer">밀어주기</button>
 					</td>
 					<td colspan="2">
 						<button class="bt22" onclick="location.href='sponsor'">목록보기</button>
@@ -156,7 +157,11 @@ td {
 		alert(msg);
 	} */
 	function sponAj() {
-		var ss_num = ${ss_num};
+		var ss_num = $
+		{
+			ss_num
+		}
+		;
 		$.ajax({
 			url : 'sponbuy',
 			type : 'get',
