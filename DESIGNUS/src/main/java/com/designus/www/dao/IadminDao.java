@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.Category;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
@@ -56,6 +57,14 @@ public interface IadminDao {
 	boolean getmembercouet(@Param("mb_id")String mb_id);
 
 	boolean getmemberminuscouet(@Param("mb_id")String mb_id);
+
+	List<Category> getcategoryList();
+
+	//boolean getcotegoryadd(Map<String, Object> map);
+
+	boolean getcotegoryadd(@Param("cg_code") int cg_code,@Param("cg_name") String cg_name);
+
+	boolean getcotegorydel(@Param("cg_name") String cg_name);
 
   
 }
