@@ -1,5 +1,6 @@
 package com.designus.www.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -1052,21 +1053,25 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		String view = null;
 		List<SponsorProgress> spList = null;
-		 List<Integer> stList=null;
+		List<Integer> stList=null;
+		int aa=0;
 		HashMap<String, List<Integer>> soMap = new HashMap<String, List<Integer>>();
 		
 		int num = (pageNum == null) ? 1 : pageNum;
 		spList=pDao.fundingAcceptListSelect(id,num);
 		 for(int i=0;i<spList.size();i++) {
-			  stList=pDao.SponsorTenderSelect(spList.get(i).getSsp_ssnum());	
+			 soMap.put("Mapst", pDao.SponsorTenderSelect(spList.get(i)));
+			System.out.println("구분하래="+soMap.size());
 		 }
-		 soMap.put("stList", stList);
 		Gson gson = new Gson();
 		String spgList = gson.toJson(spList);
-		
+		 //Gson gson = new Gson();
+			//String stgList = gson.toJson(stList);
+			//mav.addObject("stpList", stgList);
 		String Mapst = gson.toJson(soMap);
+		mav.addObject("Mapst", Mapst);
 		mav.addObject("spgList", spgList);
-		mav.addObject("stpList", Mapst);
+		
 		mav.addObject("Spaging", getSpaging(num, kind));
 		view = "fundingAcceptList";
 

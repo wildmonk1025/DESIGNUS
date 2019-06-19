@@ -261,8 +261,8 @@ margin-top: 60px;
 <script type="text/javascript">
 var spgList=${spgList}
 console.log(spgList);
-var stpList=${stpList}
-console.log(stpList);
+var Mapst=${Mapst}
+console.log(Mapst);
 var cc="";
 for(var i=0; i<spgList.length;i++){
 	for(var j=0; j<stpList.length;j++){
