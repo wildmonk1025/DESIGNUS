@@ -58,15 +58,15 @@ public class AuctionControllerspon {
 		return mav;
 	}
 
-	@RequestMapping(value = "/sponbuy", method = RequestMethod.GET)
-	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
-
-		System.out.println("자 어디한번 보자~~~");
-		mav = new ModelAndView();
-		mav = sm.sponbuy(ss_num, ss_mbid);
-		// System.out.println(sm.sponbuy(ss_num, ss_mbid));
-		System.out.println("자 마감 한번 찍어 보자~~~");
-
-		return mav;
-	}
+	/*
+	 * @RequestMapping(value = "/sponbuy", method = RequestMethod.GET) public
+	 * ModelAndView sponbuy(int ss_num, String ss_mbid) {
+	 * 
+	 * System.out.println("자 어디한번 보자~~~");
+	 *  mav = new ModelAndView(); 
+	 *  mav = sm.sponbuy(ss_num, ss_mbid); // System.out.println(sm.sponbuy(ss_num,
+	 * ss_mbid)); System.out.println("자 마감 한번 찍어 보자~~~");
+	 * 
+	 * return mav; }
+	 */
 }

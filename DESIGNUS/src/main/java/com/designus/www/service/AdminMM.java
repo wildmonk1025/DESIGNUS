@@ -209,7 +209,7 @@ public class AdminMM {
 		n = iDao.getquestionCheck(aq_num);
 		mav.addObject("aq_num", n.getAq_num());
 		mav.addObject("aq_mbid", n.getAq_mbid());
-		mav.addObject("aq_type", n.getAq_type());
+		mav.addObject("aq_tye", n.getAq_tye());
 		mav.addObject("aq_title", n.getAq_title());
 		mav.addObject("aq_contents", n.getAq_contents());
 		mav.addObject("aqi_img", n.getAqi_img());
