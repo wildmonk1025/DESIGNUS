@@ -328,7 +328,9 @@ div{
 					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
 					<c:if test="${code eq 200 }">유아</c:if>
 				 </div>
-				<div id="middle_img_lv2">여기에 이미지</div>
+				<div id="middle_img_lv2">
+				여기에 이미지<br>
+				${auInfo.aui_imgSysName1}</div>
 			</div>
 			<div id="middle_contents1">
 				<div id="middle_contents1_lv1">
@@ -452,7 +454,6 @@ div{
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	
 	console.log(${nb});
 	
 	if(${nb} > 0){
@@ -512,6 +513,7 @@ div{
 			object.value = object.value.slice(0, object.maxLength);
 		}   
 	};
+	
 	
 	
 </script>
