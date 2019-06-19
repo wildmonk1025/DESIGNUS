@@ -66,12 +66,15 @@ ul {
 	height: auto;
 }
 .best {
-	border: 1px solid coral;
 	display : inline;
 	float: left;
 	width: 900px;
 	heigth: 150px;
+	background-color: coral;
+	size: 20px;
+	
 }
+
 
 </style>
 </head>
@@ -115,7 +118,7 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"'>"
+				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"id='btn'>"
 					  +"아이디:" +data[i].mb_id+"<br>"
 					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
 					  +"포트폴리오:"+data[i].mj_contents+"<br>"
