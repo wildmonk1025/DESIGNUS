@@ -7,6 +7,7 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 #one {
 	width: 100%;
@@ -238,9 +239,26 @@ margin-top: 60px;
   left: 1150px;  
 }
 </style>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	 $.ajax({
+			url: 'deadline',
+			type:'post',
+		    contentType:"application/json; charset=utf-8;",
+		    dataType:'json',
+		    success:function(data){
+		    	alert('성공');
+		    	console.log("1234567"+data.aup_ptnum);
+		    }, 
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+});
+</script>
 </head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 <body>
 	<div id="mypagemain">
