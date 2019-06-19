@@ -1,5 +1,6 @@
 package com.designus.www.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -872,8 +873,8 @@ public class MypageMM {
 		String view = null;
 		List<Notify> NoList = null;
 		List<AuctionTender> apsList = null;
-		List<Integer> maxpList = null;
-		HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
+		List<Integer> maxpList = new ArrayList<Integer>();
+		//HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
 		String id = session.getAttribute("id").toString();
 		// String grade=session.getAttribute("grade").toString();
 		Member mb = new Member();
@@ -891,22 +892,22 @@ public class MypageMM {
 		mav.addObject("c", c);
 
 		for (int i = 0; i < apsList.size(); i++) {
-			maxpList = pDao.auctionMaxSelect(apsList.get(i).getAut_aunum());
+			maxpList.addAll(pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()));
 		}
 
-		apsMap.put("apsList", apsList);
-		apsMap.put("maxpList", maxpList);
 
 		// apsMap.put("maxpList",maxpList);
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
 
-		String toMap = gson.toJson(apsMap);
+		String apssList = gson.toJson(apsList);
+		String maxList = gson.toJson(maxpList);
 
-		if (mb != null && NoList != null && apsMap != null) {
+		if (mb != null && NoList != null && apsList != null ) {
 			mav.addObject("mb", mb);
 			mav.addObject("NoList", str);
-			mav.addObject("toMap", toMap);
+			mav.addObject("toMap", apssList);
+			mav.addObject("maxList", maxList);
 			view = "myPage";
 		} else if (id == null) {
 			mav.addObject("idnull", "i");
@@ -1052,15 +1053,26 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		String view = null;
 		List<SponsorProgress> spList = null;
-		List<SponsorTender> stList = null;
+		List<Integer> stList= new ArrayList<Integer>();
+		int aa=0;
+		HashMap<Object, Object> soMap = new HashMap<Object, Object>();
+		
 		int num = (pageNum == null) ? 1 : pageNum;
 		spList=pDao.fundingAcceptListSelect(id,num);
 		 for(int i=0;i<spList.size();i++) {
-			 stList+=pDao.SponsorTenderSelect(spList.get(i).getSsp_ssnum());
+			 stList.addAll( pDao.SponsorTenderSelect(spList.get(i)));
+			System.out.println("구분하래="+stList.size());
 		 }
+		 System.out.println("그럼 마지막은??="+stList.size());
 		Gson gson = new Gson();
 		String spgList = gson.toJson(spList);
+		 //Gson gson = new Gson();
+			//String stgList = gson.toJson(stList);
+			//mav.addObject("stpList", stgList);
+		String Mapst = gson.toJson(stList);
+		mav.addObject("stList", stList);
 		mav.addObject("spgList", spgList);
+		
 		mav.addObject("Spaging", getSpaging(num, kind));
 		view = "fundingAcceptList";
 
@@ -1072,7 +1084,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 4; // 페이지당 글의 수
+		int listCount = 6; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSuwonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);

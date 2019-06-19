@@ -18,6 +18,7 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 import com.designus.www.userClass.PagingAuction;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 import javafx.scene.control.Alert;
 
@@ -215,7 +216,8 @@ public class AuctionMM {
 	public ModelAndView auctionReadInbuy(int inbuyQty,int inbuyNum) {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
-		String view = "redirect:/auctionMyOrderList";
+		String view = null;
+		String massege = null;
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
@@ -229,7 +231,7 @@ public class AuctionMM {
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
 		
-		if(Tqty > 0) {
+		
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
@@ -239,7 +241,8 @@ public class AuctionMM {
 			at.setAut_notify(id+" 님이 " + at.getAu_title() + " 상품을 " + at.getAut_qty() +" 개 구입 하셧습니다.");
 			aDao.setNotifyAuctionTender(at);
 			
-		}
+			view = "redirect:/auctionMyOrderList";
+		
 		mav.setViewName(view);
 		return mav;
 	}

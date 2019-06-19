@@ -138,6 +138,7 @@ public class AdminController {
 		mav = adm.memberwritecheck(mb_id);
 		return mav;
 	}//회원정보 상세보기
+	
 	@RequestMapping(value = "/membercaution", method = RequestMethod.POST)
 	public ModelAndView membercaution(String mb_id) {
 		mav = new ModelAndView();
@@ -145,6 +146,7 @@ public class AdminController {
 		mav = adm.membercaution(mb_id);
 		return mav;
 	}//회원정보 상세보기 경고+1
+	
 	@RequestMapping(value = "/membercautioncnt", method = RequestMethod.POST)
 	public ModelAndView membercautioncnt(String mb_id) {
 		mav = new ModelAndView();
@@ -152,4 +154,30 @@ public class AdminController {
 		mav = adm.membercautioncnt(mb_id);
 		return mav;
 	}//회원정보 상세보기 경고-1
+	
+	@RequestMapping(value = "/categoryadd", method = RequestMethod.POST)
+	public ModelAndView categoryadd(int cg_code ,String cg_name) {
+		mav = new ModelAndView();
+		System.out.println("cg_code"+cg_code);
+		System.out.println("cg_name"+cg_name);
+		mav = adm.categoryadd(cg_code, cg_name);
+		return mav;
+	}//카테고리 추가
+	
+	@RequestMapping(value = "/categorydelete", method = RequestMethod.POST)
+	public ModelAndView categorydelete(String cg_name) {
+		mav = new ModelAndView();
+		System.out.println("cg_name"+cg_name);
+		mav = adm.categorydelete(cg_name);
+		return mav;
+	}//카테고리삭제
+	
+	@RequestMapping(value = "/categorychange", method = RequestMethod.POST)
+	public ModelAndView categorychange(String cg_name,String cg_cname) {
+		mav = new ModelAndView();
+		System.out.println("cg_name"+cg_name);
+		System.out.println("cg_cname"+cg_cname);
+		mav = adm.categorychange(cg_name,cg_cname);
+		return mav;
+	}//카테고리변경
 }

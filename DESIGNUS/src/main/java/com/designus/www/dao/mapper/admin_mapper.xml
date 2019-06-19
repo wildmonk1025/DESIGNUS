@@ -106,4 +106,19 @@
 	</update>
 	
 	
+	<select id="getcategoryList"  resultType="category">
+		SELECT * FROM CG ORDER BY CG_CODE ASC
+	</select>
+	
+	<insert id="getcotegoryadd"  >
+		INSERT INTO CG VALUES(${cg_code},#{cg_name})
+	</insert>
+	
+	<delete id="getcotegorydel">
+		DELETE FROM CG WHERE CG_NAME=#{cg_name}
+	</delete>
+	
+	<update id="getcotegoryChange" parameterType="String" >
+		UPDATE CG SET CG_NAME=#{cg_cname} WHERE CG_NAME=#{cg_name}
+	</update>
 </mapper>

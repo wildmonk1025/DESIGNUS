@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Category;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.Question;
@@ -204,9 +205,6 @@ public class AdminMM {
 		map.put("aq_num", aq_num);
 		map.put("qr_contents", qr_contents);
 		boolean a = iDao.getquestionReply(map);
-		if (a) {
-
-		}
 		view = "questionList";
 		mav.setViewName(view);
 		return mav;
@@ -278,6 +276,48 @@ public class AdminMM {
 		boolean m=iDao.getmemberminuscouet(mb_id);
 		System.out.println("성공이지?"+mb_id);
 		view = "memberList";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public String categorycurrent() {
+		List<Category> rList = iDao.getcategoryList();
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(rList);
+		System.out.println(jsonObj);
+		return jsonObj;
+	}
+
+	public ModelAndView categoryadd(int cg_code, String cg_name) {
+		mav = new ModelAndView();
+		String view = null;
+		Map<String, Object> map = new HashMap<>();
+		//map.put("cg_code", cg_code);
+		//map.put("cg_name", cg_name);
+		System.out.println("ddddd"+cg_code);
+		boolean a = iDao.getcotegoryadd(cg_code,cg_name);
+		System.out.println("여기까지오면 굿!!");
+		view = "categoryEdit";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView categorydelete(String cg_name) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean a = iDao.getcotegorydel(cg_name);
+		System.out.println("여기까지오면 굿!!");
+		view = "categoryEdit";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView categorychange(String cg_name, String cg_cname) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean a = iDao.getcotegoryChange(cg_name,cg_cname);
+		System.out.println("여기까지오면 굿!!");
+		view = "categoryEdit";
 		mav.setViewName(view);
 		return mav;
 	}

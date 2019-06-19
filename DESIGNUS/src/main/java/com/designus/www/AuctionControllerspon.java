@@ -59,7 +59,7 @@ public class AuctionControllerspon {
 	}
 
 	@RequestMapping(value = "/sponbuy", method = RequestMethod.GET)
-	public ModelAndView sponbuy(int ss_num, String ss_mbid, Model model) {
+	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
 
 		System.out.println("자 어디한번 보자~~~");
 		mav = new ModelAndView();
@@ -67,9 +67,6 @@ public class AuctionControllerspon {
 		// System.out.println(sm.sponbuy(ss_num, ss_mbid));
 		System.out.println("자 마감 한번 찍어 보자~~~");
 
-		model.addAttribute("msg", "밀어주기 완료되었습니다. 감사합니다.");
-
 		return mav;
-
 	}
 }
