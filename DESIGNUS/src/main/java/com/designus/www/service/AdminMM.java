@@ -312,4 +312,14 @@ public class AdminMM {
 		return mav;
 	}
 
+	public ModelAndView categorychange(String cg_name, String cg_cname) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean a = iDao.getcotegoryChange(cg_name,cg_cname);
+		System.out.println("여기까지오면 굿!!");
+		view = "categoryEdit";
+		mav.setViewName(view);
+		return mav;
+	}
+
 }
