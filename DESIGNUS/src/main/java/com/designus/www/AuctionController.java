@@ -49,6 +49,7 @@ public class AuctionController {
 	public ModelAndView auctioninbuy(int inbuyQty, int inbuyNum) {
 		mav = new ModelAndView();
 		mav = aum.auctionReadInbuy(inbuyQty,inbuyNum);
+		
 		return mav;
 	}
 
