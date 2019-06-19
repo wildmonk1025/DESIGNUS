@@ -293,22 +293,21 @@ nav {
 	background-color: white;
 }
 
-a:active {
+.atag:active {
 	text-decoration: none;
 	color: #646464;
 }
 
-a:visited {
+.atag:visited {
 	text-decoration: none;
 	color: #646464;
 }
 
-a:link {
+.atag:link {
 	text-decoration: none;
 	color: #646464;
 }
-
-a:hover {
+.atag:hover {
 	text-decoration: none;
 	color: #646464;
 }
@@ -330,8 +329,7 @@ a:hover {
 <body>
 	<div id="header">
 		<div id="logo">
-			<a href="home"><img src="resources/images/logo.png" width="250px"
-				height="80px"></a>
+			<a href="home" class='atag'><img src="resources/images/logo.png" width="250px" height="80px"></a>
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 		</div>
@@ -354,9 +352,9 @@ a:hover {
 				<c:choose>
 				<c:when test="${empty perm}"></c:when>
 				<c:when test="${perm eq 'M'}">
-				<a href="adminInfo">관리자<br>페이지</a></c:when>
+				<a href="adminInfo" class='atag'>관리자<br>페이지</a></c:when>
 				<c:when test="${perm ne 'M'}">
-				<a href="mypage">마이<br>페이지</a></c:when>
+				<a href="mypage" class='atag'>마이<br>페이지</a></c:when>
 				</c:choose>
 			</div>
 			<div id="msg">
@@ -410,7 +408,7 @@ a:hover {
 	<div id="category">
 		<div id="subcategory" align="center" class="menu-item">
 			<h4>
-				<a href="#"><h2>≡</h2></a>
+				<a href="#" class='atag'><h2>≡</h2></a>
 			</h4>
 			<nav>
 				<ul >
@@ -419,16 +417,16 @@ a:hover {
 		</div>
 		<div id="menu">
 			<div class="submenu">
-				<a href="sponsor">후원</a>
+				<a href="sponsor" class='atag'>후원</a>
 			</div>
 			<div class="submenu">
-				<a href="boardlist">이용후기</a>
+				<a href="boardlist" class='atag'>이용후기</a>
 			</div>
 			<div class="submenu">
-				<a href="bestwriter">공지사항</a>
+				<a href="bestwriter" class='atag'>공지사항</a>
 			</div>
 			<div class="submenu">
-				<a href="servicecenter">고객센터</a>
+				<a href="servicecenter" class='atag'>고객센터</a>
 			</div>
 
 		</div>
@@ -470,7 +468,7 @@ a:hover {
     		success: function(data) {
     			var str='';
     			if(i<10) {
-    			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\">"+data[i].rtsr_word+"</a></span>";
+    			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\" class='atag'>"+data[i].rtsr_word+"</a></span>";
     			$("#ranking").html(str);
     	        $("#rankingbox").delay(2850).animate({top:8},function(){
     	        	$("#ranking span:first");
@@ -509,7 +507,7 @@ a:hover {
     		success: function(data) {
     			var str='';
     			for(var i in data) {
-				str+="<li><a href='auctionList?cgcode="+data[i].cg_code+"'>"+data[i].cg_name+"</a></li>";
+				str+="<li><a href='auctionList?cgcode="+data[i].cg_code+"' class='atag'>"+data[i].cg_name+"</a></li>";
     			}
     			$("#subcategory ul").html(str);
     		},
@@ -521,14 +519,17 @@ a:hover {
 $("#alarmBtn").click(function() {
 	$('#alarmList').css('display','block');
 	$('.alarmcontents').css('display','block');
-	setTimeout(function() {
+ 	setTimeout(function() {
 		$('#alarmList').css('display','none');
 		$('.alarmcontents').css('display','none');		
-	},5000);
+	},8000);
 });
 
-
-	function poll() {
+$(document).ajaxStart(function() {
+	setInterval(poll(),1000);
+});
+ 	
+ 	function poll() {
 		$.ajax({
 			type:'POST',
 			url:'ajax/notification',
@@ -548,11 +549,7 @@ $("#alarmBtn").click(function() {
 				$("#alarmBtn").html(str2);
 				}
 			}); //ajax End
-	}
-	
-	setInterval(poll(),3000);
-	
-	
+		}
 	
 	function updateArm(num) {
 		$.ajax({
@@ -561,11 +558,14 @@ $("#alarmBtn").click(function() {
 			data: {nf_num:num},
 			dataType:'json',
 			success: function(data) {
-				console.log(data);
+				$('#alarmList').css('display','none');
+				$('.alarmcontents').css('display','none');
+				poll();
 				},
 			error: function(error) {
 				}
 			});
 		}
+
 </script>
 </html>
