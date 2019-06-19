@@ -91,7 +91,6 @@ a:visited {
 }
 
 form {
-	position: absolute;
 	top: 20px;
 	left: 550px;
 }
