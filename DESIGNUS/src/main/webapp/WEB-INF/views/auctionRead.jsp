@@ -7,8 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-div{
+div {
 	margin: auto;
 }
 
@@ -115,6 +114,7 @@ div{
 	height: 270px;
 	float: left;
 }
+
 #middle_contents1_lv6 {
 	border: 1px soild orange;
 	width: 1480px;
@@ -264,44 +264,46 @@ div{
 	float: left;
 	text-align: left;
 }
-.contentsImg{
+
+.contentsImg {
 	border: 1px solid gray;
 	float: left;
 	margin: 0px 20px 10px 20px;
 	width: 328px;
 	height: 250px;
 }
-#contents{
+
+#contents {
 	border: 1px solid gray;
 	float: left;
 	margin: 0px 20px 0px 20px;
 	width: 1438px;
 	height: 340px;
 }
-
 </style>
 </head>
 
 <body>
 	<div id="inbuyLB">
 		<form action="auctioninbuy" method="post">
-			<input type="hidden" name="inbuyNum" value="${au_num}"> 구입수량 : <input
-				type="number" id="inbuyInput" name="inbuyQty" max="999" min="1"
-				placeholder="최대  999EA" maxlength="3" oninput="maxLengthCheck(this)"><br>
-			<br> <input type="submit" class="btn11" value="구입"> <input
-				type="reset" class="btn11" value="취소">
+			<input type="hidden" name="inbuyNum" value="${au_num}"> 구입수량
+			: <input type="number" id="inbuyInput" name="inbuyQty" max="999"
+				min="1" placeholder="최대  999EA" maxlength="3"
+				oninput="maxLengthCheck(this)"><br> <br> 
+				<input type="submit" class="btn11" value="구입"> 
+				<input type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<!--   -->
 	<div id="inbuyLB-shadow"></div>
 	<div id="tenderLB">
 		<form action="auctiontender" method="post">
-			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격 : 
-			<input type="number" id="tenderInput" name="tenderPrice" max="99999999"
-				min="1" maxlength="8" oninput="maxLengthCheck(this)"
-				placeholder="최대 입찰가 이상 입력"> 
-				<br>  <br> 
-			<input type="submit" class="btn11" value="구입"> <input type="reset" class="btn11" value="취소">
+			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격
+			: <input type="number" id="tenderInput" name="tenderPrice"
+				max="99999999" min="1" maxlength="8" oninput="maxLengthCheck(this)"
+				placeholder="최대 입찰가 이상 입력"> <br> <br> <input
+				type="submit" class="btn11" value="구입"> <input type="reset"
+				class="btn11" value="취소">
 		</form>
 	</div>
 	<div id="tenderLB-shadow"></div>
@@ -314,8 +316,9 @@ div{
 
 		<div id="List">
 			<div id="middle_img">
-				<div id="middle_img_lv1">카테고리 >
-				 <c:set var="code" value="${auInfo.au_cgcode}" />
+				<div id="middle_img_lv1">
+					카테고리 >
+					<c:set var="code" value="${auInfo.au_cgcode}" />
 					<c:if test="${code eq 100 }">귀금속공예</c:if>
 					<c:if test="${code eq 110 }">원목공예</c:if>
 					<c:if test="${code eq 120 }">종이공예</c:if>
@@ -327,10 +330,10 @@ div{
 					<c:if test="${code eq 180 }">휴대폰</c:if>
 					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
 					<c:if test="${code eq 200 }">유아</c:if>
-				 </div>
+				</div>
 				<div id="middle_img_lv2">
-				여기에 이미지<br>
-				${auInfo.aui_imgSysName1}</div>
+					여기에 이미지<br> ${auInfo.aui_imgSysName1}
+				</div>
 			</div>
 			<div id="middle_contents1">
 				<div id="middle_contents1_lv1">
@@ -367,15 +370,17 @@ div{
 
 			</div>
 			<div id="asubmitbtn">
-			<c:set var="se_id" value="${id }"/>
-			<c:set var="au_id" value="${chkID}"/>
-			<c:if test="${au_id ne se_id }">
-				<button class="submitbtn" id="btn1">즉시구매</button>
-				<button class="submitbtn" id="btn2">경매참여</button>
-			</c:if>
-			<c:if test="${au_id eq se_id }">
-				<button class="submitbtn">본인은 구매가 <br> 불가능 합니다.</button>
-			</c:if>
+				<c:set var="se_id" value="${id }" />
+				<c:set var="au_id" value="${chkID}" />
+				<c:if test="${au_id ne se_id }">
+					<button class="submitbtn" id="btn1">즉시구매</button>
+					<button class="submitbtn" id="btn2">경매참여</button>
+				</c:if>
+				<c:if test="${au_id eq se_id }">
+					<button class="submitbtn">
+						본인은 구매가 <br> 불가능 합니다.
+					</button>
+				</c:if>
 			</div>
 			<div id="middle_contents1_lv4">
 				<h2>TOP3 입찰내역</h2>
@@ -401,24 +406,25 @@ div{
 						<div class="wList"
 							onclick="location.href='auctionRead?au_num=${auw.au_num}'">
 							<div class="wListPhoto">
-								<img src="./images/logo.png" />
+								<!-- <img src="./images/logo.png" /> -->
 							</div>
 							<div class="wListTitle">${auw.au_title}</div>
 							<div class="wListContents">
 								<table>
 									<tr style="height: 32.5px">
-										<th style="width: 100px" >수량</th>
-										<td style="width: 170px;text-align: right;">${auw.au_qty -1} </td>
+										<th style="width: 100px">수량</th>
+										<td style="width: 170px; text-align: right;">${auw.au_qty -1}
+										</td>
 										<td style="width: 15px">EA</td>
 									</tr>
 									<tr style="height: 32.5px">
 										<th>경매시작가</th>
-										<td style=" text-align: right;">${auw.au_minprice}</td>
+										<td style="text-align: right;">${auw.au_minprice}</td>
 										<td>원</td>
 									</tr>
 									<tr style="height: 32.5px">
 										<th>즉시구매가</th>
-										<td style=" text-align: right;">${auw.au_inprice} </td>
+										<td style="text-align: right;">${auw.au_inprice}</td>
 										<td>원</td>
 									</tr>
 									<tr style="height: 32.5px">
@@ -433,10 +439,10 @@ div{
 			</div>
 			<div id="middle_contents1_lv6">
 				<h2>작품설명</h2>
-				<div class="contentsImg">${auInfo.aui_imgSysName1}</div>				
-				<div class="contentsImg">${auInfo.aui_imgSysName2}</div>				
-				<div class="contentsImg">${auInfo.aui_imgSysName3}</div>				
-				<div class="contentsImg">${auInfo.aui_imgSysName4}</div>				
+				<div class="contentsImg">${auInfo.aui_imgSysName1}</div>
+				<div class="contentsImg">${auInfo.aui_imgSysName2}</div>
+				<div class="contentsImg">${auInfo.aui_imgSysName3}</div>
+				<div class="contentsImg">${auInfo.aui_imgSysName4}</div>
 				<div id="contents">${auInfo.au_contents }</div>
 			</div>
 
@@ -454,7 +460,7 @@ div{
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	console.log(${nb});
+
 	
 	if(${nb} > 0){
 		$("#peek2").css("display", "none");
@@ -515,6 +521,14 @@ div{
 	};
 	
 	
+// 	window.onload=(function() {
+// 		var massege= ${massege} ;
+// 		console.log(massege);
+// 		var msg = '${massege}';
+// 		if (msg != ''){
+// 			alert(msg);
+// 		}
+// 	})	
 	
 </script>
 </html>

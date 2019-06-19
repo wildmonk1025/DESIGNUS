@@ -216,6 +216,7 @@ public class AuctionMM {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view = null;
+		String massege = null;
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
@@ -240,11 +241,12 @@ public class AuctionMM {
 			aDao.setNotifyAuctionTender(at);
 			
 			view = "redirect:/auctionMyOrderList";
+		} else {
+			mav.addObject("massege","제발 가져가라");
+			mav.addObject("au_num",inbuyNum);
+			view = "redirect:/auctionRead";
 		}
 		
-		view = "redirect:/auctionRead?au_num="+inbuyNum;
-		
-		mav.addObject("msg","최대수량 이상의 수량은 구입하실수 없습니다.");
 		mav.setViewName(view);
 		return mav;
 	}
