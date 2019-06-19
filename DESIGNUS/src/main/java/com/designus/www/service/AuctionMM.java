@@ -18,6 +18,7 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 import com.designus.www.userClass.PagingAuction;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 import javafx.scene.control.Alert;
 
@@ -216,6 +217,7 @@ public class AuctionMM {
 		mav = new ModelAndView();
 		String id = (String)session.getAttribute("id");
 		String view = null;
+		String massege = null;
 		int price = 0;
 		int totalPrice =0;
 		int qty = inbuyQty;
@@ -229,7 +231,7 @@ public class AuctionMM {
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
 		
-		if(Tqty > 0) {
+		
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
@@ -240,11 +242,7 @@ public class AuctionMM {
 			aDao.setNotifyAuctionTender(at);
 			
 			view = "redirect:/auctionMyOrderList";
-		}
 		
-		view = "redirect:/auctionRead?au_num="+inbuyNum;
-		
-		mav.addObject("msg","최대수량 이상의 수량은 구입하실수 없습니다.");
 		mav.setViewName(view);
 		return mav;
 	}
