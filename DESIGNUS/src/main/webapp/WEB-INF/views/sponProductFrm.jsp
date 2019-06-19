@@ -131,7 +131,7 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button class="bt21"
+						<button class="bt21" id="sponajaxbtn"
 							onclick="location.href='sponbuy?ss_num=${ss_num}'; return false"
 							style="cursor: pointer">밀어주기</button>
 					</td>
@@ -151,6 +151,20 @@ td {
 
 </body>
 <script>
-	
+	/* $("#sponajaxbtn").click function(){
+	 var ss_num = ${ss_num};
+	 $.ajax({
+	 type:'get',
+	 url:'sponbuy',
+	 data:ss_num,
+	 dataType:JSON,
+	 success(msg){
+	 alert("밀어주기 완료되었습니다.")
+	 }
+	 error(msg){
+	 alert("밀어주기 실패!")
+	 }
+	 })
+	 } */
 </script>
 </html>

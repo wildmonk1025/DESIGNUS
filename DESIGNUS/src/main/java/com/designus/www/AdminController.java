@@ -152,4 +152,19 @@ public class AdminController {
 		mav = adm.membercautioncnt(mb_id);
 		return mav;
 	}//회원정보 상세보기 경고-1
+	@RequestMapping(value = "/categoryadd", method = RequestMethod.POST)
+	public ModelAndView categoryadd(int cg_code ,String cg_name) {
+		mav = new ModelAndView();
+		System.out.println("cg_code"+cg_code);
+		System.out.println("cg_name"+cg_name);
+		mav = adm.categoryadd(cg_code, cg_name);
+		return mav;
+	}//카테고리 추가
+	@RequestMapping(value = "/categorydelete", method = RequestMethod.POST)
+	public ModelAndView categorydelete(String cg_name) {
+		mav = new ModelAndView();
+		System.out.println("cg_name"+cg_name);
+		mav = adm.categorydelete(cg_name);
+		return mav;
+	}
 }

@@ -72,4 +72,11 @@ public class AjaxAdminController {
 		
 		//블랙 리스트
 	}
+	@RequestMapping(value = "/categorycurrent", method = RequestMethod.POST, produces = "application/json; charset=utf-8;")
+	public @ResponseBody String categorycurrent() {
+		String check = adm.categorycurrent();
+		return check;
+		
+		//카테고리 리스트
+	}
 }
