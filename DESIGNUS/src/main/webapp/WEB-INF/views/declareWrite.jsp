@@ -20,7 +20,6 @@ ul {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1518px;
 	height: 170px;
 }

@@ -22,7 +22,6 @@ ul {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1518px;
 	height: 170px;
 }
@@ -34,7 +33,6 @@ ul {
 }
 
 #adminwriterjoin {
-	border: 1px solid red;
 	float: left;
 	align-content: center;
 	width: 1216px;

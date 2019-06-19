@@ -21,7 +21,6 @@
         }
 
         #mainheader {
-            border: 1px solid black;
             width: 1518px;
             height: 170px;
         }
@@ -52,17 +51,10 @@
             width: 990px;
             height: 325px;
             overflow-y: scroll;
-            border: 1px solid grey;
         }
         
-        #declarelist>tr{
-            border: 1px solid black;
-        }
         
-        #declarelist th,td{
-            width: 140px;
-            text-align: center;
-        }
+       
         
         .btnArray {
             float: left;
@@ -70,13 +62,8 @@
             height: auto;
             text-align: center;
         }
-.lipont{
-	font-size:20px;
-}
-.view{
-	display: none;
 
-}
+
 .btn2{
 margin-top: 10px;
 	/*General*/
