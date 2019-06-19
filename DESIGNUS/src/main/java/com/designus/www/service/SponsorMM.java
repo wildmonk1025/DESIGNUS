@@ -1,7 +1,10 @@
 package com.designus.www.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,8 @@ public class SponsorMM {
 	private HttpSession session;
 	@Autowired
 	private UploadFile upload;
+	@Autowired
+	HttpServletResponse response;
 
 	Sponsor sp;
 	Member mb;
@@ -139,6 +144,11 @@ public class SponsorMM {
 			sDao.sponbuy(st);
 			System.out.println("거래내역 insert");
 			// 후원 거래내역 insert
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>alert('해당 작품을 밀어주었습니다!');</script>");
+//			out.flush();
+			/* mav.addObject("msg", "밀어주기 성공."); */
 			view = "redirect:/sponproduct?ss_num=" + ss_num;
 		} else {
 			System.out.println("insert 실패");
