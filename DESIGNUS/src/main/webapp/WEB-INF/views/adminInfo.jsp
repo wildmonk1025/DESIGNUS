@@ -21,7 +21,6 @@
         }
 
         #mainheader {
-            border: 1px solid black;
             width: 1518px;
             height: 170px;
         }
@@ -61,7 +60,6 @@
             width: 990px;
             height: 170px;
             overflow-y: scroll;
-            border: 1px solid grey;
         }
         
         #declarelist td{
@@ -73,7 +71,6 @@
             width: 990px;
             height: 170px;
             overflow-y: scroll;
-            border: 1px solid grey;
             
             
         }
@@ -83,13 +80,32 @@
 	font-size:20px;
 }
 .best {
-	border: 1px solid blue;
-	color: black; display : inline;
+	border: 1px solid black;
+	display : inline;
 	float: left;
 	width: 800px;
-	heigth: 55px;
-	display: inline;
+	heigth: 150px;
+	background-color: coral;
+	size: 20px;
+	
 }
+a:active {
+	text-decoration: none;
+	color: white;
+}
+
+a:visited {
+	text-decoration: none;
+	color: white;
+}
+a:link {
+	text-decoration: none;
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}   
     </style>
 </head>
 <body>

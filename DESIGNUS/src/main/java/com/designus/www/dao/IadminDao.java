@@ -9,6 +9,7 @@ import com.designus.www.bean.Category;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
@@ -65,6 +66,27 @@ public interface IadminDao {
 	boolean getcotegoryadd(@Param("cg_code") int cg_code,@Param("cg_name") String cg_name);
 
 	boolean getcotegorydel(@Param("cg_name") String cg_name);
+
+	boolean getcotegoryChange(@Param("cg_name") String cg_name, @Param("cg_cname")String cg_cname);
+
+	String userSel(Notify nf);
+
+	void setNotifyAdmin(Notify nf);
+
+	String getRpUserRSel(Notify nf); // 신고자 아이디
+
+	String getRpUserSSel(Notify nf); // 신고 당한 아이디
+
+	String getRpUserTSel(Notify nf); // 신고 TITLE
+
+	void setNotifyDeclareNon(Notify nf);
+
+	int getRpUserCCNTSel(Notify nf);
+
+	void setNotifyDeclare(Notify nf);
+
+	void setNotifyDeclareReply(Notify nf);
+
 
   
 }

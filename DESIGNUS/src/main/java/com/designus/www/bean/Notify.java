@@ -17,4 +17,5 @@ public class Notify {
 	String nf_contents;
 	int    nf_check;
 	String nf_date;
+	String nf_notify;
 }

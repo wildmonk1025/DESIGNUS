@@ -22,7 +22,6 @@ ul {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1518px;
 	height: 170px;
 }
@@ -34,7 +33,6 @@ ul {
 }
 
 #adminwriterjoinfrm {
-	border: 1px solid red;
 	float: left;
 	align-content: center;
 	width: 1216px;
@@ -63,13 +61,11 @@ ul {
 	left: 40px;
 	float: left;
 	width: 900px;
-	border: 1px solid red;
 	height: 500px;
 }
 
 #writercatecontents {
 	margin: 10px 40px;
-	border: 1px solid red;
 	width: 800px;
 	height: 200px;
 	float: left;
@@ -86,7 +82,6 @@ ul {
 
 #cateupload {
 	margin: 10px 5px;
-	text-align: center;
 	width: 693px;
 	height: 40px;
 	float: left;
@@ -94,22 +89,19 @@ ul {
 
 #catedown {
 	margin: 10px 0px 10px 40px;
-	text-align: center;
 	width: 100px;
 	height: 40px;
 	float: left;
 }
 
 #catedownload {
-	margin: 10px 5px;
-	text-align: center;
+	margin: 12px 5px;
 	width: 693px;
 	height: 40px;
 	float: left;
 }
 
 #catechange {
-	border: 1px solid red;
 	margin: 10px 0px 10px 40px;
 	text-align: center;
 	width: 100px;
@@ -118,22 +110,13 @@ ul {
 }
 
 #cateone {
-	border: 1px solid red;
 	margin: 10px 5px;
-	text-align: center;
-	width: 300px;
+	width: 693px;
 	height: 40px;
 	float: left;
 }
 
-#catetwo {
-	border: 1px solid red;
-	margin: 10px 5px 0px 0px;
-	text-align: center;
-	width: 300px;
-	height: 40px;
-	float: left;
-}
+
 
 #catech {
 	float: left;
@@ -147,6 +130,46 @@ ul {
 	width: 250px;
 	heigth: 55px;
 	display: inline;
+}
+.btn1{
+margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: coral;
+	
+	width: 220px;
+	height: 70px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	color:white;
+	
 }
 .btn2{
 margin-top: 10px;
@@ -207,6 +230,18 @@ margin-top: 10px;
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
 }
+.signUpInput {
+   width: 150px;
+   height: 50px;
+   margin-bottom: 25px;
+   padding: 0 15px 2px;
+   font-size: 17px;
+   background: white;
+   border: 2px solid #EBEBEB;
+   border-radius: 4px;
+   -webkit-box-shadow: inset 0 -2px #EBEBEB;
+   box-shadow: inset 0 -2px #EBEBEB;
+}
 </style>
 </head>
 
@@ -229,20 +264,31 @@ margin-top: 10px;
 			<form action="categoryadd" method="post">
 			<div id="cateup"><input type="submit" value="카테고리추가" class="btn2"></div>
 			
-			<div id="cateupload"><br/>카테고리번호:<input type="text" name="cg_code" >
-							         카테고리이름:<input type="text" name="cg_name" ></div></form>
+			<div id="cateupload">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" name="cg_code" class="signUpInput" 
+							placeholder="category code" autofocus required >&nbsp;&nbsp;
+							         <input type="text" name="cg_name" class="signUpInput" 
+							placeholder="category name" autofocus required ></div></form>
 			<form action="categorydelete" method="post">
 			<div id="catedown"><input type="submit" value="카테고리삭제" class="btn2"></div>
-			<div id="catedownload"><br/>
-							         카테고리이름:<input type="text" name="cg_name" ></div></form>
-			<div id="catechange">change</div>
-			<div id="cateone">의자</div>
-			<p id="catech">▶</p>
-			<div id="catetwo">바둑알</div>
+			<div id="catedownload">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" name="cg_name" class="signUpInput" 
+							placeholder="category name" autofocus required ></div></form>
+			<form action="categorychange" method="post">
+			<div id="catechange"><input type="submit" value="카테고리변경" class="btn2"></div>
+			<div id="cateone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text"  id="change" name="cg_name" class="signUpInput" 
+							placeholder="change Before name" autofocus required >
+								&nbsp;&nbsp;<input type="text" name="cg_cname" class="signUpInput" 
+							placeholder="change after name" autofocus required ></div></form>
+			
 		</div>
 	</div>
 </body>
 <script>
+/* $("#atag").on("click", function(){
+	var dd = ${cg_name}
+}); */
 $(document).ready(function() {
 	$.ajax({
 		url : 'categorycurrent',
@@ -256,10 +302,10 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"
+				result+="<div class='best'>"+"<button class='btn1' onclick=\"catap('"+data[i].cg_name+"')\">"
 					  +"카테고리 번호:"+data[i].cg_code+"<br>"
 					  +"카테고리 종류:"+data[i].cg_name+"<br>"
-					  
+					  +"</button>"
 					  +"</div>";
 					  }
 			$("#writercatecontents").html(result);
@@ -270,6 +316,11 @@ $(document).ready(function() {
 	}
 	});
 });
+
+function catap(num) {
+	console.log(num);
+	$("#change").val(num);
+}
 </script>
 
 </html>
