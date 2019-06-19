@@ -45,13 +45,13 @@ public class AuctionController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/auctioninbuy" )
-	public ModelAndView auctioninbuy(int inbuyQty, int inbuyNum) {
-		mav = new ModelAndView();
-		mav = aum.auctionReadInbuy(inbuyQty,inbuyNum);
-		
-		return mav;
-	}
+	
+	  @RequestMapping(value = "/auctioninbuy" ) public ModelAndView
+	  auctioninbuy(int inbuyQty, int inbuyNum) { mav = new ModelAndView(); mav =
+	  aum.auctionReadInbuy(inbuyQty,inbuyNum);
+	  
+	  return mav; }
+	 
 
 	@RequestMapping(value = "/auctiontender" )
 	public ModelAndView auctiontender(int tenderNum,int tenderPrice) {

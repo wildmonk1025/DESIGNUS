@@ -285,7 +285,7 @@ div {
 
 <body>
 	<div id="inbuyLB">
-		<form action="auctioninbuy" method="post">
+		<form action="auctioninbuy" method="post" onsubmit="return checkk(${auInfo.au_qty -1})">
 			<input type="hidden" name="inbuyNum" value="${au_num}"> 구입수량
 			: <input type="number" id="inbuyInput" name="inbuyQty" max="999"
 				min="1" placeholder="최대  999EA" maxlength="3"
@@ -460,7 +460,16 @@ div {
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-
+ function checkk(even) {
+	console.log(1,even);
+	var inbuy=$("#inbuyInput").val();
+	if(even<inbuy){
+		alert("구입수량이 없습니다.");
+		return false;
+	}else{
+		return true;
+	}
+}
 	
 	if(${nb} > 0){
 		$("#peek2").css("display", "none");

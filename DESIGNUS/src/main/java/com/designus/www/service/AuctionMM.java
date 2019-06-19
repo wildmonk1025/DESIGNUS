@@ -18,6 +18,7 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 import com.designus.www.userClass.PagingAuction;
 import com.designus.www.userClass.UploadFile;
+import com.google.gson.Gson;
 
 import javafx.scene.control.Alert;
 
@@ -230,7 +231,7 @@ public class AuctionMM {
 		totalPrice = price * qty; 
 		at.setAut_price(totalPrice);
 		
-		if(Tqty > 0) {
+		
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
@@ -241,11 +242,6 @@ public class AuctionMM {
 			aDao.setNotifyAuctionTender(at);
 			
 			view = "redirect:/auctionMyOrderList";
-		} else {
-			mav.addObject("massege","제발 가져가라");
-			mav.addObject("au_num",inbuyNum);
-			view = "redirect:/auctionRead";
-		}
 		
 		mav.setViewName(view);
 		return mav;
