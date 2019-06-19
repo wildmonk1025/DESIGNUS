@@ -200,12 +200,13 @@ div{
 	padding:1px;
 	font-size: 10px;
 	display: none;
+	z-index: 2000;
 	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75);
 	border: 1px solid black;
 }
 .alarmtitle {
 	text-align: center;
-	font-size: 20px;
+	font-size: 18px;
 	background-color: #FFC19E;
 	color:gray;
 }
@@ -522,12 +523,15 @@ $("#alarmBtn").click(function() {
  	setTimeout(function() {
 		$('#alarmList').css('display','none');
 		$('.alarmcontents').css('display','none');		
-	},8000);
+	},4500);
 });
 
+
 $(document).ajaxStart(function() {
-	setInterval(poll(),1000);
+	poll();
 });
+
+setInterval(poll,6000);
  	
  	function poll() {
 		$.ajax({
