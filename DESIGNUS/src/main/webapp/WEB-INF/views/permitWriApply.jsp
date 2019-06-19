@@ -22,7 +22,6 @@ ul {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1518px;
 	height: 170px;
 }
@@ -34,7 +33,6 @@ ul {
 }
 
 #adminwriterjoin {
-	border: 1px solid red;
 	float: left;
 	align-content: center;
 	width: 1216px;
@@ -66,16 +64,33 @@ ul {
 	height: auto;
 }
 .best {
+	border: 1px solid black;
 	display : inline;
 	float: left;
-	width: 900px;
+	width: 400px;
 	heigth: 150px;
 	background-color: coral;
 	size: 20px;
 	
 }
 
+a:active {
+	text-decoration: none;
+	color: white;
+}
 
+a:visited {
+	text-decoration: none;
+	color: white;
+}
+a:link {
+	text-decoration: none;
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}   
 </style>
 </head>
 
@@ -118,7 +133,7 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"id='btn'>"
+				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"'>"
 					  +"아이디:" +data[i].mb_id+"<br>"
 					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
 					  +"포트폴리오:"+data[i].mj_contents+"<br>"
