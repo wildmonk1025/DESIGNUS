@@ -197,7 +197,7 @@ td {
 <script>
 	function a() {
 		var f = document.formName;
-		f.action = "declarenonpermit?rq_num=${rq_num}";
+		f.action = "declarenonpermit?rp_num=${rp_num}";
 		// 파일 전송이 필요할 경우만 씀.
 		f.encoding = "multipart/form-data";
 		f.submit();
