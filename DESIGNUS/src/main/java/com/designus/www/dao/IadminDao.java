@@ -66,5 +66,7 @@ public interface IadminDao {
 
 	boolean getcotegorydel(@Param("cg_name") String cg_name);
 
+	boolean getcotegoryChange(@Param("cg_name") String cg_name, @Param("cg_cname")String cg_cname);
+
   
 }

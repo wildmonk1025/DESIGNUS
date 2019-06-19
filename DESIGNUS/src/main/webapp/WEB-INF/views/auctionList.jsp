@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -271,7 +272,7 @@ div {
 	</div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <script>
 
 	$("#Lbtn1").click(function() {
