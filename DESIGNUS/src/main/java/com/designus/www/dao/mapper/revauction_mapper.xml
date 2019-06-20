@@ -24,7 +24,7 @@
 		SELECT rownum as rn, RA_NUM, RA_MBID, RA_TITLE, RA_CGCODE, RA_IMAGE, RA_FILE, RA_OC, RA_DATE, RA_CONTENTS,
 		ROW_NUMBER() OVER(PARTITION BY RA_NUM ORDER BY RA_NUM DESC) AS rankNo 
 		FROM RA WHERE RA_CGCODE = #{cgcode} AND RA_OC='O' AND rownum <= ${num2}*9 
-		)where rn >= ${num2}*9-8
+		)where rn >= ${num2}*9-8 ORDER BY RA_DATE DESC
 		]]>
 	</select>
 		
@@ -33,7 +33,7 @@
 	</select>	
 		
 	<select id="getRevAuctionListSelect2" parameterType="String" resultType="revauction">
-	   SELECT * FROM RA WHERE UPPER(RA_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(RA_CONTENTS) LIKE UPPER('%'||#{word}||'%')
+	   SELECT * FROM RA WHERE RA_OC='O' AND (UPPER(RA_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(RA_CONTENTS) LIKE UPPER('%'||#{word}||'%')) ORDER BY RA_DATE DESC
 	</select>
 	
 	<select id="revAuctionReadSelect" parameterType="revauction" resultType="revauction">

@@ -3,11 +3,13 @@ package com.designus.www.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -91,7 +93,7 @@ public class SponsorMM {
 		return jsonObj;
 	}
 
-	public ModelAndView sponproduct(int ss_num) {
+	public ModelAndView sponproduct(int ss_num) throws ParseException {
 		String view = null;
 		mav = new ModelAndView();
 
@@ -99,20 +101,17 @@ public class SponsorMM {
 		 * List<Sponsor> spList = sDao.productinfo(); Gson gs = new Gson(); String
 		 * jsonObj = gs.toJson(spList); System.out.println(jsonObj);
 		 */
+		String today = null;
 
 		Sponsor sm = new Sponsor();
+		Sponsor sp = new Sponsor();
 		// ss.setSs_num(ss_num);
 		System.out.println("넘어오나용" + ss_num);
 		sm = sDao.getSponcheck(ss_num);
+		sp = sDao.getDatecheck(sp);
+		System.out.println(sp.getEnd_data());
+
 		sm.setSs_num(ss_num);
-
-		String time = sm.getSs_date();
-		SimpleDateFormat fm = new SimpleDateFormat(time);
-		String date = fm.format(new Date());
-		
-		System.out.println("시간을 불러왔나=" + date);
-
-		Calendar cal = Calendar.getInstance();
 
 		if (ss_num == sm.getSs_num()) {
 			System.out.println("여긴뭐지");
@@ -124,7 +123,7 @@ public class SponsorMM {
 			mav.addObject("ss_price", sm.getSs_price());
 			mav.addObject("ss_goalqty", sm.getSs_goalqty());
 			mav.addObject("ss_date", sm.getSs_date());
-			mav.addObject("ss_date2", date);
+			mav.addObject("ss_date2", sp.getEnd_data());
 			view = "sponProductFrm";
 		} else {
 			view = "sponsor";

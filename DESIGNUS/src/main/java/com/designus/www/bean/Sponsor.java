@@ -19,5 +19,6 @@ public class Sponsor {
 	int ss_goalqty;
 	String ss_contents;
 	String ss_date;
+	String end_data;
 	String ssi_imgSysName;
 }
