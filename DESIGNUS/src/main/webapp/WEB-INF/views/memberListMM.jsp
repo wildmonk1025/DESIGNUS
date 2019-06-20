@@ -56,14 +56,12 @@
             margin-left: 20px;
             width: 820px;
             height: 340px;
-            border: 1px solid grey;
             float: left;
         }
 
         .declareinfo {
             width: 820px;
             height: 340px;
-            border: 1px solid red;
         }
 
         .btnArray {
@@ -84,7 +82,7 @@
         }
 
         #btn3 {
-            bottom: 20px;
+            bottom: 17px;
             left: 850px;
         }
 
@@ -124,6 +122,69 @@
 tr{
 width: 300px;
 height: 60px;
+}
+.btn2{
+margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 150px;
+	height: 40px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+#atag{
+	width: 120px;
+	height: 30px;
 }
     </style>
 </head>
@@ -173,14 +234,14 @@ height: 60px;
                     </table>
                 </div>
                 <input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
-                <div class="btnArray" id="btn1"><input type="submit" value="경고" ></div>
+                <div class="btnArray" id="btn1"><input type="submit" value="경고" class="btn2" ></div>
                  </form>
                  <form action="membercautioncnt" method="post" id="form">
                  <input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
-                <div class="btnArray" id="btn2"><input type="submit" value="해제" id="dd"></div>
+                <div class="btnArray" id="btn2"><input type="submit" value="해제" id="dd" class="btn2"></div>
                 </form>
                 <div class="btnArray" id="btn3">
-                	<button><a href="memberList">돌아가기</a></button>
+                	<a href="memberList" class="btn2" id="atag">돌아가기</a>
                 </div>
                 <!--<div class="btnArray" id="btn3"><button onclick="goBack()">돌아가기</button></div>-->
             </div>
