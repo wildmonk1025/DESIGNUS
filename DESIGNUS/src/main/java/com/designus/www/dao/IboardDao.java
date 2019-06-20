@@ -40,4 +40,6 @@ public interface IboardDao {
 	List<Board> getboardimgInfo(@Param("num")int num);
 
 	void getviewInfo(@Param("num")int num);
+
+	void getreviewlike(@Param("num")int bd_num);
 }

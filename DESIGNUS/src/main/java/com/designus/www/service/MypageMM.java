@@ -903,6 +903,8 @@ public class MypageMM {
 		List<Notify> NoList = null;
 		List<AuctionTender> apsList = null;
 		List<Integer> maxpList = new ArrayList<Integer>();
+		List<SponsorProgress> spList=null;
+		List<Integer> stList = new ArrayList<Integer>();
 		// HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
 		String id = session.getAttribute("id").toString();
 		// String grade=session.getAttribute("grade").toString();
@@ -911,7 +913,16 @@ public class MypageMM {
 		NoList = pDao.notismypageSelect(id);
 		// apsList=pDao.AuctionProSelect(id);
 		apsList = pDao.auctionInfoSelect(id);
-
+        spList = pDao.sponsorProgress(id);
+        for (int i = 0; i < spList.size(); i++) {
+        	stList.addAll(pDao.SponsorTenderSelect(spList.get(i)));
+        }
+        System.out.println("그럼 마지막은??=" + stList.size());
+        Gson gson = new Gson();
+		String spgList = gson.toJson(spList);
+		String Mapst = gson.toJson(stList);
+		mav.addObject("stList", stList);
+		mav.addObject("spgList", spgList);
 		// 금,은,동
 		int g = pDao.gold(id);
 		int s = pDao.silver(id);
@@ -925,7 +936,7 @@ public class MypageMM {
 		}
 
 		// apsMap.put("maxpList",maxpList);
-		Gson gson = new Gson();
+		
 		String str = gson.toJson(NoList);
 
 		String apssList = gson.toJson(apsList);
