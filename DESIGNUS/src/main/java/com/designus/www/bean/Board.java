@@ -19,6 +19,6 @@ public class Board {
 	int    bd_like;
 	int    bd_views;
 	String bd_date;
-	String bd_imgSysName;
+	String bd_img;
 	
 }
