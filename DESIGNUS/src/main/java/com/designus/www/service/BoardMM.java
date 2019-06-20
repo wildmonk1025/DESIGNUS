@@ -1,6 +1,8 @@
 package com.designus.www.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Board;
+import com.designus.www.bean.MemberSearch;
 import com.designus.www.dao.IboardDao;
+import com.google.gson.Gson;
 @Service
 public class BoardMM {
 	ModelAndView mav;
@@ -27,5 +31,23 @@ public class BoardMM {
 		view = "reviewboard";
 		mav.setViewName(view);
 		return mav;
+	}
+	public String reviewboardlistInfo(int num) {
+		System.out.println("dddddd"+num);
+		
+		Board bList = bDao.getboardlistInfo(num);
+		List<Board> iList = bDao.getboardimgInfo(num);
+		 bDao.getviewInfo(num);
+		
+		System.out.println("[][][][][][][][] ="+iList);
+		Map<String, Object> map = new HashMap<>(); 
+		map.put("bList", bList);
+		map.put("iList", iList);
+		System.out.println("dd="+bList);
+		System.out.println("dd="+iList);
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(map);
+		System.out.println(jsonObj);
+		return jsonObj;
 	}
 }

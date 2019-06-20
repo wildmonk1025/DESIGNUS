@@ -157,9 +157,39 @@ public class AjaxMypageController {
 	public String fundapply(@RequestBody SponsorProgress sp) {
 		System.out.println("(컨트롤러)후원내역 스텝 3  시작!!!");
 		System.out.println("(컨트롤러)후원내역 스텝 3  중간 확인!!! :"+sp.getSsp_ptnum());
-		//String json = pm.fundapply();
+		String json = pm.fundapply(sp);
 		System.out.println("(컨트롤러)후원내역 스텝 3  마무리!!!");
-		return null;
+		return json;
+
+	}
+	@RequestMapping(value = "/funddeliinfo", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String funddeliinfo(@RequestBody SponsorProgress sp) {
+		System.out.println("(컨트롤러)후원내역 스텝 3  시작!!!");
+		System.out.println("(컨트롤러)후원내역 스텝 3  중간 확인!!! :"+sp.getSsp_ptnum());
+		String json = pm.funddeliinfo(sp);
+		System.out.println("(컨트롤러)후원내역 스텝 3  마무리!!!");
+		return json;
+
+	}
+	@RequestMapping(value = "/funddelinum", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String funddelinum(@RequestBody SponsorProgress sp) {
+		System.out.println("(컨트롤러)후원내역 배송보내기 4  시작!!!");
+		System.out.println("(컨트롤러)후원내역 배송보내기 4  중간 확인!!! :"+sp.getSsp_ssnum());
+		String json = pm.funddelinum(sp);
+		System.out.println("(컨트롤러)후원내역 배송보내기 4  마무리!!!");
+		return json;
+
+	}
+	@RequestMapping(value = "/SponBoardWrite", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String SponBoardWrite(@RequestBody SponsorProgress sp) {
+		System.out.println("(컨트롤러)후원내역 배송보내기 4  시작!!!");
+		System.out.println("(컨트롤러)후원내역 배송보내기 4  중간 확인!!! :"+sp.getSsp_ptnum());
+		String json = pm.SponBoardWrite(sp);
+		System.out.println("(컨트롤러)후원내역 배송보내기 4  마무리!!!");
+		return json;
 
 	}
 }

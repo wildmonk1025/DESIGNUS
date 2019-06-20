@@ -157,7 +157,7 @@ div {
 	width: 333px;
 	height: 49px;
 	font-size: 17px;
-	color: red;
+	color: blue;
 }
 
 .auListFrm{
@@ -191,8 +191,8 @@ div {
 	border: 1px solid green;
 	width: 333px;
 	height: 28px;
-	font-size: 20px;
-	color: red;
+	font-size: 17px;
+	color: blue;
 }
 
 </style>
@@ -240,7 +240,7 @@ div {
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
-						<img src="resources/images/${auimg}" />
+						<img src="<c:url value='/resources/upload/${auimg}'/>" width="100%" height="100%"/>
 					</div>
 					<div class="auListTitle">
 						${au.au_title }
@@ -252,7 +252,7 @@ div {
 						경매최고가 : ${au.aut_price}
 					</div>
 					<div class="auListDate">
-						마감시간 :  ${au.au_date }
+						${au.au_date }
 					</div>
 					
 					</div>
@@ -289,6 +289,5 @@ div {
 		$(".paging2").css("display", "inline");
 	});
 	
-
 </script>
 </html>

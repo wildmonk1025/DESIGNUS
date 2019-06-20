@@ -50,5 +50,15 @@
         <select id="getreviewboardlist" resultType="board">
    		SELECT * FROM BD WHERE BD_KIND='이용후기' ORDER BY BD_NUM DESC
    </select>
+        <select id="getboardlistInfo" parameterType="int" resultType="board">
+   		SELECT * FROM BD WHERE BD_NUM=${num}
+   </select>
+   
+        <select id="getboardimgInfo" parameterType="int" resultType="board">
+   		SELECT * FROM BDI WHERE BDI_NUM=${num}
+   </select>
        
+   <update id="getviewInfo" parameterType="int">
+		UPDATE BD SET BD_VIEWS=BD_VIEWS+1 WHERE BD_NUM = ${num}
+	</update>
 </mapper>

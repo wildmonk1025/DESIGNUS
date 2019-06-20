@@ -23,6 +23,7 @@ import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Board;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
@@ -434,16 +435,16 @@ public class MypageMM {
 		b.setBd_kind(bd_kind);
 
 		boolean a = bDao.reviewBoardyhWrite(b);
-		//알림 Start
+
+		// 알림 Start
 		Notify nf = new Notify();
-		System.out.println("[][][][][][][][][][][][] ="+ptnum);
-		nf.setNf_num(bDao.getAUPNumSel(ptnum));
+		nf.setNf_num(ptnum);
 		nf.setNf_mbid_r(id);
-		nf.setNf_mbid_s(bDao.getAuBoardUserName(nf));
-		nf.setNf_contents(bDao.getAuItemTitle(nf));
-		nf.setNf_notify(nf.getNf_mbid_r()+" 님이 작품 "+nf.getNf_contents()+" 에 후기를 남겼습니다");
+		nf.setNf_mbid_s(bDao.getRevBoardUserName(nf));
+		nf.setNf_contents(bDao.getRevItemTitle(nf));
+		nf.setNf_notify(nf.getNf_mbid_r() + " 님이 작품 " + nf.getNf_contents() + " 에 후기를 남겼습니다");
 		bDao.setNotifyboardyh(nf);
-		//알림 End
+		// 알림 End
 		System.out.println("[컨트롤러].reviewBoardWrite:a값 확인 : " + a);
 		System.out.println("boardnum=" + b.getBd_num());
 		AuctionProgress ap = new AuctionProgress();
@@ -853,15 +854,15 @@ public class MypageMM {
 		b.setBd_kind(bd_kind);
 
 		boolean a = bDao.reviewBoardyhWrite(b);
-		//알림 Start
+		// 알림 Start
 		Notify nf = new Notify();
-		nf.setNf_num(bDao.getRAPNumSel(ptnum));
+		nf.setNf_num(ptnum);
 		nf.setNf_mbid_r(id);
-		nf.setNf_mbid_s(bDao.getRevBoardUserName(nf));
-		nf.setNf_contents(bDao.getRevItemTitle(nf));
-		nf.setNf_notify(nf.getNf_mbid_r()+" 님이 작품 "+nf.getNf_contents()+" 에 후기를 남겼습니다");
+		nf.setNf_mbid_s(bDao.getAuBoardUserName(nf));
+		nf.setNf_contents(bDao.getAuItemTitle(nf));
+		nf.setNf_notify(nf.getNf_mbid_r() + " 님이 작품 " + nf.getNf_contents() + " 에 후기를 남겼습니다");
 		bDao.setNotifyboardyh(nf);
-		//알림 End
+		// 알림 End
 		revAuctionProgress rap = new revAuctionProgress();
 		rap.setRap_ptnum(ptnum);
 		rap.setRap_mbid_w(aumbidw);
@@ -1124,7 +1125,7 @@ public class MypageMM {
 	}
 
 	public String support(SponsorProgress sp) {
-		mav = new ModelAndView();
+		// mav = new ModelAndView();
 		String json = null;
 		boolean a = pDao.supportupdate(sp);
 		if (a) {
@@ -1163,11 +1164,11 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 6; // 페이지당 글의 수
+		int listCount = 3; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSuonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
-		String boardName = "fundingAcceptList";
+		String boardName = "fundingOrderList";
 
 		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
 				pageCount, boardName, kind);
@@ -1178,7 +1179,6 @@ public class MypageMM {
 		List<LocalDateTime> daList = pDao.deadlineSelect();
 		List<SponsorProgress> spList = new ArrayList<SponsorProgress>();
 
-		
 		LocalDateTime today = LocalDateTime.now();
 		String spgList = null;
 		LocalDateTime time = null;
@@ -1188,14 +1188,13 @@ public class MypageMM {
 		// hh:mm:ss.S");
 		// System.out.println("formatter"+formatter);
 		System.out.println("today" + today);
-		
+
 		for (int i = 0; i < daList.size(); i++) {
 			if (daList.get(i).isBefore(today)) {
-				System.out.println("daListdaList:"+daList.size());
+				System.out.println("daListdaList:" + daList.size());
 				spList.addAll(pDao.deadlineuSelecte(daList.get(i)));
 				System.out.println("1111" + spList.size());
-				
-				
+
 			}
 
 		}
@@ -1208,6 +1207,114 @@ public class MypageMM {
 		}
 
 		return spgList;
+	}
+
+	public String fundapply(SponsorProgress sp) {
+		System.out.println("(서비스클래스)후원진행내역 스타트!!!");
+		String json = null;
+		sp = pDao.fundapplySelect(sp);
+		System.out.println("(서비스클래스)후원진행내역 1차 중간 테스트 pt_num의 값 :" + sp.getSsp_ptnum());
+		if (sp != null) {
+			json = new Gson().toJson(sp);
+			System.out.println("(서비스클래스)후원진행내역 2차 중간 테스트 json의 값 :json=" + json);
+		}
+		System.out.println("(서비스클래스)후원진행내역 마무리!!!");
+		return json;
+	}
+
+	public ModelAndView funddeliupload(SponsorProgress sp) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean a = pDao.funddeliuploadupdate(sp);
+		if (a) {
+			view = "redirect:/fundingAcceptList";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public String funddeliinfo(SponsorProgress sp) {
+		String json = null;
+		List<SponsorProgress> spList = null;
+		spList = pDao.funddeliinfoSelect(sp);
+		json = new Gson().toJson(spList);
+		return json;
+	}
+
+	public String funddelinum(SponsorProgress sp) {
+		String json = null;
+		sp = pDao.funddelinumSelect(sp);
+		json = new Gson().toJson(sp);
+		return json;
+	}
+
+	public ModelAndView funddelinumupload(SponsorProgress sp) {
+		mav = new ModelAndView();
+		String view = null;
+		boolean b = false;
+
+		b = pDao.funddelinumuploadupdate(sp);
+		if (b) {
+			view = "redirect:/fundingOrderList";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+
+	public String SponBoardWrite(SponsorProgress sp) {
+		String json = null;
+		sp = pDao.SponBoardWriteupdate(sp);
+		json = new Gson().toJson(sp);
+		return json;
+	}
+
+	@Transactional
+	public ModelAndView WriteAReview(MultipartHttpServletRequest multi) {
+		//맴버 업데이트
+		String view=null;
+	    String wid= multi.getParameter("ss_mbid_w"); 
+	    int price= Integer.parseInt(multi.getParameter("ss_price")); 
+		Member mb=new Member();
+		mb.setMb_id(wid);
+		int pointW=pDao.pointcheck(mb);
+		mb.setMb_point(pointW);
+		mb.setPointW(price);
+		boolean a=pDao.memberupdatespon(mb);
+		//스폰서 업데이트
+		int ptnum=Integer.parseInt(multi.getParameter("ssp_ptnum"));
+		SponsorProgress sp=new SponsorProgress();
+		sp.setSsp_ptnum(ptnum);
+		
+		boolean b=pDao.sponsorupdatettt(sp);
+		 
+		if(b) {
+			String kind="이용후기";
+			int check = Integer.parseInt(multi.getParameter("fileCheck"));
+			String cont=multi.getParameter("bd_contents");
+			String id=session.getAttribute("id").toString();
+			String title=multi.getParameter("bd_title");
+			Board bd= new Board();
+			bd.setBd_contents(cont);
+			bd.setBd_mbid(id);
+			bd.setBd_title(title);
+			bd.setBd_kind(kind);
+			
+			pDao.WriteAReviewspon(bd);
+			boolean f = false;
+			if(check ==1 ) {
+				f = upload.sponfileUp(multi,bd.getBd_num());
+				if(f) {
+					System.out.println("어디로");
+					view = "redirect:/fundingAcceptList";
+				}else {
+					System.out.println("간겨???");
+					view = "myPage";
+				}
+			}
+			
+		}
+	    mav.setViewName(view);
+		return mav;
 	}
 
 }

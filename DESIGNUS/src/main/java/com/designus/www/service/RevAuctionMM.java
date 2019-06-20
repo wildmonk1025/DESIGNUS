@@ -46,10 +46,12 @@ public class RevAuctionMM {
 		String ra_mbid = session.getAttribute("id").toString();
 		String ra_title = multi.getParameter("ra_title");
 		String ra_contents = multi.getParameter("ra_contents");
-		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
 		String ra_oc = "O";
-
-
+		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
+		
+		if(!multi.getParameter("ra_mbid").isEmpty()) {
+			ra_oc = "C";
+		}
 
 		RevAuction ra = new RevAuction();
 		ra.setRa_mbid(ra_mbid);
@@ -68,7 +70,6 @@ public class RevAuctionMM {
 			String rat_mbid_w = multi.getParameter("ra_mbid");
 			int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
 			int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
-			ra_oc = "C";
 			RevAuctionTender rat = new RevAuctionTender();
 			rat.setRat_ranum(currval);
 			rat.setRat_mbid_w(rat_mbid_w);
