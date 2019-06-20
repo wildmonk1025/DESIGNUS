@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Board;
+import com.designus.www.bean.Notify;
 
 //import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,16 @@ public interface IboardDao {
 	boolean reviewfileInsert(Map<String, String> fMap);
 
 	boolean goods(String idw);
+
+	String getRevBoardUserName(Notify nf);
+
+	String getRevItemTitle(Notify nf);
+
+	void setNotifyboardyh(Notify nf);
+
+	String getAuBoardUserName(Notify nf);
+
+	String getAuItemTitle(Notify nf);
   
   
 }
