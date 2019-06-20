@@ -434,6 +434,16 @@ public class MypageMM {
 		b.setBd_kind(bd_kind);
 
 		boolean a = bDao.reviewBoardyhWrite(b);
+		
+		//알림 Start
+		Notify nf = new Notify();
+		nf.setNf_num(ptnum);
+		nf.setNf_mbid_r(id);
+		nf.setNf_mbid_s(bDao.getRevBoardUserName(nf));
+		nf.setNf_contents(bDao.getRevItemTitle(nf));
+		nf.setNf_notify(nf.getNf_mbid_r()+" 님이 작품 "+nf.getNf_contents()+" 에 후기를 남겼습니다");
+		bDao.setNotifyboardyh(nf);
+		//알림 End
 		System.out.println("[컨트롤러].reviewBoardWrite:a값 확인 : " + a);
 		System.out.println("boardnum=" + b.getBd_num());
 		AuctionProgress ap = new AuctionProgress();
@@ -843,6 +853,15 @@ public class MypageMM {
 		b.setBd_kind(bd_kind);
 
 		boolean a = bDao.reviewBoardyhWrite(b);
+		//알림 Start
+		Notify nf = new Notify();
+		nf.setNf_num(ptnum);
+		nf.setNf_mbid_r(id);
+		nf.setNf_mbid_s(bDao.getAuBoardUserName(nf));
+		nf.setNf_contents(bDao.getAuItemTitle(nf));
+		nf.setNf_notify(nf.getNf_mbid_r()+" 님이 작품 "+nf.getNf_contents()+" 에 후기를 남겼습니다");
+		bDao.setNotifyboardyh(nf);
+		//알림 End
 		revAuctionProgress rap = new revAuctionProgress();
 		rap.setRap_ptnum(ptnum);
 		rap.setRap_mbid_w(aumbidw);
@@ -1093,7 +1112,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 6; // 페이지당 글의 수
+		int listCount = 3; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSuwonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
