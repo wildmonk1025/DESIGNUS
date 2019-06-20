@@ -4,12 +4,12 @@ import java.security.Timestamp;
 
 import org.apache.ibatis.type.Alias;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Alias("notify")
-@Getter
-@Setter
+@Data
 public class Notify {
 	int    nf_num;
 	String nf_mbid_r;

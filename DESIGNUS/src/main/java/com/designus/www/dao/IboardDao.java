@@ -23,11 +23,15 @@ public interface IboardDao {
 
 	String getRevItemTitle(Notify nf);
 
-	void setNotifyboardyh(Notify nf);
-
 	String getAuBoardUserName(Notify nf);
 
 	String getAuItemTitle(Notify nf);
+
+	void setNotifyboardyh(Notify nf);
+
+	int getRAPNumSel(@Param("ptnum")int ptnum);
+
+	int getAUPNumSel(@Param("ptnum")int ptnum);
   
   
 }
