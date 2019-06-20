@@ -238,6 +238,43 @@ margin-top: 60px;
   top: 1080px;
   left: 1150px;  
 }
+#total {
+	position: absolute;
+	width: 100%;
+	height: 200%;
+	background-color: black;
+	z-index: 1001;
+	opacity: 0.75;
+	display: none;
+}
+#l1 {
+	position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+#v1 {
+	position: absolute;
+	width: 600px;
+	height: 430px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -259,6 +296,11 @@ $(document).ready(function(){
 
 
 <body>
+<div id="total"></div>
+	
+		<div id="l1"></div>
+		<div id="v1"></div>
+
 	<div id="mypagemain">
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
@@ -278,6 +320,7 @@ $(document).ready(function(){
         <div id="sixth">${Spaging}</div>
 		</div>
 	</div>
+	
 </body>
 <script type="text/javascript">
 var spgList=${spgList}
@@ -337,23 +380,62 @@ for(var i=0; i<spgList.length;i++){
 			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><input type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
+		}else if(spgList[i].ssp_step==4){
+			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
+			  +"<div class='Fifth'><p class='p3'>제작을<br>진행중 입니다.</p></div></div>"
+		}else if(spgList[i].ssp_step==5){
+			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 :"+spgList[i].ssp_track+"</div></div>"
+			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
+			  +"<div class='Fifth'><input type='button' onclick=\"Board('"+ spgList[i].ssp_ptnum+ "')\" value='후원 후기 쓰기'/></div></div>"
+		}else if(spgList[i].ssp_step==6){
+			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 :"+spgList[i].ssp_track+"</div></div>"
+			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
+			  +"<div class='Fifth'><p class='p3'>완료</p></div></div>"
 		}
 	
 	
 }
-function spo(even) {
+$('#renking').html(cc)
+
+function Board(even) {
 	var form = {ssp_ptnum : even}
-	var cc = "";
+	var vub = "";
 	$.ajax({
-		url : 'fundapply',
+		url : 'SponBoardWrite',
 		type : 'post',
 		data : JSON.stringify(form),
 		contentType : "application/json; charset=utf-8;",
 		dataType : 'json',
 		success : function(data) {
 			alert('해당 상품을 추천하였습니다.');
-			console.log("12" + data.aut_date);
+			console.log("12" + data.ss_price);
+			vub+="<form action='WriteAReview' method='post' enctype='multipart/form-data'>"
+			   +"<input type='hidden' name='ss_mbid_w' value='"+data.ss_mbid_w+"'>"
+			   +"<input type='hidden' name='ss_price'  value='"+data.ss_price+"'>"
+			   +"<input type='hidden' name='ssp_ptnum'  value='"+data.ssp_ptnum+"'>"
+			   +"<div class='v2'>후원 후기 쓰기<input type='button' id='butt' value='추천하기' onclick=\"good('"+ data.ss_mbid_w+ "')\"><br></div>"
+			   +"<div class='v3'><h2>"+data.ss_title+"</h2><h4>"+data.ss_price+"</h4></div>"
+			   +"<div class='v4'>구매후기 쓰기<input type='text' name='bd_title' ><br>"
+			   +"<textarea rows='10' cols='70' name='bd_contents'></textarea></div>"
+			   +"<div class='v5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple>"
+			   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'></div>"
+			   +"<div class='v6'><input type='submit' value='완료'>"
+			   +"<input type='button' value='취소'></div></form>"
+			   
 			
+			
+			
+				$('#total').css("display", "inline");
+			    $('#v1').css("display", "inline");		
+				$('#v1').html(vub);
+				
 		},
 
 		error : function(error) {
@@ -363,7 +445,73 @@ function spo(even) {
 	});//end ajax
 }
 
-$('#renking').html(cc)
+function good(data) {
+	var btn = $('#butt');
+	$.ajax({
+		url : "goods",
+		type : "post",
+		data : {
+			idw : data
+		},
+		success : function(data) {
+			alert('해당 상품을 추천하였습니다.');
+			console.log("123456" + data);
+			//btn.disabled = 'disabled'
+			var bu = document.getElementById('butt');
+			bu.disabled = true;
+
+		},
+		error : function(error) {
+			alert('정상적인 추천이 실패했습니다.');
+			console.log(error);
+		}
+
+	});//end good(ajax)
+}//end good
+function spo(even) {
+	var form = {ssp_ptnum : even}
+	var sub = "";
+	$.ajax({
+		url : 'fundapply',
+		type : 'post',
+		data : JSON.stringify(form),
+		contentType : "application/json; charset=utf-8;",
+		dataType : 'json',
+		success : function(data) {
+			alert('해당 상품을 추천하였습니다.');
+			console.log("12" + data.ss_price);
+			sub+="<form action='funddeliupload' method='post'>"
+			   +"<input type='hidden' name='ssp_ptnum' value='"+data.ssp_ptnum+"'>"
+			   +"<div class='l2'>"+data.ss_mbid_w+"님에게 배송정보 입력</div>"
+			   +"<div class='l3'><h2>"+data.ss_title+"</h2><h4>"+data.ss_price+"</h4></div>"
+			   +"<div class='l4'>아이디 :"+data.ssp_mbid_n+" <input type='hidden' name='ssp_mbid_n' id='ssp_mbid_n'><br>"
+			   +"이름 : <input type='text' name='ssp_name' id='ssp_name'><br>"
+			   +"주소 : <input type='text' name='ssp_address' id='ssp_address'><br>"
+			   +"연락처 : <input type='text' name='ssp_phone' id='ssp_phone'><br>"
+			   +"<div class='l5'><input type='submit' value='요청'>"
+			   +"<input type='button' id='back' value='취소'>"
+			   +"</div></div></form>";
+			
+			
+			
+			
+				$('#total').css("display", "inline");
+			    $('#l1').css("display", "inline");		
+				$('#l1').html(sub);
+				$("#back").click(function() {
+				$("#total").css("display", "none");
+				$("#l1").css("display", "none");
+				});
+		},
+
+		error : function(error) {
+			alert('정상적인 추천이 실패했습니다.');
+			console.log(error);
+		}
+	});//end ajax
+}
+
+
 
 	$("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
@@ -373,6 +521,16 @@ $('#renking').html(cc)
 		$('#lightbox-shadow1').css("display", "inline")
 		$('#lightbox1').css("display", "inline")
 	});
+	function fileChk(elem) {
+		console.dir(elem);
+		if (elem.value == "") {
+			console.log("empty");
+			$('#fileCheck').val(0); //파일 첨부 안했음
+		} else {
+			console.log("Notempty")
+			$('#fileCheck').val(1);//파일 첨부 했음
+		}
+	}//end fileChk
 </script>
 
 </html>

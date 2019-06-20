@@ -447,8 +447,8 @@
  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
      from ssp_ss_ssi
-       where SS_MBID_W=#{id}  and rownum<=${num}*6
-     ) where rn>=${num}*6-5 AND RankNo=1
+       where SS_MBID_W=#{id}  and rownum<=${num}*3
+     ) where rn>=${num}*3-2 AND RankNo=1
    ]]>
 	</select>
 	<select id="fundingOrderLisSelect" resultType="Integer">
@@ -460,12 +460,9 @@
 	<select id="getSuonCountt" parameterType="String"
 		resultType="Integer">
  		<![CDATA[ 
- 		 select count(*) from(
-  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
-  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
-      from ssp_ss_ssi 
-        where SS_MBID_W=#{id}
-         )where RankNo=1
+ 		 select count(*) from ssp_ss_ssi
+         where SS_MBID_W=#{id}
+         
    ]]>
 	</select>
 	<insert id="setNotifyWriApply" parameterType="notify">
@@ -490,4 +487,78 @@
          )where ss_date=#{localDateTime} and RankNo=1
    ]]>
 	</select>
+	<select id="fundapplySelect" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_PTNUM=${ssp_ptnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<update id="funddeliuploadupdate" parameterType="sponpro">
+		 update ssp set ssp_name=#{ssp_name}, ssp_address=#{ssp_address}, ssp_phone=#{ssp_phone}, ssp_step=4
+         where ssp_ptnum=${ssp_ptnum}
+	</update>
+	<select id="funddeliinfoSelect" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_SSNUM=${ssp_ssnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<select id="funddelinumSelect" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_PTNUM=${ssp_ptnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<update id="funddelinumuploadupdate" parameterType="sponpro">
+		 update ssp set ssp_track=#{ssp_track}, ssp_step=5
+         where SSP_PTNUM=${ssp_ptnum} 
+	</update>
+	<select id="SponBoardWriteupdate" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_PTNUM=${ssp_ptnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<select id="pointcheck" parameterType="String"
+		resultType="Integer">
+ 		select mb_point from mb
+         where mb_id=#{mb_id}
+	</select>
+	<update id="memberupdatespon" parameterType="member">
+		update MB SET
+		mb_point=#{mb_point}+#{pointW}
+		where mb_id=#{mb_id}
+	</update>
+	<update id="sponsorupdatettt" parameterType="sponpro">
+		 update ssp set ssp_step=6
+         where SSP_PTNUM=${ssp_ptnum} 
+	</update>
+	<insert id="WriteAReviewspon" parameterType="board">
+	<selectKey keyProperty="bd_num" resultType="int" order="AFTER">
+	   SELECT BD_SEQ.CURRVAL FROM DUAL 
+	</selectKey>
+		INSERT  INTO BOARD 
+       VALUES(BD_SEQ.NEXTVAL,#{bd_kind},#{bd_mbid},#{bd_title},#{bd_contents},DEFAULT,DEFAULT,DEFAULT)
+	
+	</insert>
 </mapper>

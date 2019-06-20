@@ -87,10 +87,10 @@
 }
 
 #middle_contents1_lv4 {
-	margin-top: 5px;
+	margin-top: 10px;
 	width: 850px;
 	height: 80px;
-	font-size: 50px;
+	font-size: 35px;
 	color: red;
 	text-align: left;
 }
@@ -348,7 +348,7 @@
 						<td style="text-align:left; color:blue;"></td>
 					</tr>
 				</table>
-				<div id="middle_contents1_lv4">경매 남은 시간 표시</div>
+				<div id="middle_contents1_lv4"></div>
 			</div>
 		</div>
 		<div id="middle_contents2">
@@ -479,7 +479,6 @@ $(".subtn").click(function() {
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();
 	function revauctionapply() {
-			//var formData = new FormData(document.getElementById("#tenderlightbox"));
 			var $file = $("#revfile");
 			var formData = new FormData();
 			formData.append("revamoney",$("#revamoney").val());
@@ -506,7 +505,6 @@ $(".subtn").click(function() {
 		}
 		
  	function revdecision(wid,wprice,wdays) {
- 		//alert("(가격: "+dval2+"원, 제작기간: "+dval3+"일) \n작가'"+dval1+"'님 에게 의뢰를 요청 하시겠습니까?");
  		var str='';
  		str+="(가격: "+wprice+"원, 제작기간: "+wdays+"일) \n작가'"+wid+"'님 에게 의뢰를 요청 하시겠습니까?";
  		swal(str, {
@@ -558,7 +556,46 @@ $(".subtn").click(function() {
  			  }
  			});
  	}
-// $("#middle_contents2_btn").attr('disabled',true);
-// $(".decisionbtn").css("display","none");
+ 	
+ 	//시간 표시
+ 	//CountDownTimer('01/01/2017', 'countdown'); // 2017년 1월 1일까지
+ 	//CountDownTimer('01/01/2018 00:00 AM', 'newcountdown'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
+ 	
+
+ 		var date = new Date("${raInfo.ra_date}");
+ 		CountDownTimer(date,'#middle_contents1_lv4');
+
+ 		function CountDownTimer(date,id) {
+ 		var end = new Date(date);
+ 	 	end.setDate(end.getDate()+1);
+ 		var _second = 1000;
+ 		var _minute = _second * 60;
+ 		var _hour = _minute * 60;
+ 		var _day = _hour * 24;
+ 		var timer;
+ 		
+ 		function showRemaining() {
+ 		var now = new Date();
+ 		var distance = end - now;
+ 		
+ 		if (distance < 0) {
+ 		clearInterval(timer);
+ 		$(id).html("경매가 마감되었습니다.");
+ 		
+ 		return;
+ 		}
+ 		
+ 		var days = Math.floor(distance / _day);
+ 		var hours = Math.floor((distance % _day) / _hour);
+ 		var minutes = Math.floor((distance % _hour) / _minute);
+ 		var seconds = Math.floor((distance % _minute) / _second);
+ 	 
+ 		$(id).html("경매 마감: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
+ 		}
+ 		
+ 		timer = setInterval(showRemaining, 1000);
+ 		}
+ 		// Source: stackoverflow
+ 		
 </script>
 </html>
