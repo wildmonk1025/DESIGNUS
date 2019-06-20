@@ -34,8 +34,11 @@ public class BoardMM {
 	}
 	public String reviewboardlistInfo(int num) {
 		System.out.println("dddddd"+num);
+		
 		Board bList = bDao.getboardlistInfo(num);
 		List<Board> iList = bDao.getboardimgInfo(num);
+		 bDao.getviewInfo(num);
+		
 		System.out.println("[][][][][][][][] ="+iList);
 		Map<String, Object> map = new HashMap<>(); 
 		map.put("bList", bList);
