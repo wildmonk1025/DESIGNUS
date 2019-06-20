@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.designus.www.bean.Board;
 import com.designus.www.bean.QnA;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
@@ -31,5 +32,7 @@ public interface IServiceCenterDao {
 	void setNotifyQuestionInsert(QuestionReply qr);
 
 	void setNotifyReportInsert(Report rp);
+
+
 
 }

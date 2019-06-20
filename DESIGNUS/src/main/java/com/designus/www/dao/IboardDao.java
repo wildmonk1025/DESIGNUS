@@ -1,6 +1,6 @@
 package com.designus.www.dao;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -33,5 +33,9 @@ public interface IboardDao {
 
 	int getAUPNumSel(@Param("ptnum")int ptnum);
   
-  
+	List<Board> getreviewboardlist();
+
+	Board getboardlistInfo(@Param("num")int num);
+
+	Board getboardimgInfo(@Param("num")int num);
 }

@@ -272,6 +272,9 @@ div {
 	width: 328px;
 	height: 250px;
 }
+.contentsImg:hover{
+	transform : scale(2.0);
+}
 
 #contents {
 	border: 1px solid gray;
@@ -330,10 +333,10 @@ div {
 					<c:if test="${code eq 200 }">유아</c:if>
 				</div>
 				<div id="middle_img_lv2">
-					여기에 이미지<br> 
-					${auInfo.aui_imgSysName1}<br>
+				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
 
 				</div>
+				
 			</div>
 			<div id="middle_contents1">
 				<div id="middle_contents1_lv1">
@@ -406,7 +409,8 @@ div {
 						<div class="wList"
 							onclick="location.href='auctionRead?au_num=${auw.au_num}'">
 							<div class="wListPhoto">
-								<!-- <img src="./images/logo.png" /> -->
+							<img src="<c:url value='/resources/upload/${auw.aui_img}'/>" width="100%" height="100%"/>
+								
 							</div>
 							<div class="wListTitle">${auw.au_title}</div>
 							<div class="wListContents">
@@ -439,10 +443,18 @@ div {
 			</div>
 			<div id="middle_contents1_lv6">
 				<h2>작품설명</h2>
-				<div class="contentsImg">${auInfo.aui_imgSysName1}</div>
-				<div class="contentsImg">${auInfo.aui_imgSysName2}</div>
-				<div class="contentsImg">${auInfo.aui_imgSysName3}</div>
-				<div class="contentsImg">${auInfo.aui_imgSysName4}</div>
+				<div class="contentsImg">
+				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
+				</div>
+				<div class="contentsImg">
+				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName2}'/>" width="100%" height="100%"/>
+				</div>
+				<div class="contentsImg">
+				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName3}'/>" width="100%" height="100%"/>
+				</div>
+				<div class="contentsImg">
+				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName4}'/>" width="100%" height="100%"/>
+				</div>
 				<div id="contents">${auInfo.au_contents }</div>
 			</div>
 

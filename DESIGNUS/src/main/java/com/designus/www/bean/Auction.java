@@ -17,6 +17,7 @@ public class Auction {
 	int    au_inprice;
 	String au_contents;
 	String au_date;
+	String aui_img;
 	String aui_imgSysName1;
 	String aui_imgSysName2;
 	String aui_imgSysName3;

@@ -1,170 +1,425 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <head>
-    <style>
-        #mainheader {
-            border: 1px solid black;
-            width: 1520px;
-            height: 170px;
-        }
+<style>
+#mainheader {
+	border: 1px solid black;
+	width: 1520px;
+	height: 170px;
+}
 
-        #homeMain {
-            border: 1px solid black;
-            width: 1520px;
-            height: 700px;
-        }
+#homeMain {
+	border: 1px solid black;
+	width: 1520px;
+	height: 700px;
+}
+
+.btn {
+	background-color: orange;
+	width: 150px;
+	height: 30px;
+	color: white;
+	float: right;
+}
+
+#coklist {
+	width: 1000px;
+	height: 150px;
+	float: left;
+	display: block;
+}
+
+#bestlist {
+	width: 1000px;
+	height: 150px;
+	float: left;
+	display: block;
+}
+
+#footercheck {
+	border: 1px solid black;
+	width: 1520px;
+	height: 150px;
+}
+
+#freeboard1 {
+	position: relative;
+	width: 1480px;
+	height: 100px;
+	top: 50px;
+	left: 50px;
+	display: inherit;
+}
+
+#freeboard2 {
+	border: 1px solid black;
+	width: 1200px;
+	height: 500px;
+	top: 50px;
+	left: 50px;
+}
+
+.btn2 {
+	width: 1400px;
+	height: 50px;
+	background-color: white;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+#paging {
+	position: relative;
+	border: 1px solid black;
+	width: 400px;
+	height: 40px;
+	top: 430px;
+	left: 500px;
+	font-size: 22px;
+	text-align: center;
+}
+
+form {
+	top: 20px;
+	left: 550px;
+}
+
+select {
+	position: relative;
+	left: 300px;
+	width: 100px;
+	height: 50px;
+	font-size: 18px;
+}
+
+.input1 {
+	position: relative;
+	left: 300px;
+	width: 250px;
+	height: 50px;
+	font-size: 18px;
+	position: relative;
+	top: -1px;
+}
+
+#btn5 {
+	position: relative;
+	top: -2px;
+	left: 440px;
+}
+
+.btn3 {
+	position: relative;
+	left: 300px;
+	width: 100px;
+	height: 50px;
+	top: -3px;
+	background-color: orange;
+}
+
+#btn5 {
+	position: absolute;
+	left: 850px;
+	width: 100px;
+	height: 50px;
+	background-color: orange;
+	top: -5px;
+}
+#lightbox {
+position: absolute;
+	border: 1px solid orange;
+	width: 1000px;
+	height: 600px;
+	left: 100px;
+	margin: auto;
+	background: #fff;
+	display: none;
+	text-align: center;
+	z-index: 1100;
+}
+
+#lightbox-shadow {
+position: relative;
+	width: 8000px;
+	height: 8000px;
+	z-index: 1000;
+	display: none;
+	margin: auto;
+	background-color: coral;
+}
 
 
-        #coklist {
-            width: 1000px;
-            height: 150px;
-            float: left;
-            display: block;
-        }
+.table-users {
+  border: 1px solid #327a81;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  max-width: calc(100% - 2em);
+  margin: 1em auto;
+  overflow: hidden;
+  width: 800px;
+}
 
-        #bestlist {
-            width: 1000px;
-            height: 150px;
-            float: left;
-            display: block;
-        }
+table {
+  width: 100%;
+}
+table td, table th {
+  color: #2b686e;
+  padding: 10px;
+}
+table td {
+  text-align: center;
+  vertical-align: middle;
+}
+table td:last-child {
+  font-size: 0.95em;
+  line-height: 1.4;
+  text-align: left;
+}
+table th {
+  background-color: #daeff1;
+  font-weight: 300;
+}
+table tr:nth-child(2n) {
+  background-color: white;
+}
+table tr:nth-child(2n+1) {
+  background-color: #edf7f8;
+}
 
-        #footercheck {
-            border: 1px solid black;
-            width: 1520px;
-            height: 150px;
-        }
+@media screen and (max-width: 700px) {
+  table, tr, td {
+    display: block;
+  }
 
-        #reviewboard1 {
-            position: absolute;
-            width: 1000px;
-            height: 100px;
-            top: 220px;
-            left: 50px;
-            display: inherit;
-        }
+  td:first-child {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 100px;
+  }
+  td:not(:first-child) {
+    clear: both;
+    margin-left: 100px;
+    padding: 4px 20px 4px 90px;
+    position: relative;
+    text-align: left;
+  }
+  td:not(:first-child):before {
+    color: #91ced4;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+  }
+  td:nth-child(2):before {
+    content: 'Name:';
+  }
+  td:nth-child(3):before {
+    content: 'Email:';
+  }
+  td:nth-child(4):before {
+    content: 'Phone:';
+  }
+  td:nth-child(5):before {
+    content: 'Comments:';
+  }
 
-        #reviewboard2 {
-            border: 1px solid black;
-            position: absolute;
-            width: 1000px;
-            height: 500px;
-            top: 317px;
-            left: 50px;
-        }
+  tr {
+    padding: 10px 0;
+    position: relative;
+  }
+  tr:first-child {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .header {
+    background-color: transparent;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    padding: 0;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
 
-        .btn2 {
-            width: 150px;
-            height: 98px;
-            background-color: white;
-        }
+  img {
+    border: 3px solid;
+    border-color: #daeff1;
+    height: 100px;
+    margin: 0.5rem 0;
+    width: 100px;
+  }
 
-        a:link {
-            color: black;
-            text-decoration: none;
-        }
-        a:visited {
-            color: black;
-            text-decoration: none;
-        }
-        #paging{
-            border: 1px solid black;
-            width: 300px;
-            height: 40px;
-            position: absolute;
-            top: 510px;
-            left: 370px;
-            text-align: center;
-        }
-        form{
-            position: absolute;
-            top: 20px;
-            left: 550px;
-        }
-        select{
-            width: 80px;
-            height: 50px;
-            font-size: 18px;
-            
-        }
-        input{
-            width: 180px;
-            height: 50px;
-            font-size: 18px;
-            position: relative;
-            top: -2px;
-        }
-        #btn5{
-            position: relative;
-            top: -2px;
-            left: 440px;
-        }
-       
-        .btn3{
-            width: 87px;
-            height: 40px;
-            background-color: orange;
-            
-        }
-       
-    </style>
-    <title>Home</title>
+  td:first-child {
+    background-color: #c8e7ea;
+    border-bottom: 1px solid #91ced4;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    top: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    width: 100%;
+  }
+  td:not(:first-child) {
+    margin: 0;
+    padding: 5px 1em;
+    width: 100%;
+  }
+  td:not(:first-child):before {
+    font-size: .8em;
+    padding-top: 0.3em;
+    position: relative;
+  }
+  td:last-child {
+    padding-bottom: 1rem !important;
+  }
+
+  tr {
+    background-color: white !important;
+    border: 1px solid #6cbec6;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    margin: 0.5rem 0;
+    padding: 0;
+  }
+
+  .table-users {
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+td{
+	width: 100px;
+	height: 30px;
+}
+table{
+	width: 1100px;
+	height: 800px;
+	overflow: scroll;
+}
+</style>
+<title>Home</title>
+
 </head>
 
 <body>
-    <div id="mainheader">
-        <jsp:include page="main.jsp" />
-    </div>
 
-    <div id="homeMain">
-        <div id="reviewboard1">
-            <button class="btn2">자유게시판</button> 
-            <button class="btn2" style="background-color: orange">이용후기</button> 
-            <button class="btn2">공지사항</button>
-            <form>
-                <select>
-                    <option>추천</option>
-                    <option>등록일</option>
-                    <option>조회수</option>
-                    <option>작성자</option>
-                </select>
-                <input type="text">
-                <button class="btn3">검색</button>
-            </form>
-            <button id="btn5" class="btn3">글작성</button>
-        </div>
-        <div id="reviewboard2">
-            <table style="text-align: center">
-                <tr>
-                    <th style="width: 100; height: 50">번호</th>
-                    <th style="width: 500">제목</th>
-                    <th style="width: 125">작성자</th>
-                    <th style="width: 125">등록일</th>
-                    <th style="width: 75">추천</th>
-                    <th style="width: 75">조회수</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">게시판 이용수칙 (필독)</a></td>
-                    <td>Lee수원</td>
-                    <td>2018-12-26</td>
-                    <td>542</td>
-                    <td>5429</td>
-                </tr>
-            </table>
-            <div id="paging">
-                [1]...[4][5][6][7][8][9]...[1004]
-            </div>
-        </div>
-        
-    </div>
-    <div id="footercheck">
-        <jsp:include page="footer.jsp"></jsp:include>
-    </div>
+
+	<div id="mainheader">
+		<jsp:include page="main.jsp" />
+	</div>
+
+	<div id="homeMain">
+		<div id="freeboard1">
+			<button style="background-color: coral" class="btn2">이용후기 게시판</button>
+			
+			
+		</div><br/><br/><br/>
+		<div id="freeboard2">
+		<div id="lightbox-shadow">
+		<div id="lightbox">
+		
+			<div class="table-users" id="declarelist">
+   
+</div>
+				<button class="button">확인</button>
+				<button type="button" class="button"
+					onclick="location.href='reviewboard' ">돌아가기</button>
+			</form>
+
+		</div>
+	</div>
+<table>
+	<tr bgcolor="aqua" height="30">
+		<th width="100">번호</th>
+		<th width="100">제목</th>
+		<th width="100">아이디</th>
+		<th width="100">작성일</th>
+		<th width="100">조회수</th>
+	</tr>
+	<c:forEach var="board" items="${bdInfo}">
+	 	 <tr>
+			<td align="center">${board.bd_num}</td>
+			<td align="center" width="400px;">
+			<a href="javascript:articleView(${board.bd_num});">${board.bd_title}</a></td>
+			<td align="center">${board.bd_mbid}</td>
+			<td align="center" width="300px;">${board.bd_date}</td>
+			<td align="center">${board.bd_views}</td>
+		</tr> 
+	</c:forEach>
+	
+	</table>
+	<form action="writeFrm">
+		<button>글쓰기</button>
+	</form>
+	<div align="center">${paging}</div>
+	
+	<div id="articleView_layer">
+		<div id="bg_layer"></div>
+		<div id="contents_layer"></div>
+	</div>	
+	<form action="test">
+	컬럼명:<input type="text" name="cName"/>
+	검색:<input type="text" name="search"/>
+	<button>컬럼 검색</button>
+</form>
+
+
+			<div id="paging">[1]...[4][5][6][7][8][9]...[1004]</div>
+		</div>
+
+	</div>
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 
 </body>
-
+<script>
+function articleView(num){
+	$('#lightbox-shadow').css("display", "inline");
+	$('#lightbox').css("display", "inline");
+	console.log(num);
+	$.ajax({
+		url : 'reviewboardlistInfo',
+		type: 'post',
+		data: {bd_num:num},
+		dataType : 'json',
+		//contentType:'application/json',
+		success:function(data){
+			var result = "";
+			console.dir(data);
+			console.log("성공");
+			
+				result+="<div class='header'>"+"이용후기 게시판"
+					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
+					  +"<th>"+data.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bd_kind+"</tr>"
+					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+data.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
+					  +"<td colspan='2'>"+data.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"+"내용"+"</td>"
+					  +"<td rowspan='2' colspan='4'>"+data.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
+					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bd_like+"</td>"
+					  +"<td>"+"조회수"+data.bd_views+"</td>"+"</tr>"+"<tr>"+"<td rowspan='3'>"+"후기이미지"+"</td>"
+					  +"<td rowspan='3' colspan='5'>"+data.bdi_img+"</td>"+"</table>";
+			
+			$("#declarelist").html(result);
+		},
+	error:function(error){
+		console.log("실패");
+		console.log(error);
+	}
+	});
+}
+</script>
 </html>

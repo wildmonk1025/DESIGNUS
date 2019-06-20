@@ -167,13 +167,13 @@ td {
 				contentType : "application/json; charset=utf-8;",
 				dataType : 'json',
 				success : function(data) {
-					alert('성공했습니다!!');
+					alert('밀어주기 성공! 작가를 응원합니다!');
 					console.log("1234567" + data.aup_ptnum);
 				
 				},
 
 				error : function(error) {
-					alert('실패했습니다.');
+					alert('한 번만 후원할 수 있어요!');
 					console.log(error);
 				}
 			});//end ajax
