@@ -37,5 +37,7 @@ public interface IboardDao {
 
 	Board getboardlistInfo(@Param("num")int num);
 
-	Board getboardimgInfo(@Param("num")int num);
+	List<Board> getboardimgInfo(@Param("num")int num);
+
+	void getviewInfo(@Param("num")int num);
 }

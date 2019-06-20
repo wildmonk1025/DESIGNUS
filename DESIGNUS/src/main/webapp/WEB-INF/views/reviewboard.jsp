@@ -138,12 +138,11 @@ select {
 }
 #lightbox {
 position: absolute;
-	border: 1px solid orange;
 	width: 1000px;
 	height: 600px;
 	left: 100px;
 	margin: auto;
-	background: #fff;
+	background: white;
 	display: none;
 	text-align: center;
 	z-index: 1100;
@@ -246,8 +245,9 @@ table tr:nth-child(2n+1) {
 }
 @media screen and (max-width: 500px) {
   .header {
-    background-color: transparent;
-    color: white;
+      background-color: #daeff1;
+
+    color: #daeff1;
     font-size: 2em;
     font-weight: 700;
     padding: 0;
@@ -303,12 +303,16 @@ table tr:nth-child(2n+1) {
 
 td{
 	width: 100px;
-	height: 30px;
+	height: 40px;
 }
 table{
 	width: 1100px;
-	height: 800px;
+	height: 700px;
 	overflow: scroll;
+}
+img{
+	width: 200px;
+	height: 200px;
 }
 </style>
 <title>Home</title>
@@ -402,17 +406,22 @@ function articleView(num){
 			var result = "";
 			console.dir(data);
 			console.log("성공");
-			
+			console.log(data.bList);
+			console.log(data.iList);
+		
 				result+="<div class='header'>"+"이용후기 게시판"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
-					  +"<th>"+data.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bd_kind+"</tr>"
-					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+data.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
-					  +"<td colspan='2'>"+data.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"+"내용"+"</td>"
-					  +"<td rowspan='2' colspan='4'>"+data.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
-					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bd_like+"</td>"
-					  +"<td>"+"조회수"+data.bd_views+"</td>"+"</tr>"+"<tr>"+"<td rowspan='3'>"+"후기이미지"+"</td>"
-					  +"<td rowspan='3' colspan='5'>"+data.bdi_img+"</td>"+"</table>";
-			
+					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</tr>"
+					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
+					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"+"내용"+"</td>"
+					  +"<td rowspan='2' colspan='4'>"+data.bList.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
+					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bList.bd_like+"</td>"
+					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>";
+					  for ( var i in data.iList){
+						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+data.iList[i].bdi_img
+						 +"</td></tr>";
+					  }
+					  result+="</table>";
 			$("#declarelist").html(result);
 		},
 	error:function(error){
