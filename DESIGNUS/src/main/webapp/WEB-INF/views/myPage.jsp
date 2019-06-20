@@ -58,6 +58,7 @@ div {
 	float: left;
 	font-size: 20px;
 	text-align: center;
+	overflow: scroll;
 }
 
 #main {
@@ -195,6 +196,13 @@ margin-left:40px;
  margin-top:20px;
  width: 1000px;
 }
+.t1{
+/* border: 1px solid orange; */
+border-top:1px solid orange;
+ margin-left:40px;
+ margin-top:10px;
+ float: left;
+}
 </style>
 
 </head>
@@ -218,7 +226,7 @@ margin-left:40px;
 				<tr><td>${g}</td><td>${s}</td><td>${c}</td></tr></table>
 			</div>
 			<div id="spon">
-				<h1>펀딩/후원</h1>
+				
 			</div>
 			<div id="auction">
 				<h1>참여중인경매</h1>
@@ -289,9 +297,32 @@ str+="<h3>참여중인 출품경매</h3>"
    str+="</table>";
    $('#auction').html(str)
  
+
+var stList=${stList};
+console.log(23,stList)
+var spgList=${spgList};
+console.log(22,spgList)
+var tt="";
+ var qq="";
+for(var j=0; j<stList.length;j++){
+	qq+=stList[j]+","
+
+ }  
+console.log(24,qq)  
+   tt+="<h2>펀딩/후원</h2>"
+ for(var i=0;i<spgList.length;i++){
+
+	 tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
+	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
+	   +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
+       
+	   +"목표("+spgList[i].ss_goalqty+") 마감일 :"+spgList[i].ss_date+"</div>" 
+       
+ }
+  
+  $('#spon').html(tt);
    
-    	
-   
+  
 </script>
 
 
