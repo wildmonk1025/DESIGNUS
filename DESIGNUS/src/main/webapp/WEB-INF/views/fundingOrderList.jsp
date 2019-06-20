@@ -332,7 +332,7 @@ for(var i=0; i<spgList.length;i++){
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br></div>"
-			  +"<div class='Fifth'><input type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
+			  +"<div class='Fifth'><p class='p3'>후원인의<br>배송정보를 수집 중입니다!</p></div></div>"
 		}
 	
 	
