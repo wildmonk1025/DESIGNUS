@@ -49,4 +49,9 @@
 		INSERT INTO SSI
 		VALUES (#{bnum},#{sysFileName})
 	</insert>
+
+	<select id="getDatecheck"
+		parameterType="java.time.LocalDateTime" resultType="sponsor">
+		SELECT ss_date+7 as end_data FROM SPONVIEW where ss_date=#{ss_date}
+	</select>
 </mapper>
