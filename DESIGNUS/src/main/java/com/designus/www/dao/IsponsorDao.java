@@ -32,4 +32,6 @@ public interface IsponsorDao {
 
 	boolean sponbuy(Sponsor sp);
 
+	Sponsor getDatecheck(Sponsor sp);
+
 }
