@@ -109,7 +109,10 @@ public class SponsorMM {
 		String time = sm.getSs_date();
 		SimpleDateFormat fm = new SimpleDateFormat(time);
 		String date = fm.format(new Date());
+		
 		System.out.println("시간을 불러왔나=" + date);
+
+		Calendar cal = Calendar.getInstance();
 
 		if (ss_num == sm.getSs_num()) {
 			System.out.println("여긴뭐지");
@@ -131,43 +134,32 @@ public class SponsorMM {
 	}
 
 	public String sponbuy(Sponsor ss) {
-		System.out.println("자 서비스 클래스 시작해보자~~~");
-		SponsorTender st = new SponsorTender();
-		mav = new ModelAndView();
 
 		System.out.println("후원 밀어주기??");
-		String view = null;
 
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
 
-		st.setSst_ssnum(ss_num);
-		st.setSst_mbid(id);
+		ss.getSs_num();
+		ss.setSs_mbid_w(id);
+
+		String json = new Gson().toJson(ss);
 
 		System.out.println("회원등급=" + grade);
-		System.out.println("넘버=" + ss_num);
+		System.out.println("넘버=" + json);
 
 		// 포인트 있을때만 밀어주기 가능하게 바꿔야함
 
-		boolean f = sDao.sponTenderInsert(st);
+		boolean f = sDao.sponTenderInsert(ss);
 		System.out.println("밀어주기 insert");
 		// 밀어주기 insert
 		if (f == true) {
-			sDao.sponbuy(st);
+			sDao.sponbuy(ss);
 			System.out.println("거래내역 insert");
-			// 후원 거래내역 insert
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>alert('해당 작품을 밀어주었습니다!');</script>");
-//			out.flush();
-			/* mav.addObject("msg", "밀어주기 성공."); */
-			view = "redirect:/sponproduct?ss_num=" + ss_num;
 		} else {
-			System.out.println("insert 실패");
-			view = "/sponsor";
+			System.out.println("ㄴㄴ");
 		}
-		mav.setViewName(view);
-		return mav;
 
+		return json;
 	}
 }

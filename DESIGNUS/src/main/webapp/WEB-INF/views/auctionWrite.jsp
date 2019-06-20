@@ -134,9 +134,18 @@ input[type="file"]{
 	color: gray;
 }
 .Btn5{
-	width: 100px;
-	height: 30px;
+	float: right;
+	width: 120px;
+	height: 50px;
+	font-size: 18px;
+	margin: 18px 18px 0px 0px;
 }
+a{
+	text-decoration: none;
+	color: black;
+}
+
+
 
 </style>
 </head>
@@ -224,44 +233,8 @@ input[type="file"]{
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="JavaScript">
-	/* 
-	attachFile = {
-		idx:0,
-		add:function(){ // 파일필드 추가
-			var o = this;
-			var idx = o.idx;
-
-			var div = document.createElement('div');
-			div.style.marginTop = '3px';
-			div.style.height = '70px';
-			div.id = 'file' + o.idx;
-
-			var file = document.all ? document.createElement('<input name="files">') : document.createElement('input');
-			file.type = 'file';
-			file.name = 'files';
-			file.size = '40';
-			file.id = 'fileField' + o.idx;
-
-			var btn = document.createElement('input');
-			btn.onclick = function(){o.del(idx)}
-			btn.type = 'button';
-			btn.value = '삭제'; 
-			btn.style.marginLeft = '5px';
-			btn.style.width = '99%';
-			div.appendChild(file);
-			div.appendChild(btn);
-			document.getElementById('attachFileDiv').appendChild(div);
-
-			o.idx++;
-		},
-		 del:function(idx){ // 파일필드 삭제
-			if(document.getElementById('fileField' + idx).value != '' && !confirm('삭제 하시겠습니까?')){
-				return;
-			}
-			document.getElementById('attachFileDiv').removeChild(document.getElementById('file' + idx));
-		} 
-	}
-	*/
+	
+	
 	
 	var count = 0;
 	 

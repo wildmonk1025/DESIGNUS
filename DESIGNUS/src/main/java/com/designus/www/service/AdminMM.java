@@ -228,11 +228,8 @@ public class AdminMM {
 		map.put("qr_contents", qr_contents);
 		boolean a = iDao.getquestionReply(map);
 		nf.setNf_num(aq_num);
-		System.out.println("[][][][][][][][][][][] = "+nf.getNf_num());
 		nf.setNf_mbid_r(iDao.userSel(nf));
-		System.out.println("[][][][][][][][][][][] = "+nf.getNf_mbid_r());
 		nf.setNf_notify("관리자 가 "+nf.getNf_mbid_r()+" 님의 1:1 문의에대한 답변을 했습니다.");
-		System.out.println("[][][][][][][][][][][] = "+nf.getNf_notify());
 		iDao.setNotifyAdmin(nf);
 		view = "questionList";
 		mav.setViewName(view);
