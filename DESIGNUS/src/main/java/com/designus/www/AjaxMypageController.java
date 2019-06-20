@@ -67,6 +67,7 @@ public class AjaxMypageController {
 		return json;
 
 	}
+
 	@RequestMapping(value = "/reviewboard", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String reviewboard(@RequestBody AuctionProgress ap) {
@@ -77,6 +78,7 @@ public class AjaxMypageController {
 		return json;
 
 	}
+
 	@RequestMapping(value = "/request", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String request(@RequestBody revAuctionProgress rap) {
@@ -86,6 +88,7 @@ public class AjaxMypageController {
 		System.out.println("(컨트롤러)제작의뢰내역 스타트!!!");
 		return json;
 	}
+
 	@RequestMapping(value = "/revauccancel", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String revauccancel(@RequestBody revAuctionProgress rap) {
@@ -95,6 +98,7 @@ public class AjaxMypageController {
 		System.out.println("(컨트롤러)제작의뢰내역  스텝 1 취소폼 마무리!!!");
 		return json;
 	}
+
 	@RequestMapping(value = "/delinumSelect", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String delinumSelect(@RequestBody revAuctionProgress rap) {
@@ -105,6 +109,7 @@ public class AjaxMypageController {
 		return json;
 
 	}
+
 	@RequestMapping(value = "/boardwrite", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String boardwrite(@RequestBody revAuctionProgress rap) {
@@ -115,6 +120,7 @@ public class AjaxMypageController {
 		return json;
 
 	}
+
 	@RequestMapping(value = "/auccancelDelete", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String auccancelDelete(@RequestBody AuctionProgress ap) {
@@ -125,6 +131,7 @@ public class AjaxMypageController {
 		return json;
 
 	}
+
 	@RequestMapping(value = "/support", method = { RequestMethod.GET,
 			RequestMethod.POST }, produces = "application/json;charset=utf8")
 	public String support(@RequestBody SponsorProgress sp) {
@@ -136,13 +143,23 @@ public class AjaxMypageController {
 
 	}
 
-@RequestMapping(value = "/deadline", method = { RequestMethod.GET,
-		RequestMethod.POST }, produces = "application/json;charset=utf8")
-public String deadline() {
-	System.out.println("(컨트롤러)제작의뢰내역 스텝 2 후원 진행 내역!!! 시작!!!");
-	String json = pm.deadline();
-	System.out.println("(컨트롤러)제작의뢰내역 스텝 2 후원 진행 내역 마무리!!!");
-	return json;
+	@RequestMapping(value = "/deadline", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String deadline() {
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 후원 진행 내역!!! 시작!!!");
+		String json = pm.deadline();
+		System.out.println("(컨트롤러)제작의뢰내역 스텝 2 후원 진행 내역 마무리!!!");
+		return json;
 
-}
+	}
+	@RequestMapping(value = "/fundapply", method = { RequestMethod.GET,
+			RequestMethod.POST }, produces = "application/json;charset=utf8")
+	public String fundapply(@RequestBody SponsorProgress sp) {
+		System.out.println("(컨트롤러)후원내역 스텝 3  시작!!!");
+		System.out.println("(컨트롤러)후원내역 스텝 3  중간 확인!!! :"+sp.getSsp_ptnum());
+		//String json = pm.fundapply();
+		System.out.println("(컨트롤러)후원내역 스텝 3  마무리!!!");
+		return null;
+
+	}
 }

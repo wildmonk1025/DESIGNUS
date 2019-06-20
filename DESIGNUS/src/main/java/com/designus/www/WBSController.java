@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.QnA;
+import com.designus.www.service.BoardMM;
 import com.designus.www.service.ServiceMM;
 
 @Controller
@@ -18,14 +19,12 @@ public class WBSController {
 	@Autowired
 	private ServiceMM sem;
 	
+	@Autowired
+	private BoardMM bm;
 	
 	ModelAndView mav;
 	
-	@RequestMapping(value = "/boardlist", method = RequestMethod.GET)
-	public String boardlist() {
-		
-		return "freeboard";
-	}
+
 	
 	@RequestMapping(value = "/scquestion")
 	public ModelAndView scquestion() {
@@ -73,6 +72,17 @@ public class WBSController {
 		
 		
 		return json;
+	}
+	@RequestMapping(value = "/reviewboard", method = RequestMethod.GET)
+	public ModelAndView reviewboardlist() {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("이거찍히니?");
+		mav = bm.reviewboardlist();
+		return mav;
+	
+		
+		//이용후기 리스트
+	
 	}
 	
 	

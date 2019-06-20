@@ -421,7 +421,7 @@ nav {
 				<a href="sponsor" class='atag'>후원</a>
 			</div>
 			<div class="submenu">
-				<a href="boardlist" class='atag'>이용후기</a>
+				<a href="reviewboard" class='atag'>이용후기</a>
 			</div>
 			<div class="submenu">
 				<a href="bestwriter" class='atag'>공지사항</a>

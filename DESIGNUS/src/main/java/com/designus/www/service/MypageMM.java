@@ -434,13 +434,13 @@ public class MypageMM {
 		b.setBd_kind(bd_kind);
 
 		boolean a = bDao.reviewBoardyhWrite(b);
-		
 		//알림 Start
 		Notify nf = new Notify();
-		nf.setNf_num(ptnum);
+		System.out.println("[][][][][][][][][][][][] ="+ptnum);
+		nf.setNf_num(bDao.getAUPNumSel(ptnum));
 		nf.setNf_mbid_r(id);
-		nf.setNf_mbid_s(bDao.getRevBoardUserName(nf));
-		nf.setNf_contents(bDao.getRevItemTitle(nf));
+		nf.setNf_mbid_s(bDao.getAuBoardUserName(nf));
+		nf.setNf_contents(bDao.getAuItemTitle(nf));
 		nf.setNf_notify(nf.getNf_mbid_r()+" 님이 작품 "+nf.getNf_contents()+" 에 후기를 남겼습니다");
 		bDao.setNotifyboardyh(nf);
 		//알림 End
@@ -855,10 +855,10 @@ public class MypageMM {
 		boolean a = bDao.reviewBoardyhWrite(b);
 		//알림 Start
 		Notify nf = new Notify();
-		nf.setNf_num(ptnum);
+		nf.setNf_num(bDao.getRAPNumSel(ptnum));
 		nf.setNf_mbid_r(id);
-		nf.setNf_mbid_s(bDao.getAuBoardUserName(nf));
-		nf.setNf_contents(bDao.getAuItemTitle(nf));
+		nf.setNf_mbid_s(bDao.getRevBoardUserName(nf));
+		nf.setNf_contents(bDao.getRevItemTitle(nf));
 		nf.setNf_notify(nf.getNf_mbid_r()+" 님이 작품 "+nf.getNf_contents()+" 에 후기를 남겼습니다");
 		bDao.setNotifyboardyh(nf);
 		//알림 End
