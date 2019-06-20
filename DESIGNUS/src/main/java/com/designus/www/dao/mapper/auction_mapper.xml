@@ -119,12 +119,23 @@
 
 	<select id="getAuctionWriterListSel" parameterType="auction" resultType="auction">
 		  <![CDATA[
-		SELECT * FROM AU 
-		WHERE ROWNUM <=3 AND AU_NUM != ${au_num} AND AU_MBID_W = #{au_mbid_w}
-		ORDER BY AU_NUM DESC
- 		]]>
+ 			select * from(
+    		select rownum AS RN, a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty,
+    		a.au_minprice, a.au_inprice, a.au_contents, a.au_date, b.aui_img, ROW_NUMBER() 
+   		 	OVER(PARTITION BY AU_NUM ORDER BY au_num DESC) AS AUM
+     		from AU a JOIN AUI b  
+     		on a.au_num = b.aui_num
+     		where au_num != ${au_num} and au_mbid_w = #{au_mbid_w} 
+     		order by dbms_random.value
+     		) where AUM =1 and rownum <=3
+ 			]]>
 	</select>
 
+		<!-- 		
+		SELECT * FROM AU 
+		WHERE ROWNUM <=3 AND AU_NUM != ${au_num} AND AU_MBID_W = #{au_mbid_w}
+		ORDER BY AU_NUM DESC 
+		-->
 	<insert id="setAuctionUTI" parameterType="auctiontender">
 		INSERT INTO AUCTION_PROGRESS
         VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)

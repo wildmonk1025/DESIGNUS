@@ -272,6 +272,9 @@ div {
 	width: 328px;
 	height: 250px;
 }
+.contentsImg:hover{
+	transform : scale(2.0);
+}
 
 #contents {
 	border: 1px solid gray;
@@ -406,7 +409,7 @@ div {
 						<div class="wList"
 							onclick="location.href='auctionRead?au_num=${auw.au_num}'">
 							<div class="wListPhoto">
-								<!-- <img src="./images/logo.png" /> -->
+								${auw.aui_img}
 							</div>
 							<div class="wListTitle">${auw.au_title}</div>
 							<div class="wListContents">
