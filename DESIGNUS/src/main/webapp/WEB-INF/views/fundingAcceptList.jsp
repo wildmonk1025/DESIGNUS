@@ -294,14 +294,14 @@ console.log(qq);
 var ww=qq.split(",");
 for(var i=0; i<spgList.length;i++){
 	if(spgList[i].ssp_step==1){
-		cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
+		cc+="<input type='text' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 		  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 		  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
 		  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress>("+ww[i]/spgList[i].ss_goalqty*100+"%)</div>"
 		  +"<div class='Fifth'><p class='p3'>후원진행중</p></div></div>"
-		  if(ww[i]==spgList[i].ss_goalqty){
 			  var ptnum=$('#ptnum').val();
 			  console.log(3,ptnum);
+		  if(ww[i]==spgList[i].ss_goalqty){
 			  var form = {
 					  ssp_ptnum : ptnum
 					}
