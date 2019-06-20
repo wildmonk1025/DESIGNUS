@@ -47,6 +47,8 @@
 		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_s},#{nf_mbid_r},#{nf_notify},0,DEFAULT)
 	</insert>
 <!--        이용후기 알람 End -->
-       
+        <select id="getreviewboardlist" resultType="board">
+   		SELECT * FROM BD WHERE BD_KIND='이용후기' ORDER BY BD_NUM DESC
+   </select>
        
 </mapper>

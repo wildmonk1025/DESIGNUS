@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.designus.www.bean.Board;
 import com.designus.www.bean.QnA;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
@@ -128,6 +129,9 @@ public class ServiceMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+
+
 
 	
 	

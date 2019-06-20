@@ -29,14 +29,14 @@
 		SELECT * FROM SPONVIEW WHERE SS_NUM =${ss_num}
 	</select>
 
-	<insert id="sponTenderInsert" parameterType="sponsortender">
+	<insert id="sponTenderInsert" parameterType="sponsor">
 		INSERT INTO
-		SPONSORTENDER VALUES(${sst_ssnum},#{sst_mbid})
+		SPONSORTENDER VALUES(${ss_num},#{ss_mbid_w})
 	</insert>
 
-	<insert id="sponbuy" parameterType="sponsortender">
+	<insert id="sponbuy" parameterType="sponsor">
 		INSERT INTO SSP
-		VALUES(SSP_SEQ.NEXTVAL,${sst_ssnum},#{sst_mbid},DEFAULT,DEFAULT,DEFAULT,DEFAULT,1)
+		VALUES(SSP_SEQ.NEXTVAL,${ss_num},#{ss_mbid_w},DEFAULT,DEFAULT,DEFAULT,DEFAULT,1)
 	</insert>
 
 	<insert id="sponuploadInsert" parameterType="sponsor">
