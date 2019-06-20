@@ -97,6 +97,86 @@ input[type=submit] {
 	background-color: orange;
 	color: white;
 }
+a:active {
+	text-decoration: none;
+	color: rgb(223, 192, 86);
+}
+
+a:visited {
+	text-decoration: none;
+	color: rgb(223, 192, 86);
+}
+a:link {
+	text-decoration: none;
+	color: rgb(223, 192, 86);
+}
+a:hover {
+	text-decoration: none;
+	color: rgb(223, 192, 86);
+} 
+.btn2{
+margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 150px;
+	height: 40px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+#atag{
+	width: 120px;
+	height: 30px;
+}
 </style>
 </head>
 
@@ -116,7 +196,7 @@ input[type=submit] {
 	<form name="formName"  action="questionreply" method="post">
 		<div id="onequestion">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
-		<button class="button"><a href="questionList">돌아가기</a></button>
+		
 			<div id="questiontitle">글 제목: ${aq_title}</div>
 			<div id="questioncontents">글 내용: ${aq_contents}</div>
 			<div id="questionfile">첨부파일 : ${aqi_img}</div>
@@ -125,7 +205,9 @@ input[type=submit] {
 				<textarea rows="30" cols="20"
 					style="margin: 5px; width: 800px; height: 100px;" id="ff"
 					placeholder="여기에 답글을 달 수 있습니다" name="qr_contents"></textarea>
-				<input type="submit" value="답변하기">
+				<input type="submit" value="답변하기" class="btn2">
+				 <a href="questionList" class="btn2">돌아가기</a>
+				
 				
 			</form>
 			

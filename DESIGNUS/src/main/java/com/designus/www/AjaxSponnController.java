@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.Sponsor;
+import com.designus.www.bean.SponsorTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.AuctionMM;
 import com.designus.www.service.RevAuctionMM;
@@ -44,16 +45,15 @@ public class AjaxSponnController {
 
 	@RequestMapping(value = "/sponbuy", produces = "application/json;charset=utf8", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public ModelAndView sponbuy(int ss_num, String ss_mbid, Sponsor ss) {
+	public String sponbuy(@RequestBody Sponsor ss) {
 		System.out.println("도착했음!!");
-		int num = ss.getSs_num();
-		mav = new ModelAndView();
-		mav = spm.sponbuy(ss_num, ss_mbid);
-		System.out.println("ssnum=" + num);
-		System.out.println("ss_num=" + ss_num);
+		//int num = ss.getSs_num()
+		 String json = spm.sponbuy(ss);
+		System.out.println("ssnum=" + ss.getSs_num());
+		//System.out.println("ss_num=" + ss_num);
 		// String ajaxsponsor = spm.productinfo();
 
-		return mav;
+		return json;
 	}
 
 }
