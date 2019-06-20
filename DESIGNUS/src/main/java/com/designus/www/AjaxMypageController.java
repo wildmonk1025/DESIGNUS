@@ -135,4 +135,14 @@ public class AjaxMypageController {
 		return json;
 
 	}
+
+@RequestMapping(value = "/deadline", method = { RequestMethod.GET,
+		RequestMethod.POST }, produces = "application/json;charset=utf8")
+public String deadline() {
+	System.out.println("(컨트롤러)제작의뢰내역 스텝 2 후원 진행 내역!!! 시작!!!");
+	String json = pm.deadline();
+	System.out.println("(컨트롤러)제작의뢰내역 스텝 2 후원 진행 내역 마무리!!!");
+	return json;
+
+}
 }
