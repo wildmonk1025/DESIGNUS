@@ -87,7 +87,7 @@
 }
 
 #middle_contents1_lv4 {
-	margin-top: 10px;
+	margin-top: 20px;
 	width: 850px;
 	height: 80px;
 	font-size: 35px;
@@ -561,9 +561,10 @@ $(".subtn").click(function() {
  	//CountDownTimer('01/01/2017', 'countdown'); // 2017년 1월 1일까지
  	//CountDownTimer('01/01/2018 00:00 AM', 'newcountdown'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
  	
-
+		$(document).ready(function() {
  		var date = new Date("${raInfo.ra_date}");
  		CountDownTimer(date,'#middle_contents1_lv4');
+		});
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
@@ -581,7 +582,17 @@ $(".subtn").click(function() {
  		if (distance < 0) {
  		clearInterval(timer);
  		$(id).html("경매가 마감되었습니다.");
- 		
+	      $.ajax({
+				type:'POST',
+				url:'ajax/reqdecision',
+				data: JSON.stringify(form),
+				dataType:'json',
+				success: function(data) {
+					console.log("성공");						
+				},
+				error: function(error) {
+				}
+			});
  		return;
  		}
  		
@@ -590,7 +601,7 @@ $(".subtn").click(function() {
  		var minutes = Math.floor((distance % _hour) / _minute);
  		var seconds = Math.floor((distance % _minute) / _second);
  	 
- 		$(id).html("경매 마감: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
+ 		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
  		timer = setInterval(showRemaining, 1000);

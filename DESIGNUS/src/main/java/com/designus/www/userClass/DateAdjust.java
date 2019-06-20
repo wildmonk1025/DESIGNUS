@@ -44,10 +44,10 @@ public class DateAdjust {
 			
 			long s = currentDateTime.until(original_setDate, ChronoUnit.SECONDS);
 	
-			val = "마감시간 : "+d + "일 " + h + "시간 " + m +"분 " + s + "초 남음";
+			val = "남은시간 : "+d + "일 " + h + "시간 " + m +"분 " + s + "초 남음";
 
 		} else {
-			val = "마감시간 : 종료";
+			val = "경매가 마감되었습니다.";
 		}
 		
 		  
