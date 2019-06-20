@@ -124,8 +124,7 @@ td {
 					<td class="ts1">후원 목표량</td>
 					<td class="ts2">${ss_goalqty}</td>
 					<td class="ts1">후원 기간</td>
-					<td class="ts2"><fmt:parseDate var="startdate"
-							value="${ss_date}" apttern="yyyy-MM-dd" /></td>
+					<td class="ts2">${ss_date2}</td>
 					<td class="ts1">현재 주문량</td>
 					<td class="ts2">0</td>
 				</tr>
