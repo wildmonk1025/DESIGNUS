@@ -18,6 +18,7 @@ public class Member {
 	int    mb_point;
 	String mb_grade;
 	int    mb_ccnt;
-	
+	 int pointN;
+	    int pointW;
 	String mb_notify;
 }

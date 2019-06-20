@@ -184,6 +184,26 @@ List<SponsorProgress> deadlineuSelecte(LocalDateTime localDateTime);
 
 boolean deadlineupdate(SponsorProgress sponsorProgress);
 
+SponsorProgress fundapplySelect(SponsorProgress sp);
+
+boolean funddeliuploadupdate(SponsorProgress sp);
+
+List<SponsorProgress> funddeliinfoSelect(SponsorProgress sp);
+
+SponsorProgress funddelinumSelect(SponsorProgress sp);
+
+boolean funddelinumuploadupdate(SponsorProgress sp);
+
+SponsorProgress SponBoardWriteupdate(SponsorProgress sp);
+
+int pointcheck(Member mb);
+
+boolean memberupdatespon(Member mb);
+
+boolean sponsorupdatettt(SponsorProgress sp);
+
+boolean WriteAReviewspon(Board bd);
+
 	/* int getSppagingCountt(String id); */
 
   
