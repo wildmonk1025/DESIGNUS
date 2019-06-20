@@ -151,7 +151,7 @@ div {
 	width: 333px;
 	height: 65px;
 }
-#raListDate{
+.raListDate{
 	float: left;
 	border: 1px solid green;
 	width: 333px;
@@ -223,7 +223,8 @@ div {
 						<p>경매최고가 : ${ra.ra_max }</p>
 						
 					</div>
-					<div id="raListDate" onload="CountDownTimer(${ra.ra_date});">
+					<div class="raListDate">
+							${ra.ra_date}
 					</div>
 					</div>
 			</c:forEach>
@@ -288,62 +289,6 @@ div {
 		$(".paging2").css("display", "inline");
 	});
 	
-	//시간 표시
-	
-	//CountDownTimer('01/01/2017', 'countdown'); // 2017년 1월 1일까지
-	//CountDownTimer('01/01/2018 00:00 AM', 'newcountdown'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
-	
-	var cntTimer = new Array();
-	var date
-	<c:forEach var="i" items="${raList}">
-		//date = date.parse("${i.ra_date}");
-		date = new Date("${i.ra_date}");
-		date.setDate(date.getDate()+3);
-		cntTimer.push(date);
-	</c:forEach>
-	
-	for(var i in cntTimer) {
-	CountDownTimer(cntTimer[i],'#raListDate');
-	console.log(i);
-	}
-	
-	//CountDownTimer(cntTimer.pop(11), '.raListDate'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
-	
-		function CountDownTimer(dt) {
-		console.loag(dt);
-		var end = new Date(dt);
 
-		var _second = 1000;
-		var _minute = _second * 60;
-		var _hour = _minute * 60;
-		var _day = _hour * 24;
-		var timer;
-		
-		function showRemaining() {
-		var now = new Date();
-		var distance = end - now;
-		
-		if (distance < 0) {
-		clearInterval(timer);
-		$(this).html('경매종료!');
-
-		return;
-		}
-		
-		var days = Math.floor(distance / _day);
-		var hours = Math.floor((distance % _day) / _hour);
-		var minutes = Math.floor((distance % _hour) / _minute);
-		var seconds = Math.floor((distance % _minute) / _second);
-		$(this).html("경매 마감까지 "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
-		}
-		/* 고고 */
-		timer = setInterval(showRemaining, 1000);
-		}
-		// Source: stackoverflow
-	
-
-	
-	
-	
 </script>
 </html>
