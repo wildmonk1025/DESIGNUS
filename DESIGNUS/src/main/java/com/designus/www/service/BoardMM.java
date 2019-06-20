@@ -35,7 +35,7 @@ public class BoardMM {
 	public String reviewboardlistInfo(int num) {
 		System.out.println("dddddd"+num);
 		Board bList = bDao.getboardlistInfo(num);
-		Board iList = bDao.getboardimgInfo(num);
+		List<Board> iList = bDao.getboardimgInfo(num);
 		System.out.println("[][][][][][][][] ="+iList);
 		Map<String, Object> map = new HashMap<>(); 
 		map.put("bList", bList);
@@ -43,7 +43,7 @@ public class BoardMM {
 		System.out.println("dd="+bList);
 		System.out.println("dd="+iList);
 		Gson gs = new Gson();
-		String jsonObj = gs.toJson(bList);
+		String jsonObj = gs.toJson(map);
 		System.out.println(jsonObj);
 		return jsonObj;
 	}
