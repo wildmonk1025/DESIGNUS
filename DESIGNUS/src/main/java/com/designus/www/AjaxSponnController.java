@@ -47,10 +47,10 @@ public class AjaxSponnController {
 			RequestMethod.GET })
 	public String sponbuy(@RequestBody Sponsor ss) {
 		System.out.println("도착했음!!");
-		//int num = ss.getSs_num()
-		 String json = spm.sponbuy(ss);
+		// int num = ss.getSs_num()
+		String json = spm.sponbuy(ss);
 		System.out.println("ssnum=" + ss.getSs_num());
-		//System.out.println("ss_num=" + ss_num);
+		// System.out.println("ss_num=" + ss_num);
 		// String ajaxsponsor = spm.productinfo();
 
 		return json;
