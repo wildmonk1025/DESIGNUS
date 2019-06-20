@@ -1,7 +1,9 @@
 package com.designus.www.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -208,13 +210,9 @@ public class MypageMM {
 
 		Notify nf = new Notify();
 		nf.setNf_mbid_r(id);
-		nf.setNf_notify(id+" 님이 작가 전환신청을 하였습니다.");
+		nf.setNf_notify(id + " 님이 작가 전환신청을 하였습니다.");
 		pDao.setNotifyWriApply(nf);
-		
-		
-		
-		
-		
+
 		boolean f = false;
 		if (check == 1) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
@@ -885,7 +883,7 @@ public class MypageMM {
 		List<Notify> NoList = null;
 		List<AuctionTender> apsList = null;
 		List<Integer> maxpList = new ArrayList<Integer>();
-		//HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
+		// HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
 		String id = session.getAttribute("id").toString();
 		// String grade=session.getAttribute("grade").toString();
 		Member mb = new Member();
@@ -906,7 +904,6 @@ public class MypageMM {
 			maxpList.addAll(pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()));
 		}
 
-
 		// apsMap.put("maxpList",maxpList);
 		Gson gson = new Gson();
 		String str = gson.toJson(NoList);
@@ -914,7 +911,7 @@ public class MypageMM {
 		String apssList = gson.toJson(apsList);
 		String maxList = gson.toJson(maxpList);
 
-		if (mb != null && NoList != null && apsList != null ) {
+		if (mb != null && NoList != null && apsList != null) {
 			mav.addObject("mb", mb);
 			mav.addObject("NoList", str);
 			mav.addObject("toMap", apssList);
@@ -1014,7 +1011,7 @@ public class MypageMM {
 
 		Gson gson = new Gson();
 		String aqgList = gson.toJson(aqList);
-		System.out.println("11111:"+aqList.get(0).getAbc());
+		System.out.println("11111:" + aqList.get(0).getAbc());
 		mav.addObject("aqgList", aqgList);
 		mav.addObject("Aqpaging", getAqpaging(num, kind));
 		view = "questionaList";
@@ -1040,7 +1037,7 @@ public class MypageMM {
 
 	public ModelAndView questionread(AloneQuestion aq) {
 		mav = new ModelAndView();
-		aq=pDao.questionreadSelct(aq);
+		aq = pDao.questionreadSelct(aq);
 		Gson gson = new Gson();
 		String quest = gson.toJson(aq);
 		mav.addObject("quest", quest);
@@ -1049,43 +1046,42 @@ public class MypageMM {
 	}
 
 	public void download(Map<String, Object> params) throws Exception {
-	       String root=(String) params.get("root");
-	       String sysFileName=(String)params.get("aqi_img");
-	       String oriFileName=(String)params.get("aqi_img");
-	       String fullPath=root+"/resources/upload/"+sysFileName;
-	       
-	       HttpServletResponse resp=(HttpServletResponse)params.get("responce");
-	       //실제 다운로드
-	       upload.download(fullPath, oriFileName, resp);
-		}
+		String root = (String) params.get("root");
+		String sysFileName = (String) params.get("aqi_img");
+		String oriFileName = (String) params.get("aqi_img");
+		String fullPath = root + "/resources/upload/" + sysFileName;
+
+		HttpServletResponse resp = (HttpServletResponse) params.get("responce");
+		// 실제 다운로드
+		upload.download(fullPath, oriFileName, resp);
+	}
 
 	public ModelAndView fundingAcceptList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
-		
-		
+
 		String id = session.getAttribute("id").toString();
 		String view = null;
 		List<SponsorProgress> spList = null;
-		List<Integer> stList= new ArrayList<Integer>();
-		int aa=0;
+		List<Integer> stList = new ArrayList<Integer>();
+		int aa = 0;
 		HashMap<Object, Object> soMap = new HashMap<Object, Object>();
-		
+
 		int num = (pageNum == null) ? 1 : pageNum;
-		spList=pDao.fundingAcceptListSelect(id,num);
-		 for(int i=0;i<spList.size();i++) {
-			 stList.addAll( pDao.SponsorTenderSelect(spList.get(i)));
-			System.out.println("구분하래="+stList.size());
-		 }
-		 System.out.println("그럼 마지막은??="+stList.size());
+		spList = pDao.fundingAcceptListSelect(id, num);
+		for (int i = 0; i < spList.size(); i++) {
+			stList.addAll(pDao.SponsorTenderSelect(spList.get(i)));
+			System.out.println("구분하래=" + stList.size());
+		}
+		System.out.println("그럼 마지막은??=" + stList.size());
 		Gson gson = new Gson();
 		String spgList = gson.toJson(spList);
-		 //Gson gson = new Gson();
-			//String stgList = gson.toJson(stList);
-			//mav.addObject("stpList", stgList);
+		// Gson gson = new Gson();
+		// String stgList = gson.toJson(stList);
+		// mav.addObject("stpList", stgList);
 		String Mapst = gson.toJson(stList);
 		mav.addObject("stList", stList);
 		mav.addObject("spgList", spgList);
-		
+
 		mav.addObject("Spaging", getSpaging(num, kind));
 		view = "fundingAcceptList";
 
@@ -1097,7 +1093,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 6; // 페이지당 글의 수
+		int listCount = 3; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
 		int maxNum = pDao.getSuwonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
@@ -1109,38 +1105,38 @@ public class MypageMM {
 	}
 
 	public String support(SponsorProgress sp) {
-		mav=new ModelAndView();
-		String json=null;
-		boolean a=pDao.supportupdate(sp);
-		if(a) {
+		mav = new ModelAndView();
+		String json = null;
+		boolean a = pDao.supportupdate(sp);
+		if (a) {
 			json = new Gson().toJson(a);
-		}else {
+		} else {
 			json = new Gson().toJson(a);
 		}
 		return json;
 	}
 
 	public ModelAndView fundingOrderList(Integer pageNum, String kind) {
-		mav=new ModelAndView();
+		mav = new ModelAndView();
 		String id = session.getAttribute("id").toString();
-		String view=null;
+		String view = null;
 		List<SponsorProgress> spList = null;
-		List<Integer> stList= new ArrayList<Integer>();
+		List<Integer> stList = new ArrayList<Integer>();
 		int num = (pageNum == null) ? 1 : pageNum;
-		spList=pDao.fundingOrderListSelect(id,num);
-		for(int i=0;i<spList.size();i++) {
-			 stList.addAll( pDao.fundingOrderLisSelect(spList.get(i)));
-			System.out.println("구분하래="+stList.size());
-		 }
-		 System.out.println("그럼 마지막은??="+stList.size());
-		 Gson gson = new Gson();
-			String spgList = gson.toJson(spList);
-			String Mapst = gson.toJson(stList);
-			mav.addObject("Mapst", Mapst);
-			mav.addObject("spgList", spgList);
-			mav.addObject("Spqging", getSpqging(num, kind));
-	    view="fundingOrderList";
-	    mav.setViewName(view);
+		spList = pDao.fundingOrderListSelect(id, num);
+		for (int i = 0; i < spList.size(); i++) {
+			stList.addAll(pDao.fundingOrderLisSelect(spList.get(i)));
+			System.out.println("구분하래=" + stList.size());
+		}
+		System.out.println("그럼 마지막은??=" + stList.size());
+		Gson gson = new Gson();
+		String spgList = gson.toJson(spList);
+		String Mapst = gson.toJson(stList);
+		mav.addObject("Mapst", Mapst);
+		mav.addObject("spgList", spgList);
+		mav.addObject("Spqging", getSpqging(num, kind));
+		view = "fundingOrderList";
+		mav.setViewName(view);
 		return mav;
 	}
 
@@ -1157,6 +1153,42 @@ public class MypageMM {
 		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
 				pageCount, boardName, kind);
 		return paging.makeHtmlPaging();
+	}
+
+	public String deadline() {
+		List<LocalDateTime> daList = pDao.deadlineSelect();
+		List<SponsorProgress> spList = new ArrayList<SponsorProgress>();
+
+		
+		LocalDateTime today = LocalDateTime.now();
+		String spgList = null;
+		LocalDateTime time = null;
+		boolean p = false;
+
+		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd
+		// hh:mm:ss.S");
+		// System.out.println("formatter"+formatter);
+		System.out.println("today" + today);
+		
+		for (int i = 0; i < daList.size(); i++) {
+			if (daList.get(i).isBefore(today)) {
+				System.out.println("daListdaList:"+daList.size());
+				spList.addAll(pDao.deadlineuSelecte(daList.get(i)));
+				System.out.println("1111" + spList.size());
+				
+				
+			}
+
+		}
+		for (int j = 0; j < spList.size(); j++) {
+			p = pDao.deadlineupdate(spList.get(j));
+		}
+		if (p) {
+			Gson gson = new Gson();
+			spgList = gson.toJson(p);
+		}
+
+		return spgList;
 	}
 
 }

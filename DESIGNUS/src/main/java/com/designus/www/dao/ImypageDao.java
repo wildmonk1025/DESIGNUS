@@ -1,5 +1,6 @@
 package com.designus.www.dao;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -166,7 +167,6 @@ boolean supportupdate(SponsorProgress sp);
 
 List<Map<String, String>> getOpPeriodList();
 
-int expireOption(String op_code);
 
 List<SponsorProgress> fundingOrderListSelect(@Param("id") String id,@Param("num") int num);
 
@@ -175,6 +175,14 @@ List<Integer> fundingOrderLisSelect(SponsorProgress sponsorProgress);
 int getSuonCountt(String id);
 
 void setNotifyWriApply(Notify nf);
+
+List<LocalDateTime> deadlineSelect();
+
+boolean deadlineupdate();
+
+List<SponsorProgress> deadlineuSelecte(LocalDateTime localDateTime);
+
+boolean deadlineupdate(SponsorProgress sponsorProgress);
 
 	/* int getSppagingCountt(String id); */
 

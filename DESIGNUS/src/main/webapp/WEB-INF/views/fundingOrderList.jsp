@@ -238,7 +238,22 @@ margin-top: 60px;
   left: 1150px;  
 }
 </style>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	 $.ajax({
+			url: 'deadline',
+			type:'post',
+		    dataType:'json',
+		    success:function(data){
+		    }, 
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+});
+// contentType:"application/json; charset=utf-8;",
+</script>
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -310,7 +325,7 @@ for(var i=0; i<spgList.length;i++){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
-			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress>("+ww[i]/spgList[i].ss_goalqty*100+"%)</div>"
+			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><p class='p3'>목표 후원에<br>도달하진 못했어요ㅜㅜ</p></div></div>"
 		}else if(spgList[i].ssp_step==3){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
