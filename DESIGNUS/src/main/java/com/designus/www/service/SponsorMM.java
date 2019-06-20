@@ -2,6 +2,11 @@ package com.designus.www.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -100,6 +105,12 @@ public class SponsorMM {
 		System.out.println("넘어오나용" + ss_num);
 		sm = sDao.getSponcheck(ss_num);
 		sm.setSs_num(ss_num);
+
+		String time = sm.getSs_date();
+		SimpleDateFormat fm = new SimpleDateFormat(time);
+		String date = fm.format(new Date());
+		System.out.println("시간을 불러왔나=" + date);
+
 		if (ss_num == sm.getSs_num()) {
 			System.out.println("여긴뭐지");
 			mav.addObject("ss_num", sm.getSs_num());
@@ -110,6 +121,7 @@ public class SponsorMM {
 			mav.addObject("ss_price", sm.getSs_price());
 			mav.addObject("ss_goalqty", sm.getSs_goalqty());
 			mav.addObject("ss_date", sm.getSs_date());
+			mav.addObject("ss_date2", date);
 			view = "sponProductFrm";
 		} else {
 			view = "sponsor";
@@ -118,7 +130,7 @@ public class SponsorMM {
 		return mav;
 	}
 
-	public ModelAndView sponbuy(int ss_num, String ss_mbid) {
+	public String sponbuy(Sponsor ss) {
 		System.out.println("자 서비스 클래스 시작해보자~~~");
 		SponsorTender st = new SponsorTender();
 		mav = new ModelAndView();

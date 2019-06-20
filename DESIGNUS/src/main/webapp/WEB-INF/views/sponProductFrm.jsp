@@ -124,8 +124,7 @@ td {
 					<td class="ts1">후원 목표량</td>
 					<td class="ts2">${ss_goalqty}</td>
 					<td class="ts1">후원 기간</td>
-					<td class="ts2"><fmt:parseDate var="startdate"
-							value="${ss_date}" apttern="yyyy-MM-dd" /></td>
+					<td class="ts2">${ss_date2}</td>
 					<td class="ts1">현재 주문량</td>
 					<td class="ts2">0</td>
 				</tr>
@@ -134,7 +133,7 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button class="bt21" onclick="sponAj()" style="cursor: pointer">밀어주기</button>
+						<button class="bt21" onclick="sponAj(${ss_num})" style="cursor: pointer">밀어주기</button>
 					</td>
 					<td colspan="2">
 						<button class="bt22" onclick="location.href='sponsor'">목록보기</button>
@@ -156,27 +155,28 @@ td {
 		var msg = '${msg}';
 		alert(msg);
 	} */
-	function sponAj() {
-		var ss_num = $
-		{
-			ss_num
-		}
-		;
-		$.ajax({
-			url : 'sponbuy',
-			type : 'get',
-			data : JSON.stringify(ss_num),
-			contentType : "application/json; charset=utf-8;",
-			dataType : 'json',
-			success : function(data) {
-				alert('성공');
-				console.log("1234567" + data.aup_ptnum);
-			},
-			error : function(error) {
-				alert('정상적인 추천이 실패했습니다.');
-				console.log(error);
-			}
-		});//end ajax
+	function sponAj(even) {
+		console.log(2,even)
+	     var form = {
+			ss_num : even
+				} 
+		  $.ajax({
+				url : 'sponbuy',
+				type : 'post',
+				data : JSON.stringify(form),
+				contentType : "application/json; charset=utf-8;",
+				dataType : 'json',
+				success : function(data) {
+					alert('성공했습니다!!');
+					console.log("1234567" + data.aup_ptnum);
+				
+				},
+
+				error : function(error) {
+					alert('실패했습니다.');
+					console.log(error);
+				}
+			});//end ajax
 	}
 </script>
 </html>

@@ -6,6 +6,7 @@ import org.apache.ibatis.type.Alias;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Alias("sponsor")
 @Getter
 @Setter

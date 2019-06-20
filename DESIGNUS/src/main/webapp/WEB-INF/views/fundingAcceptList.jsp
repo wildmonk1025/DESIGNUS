@@ -341,6 +341,27 @@ for(var i=0; i<spgList.length;i++){
 	
 	
 }
+function spo(even) {
+	var form = {ssp_ptnum : even}
+	var cc = "";
+	$.ajax({
+		url : 'fundapply',
+		type : 'post',
+		data : JSON.stringify(form),
+		contentType : "application/json; charset=utf-8;",
+		dataType : 'json',
+		success : function(data) {
+			alert('해당 상품을 추천하였습니다.');
+			console.log("12" + data.aut_date);
+			
+		},
+
+		error : function(error) {
+			alert('정상적인 추천이 실패했습니다.');
+			console.log(error);
+		}
+	});//end ajax
+}
 
 $('#renking').html(cc)
 
