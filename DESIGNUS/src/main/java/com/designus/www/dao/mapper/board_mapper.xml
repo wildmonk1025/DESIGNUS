@@ -18,7 +18,9 @@
 		 update MJ SET MJ_LIKE = MJ_LIKE +1
 		where MJ_MBID =#{idw}
 	</update>
-   
+   <select id="getreviewboardlist" resultType="board">
+   		SELECT * FROM BD WHERE BD_KIND='이용후기' ORDER BY BD_NUM DESC
+   </select>
       
        
 </mapper>

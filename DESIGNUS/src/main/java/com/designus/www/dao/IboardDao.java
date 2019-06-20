@@ -1,6 +1,6 @@
 package com.designus.www.dao;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -18,5 +18,5 @@ public interface IboardDao {
 
 	boolean goods(String idw);
   
-  
+	List<Board> getreviewboardlist();
 }
