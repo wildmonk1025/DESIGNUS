@@ -15,6 +15,7 @@ import org.springframework.web.servlet.RequestToViewNameTranslator;
 import com.designus.www.userClass.Paging;
 import com.designus.www.userClass.PagingBoard;
 import com.designus.www.bean.Board;
+import com.designus.www.bean.BoardComment;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.dao.IboardDao;
 import com.google.gson.Gson;
@@ -106,6 +107,22 @@ public class BoardMM {
 		}else {
 			view = "home";
 		}		
+		mav.setViewName(view);
+		return mav;
+	}
+	public ModelAndView reviewcomment(String bdc_contents, int bd_num) {
+		String view = null;
+		mav = new ModelAndView();
+		String s = (String)session.getAttribute("id");
+		BoardComment bdc=new BoardComment();
+		if(s!=null) {
+			bDao.getreviewcomment(bdc_contents,s);
+			view = "reviewboard";
+			mav.addObject("bdc_contents", bdc.getBdc_contents());
+			System.out.println("contents="+bdc.getBdc_contents());
+		}else {
+			view = "home";
+		}
 		mav.setViewName(view);
 		return mav;
 	}
