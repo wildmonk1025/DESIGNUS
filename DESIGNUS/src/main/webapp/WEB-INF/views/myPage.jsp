@@ -5,7 +5,7 @@
 <html>
 
 <head>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style type="text/css">
@@ -204,9 +204,29 @@ border-top:1px solid orange;
  float: left;
 }
 </style>
+<script type="text/javascript">
+/* $(document).ready(function(){
+	var toMap=${toMap};
+	console.log(77,toMap)
 
+	 $.ajax({
+			url: 'autdeadline',
+			type:'post',
+			data: JSON.stringify(toMap),
+		    dataType:'json',
+		    success:function(data){
+		    	alert('성공??');
+		    }, 
+		    error:function(error){
+		    	alert('정상적인 추천이 실패했습니다.');
+		    	console.log(error);
+		    }
+		 });//end ajax
+}); */
+// contentType:"application/json; charset=utf-8;",
+</script>
 </head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 <body>
 	<div id="mypagemain">
@@ -273,10 +293,13 @@ $('#nod').click(function() {
 
 var toMap=${toMap};
 var maxList=${maxList};
+var today="${today}";
 var str="";
 var tt="";
 console.log(12,toMap)
 console.log(13,maxList)
+console.log(15,today)
+
 
 for(var j=0; j<maxList.length;j++){
 	
@@ -287,12 +310,21 @@ var ww=tt.split(",");
 str+="<h3>참여중인 출품경매</h3>"
    +"<table id='Participation' border= 1px solid black><tr><td>상품명</td><td>나의금액</td><td>최고금액</td><td>경매장으로가기</td><td>경매포기하기</td><td>경매종료일</td></tr>"
    for(var i=0;i<toMap.length;i++){
+	   if(toMap[i].au_date>today){
     	   str+="<tr><td>"+toMap[i].au_title+"</td>"
     	   +"<td>"+toMap[i].aut_price+"</td>"
     	   +"<td>"+ww[i]+"</td>"
     	   +"<td><a href='auctionRead?au_num="+toMap[i].aut_aunum+"'>移動</a></td>"
     	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
     	   +"<td>"+toMap[i].au_date+"</td></tr>";
+	   }else if(toMap[i].au_date<=today){
+		   str+="<tr><td>"+toMap[i].au_title+"</td>"
+    	   +"<td>"+toMap[i].aut_price+"</td>"
+    	   +"<td>"+ww[i]+"</td>"
+    	   +"<td><a href='auctionRead?au_num="+toMap[i].aut_aunum+"'>移動</a></td>"
+    	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
+    	   +"<td>마감</td></tr>";
+	   }
    }
    str+="</table>";
    $('#auction').html(str)
@@ -311,13 +343,19 @@ for(var j=0; j<stList.length;j++){
 console.log(24,qq)  
    tt+="<h2>펀딩/후원</h2>"
  for(var i=0;i<spgList.length;i++){
-
+       if(spgList[i].ssp_step ==1 ){
 	 tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
 	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
 	   +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
        
 	   +"목표("+spgList[i].ss_goalqty+") 마감일 :"+spgList[i].ss_date+"</div>" 
-       
+       }else if(spgList[i].ssp_step <=2 ){
+    	   tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
+    	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
+    	   +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
+           
+    	   +"목표("+spgList[i].ss_goalqty+") 마감일 :마감 되었습니다.</div>" 
+       }
  }
   
   $('#spon').html(tt);

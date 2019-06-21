@@ -76,7 +76,6 @@ public class WBSController {
 	@RequestMapping(value = "/reviewboard", method = RequestMethod.GET)
 	public ModelAndView reviewboardlist() {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("이거찍히니?");
 		mav = bm.reviewboardlist();
 		return mav;
 	
@@ -84,17 +83,7 @@ public class WBSController {
 		//이용후기 리스트
 	
 	}
-	@RequestMapping(value = "/reviewlike", method = RequestMethod.GET)
-	public ModelAndView reviewlike(int bd_num) {
-		ModelAndView mav = new ModelAndView();
-		System.out.println("zzzzzzzzzzz"+bd_num);
-		mav = bm.reviewlike(bd_num);
-		return mav;
-		
-		
-		//이용후기추천하기
-		
-	}
+
 	
 	
 	

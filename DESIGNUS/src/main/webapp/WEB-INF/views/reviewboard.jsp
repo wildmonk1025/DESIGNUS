@@ -4,26 +4,78 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <head>
 <style>
 #mainheader {
-	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 700px;
 }
 
 .btn {
-	background-color: orange;
+	margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
 	width: 150px;
-	height: 30px;
-	color: white;
-	float: right;
+	height: 40px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
 }
 
 #coklist {
@@ -41,7 +93,6 @@
 }
 
 #footercheck {
-	border: 1px solid black;
 	width: 1520px;
 	height: 150px;
 }
@@ -56,7 +107,6 @@
 }
 
 #freeboard2 {
-	border: 1px solid black;
 	width: 1200px;
 	height: 500px;
 	top: 50px;
@@ -81,7 +131,6 @@ a:visited {
 
 #paging {
 	position: relative;
-	border: 1px solid black;
 	width: 400px;
 	height: 40px;
 	top: 430px;
@@ -109,7 +158,6 @@ select {
 	width: 250px;
 	height: 50px;
 	font-size: 18px;
-	position: relative;
 	top: -1px;
 }
 
@@ -121,6 +169,7 @@ position: absolute;
 	left: 100px;
 	margin: auto;
 	background: white;
+	border:1px solid black;
 	display: none;
 	text-align: center;
 	z-index: 1100;
@@ -292,65 +341,7 @@ img{
 	width: 200px;
 	height: 200px;
 }
-.btn{
-margin-top: 10px;
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-}
+
 </style>
 <title>Home</title>
 
@@ -376,12 +367,11 @@ margin-top: 10px;
 			<div class="table-users" id="declarelist">
    
 </div> 
-				<form action="reviewlike"  method="get">
-				 <input type="hidden" name="bd_num" value="${bd_num}">
+
 				
 				
-				<button class="btn">추천하기</button>
-			</form>
+				<button id="btn" class="btn" >추천하기</button>
+
 			<button onclick="location.href='reviewboard' "class="btn">돌아가기</button>
 		</div>
 	</div>
@@ -428,7 +418,9 @@ margin-top: 10px;
 
 </body>
 <script>
-function articleView(num){
+
+function articleView(num1){
+	var num = num1;
 	$('#lightbox-shadow').css("display", "inline");
 	$('#lightbox').css("display", "inline");
 	console.log(num);
@@ -465,6 +457,30 @@ function articleView(num){
 		console.log(error);
 	}
 	});
+	var click = true;
+	$("#btn").click(function(){
+
+		if(click) {
+			swal("해당글을 추천 하였습니다.");
+			click=!click;
+				} else {
+			swal("중복 추천이 불가능합니다.");
+			return;
+				}
+		console.log("num확인="+num);
+ 		$.ajax({
+			url : 'reviewlike',
+			type: 'post',
+			data: {bd_num:num},
+			success:function(data){
+				console.log("성공");
+			},
+			error:function(error){
+				console.log("실패");
+			}
+ 		});
+	});
+	
 }
 </script>
 </html>

@@ -357,4 +357,24 @@ public class MypageController {
 		System.out.println("[컨트롤러] 후원 배송정보 입력작가 :마무리!!");
 		return mav;
 	}
+	@RequestMapping(value = "/stepfive", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView stepfive(revAuctionProgress rap ) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 비공개 제작의뢰:시작");
+		System.out.println("[컨트롤러] 비공개 제작의뢰:중간확인 ="+rap.getRap_ptnum());
+		
+		mav = pm.stepfive(rap);
+		System.out.println("[컨트롤러] 비공개 제작의뢰 :마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/stepfiveDele", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView stepfiveDele(revAuctionProgress rap ) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:시작");
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:중간확인 ="+rap.getRap_ptnum());
+		
+		mav = pm.stepfiveDele(rap);
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:마무리!!");
+		return mav;
+	}
 }
