@@ -74,4 +74,12 @@ public class BoardMM {
 		mav.setViewName(view);
 		return mav;
 	}
+	public ModelAndView reviewchange(int bd_num, String bd_contents, String bd_mbid) {
+		String view = null;
+		mav = new ModelAndView();
+		bDao.getreviewchange(bd_num,bd_contents,bd_mbid);
+		view = "reviewboard";
+		mav.setViewName(view);
+		return mav;
+	}
 }

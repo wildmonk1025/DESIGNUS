@@ -369,8 +369,9 @@ img{
 </div> 
 
 				
-				
+				<button id="btn1" class="btn" >글 수정하기</button>
 				<button id="btn" class="btn" >추천하기</button>
+				
 
 			<button onclick="location.href='reviewboard' "class="btn">돌아가기</button>
 		</div>
@@ -401,14 +402,10 @@ img{
 		<div id="bg_layer"></div>
 		<div id="contents_layer"></div>
 	</div>	
-	<form action="test">
-	컬럼명:<input type="text" name="cName"/>
-	검색:<input type="text" name="search"/>
-	<button>컬럼 검색</button>
-</form>
+	
 
 
-			<div id="paging">[1]...[4][5][6][7][8][9]...[1004]</div>
+			
 		</div>
 
 	</div>
@@ -440,11 +437,15 @@ function articleView(num1){
 				result+="<div class='header'>"+"이용후기 게시판"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
 					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</th>"+"</tr>"
-					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
-					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"+"내용"+"</td>"
-					  +"<td rowspan='2' colspan='4'>"+data.bList.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
+					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+
+					  					  data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
+					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"
+					  +"내용"+"</td>"+"<td rowspan='2' colspan='4'>"+
+					  "<textarea rows='30' cols='20'style='margin: 5px; width: 650px; height: 200px; id=\"ff\" name='bd_contents'>"
+					  +data.bList.bd_contents+"</textarea>"+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
 					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bList.bd_like+"</td>"
-					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>";
+					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>"
+					  +"<input type='hidden' value='"+data.bList.bd_mbid+"' id='idc'>"
 					  for ( var i in data.iList){
 						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+data.iList[i].bdi_img
 						 +"</td></tr>";
@@ -472,6 +473,27 @@ function articleView(num1){
 			url : 'reviewlike',
 			type: 'post',
 			data: {bd_num:num},
+			success:function(data){
+				console.log("성공");
+			},
+			error:function(error){
+				console.log("실패");
+			}
+ 		});
+ 		
+ 		
+	});
+	$("#btn1").click(function(){
+		var a = $("textarea").val();
+		var b = $("#idc").val();
+		console.log("num확인="+num);
+		console.log("id확인="+b);
+ 		$.ajax({
+			url : 'reviewchange',
+			type: 'post',
+			data: {bd_num:num,
+				   bd_contents:a,
+				   bd_mbid:b},
 			success:function(data){
 				console.log("성공");
 			},
