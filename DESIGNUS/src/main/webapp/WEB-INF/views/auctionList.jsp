@@ -37,7 +37,14 @@ div {
 	width: 140px;
 	height: 50px;
 	background-color: orange;
-	border: none;
+	border: 0.1px soild gray;
+}
+
+.btn3 {
+	width: 140px;
+	height: 50px;
+	background-color: white;
+	border: 0.1px soild gray;
 }
 
 #list {
@@ -86,17 +93,8 @@ div {
 	height: 570px;
 }
 
-#ListView1 {
-	border: 1px solid black;
-	position: absolute;
-	top: 50px;
-	left: 10px;
-	width: 1480px;
-	height: 480px;
-}
 
 #ListView2 {
-	display: none;
 	position: absolute;
 	border: 1px solid black;
 	top: 50px;
@@ -105,16 +103,6 @@ div {
 	height: 470px;
 }
 
-.paging1{
-	border:1px solid red;
-	position:absolute;
-	float:left;
-	left:0px;
-	bottom:0px;
-	height: 50px;
-	width: 1500px;
-	text-align: center;
-}
 .paging2{
 	border:1px solid red;
 	position:absolute;
@@ -124,7 +112,6 @@ div {
 	height: 50px;
 	width: 1500px;
 	text-align: center;
-	display: none;
 }
 
 .raListFrm{
@@ -208,35 +195,9 @@ div {
 	<div id="homeMain">
 		
 		<div id="List">
-			<button id="Lbtn1" class="btn2">제작의뢰 리스트</button>
-			<button id="Lbtn2" class="btn2">출품 리스트</button>
+			<button class="btn2">출품 리스트</button>
+			<button class="btn3" onclick="location.href='revauctionList?cgcode=${cgcode}'">제작의뢰 리스트</button>
 			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
-			<div id="ListView1">
-			<c:forEach var="ra" items="${raList}">
-				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
-					<div class="raListImg">
-						<%-- <img src="./images/${ra.ra_image }.png" /> --%>
-					</div>
-					<div class="raListTitle">
-						${ra.ra_title }
-					</div>
-					<div class="raListPrice">
-						<p>경매최저가 : ${ra.ra_min }</p>
-						<p>경매최고가 : ${ra.ra_max }</p>
-						
-					</div>
-					<div class="raListDate">
-							${ra.ra_date}
-					</div>
-					</div>
-			</c:forEach>
-			</div>
-			<div class = paging1>
-				${paging}
-			</div>
-			<!-- 
-				▲역경매         ▼경매
-			 				  -->
 			
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
@@ -277,44 +238,6 @@ div {
 
 <script>
 
-
-
-window.onload=function() {
-	if(lkind == 'RA'){
-		console.log(1,lkind);
-		$("#ListView1").css("display", "inline");
-		$("#ListView2").css("display", "none");
-		$(".paging1").css("display", "inline");
-		$(".paging2").css("display", "none");
-	
-	}else if(lkind == 'AU'){
-		console.log(2,lkind);
-		$("#ListView1").css("display", "none");
-		$("#ListView2").css("display", "inline");
-		$(".paging1").css("display", "none");
-		$(".paging2").css("display", "inline");
-	};
-};
-
-	$("#Lbtn1").click(function() {
-		lkind = 'RA';
-		console.log(3,lkind);
-		$("#ListView1").css("display", "inline");
-		$("#ListView2").css("display", "none");
-		$(".paging1").css("display", "inline");
-		$(".paging2").css("display", "none");
-			//페이징 클래스 불러올때 리셋클래스 ㄱㄱ
-	});
-
-	$("#Lbtn2").click(function() {
-		lkind = 'AU' ;
-		console.log(4,lkind);
-		$("#ListView1").css("display", "none");
-		$("#ListView2").css("display", "inline");
-		$(".paging1").css("display", "none");
-		$(".paging2").css("display", "inline");
-			//페이징 클래스 불러올때 리셋클래스 ㄱㄱ
-	});
 	
 </script>
 </html>
