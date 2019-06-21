@@ -78,7 +78,7 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionList(Integer pageNum,int cgcode) throws ParseException{
+	public ModelAndView auctionList(Integer pageNum,int cgcode/*, String gubun */) throws ParseException{
 		mav=new ModelAndView();
 		String view="null";
 		String auimg = null;
@@ -117,7 +117,7 @@ public class AuctionMM {
 	    	  String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
 	    	  auList.get(i).setAu_date(new_date2);	    	  
 	      }
-	    mav.addObject("paging1", getPaging1(num1,cgcode));  
+	    mav.addObject("paging1", getPaging1(num1,cgcode/*gubun*/));  
 	    mav.addObject("paging2", getPaging2(num2,cgcode));  
 	    mav.addObject("auimg",auimg);
 		mav.addObject("auList",auList);
@@ -130,7 +130,7 @@ public class AuctionMM {
 	}
 
 
-	private Object getPaging1(int pageNum1, int cgcode) {
+	private Object getPaging1(int pageNum1,/*String gubun*/ int cgcode) {
 		String a = "auctionList";
 		int maxNum = rDao.getrevListCount(cgcode);
 		int listCount = 9;
@@ -138,7 +138,7 @@ public class AuctionMM {
 		String boardName = a;
 		
 		PagingAuction paging1 = 
-				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName);
+				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode,/*gubun ,*/ boardName );
 		return paging1.makeHtmlPaging1();
 	}
 

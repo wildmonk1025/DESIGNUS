@@ -1,5 +1,6 @@
 package com.designus.www;
 
+import java.text.ParseException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,7 @@ public class AuctionController_sub {
 	}
 	
 	@RequestMapping(value = "/revauctionread")
-	public ModelAndView revAuctionRead(int ra_num) {
+	public ModelAndView revAuctionRead(int ra_num) throws ParseException {
 		///{ra_num}
 		//@PathVariable
 		mav = ram.revAuctionRead(ra_num);

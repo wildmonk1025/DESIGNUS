@@ -45,6 +45,7 @@
 	border: 1px solid blue;
 	width: 260px;
 	height: 35px;
+	font-weight: 800;
 }
 
 #middle_img_lv2 {
@@ -310,7 +311,7 @@
 					<c:if test="${code eq 170 }">가공식품</c:if>
 					<c:if test="${code eq 180 }">휴대폰</c:if>
 					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
-					<c:if test="${code eq 200 }">유아</c:if>
+					<c:if test="${code eq 200 }">유아 용품</c:if>
 			</div>
 			<div id="middle_img_lv2">
 				<%-- <img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" /> --%>
@@ -389,7 +390,9 @@
 				<p><br>추가 요청내역이 없습니다.</p></c:if>
 			</div>
 		</div>
-		<div id="footer">여기는 푸터 입니다.</div>
+		<div id="footer">
+			<jsp:include page="footer.jsp" />
+		</div>
 	</div>
 </body>
 
@@ -568,7 +571,8 @@ $(".subtn").click(function() {
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
- 	 	end.setDate(end.getDate()+1);
+ 	 	//end.setDate(end.getDate()+1);
+ 	 	end.setMinutes(end.getMinutes()+5);
  		var _second = 1000;
  		var _minute = _second * 60;
  		var _hour = _minute * 60;
