@@ -461,7 +461,7 @@ nav {
 		$('#logout').submit();
 	}
 
-/*	
+	
 	var i=0;
  	function ranking() {
 		$.ajax({
@@ -528,7 +528,7 @@ $("#alarmBtn").click(function() {
 	},2500);
 });
 
-
+/*
  $(document).ajaxStart(function() {
 	poll();
 });

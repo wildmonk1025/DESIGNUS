@@ -564,8 +564,19 @@ public class MypageMM {
 	@Transactional
 	public ModelAndView delinumupload(AuctionProgress ap) {
 		mav = new ModelAndView();
+		String id = session.getAttribute("id").toString();
 		System.out.println("그럼 여기는??");
 		boolean a = pDao.delinumuploadupdate(ap);
+		
+		//운송장 번호 입력 = 배송보냄 알람
+		Notify nf = new Notify();
+		nf.setNf_mbid_s(id);
+		nf.setNf_mbid_r(pDao.getAuTrackId(ap));
+		nf.setNf_notify(nf.getNf_mbid_s()+" 님이 상품을 배송을 보냈습니다. ");
+		pDao.setNotifyAuTrack(nf);
+		//알람끝
+		
+		
 		System.out.println("nnnnuuuummmm::::" + ap.getAup_ptnum());
 		System.out.println("getAup_track::::" + ap.getAup_track());
 
@@ -812,11 +823,20 @@ public class MypageMM {
 
 	public ModelAndView revdelinumupload(revAuctionProgress rap) {
 		mav = new ModelAndView();
+		String id = session.getAttribute("id").toString();
 		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 시작");
 		boolean a = pDao.revdelinumupload(rap);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 마무리");
 		mav.setViewName("redirect:/revAuctionMyAcceptList");
-
+		
+		//운송장 번호 입력 = 배송보냄 알람
+				Notify nf = new Notify();
+			nf.setNf_mbid_s(id);
+			nf.setNf_mbid_r(pDao.getRaTrackId(rap));
+			nf.setNf_notify(nf.getNf_mbid_s()+" 님이 상품을 배송을 보냈습니다. ");
+			pDao.setNotifyRaTrack(nf);
+		//알람끝
+		
 		return mav;
 	}
 
