@@ -150,7 +150,7 @@ div {
 													+ "'>"
 													+ "<div id='sponproduct'>"
 													+ "<img src='resources/images/"
-									+ data[i].ssi_imgSysName +"'>"
+									+ data[i].ssi_imgSysName +'">"
 													+ "</div>"
 													+ "<div class='sponpro'>"
 													+ "아이디:"
