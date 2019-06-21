@@ -6,9 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.RequestToViewNameTranslator;
 
 import com.designus.www.userClass.Paging;
 import com.designus.www.userClass.PagingBoard;
@@ -71,6 +73,22 @@ public class BoardMM {
 		bDao.getreviewlike(bd_num);
 		System.out.println("ddddd"+bd_num);
 		view = "reviewboard";
+		mav.setViewName(view);
+		return mav;
+	}
+	public ModelAndView reviewchange(int bd_num, String bd_contents, String bd_mbid) {
+		String view = null;
+		mav = new ModelAndView();
+		String s = (String)session.getAttribute("id");
+		System.out.println("fdd"+s);
+		
+		System.out.println("bd_mbid"+bd_mbid);
+		if(s.equals(bd_mbid) || s.equals("ADMIN")){
+		bDao.getreviewchange(bd_num,bd_contents,bd_mbid);
+			view = "reviewboard";
+		}else {
+			view = "home";
+		}		
 		mav.setViewName(view);
 		return mav;
 	}

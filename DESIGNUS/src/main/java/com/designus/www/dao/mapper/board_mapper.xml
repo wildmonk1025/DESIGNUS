@@ -63,8 +63,7 @@
 		SELECT COUNT(*) FROM BD
 	</select>
 
-	<select id="getboardlistInfo" parameterType="int"
-		resultType="board">
+	<select id="getboardlistInfo" parameterType="int" resultType="board">
 		SELECT * FROM BD WHERE BD_NUM=${num}
 	</select>
 
@@ -81,5 +80,8 @@
 	<update id="getreviewlike" parameterType="int">
 		UPDATE BD SET
 		BD_LIKE=BD_LIKE+1 WHERE BD_NUM = ${num}
+	</update>
+	<update id="getreviewchange" parameterType="int">
+		UPDATE BD SET BD_CONTENTS=#{bd_contents} WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
 	</update>
 </mapper>

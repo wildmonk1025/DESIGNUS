@@ -520,7 +520,7 @@ color: red;
 			<div id="renking">
 				
 			</div>
-        <div id="sixth">${MPpaging}</div>
+        <div id="sixth">${ROpaging}</div>
 		</div>
 	</div>
 </body>
@@ -540,7 +540,6 @@ color: red;
 	             +"<div class='Fifth'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"+ apList[i].aup_ptnum+"')\" value='배송정보입력'/><br>"
 	             +"<input type='button' onclick=\"javascript:auccancel('"+apList[i].aup_ptnum+"')\" value='취소'/></div></div>"
 
-
 		} else if (apList[i].aup_step == 2) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
@@ -555,7 +554,7 @@ color: red;
 					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
-					+ "<div class='Fifth'><input type='button' onclick=\"btzRevQ('"+ apList[i].aup_ptnum+ "')\" value='고객센터 문의'/><br>"
+					+ "<div class='Fifth'><input type='button' onclick=\"location.href='scquestion'\" value='고객센터 문의'/><br>"
 					+ "<input type='button' onclick=\"review('"+ apList[i].aup_ptnum+ "')\" value='수령확인구매후기 쓰기'/></div></div>";
 
 		} else if (apList[i].aup_step == 4) {
