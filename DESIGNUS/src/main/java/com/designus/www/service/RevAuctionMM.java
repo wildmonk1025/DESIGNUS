@@ -21,6 +21,7 @@ import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.ImemberDao;
+import com.designus.www.userClass.DateAdjust;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -46,10 +47,12 @@ public class RevAuctionMM {
 		String ra_mbid = session.getAttribute("id").toString();
 		String ra_title = multi.getParameter("ra_title");
 		String ra_contents = multi.getParameter("ra_contents");
-		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
 		String ra_oc = "O";
-
-
+		int ra_cgcode = Integer.parseInt(multi.getParameter("ra_cgcode"));
+		
+		if(!multi.getParameter("ra_mbid").isEmpty()) {
+			ra_oc = "C";
+		}
 
 		RevAuction ra = new RevAuction();
 		ra.setRa_mbid(ra_mbid);
@@ -68,7 +71,6 @@ public class RevAuctionMM {
 			String rat_mbid_w = multi.getParameter("ra_mbid");
 			int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
 			int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
-			ra_oc = "C";
 			RevAuctionTender rat = new RevAuctionTender();
 			rat.setRat_ranum(currval);
 			rat.setRat_mbid_w(rat_mbid_w);
@@ -114,6 +116,7 @@ public class RevAuctionMM {
 
 	public ModelAndView revAuctionRead(int ra_num) {
 		mav = new ModelAndView();
+		DateAdjust da = new DateAdjust();
 		String view = null;
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
@@ -125,6 +128,8 @@ public class RevAuctionMM {
 		Basket bk = new Basket();
 		ra.setRa_num(ra_num);
 		ra = rDao.revAuctionReadSelect(ra);
+		
+		//da.changeDateToString(ra.getRa_date());
 
 		//꿍 기능 Start
 		bk.setRab_mbid(id);

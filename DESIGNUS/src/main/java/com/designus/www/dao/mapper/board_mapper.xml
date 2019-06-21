@@ -58,4 +58,11 @@
    		SELECT * FROM BDI WHERE BDI_NUM=${num}
    </select>
        
+   <update id="getviewInfo" parameterType="int">
+		UPDATE BD SET BD_VIEWS=BD_VIEWS+1 WHERE BD_NUM = ${num}
+	</update>
+	
+   <update id="getreviewlike" parameterType="int">
+		UPDATE BD SET BD_LIKE=BD_LIKE+1 WHERE BD_NUM = ${num}
+	</update>
 </mapper>

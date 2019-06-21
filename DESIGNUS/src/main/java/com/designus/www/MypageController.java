@@ -1,5 +1,6 @@
 package com.designus.www;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +24,7 @@ import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
+import com.designus.www.bean.SponsorProgress;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.service.MemberMM;
 import com.designus.www.service.MypageMM;
@@ -32,9 +36,7 @@ public class MypageController {
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
-	
-	
-	
+
 	@RequestMapping(value = "/historylist", method = RequestMethod.GET)
 	public ModelAndView historylist(String list) {
 		mav = pm.historylist(list);
@@ -155,11 +157,11 @@ public class MypageController {
 
 	@RequestMapping(value = "/auccancel", method = { RequestMethod.GET, RequestMethod.POST })
 
-	public ModelAndView auccancel(AuctionProgress ap,Notify ni) {
+	public ModelAndView auccancel(AuctionProgress ap, Notify ni) {
 		mav = new ModelAndView();
 		System.out.println("(컨트롤러)출품구매 취소 시작");
 		System.out.println("이게 작가 아이디인데....=" + ap);
-		mav = pm.auccancel(ap,ni);
+		mav = pm.auccancel(ap, ni);
 		System.out.println("(컨트롤러)출품구매 취소 마무의리");
 		return mav;
 
@@ -266,22 +268,24 @@ public class MypageController {
 
 	@RequestMapping(value = "/AuctionGiveUp", method = { RequestMethod.GET, RequestMethod.POST })
 
-	public ModelAndView AuctionGiveUp(AuctionTender at,String kind) {
+	public ModelAndView AuctionGiveUp(AuctionTender at, String kind) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러].이용후기 게시판 작성:시작");
-		mav = pm.AuctionGiveUp(at,kind);
+		mav = pm.AuctionGiveUp(at, kind);
 		System.out.println("[컨트롤러].이용후기 게시판 작성:마무리!!");
 		return mav;
 	}
+
 	@RequestMapping(value = "/questionlist", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView questionlist(Integer pageNum, String kind) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러].1:1 문의 리스트:시작");
-		mav = pm.questionlist(pageNum,kind);
+		mav = pm.questionlist(pageNum, kind);
 		System.out.println("[컨트롤러].1:1 문의 리스트:마무리!!");
 		return mav;
 	}
+
 	@RequestMapping(value = "/questionread", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView questionread(AloneQuestion aq) {
@@ -291,37 +295,66 @@ public class MypageController {
 		System.out.println("[컨트롤러].1:1 문의 상세보기:마무리!!");
 		return mav;
 	}
+
 	@RequestMapping(value = "/download", method = RequestMethod.GET)
-	public void download(
-			@RequestParam Map<String,Object> params,
-			HttpServletRequest req,
-			HttpServletResponse responce
-			
-			                      ) throws Exception {
-        System.out.println("of"+params.get("aqi_img"));
-        System.out.println("sf"+params.get("aqi_img"));
-        params.put("root",req.getSession().getServletContext().getRealPath("/"));
-        params.put("responce",responce);
-        pm.download(params);
-        
-		//return mav; 
+	public void download(@RequestParam Map<String, Object> params, HttpServletRequest req, HttpServletResponse responce
+
+	) throws Exception {
+		System.out.println("of" + params.get("aqi_img"));
+		System.out.println("sf" + params.get("aqi_img"));
+		params.put("root", req.getSession().getServletContext().getRealPath("/"));
+		params.put("responce", responce);
+		pm.download(params);
+
+		// return mav;
 	}
+
 	@RequestMapping(value = "/fundingAcceptList", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView fundingAcceptList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러].후원 진행 내역:시작");
-		mav = pm.fundingAcceptList(pageNum,kind);
+		mav = pm.fundingAcceptList(pageNum, kind);
 		System.out.println("[컨트롤러].후원 진행 내역:마무리!!");
 		return mav;
 	}
+
 	@RequestMapping(value = "/fundingOrderList", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView fundingOrderList(Integer pageNum, String kind) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러].1:1 문의 리스트:시작");
-		mav = pm.fundingOrderList(pageNum,kind);
+		mav = pm.fundingOrderList(pageNum, kind);
 		System.out.println("[컨트롤러].1:1 문의 리스트:마무리!!");
+		return mav;
+	}
+
+	@RequestMapping(value = "/funddeliupload", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView funddeliupload(SponsorProgress sp) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 후원 배송정보 입력:시작");
+		System.out.println("[컨트롤러] 후원 배송정보 입력:중간값 확인1 =" + sp.getSsp_name());
+		System.out.println("[컨트롤러] 후원 배송정보 입력:중간값 확인2 =" + sp.getSsp_ptnum());
+		mav = pm.funddeliupload(sp);
+		System.out.println("[컨트롤러] 후원 배송정보 입력 :마무리!!");
+		return mav;
+	}
+
+	@RequestMapping(value = "/funddelinumupload", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView funddelinumupload(SponsorProgress sp) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 후원 배송정보 입력작가:시작");
+		System.out.println("[컨트롤러] 후원 배송정보 입력작가:중간값 확인1 =" + sp.getSsp_ptnum());
+		mav = pm.funddelinumupload(sp);
+		System.out.println("[컨트롤러] 후원 배송정보 입력작가 :마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/WriteAReview", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView WriteAReview(MultipartHttpServletRequest multi ) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 후원 배송정보 입력작가:시작");
+		mav = pm.WriteAReview(multi);
+		System.out.println("[컨트롤러] 후원 배송정보 입력작가 :마무리!!");
 		return mav;
 	}
 }

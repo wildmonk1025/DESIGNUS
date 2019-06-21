@@ -1,6 +1,7 @@
 package com.designus.www;
 
 import java.io.PrintWriter;
+import java.text.ParseException;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,7 +50,7 @@ public class AuctionControllerspon {
 	}
 
 	@RequestMapping(value = "/sponproduct", method = RequestMethod.GET)
-	public ModelAndView sponProductFrm(int ss_num) {
+	public ModelAndView sponProductFrm(int ss_num) throws ParseException {
 
 		mav = new ModelAndView();
 		mav = sm.sponproduct(ss_num);
@@ -62,9 +63,8 @@ public class AuctionControllerspon {
 	 * @RequestMapping(value = "/sponbuy", method = RequestMethod.GET) public
 	 * ModelAndView sponbuy(int ss_num, String ss_mbid) {
 	 * 
-	 * System.out.println("자 어디한번 보자~~~");
-	 *  mav = new ModelAndView(); 
-	 *  mav = sm.sponbuy(ss_num, ss_mbid); // System.out.println(sm.sponbuy(ss_num,
+	 * System.out.println("자 어디한번 보자~~~"); mav = new ModelAndView(); mav =
+	 * sm.sponbuy(ss_num, ss_mbid); // System.out.println(sm.sponbuy(ss_num,
 	 * ss_mbid)); System.out.println("자 마감 한번 찍어 보자~~~");
 	 * 
 	 * return mav; }

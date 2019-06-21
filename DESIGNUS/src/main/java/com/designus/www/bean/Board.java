@@ -19,6 +19,7 @@ public class Board {
 	int    bd_like;
 	int    bd_views;
 	String bd_date;
-	String bd_img;
+	int bdi_num;
+	String bdi_img;
 	
 }

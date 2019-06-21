@@ -113,37 +113,14 @@ select {
 	top: -1px;
 }
 
-#btn5 {
-	position: relative;
-	top: -2px;
-	left: 440px;
-}
 
-.btn3 {
-	position: relative;
-	left: 300px;
-	width: 100px;
-	height: 50px;
-	top: -3px;
-	background-color: orange;
-}
-
-#btn5 {
-	position: absolute;
-	left: 850px;
-	width: 100px;
-	height: 50px;
-	background-color: orange;
-	top: -5px;
-}
 #lightbox {
 position: absolute;
-	border: 1px solid orange;
 	width: 1000px;
 	height: 600px;
 	left: 100px;
 	margin: auto;
-	background: #fff;
+	background: white;
 	display: none;
 	text-align: center;
 	z-index: 1100;
@@ -243,11 +220,12 @@ table tr:nth-child(2n+1) {
   tr:first-child {
     display: none;
   }
-}
+
 @media screen and (max-width: 500px) {
   .header {
-    background-color: transparent;
-    color: white;
+      background-color: #daeff1;
+
+    color: #daeff1;
     font-size: 2em;
     font-weight: 700;
     padding: 0;
@@ -303,12 +281,75 @@ table tr:nth-child(2n+1) {
 
 td{
 	width: 100px;
-	height: 30px;
+	height: 40px;
 }
 table{
 	width: 1100px;
-	height: 800px;
+	height: 700px;
 	overflow: scroll;
+}
+img{
+	width: 200px;
+	height: 200px;
+}
+.btn{
+margin-top: 10px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 150px;
+	height: 40px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
 }
 </style>
 <title>Home</title>
@@ -334,12 +375,14 @@ table{
 		
 			<div class="table-users" id="declarelist">
    
-</div>
-				<button class="button">확인</button>
-				<button type="button" class="button"
-					onclick="location.href='reviewboard' ">돌아가기</button>
+</div> 
+				<form action="reviewlike"  method="get">
+				 <input type="hidden" name="bd_num" value="${bd_num}">
+				
+				
+				<button class="btn">추천하기</button>
 			</form>
-
+			<button onclick="location.href='reviewboard' "class="btn">돌아가기</button>
 		</div>
 	</div>
 <table>
@@ -362,9 +405,6 @@ table{
 	</c:forEach>
 	
 	</table>
-	<form action="writeFrm">
-		<button>글쓰기</button>
-	</form>
 	<div align="center">${paging}</div>
 	
 	<div id="articleView_layer">
@@ -402,17 +442,22 @@ function articleView(num){
 			var result = "";
 			console.dir(data);
 			console.log("성공");
-			
+			console.log(data.bList);
+			console.log(data.iList);
+		
 				result+="<div class='header'>"+"이용후기 게시판"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
-					  +"<th>"+data.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bd_kind+"</tr>"
-					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+data.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
-					  +"<td colspan='2'>"+data.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"+"내용"+"</td>"
-					  +"<td rowspan='2' colspan='4'>"+data.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
-					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bd_like+"</td>"
-					  +"<td>"+"조회수"+data.bd_views+"</td>"+"</tr>"+"<tr>"+"<td rowspan='3'>"+"후기이미지"+"</td>"
-					  +"<td rowspan='3' colspan='5'>"+data.bdi_img+"</td>"+"</table>";
-			
+					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</th>"+"</tr>"
+					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
+					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"+"내용"+"</td>"
+					  +"<td rowspan='2' colspan='4'>"+data.bList.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
+					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bList.bd_like+"</td>"
+					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>";
+					  for ( var i in data.iList){
+						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+data.iList[i].bdi_img
+						 +"</td></tr>";
+					  }
+					  result+="</table>";
 			$("#declarelist").html(result);
 		},
 	error:function(error){
