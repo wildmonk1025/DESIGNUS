@@ -335,6 +335,14 @@
 		resultType="notify">
 		SELECT * FROM NF WHERE NF_MBID_R=#{id}
 	</select>
+	<select id="getAuTrackId" parameterType="auctionprogress"
+		resultType="String">
+		SELECT AUP_MBID_N FROM AUP WHERE AUP_PTNUM=${aup_ptnum}
+	</select>
+	<select id="getRaTrackId" parameterType="revauctionprogress"
+		resultType="String">
+		SELECT RAP_MBID_N FROM RAP WHERE RAP_PTNUM=${rap_ptnum}
+	</select>
 	<delete id="fullDelete">
 		UPDATE NF SET NF_CHECK=2
 		WHERE NF_MBID_R=#{id}
@@ -468,6 +476,14 @@
 	<insert id="setNotifyWriApply" parameterType="notify">
 		INSERT INTO NOTIFY
 		VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{nf_mbid_r},#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyAuTrack" parameterType="notify">
+		INSERT INTO NOTIFY
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyRaTrack" parameterType="notify">
+		INSERT INTO NOTIFY
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_notify},0,DEFAULT)
 	</insert>
 	<select id="deadlineSelect" parameterType="String"
 		resultType="java.time.LocalDateTime">

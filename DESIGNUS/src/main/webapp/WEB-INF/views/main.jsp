@@ -528,7 +528,7 @@ $("#alarmBtn").click(function() {
 	},2500);
 });
 
-
+/*
  $(document).ajaxStart(function() {
 	poll();
 });
@@ -572,6 +572,6 @@ $("#alarmBtn").click(function() {
 				}
 			});
 		} 
-
+*/
 </script>
 </html>

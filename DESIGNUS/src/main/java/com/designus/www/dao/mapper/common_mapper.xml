@@ -5,15 +5,10 @@
 <mapper namespace="com.designus.www.dao.IcommonDao">
 
 
-	<select id="getbestInfo" parameterType="auction" resultType="auction">
-		SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
+	<select id="getbestInfo" resultType="auction">
+		SELECT * FROM AU_RECOMM_LIST
 	</select>
-	<select id="getnewInfo" parameterType="auction" resultType="auction">
-		SELECT * FROM AU_BEST ORDER BY AU_DATE DESC
-	</select>
-	<select id="getimgInfo" parameterType="auction" resultType="auction">
-            SELECT * FROM AU_BEST ORDER BY AU_COUNT DESC
-	</select>
+
 	
 	<select id="getSearchRankingSelect" resultType="rtsr">
             <![CDATA[

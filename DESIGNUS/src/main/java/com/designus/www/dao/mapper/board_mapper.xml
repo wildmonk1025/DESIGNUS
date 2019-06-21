@@ -53,13 +53,15 @@
 		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_s},#{nf_mbid_r},#{nf_notify},0,DEFAULT)
 	</insert>
 	<!-- 이용후기 알람 End -->
-	<select id="getreviewboardlist" parameterType="Integer"	resultType="board">
+	<select id="getreviewboardlist" parameterType="Integer"
+		resultType="board">
    		 <![CDATA[  select * from (select rownum as rn, bd_num, bd_kind, bd_mbid, 
                     bd_title, bd_contents, bd_date, bd_like, bd_views
                     from bd where bd_kind='이용후기' and rownum <= #{num}*10 order by bd_num desc) 
                     where rn >= #{num}*10-9 ]]>
 	</select>
-	<select id="getBoardConut" parameterType="Integer" resultType="Integer">
+	<select id="getBoardConut" parameterType="Integer"
+		resultType="Integer">
 		SELECT COUNT(*) FROM BD
 	</select>
 
@@ -82,7 +84,18 @@
 		UPDATE BD SET
 		BD_LIKE=BD_LIKE+1 WHERE BD_NUM = ${num}
 	</update>
+
 	<update id="getreviewchange" parameterType="int">
-		UPDATE BD SET BD_CONTENTS=#{bd_contents} WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
+		UPDATE BD SET
+		BD_CONTENTS=#{bd_contents} WHERE BD_MBID=#{bd_mbid} AND
+		BD_NUM=${bd_num}
 	</update>
+
+	<delete id="getreviewdelete">
+		DELETE FROM BDI WHERE BDI_NUM=${bd_num}
+	</delete>
+
+	<delete id="getreviewimgdel">
+		DELETE FROM BD WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
+	</delete>
 </mapper>

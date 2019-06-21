@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Member;
+import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.service.CommonMM;
 import com.designus.www.service.MemberMM;
@@ -52,6 +53,8 @@ public class HomeController {
 	@Autowired
 	private ImemberDao mDao;
 	@Autowired
+	private IauctionDao aDao;
+	@Autowired
 	HttpSession session;
 	ModelAndView mav;
 	@Autowired
@@ -72,8 +75,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home() {
-		mav = new ModelAndView();
-		mav.setViewName("home");
+		mav = cm.homeSetting();
 		return mav;
 	}
 

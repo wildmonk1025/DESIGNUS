@@ -212,6 +212,14 @@ boolean stepfiveDelete(revAuctionProgress rap);
 
 boolean stepfiveautDelete(revAuctionProgress rap);
 
+String getAuTrackId(AuctionProgress ap);
+
+void setNotifyAuTrack(Notify nf);
+
+String getRaTrackId(revAuctionProgress rap);
+
+void setNotifyRaTrack(Notify nf);
+
 	/* int getSppagingCountt(String id); */
 
   
