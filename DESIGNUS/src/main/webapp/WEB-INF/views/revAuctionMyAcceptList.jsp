@@ -587,12 +587,31 @@ for (var i = 0; i < revAList.length; i++) {
 		    if(revAList[i].ra_oc=="C"){
 			     main +="구매 종류 : 비공개</br>"	
 				}            
-		    main +="<input id='btzRevM' type='button' onclick=\"javascript:stepf('"+revAList[i].rap_ptnum+"')\" value='승인'/>"
-                 +"<input type='button' onclick=\"javascript:stepDele('"+revAList[i].rap_ptnum+"')\" value='거절'/>";
+		    main +="<input id='step5' type='button' onclick=\"location.href='stepfive?rap_ptnum="+revAList[i].rap_ptnum+"'\" value='승인'/>"
+                 +"<input id='censtep5' type='button' onclick=\"location.href='stepfiveDele?rap_ptnum="+revAList[i].rap_ptnum+"&rap_mbid_w="+revAList[i].rap_mbid_w+"&rap_ranum="+revAList[i].rap_ranum+"'\" value='거절'/>";
 		    
 		}  
 }
 $('#revA').html(main);
+
+ $('#step5').click(function() {
+	var secc="${secc}"
+	if(secc=="1"){
+		alert("승인이 거절 되었습니다.")
+		  
+		}else{
+			alert("승인하셨습니다.")
+		}
+});
+ $('#censtep5').click(function() {
+		var secc="${secc}"
+		if(secc=="2"){
+			alert("거절이 거절 되었습니다.")
+			 
+			}else{
+				 alert("거절하셨습니다.")
+			}
+	});
 
 function deliinRav(even) {
 	var form = {

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
+import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.SponsorProgress;
@@ -192,4 +193,16 @@ public class AjaxMypageController {
 		return json;
 
 	}
+	/*
+	 * @RequestMapping(value = "/autdeadline", method = { RequestMethod.GET,
+	 * RequestMethod.POST }, produces = "application/json;charset=utf8") public
+	 * String autdeadline(@RequestBody List<AuctionTender> at) throws Exception {
+	 * System.out.println("(컨트롤러)제작의뢰내역 시간 계산!!! 시작!!!");
+	 * System.out.println("(컨트롤러)제작의뢰내역 시간 계산!!! 시작!!!"+at.get(0).getAu_date());
+	 * 
+	 * //String json = pm.autdeadline();
+	 * System.out.println("(컨트롤러)제작의뢰내역 시간 계산 진행 내역 마무리!!!"); return null;
+	 * 
+	 * }
+	 */
 }
