@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 div {
 	margin: auto;
@@ -380,7 +381,7 @@ div {
 					<button class="submitbtn" id="btn2">경매참여</button>
 				</c:if>
 				<c:if test="${au_id eq se_id }">
-					<button class="submitbtn">
+					<button class="submitbtn" onclick="myItem()">
 						본인은 구매가 <br> 불가능 합니다.
 					</button>
 				</c:if>
@@ -477,7 +478,7 @@ div {
 	console.log(1,even);
 	var inbuy=$("#inbuyInput").val();
 	if(even<inbuy){
-		alert("구입수량이 없습니다.");
+		swal("구입수량이 없습니다.");
 		return false;
 	}else{
 		return true;
@@ -487,13 +488,17 @@ div {
 	console.log(2,even);
 	var tender=$("#tenderInput").val();
 	if(even<tender){
-		alert("포인트가 없습니다.");
+		swal("포인트가 없습니다.");
 		return false;
 	}else{
 		return true;
 	}
 }
 	
+ function myItem() {
+	swal("자신의 상품은 구입하실수 없습니다.");
+}
+ 
 	if(${nb} > 0){
 		$("#peek2").css("display", "none");
 		$("#peek1").css("display", "inline");

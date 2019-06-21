@@ -48,4 +48,10 @@ public interface IboardDao {
 	int getBoardConut();
 
 	void getreviewchange(@Param("bd_num") int bd_num,@Param("bd_contents") String bd_contents, @Param("bd_mbid")String bd_mbid);
+	
+	void getreviewdelete(@Param("bd_num") int bd_num,@Param("bd_contents") String bd_contents, @Param("bd_mbid")String bd_mbid);
+	
+	void getreviewimgdel(@Param("bd_num") int bd_num,@Param("bd_contents") String bd_contents, @Param("bd_mbid")String bd_mbid);
+
+
 }
