@@ -34,4 +34,6 @@ public interface IsponsorDao {
 
 	Sponsor getDatecheck(Sponsor sp);
 
+	SponsorTender getCountcheck(@Param("ss_num") int ss_num);
+
 }

@@ -11,4 +11,5 @@ import lombok.Setter;
 public class SponsorTender {
 	int sst_ssnum;
 	String sst_mbid;
+	int ss_cnt;
 }
