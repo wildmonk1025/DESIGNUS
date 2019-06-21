@@ -142,6 +142,11 @@ td {
 				</tr>
 			</table>
 			<table>
+		
+
+
+
+
 			</table>
 		</div>
 
@@ -179,5 +184,12 @@ td {
 				}
 			});//end ajax
 	}
+	var today = new Date();
+	var dateString = ${ss_date2};
+	var dateArray = dateString.split("-"); //이렇게 쪼개서 나누어준 다음.
+	var dateObj = new Date(dateArray[0], Number(dateArray[1])-1, dateArray[2]);
+
+	
+	
 </script>
 </html>
