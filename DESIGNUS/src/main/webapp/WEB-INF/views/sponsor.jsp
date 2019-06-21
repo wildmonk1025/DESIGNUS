@@ -118,15 +118,6 @@ div {
 	<div id="homeMain">
 		<div id="titleAndbtn">
 			지금 후원 가능한 작품
-			<c:choose>
-				<c:when test="${grade=='W'}">
-					<button id="btn1" class="btn"
-						onclick="location.href='sponregistration'">후원상품등록</button>
-				</c:when>
-				<c:when test="${grade!='W'}">
-					<button id="btn1" class="btn" onclick="msg()">후원상품등록</button>
-				</c:when>
-			</c:choose>
 		</div>
 		<div id="sponList"></div>
 	</div>
