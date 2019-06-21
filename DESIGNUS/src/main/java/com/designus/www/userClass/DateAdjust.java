@@ -28,7 +28,8 @@ public class DateAdjust {
 		//LocalDateTime targetDateTime = LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond);
 
 		//DB로 부터 받아온 시간에 1일을 더함. 1일 뒤 종료하는것으로 구성
-		original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
+		//original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusMinutes(5); //예: original_setDate.minusDays(1);
 		
 		String val = null;
 		if(original_setDate.isAfter(currentDateTime)) {
@@ -83,44 +84,19 @@ public class DateAdjust {
 		 */
 		return val;
 	}
-	/*
-	 * LocalDate -> String LocalDate.of(2020, 12,
-	 * 12).format(DateTimeFormatter.BASIC_ISO_DATE); // 20201212
-	 * 
-	 * LocalDateTime -> String
-	 * LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-	 * ); // 2018-07-26 00:42:24
-	 * 
-	 * LocalDateTime -> java.util.Date
-	 * Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
-	 * //Thu Jul 26 01:00:30 KST 2018
-	 * 
-	 * LocalDate -> java.sql.Date Date.valueOf(LocalDate.of(2015, 5, 5)); //
-	 * 2018-07-26
-	 * 
-	 * LocalDateTime -> java.sql.Timestamp Timestamp.valueOf(LocalDateTime.now());
-	 * // 2018-07-26 01:06:55.323
-	 * 
-	 * String -> LocalDate LocalDate.parse("2002-05-09"); // 2002-05-09
-	 * LocalDate.parse("20081004", DateTimeFormatter.BASIC_ISO_DATE); // 2008-10-04
-	 * 
-	 * String -> LocalDateTime LocalDateTime.parse("2007-12-03T10:15:30"); //
-	 * 2007-12-03T10:15:30 LocalDateTime.parse("2010-11-25 12:30:00",
-	 * DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); // 2010-11-25T12:30
-	 * 
-	 * java.util.Date -> LocalDateTime LocalDateTime.ofInstant(new
-	 * Date().toInstant(), ZoneId.systemDefault()); // 2018-07-26T01:16:46.755
-	 * 
-	 * java.sql.Date -> LocalDate new
-	 * Date(System.currentTimeMillis()).toLocalDate(); // 2018-07-26
-	 * 
-	 * java.sql.Timestamp -> LocalDateTime new
-	 * Timestamp(System.currentTimeMillis()).toLocalDateTime(); //
-	 * 2018-07-26T01:20:07.364
-	 * 
-	 * LocalDateTime -> LocalDate LocalDate.from(LocalDateTime.now()); // 2018-07-26
-	 * 
-	 * LocalDate -> LocalDateTime LocalDate.now().atTime(2, 30); // 2018-07-26T02:30
-	 */
-
+	
+	public boolean compareDateToBoolean(String date) throws ParseException {
+		LocalDateTime original_setDate = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+		/* LocalDateTime original_setDate = LocalDateTime.parse(date, formatter) */
+			
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		
+		//original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusMinutes(5); //예: original_setDate.minusDays(1);
+		
+		if(original_setDate.isAfter(currentDateTime)) {
+			return true;
+		}
+		return false;
+	}
 }
