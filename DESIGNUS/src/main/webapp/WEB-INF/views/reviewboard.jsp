@@ -479,6 +479,8 @@ function articleView(num1){
 				console.log("실패");
 			}
  		});
+ 		
+ 		
 	});
 	
 }
