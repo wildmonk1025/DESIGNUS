@@ -93,7 +93,7 @@ public class WBSController {
 		//이용후기추천하기
 		
 	}
-	@RequestMapping(value = "/reviewchange", method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewchange", method = RequestMethod.POST)
 	public ModelAndView reviewchange(int bd_num, String bd_contents, String bd_mbid) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("zzzzzzzzzzz"+bd_num);

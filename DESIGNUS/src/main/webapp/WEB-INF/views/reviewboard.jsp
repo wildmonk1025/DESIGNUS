@@ -498,6 +498,7 @@ function articleView(num1){
 				console.log("성공");
 			},
 			error:function(error){
+				
 				console.log("실패");
 			}
  		});
