@@ -4,8 +4,7 @@
 <%@ page session="false"%>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>Home</title>
 <style>
@@ -56,6 +55,22 @@
 	border: 1px solid orange;
 }
 
+#middle_content1_lv2, #middle_content2_lv2 {
+	width: auto;
+	height: 300px;
+	
+	overflow-x: auto;
+ 	white-space: nowrap;
+}
+
+.recommlist {
+	width: 280px;
+	height: inherit;
+	float: left;
+	border: 1px solid black;
+
+}
+
 #footer {
 	border: 1px solid red;
 	width: 1514px;
@@ -77,7 +92,14 @@
 		<div id="middle_content1">
 			<div id="middle_content1_title">추천 작품</div>
 			<div id="middle_content1_lv1">
-				<div id="recommlist">asdasd</div>
+			<div id="middle_content1_lv2">
+			<c:forEach var="rl" items="${recommList}">
+				<div class="recommlist">
+				${rl.aui_img}
+				${rl.au_title}
+				</div>
+			</c:forEach>
+			</div>
 			</div>
 		</div>
 		<div id="middle_content2">
@@ -94,56 +116,6 @@
 </body>
 <script>
 	//var rList = ${rList}
-	$(document).ready(function() {
-		$.ajax({
-			url : 'bestajax',
-			type : 'post',
-			dataType : 'json',
-			//contentType:'application/json',
-			success : function(data) {
-				var result = "";
-				console.dir(data);
-				console.log("성공");
-
-				for (var i = 0; i < 3; i++) {
-					result +=;
-					$("#bestlist").html(result);
-				}, error : function(error) {
-					console.log("실패");
-					console.log(error);
-								}
-						});
-				});
-
-	$(document).ready(function() {
-		$.ajax({
-			url : 'newajax',
-			type : 'post',
-			dataType : 'json',
-			//contentType:'application/json',
-			success : function(data) {
-				var result = "";
-				console.dir(data);
-				console.log("성공");
-
-				for (var i = 0; i < 3; i++) {
-					result += "<div id='bestitem'>"
-						+ "<img src='resources/images/yyy.jpg' id='img1'>"
-						+ "</div>"
-						+ "<div class='best'>"
-						+ "작가아이디:"+ data[i].au_mbid_w
-						+ "<br>" + "상품번호:"+ data[i].au_num + "<br>"
-						+ "상품설명:" + data[i].au_contents
-						+ "<br>" + "신상:" + data[i].au_date + "<br>"
-						+ "</div>"
-						}
-						$("#coklist").html(result);
-					},error : function(error) {
-						console.log("실패");
-						console.log(error);
-							}
-					});
-				});
 
 	window.onload = function() {
 		var flag = ${logout};

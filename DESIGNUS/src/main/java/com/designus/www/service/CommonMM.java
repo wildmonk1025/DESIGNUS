@@ -1,6 +1,7 @@
 package com.designus.www.service;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,33 +47,7 @@ public class CommonMM {
 		return mav;
 	}
 	*/
-	public String bestajax() {
-	         List<Auction> rList=cDao.getbestInfo();
-	         System.out.println("이거는되나");
-			Gson gs=new Gson();
-			String jsonObj=gs.toJson(rList);
-			System.out.println(jsonObj);
-			System.out.println("여기는??");
-		return jsonObj;
-	}
-	public String newajax() {
-	       List<Auction> rList=cDao.getnewInfo();
-	         System.out.println("이거는되나");
-			Gson gs=new Gson();
-			String jsonObj=gs.toJson(rList);
-			System.out.println(jsonObj);
-			System.out.println("여기는??");
-		return jsonObj;
-	}
-	public String imgajax() {
-		List<Auction> rList=cDao.getimgInfo();
-        System.out.println("이거는되나");
-		Gson gs=new Gson();
-		String jsonObj=gs.toJson(rList);
-		System.out.println(jsonObj);
-		System.out.println("여기는??");
-	return jsonObj;
-	}
+
 	public String searchRanking() {
 		List<RealTimeSearchRanking> sList = cDao.getSearchRankingSelect();
 		String json = new Gson().toJson(sList);
@@ -121,6 +96,20 @@ public class CommonMM {
 		}
 		jsonStr = new Gson().toJson(jsonStr);
 		return jsonStr;
+	}
+	public ModelAndView homeSetting() {
+		mav = new ModelAndView();
+		List<Auction> aRecommList=cDao.getbestInfo(); //AU_RECOMM_LIST 뷰에서 가져옴
+		List<Auction> recommList = new ArrayList<>();
+		for(int i=0;i<20;i++) {
+			recommList.add(aRecommList.get(i));
+		}
+		
+		//String jsonObj = new Gson().toJson(recommList);
+		
+		mav.addObject("recommList", recommList);
+		mav.setViewName("home");
+		return mav;
 	}
 	
 }

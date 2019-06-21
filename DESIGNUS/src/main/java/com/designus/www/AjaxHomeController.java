@@ -27,24 +27,6 @@ public class AjaxHomeController {
 	private MemberMM mm;
 	
 	ModelAndView mav;
-	@RequestMapping(value = "/bestajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
-	public String replyInsert() {
-		System.out.println("dd");
-		  String aa = cm.bestajax();
-		  System.out.println("cm="+cm.bestajax());
-		  System.out.println("aList="+aa);
-		  System.out.println("이거는??????");
-		return aa;	
-	} 
-	@RequestMapping(value = "/newajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
-	public String replyInsert1() {
-		System.out.println("dd");
-		String aa = cm.newajax();
-		System.out.println("cm="+cm.newajax());
-		System.out.println("aList="+aa);
-		System.out.println("이거는??????");
-		return aa;	
-	} 
 	
 	@RequestMapping(value = "/mem", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
 	public String mem() {
