@@ -369,6 +369,7 @@ img{
 </div> 
 
 				
+				<button id="btn2" class="btn" >글 삭제하기</button>
 				<button id="btn1" class="btn" >글 수정하기</button>
 				<button id="btn" class="btn" >추천하기</button>
 				
@@ -490,6 +491,28 @@ function articleView(num1){
 		console.log("id확인="+b);
  		$.ajax({
 			url : 'reviewchange',
+			type: 'post',
+			data: {bd_num:num,
+				   bd_contents:a,
+				   bd_mbid:b},
+			success:function(data){
+				console.log("성공");
+			},
+			error:function(error){
+				
+				console.log("실패");
+			}
+ 		});
+ 		
+ 		
+	});
+	$("#btn2").click(function(){
+		var a = $("textarea").val();
+		var b = $("#idc").val();
+		console.log("num확인="+num);
+		console.log("id확인="+b);
+ 		$.ajax({
+			url : 'reviewdelete',
 			type: 'post',
 			data: {bd_num:num,
 				   bd_contents:a,

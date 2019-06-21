@@ -92,4 +92,21 @@ public class BoardMM {
 		mav.setViewName(view);
 		return mav;
 	}
+	public ModelAndView reviewdelete(int bd_num, String bd_contents, String bd_mbid) {
+		String view = null;
+		mav = new ModelAndView();
+		String s = (String)session.getAttribute("id");
+		System.out.println("fdd"+s);
+		
+		System.out.println("bd_mbid"+bd_mbid);
+		if(s.equals(bd_mbid) || s.equals("ADMIN")){
+		bDao.getreviewdelete(bd_num,bd_contents,bd_mbid);
+		bDao.getreviewimgdel(bd_num,bd_contents,bd_mbid);
+			view = "reviewboard";
+		}else {
+			view = "home";
+		}		
+		mav.setViewName(view);
+		return mav;
+	}
 }

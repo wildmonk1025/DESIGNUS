@@ -104,6 +104,17 @@ public class WBSController {
 		//이용후기변경
 		
 	}
+	@RequestMapping(value = "/reviewdelete", method = RequestMethod.POST)
+	public ModelAndView reviewdelete(int bd_num, String bd_contents, String bd_mbid) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_num);
+		mav = bm.reviewdelete(bd_num,bd_contents,bd_mbid);
+		return mav;
+		
+		
+		//이용후기삭제
+		
+	}
 	
 	
 	
