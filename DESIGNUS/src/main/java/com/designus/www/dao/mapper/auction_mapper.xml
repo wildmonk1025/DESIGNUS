@@ -22,16 +22,18 @@
 
 	<select id="getAuctionListSelect"  resultType="auction">
 	  <![CDATA[
-	  	SELECT * FROM (
-		SELECT rownum AS rn, a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
-		a.au_contents, a.au_date, b.aut_price, ROW_NUMBER() OVER(PARTITION BY a.AU_NUM ORDER BY a.AU_NUM DESC) 
-        AS rankNo FROM AU a LEFT OUTER JOIN 
-		(select aut_aunum,MAX(aut_price)as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
+		SELECT * FROM (
+		SELECT ROWNUM AS RN, AU_NUM, AU_MBID_W, AU_TITLE, AU_CGCODE, AU_QTY, AU_MINPRICE, AU_INPRICE,
+        AU_CONTENTS, AU_DATE, AUT_PRICE FROM (
+		SELECT  a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
+		a.au_contents, a.au_date, b.aut_price FROM AU a  LEFT OUTER JOIN 
+		(select aut_aunum, MAX(aut_price) as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
 		ON  a.AU_NUM = b.AUT_AUNUM
-		where a.au_cgcode = ${cgcode} AND rownum <=${num1}*9
-        ) WHERE rn>=${num1}*9-8
+		where a.au_cgcode = ${cgcode}
+        ORDER BY AU_NUM DESC
+        ) WHERE ROWNUM<=${num1}*9
+        ) WHERE RN>=${num1}*9-8
       ]]>
-		
 	</select>
 
 	<select id="getListCount"  resultType="Integer">
