@@ -51,8 +51,12 @@
 	</insert>
 
 	<select id="getCountcheck" parameterType="sponsor"
-	resultType="sponsortender">
-	SELECT * FROM CNT WHERE SST_SSNUM = ${ss_num}
+		resultType="sponpro">
+	<![CDATA[
+	SELECT * FROM(SELECT SS.*,NVL(SSP.SSP_COUNT,0) AS SSP_COUNT
+	FROM SPONSOR SS LEFT OUTER JOIN (SELECT SSP_SSNUM,COUNT(*) AS SSP_COUNT FROM SSP GROUP BY SSP_SSNUM) SSP
+	ON SS.SS_NUM=SSP.SSP_SSNUM) WHERE SS_NUM=${ss_num}
+	]]>
 	</select>
 
 	<!-- <select id="getDatecheck" parameterType="java.time.LocalDateTime" resultType="sponsor"> 
