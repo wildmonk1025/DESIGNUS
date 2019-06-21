@@ -45,15 +45,7 @@ public class AjaxHomeController {
 		System.out.println("이거는??????");
 		return aa;	
 	} 
-	@RequestMapping(value = "/imgajax", produces = "application/json;charset=utf8",method = RequestMethod.POST)
-	public String imgInsert() {
-		System.out.println("dd");
-		String aa = cm.imgajax();
-		System.out.println("cm="+cm.imgajax());
-		System.out.println("aList="+aa);
-		System.out.println("이거는??????");
-		return aa;	
-	} 
+	
 	@RequestMapping(value = "/mem", produces = "application/json;charset=utf-8", method = { RequestMethod.GET, RequestMethod.POST })
 	public String mem() {
      System.out.println("여기는 와야 정상인디... 아!! 메소드 방시 적어야 된다...ㅠㅠ");

@@ -22,7 +22,6 @@ public interface IcommonDao {
 
 	List<Auction> getnewInfo();
 
-	List<Auction> getimgInfo();
 
 	List<RealTimeSearchRanking> getSearchRankingSelect();
 
