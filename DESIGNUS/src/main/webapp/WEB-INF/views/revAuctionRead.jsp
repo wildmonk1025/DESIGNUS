@@ -239,6 +239,7 @@
 
 .decisionbtn {
 	width: 150px;
+	display: block;
 }
 
 #ra_mbid2 {
@@ -344,8 +345,12 @@
 					</tr>
 					<tr>
 						<th>의뢰인의 낙찰 금액 :</th>
+						<c:set var="priceChk" value="${raCurPrice.rat_price}"/>
+						<c:if test="${priceChk eq null}">
+						<td colspan="2" style="text-align:center; color:gray">내역이 없습니다.</td></c:if>
+						<c:if test="${priceChk ne null}">
 						<td style="text-align:center;">${raCurPrice.rat_price}</td>
-						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td>
+						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td></c:if>
 						<td style="text-align:left; color:blue;"></td>
 					</tr>
 				</table>
@@ -450,7 +455,7 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-		//setInterval(function() {
+/* 		setInterval(function() { */
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -477,7 +482,7 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
-			//}, 300);
+/* 			}, 300); */
 		});
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();
@@ -548,6 +553,8 @@ $(".subtn").click(function() {
  								swal("의뢰완료! 마이페이지-[제작의뢰 내역]을 확인해주세요.");
  							} else if(data == '4') {
  								swal("이미 해당 작가님께 의뢰중인 접수내역이 있습니다!");
+ 							} else if(data == '5') {
+ 								swal("경매가 마감되어, 의뢰를 요청할 수 없습니다.");
  							}							
  						},
  						error: function(error) {
@@ -572,31 +579,26 @@ $(".subtn").click(function() {
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
  	 	//end.setDate(end.getDate()+1);
- 	 	end.setMinutes(end.getMinutes()+5);
+ 	 	end.setMinutes(end.getMinutes()+10);
  		var _second = 1000;
  		var _minute = _second * 60;
  		var _hour = _minute * 60;
  		var _day = _hour * 24;
  		var timer;
- 		
+
  		function showRemaining() {
  		var now = new Date();
  		var distance = end - now;
- 		
+
  		if (distance < 0) {
  		clearInterval(timer);
  		$(id).html("경매가 마감되었습니다.");
-	      $.ajax({
-				type:'POST',
-				url:'ajax/reqdecision',
-				data: JSON.stringify(form),
-				dataType:'json',
-				success: function(data) {
-					console.log("성공");						
-				},
-				error: function(error) {
-				}
-			});
+
+ 		if (!location.hash) { 
+ 			location.hash = '#reload';
+ 			window.location.reload();
+ 		}
+
  		return;
  		}
  		
@@ -608,7 +610,7 @@ $(".subtn").click(function() {
  		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
- 		timer = setInterval(showRemaining, 1000);
+ 		timer = setInterval(showRemaining, 100);
  		}
  		// Source: stackoverflow
  		
