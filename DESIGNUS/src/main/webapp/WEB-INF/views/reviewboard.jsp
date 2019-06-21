@@ -367,7 +367,12 @@ img{
 			<div class="table-users" id="declarelist">
    
 </div> 
-
+				<table>
+					<tr>
+						<td>아이디:${s}</td>
+						<td colspan="3">댓글:${bdc_contents}</td>
+					</tr>
+				</table>
 				
 				<button id="btn2" class="btn" >글 삭제하기</button>
 				<button id="btn1" class="btn" >글 수정하기</button>
@@ -379,8 +384,8 @@ img{
 	</div>
 <table>
 	<tr bgcolor="aqua" height="30">
-		<th width="100">번호</th>
-		<th width="100">제목</th>
+		<th width="100">번호 </th>
+		<th width="100">제목 </th>
 		<th width="100">아이디</th>
 		<th width="100">작성일</th>
 		<th width="100">조회수</th>
@@ -433,7 +438,6 @@ function articleView(num1){
 			console.log("성공");
 			console.log(data.bList);
 			console.log(data.iList);
-		
 				result+="<div class='header'>"+"이용후기 게시판"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
 					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</th>"+"</tr>"
@@ -451,7 +455,7 @@ function articleView(num1){
 						 +"</td></tr>"
 					  }
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
-					  "<table>" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="${data.bList.bd_num}">"+"</td>" +"<td>"+
+					  "<table>" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
 					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
 					  +"<input type='submit'/>" +"</td>"+"</tr>"+"</table>"+"</form>"
 			$("#declarelist").html(result);

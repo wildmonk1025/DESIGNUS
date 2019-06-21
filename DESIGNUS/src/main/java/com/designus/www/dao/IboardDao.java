@@ -53,7 +53,9 @@ public interface IboardDao {
 	
 	void getreviewimgdel(@Param("bd_num") int bd_num,@Param("bd_contents") String bd_contents, @Param("bd_mbid")String bd_mbid);
 
-	void getreviewcomment(@Param("bdc_contents") String bdc_contents,@Param("s") String s);
+	boolean getreviewcomment(Map<String, Object> map);
+
+
 
 
 }

@@ -98,4 +98,7 @@
 	<delete id="getreviewimgdel">
 		DELETE FROM BD WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
 	</delete>
+	<insert id="getreviewcomment" parameterType="map">
+		INSERT INTO BDC VALUES(BDC_SEQ.nextval,${bd_num},#{s},#{bdc_contents},SYSDATE)
+	</insert>
 </mapper>

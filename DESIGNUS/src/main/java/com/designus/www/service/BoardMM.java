@@ -116,10 +116,17 @@ public class BoardMM {
 		String s = (String)session.getAttribute("id");
 		BoardComment bdc=new BoardComment();
 		if(s!=null) {
-			bDao.getreviewcomment(bdc_contents,s);
+			Map<String, Object> map = new HashMap<>();
+			map.put("bd_num", bd_num);
+			map.put("s", s);
+			map.put("bdc_contents", bdc_contents);
+			
+			boolean a = bDao.getreviewcomment(map);
+			
+			mav.addObject("bdc_contents", bdc_contents);
+			mav.addObject("s", s);
+			System.out.println("contents="+bdc_contents+s);
 			view = "reviewboard";
-			mav.addObject("bdc_contents", bdc.getBdc_contents());
-			System.out.println("contents="+bdc.getBdc_contents());
 		}else {
 			view = "home";
 		}
