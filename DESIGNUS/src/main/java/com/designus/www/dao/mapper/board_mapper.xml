@@ -2,67 +2,84 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.designus.www.dao.IboardDao">  
-    <insert id="reviewBoardyhWrite" parameterType="board" keyProperty="bd_num" useGeneratedKeys="true">
-	<selectKey keyProperty="bd_num" resultType="int" order="AFTER">
-	  SELECT BD_SEQ.CURRVAL FROM DUAL 
-	</selectKey>
-        INSERT  INTO BOARD 
-     VALUES(BD_SEQ.NEXTVAL,#{bd_kind},#{bd_mbid},#{bd_title},#{bd_contents},DEFAULT,DEFAULT,DEFAULT)
-	</insert>  
-	
-       <insert id="reviewfileInsert" parameterType="HashMap">
-		 INSERT INTO BOARDIMG VALUES(#{bnum},#{sysFileName})
+<mapper namespace="com.designus.www.dao.IboardDao">
+	<insert id="reviewBoardyhWrite" parameterType="board"
+		keyProperty="bd_num" useGeneratedKeys="true">
+		<selectKey keyProperty="bd_num" resultType="int"
+			order="AFTER">
+			SELECT BD_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD
+		VALUES(BD_SEQ.NEXTVAL,#{bd_kind},#{bd_mbid},#{bd_title},#{bd_contents},DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+
+	<insert id="reviewfileInsert" parameterType="HashMap">
+		INSERT INTO BOARDIMG
+		VALUES(#{bnum},#{sysFileName})
 	</insert>
 	<update id="goods" parameterType="String">
-		 update MJ SET MJ_LIKE = MJ_LIKE +1
+		update MJ SET MJ_LIKE = MJ_LIKE
+		+1
 		where MJ_MBID =#{idw}
 	</update>
-    
-<!--     이용후기 알람 Start -->
-    <select id="getRevBoardUserName" parameterType="notify"
+
+	<!-- 이용후기 알람 Start -->
+	<select id="getRevBoardUserName" parameterType="notify"
 		resultType="String">
 		SELECT RA_MBID FROM RA WHERE RA_NUM = ${nf_num}
 	</select>
-    <select id="getRevItemTitle" parameterType="notify"
+	<select id="getRevItemTitle" parameterType="notify"
 		resultType="String">
 		SELECT RA_TITLE FROM RA WHERE RA_NUM = ${nf_num}
 	</select>
-    <select id="getRAPNumSel"  resultType="Integer">
-		SELECT RAP_RANUM FROM RAP WHERE RAP_PTNUM = ${ptnum}
+	<select id="getRAPNumSel" resultType="Integer">
+		SELECT RAP_RANUM FROM RAP
+		WHERE RAP_PTNUM = ${ptnum}
 	</select>
-    <select id="getAuBoardUserName" parameterType="notify"
+	<select id="getAuBoardUserName" parameterType="notify"
 		resultType="String">
 		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${nf_num}
 	</select>
-    <select id="getAuItemTitle" parameterType="notify"
+	<select id="getAuItemTitle" parameterType="notify"
 		resultType="String">
 		SELECT AU_TITLE FROM AU WHERE AU_NUM = ${nf_num}
 	</select>
-    <select id="getAUPNumSel"  resultType="Integer">
-		SELECT AUP_RANUM FROM AUP WHERE AUP_PTNUM = ${ptnum}
+	<select id="getAUPNumSel" resultType="Integer">
+		SELECT AUP_RANUM FROM AUP
+		WHERE AUP_PTNUM = ${ptnum}
 	</select>
-    <insert id="setNotifyboardyh" parameterType="notify">
+	<insert id="setNotifyboardyh" parameterType="notify">
 		INSERT INTO NOTIFY
 		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_s},#{nf_mbid_r},#{nf_notify},0,DEFAULT)
 	</insert>
-<!--        이용후기 알람 End -->
-        <select id="getreviewboardlist" resultType="board">
-   		SELECT * FROM BD WHERE BD_KIND='이용후기' ORDER BY BD_NUM DESC
-   </select>
-        <select id="getboardlistInfo" parameterType="int" resultType="board">
-   		SELECT * FROM BD WHERE BD_NUM=${num}
-   </select>
-   
-        <select id="getboardimgInfo" parameterType="int" resultType="board">
-   		SELECT * FROM BDI WHERE BDI_NUM=${num}
-   </select>
-       
-   <update id="getviewInfo" parameterType="int">
-		UPDATE BD SET BD_VIEWS=BD_VIEWS+1 WHERE BD_NUM = ${num}
+	<!-- 이용후기 알람 End -->
+	<select id="getreviewboardlist" parameterType="Integer"	resultType="board">
+   		 <![CDATA[  select * from (select rownum as rn, bd_num, bd_kind, bd_mbid, 
+                    bd_title, bd_contents, bd_date, bd_like, bd_views
+                    from bd where bd_kind='이용후기' and rownum <= #{num}*10 order by bd_num desc) 
+                    where rn >= #{num}*10-9 ]]>
+	</select>
+	<select id="getBoardConut" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(*) FROM BD
+	</select>
+
+	<select id="getboardlistInfo" parameterType="int"
+		resultType="board">
+		SELECT * FROM BD WHERE BD_NUM=${num}
+	</select>
+
+	<select id="getboardimgInfo" parameterType="int"
+		resultType="board">
+		SELECT * FROM BDI WHERE BDI_NUM=${num}
+	</select>
+
+	<update id="getviewInfo" parameterType="int">
+		UPDATE BD SET
+		BD_VIEWS=BD_VIEWS+1 WHERE BD_NUM = ${num}
 	</update>
-	
-   <update id="getreviewlike" parameterType="int">
-		UPDATE BD SET BD_LIKE=BD_LIKE+1 WHERE BD_NUM = ${num}
+
+	<update id="getreviewlike" parameterType="int">
+		UPDATE BD SET
+		BD_LIKE=BD_LIKE+1 WHERE BD_NUM = ${num}
 	</update>
 </mapper>
