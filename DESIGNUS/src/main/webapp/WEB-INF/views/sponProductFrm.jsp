@@ -126,14 +126,15 @@ td {
 					<td class="ts1">후원 기간</td>
 					<td class="ts2">${ss_date2}</td>
 					<td class="ts1">현재 주문량</td>
-					<td class="ts2">0</td>
+					<td class="ts2">${st_count}</td>
 				</tr>
 				<tr>
 					<td colspan="6" style="height: 150">${ss_contents}</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button class="bt21" onclick="sponAj(${ss_num})" style="cursor: pointer">밀어주기</button>
+						<button class="bt21" onclick="sponAj(${ss_num})"
+							style="cursor: pointer">밀어주기</button>
 					</td>
 					<td colspan="2">
 						<button class="bt22" onclick="location.href='sponsor'">목록보기</button>
