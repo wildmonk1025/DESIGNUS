@@ -239,6 +239,7 @@
 
 .decisionbtn {
 	width: 150px;
+	display: block;
 }
 
 #ra_mbid2 {
@@ -450,7 +451,7 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-		//setInterval(function() {
+/* 		setInterval(function() { */
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -477,7 +478,7 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
-			//}, 300);
+/* 			}, 300); */
 		});
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();
@@ -572,31 +573,26 @@ $(".subtn").click(function() {
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
  	 	//end.setDate(end.getDate()+1);
- 	 	end.setMinutes(end.getMinutes()+5);
+ 	 	end.setMinutes(end.getMinutes()+10);
  		var _second = 1000;
  		var _minute = _second * 60;
  		var _hour = _minute * 60;
  		var _day = _hour * 24;
  		var timer;
- 		
+
  		function showRemaining() {
  		var now = new Date();
  		var distance = end - now;
- 		
+
  		if (distance < 0) {
  		clearInterval(timer);
  		$(id).html("경매가 마감되었습니다.");
-	      $.ajax({
-				type:'POST',
-				url:'ajax/reqdecision',
-				data: JSON.stringify(form),
-				dataType:'json',
-				success: function(data) {
-					console.log("성공");						
-				},
-				error: function(error) {
-				}
-			});
+
+ 		if (!location.hash) { 
+ 			location.hash = '#reload';
+ 			window.location.reload();
+ 		}
+
  		return;
  		}
  		
@@ -608,7 +604,7 @@ $(".subtn").click(function() {
  		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
- 		timer = setInterval(showRemaining, 1000);
+ 		timer = setInterval(showRemaining, 100);
  		}
  		// Source: stackoverflow
  		
