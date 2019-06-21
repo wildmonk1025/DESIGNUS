@@ -8,77 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-div {
-	margin: auto;
-}
-
-#mypagemain {
-	width: 1530px;
-	height: 1200px;
-	border: 1px solid black;
-}
-
 #one {
 	width: 100%;
 	height: 100%;
 }
 
-#notice {
-	padding-top: 5px;
-	margin: 10px;
-	border: 1px solid orange;
-	width: 1080px;
-	height: 100px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#info {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 280px;
-	height: 580px;
-	font-size: 20px;
-	text-align: left;
-	float: left;
-}
-
-#renking {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 200px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#auction {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#spon {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-}
-
-#main {
-	width: 1520px;
-	height: 170px;
-	text-align: center;
-	height: 170px;
+div {
+	margin: auto;
 }
 
 .bt {
@@ -107,7 +43,7 @@ div {
 		rgb(237, 237, 237) 100%);
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
-	width: 90px;
+	width: 85px;
 	height: 35px;
 	border-color: rgb(223, 192, 86);
 	border-width: 1px;
@@ -140,55 +76,39 @@ div {
 		rgb(237, 237, 237) 100%);
 }
 
-.bt01 {
-	border: 1px solid black;
-	float: right;
-	margin-right: 30px;
-	width: 100px;
-	height: 80px;
+#notice {
+	padding-top: 5px;
+	margin: 10px;
+	width: 1080px;
+	height: 50px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+	overflow: auto;
 }
 
-.bt02 {
-	border: 1px solid black;
-	float: right;
-	margin-right: 30px;
-	margin-top: 50px;
-	width: 100px;
-	height: 80px;
-}
 
-.bt03 {
-	float: right;
-	border: none;
-	margin-right: 30px;
-	margin-top: 50px;
-	width: 100px;
-	height: 80px;
-}
-
-.bt:hover {
-	color: white;
-}
-
-.bt:active {
-	color: yellow;
-}
-
-a {
-	color: red
-}
-
-#lightbox {
-	position: absolute;
-	top: 0;
-	left: 30%;
-	width: 1000px;
-	height: 800px;
-	margin-left: -200px;
-	background: #fff;
-	z-index: 1001;
-	display: none;
+#renking {
 	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 875px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+#main {
+	width: 1520px;
+	height: 170px;
+	text-align: center;
+}
+
+.bt01 {
+	border: none;
+	float: right;
+	margin-right: 30px;
+	width: 100px;
+	height: 80px;
 }
 
 #lightbox {
@@ -245,29 +165,43 @@ a {
 	display: none;
 }
 
-#leftmain {
-	width: 310px;
-	height: 950x;
-	border: 1px solid black;
-	float: left;
-}
-
-#rightmain {
-	width: 1210px;
-	height: 950px;
-	border: 1px solid black;
-	float: left;
-}
-
-#img {
-	margin-top: 20px;
+#lightbox2 {
 	border: 1px solid orange;
-	margin: 20px 10px 10px 10px;
-	width: 280px;
-	height: 290px;
-	text-align: left;
-	font-size: 20px;
-	float: left;
+	position: absolute;
+	top: 200px;
+	left: 600px;
+	width: 800px;
+	height: 700px;
+	margin: auto;
+	background: #fff;
+	z-index: 1001;
+	display: none;
+	background-color: orange;
+	text-align: center;
+}
+
+#lightbox-shadow2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8000px;
+	height: 8000px;
+	background: #000;
+	opacity: 1;
+	z-index: 1000;
+	display: none;
+}
+
+#lightbox-shadow3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8000px;
+	height: 8000px;
+	background: #000;
+	opacity: 1;
+	z-index: 1000;
+	display: none;
 }
 
 #point {
@@ -325,35 +259,12 @@ a:hover {
 	float: left;
 }
 
-#search {
-	margin-left: 100px;
-	padding-left: 120px;
-	padding-right: 120px;
-	padding-top: 20px;
-	width: 570px;
-	height: 80px;
-	float: left;
-}
-
 #loginwriter {
 	padding: 3px;
 	padding-top: 20px;
 	width: 300px;
 	height: 80px;
 	float: right;
-}
-
-#category {
-	float: left;
-	width: 1500px;
-	height: 50px;
-}
-
-#searchtxt {
-	margin: 50px, 20px;
-	width: 300px;
-	height: 30px;
-	align: center;
 }
 
 #subcategory {
@@ -387,28 +298,103 @@ a:hover {
 	float: left;
 }
 
+#mypageimg {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-left: 5px;
+}
+
+#loginmsg {
+	float: left;
+	width: 130px;
+	height: 50px;
+	margin-left: 10px;
+}
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
-#notice {
-	padding-top: 5px;
-	margin: 10px;
+
+#setp {
 	border: 1px solid orange;
-	width: 1080px;
-	height: 250px;
-	text-align: left;
-	font-size: 20px;
+	margin: 0px 10px 10px 10px;
+	width: 1200px;
+	height: 840px;
 	float: left;
+	font-size: 20px;
+	text-align: center;
+	overflow: auto;
 }
-#pageing{
-   position: absolute;
-	top: 1050px;
-	left: 800px;
+
+#setpT {
+	width: 1200px;
+	margin: 0px 10px 10px 10px;
+	height: 900px;
+	float: left;
+	border: none;
 }
+
+#l1 {
+	position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+
+#l3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+#w3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+
+#Q1 {
+	width: 500px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+}
+
 #total {
-	position : absolute;
+	position: absolute;
 	width: 100%;
 	height: 200%;
 	background-color: black;
@@ -417,7 +403,106 @@ a:hover {
 	display: none;
 }
 
-#l1 {
+.t1 {
+	top: 100;
+	left: -200;
+}
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+	border: 1px solid black;
+}
+
+#2list {
+	width: 1000px;
+	height: 250px;
+	float: left;
+}
+
+#sangimg {
+	margin: 10px;
+	height: 150px;
+	width: 150px;
+	float: left;
+}
+#sixth{
+ position: absolute;
+  top: 1080px;
+  left: 1150px;  
+}
+.first{
+border: 1px solid orange;
+	margin: 10px 10px 10px 10px;
+	width: 1060px;
+	height: 250px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p1 {
+ width: 500px;
+ float: left;
+ text-align: left;
+}
+.p2{
+width: 500px;
+text-align: left;
+float: left;
+}
+.second{
+    background-color : #FFBB00;
+	margin: 10px 10px 10px 10px;
+	width: 1040px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.third{
+	margin: 5px 10px 10px 10px;
+	width: 270px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.fourth{
+	margin: 5px 10px 10px 10px;
+	width: 570px;
+	height: 175px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+.Fifth{
+	margin: 5px 10px 10px 10px;
+	width: 130px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p3{
+margin-top: 60px;
+}
+.p4{
+margin-top: 30px;
+font-size: 13px;
+color: red;
+}
+.bbttzzz{
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: orange;
+  margin-top: 20px;
+}
+
+.bbttzzz:hover {
+   background-color: red;
+}
+#c1{
 position: absolute;
 	width: 400px;
 	height: 330px;
@@ -428,95 +513,37 @@ position: absolute;
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
-	top : 500px;
+	top: 500px;
 	left: 900px;
+} 
 
-}
-#c1{
-position: absolute;
-	width: 400px;
-	height: 370px;
-	border-radius: 100px;
-	z-index: 1002;
-	padding-top: 70px;
-	text-align: center;
-	background-color: #FFE08C;
-	display: none;
-	font-size: 22px;
-	top : 500px;
-	left: 900px;
-}
 </style>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-
+<div id="total"></div>
+<div id="l1"></div>
+<div id="c1"></div>
+	
 	<div id="mypagemain">
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
 		</div>
-<div id="total"></div>
-<div id="l1"></div>
-<div id="c1"></div>
-		<div id="leftmain">
-			
-			
-			<div id="info">
-				<jsp:include page="Mapagemain.jsp" />
-			</div>
-		</div>
+
+		<jsp:include page="Mapagemain.jsp" />
+
 
 		<div id="rightmain">
-		<div id="revA"></div>
-		
-			<!-- <div id="notice">
-				<h2>제작의뢰 접수내역</h2>
+			<div id="notice">
+			 <h2>제작의뢰 구매 내역</h2><hr>
 			</div>
 			<div id="renking">
-				<h1>의뢰내역</h1>
-				<div class="bt01">
-					<h2>요청</h2>
-					<h2>취소</h2>
-				</div>
+				
 			</div>
-			<div id="auction">
-				<h1>의뢰내역</h1>
-				<div class="bt02">
-					<h2>요청</h2>
-					<h2>취소</h2>
-				</div>
-			</div>
-			<div id="spon">
-				<h1>의뢰내역</h1>
-				<div class="bt03">
-					<button id="action" style="width: 110px;" class="bt">의뢰인배송정보</button>
-					<button id="delivery" class="bt">배송 보내기</button>
-				</div>
-			</div>
+        <div id="sixth">${RApaging}</div>
 		</div>
-		<div id="lightbox-shadow">
-			<div id="lightbox">
-				<h1>의뢰인 배송정보</h1>
-				<hr>
-				<button>확인</button>
-				<button type="button"
-					onclick="location.href='revAuctionMyAcceptList.jsp">취소</button>
-			</div>
-		</div>
-		<div id="lightbox-shadow1">
-			<div id="lightbox1">
-				<h1>운송장 입력</h1>
-				<hr>
-				<button>확인</button>
-				<button type="button"
-					onclick="location.href='revAuctionMyAcceptList.jsp'">취소</button>
-			</div>
-		</div> -->
-		<div id="pageing">${RApaging}</div> 
-		</div>
-		
 	</div>
 
 </body>
@@ -528,71 +555,75 @@ var main = "";
 
 for (var i = 0; i < revAList.length; i++) {
 	 if (revAList[i].rap_step == 1) {
-	main += "<div id='notice'><a href='imgRevA'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"
-			+ "상품번호 :"
-			+ revAList[i].rap_ptnum+"</br>"
-			+ "상품명:"
-			+ revAList[i].ra_title+"</br>"
-			+ "구매 금액 : "
-			+ revAList[i].rap_price+"</br>"
-			+ "구매 종류 : "
-			if(revAList[i].ra_oc=="O"){
-		     main +="공개</br>"	
-			}else{
-			 main +="비공개</br>"	
-			}            
-		main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
-             +"<h3>의뢰 결정을 <br> 기다리는 중입니다.</h3></div>";
+		 main+="<div class='first'><div class='second'>"
+	   if(revAList[i].ra_oc=="O"){
+		 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+	 }else{
+		 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+	 }
+		 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+			  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
+			  + "구매 금액 :"+ revAList[i].rap_price+"<br>"
+			  + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+	          + "<div class='Fifth'><p class='p3'>의뢰 결정을 <br> 기다리는 중입니다.</p></div></div>";
              
 	} else if(revAList[i].rap_step==2){
-			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
-		    if(revAList[i].ra_oc=="O"){
-			     main +="구매 종류 : 공개</br>"	
-				}else{
-				 main +="구매 종류 : 비공개</br>"	
-				}            
-		    main +="<input id='btzRevM' type='button' onclick=\"javascript:deliinRav('"+revAList[i].rap_ptnum+"')\" value='배송보내기'/>"
-                 +"<input type='button' onclick=\"javascript:revdelinum('"+revAList[i].rap_ptnum+"')\" value='의뢰인 배송정보'/>";
+				main += "<div class='first'><div class='second'>"
+				 if(revAList[i].ra_oc=="O"){
+				main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+				 }else{
+			    main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+				  }
+				main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+					 + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
+					 + "구매 금액 :"+ revAList[i].rap_price+"<br>"
+					 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				     + "<div class='Fifth'><input id='btzRevM' class='bbttzzz' type='button' onclick=\"javascript:deliinRav('"+revAList[i].rap_ptnum+"')\" value='배송보내기'/><br>"
+				     + "<input type='button' class='bbttzzz' onclick=\"javascript:revdelinum('"+revAList[i].rap_ptnum+"')\" value='의뢰인 배송정보'/></div></div>"
 		    
 		}else if(revAList[i].rap_step==3){
-			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
-		    if(revAList[i].ra_oc=="O"){
-			     main +="구매 종류 : 공개</br>"	
-				}else{
-				 main +="구매 종류 : 비공개</br>"	
-				}           
-			main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
-	             +"<h3>수령 확인 <br> 대기중입니다.</h3></div>";
+			 main+="<div class='first'><div class='second'>"
+				   if(revAList[i].ra_oc=="O"){
+					 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+				 }else{
+					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+				 }
+					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+						  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
+						  + "구매 금액 :"+ revAList[i].rap_price+"<br>"
+						  + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				          + "<div class='Fifth'><p class='p3'>수령 확인 <br>대기중입니다.</p></div></div>";
 			
 		} else if(revAList[i].rap_step==4){
-			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>"
-		    + "상품명:"+revAList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
-		    if(revAList[i].ra_oc=="O"){
-			     main +="구매 종류 : 공개</br>"	
-				}else{
-				 main +="구매 종류 : 비공개</br>"	
-				}       
-		    main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
-		    	 +"<h3>완료</h3></div>";
+			main+="<div class='first'><div class='second'>"
+				   if(revAList[i].ra_oc=="O"){
+					 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+				 }else{
+					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+				 }
+					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+						  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
+						  + "구매 금액 :"+ revAList[i].rap_price+"<br>"
+						  + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				          + "<div class='Fifth'><p class='p3'>완료</p></div></div>";
+		
 		}else{
-			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
-		    if(revAList[i].ra_oc=="C"){
-			     main +="구매 종류 : 비공개</br>"	
-				}            
-		    main +="<input id='step5' type='button' onclick=\"location.href='stepfive?rap_ptnum="+revAList[i].rap_ptnum+"'\" value='승인'/>"
-                 +"<input id='censtep5' type='button' onclick=\"location.href='stepfiveDele?rap_ptnum="+revAList[i].rap_ptnum+"&rap_mbid_w="+revAList[i].rap_mbid_w+"&rap_ranum="+revAList[i].rap_ranum+"'\" value='거절'/>";
-		    
+			main += "<div class='first'><div class='second'>"
+				 if(revAList[i].ra_oc=="O"){
+				main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+				 }else{
+			    main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+				  }
+				main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+					 + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
+					 + "구매 금액 :"+ revAList[i].rap_price+"<br>"
+					 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				     + "<div class='Fifth'><input id='step5' class='bbttzzz' type='button' onclick=\"location.href='stepfive?rap_ptnum="+revAList[i].rap_ptnum+"'\" value='승인'/><br>"
+				     + "<input id='censtep5' type='button' class='bbttzzz' onclick=\"location.href='stepfiveDele?rap_ptnum="+revAList[i].rap_ptnum+"&rap_mbid_w="+revAList[i].rap_mbid_w+"&rap_ranum="+revAList[i].rap_ranum+"'\" value='거절'/></div></div>"
+	
 		}  
 }
-$('#revA').html(main);
+$('#renking').html(main);
 
  $('#step5').click(function() {
 	var secc="${secc}"
@@ -626,10 +657,7 @@ function deliinRav(even) {
 			    contentType:"application/json; charset=utf-8;",
 			    dataType:'json',
 			    success:function(data){
-			    	alert('해당 상품을 추천하였습니다.');
-			    	console.log("1234567"+data.rap_ptnum);
-			    	 $('#total').css("display", "inline");
-			    	$('#l1').css("display", "inline");
+			  
 			    	 sub+="<form action='revdelinumupload' method='post'>"
 			    	    +"<div id='l2'>"
 			    	  if(data.ra_oc=="O"){
@@ -646,9 +674,13 @@ function deliinRav(even) {
 			    	   +"<input type='submit' value='보내기'>"
 			    	   +"<input type='button' id='back' value='취소'></div></form>"; 
 			    	  
-			    	
-			    	
-			    	$('#l1').html(sub);
+			    	   $('#total').css("display", "inline");
+				    	$('#l1').css("display", "inline");
+			    	     $('#l1').html(sub);
+			    	    $('#back').click(function () {
+			    	    	$('#total').css("display", "none");
+					    	$('#l1').css("display", "none");
+						}); 
 			    },
 			    
 			    error:function(error){
@@ -670,10 +702,7 @@ function revdelinum(even) {
 		    contentType:"application/json; charset=utf-8;",
 		    dataType:'json',
 		    success:function(data){
-		    	alert('해당 상품을 추천하였습니다.');
-		    	console.log("1234567"+data.rap_ptnum);
-		    	 $('#total').css("display", "inline");
-		    	$('#c1').css("display", "inline");
+		  
 		    	 cub+="<div id='c2'>"
 		    	  if(data.ra_oc=="O"){
 		    		  cub+="공개<input type='hidden' name='ra_oc'><br>"   
@@ -686,9 +715,15 @@ function revdelinum(even) {
                    +"이름: "+data.rap_name+"<br>"    	
 		    	   +"주소:"+data.rap_address+"<br>"
 		    	   +"연락처:"+data.rap_phone+"<br>"
-		    	   +"<input type='button' id='back' value='취소'></div>"; 
+		    	   +"<input type='button' id='back' value='확인'></div>"; 
 
+		       $('#total').css("display", "inline");
+			    $('#c1').css("display", "inline");   
 		    	$('#c1').html(cub);
+		    	 $('#back').click(function () {
+		    	  $('#total').css("display", "none");
+				  $('#c1').css("display", "none");
+					}); 
 		    },
 		    
 		    error:function(error){
@@ -698,14 +733,14 @@ function revdelinum(even) {
 		 });//end ajax
 }//end revdelinum
 
-	$("#action").click(function() {
+	/* $("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")
 	});
 	$("#delivery").click(function() {
 		$('#lightbox-shadow1').css("display", "inline")
 		$('#lightbox1').css("display", "inline")
-	});
+	}); */
 </script>
 
 </html>
