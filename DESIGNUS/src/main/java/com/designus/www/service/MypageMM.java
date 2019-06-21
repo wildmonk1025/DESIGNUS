@@ -573,7 +573,7 @@ public class MypageMM {
 		nf.setNf_mbid_s(id);
 		nf.setNf_mbid_r(pDao.getAuTrackId(ap));
 		nf.setNf_notify(nf.getNf_mbid_s()+" 님이 상품을 배송을 보냈습니다. ");
-		pDao.setNotifyTrack(nf);
+		pDao.setNotifyAuTrack(nf);
 		//알람끝
 		
 		
