@@ -28,16 +28,14 @@ private volatile static PagingAuction instance;
 	private int pageCount; // 2 // 페이지그룹당 페이지 갯수
 	private String boardName; // 게시판의 종류
 	private int cgcode; // 게시판의 종류
-	private String lkind; // 제작의뢰리스트 , 출품리스트 구분 
 
-	public PagingAuction(int maxNum, int pageNum, int listCount, int pageCount, int cgcode, String lkind,String boardName) {
+	public PagingAuction(int maxNum, int pageNum, int listCount, int pageCount, int cgcode, String boardName) {
 		this.maxNum = maxNum;
 		this.pageNum = pageNum;
 		this.listCount = listCount;
 		this.pageCount = pageCount;
 		this.boardName = boardName;
 		this.cgcode = cgcode;
-		this.lkind = lkind;
 	}
 
 	//메소드 추가 
@@ -52,22 +50,22 @@ private volatile static PagingAuction instance;
 		int totalPage = (maxNum % listCount > 0) ? maxNum / listCount + 1 : maxNum / listCount;
 		int totalGroup = (totalPage % pageCount > 0) ? totalPage / pageCount + 1 : totalPage / pageCount;
 		int currentGroup = (pageNum % pageCount > 0) ? pageNum / pageCount + 1 : pageNum / pageCount;
-		return makeHtmlAuc1(currentGroup, totalPage, boardName, cgcode, lkind);
+		return makeHtmlAuc1(currentGroup, totalPage, boardName, cgcode);
 	}
 
-	private Object makeHtmlAuc1(int currentGroup, int totalPage, String lkind, int cgcode, String boardName) {
+	private Object makeHtmlAuc1(int currentGroup, int totalPage, String boardName, int cgcode) {
 		StringBuffer sb = new StringBuffer();
 		int start = (currentGroup * pageCount) - (pageCount - 1);
 		int end = (currentGroup * pageCount >= totalPage) ? totalPage : currentGroup * pageCount;
 		
 		if (start != 1) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode +"&lkind=" + lkind +"'>");
+			sb.append("<a href='"+"redirect:/"+ boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode + "'>");
 			sb.append("[◀]");
 			sb.append("</a>");
 		}
 		for (int i = start; i <= end; i++) {
 			if (pageNum != i) { // 현재 페이지가 아닌 경우 링크처리
-				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode + "&lkind=" + lkind +"'>");
+				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode + "'>");
 				sb.append(" [ ");
 				sb.append(i);
 				sb.append(" ] ");
@@ -81,7 +79,7 @@ private volatile static PagingAuction instance;
 			}
 		}
 		if (end != totalPage) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode + "&lkind=" + lkind + "'>");
+			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode + "'>");
 			sb.append("[▶]");
 			sb.append("</a>");
 		}
@@ -93,22 +91,22 @@ private volatile static PagingAuction instance;
 		int totalPage = (maxNum % listCount > 0) ? maxNum / listCount + 1 : maxNum / listCount;
 		int totalGroup = (totalPage % pageCount > 0) ? totalPage / pageCount + 1 : totalPage / pageCount;
 		int currentGroup = (pageNum % pageCount > 0) ? pageNum / pageCount + 1 : pageNum / pageCount;
-		return makeHtmlAuc2(currentGroup, totalPage, boardName, cgcode, lkind);
+		return makeHtmlAuc2(currentGroup, totalPage, boardName, cgcode);
 	}
 
-	private Object makeHtmlAuc2(int currentGroup, int totalPage, String lkind, int cgcode, String boardName) {
+	private Object makeHtmlAuc2(int currentGroup, int totalPage, String boardName, int cgcode) {
 		StringBuffer sb = new StringBuffer();
 		int start = (currentGroup * pageCount) - (pageCount - 1);
 		int end = (currentGroup * pageCount >= totalPage) ? totalPage : currentGroup * pageCount;
 
 		if (start != 1) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode +"&lkind=" + lkind +"'>");
+			sb.append("<a href='" + boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode + "'>");
 			sb.append("[◀]");
 			sb.append("</a>");
 		}
 		for (int i = start; i <= end; i++) {
 			if (pageNum != i) { // 현재 페이지가 아닌 경우 링크처리
-				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode +"&lkind=" + lkind + "'>");
+				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode + "'>");
 				sb.append(" [ ");
 				sb.append(i);
 				sb.append(" ] ");
@@ -122,7 +120,7 @@ private volatile static PagingAuction instance;
 			}
 		}
 		if (end != totalPage) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode +"&lkind=" + lkind + "'>");
+			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode + "'>");
 			sb.append("[▶]");
 			sb.append("</a>");
 		}
