@@ -165,7 +165,7 @@ select {
 #lightbox {
 position: absolute;
 	width: 1000px;
-	height: 600px;
+	height: 900px;
 	left: 100px;
 	margin: auto;
 	background: white;
@@ -405,7 +405,6 @@ img{
 	</div>	
 	
 
-
 			
 		</div>
 
@@ -442,16 +441,19 @@ function articleView(num1){
 					  					  data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
 					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"
 					  +"내용"+"</td>"+"<td rowspan='2' colspan='4'>"+
-					  "<textarea rows='30' cols='20'style='margin: 5px; width: 650px; height: 200px; id=\"ff\" name='bd_contents'>"
+					  "<textarea rows='30' cols='20'style='margin: 5px; width: 650px; height: 150px; id=\"ff\" name='bd_contents'>"
 					  +data.bList.bd_contents+"</textarea>"+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
 					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bList.bd_like+"</td>"
 					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>"
 					  +"<input type='hidden' value='"+data.bList.bd_mbid+"' id='idc'>"
 					  for ( var i in data.iList){
 						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+data.iList[i].bdi_img
-						 +"</td></tr>";
+						 +"</td></tr>"
 					  }
-					  result+="</table>";
+					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
+					  "<table>" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="${data.bList.bd_num}">"+"</td>" +"<td>"+
+					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
+					  +"<input type='submit'/>" +"</td>"+"</tr>"+"</table>"+"</form>"
 			$("#declarelist").html(result);
 		},
 	error:function(error){
@@ -507,7 +509,6 @@ function articleView(num1){
  		
 	});
 	$("#btn2").click(function(){
-		var a = $("textarea").val();
 		var b = $("#idc").val();
 		console.log("num확인="+num);
 		console.log("id확인="+b);
@@ -515,7 +516,6 @@ function articleView(num1){
 			url : 'reviewdelete',
 			type: 'post',
 			data: {bd_num:num,
-				   bd_contents:a,
 				   bd_mbid:b},
 			success:function(data){
 				console.log("성공");

@@ -115,6 +115,17 @@ public class WBSController {
 		//이용후기삭제
 		
 	}
+	@RequestMapping(value = "/reviewcomment", method = RequestMethod.POST)
+	public ModelAndView reviewcomment(String bdc_contents, int bd_num) {
+		ModelAndView mav = new ModelAndView();
+		mav = bm.reviewcomment(bdc_contents,bd_num);
+		System.out.println("dddddd"+bdc_contents+bd_num);
+		return mav;
+		
+		
+		//이용후기댓글
+		
+	}
 	
 	
 	

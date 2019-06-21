@@ -2,6 +2,13 @@ package com.designus.www.bean;
 
 import java.security.Timestamp;
 
+import org.apache.ibatis.type.Alias;
+
+import lombok.Getter;
+import lombok.Setter;
+@Alias("boardcomment")
+@Getter
+@Setter
 public class BoardComment {
 	int    bdc_rnum;
 	int    bdc_bdnum;
