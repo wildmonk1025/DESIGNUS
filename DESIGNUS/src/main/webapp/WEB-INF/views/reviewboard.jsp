@@ -457,12 +457,17 @@ function articleView(num1){
 		console.log(error);
 	}
 	});
-	var isRun = false;
+	var click = true;
 	$("#btn").click(function(){
-		var click =true;
+
+		if(click) {
+			swal("해당글을 추천 하였습니다.");
+			click=!click;
+				} else {
+			swal("중복 추천이 불가능합니다.");
+			return;
+				}
 		console.log("num확인="+num);
-		if(click){
-		swal("해당글을 추천 하였습니다.");
  		$.ajax({
 			url : 'reviewlike',
 			type: 'post',
@@ -473,14 +478,7 @@ function articleView(num1){
 			error:function(error){
 				console.log("실패");
 			}
-			
  		});
- 		click= !click;
- 		}else{
- 			swal("중복 추천이 불가능합니다.");
- 		return true;
- 		}
-		
 	});
 	
 }
