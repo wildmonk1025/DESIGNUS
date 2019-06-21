@@ -206,6 +206,12 @@ boolean WriteAReviewspon(Board bd);
 
 List<SponsorProgress> sponsorProgress(String id);
 
+boolean stepfiveupDate(revAuctionProgress rap);
+
+boolean stepfiveDelete(revAuctionProgress rap);
+
+boolean stepfiveautDelete(revAuctionProgress rap);
+
 	/* int getSppagingCountt(String id); */
 
   

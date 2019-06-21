@@ -105,20 +105,20 @@ public class SponsorMM {
 		String today = null;
 
 		Sponsor sm = new Sponsor();
-		SponsorTender st = new SponsorTender();
+		SponsorProgress sp = new SponsorProgress();
 
 		// ss.setSs_num(ss_num);
 		System.out.println("넘어오나용" + ss_num);
 		sm = sDao.getSponcheck(ss_num);
-		st = sDao.getCountcheck(ss_num);
+		sp = sDao.getCountcheck(ss_num);
 
-		System.out.println("담기나??=" + st.getSs_cnt());
+		System.out.println("담기나??=" + sp.getSsp_count());
 
 		sm.setSs_num(ss_num);
-		st.setSst_ssnum(ss_num);
+		sp.setSsp_ssnum(ss_num);
 
 		int cnt = 0;
-		cnt = st.getSs_cnt();
+		cnt = sp.getSsp_count();
 
 		if (ss_num == sm.getSs_num()) {
 			System.out.println("여긴뭐지");
