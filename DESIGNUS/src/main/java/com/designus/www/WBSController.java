@@ -73,17 +73,26 @@ public class WBSController {
 		
 		return json;
 	}
-	@RequestMapping(value = "/reviewboard", method = RequestMethod.GET)
-	public ModelAndView reviewboardlist() {
-		ModelAndView mav = new ModelAndView();
-		mav = bm.reviewboardlist();
+	@RequestMapping(value = "/reviewboard")
+	public ModelAndView reviewboardlist(Integer pageNum) {
+		mav = bm.reviewboardlist(pageNum);
 		return mav;
 	
 		
 		//이용후기 리스트
 	
 	}
-
+	@RequestMapping(value = "/reviewlike", method = RequestMethod.GET)
+	public ModelAndView reviewlike(int bd_num) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_num);
+		mav = bm.reviewlike(bd_num);
+		return mav;
+		
+		
+		//이용후기추천하기
+		
+	}
 	
 	
 	

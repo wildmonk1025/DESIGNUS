@@ -262,13 +262,22 @@ public class RevAuctionMM {
 		}
 	}
 
-	public int reqDecision(revAuctionProgress rap) {
+	public int reqDecision(revAuctionProgress rap) throws ParseException {
 		String id = session.getAttribute("id").toString();
 		int msg = 0; //본인은 의뢰할 수 없습니다.
 		//글 작성자를 임시로 rap_mbid_n에 담아와 세션의 "id"와 비교후, 동일하면 RAT_DECIDE를 "O"로 변경
 		String revwriter = rap.getRap_mbid_n();
 		//rap_mbid_n에 세션 "id"를 세팅
 		rap.setRap_mbid_n(id);
+		
+		//제작의뢰 경매시간이 지나면, 의뢰하기가 불가능하도록 설정
+		DateAdjust da = new DateAdjust();
+		RevAuction ra = new RevAuction();
+		ra.setRa_num(rap.getRap_ranum());
+		ra = rDao.revAuctionReadSelect(ra);
+		boolean f = da.compareDateToBoolean(ra.getRa_date());
+		
+		if(f) {
 		if (!rap.getRap_mbid_w().equals(id)) {
 			if (revwriter.equals(id)) {
 				int flag1 = rDao.reqDecisionUpdate(rap);
@@ -295,6 +304,9 @@ public class RevAuctionMM {
 			} else {
 				msg = 4; //이미 의뢰한 접수내역이 존재합니다.
 			}
+		}
+		} else if(!f) {
+			msg = 5; //경매시간이 지나, 의뢰하기가 불가능
 		}
 		return msg;
 	}

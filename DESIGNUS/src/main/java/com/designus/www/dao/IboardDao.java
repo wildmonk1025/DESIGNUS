@@ -33,7 +33,7 @@ public interface IboardDao {
 
 	int getAUPNumSel(@Param("ptnum")int ptnum);
   
-	List<Board> getreviewboardlist();
+	List<Board> getreviewboardlist(int num);
 
 	Board getboardlistInfo(@Param("num")int num);
 
@@ -42,4 +42,8 @@ public interface IboardDao {
 	void getviewInfo(@Param("num")int num);
 
 	void getreviewlike(@Param("num")int bd_num);
+
+	int getrevListCount(@Param("cgcode")int cgcode);
+
+	int getBoardConut();
 }

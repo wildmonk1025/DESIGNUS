@@ -345,8 +345,12 @@
 					</tr>
 					<tr>
 						<th>의뢰인의 낙찰 금액 :</th>
+						<c:set var="priceChk" value="${raCurPrice.rat_price}"/>
+						<c:if test="${priceChk eq null}">
+						<td colspan="2" style="text-align:center; color:gray">내역이 없습니다.</td></c:if>
+						<c:if test="${priceChk ne null}">
 						<td style="text-align:center;">${raCurPrice.rat_price}</td>
-						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td>
+						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td></c:if>
 						<td style="text-align:left; color:blue;"></td>
 					</tr>
 				</table>
@@ -549,6 +553,8 @@ $(".subtn").click(function() {
  								swal("의뢰완료! 마이페이지-[제작의뢰 내역]을 확인해주세요.");
  							} else if(data == '4') {
  								swal("이미 해당 작가님께 의뢰중인 접수내역이 있습니다!");
+ 							} else if(data == '5') {
+ 								swal("경매가 마감되어, 의뢰를 요청할 수 없습니다.");
  							}							
  						},
  						error: function(error) {
