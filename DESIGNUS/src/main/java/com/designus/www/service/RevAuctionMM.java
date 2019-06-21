@@ -1,5 +1,6 @@
 package com.designus.www.service;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.ImemberDao;
+import com.designus.www.userClass.DateAdjust;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -113,8 +115,9 @@ public class RevAuctionMM {
 	}
 
 
-	public ModelAndView revAuctionRead(int ra_num) {
+	public ModelAndView revAuctionRead(int ra_num) throws ParseException {
 		mav = new ModelAndView();
+		DateAdjust da = new DateAdjust();
 		String view = null;
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
@@ -126,6 +129,12 @@ public class RevAuctionMM {
 		Basket bk = new Basket();
 		ra.setRa_num(ra_num);
 		ra = rDao.revAuctionReadSelect(ra);
+		
+		//현재시간과 DB의 시간이 일치할 경우, 작가 의뢰 접수 불가능 하도록 구현
+		boolean f = da.compareDateToBoolean(ra.getRa_date());
+		if(!f) {
+			decidechk = "HIDE";
+		}
 
 		//꿍 기능 Start
 		bk.setRab_mbid(id);

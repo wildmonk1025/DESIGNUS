@@ -11,14 +11,16 @@ public class PagingAuction {
 	private int pageCount; // 2 // 페이지그룹당 페이지 갯수
 	private String boardName; // 게시판의 종류
 	private int cgcode; // 게시판의 종류
+	private String gubun; // 제작의뢰리스트 , 출품리스트 구분 
 
-	public PagingAuction(int maxNum, int pageNum, int listCount, int pageCount, int cgcode, String boardName) {
+	public PagingAuction(int maxNum, int pageNum, int listCount, int pageCount, int cgcode, /*String gubun */String boardName) {
 		this.maxNum = maxNum;
 		this.pageNum = pageNum;
 		this.listCount = listCount;
 		this.pageCount = pageCount;
 		this.boardName = boardName;
 		this.cgcode = cgcode;
+		//this.gubun = gubun;
 	}
 
 	@SuppressWarnings("unused")
@@ -28,19 +30,29 @@ public class PagingAuction {
 		int currentGroup = (pageNum % pageCount > 0) ? pageNum / pageCount + 1 : pageNum / pageCount;
 		return makeHtmlAuc1(currentGroup, totalPage, boardName, cgcode);
 	}
-
+//메소드 추가 
+	/*
+	 public Object resetPaging(){
+	 	sb.append(< 에로 클릭되게 초기화 -> [1][2][3]>)
+	 }
+	  */
+	
+	
+	
+	
 	private Object makeHtmlAuc1(int currentGroup, int totalPage, String boardName2, int cgcode2) {
 		StringBuffer sb = new StringBuffer();
 		int start = (currentGroup * pageCount) - (pageCount - 1);
 		int end = (currentGroup * pageCount >= totalPage) ? totalPage : currentGroup * pageCount;
+		
 		if (start != 1) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode + "'>");
+			sb.append("<a href='" + boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode +/*"&gubun =" + gubun */ "'>");
 			sb.append("[◀]");
 			sb.append("</a>");
 		}
 		for (int i = start; i <= end; i++) {
 			if (pageNum != i) { // 현재 페이지가 아닌 경우 링크처리
-				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode + "'>");
+				sb.append("<a href='" + boardName + "?pageNum=" + i + "&cgcode=" + cgcode + /*"&gubun =" + gubun */"'>");
 				sb.append(" [ ");
 				sb.append(i);
 				sb.append(" ] ");
@@ -54,7 +66,7 @@ public class PagingAuction {
 			}
 		}
 		if (end != totalPage) {
-			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode + "'>");
+			sb.append("<a href='" + boardName + "?pageNum=" + (end + 1) + "&cgcode=" + cgcode /*+ "&gubun=" gubun*/ + "'>");
 			sb.append("[▶]");
 			sb.append("</a>");
 		}

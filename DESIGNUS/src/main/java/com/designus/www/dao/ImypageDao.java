@@ -204,6 +204,8 @@ boolean sponsorupdatettt(SponsorProgress sp);
 
 boolean WriteAReviewspon(Board bd);
 
+List<SponsorProgress> sponsorProgress(String id);
+
 	/* int getSppagingCountt(String id); */
 
   
