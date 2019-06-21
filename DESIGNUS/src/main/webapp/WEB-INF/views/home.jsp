@@ -4,185 +4,189 @@
 <%@ page session="false"%>
 <html>
 <head>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<title>Home</title>
 <style>
-div {
-	margin: auto;
+
+#main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
 }
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
+	position: fixed;
+	background-color: white;
 }
 
-#homeMain {
+#middle {
 	border: 1px solid black;
 	width: 1520px;
+	height: auto;
+	margin-top: 50px;
+}
+
+#middle_content1, #middle_content2 {
+	width: 1450px;
 	height: 600px;
+	float: left;
+	border: 1px solid orange;
 }
 
-#revauctionbtn, #auctionbtn {
-	background-color: orange;
-	width: 150px;
+#middle_content1_title, #middle_content2_title {
+	width: 1450px;
 	height: 30px;
-	color: white;
-	float: right;
-}
-
-#coklist {
-	width: 1450px;
-	height: 150px;
 	float: left;
-	display: block;
 	border: 1px solid orange;
 }
 
-#bestlist {
-	width: 1450px;
-	height: 150px;
-	float: left;
-	display: block;
-	border: 1px solid orange;
-}
-
-#list {
+#middle_content1_lv1 {
 	width: 1100px;
 	height: 400px;
 	float: left;
-	margin: 50px;
+	margin: 20px;
 	border: 1px solid orange;
 }
 
-#text1 {
-	width: 400px;
-	height: 30px;
+#middle_content2_lv1 {
+	width: 1100px;
+	height: 400px;
 	float: left;
 	border: 1px solid orange;
 }
 
-#text2 {
-	margin-top: 30px;
-	width: 400px;
-	height: 30px;
+#footer {
+	border: 1px solid red;
+	width: 1514px;
+	height: 170px;
+	margin-top: 20px;
 	float: left;
-	border: 1px solid orange;
-}
-
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 200px;
-}
-.best{
-	color:red;
-	display:inline;
-	float:left;
-	width: 320px;
-	heigth:55px;
-}
-#bestitem{
-width:150px;
-height: 150px;
-border: 1px solid black;
-float: left;
-}
-#img1{
-width: 145px;
-height: 145px;
 }
 </style>
-<title>Home</title>
+
 </head>
+
 <body>
+	<div id="main">
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
-
-	<div id="homeMain">
-		
-		<br> <br>
-		<div id="list">
-			<div id="text1" align="center" >오늘의 추천 작품</div>
-			<div id="coklist" ></div>
-			<br> <br>
-			<div id="text2" align="center">베스트 상품</div>
-			<div id="bestlist">
-			
+	</div>
+	<div id="middle">
+		<div id="middle_content1">
+			<div id="middle_content1_title">
+				오늘의 추천 작품
+			</div>
+			<div id="middle_content1_lv1">
+				<div id="bestlist">asdasd</div>
 			</div>
 		</div>
+		<div id="middle_content2">
+			<div id="middle_content2_title">
+				<div id="text2" align="center">베스트 상품</div>
+			</div>
+			<div id="middle_content2_lv1">
+				<div id="bestlist">asdasd</div>
+			</div>
+		</div>
+		
+		<div id="footer">
+		<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>
-	
-
 </body>
 <script>
-//var rList = ${rList}
-$(document).ready(function() {
-	$.ajax({
-		url : 'bestajax',
-		type: 'post',
-		dataType : 'json',
-		//contentType:'application/json',
-		success:function(data){
-			var result = "";
-			console.dir(data);
-			console.log("성공");
-							
-			for(var i=0; i<3; i++){
-				result+=
-					"<div id='bestitem'>"+"<img src='resources/images/su1.jpg' id='img1'>"+"</div>"+
-					"<div class='best'>"
-					  +"작가아이디:"+data[i].au_mbid_w+"<br>"
-					  +"상품번호:"+data[i].au_num+"<br>"
-					  +"상품설명:"+data[i].au_contents+"<br>"
-					  +"추천수:"+data[i].au_count+"<br>"
-					  +"</div>"}
-			$("#bestlist").html(result);
-		},
-	error:function(error){
-		console.log("실패");
-		console.log(error);
+	//var rList = ${rList}
+	$(document)
+			.ready(
+					function() {
+						$
+								.ajax({
+									url : 'bestajax',
+									type : 'post',
+									dataType : 'json',
+									//contentType:'application/json',
+									success : function(data) {
+										var result = "";
+										console.dir(data);
+										console.log("성공");
+
+										for (var i = 0; i < 3; i++) {
+											result += "<div id='bestitem'>"
+													+ "<img src='resources/images/su1.jpg' id='img1'>"
+													+ "</div>"
+													+ "<div class='best'>"
+													+ "작가아이디:"
+													+ data[i].au_mbid_w
+													+ "<br>" + "상품번호:"
+													+ data[i].au_num + "<br>"
+													+ "상품설명:"
+													+ data[i].au_contents
+													+ "<br>" + "추천수:"
+													+ data[i].au_count + "<br>"
+													+ "</div>"
+										}
+										$("#bestlist").html(result);
+									},
+									error : function(error) {
+										console.log("실패");
+										console.log(error);
+									}
+								});
+					});
+
+	$(document)
+			.ready(
+					function() {
+						$
+								.ajax({
+									url : 'newajax',
+									type : 'post',
+									dataType : 'json',
+									//contentType:'application/json',
+									success : function(data) {
+										var result = "";
+										console.dir(data);
+										console.log("성공");
+
+										for (var i = 0; i < 3; i++) {
+											result += "<div id='bestitem'>"
+													+ "<img src='resources/images/yyy.jpg' id='img1'>"
+													+ "</div>"
+													+ "<div class='best'>"
+													+ "작가아이디:"
+													+ data[i].au_mbid_w
+													+ "<br>" + "상품번호:"
+													+ data[i].au_num + "<br>"
+													+ "상품설명:"
+													+ data[i].au_contents
+													+ "<br>" + "신상:"
+													+ data[i].au_date + "<br>"
+													+ "</div>"
+										}
+										$("#coklist").html(result);
+									},
+									error : function(error) {
+										console.log("실패");
+										console.log(error);
+									}
+								});
+					});
+
+	window.onload = function() {
+		var flag = $
+		{
+			logout
+		}
+		;
+		if (flag == 1) {
+			swal("로그아웃 되었습니다.");
+		}
+
 	}
-	});
-});
-
-$(document).ready(function() {
-	$.ajax({
-		url : 'newajax',
-		type: 'post',
-		dataType : 'json',
-		//contentType:'application/json',
-		success:function(data){
-			var result = "";
-			console.dir(data);
-			console.log("성공");
-
-			for(var i=0; i<3; i++){
-				result+=
-					"<div id='bestitem'>"+"<img src='resources/images/yyy.jpg' id='img1'>"+"</div>"+"<div class='best'>"+"작가아이디:"
-					   +data[i].au_mbid_w+"<br>"+"상품번호:"+data[i].au_num+"<br>"
-				+"상품설명:"+data[i].au_contents+"<br>"+"신상:"+data[i].au_date+"<br>"
-				+"</div>"}
-			$("#coklist").html(result);
-		},
-	error:function(error){
-		console.log("실패");
-		console.log(error);
-	}
-	});
-});
-
-window.onload=function() {
-	var flag = ${logout};
-	if(flag==1) {
-		swal("로그아웃 되었습니다.");
-	}
-
-}
-
-
 </script>
 </html>

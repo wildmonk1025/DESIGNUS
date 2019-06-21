@@ -73,17 +73,37 @@ public class WBSController {
 		
 		return json;
 	}
-	@RequestMapping(value = "/reviewboard", method = RequestMethod.GET)
-	public ModelAndView reviewboardlist() {
-		ModelAndView mav = new ModelAndView();
-		mav = bm.reviewboardlist();
+	@RequestMapping(value = "/reviewboard")
+	public ModelAndView reviewboardlist(Integer pageNum) {
+		mav = bm.reviewboardlist(pageNum);
 		return mav;
 	
 		
 		//이용후기 리스트
 	
 	}
-
+	@RequestMapping(value = "/reviewlike", method = RequestMethod.GET)
+	public ModelAndView reviewlike(int bd_num) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_num);
+		mav = bm.reviewlike(bd_num);
+		return mav;
+		
+		
+		//이용후기추천하기
+		
+	}
+	@RequestMapping(value = "/reviewchange", method = RequestMethod.GET)
+	public ModelAndView reviewchange(int bd_num, String bd_contents, String bd_mbid) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_num);
+		mav = bm.reviewchange(bd_num,bd_contents,bd_mbid);
+		return mav;
+		
+		
+		//이용후기변경
+		
+	}
 	
 	
 	

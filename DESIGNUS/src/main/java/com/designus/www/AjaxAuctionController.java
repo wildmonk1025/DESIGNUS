@@ -1,6 +1,8 @@
 package com.designus.www;
 
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,7 +63,7 @@ public class AjaxAuctionController {
 	}
 
 	@RequestMapping(value = "/reqdecision", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
-	public @ResponseBody String reqDecision(@RequestBody revAuctionProgress rap) {
+	public @ResponseBody String reqDecision(@RequestBody revAuctionProgress rap) throws ParseException {
 		System.out.println(rap.getRap_ranum());
 		System.out.println(rap.getRap_mbid_w());
 		System.out.println(rap.getRap_price());

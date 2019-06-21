@@ -9,65 +9,393 @@
 <meta charset="UTF-8">
 <title>출품작 판매내역</title>
 <style type="text/css">
+#one {
+	width: 100%;
+	height: 100%;
+}
+
+div {
+	margin: auto;
+}
+
+.bt {
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	color: rgb(162, 136, 44);
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	width: 85px;
+	height: 35px;
+	border-color: rgb(223, 192, 86);
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+
+#notice {
+	padding-top: 5px;
+	margin: 10px;
+	width: 1080px;
+	height: 50px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+	overflow: auto;
+}
+
+
+#renking {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 875px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+#main {
+	width: 1520px;
+	height: 170px;
+	text-align: center;
+}
+
+.bt01 {
+	border: none;
+	float: right;
+	margin-right: 30px;
+	width: 100px;
+	height: 80px;
+}
+
+#lightbox {
+	border: 1px solid orange;
+	position: absolute;
+	top: 200px;
+	left: 600px;
+	width: 800px;
+	height: 700px;
+	margin: auto;
+	background: #fff;
+	z-index: 1001;
+	display: none;
+	background-color: orange;
+	text-align: center;
+}
+
+#lightbox-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8000px;
+	height: 8000px;
+	background: #000;
+	opacity: 1;
+	z-index: 1000;
+	display: none;
+}
+
+#lightbox1 {
+	border: 1px solid orange;
+	position: absolute;
+	top: 200px;
+	left: 600px;
+	width: 800px;
+	height: 700px;
+	margin: auto;
+	background: #fff;
+	z-index: 1001;
+	display: none;
+	background-color: orange;
+	text-align: center;
+}
+
+#lightbox-shadow1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8000px;
+	height: 8000px;
+	background: #000;
+	opacity: 1;
+	z-index: 1000;
+	display: none;
+}
+
+#lightbox2 {
+	border: 1px solid orange;
+	position: absolute;
+	top: 200px;
+	left: 600px;
+	width: 800px;
+	height: 700px;
+	margin: auto;
+	background: #fff;
+	z-index: 1001;
+	display: none;
+	background-color: orange;
+	text-align: center;
+}
+
+#lightbox-shadow2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8000px;
+	height: 8000px;
+	background: #000;
+	opacity: 1;
+	z-index: 1000;
+	display: none;
+}
+
+#lightbox-shadow3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8000px;
+	height: 8000px;
+	background: #000;
+	opacity: 1;
+	z-index: 1000;
+	display: none;
+}
+
+#point {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 280px;
+	height: 60px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+
+#img {
+	margin-top: 20px;
+	border: 1px solid orange;
+	margin: 20px 10px 10px 10px;
+	width: 280px;
+	height: 290px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+
+a:active {
+	text-decoration: none;
+	color: #646464;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #646464;
+}
+
+a:link {
+	text-decoration: none;
+	color: #646464;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #646464;
+}
+
+#header {
+	padding: 3px;
+	width: 1510px;
+	height: 100px;
+	float: left;
+}
+
+#logo {
+	padding: 5px;
+	width: 270px;
+	height: 80px;
+	float: left;
+}
+
+#loginwriter {
+	padding: 3px;
+	padding-top: 20px;
+	width: 300px;
+	height: 80px;
+	float: right;
+}
+
+#subcategory {
+	width: 50px;
+	height: 50px;
+	background-color: orange;
+	color: white;
+	font-size: 30px;
+	float: left;
+}
+
+#menu {
+	float: left;
+	width: 1400px;
+	height: 50px
+}
+
+#submenu {
+	margin-left: 100px;
+	width: 150px;
+	float: left;
+	height: 50px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#msg {
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	float: left;
+}
+
+#mypageimg {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-left: 5px;
+}
+
+#loginmsg {
+	float: left;
+	width: 130px;
+	height: 50px;
+	margin-left: 10px;
+}
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
 
-#notice {
-	border: 1px solid orange;
-	position: absolute;
-	width: 1100px;
-	height: 60px;
-	text-align: center;
-	left: 531px;
-	top: 190px;
-	font-size: 100%
-}
-
-#point {
-	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 80px;
-	text-align: left;
-	left: 100px;
-	top: 500px;
-	font-size: 20px;
-}
-
-#img {
-	border: 1px solid orange;
-	position: absolute;
-	width: 300px;
-	height: 310px;
-	text-align: left;
-	left: 100px;
-	top: 178px;
-	font-size: 20px;
-}
-
 #setp {
 	border: 1px solid orange;
-	position: relative;
-	width: 1100px;
-	height: 860px;
+	margin: 0px 10px 10px 10px;
+	width: 1200px;
+	height: 840px;
+	float: left;
+	font-size: 20px;
 	text-align: center;
-	left: 528px;
-	top: 80px;
-	font-size: 100%
+	overflow: auto;
 }
 
 #setpT {
-	border: 1px solid orange;
-	height: 800px;
-	position: relative;
-	top: 10px;
+	width: 1200px;
+	margin: 0px 10px 10px 10px;
+	height: 900px;
+	float: left;
+	border: none;
+}
+
+#l1 {
+	position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+
+#l3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+#w3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+
+#Q1 {
+	width: 500px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
 }
 
 #total {
-	position : absolute;
+	position: absolute;
 	width: 100%;
 	height: 200%;
 	background-color: black;
@@ -76,44 +404,98 @@
 	display: none;
 }
 
-#info {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 300px;
-	height: 580px;
-	font-size: 20px;
-	text-align: left;
+.t1 {
+	top: 100;
+	left: -200;
+}
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+	border: 1px solid black;
+}
+
+#2list {
+	width: 1000px;
+	height: 250px;
 	float: left;
-	position: absolute;
-	left: 88px;
-	top: 590px;
 }
 
-#subb {
-	border: 1px solid orange;
-	height: 800px;
-	position: relative;
-	top: 10px;
+#sangimg {
+	margin: 10px;
+	height: 150px;
+	width: 150px;
+	float: left;
 }
-#l1 {
-position: absolute;
-	width: 400px;
-	height: 330px;
-	border-radius: 100px;
-	z-index: 1002;
-	padding-top: 70px;
+#sixth{
+ position: absolute;
+  top: 1080px;
+  left: 1150px;  
+}
+.first{
+border: 1px solid orange;
+	margin: 10px 10px 10px 10px;
+	width: 1060px;
+	height: 250px;
 	text-align: center;
-	background-color: #FFE08C;
-	display: none;
-	font-size: 22px;
-	top : 500px;
-	left: 900px;
-
+	font-size: 20px;
+	float: left;
+}
+.p1 {
+ width: 500px;
+ float: left;
+ text-align: left;
+}
+.p2{
+width: 500px;
+text-align: left;
+float: left;
+}
+.second{
+    background-color : #FFBB00;
+	margin: 10px 10px 10px 10px;
+	width: 1040px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.third{
+	margin: 5px 10px 10px 10px;
+	width: 270px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.fourth{
+	margin: 5px 10px 10px 10px;
+	width: 570px;
+	height: 175px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+.Fifth{
+	margin: 5px 10px 10px 10px;
+	width: 130px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p3{
+margin-top: 60px;
+}
+.p4{
+margin-top: 30px;
+font-size: 13px;
+color: red;
 }
 #l2{
 position: absolute;
-	width: 400px;
-	height: 330px;
+	width: 600px;
+	height: 530px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
@@ -121,7 +503,7 @@ position: absolute;
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
-	top : 500px;
+	top: 500px;
 	left: 900px;
 }
 </style>
@@ -130,29 +512,27 @@ position: absolute;
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
 	<div id="total"></div>
-	<form action="delinumupload" method="post">
+	<div id="l1"></div>
+	<div id="l2"></div>
+	
+	<div id="mypagemain">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 
-			<div id="l1">
+		<jsp:include page="Mapagemain.jsp" />
 
+
+		<div id="rightmain">
+			<div id="notice">
+			 <h2>출품작 판매 내역</h2><hr>
 			</div>
-		</form>
-   <div id="l2"></div>		
-	<div id="notice">
-		<h2>출품작 판매 내역</h2>
-		<hr>
-	</div>
-
-
-	<div id="info">
-			<jsp:include page="Mapagemain.jsp" />
-	</div>
-	<div id="setp">
-		<div id="setpT"></div>
-      ${pagMPWing}
+			<div id="renking">
+				
+			</div>
+        <div id="sixth">${pagMPWing}</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript">
@@ -162,48 +542,44 @@ position: absolute;
 
 	for (var i = 0; i < apwList.length; i++) {
 		 if (apwList[i].aup_step == 1) {
-		main += "<table style=\"border:1px solid orange\" ><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"
-				+ "<tr><td>상품번호 :"
-				+ apwList[i].aup_ptnum
-				+ "</td><td>상품명:"
-				+ apwList[i].au_title
-				+ "</td></tr>"
-				+ "<tr><td colspan='2'>구매 금액 : "
-				+ apwList[i].aup_price
-				+ "</td></tr>"
-				+ "<tr><td colspan='2'>상품 수량 : "
-				+ apwList[i].aup_qty + "</td></tr>";
-	
-			main +="<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</p></td></tr>"
-					+ "<tr><td colspan='3'><h3>의뢰결정을 <br/>기다리는 중입니다.</h3></td></tr></table>";
+		main += "<div class='first'><div class='second'><div class='p1'>"+apwList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+	         +"<div class='third'><a href='auctionRead?au_num="+apwList[i].aup_ranum+"'><img src='/resources/images/"+apwList[i].aui_img+"'/></a></div>"
+		     + "<div class='fourth'>상품번호 :"+ apwList[i].aup_ptnum+"<br>상품명 :"+apwList[i].au_title+"<br>"
+		     + "구매 금액 :"+ apwList[i].aup_price+"<br>상품 수량 :"+apwList[i].aup_qty+"<br>"
+		     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+		     + "<div class='Fifth'><p class='p3'>의뢰결정을 <br/>기다리는 중입니다.</p></div></div>";    
 
 		} else if(apwList[i].aup_step==2){
-				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
-			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
-			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
-			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
-			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
-			    +"<tr><td colspan='3'><input id='btzsho' type='button' onclick=\"delivery('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/>"
-			    +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_ptnum+"')\" value='의뢰인 배송정보'/></td></tr></table>";
+				main+="<div class='first'><div class='second'><div class='p1'>"+apwList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+		         +"<div class='third'><a href='auctionRead?au_num="+apwList[i].aup_ranum+"'><img src='/resources/images/"+apwList[i].aui_img+"'/></a></div>"
+			     + "<div class='fourth'>상품번호 :"+ apwList[i].aup_ptnum+"<br>상품명 :"+apwList[i].au_title+"<br>"
+			     + "구매 금액 :"+ apwList[i].aup_price+"<br>상품 수량 :"+apwList[i].aup_qty+"<br>"
+			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+			     +"<div class='Fifth'><input id='btzsho' type='button' onclick=\"delivery('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/><br>"
+				 +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_ptnum+"')\" value='의뢰인 배송정보'/></div></div>"	
+					
 			}else if(apwList[i].aup_step==3){
-				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
-			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
-			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
-			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
-			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
-			    +"<tr><td colspan='3'><h3>수령확인 <br/>대기중</h3></td></tr></table>";
+				main+="<div class='first'><div class='second'><div class='p1'>"+apwList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apwList[i].aup_track+"</div></div>"
+		         +"<div class='third'><a href='auctionRead?au_num="+apwList[i].aup_ranum+"'><img src='/resources/images/"+apwList[i].aui_img+"'/></a></div>"
+			     + "<div class='fourth'>상품번호 :"+ apwList[i].aup_ptnum+"<br>상품명 :"+apwList[i].au_title+"<br>"
+			     + "구매 금액 :"+ apwList[i].aup_price+"<br>상품 수량 :"+apwList[i].aup_qty+"<br>"
+			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+			     + "<div class='Fifth'><p class='p3'>수령확인 <br/>대기중</p></div></div>"; 
+					
 			} else if(apwList[i].aup_step==4){
-				main+="<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apwList[i].aui_img+"'/></a>"              
-			    + "<tr><td>상품번호 :"+apwList[i].aup_ptnum+"</td><td>상품명:"+apwList[i].au_title+"</td></tr>"
-			    +"<tr><td colspan='2'>구매 금액 : "+apwList[i].aup_price+"</td></tr>"
-			    +"<tr><td colspan='2'>상품 수량 : "+apwList[i].aup_qty+"</td></tr>"
-			    +"<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
-			    +"<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
+				main+="<div class='first'><div class='second'><div class='p1'>"+apwList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apwList[i].aup_track+"</div></div>"
+		         +"<div class='third'><a href='auctionRead?au_num="+apwList[i].aup_ranum+"'><img src='/resources/images/"+apwList[i].aui_img+"'/></a></div>"
+			     + "<div class='fourth'>상품번호 :"+ apwList[i].aup_ptnum+"<br>상품명 :"+apwList[i].au_title+"<br>"
+			     + "구매 금액 :"+ apwList[i].aup_price+"<br>상품 수량 :"+apwList[i].aup_qty+"<br>"
+			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+			     + "<div class='Fifth'><p class='p3'>완료</p></div></div>";
+					
+
 			} 
 	}
 	console.log(1, main);
 
-	$('#setpT').html(main);
+	$('#renking').html(main);
 
 	
 	function shocheck(even) {
@@ -270,6 +646,7 @@ position: absolute;
 			    	console.log("1234567"+data.aup_ptnum);
 			    	$('#total').css("display", "inline");
 			    	$('#l1').css("display", "inline");
+			    	       sub+="<form action='delinumupload' method='post'>"
 			    	  if(data.aut_kind=="I"){
 				    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
 				    	   }else if(data.aut_kind=="O"){
@@ -283,7 +660,7 @@ position: absolute;
 			    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br><hr>"
 			    	   +"운송장번호<br/><input type='text' name='aup_track'><br>"
 			    	   +"<input type='submit' value='보내기'>"
-			    	   +"<input type='button' id='back' value='취소'>";
+			    	   +"<input type='button' id='back' value='취소'></form>";
 			    	  
 			    	
 			    	

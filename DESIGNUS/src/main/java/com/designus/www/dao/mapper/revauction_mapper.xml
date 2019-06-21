@@ -32,7 +32,7 @@
 	</select>
 		
 	<select id="getrevListCount"  resultType="Integer">
-	  SELECT COUNT(*) FROM RA WHERE RA_CGCODE = ${cgcode}
+	  SELECT COUNT(*) FROM RA WHERE RA_CGCODE = ${cgcode} AND RA_OC = 'O'
 	</select>	
 		
 	<select id="getRevAuctionListSelect2" parameterType="String" resultType="revauction">

@@ -376,7 +376,7 @@ public class MypageMM {
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
 		int listCount = 4; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
+		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
 		String boardName = "auctionMyOrderList";
@@ -550,8 +550,8 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 4; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
+		int listCount = 3; // 페이지당 글의 수
+		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpWCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
 		String boardName = "auctionMyAcceptList";
@@ -662,8 +662,8 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 4; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
+		int listCount = 3; // 페이지당 글의 수
+		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getreSetpCount(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
 		String boardName = "revAuctionMyOrderList";
@@ -905,9 +905,13 @@ public class MypageMM {
 		List<Integer> maxpList = new ArrayList<Integer>();
 		List<SponsorProgress> spList=null;
 		List<Integer> stList = new ArrayList<Integer>();
-		// HashMap<Object, Object> apsMap = new HashMap<Object, Object>();
+		String today = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss.S"));
+				//("yyyy-MM-dd hh:mm:ss.S");
+		
+		System.out.println("today="+today);
 		String id = session.getAttribute("id").toString();
-		// String grade=session.getAttribute("grade").toString();
+		
+		
 		Member mb = new Member();
 		mb = pDao.mypagemoveSelect(id);
 		NoList = pDao.notismypageSelect(id);
@@ -923,6 +927,8 @@ public class MypageMM {
 		String Mapst = gson.toJson(stList);
 		mav.addObject("stList", stList);
 		mav.addObject("spgList", spgList);
+		mav.addObject("today", today);
+		//mav.addObject("today", todayy);
 		// 금,은,동
 		int g = pDao.gold(id);
 		int s = pDao.silver(id);
@@ -934,7 +940,7 @@ public class MypageMM {
 		for (int i = 0; i < apsList.size(); i++) {
 			maxpList.addAll(pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()));
 		}
-
+	
 		// apsMap.put("maxpList",maxpList);
 		
 		String str = gson.toJson(NoList);
@@ -1327,5 +1333,40 @@ public class MypageMM {
 	    mav.setViewName(view);
 		return mav;
 	}
+
+	public ModelAndView stepfive(revAuctionProgress rap) {
+		mav=new ModelAndView();
+		boolean a=pDao.stepfiveupDate(rap);
+		if(a) {
+			mav.addObject("secc", 1);
+		}else {
+			mav.addObject("secc", 2);
+		}
+		 mav.setViewName("redirect:/revAuctionMyAcceptList");
+		return mav;
+	}
+	@Transactional
+	public ModelAndView stepfiveDele(revAuctionProgress rap) {
+		mav=new ModelAndView();
+		boolean a=pDao.stepfiveDelete(rap);
+		if(a) {
+			boolean b=pDao.stepfiveautDelete(rap);
+				if(b) {
+					mav.addObject("secc", 1);
+				}else {
+					mav.addObject("secc", 2);
+				}
+			
+		}else {
+			mav.addObject("secc", 2);
+		}
+		 mav.setViewName("redirect:/revAuctionMyAcceptList");
+		return mav;
+	}
+
+	/*
+	 * public String autdeadline() { // TODO Auto-generated method stub return null;
+	 * }
+	 */
 
 }

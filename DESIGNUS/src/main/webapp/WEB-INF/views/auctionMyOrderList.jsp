@@ -82,25 +82,24 @@ div {
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	border: 1px solid orange;
 	width: 1080px;
-	height: 100px;
+	height: 50px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+	overflow: auto;
+}
+
+
+#renking {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 875px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
 }
-
-
-/*#renking {
-            border: 1px solid orange;
-            width: 1100px;
-            height: 230px;
-            text-align: center;
-            left: 611px;
-            position: absolute;
-            top: 510px;
-
-        }*/
 #main {
 	width: 1520px;
 	height: 170px;
@@ -430,7 +429,71 @@ a:hover {
 	width: 150px;
 	float: left;
 }
-
+#sixth{
+ position: absolute;
+  top: 1080px;
+  left: 1150px;  
+}
+.first{
+border: 1px solid orange;
+	margin: 10px 10px 10px 10px;
+	width: 1060px;
+	height: 250px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p1 {
+ width: 500px;
+ float: left;
+ text-align: left;
+}
+.p2{
+width: 500px;
+text-align: left;
+float: left;
+}
+.second{
+    background-color : #FFBB00;
+	margin: 10px 10px 10px 10px;
+	width: 1040px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.third{
+	margin: 5px 10px 10px 10px;
+	width: 270px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.fourth{
+	margin: 5px 10px 10px 10px;
+	width: 570px;
+	height: 175px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+.Fifth{
+	margin: 5px 10px 10px 10px;
+	width: 130px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p3{
+margin-top: 60px;
+}
+.p4{
+margin-top: 30px;
+font-size: 13px;
+color: red;
+}
 </style>
 
 </head>
@@ -438,36 +501,28 @@ a:hover {
 
 <body>
 	<div id="total"></div>
-	<form action="aucapply" method="post">
-		<div id="l1"></div>
-	</form>
-	<form action="reviewBoardWrite" method="post"
-		enctype="multipart/form-data">
-		<div id="l3"></div>
-	</form>
-	<div id="w3"></div>
-	<div id="mypagemain">
+	<div id="l1"></div>
+     <div id="l3"></div>
+     <div id="w3"></div>
+     
+     <div id="mypagemain">
 		<div id="mainheader">
-
 			<jsp:include page="main.jsp" />
 		</div>
+
 		<jsp:include page="Mapagemain.jsp" />
+
 
 		<div id="rightmain">
 			<div id="notice">
-				<h2>출품작 구매 내역</h2>
-				<hr>
-
-				<div id="setp">
-					<div id="setpT"></div>
-					${MPpaging}
-				</div>
-
+			 <h2>출품작 구매 내역</h2><hr>
 			</div>
-
+			<div id="renking">
+				
+			</div>
+        <div id="sixth">${ROpaging}</div>
 		</div>
 	</div>
-
 </body>
 <script>
 	var apList = ${apList};
@@ -477,79 +532,42 @@ a:hover {
 
 	for (var i = 0; i < apList.length; i++) {
 		if (apList[i].aup_step == 1) {
-			main += "<table style=\"border:1px solid orange\" ><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
-					+ "<tr><td>상품번호 :"
-					+ apList[i].aup_ptnum
-					+ "</td><td>상품명:"
-					+ apList[i].au_title
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>구매 금액 : "
-					+ apList[i].aup_price
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>상품 수량 : "
-					+ apList[i].aup_qty
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>";
-
-			main += "<tr><td colspan='3'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"
-					+ apList[i].aup_ptnum
-					+ "')\" value='배송정보입력'/>"
-					+ "<input type='button' onclick=\"javascript:auccancel('"+apList[i].aup_ptnum+"')\" value='취소'/></td></tr></table>";
+			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+			     +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+				 + "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
+				 + "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
+				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+	             +"<div class='Fifth'><input id='btzRevM' type='button' onclick=\"javascript:shippingInfo('"+ apList[i].aup_ptnum+"')\" value='배송정보입력'/><br>"
+	             +"<input type='button' onclick=\"javascript:auccancel('"+apList[i].aup_ptnum+"')\" value='취소'/></div></div>"
 
 		} else if (apList[i].aup_step == 2) {
-			main += "<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
-					+ "<tr><td>상품번호 :"
-					+ apList[i].aup_ptnum
-					+ "</td><td>상품명:"
-					+ apList[i].au_title
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>구매 금액 : "
-					+ apList[i].aup_price
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>상품 수량 : "
-					+ apList[i].aup_qty
-					+ "</td></tr>"
-					+ "<tr><td colspan='3'><h3>배송대기중...</h3></td></tr></table>";
+			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
+				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
+					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
+					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+					+ "<div class='Fifth'><p class='p3'>배송대기중...</p></div></div>";
 
 		} else if (apList[i].aup_step == 3) {
-			main += "<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
-					+ "<tr><td>상품번호 :"
-					+ apList[i].aup_ptnum
-					+ "</td><td>상품명:"
-					+ apList[i].au_title
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>구매 금액 : "
-					+ apList[i].aup_price
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>상품 수량 : "
-					+ apList[i].aup_qty
-					+ "</td></tr>"
-					+ "<tr><td colspan='3'><input type='button' onclick=\"btzRevQ('"
-					+ apList[i].aup_ptnum
-					+ "')\" value='고객센터 문의'/>"
-					+ "<input type='button' onclick=\"review('"
-					+ apList[i].aup_ptnum
-					+ "')\" value='수령확인구매후기 쓰기'/></td></tr></table>";
+			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apList[i].aup_track+"</div></div>"
+				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
+					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
+					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+					+ "<div class='Fifth'><input type='button' onclick=\"location.href='scquestion'\" value='고객센터 문의'/><br>"
+					+ "<input type='button' onclick=\"review('"+ apList[i].aup_ptnum+ "')\" value='수령확인구매후기 쓰기'/></div></div>";
 
 		} else if (apList[i].aup_step == 4) {
-			main += "<table style=\"border:1px solid orange\"><tr rowspan=4><td><a href='imgAuction'><img src='/resources/images/"+apList[i].aui_img+"'/></a>"
-					+ "<tr><td>상품번호 :"
-					+ apList[i].aup_ptnum
-					+ "</td><td>상품명:"
-					+ apList[i].au_title
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>구매 금액 : "
-					+ apList[i].aup_price
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'>상품 수량 : "
-					+ apList[i].aup_qty
-					+ "</td></tr>"
-					+ "<tr><td colspan='2'><p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</td></tr>"
-					+ "<tr><td colspan='3'><h3>완료</h3></td></tr></table>";
+			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apList[i].aup_track+"</div></div>"
+		            +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+			        + "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
+			        + "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
+			        + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+					+ "<div class='Fifth'><p class='p3'>완료</p></div></div>";
 		}
 	}
 
-	$('#setpT').html(main);
+	$('#renking').html(main);
 
 	function shippingInfo(even) {
 
@@ -564,8 +582,8 @@ a:hover {
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
 					success : function(data) {
-						alert('해당 상품을 추천하였습니다.');
 						console.log("1234567" + data.aup_ptnum);
+						sub+="<form action='aucapply' method='post'>"
 						if (data.aut_kind == "I") {
 							sub += "즉시구매<input type='hidden' name='aut_kind'><br>"
 						} else if (data.aut_kind == "O") {
@@ -590,7 +608,7 @@ a:hover {
 								+ "주소 :<input type='text' name='aup_address'><br>"
 								+ "연락처: <input type='text' name='aup_phone'><br>"
 								+ "<input type='submit' value='요청'><br>"
-								+ "<input type='button' id='back' value='취소'>";
+								+ "<input type='button' id='back' value='취소'></form>";
 
 						$('#total').css("display", "inline");
 						$('#l1').css("display", "inline");
@@ -619,6 +637,7 @@ a:hover {
 					success : function(data) {
 						alert('해당 상품을 추천하였습니다.');
 						console.log("1234567" + data.aup_ptnum);
+						    bb+="<form action='reviewBoardWrite' method='post' enctype='multipart/form-data'>"
 						if (data.aut_kind == "I") {
 							bb += "즉시구매<input type='hidden' name='aut_kind'><br>"
 						} else if (data.aut_kind == "O") {
@@ -645,7 +664,7 @@ a:hover {
 								+ "<input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple><br>"
 								+ "<input type='hidden' id='fileCheck' value='0' name='fileCheck'><br>"
 								+ "<input type='submit' value='완료'>"
-								+ "<input type='button' id='backSetp' value='취소'>";
+								+ "<input type='button' id='backSetp' value='취소'></form>";
 
 						$('#total').css("display", "inline");
 						$('#l3').css("display", "inline");

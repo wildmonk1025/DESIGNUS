@@ -313,8 +313,10 @@ nav {
 	color: #646464;
 }
 
-#revauctionbtn, #auctionbtn {
+.revauctionbtn, .auctionbtn, .sponsorbtn {
 	background-color: coral;
+	margin-top: 20px;
+	margin-right: 10px;
 	width: 150px;
 	height: 30px;
 	color: white;
@@ -432,23 +434,26 @@ nav {
 
 		</div>
 	</div>
-	<button id="revauctionbtn" onclick="location.href='revauctionWrite'">제작의뢰
-		요청하기</button>
 	<c:choose>
 		<c:when test="${grade=='W'}">
-			<button id="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
+			<button class="sponsorbtn" onclick="location.href='sponregistration'">후원상품등록</button>
+			<button class="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
 		</c:when>
 		<c:when test="${grade!='W'}">
-			<button id="auctionbtn" onclick="nonono()">출품등록하기</button>
+			<button class="sponsorbtn" onclick="noAuthority()" style="background-color:gray">후원상품등록</button>
+			<button class="auctionbtn" onclick="noAuthority()" style="background-color:gray">출품등록하기</button>
 		</c:when>
-
 	</c:choose>
-
-
+	<c:choose>
+		<c:when test="${grade != null}">
+		<button class="revauctionbtn" onclick="location.href='revauctionWrite'">제작의뢰요청하기</button></c:when>
+		<c:when test="${grade == null}">
+		<button class="revauctionbtn" onclick="noAuthority()" style="background-color:gray">제작의뢰요청하기</button></c:when>
+	</c:choose>
 
 </body>
 <script>
-	function nonono() {
+	function noAuthority() {
 		swal("권한이 없습니다.");
 	}
 
