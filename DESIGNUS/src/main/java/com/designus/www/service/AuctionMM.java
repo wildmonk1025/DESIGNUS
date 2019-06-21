@@ -26,9 +26,9 @@ import javafx.scene.control.Alert;
 
 @Service
 public class AuctionMM {
+	
 	@Autowired
 	private IauctionDao aDao;
-	
 	@Autowired
 	private IRevAuctionDao rDao;
 	@Autowired
@@ -78,7 +78,7 @@ public class AuctionMM {
 	}
 
 
-	public ModelAndView auctionList(Integer pageNum,int cgcode/*, String gubun */) throws ParseException{
+	public ModelAndView auctionList(Integer pageNum,int cgcode,String lkind ) throws ParseException{
 		mav=new ModelAndView();
 		String view="null";
 		String auimg = null;
@@ -89,10 +89,9 @@ public class AuctionMM {
 		AuctionTender at = new AuctionTender();
       	DateAdjust da = new DateAdjust();
 		int num1 = (pageNum == null)? 1 : pageNum ;
-		int num2 = (pageNum == null)? 1 : pageNum ;
 
 		auList = aDao.getAuctionListSelect(cgcode,num1);
-		raList = rDao.getRevAuctionListSelect(cgcode,num2);
+		raList = rDao.getRevAuctionListSelect(cgcode,num1);
 		auimg = aDao.getAuctionImgSel(au);
 	      for (int i = 0; i < raList.size(); i++) {
 	          //int ra_num=raList.get(i).getRa_num();
@@ -117,43 +116,40 @@ public class AuctionMM {
 	    	  String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
 	    	  auList.get(i).setAu_date(new_date2);	    	  
 	      }
-	    mav.addObject("paging1", getPaging1(num1,cgcode/*gubun*/));  
-	    mav.addObject("paging2", getPaging2(num2,cgcode));  
+	    mav.addObject("paging", getPaging(num1,cgcode,lkind));  
 	    mav.addObject("auimg",auimg);
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
-		//mav.addObject("paging", getPaging(num));
 		
 		view="auctionList";
 		mav.setViewName(view);
 		return mav;
 	}
 
-
-	private Object getPaging1(int pageNum1,/*String gubun*/ int cgcode) {
+	
+	private Object getPaging(int pageNum1, int cgcode, String kind) {
 		String a = "auctionList";
-		int maxNum = rDao.getrevListCount(cgcode);
+		int maxNum = 0;
 		int listCount = 9;
 		int pageCount = 3;
 		String boardName = a;
 		
+		if (kind.equals("RA")) {
+		maxNum = rDao.getrevListCount(cgcode);
 		PagingAuction paging1 = 
-				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode,/*gubun ,*/ boardName );
+				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName, kind );
 		return paging1.makeHtmlPaging1();
-	}
-
-	private Object getPaging2(int pageNum2, int cgcode) {
-		String a = "auctionList";
-		int maxNum = aDao.getListCount(cgcode);
-
-		int listCount = 9;
-		int pageCount = 3;
-		String boardName = a;
-		
+		}
+		if(kind.equals("AU")) {
+		maxNum = aDao.getListCount(cgcode);
 		PagingAuction paging2 = 
-				new PagingAuction(maxNum, pageNum2, listCount,pageCount, cgcode, boardName);
+				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName, kind);
 		return paging2.makeHtmlPaging2();
+		}
+		
+		return null;
 	}
+
 
 
 	public ModelAndView auctionRead(int au_num) {

@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -213,7 +215,7 @@ div {
 			<c:forEach var="ra" items="${raList}">
 				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 					<div class="raListImg">
-						<img src="./images/${ra.ra_image }.png" />
+						<%-- <img src="./images/${ra.ra_image }.png" /> --%>
 					</div>
 					<div class="raListTitle">
 						${ra.ra_title }
@@ -230,7 +232,7 @@ div {
 			</c:forEach>
 			</div>
 			<div class = paging1>
-				${paging1}
+				${paging}
 			</div>
 			<!-- 
 				▲역경매         ▼경매
@@ -240,7 +242,7 @@ div {
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
-						<img src="<c:url value='/resources/upload/${auimg}'/>" width="100%" height="100%"/>
+						<%-- <img src="<c:url value='/resources/upload/${auimg}'/>" width="100%" height="100%"/> --%>
 					</div>
 					<div class="auListTitle">
 						${au.au_title }
@@ -260,7 +262,7 @@ div {
 			</div>
 			
 			<div class = paging2>
-				${paging2}
+				${paging}
 			</div>
 		</div>
 
@@ -275,40 +277,42 @@ div {
 
 <script>
 
-var kind = 'C';
-/*$("gubunCheck").onload(function(){
-	gubun = 리스폰스.겟.파라미터(gubun)\
-	
-	if(gubun == 'M'){
+
+
+window.onload=function() {
+	if(lkind == 'RA'){
+		console.log(1,lkind);
 		$("#ListView1").css("display", "inline");
 		$("#ListView2").css("display", "none");
 		$(".paging1").css("display", "inline");
 		$(".paging2").css("display", "none");
 	
-	}else if(gubun == 'C'){
+	}else if(lkind == 'AU'){
+		console.log(2,lkind);
 		$("#ListView1").css("display", "none");
 		$("#ListView2").css("display", "inline");
 		$(".paging1").css("display", "none");
 		$(".paging2").css("display", "inline");
-		
-	}
+	};
+};
 
-*/
 	$("#Lbtn1").click(function() {
+		lkind = 'RA';
+		console.log(3,lkind);
 		$("#ListView1").css("display", "inline");
 		$("#ListView2").css("display", "none");
 		$(".paging1").css("display", "inline");
 		$(".paging2").css("display", "none");
-		kind = 'M';
 			//페이징 클래스 불러올때 리셋클래스 ㄱㄱ
 	});
 
 	$("#Lbtn2").click(function() {
+		lkind = 'AU' ;
+		console.log(4,lkind);
 		$("#ListView1").css("display", "none");
 		$("#ListView2").css("display", "inline");
 		$(".paging1").css("display", "none");
 		$(".paging2").css("display", "inline");
-		kind = 'C' ;
 			//페이징 클래스 불러올때 리셋클래스 ㄱㄱ
 	});
 	
