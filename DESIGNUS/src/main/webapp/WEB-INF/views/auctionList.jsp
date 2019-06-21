@@ -246,9 +246,9 @@ div {
 						${au.au_title }
 					</div>
 					<div class="auListPrice">
-						즉시구매가능수량 : ${au.au_qty -1}		<br>
+						즉시구매가능수량 : ${au.au_qty -1}	<br>
 						경매시작가 : ${au.au_minprice}     <br>
-						즉시구매가 : ${au.au_inprice}     <br>
+						즉시구매가 : ${au.au_inprice}      <br>
 						경매최고가 : ${au.aut_price}
 					</div>
 					<div class="auListDate">
@@ -275,11 +275,32 @@ div {
 
 <script>
 
+var kind = 'C';
+/*$("gubunCheck").onload(function(){
+	gubun = 리스폰스.겟.파라미터(gubun)\
+	
+	if(gubun == 'M'){
+		$("#ListView1").css("display", "inline");
+		$("#ListView2").css("display", "none");
+		$(".paging1").css("display", "inline");
+		$(".paging2").css("display", "none");
+	
+	}else if(gubun == 'C'){
+		$("#ListView1").css("display", "none");
+		$("#ListView2").css("display", "inline");
+		$(".paging1").css("display", "none");
+		$(".paging2").css("display", "inline");
+		
+	}
+
+*/
 	$("#Lbtn1").click(function() {
 		$("#ListView1").css("display", "inline");
 		$("#ListView2").css("display", "none");
 		$(".paging1").css("display", "inline");
 		$(".paging2").css("display", "none");
+		kind = 'M';
+			//페이징 클래스 불러올때 리셋클래스 ㄱㄱ
 	});
 
 	$("#Lbtn2").click(function() {
@@ -287,6 +308,8 @@ div {
 		$("#ListView2").css("display", "inline");
 		$(".paging1").css("display", "none");
 		$(".paging2").css("display", "inline");
+		kind = 'C' ;
+			//페이징 클래스 불러올때 리셋클래스 ㄱㄱ
 	});
 	
 </script>

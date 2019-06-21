@@ -45,6 +45,7 @@
 	border: 1px solid blue;
 	width: 260px;
 	height: 35px;
+	font-weight: 800;
 }
 
 #middle_img_lv2 {
@@ -238,6 +239,7 @@
 
 .decisionbtn {
 	width: 150px;
+	display: block;
 }
 
 #ra_mbid2 {
@@ -310,7 +312,7 @@
 					<c:if test="${code eq 170 }">가공식품</c:if>
 					<c:if test="${code eq 180 }">휴대폰</c:if>
 					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
-					<c:if test="${code eq 200 }">유아</c:if>
+					<c:if test="${code eq 200 }">유아 용품</c:if>
 			</div>
 			<div id="middle_img_lv2">
 				<%-- <img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" /> --%>
@@ -389,7 +391,9 @@
 				<p><br>추가 요청내역이 없습니다.</p></c:if>
 			</div>
 		</div>
-		<div id="footer">여기는 푸터 입니다.</div>
+		<div id="footer">
+			<jsp:include page="footer.jsp" />
+		</div>
 	</div>
 </body>
 
@@ -447,7 +451,7 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-		//setInterval(function() {
+/* 		setInterval(function() { */
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -474,7 +478,7 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
-			//}, 300);
+/* 			}, 300); */
 		});
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();
@@ -568,31 +572,27 @@ $(".subtn").click(function() {
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
- 	 	end.setDate(end.getDate()+1);
+ 	 	//end.setDate(end.getDate()+1);
+ 	 	end.setMinutes(end.getMinutes()+10);
  		var _second = 1000;
  		var _minute = _second * 60;
  		var _hour = _minute * 60;
  		var _day = _hour * 24;
  		var timer;
- 		
+
  		function showRemaining() {
  		var now = new Date();
  		var distance = end - now;
- 		
+
  		if (distance < 0) {
  		clearInterval(timer);
  		$(id).html("경매가 마감되었습니다.");
-	      $.ajax({
-				type:'POST',
-				url:'ajax/reqdecision',
-				data: JSON.stringify(form),
-				dataType:'json',
-				success: function(data) {
-					console.log("성공");						
-				},
-				error: function(error) {
-				}
-			});
+
+ 		if (!location.hash) { 
+ 			location.hash = '#reload';
+ 			window.location.reload();
+ 		}
+
  		return;
  		}
  		
@@ -604,7 +604,7 @@ $(".subtn").click(function() {
  		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
- 		timer = setInterval(showRemaining, 1000);
+ 		timer = setInterval(showRemaining, 100);
  		}
  		// Source: stackoverflow
  		

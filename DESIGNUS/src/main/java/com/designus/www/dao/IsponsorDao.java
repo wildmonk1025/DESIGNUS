@@ -34,4 +34,6 @@ public interface IsponsorDao {
 
 	Sponsor getDatecheck(Sponsor sp);
 
+	SponsorProgress getCountcheck(@Param("ss_num") int ss_num);
+
 }

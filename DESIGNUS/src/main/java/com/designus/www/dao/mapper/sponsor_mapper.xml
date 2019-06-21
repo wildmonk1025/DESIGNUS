@@ -21,12 +21,12 @@
 
 	<select id="productinfo" parameterType="sponsor"
 		resultType="sponsor">
-		SELECT * FROM SPONVIEW ORDER BY SS_DATE DESC
+		SELECT * FROM SPONV ORDER BY SS_DATE DESC
 	</select>
 
 	<select id="getSponcheck" parameterType="sponsor"
 		resultType="sponsor">
-		SELECT * FROM SPONVIEW WHERE SS_NUM =${ss_num}
+		SELECT * FROM SPONV WHERE SS_NUM =${ss_num}
 	</select>
 
 	<insert id="sponTenderInsert" parameterType="sponsor">
@@ -50,8 +50,15 @@
 		VALUES (#{bnum},#{sysFileName})
 	</insert>
 
-	<select id="getDatecheck"
-		parameterType="java.time.LocalDateTime" resultType="sponsor">
-		SELECT ss_date+7 as end_data FROM SPONVIEW where ss_date=#{ss_date}
+	<select id="getCountcheck" parameterType="sponsor"
+		resultType="sponpro">
+	<![CDATA[
+	SELECT * FROM(SELECT SS.*,NVL(SSP.SSP_COUNT,0) AS SSP_COUNT
+	FROM SPONSOR SS LEFT OUTER JOIN (SELECT SSP_SSNUM,COUNT(*) AS SSP_COUNT FROM SSP GROUP BY SSP_SSNUM) SSP
+	ON SS.SS_NUM=SSP.SSP_SSNUM) WHERE SS_NUM=${ss_num}
+	]]>
 	</select>
+
+	<!-- <select id="getDatecheck" parameterType="java.time.LocalDateTime" resultType="sponsor"> 
+		SELECT ss_date+7 as end_data FROM SPONVIEW where ss_date=#{ss_date} </select> -->
 </mapper>

@@ -14,6 +14,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -104,14 +105,20 @@ public class SponsorMM {
 		String today = null;
 
 		Sponsor sm = new Sponsor();
-		Sponsor sp = new Sponsor();
+		SponsorProgress sp = new SponsorProgress();
+
 		// ss.setSs_num(ss_num);
 		System.out.println("넘어오나용" + ss_num);
 		sm = sDao.getSponcheck(ss_num);
-		sp = sDao.getDatecheck(sp);
-		System.out.println(sp.getEnd_data());
+		sp = sDao.getCountcheck(ss_num);
+
+		System.out.println("담기나??=" + sp.getSsp_count());
 
 		sm.setSs_num(ss_num);
+		sp.setSsp_ssnum(ss_num);
+
+		int cnt = 0;
+		cnt = sp.getSsp_count();
 
 		if (ss_num == sm.getSs_num()) {
 			System.out.println("여긴뭐지");
@@ -123,7 +130,8 @@ public class SponsorMM {
 			mav.addObject("ss_price", sm.getSs_price());
 			mav.addObject("ss_goalqty", sm.getSs_goalqty());
 			mav.addObject("ss_date", sm.getSs_date());
-			mav.addObject("ss_date2", sp.getEnd_data());
+			mav.addObject("ss_date2", sm.getEnd_data2());
+			mav.addObject("st_count", cnt);
 			view = "sponProductFrm";
 		} else {
 			view = "sponsor";

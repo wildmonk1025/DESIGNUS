@@ -95,7 +95,7 @@ div{
 	position: absolute;
 	top: 5;
 	left: 5;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight:bolder;
 	font-family: Verdana, sans-serif;
 
@@ -455,13 +455,10 @@ nav {
 	function logout() {
 		$('#logout').submit();
 	}
-/* 	function asd() {
-		var word = $('#searchtxt').val();
-		location.href="searching/"+word;
-	} */
+
 	
 	var i=0;
-/* 	setInterval(function() {
+ 	function ranking() {
 		$.ajax({
     		type:'POST',
     		url:'ajax/searchranking',
@@ -471,7 +468,7 @@ nav {
     			if(i<10) {
     			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\" class='atag'>"+data[i].rtsr_word+"</a></span>";
     			$("#ranking").html(str);
-    	        $("#rankingbox").delay(2850).animate({top:8},function(){
+    	        $("#rankingbox").delay(4850).animate({top:8},function(){
     	        	$("#ranking span:first");
     	        	$("#rankingbox").css({top:0});
     	        });
@@ -486,7 +483,7 @@ nav {
 			error: function(error) {
     		}
     	}); //ajax End
-	} ,3300); */
+	}
 	
 	function searchingfct(word) {
 	      	var f = document.searchingfct;
@@ -523,15 +520,15 @@ $("#alarmBtn").click(function() {
  	setTimeout(function() {
 		$('#alarmList').css('display','none');
 		$('.alarmcontents').css('display','none');		
-	},4500);
+	},2500);
 });
 
 
-/* $(document).ajaxStart(function() {
+ $(document).ajaxStart(function() {
 	poll();
 });
-
-setInterval(poll,6000);
+ setTimeout($("#ranking").html("<span>실시간 검색순위</span>"),100);
+ setInterval(ranking,5300);
  	
  	function poll() {
 		$.ajax({
@@ -569,7 +566,7 @@ setInterval(poll,6000);
 			error: function(error) {
 				}
 			});
-		} */
+		} 
 
 </script>
 </html>
