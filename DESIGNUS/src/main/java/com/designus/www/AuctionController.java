@@ -34,12 +34,16 @@ public class AuctionController {
 	}
 	
 	@RequestMapping(value = "/auctionList" )
-	public ModelAndView auctionList(Integer pageNum ,int cgcode, String lkind) throws ParseException {
+	public ModelAndView auctionList(Integer pageNum ,int cgcode) throws ParseException {
 		mav = new ModelAndView();
-		if(lkind == null) {
-			lkind = "RA";
-		}
-		mav = aum.auctionList(pageNum,cgcode,lkind);
+		mav = aum.auctionList(pageNum,cgcode);
+		return mav;
+	}
+
+	@RequestMapping(value = "/revauctionList" )
+	public ModelAndView revauctionList(Integer pageNum ,int cgcode) throws ParseException {
+		mav = new ModelAndView();
+		mav = aum.revauctionList(pageNum,cgcode);
 		return mav;
 	}
 

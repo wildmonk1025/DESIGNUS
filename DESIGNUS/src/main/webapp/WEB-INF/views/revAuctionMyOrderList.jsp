@@ -17,57 +17,6 @@ div {
 	margin: auto;
 }
 
-#notice {
-	padding-top: 5px;
-	margin: 10px;
-	border: 1px solid orange;
-	width: 1080px;
-	height: 250px;
-	text-align: left;
-	font-size: 20px;
-	float: left;
-}
-
-#info {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 280px;
-	height: 580px;
-	font-size: 20px;
-	text-align: left;
-	float: left;
-}
-
-#renking {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 200px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#auction {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-}
-
-#spon {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 300px;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-}
-
 .bt {
 	/*General*/
 	display: inline-block;
@@ -127,20 +76,27 @@ div {
 		rgb(237, 237, 237) 100%);
 }
 
-#leftmain {
-	width: 310px;
-	height: 950x;
-	border: 1px solid black;
+#notice {
+	padding-top: 5px;
+	margin: 10px;
+	width: 1080px;
+	height: 50px;
+	text-align: left;
+	font-size: 20px;
 	float: left;
+	overflow: auto;
 }
 
-#rightmain {
-	width: 1210px;
-	height: 950px;
-	border: 1px solid black;
+
+#renking {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 875px;
+	text-align: center;
+	font-size: 20px;
 	float: left;
 }
-
 #main {
 	width: 1520px;
 	height: 170px;
@@ -153,35 +109,6 @@ div {
 	margin-right: 30px;
 	width: 100px;
 	height: 80px;
-}
-
-.bt02 {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	margin-top: 50px;
-	width: 100px;
-	height: 80px;
-}
-
-.bt03 {
-	float: right;
-	margin-right: 30px;
-	margin-top: 50px;
-	width: 100px;
-	height: 80px;
-}
-
-.bt:hover { 
-	color: white;
-}
-
-.bt:active {
-	color: yellow;
-}
-
-a {
-	color: red
 }
 
 #lightbox {
@@ -265,21 +192,6 @@ a {
 	display: none;
 }
 
-#lightbox3 {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
 #lightbox-shadow3 {
 	position: absolute;
 	top: 0;
@@ -347,6 +259,23 @@ a:hover {
 	float: left;
 }
 
+#loginwriter {
+	padding: 3px;
+	padding-top: 20px;
+	width: 300px;
+	height: 80px;
+	float: right;
+}
+
+#subcategory {
+	width: 50px;
+	height: 50px;
+	background-color: orange;
+	color: white;
+	font-size: 30px;
+	float: left;
+}
+
 #menu {
 	float: left;
 	width: 1400px;
@@ -369,28 +298,47 @@ a:hover {
 	float: left;
 }
 
+#mypageimg {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-left: 5px;
+}
+
+#loginmsg {
+	float: left;
+	width: 130px;
+	height: 50px;
+	margin-left: 10px;
+}
+
 #mainheader {
 	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
 
-#mypagemain {
-	width: 1530px;
-	height: 1200px;
-	border: 1px solid black;
+#setp {
+	border: 1px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1200px;
+	height: 840px;
+	float: left;
+	font-size: 20px;
+	text-align: center;
+	overflow: auto;
 }
-#total {
-	position : absolute;
-	width: 100%;
-	height: 200%;
-	background-color: black;
-	z-index: 1001;
-	opacity: 0.75;
-	display: none;
+
+#setpT {
+	width: 1200px;
+	margin: 0px 10px 10px 10px;
+	height: 900px;
+	float: left;
+	border: none;
 }
-#r1 {
-position: absolute;
+
+#l1 {
+	position: absolute;
 	width: 400px;
 	height: 330px;
 	border-radius: 100px;
@@ -400,14 +348,178 @@ position: absolute;
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
-	top : 500px;
+	top: 500px;
 	left: 900px;
+}
 
+#l3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+#w3 {
+	position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
+
+#q1 {
+	width: 500px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+}
+
+#total {
+	position: absolute;
+	width: 100%;
+	height: 200%;
+	background-color: black;
+	z-index: 1001;
+	opacity: 0.75;
+	display: none;
+}
+
+.t1 {
+	top: 100;
+	left: -200;
+}
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+	border: 1px solid black;
+}
+
+#2list {
+	width: 1000px;
+	height: 250px;
+	float: left;
+}
+
+#sangimg {
+	margin: 10px;
+	height: 150px;
+	width: 150px;
+	float: left;
+}
+#sixth{
+ position: absolute;
+  top: 1080px;
+  left: 1150px;  
+}
+.first{
+border: 1px solid orange;
+	margin: 10px 10px 10px 10px;
+	width: 1060px;
+	height: 250px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p1 {
+ width: 500px;
+ float: left;
+ text-align: left;
+}
+.p2{
+width: 500px;
+text-align: left;
+float: left;
+}
+.second{
+    background-color : #FFBB00;
+	margin: 10px 10px 10px 10px;
+	width: 1040px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.third{
+	margin: 5px 10px 10px 10px;
+	width: 270px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.fourth{
+	margin: 5px 10px 10px 10px;
+	width: 570px;
+	height: 175px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+}
+.Fifth{
+	margin: 5px 10px 10px 10px;
+	width: 130px;
+	height: 175px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+.p3{
+margin-top: 60px;
+}
+.p4{
+margin-top: 30px;
+font-size: 13px;
+color: red;
+}
+.bbttzzz{
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: orange;
+  margin-top: 20px;
+}
+
+.bbttzzz:hover {
+   background-color: red;
+}
+#r1{
+    position: absolute;
+	width: 400px;
+	height: 330px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
 }
 #c1{
-position: absolute;
+  position: absolute;
 	width: 400px;
-	height: 370px;
+	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
@@ -415,26 +527,7 @@ position: absolute;
 	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
-	top : 500px;
-	left: 900px;
-}
-#pageing{
-   position: absolute;
-	top: 1050px;
-	left: 800px;
-}
-#q1{
-position: absolute;
-	width: 600px;
-	height: 570px;
-	border-radius: 100px;
-	z-index: 1002;
-	padding-top: 70px;
-	text-align: center;
-	background-color: #FFE08C;
-	display: none;
-	font-size: 22px;
-	top : 500px;
+	top: 500px;
 	left: 900px;
 }
 </style>
@@ -443,27 +536,27 @@ position: absolute;
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
-	<div id="leftmain">
-
-			<jsp:include page="Mapagemain.jsp" />
-				
-			</div>
 <div id="total"></div>
 <div id="r1"></div>
 <div id="c1"></div>
 <div id="q1"></div>
 	
+	<div id="mypagemain">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 
-		
-		
+		<jsp:include page="Mapagemain.jsp" />
+
+
 		<div id="rightmain">
-		<div id="revA"></div>
-		
-			
-			<div id="pageing">${ROpaging}</div>
+			<div id="notice">
+			 <h2>제작의뢰 구매 내역</h2><hr>
+			</div>
+			<div id="renking">
+				
+			</div>
+        <div id="sixth">${ROpaging}</div>
 		</div>
 	</div>
 </body>
@@ -475,72 +568,76 @@ var main = "";
 
 for (var i = 0; i < revList.length; i++) {
 	 if (revList[i].rap_step == 1) {
-	main += "<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"
-			+ "상품번호 :"
-			+ revList[i].rap_ptnum+"</br>"
-			+ "상품명:"
-			+ revList[i].ra_title+"</br>"
-			+ "구매 금액 : "
-			+ revList[i].rap_price+"</br>"
-			+ "구매 종류 : "
-			if(revList[i].ra_oc=="O"){
-		     main +="공개</br>"	
-			}else{
-			 main +="비공개</br>"	
-			}            
-		main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
-			 +"<input id='btzRevM' type='button' onclick=\"javascript:requested('"+revList[i].rap_ptnum+"')\" value='요청'/>"
-             +"<input type='button' onclick=\"javascript:ravcancel('"+revList[i].rap_ptnum+"')\" value='취소'/>"
-             +"</div>";
+	main += "<div class='first'><div class='second'>"
+	 if(revList[i].ra_oc=="O"){
+	main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+	 }else{
+    main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+	  }
+	main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+		 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
+		 + "구매 금액 :"+ revList[i].rap_price+"<br>"
+		 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+	     + "<div class='Fifth'><input class='bbttzzz' id='btzRevM' type='button' onclick=\"javascript:requested('"+revList[i].rap_ptnum+"')\" value='요청'/><br>"
+	     + "<input type='button' class='bbttzzz' onclick=\"javascript:ravcancel('"+revList[i].rap_ptnum+"')\" value='취소'/></div></div>"
              
 	} else if(revList[i].rap_step==2){
-			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revList[i].rap_price+"</br>"
-		    if(revList[i].ra_oc=="O"){
-			     main +="구매 종류 : 공개</br>"	
-				}else{
-				 main +="구매 종류 : 비공개</br>"	
-				}            
-		    main +="<h3>배송대기중...</h3></div>";
+			main+="<div class='first'><div class='second'>"
+	       if(revList[i].ra_oc=="O"){
+			main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+		   }else{
+			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+			 }
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
+				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
+				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+                 + "<div class='Fifth'><p class='p3'>배송대기중...</p></div></div>";				
 		    
 		}else if(revList[i].rap_step==3){
-			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revList[i].rap_price+"</br>"
-		    if(revList[i].ra_oc=="O"){
-			     main +="구매 종류 : 공개</br>"	
-				}else{
-				 main +="구매 종류 : 비공개</br>"	
-				}           
-		    main +="<input type='button' onclick=\"btzRevMy('"+revList[i].rap_ptnum+"')\" value='고객센터 문의'/>"
-                 +"<input type='button' onclick=\"RevMyreview('"+revList[i].rap_ptnum+"')\" value='수령확인구매후기 쓰기'/></div>";
+			main+="<div class='first'><div class='second'>"
+		   if(revList[i].ra_oc=="O"){
+			main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+		  }else{
+			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+			  }
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
+				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
+			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+			     + "<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"btzRevMy('"+revList[i].rap_ptnum+"')\" value='고객센터 문의'/><br>"
+			     + "<input class='bbttzzz' type='button' onclick=\"RevMyreview('"+revList[i].rap_ptnum+"')\" value='수령확인구매후기 쓰기'/></div></div>"
 		    
-			
 		} else if(revList[i].rap_step==4){
-			main+="<div id='notice'><a href='imgAuction'><img src='/resources/images/"+revList[i].ra_image+"'/></a></br>"              
-		    +"상품번호 :"+revList[i].rap_ptnum+"</br>상품명:"+revList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revList[i].rap_price+"</br>";
-		    if(revList[i].ra_oc=="O"){
-			     main +="구매 종류 : 공개</br>"	
-				}else{
-				 main +="구매 종류 : 비공개</br>"	
-				}       
-		    main +="<p>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br/> 작업 완료일이 늘어날 수 있습니다.</br>"
-		    	 +"<h3>완료</h3></div>";
+			main+="<div class='first'><div class='second'>"
+		   if(revList[i].ra_oc=="O"){
+			main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+		   }else{
+			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+			 }
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
+				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
+				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				 + "<div class='Fifth'><p class='p3'>완료</p></div></div>";
+		
 		}else{
-			main+="<div id='notice'><a href='imgRevO'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></br>"              
-		    + "상품번호 :"+revAList[i].rap_ptnum+"</br>상품명:"+revAList[i].ra_title+"</br>"
-		    +"구매 금액 : "+revAList[i].rap_price+"</br>"
-		    if(revAList[i].ra_oc=="C"){
-			     main +="구매 종류 : 비공개</br>"	
-				}            
-		    main +="비공개 제작의뢰 요청중입니다... "
+			main+="<div class='first'><div class='second'>"
+		   if(revList[i].ra_oc=="O"){
+			main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+		  }else{
+			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+			 }
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			     + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
+				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
+				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				 + "<div class='Fifth'><p class='p3'>비공개 제작의뢰 요청중입니다...</p></div></div>";
 		}    
 }
 
 
-$('#revA').html(main);
+$('#renking').html(main);
   
  //스텝1 요청 라이트 박스(ajax) 
 function requested(even) {
@@ -579,6 +676,11 @@ function requested(even) {
 			    	$('#r1').css("display", "inline");
 			    	
 			    	$('#r1').html(sub);
+			    	
+			    	 $('#back').click(function () {
+				    	  $('#total').css("display", "none");
+						  $('#r1').css("display", "none");
+							});
 			    },
 			    
 			    error:function(error){
@@ -627,6 +729,11 @@ function requested(even) {
 				    	$('#c1').css("display", "inline");
 				    	
 				    	$('#c1').html(cub);
+				    	
+				    	 $('#back').click(function () {
+					    	  $('#total').css("display", "none");
+							  $('#c1').css("display", "none");
+								});
 				    },
 				    
 				    error:function(error){
@@ -673,6 +780,11 @@ function RevMyreview(even) {
 		    	$('#q1').css("display", "inline");
 		    	
 		    	$('#q1').html(bb); 
+		    	
+		    	 $('#backSetp').click(function () {
+			    	  $('#total').css("display", "none");
+					  $('#q1').css("display", "none");
+						});
 		    },
 		    
 		    error:function(error){
@@ -713,7 +825,7 @@ function fileChk(elem) {
 		$('#fileCheck').val(1);//파일 첨부 했음
 	}
 }//end fileChk
-	$("#action").click(function() {
+	/* $("#action").click(function() {
 		$('#lightbox-shadow').css("display", "inline")
 		$('#lightbox').css("display", "inline")
 	});
@@ -728,7 +840,7 @@ function fileChk(elem) {
 	$("#review").click(function() {
 		$('#lightbox-shadow3').css("display", "inline")
 		$('#lightbox3').css("display", "inline")
-	});
+	}); */
 </script>
 
 </html>

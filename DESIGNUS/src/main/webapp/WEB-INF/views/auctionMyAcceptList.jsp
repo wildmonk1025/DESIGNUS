@@ -492,6 +492,20 @@ margin-top: 30px;
 font-size: 13px;
 color: red;
 }
+#l2{
+position: absolute;
+	width: 600px;
+	height: 530px;
+	border-radius: 100px;
+	z-index: 1002;
+	padding-top: 70px;
+	text-align: center;
+	background-color: #FFE08C;
+	display: none;
+	font-size: 22px;
+	top: 500px;
+	left: 900px;
+}
 </style>
 
 </head>

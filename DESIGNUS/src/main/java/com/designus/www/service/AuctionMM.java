@@ -26,29 +26,29 @@ import javafx.scene.control.Alert;
 
 @Service
 public class AuctionMM {
-	
+
 	@Autowired
 	private IauctionDao aDao;
 	@Autowired
 	private IRevAuctionDao rDao;
 	@Autowired
-    private HttpSession session;
+	private HttpSession session;
 	@Autowired
 	private UploadFile upload;
-	
+
 	private ModelAndView mav;
 
 	public ModelAndView auctionWriteSubmit(MultipartHttpServletRequest multi) {
-		mav=new ModelAndView();
-		String id = (String)session.getAttribute("id");
-		String view=null;
+		mav = new ModelAndView();
+		String id = (String) session.getAttribute("id");
+		String view = null;
 		int num = 0;
-		String title = multi.getParameter("au_title"); 
-		int cgcode =Integer.parseInt(multi.getParameter("au_cgcode")); 
-		int qty =Integer.parseInt(multi.getParameter("au_qty")); 
-		int minprice =Integer.parseInt(multi.getParameter("au_minprice")); 
-		int inprice =Integer.parseInt(multi.getParameter("au_inprice")); 
-		String contents =multi.getParameter("au_contents"); 
+		String title = multi.getParameter("au_title");
+		int cgcode = Integer.parseInt(multi.getParameter("au_cgcode"));
+		int qty = Integer.parseInt(multi.getParameter("au_qty"));
+		int minprice = Integer.parseInt(multi.getParameter("au_minprice"));
+		int inprice = Integer.parseInt(multi.getParameter("au_inprice"));
+		String contents = multi.getParameter("au_contents");
 		Auction au = new Auction();
 		au.setAu_mbid_w(id);
 		au.setAu_title(title);
@@ -59,106 +59,120 @@ public class AuctionMM {
 		au.setAu_contents(contents);
 		num = aDao.getAuctionWriteSel(au);
 		au.setAu_num(num);
-		if(aDao.getAuctionWriteInsert(au)) { 
+		if (aDao.getAuctionWriteInsert(au)) {
 			num = aDao.getAuctionWriteSel(au);
 			au.setAu_num(num);
 			upload.fileUpImage(multi, au);
-			mav.addObject("au_num",num);
-			au.setAu_contents(id+" 작가님의 상품 "+au.getAu_title()+" 이(가) 정상적으로 등록되었습니다.");
+			mav.addObject("au_num", num);
+			au.setAu_contents(id + " 작가님의 상품 " + au.getAu_title() + " 이(가) 정상적으로 등록되었습니다.");
 			aDao.setNotifyAuctionInsert(au);
 
-			
-		  view = "redirect:/auctionRead"; 
-		  } else { 
-		  view = "auctionWrite";
-		  }
-		
+			view = "redirect:/auctionRead";
+		} else {
+			view = "auctionWrite";
+		}
+
 		mav.setViewName(view);
 		return mav;
 	}
 
-
-	public ModelAndView auctionList(Integer pageNum,int cgcode,String lkind ) throws ParseException{
-		mav=new ModelAndView();
-		String view="null";
+	public ModelAndView auctionList(Integer pageNum, int cgcode) throws ParseException {
+		mav = new ModelAndView();
+		String view = "null";
 		String auimg = null;
 		List<Auction> auList = null;
-		List<RevAuction> raList = null;
 		Auction au = new Auction();
-		RevAuction rau = new RevAuction();
 		AuctionTender at = new AuctionTender();
-      	DateAdjust da = new DateAdjust();
-		int num1 = (pageNum == null)? 1 : pageNum ;
+		DateAdjust da = new DateAdjust();
+		int num = (pageNum == null) ? 1 : pageNum;
 
-		auList = aDao.getAuctionListSelect(cgcode,num1);
-		raList = rDao.getRevAuctionListSelect(cgcode,num1);
+		auList = aDao.getAuctionListSelect(cgcode, num);
 		auimg = aDao.getAuctionImgSel(au);
-	      for (int i = 0; i < raList.size(); i++) {
-	          //int ra_num=raList.get(i).getRa_num();
-	          String y = rDao.setRevAuctionTenderMinValue(raList.get(i));
-	          String y2 = rDao.setRevAuctionTenderMaxValue(raList.get(i));
-	          {
-	             if (y != null)
-	                raList.get(i).setRa_min(y);
-	             else
-	                raList.get(i).setRa_min("-");
-	             if (y2 != null)
-	                raList.get(i).setRa_max(y2);
-	             else
-	                raList.get(i).setRa_max("-");
-	          }
 
-	          String new_date1 = da.changeDateToString(raList.get(i).getRa_date());
-	          raList.get(i).setRa_date(new_date1);
-	       }
-	      
-	      for(int i=0;i<auList.size();i++) {
-	    	  String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
-	    	  auList.get(i).setAu_date(new_date2);	    	  
-	      }
-	    mav.addObject("paging", getPaging(num1,cgcode,lkind));  
-	    mav.addObject("auimg",auimg);
-		mav.addObject("auList",auList);
-		mav.addObject("raList",raList);
-		
-		view="auctionList";
+		for (int i = 0; i < auList.size(); i++) {
+			String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
+			auList.get(i).setAu_date(new_date2);
+		}
+
+		mav.addObject("paging", AugetPaging(num, cgcode));
+		mav.addObject("auimg", auimg);
+		mav.addObject("auList", auList);
+		mav.addObject("cgcode",cgcode);
+		System.out.println("[][][][][] = "+cgcode);
+		view = "auctionList";
 		mav.setViewName(view);
 		return mav;
 	}
 
-	
-	private Object getPaging(int pageNum1, int cgcode, String kind) {
+	public ModelAndView revauctionList(Integer pageNum, int cgcode) throws ParseException {
+		mav = new ModelAndView();
+		String view = "null";
+		List<RevAuction> raList = null;
+		DateAdjust da = new DateAdjust();
+		int num = (pageNum == null) ? 1 : pageNum;
+
+		raList = rDao.getRevAuctionListSelect(cgcode, num);
+
+		for (int i = 0; i < raList.size(); i++) {
+			// int ra_num=raList.get(i).getRa_num();
+			String y = rDao.setRevAuctionTenderMinValue(raList.get(i));
+			String y2 = rDao.setRevAuctionTenderMaxValue(raList.get(i));
+			{
+				if (y != null)
+					raList.get(i).setRa_min(y);
+				else
+					raList.get(i).setRa_min("-");
+				if (y2 != null)
+					raList.get(i).setRa_max(y2);
+				else
+					raList.get(i).setRa_max("-");
+			}
+
+			String new_date1 = da.changeDateToString(raList.get(i).getRa_date());
+			raList.get(i).setRa_date(new_date1);
+		}
+
+		mav.addObject("paging", RagetPaging(num, cgcode));
+		mav.addObject("raList", raList);
+		mav.addObject("cgcode",cgcode);
+		view = "revAuctionList";
+		mav.setViewName(view);
+		return mav;
+	}
+
+	private Object AugetPaging(int pageNum1, int cgcode) {
 		String a = "auctionList";
 		int maxNum = 0;
 		int listCount = 9;
 		int pageCount = 3;
 		String boardName = a;
-		
-		if (kind.equals("RA")) {
-		maxNum = rDao.getrevListCount(cgcode);
-		PagingAuction paging1 = 
-				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName, kind );
-		return paging1.makeHtmlPaging1();
-		}
-		if(kind.equals("AU")) {
+
 		maxNum = aDao.getListCount(cgcode);
-		PagingAuction paging2 = 
-				new PagingAuction(maxNum, pageNum1, listCount,pageCount, cgcode, boardName, kind);
+		PagingAuction paging2 = new PagingAuction(maxNum, pageNum1, listCount, pageCount, cgcode, boardName);
 		return paging2.makeHtmlPaging2();
-		}
-		
-		return null;
+
 	}
 
+	private Object RagetPaging(int pageNum1, int cgcode) {
+		String a = "revauctionList";
+		int maxNum = 0;
+		int listCount = 9;
+		int pageCount = 3;
+		String boardName = a;
 
+		maxNum = rDao.getrevListCount(cgcode);
+		PagingAuction paging1 = new PagingAuction(maxNum, pageNum1, listCount, pageCount, cgcode, boardName);
+		return paging1.makeHtmlPaging1();
+
+	}
 
 	public ModelAndView auctionRead(int au_num) {
-		mav=new ModelAndView();
+		mav = new ModelAndView();
 		String view = null;
 		String Wid = null;
 		int nb = 1;
 		int price = 0;
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		List<AuctionTender> atList = null;
 		List<Auction> auwList = null;
 		String chkID = null;
@@ -184,52 +198,50 @@ public class AuctionMM {
 		au.setAui_imgSysName2(aDao.getAuctionImg2(au_num));
 		au.setAui_imgSysName3(aDao.getAuctionImg3(au_num));
 		au.setAui_imgSysName4(aDao.getAuctionImg4(au_num));
-		
-		mav.addObject("point",mb.getMb_point());
-		mav.addObject("peice",price);
-		mav.addObject("chkID",chkID);
-		mav.addObject("auInfo",au);
-		mav.addObject("nb",bk.getAb_aunum());
-		mav.addObject("nb2",nb);
-		mav.addObject("id",id);
-		mav.addObject("au_num",au_num);
-		mav.addObject("atList",atList);
-		mav.addObject("auwList",auwList);
+
+		mav.addObject("point", mb.getMb_point());
+		mav.addObject("peice", price);
+		mav.addObject("chkID", chkID);
+		mav.addObject("auInfo", au);
+		mav.addObject("nb", bk.getAb_aunum());
+		mav.addObject("nb2", nb);
+		mav.addObject("id", id);
+		mav.addObject("au_num", au_num);
+		mav.addObject("atList", atList);
+		mav.addObject("auwList", auwList);
 		view = "auctionRead";
 		mav.setViewName(view);
 		return mav;
 	}
 
-	
 	public int basketSelect(int num) {
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		String view = null;
 		Basket bk = new Basket();
 		bk.setAb_aunum(num);
 		bk.setAb_mbid(id);
-		
-		mav.addObject("num",num);
-		
+
+		mav.addObject("num", num);
+
 		int number = aDao.getAuctionBasketSelect(bk);
-		
-		if(number == 0) {
+
+		if (number == 0) {
 			aDao.getAuctionBasketInsert(bk);
 			view = "auctionRead";
-		} 
-		if(number > 0) {
+		}
+		if (number > 0) {
 			aDao.getAuctionBasketDelete(bk);
 			view = "auctionRead";
-		}	
+		}
 		return number;
 	}
 
-
-	public ModelAndView auctionReadInbuy(int inbuyQty,int inbuyNum) {
+	public ModelAndView auctionReadInbuy(int inbuyQty, int inbuyNum) {
 		mav = new ModelAndView();
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		String view = null;
 		int price = 0;
-		int totalPrice =0;
+		int totalPrice = 0;
 		int qty = inbuyQty;
 		int Tqty = 0;
 		int point = 0;
@@ -241,53 +253,53 @@ public class AuctionMM {
 		at.setAut_qty(qty);
 		Tqty = aDao.getAuctionTenderQty(at);
 		price = aDao.getAuctionTenderPrice(at);
-		totalPrice = price * qty; 
+		totalPrice = price * qty;
 		at.setAut_price(totalPrice);
 		point = aDao.getPoint(mb);
-		if(totalPrice < point ) {
+		if (totalPrice < point) {
 			aDao.setAuctionTenderDel(at);
 			aDao.setAuctionTenderI(at);
 			aDao.setAuctionUTI(at);
 
 			at.setAut_mbid(aDao.getAuctionWID(at));
 			at.setAu_title(aDao.getAuctionTitle(at));
-			at.setAut_notify(id+" 님이 " + at.getAu_title() + " 상품을 " + at.getAut_qty() +" 개 구입 하셧습니다.");
+			at.setAut_notify(id + " 님이 " + at.getAu_title() + " 상품을 " + at.getAut_qty() + " 개 구입 하셧습니다.");
 			aDao.setNotifyAuctionTender(at);
-			mav.addObject("au_num",inbuyNum);
+			mav.addObject("au_num", inbuyNum);
 			view = "redirect:/auctionRead";
 		}
 		mav.setViewName(view);
 		return mav;
 	}
 
-
-	public ModelAndView auctionReadTender(int tenderNum,int tenderPrice) {
+	public ModelAndView auctionReadTender(int tenderNum, int tenderPrice) {
 		mav = new ModelAndView();
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		String view = null;
 		int price = 0;
-		AuctionTender at= new AuctionTender();
+		AuctionTender at = new AuctionTender();
 		at.setAut_aunum(tenderNum);
 		at.setAut_mbid(id);
 		at.setAut_price(tenderPrice);
-		
-		
-		if(aDao.auctionTenderSel(at) == null) {
+
+		if (aDao.auctionTenderSel(at) == null) {
 			price = aDao.auctionTenderPriceSel(at);
 		} else {
 			price = Integer.parseInt(aDao.auctionTenderSel(at));
 		}
-		
-		if(price < tenderPrice) {
+
+		if (price < tenderPrice) {
 			aDao.setAuctionTenderT(at);
-			/* aDao.setAuctionUTT(at); */  //aup 등록 sql 
-			mav.addObject("au_num",tenderNum);
+			/* aDao.setAuctionUTT(at); */ // aup 등록 sql
+			mav.addObject("au_num", tenderNum);
 			view = "redirect:/auctionRead";
 		}
-		if(price >= tenderPrice) {
-			mav.addObject("au_num",tenderNum);
+		if (price >= tenderPrice) {
+			mav.addObject("au_num", tenderNum);
 			view = "redirect:/auctionRead";
 		}
 		mav.setViewName(view);
 		return mav;
-	}}
+	}
+
+}
