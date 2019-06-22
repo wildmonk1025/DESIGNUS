@@ -26,6 +26,7 @@
 	height: 170px;
 	position: fixed;
 	background-color: white;
+	z-index: 1000;
 }
 
 #middle {
@@ -59,7 +60,6 @@
 	float: left;
 	margin: 0px 20px 0px 20px;
 	border: 1px solid orange;
-	z-index: 100;
 }
 
 #middle_content1_lv2, #middle_content2_lv2, #middle_content3_lv2 {
@@ -68,7 +68,7 @@
  	overflow-x: auto;
  	overflow-y: hidden;
 	white-space: nowrap;
-	z-index: 100;
+
 }
 
 .recommlist, .recommlist2, .recommlist3 {
@@ -85,7 +85,6 @@
 	transform: scale(1.05);
 	border: 2px solid coral;
 	transition-duration: 1s;
-	z-index: 1100;
 }
 
 .recomm_img,.recomm_img2,.recomm_img3 {
@@ -157,19 +156,14 @@
 			</div>
 			</div>
 		</div>
-		// int sb_recomm;
-		// int sst_order; -->
 		<div id="middle_content3">
-			<div id="middle_content3_title">오늘의 후원</div>
+			<div id="middle_content3_title">관심 후원</div>
 			<div id="middle_content3_lv1">
 			<div id="middle_content3_lv2">
 			<c:forEach var="rl3" items="${recommList_ss}">
 				<div class="recommlist3" onclick="javascript:location.href='sponproduct?ss_num=${rl3.ss_num}'">
 				<div class="recomm_img3"><img src="<spring:url value='resources/upload/${rl3.ssi_img}'/>" width="100%" height="100%"/></div>
-				<c:if test="${rl3.sst_order != 0}">
-				<div class="recomm_text3"><p class="titlestyle">${rl2.ra_title}</p><p>의뢰접수 최저가:${rl2.rat_price}원</p></div></c:if>
-				<c:if test="${rl3.sst_order == 0}">
-				<div class="recomm_text3"><p class="titlestyle">${rl2.ra_title}</p><p>의뢰접수 최저가: - </p></div></c:if>
+				<div class="recomm_text3"><p class="titlestyle">${rl3.ss_title}</p><p>후원 진행상황: ${rl3.ss_curPercent} %</p></div>
 				</div>
 			</c:forEach>
 			</div>

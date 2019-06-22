@@ -1,11 +1,8 @@
 package com.designus.www.service;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession; 
 
@@ -14,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
-import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Category;
-import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
 import com.designus.www.bean.RealTimeSearchRanking;
 import com.designus.www.bean.RevAuction;
@@ -24,7 +19,6 @@ import com.designus.www.bean.Sponsor;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.IcommonDao;
-import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.DateAdjust;
 import com.google.gson.Gson;
 
@@ -107,11 +101,12 @@ public class CommonMM {
 		DateAdjust da = new DateAdjust();
 		boolean f = true;
 		
-		
 		List<Auction> aRecommList=cDao.getbestInfo(); //AU_RECOMM_LIST 뷰에서 가져옴
 		List<Auction> au_recommList = new ArrayList<>();
 
 		for(int i=0;i<20;i++) {
+			//f = da.compareDateToBoolean(aRecommList.get(i).getAu_date());
+			if(f)
 			au_recommList.add(aRecommList.get(i));
 		}
 		
@@ -119,7 +114,7 @@ public class CommonMM {
 		List<RevAuction> ra_recommList = new ArrayList<>();
 		
 		for(int i=0;i<20;i++) {
-			f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
+			//f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
 			if(f)
 				ra_recommList.add(raRecommList.get(i));
 		}
@@ -127,11 +122,25 @@ public class CommonMM {
 		
 		List<Sponsor> ssRecommList = cDao.getbestInfo3();
 		List<Sponsor> ss_recommList = new ArrayList<>();
-		
 		for(int i=0;i<20;i++) {
-			f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
+			//f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
 			if(f)
 				ss_recommList.add(ssRecommList.get(i));
+		}
+		
+		
+		System.out.println("ss_recommList의 사이즈="+ss_recommList.size());
+		for (int i = 0; i < ss_recommList.size(); i++) {
+		if(ss_recommList.get(i).getSst_order()!=0) {
+				int a = ss_recommList.get(i).getSst_order();
+				int b = ss_recommList.get(i).getSs_goalqty();
+				Double c =	(double) Math.round((a*100)/b);
+		  
+				ss_recommList.get(i).setSs_curPercent(c);
+				System.out.println(a+"나누기"+b+"는="+c);
+			} else {
+				ss_recommList.get(i).setSs_curPercent((double)0);
+			}
 		}
 
 		mav.addObject("recommList", au_recommList);
