@@ -470,6 +470,10 @@ function articleView(num1){
 	$("#btn").click(function(){
 		var c = '<%=(String) session.getAttribute("id")%>';
 		var b = $("#idc").val();
+		console.log(c);
+		if(c==null){
+			swal("비로그인은 추천할수 없습니다.");
+		}
 		if(b==c){
 			swal("자신의 글은 추천할수 없습니다.");
 		}else if(click) {
@@ -559,9 +563,6 @@ function articleView(num1){
 
 	}
 
-var aa='${msg}';
-if(aa='pppp'){
-	swal("댓글을 입력 하였습니다.");
-}
+
 </script>
 </html>

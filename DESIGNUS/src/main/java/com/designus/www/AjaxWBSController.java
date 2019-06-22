@@ -34,4 +34,12 @@ public class AjaxWBSController {
 		//이용후기추천하기
 		
 	}
+	@RequestMapping(value = "/NoticeListInfo", method = RequestMethod.POST, produces = "application/json; charset=utf-8;")
+	public String NoticeListInfo(int bd_num) {
+		System.out.println("num확인=========="+bd_num);
+		String check = bm.NoticeListInfo(bd_num);
+		System.out.println("aList=" + check);
+		return check;
+		
+	}//공지사항 상세
 }

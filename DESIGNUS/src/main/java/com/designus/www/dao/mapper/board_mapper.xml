@@ -114,4 +114,18 @@
 		SELECT BDC_MBID,BDC_CONTENTS FROM BDC WHERE bdc_bdnum=${num}
 	</select>
 	
-</mapper>
+	<select id="getNoticedlist" parameterType="Integer"
+		resultType="board">
+   		 <![CDATA[  select * from (select rownum as rn, bd_num, bd_kind, bd_mbid, 
+                    bd_title, bd_contents, bd_date, bd_like, bd_views
+                    from bd where bd_kind='공지사항' and rownum <= ${num}*10 order by bd_num desc) 
+                    where rn >= ${num}*10-9 ]]>
+	</select>
+	<delete id="getNoticedel" parameterType="int">
+		DELETE FROM BD WHERE BD_NUM=${bd_num}
+	</delete>
+	
+	<insert id="getNoticinsert" parameterType="String">
+		INSERT INTO BD VALUES(BD_SEQ.nextval,'공지사항',#{s},#{bd_title},#{bd_contents},SYSDATE,0,0)	
+</insert>
+</mapper> 

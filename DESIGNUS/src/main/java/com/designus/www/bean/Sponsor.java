@@ -4,6 +4,7 @@ import java.security.Timestamp;
 
 import org.apache.ibatis.type.Alias;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,4 +22,8 @@ public class Sponsor {
 	String ss_date;
 	String end_data2;
 	String ssi_imgSysName;
+	String ssi_img;
+	int sb_recomm;
+	int sst_order;
+	Double ss_curPercent;
 }
