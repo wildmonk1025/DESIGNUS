@@ -37,7 +37,7 @@
 
 #middle_content1, #middle_content2, #middle_content3 {
 	width: 1518px;
-	height: 420px;
+	height: 440px;
 	float: left;
 	border: 1px solid orange;
 }
@@ -55,28 +55,37 @@
 
 #middle_content1_lv1, #middle_content2_lv1, #middle_content3_lv1 {
 	width: 1460px;
-	height: 300px;
+	height: 330px;
 	float: left;
-	margin: 0px 20px 10px 20px;
+	margin: 0px 20px 0px 20px;
 	border: 1px solid orange;
+	z-index: 100;
 }
 
 #middle_content1_lv2, #middle_content2_lv2, #middle_content3_lv2 {
-
 	width: 1460px;
-	height: 300px;
+	height: 320px;
  	overflow-x: auto;
  	overflow-y: hidden;
 	white-space: nowrap;
+	z-index: 100;
 }
 
 .recommlist, .recommlist2, .recommlist3 {
 	width: 280px;
-	height: 98%;
+	height: 280px;
 	display:inline-block;
 	border: 1px solid black;
 	border-radius: 10px;
+	margin-top: 10px;
 	margin-left: 10px;
+}
+
+.recommlist:hover, .recommlist2:hover, .recommlist3:hover {
+	transform: scale(1.05);
+	border: 2px solid coral;
+	transition-duration: 1s;
+	z-index: 1100;
 }
 
 .recomm_img,.recomm_img2,.recomm_img3 {
@@ -85,6 +94,7 @@
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px; 
 }
+
 
 .recomm_text,.recomm_text2,.recomm_text3 {
 	width: 270px;
@@ -123,7 +133,7 @@
 			<div id="middle_content1_lv1">
 			<div id="middle_content1_lv2">
 			<c:forEach var="rl" items="${recommList}">
-				<div class="recommlist">
+				<div class="recommlist" onclick="javascript:location.href='auctionRead?au_num=${rl.au_num}'">
 				<div class="recomm_img"><img src="<spring:url value='resources/upload/${rl.aui_img}'/>" width="100%" height="100%"/></div>
 				<div class="recomm_text"><p class="titlestyle">${rl.au_title}</p><p>구매가:${rl.au_inprice}원 | 작가:${rl.au_mbid_w}</p></div>
 				</div>
@@ -136,7 +146,7 @@
 			<div id="middle_content2_lv1">
 			<div id="middle_content2_lv2">
 			<c:forEach var="rl2" items="${recommList_ra}">
-				<div class="recommlist2">
+				<div class="recommlist2" onclick="javascript:location.href='revauctionread?ra_num=${rl2.ra_num}'">
 				<div class="recomm_img2"><img src="<spring:url value='resources/upload/${rl2.ra_image}'/>" width="100%" height="100%"/></div>
 				<c:if test="${rl2.rat_price != 0}">
 				<div class="recomm_text2"><p class="titlestyle">${rl2.ra_title}</p><p>의뢰접수 최저가:${rl2.rat_price}원</p></div></c:if>
