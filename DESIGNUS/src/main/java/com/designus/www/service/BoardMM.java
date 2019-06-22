@@ -56,6 +56,15 @@ public class BoardMM {
 		PagingBoard paging = new PagingBoard(maxNum, pageNum, listCount, pageCount, boardName);
 		return paging.makeHtmlPaging();
 	}
+	private String getPagingBoards(int pageNum) { // 현제 페이지번호
+		int maxNum = bDao.getBoardConut(); // 전체 글의 개수
+		int listCount = 10; // 페이지당 글의수
+		int pageCount = 2; // 그룹당 페이지의 수
+		String boardName = "popularWriterFrm"; // 게시판이 여러게일떄 의미가 있음
+		
+		PagingBoard paging = new PagingBoard(maxNum, pageNum, listCount, pageCount, boardName);
+		return paging.makeHtmlPaging();
+	}
 
 	public String reviewboardlistInfo(int num) {
 		System.out.println("dddddd" + num);
@@ -162,11 +171,26 @@ public class BoardMM {
 		System.out.println("size=" + bdList.size());
 		mav.addObject("bdInfo", bdList);
 		mav.addObject("bd_num", bd.getBd_num());
-		mav.addObject("paging", getPagingBoard(num));
+		mav.addObject("pagings", getPagingBoards(num));
 
 		view = "/popularWriterFrm";
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public String NoticeListInfo(int num) {
+		System.out.println("dddddd" + num);
+
+		Board bList = bDao.getboardlistInfo(num);
+		bDao.getviewInfo(num);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("bList", bList);
+		Gson gs = new Gson();
+		String jsonObj = gs.toJson(map);
+		System.out.println(jsonObj);
+		return jsonObj;
+	
 	}
 
 }

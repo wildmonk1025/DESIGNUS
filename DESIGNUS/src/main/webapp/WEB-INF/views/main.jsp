@@ -426,7 +426,7 @@ nav {
 				<a href="reviewboard" class='atag'>이용후기</a>
 			</div>
 			<div class="submenu">
-				<a href="bestwriter" class='atag'>공지사항</a>
+				<a href="popularWriterFrm" class='atag'>공지사항</a>
 			</div>
 			<div class="submenu">
 				<a href="servicecenter" class='atag'>고객센터</a>
