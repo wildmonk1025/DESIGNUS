@@ -90,18 +90,24 @@
 		BD_CONTENTS=#{bd_contents} WHERE BD_MBID=#{bd_mbid} AND
 		BD_NUM=${bd_num}
 	</update>
+	<delete id="getreviewdel">
+		DELETE FROM BDC WHERE  BDC_BDNUM=${bd_num}
+	</delete>
+	
+	<delete id="getreviewimgdel">
+		DELETE FROM BD WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
+	</delete>
 
 	<delete id="getreviewdelete">
 		DELETE FROM BDI WHERE BDI_NUM=${bd_num}
 	</delete>
 
-	<delete id="getreviewimgdel">
-		DELETE FROM BD WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
-	</delete>
+	
 	<insert id="getreviewcomment" parameterType="map">
 		INSERT INTO BDC VALUES(BDC_SEQ.nextval,${bd_num},#{s},#{bdc_contents},SYSDATE)
 	</insert>
 	<select id="getreviewselect" parameterType="int" resultType="boardcomment">
 		SELECT BDC_MBID,BDC_CONTENTS FROM BDC WHERE bdc_bdnum=${num}
 	</select>
+	
 </mapper>

@@ -367,12 +367,7 @@ img{
 			<div class="table-users" id="declarelist">
    
 </div> 
-				<table>
-					<tr>
-						<td>아이디:${bdc_mbid}</td>
-						<td colspan="3">댓글:${bdc_contents}</td>
-					</tr>
-				</table>
+			
 				
 				<button id="btn2" class="btn" >글 삭제하기</button>
 				<button id="btn1" class="btn" >글 수정하기</button>
@@ -460,12 +455,13 @@ function articleView(num1){
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
 					  "<table>" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
 					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
-					  +"<input type='submit'/>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
+					  +"<button id='btn3' class='btn'>"+"확인"+"</button>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
 					  for (var i in data.bdc){
 						  result+="<tr><td>"+"아이디"+"</td>"+"<td>"+data.bdc[i].bdc_mbid+"</td>"+"<td>"+"내용"+"</td>"
 						  +"<td>"+data.bdc[i].bdc_contents+"</td>"
 					  }result+="</table>"
 			$("#declarelist").html(result);
+					  
 		},
 	error:function(error){
 		console.log("실패");
@@ -498,6 +494,8 @@ function articleView(num1){
  		
 	});
 	$("#btn1").click(function(){
+		location.href='reviewboard';
+		  window.location.reload();
 		var a = $("textarea").val();
 		var b = $("#idc").val();
 		console.log("num확인="+num);
@@ -520,6 +518,8 @@ function articleView(num1){
  		
 	});
 	$("#btn2").click(function(){
+		location.href='reviewboard';
+		  window.location.reload();
 		var b = $("#idc").val();
 		console.log("num확인="+num);
 		console.log("id확인="+b);
