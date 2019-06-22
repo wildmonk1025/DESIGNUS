@@ -1357,6 +1357,17 @@ public class MypageMM {
 	public ModelAndView stepfive(revAuctionProgress rap) {
 		mav=new ModelAndView();
 		boolean a=pDao.stepfiveupDate(rap);
+		String id = session.getAttribute("id").toString();
+		// 알림 Start
+		Notify nf = new Notify();
+		int ptnum = rap.getRap_ptnum();
+		nf.setNf_num(bDao.getRAPNumSel(ptnum));
+		nf.setNf_mbid_r(bDao.getRevBoardUserName(nf));
+		nf.setNf_contents(bDao.getRevItemTitle(nf));
+		nf.setNf_notify(id + " 작가님이 비공개제작의뢰 "+nf.getNf_contents()+" 를 수락 하셧습니다.");
+		bDao.setNotifyStepfive(nf);
+		// 알림 End
+		
 		if(a) {
 			mav.addObject("secc", 1);
 		}else {

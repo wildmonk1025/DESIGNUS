@@ -8,7 +8,9 @@
 	<select id="getbestInfo" resultType="auction">
 		SELECT * FROM AU_RECOMM_LIST
 	</select>
-
+	<select id="getbestInfo2" resultType="revauction">
+		SELECT * FROM RA_RECOMM_LIST
+	</select>
 	
 	<select id="getSearchRankingSelect" resultType="rtsr">
             <![CDATA[
