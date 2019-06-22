@@ -369,7 +369,7 @@ img{
 </div> 
 				<table>
 					<tr>
-						<td>아이디:${s}</td>
+						<td>아이디:${bdc_mbid}</td>
 						<td colspan="3">댓글:${bdc_contents}</td>
 					</tr>
 				</table>
@@ -423,6 +423,7 @@ img{
 
 function articleView(num1){
 	var num = num1;
+	
 	$('#lightbox-shadow').css("display", "inline");
 	$('#lightbox').css("display", "inline");
 	console.log(num);
@@ -438,6 +439,8 @@ function articleView(num1){
 			console.log("성공");
 			console.log(data.bList);
 			console.log(data.iList);
+			console.log(data.bdc);
+			
 				result+="<div class='header'>"+"이용후기 게시판"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
 					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</th>"+"</tr>"
@@ -457,7 +460,11 @@ function articleView(num1){
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
 					  "<table>" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
 					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
-					  +"<input type='submit'/>" +"</td>"+"</tr>"+"</table>"+"</form>"
+					  +"<input type='submit'/>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
+					  for (var i in data.bdc){
+						  result+="<tr><td>"+"아이디"+"</td>"+"<td>"+data.bdc[i].bdc_mbid+"</td>"+"<td>"+"내용"+"</td>"
+						  +"<td>"+data.bdc[i].bdc_contents+"</td>"
+					  }result+="</table>"
 			$("#declarelist").html(result);
 		},
 	error:function(error){
