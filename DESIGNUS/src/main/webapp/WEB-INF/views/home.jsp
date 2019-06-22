@@ -104,7 +104,7 @@
 	width: 270px;
 	height: 50px;
 	text-align: center;
-	background-color: #E6E6E6;
+	background-color: #FBEFF2;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px; 
 }
@@ -176,7 +176,7 @@
 			</div>
 		</div>
 		<div id="footer">
-		<hr style="width:98%; border: 2px solid coral;">		
+		<hr style="width:100%; border: 2px solid coral; align: center;">	
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
