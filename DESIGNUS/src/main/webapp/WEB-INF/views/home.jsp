@@ -26,6 +26,7 @@
 	height: 170px;
 	position: fixed;
 	background-color: white;
+	z-index: 1000;
 }
 
 #middle {
@@ -156,13 +157,13 @@
 			</div>
 		</div>
 		<div id="middle_content3">
-			<div id="middle_content3_title">오늘의 후원</div>
+			<div id="middle_content3_title">관심 후원</div>
 			<div id="middle_content3_lv1">
 			<div id="middle_content3_lv2">
 			<c:forEach var="rl3" items="${recommList_ss}">
 				<div class="recommlist3" onclick="javascript:location.href='sponproduct?ss_num=${rl3.ss_num}'">
 				<div class="recomm_img3"><img src="<spring:url value='resources/upload/${rl3.ssi_img}'/>" width="100%" height="100%"/></div>
-				<div class="recomm_text3"><p class="titlestyle">${rl3.ss_title}</p><p>후원 진행상황: </p></div>
+				<div class="recomm_text3"><p class="titlestyle">${rl3.ss_title}</p><p>후원 진행상황: ${rl3.ss_curPercent} %</p></div>
 				</div>
 			</c:forEach>
 			</div>

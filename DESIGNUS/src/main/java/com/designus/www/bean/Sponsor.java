@@ -25,5 +25,5 @@ public class Sponsor {
 	String ssi_img;
 	int sb_recomm;
 	int sst_order;
-	String ss_curPercent;
+	Double ss_curPercent;
 }
