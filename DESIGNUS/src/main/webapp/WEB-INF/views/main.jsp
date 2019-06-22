@@ -372,9 +372,9 @@ nav {
 				<c:choose>
 				<c:when test="${empty perm}"></c:when>
 				<c:when test="${perm eq 'M'}">
-				<a href="adminInfo" class='atag'>관리자<br>페이지</a></c:when>
+				<a href="adminInfo" class='atag' style="color: green;">관리자<br>페이지</a></c:when>
 				<c:when test="${perm ne 'M'}">
-				<a href="mypage" class='atag'>마이<br>페이지</a></c:when>
+				<a href="mypage" class='atag' style="color: green;">마이<br>페이지</a></c:when>
 				</c:choose>
 			</div>
 			<div id="msg">
