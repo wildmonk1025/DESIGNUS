@@ -506,6 +506,17 @@ position: absolute;
 	top: 500px;
 	left: 900px;
 }
+.bbttzzz{
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: orange;
+  margin-top: 20px;
+}
+
+.bbttzzz:hover {
+   background-color: red;
+}
 </style>
 
 </head>

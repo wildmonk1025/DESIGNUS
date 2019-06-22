@@ -73,7 +73,7 @@ public class CommonMM {
 		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
 		
-		mav.setViewName("auctionList");
+		mav.setViewName("searchingPage");
 		return mav;
 	}
 	public String category() {
