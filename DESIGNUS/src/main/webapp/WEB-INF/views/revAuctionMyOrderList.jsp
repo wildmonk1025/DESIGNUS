@@ -4,10 +4,13 @@
 <html>
 
 <head>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <meta charset="UTF-8">
 <title>본인의 제작의뢰 내역</title>
 <style type="text/css">
+.imgg{
+  height: 180px;
+}
 #one {
 	width: 100%;
 	height: 100%;
@@ -691,9 +694,16 @@ width : 380px;
 </style>
 
 </head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 <body>
+<script type="text/javascript">
+var aa="${aaaa}";
+console.log(aa);
+if(aa=="bbbb"){
+	alert("포인트가 부족합니다. 충전후 사용하세요");
+}	
+</script>
 <div id="total"></div>
 <div id="r1"></div>
 <div id="c1"></div>
@@ -738,7 +748,7 @@ for (var i = 0; i < revList.length; i++) {
 	 }else{
     main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 	  }
-	main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+	main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
 		 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 		 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 		 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -752,7 +762,7 @@ for (var i = 0; i < revList.length; i++) {
 		   }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -765,7 +775,7 @@ for (var i = 0; i < revList.length; i++) {
 		  }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			  }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -779,7 +789,7 @@ for (var i = 0; i < revList.length; i++) {
 		   }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -792,7 +802,7 @@ for (var i = 0; i < revList.length; i++) {
 		  }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img src='/resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
 			     + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"

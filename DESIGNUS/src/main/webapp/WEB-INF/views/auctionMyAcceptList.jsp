@@ -99,9 +99,17 @@ div {
 	float: left;
 }
 #main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
-	text-align: center;
+	position: fixed;
+	background-color: white;
 }
 
 .bt01 {
@@ -313,11 +321,6 @@ a:hover {
 	margin-left: 10px;
 }
 
-#mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-}
 
 #setp {
 	border: 1px solid orange;
@@ -339,14 +342,15 @@ a:hover {
 }
 
 #l1 {
+	 border : 3px solid orange;
 	position: absolute;
 	width: 400px;
 	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
@@ -410,7 +414,7 @@ a:hover {
 }
 
 #mypagemain {
-	width: 1530px;
+	width: 1518px;
 	height: 1200px;
 	border: 1px solid black;
 }
@@ -493,14 +497,15 @@ font-size: 13px;
 color: red;
 }
 #l2{
-position: absolute;
-	width: 600px;
-	height: 530px;
+ border : 3px solid orange;
+	position: absolute;
+	width: 400px;
+	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
@@ -517,6 +522,51 @@ position: absolute;
 .bbttzzz:hover {
    background-color: red;
 }
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 170px;
+   margin-top: 20px;
+   float: left;
+}
+.f1{
+ border-bottom: 1px solid orange;
+ text-align: left;
+ font-size: 17px;
+ margin-left : 40px;
+ color: red;
+ width: 300px;
+}
+.h1{
+margin-top:10px;
+}
+.f2{
+margin-top:10px;
+text-align: left;
+margin-left : 40px;
+width: 350px;
+}
+.b3{
+margin-top:10px;
+  width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+}
+.f3{
+margin-top:10px;
+text-align: left;
+margin-left : 30px;
+width: 350px;
+}
+.f4{
+text-align: left;
+ font-size: 17px;
+ margin-left : 40px;
+ color: #BDBDBD;
+ width: 350px;
+}
 </style>
 
 </head>
@@ -527,10 +577,13 @@ position: absolute;
 	<div id="l1"></div>
 	<div id="l2"></div>
 	
-	<div id="mypagemain">
-		<div id="mainheader">
+	<div id="main">
+	<div id="mainheader">
 			<jsp:include page="main.jsp" />
-		</div>
+	</div>
+	</div>
+	
+	<div id="mypagemain">
 
 		<jsp:include page="Mapagemain.jsp" />
 
@@ -543,6 +596,9 @@ position: absolute;
 				
 			</div>
         <div id="sixth">${pagMPWing}</div>
+		</div>
+		<div id="footer">
+		<jsp:include page="footer.jsp" />
 		</div>
 	</div>
 </body>
@@ -566,8 +622,8 @@ position: absolute;
 			     + "<div class='fourth'>상품번호 :"+ apwList[i].aup_ptnum+"<br>상품명 :"+apwList[i].au_title+"<br>"
 			     + "구매 금액 :"+ apwList[i].aup_price+"<br>상품 수량 :"+apwList[i].aup_qty+"<br>"
 			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
-			     +"<div class='Fifth'><input id='btzsho' type='button' onclick=\"delivery('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/><br>"
-				 +"<input type='button' onclick=\"shocheck('"+apwList[i].aup_ptnum+"')\" value='의뢰인 배송정보'/></div></div>"	
+			     +"<div class='Fifth'><input class='bbttzzz' id='btzsho' type='button' onclick=\"delivery('"+apwList[i].aup_ptnum+"')\" value='배송보내기'/><br>"
+				 +"<input class='bbttzzz' type='button' onclick=\"shocheck('"+apwList[i].aup_ptnum+"')\" value='의뢰인 배송정보'/></div></div>"	
 					
 			}else if(apwList[i].aup_step==3){
 				main+="<div class='first'><div class='second'><div class='p1'>"+apwList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apwList[i].aup_track+"</div></div>"
@@ -612,18 +668,18 @@ position: absolute;
 			    	$('#total').css("display", "inline");
 			    	$('#l2').css("display", "inline");
 			    	   if(data.aut_kind=="I"){
-				    	   aa+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+				    	   aa+="<div class='f1'>즉시구매<input type='hidden' name='aut_kind'></div>"   
 				    	   }else if(data.aut_kind=="O"){
-				    	   aa+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+				    	   aa+=+"<div class='f1'>낙찰<input type='hidden' name='aut_kind'></div>"   
 				    	   }else{
-				    	   aa+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   aa+=+"<div class='f1'>입찰<input type='hidden' name='aut_kind'></div>" 
 				    	   };
-			    	aa+="<h2>의뢰인 배송정보</h2><br><hr>"
-			    	   +"아이디 : "+data.aup_mbid_n+"<br>"
+			    	aa+="<h3 class='h1'>의뢰인 배송정보</h3><hr>"
+			    	   +"<div class='f2'>아이디 : "+data.aup_mbid_n+"<br>"
 			    	   +"이름 : "+data.aup_name+"<br>"
 			    	   +"주소 :"+data.aup_address+"<br>"
-			    	   +"연락처 :"+data.aup_phone+"<br>"
-			    	   +"<input type='button' id='back' value='확인'>";
+			    	   +"연락처 :"+data.aup_phone+"</div>"
+			    	   +"<input class='b3' type='button' id='back' value='확인'>";
 			    	  
 			    	
 			    	
@@ -659,20 +715,19 @@ position: absolute;
 			    	$('#l1').css("display", "inline");
 			    	       sub+="<form action='delinumupload' method='post'>"
 			    	  if(data.aut_kind=="I"){
-				    	   sub+="즉시구매<input type='hidden' name='aut_kind'><br>"   
+				    	   sub+="<div class='f1'>즉시구매<input type='hidden' name='aut_kind'></div>"   
 				    	   }else if(data.aut_kind=="O"){
-				    	   sub+=+"낙찰<input type='hidden' name='aut_kind'><br>"   
+				    	   sub+=+"<div class='f1'>낙찰<input type='hidden' name='aut_kind'></div>"   
 				    	   }else{
-				    	   sub+=+"입찰<input type='hidden' name='aut_kind'><br>" 
+				    	   sub+=+"<div class='f1'>입찰<input type='hidden' name='aut_kind'></div>" 
 				    	   };
-			    	sub+="<h2>운송장 입력</h2><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
-			    	   +"상품이름 :"+data.au_title+"<br>"
-	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ><br>"    	
-			    	   +"아이디 : "+data.aup_mbid_n+"<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'><br><hr>"
-			    	   +"운송장번호<br/><input type='text' name='aup_track'><br>"
-			    	   +"<input type='submit' value='보내기'>"
-			    	   +"<input type='button' id='back' value='취소'></form>";
-			    	  
+			    	sub+="<h3 class='h1'>운송장 입력</h3><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
+			    	   +"<div class='f2'>상품이름 :"+data.au_title+"<br>"
+	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ></div><hr>"    	
+			    	   +"<div class='f3'>운송장번호<br/><input type='text' name='aup_track'></div>"
+			    	   +"<div class='f6'><input class='b3' type='submit' value='보내기'>"
+			    	   +"<input class='b3' type='button' id='back' value='취소'></div>"
+			    	   +"<div class='f4'>('"+data.aup_mbid_n+"')님에게 운송장번호가 전달 됩니다.<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'></div></div></form>";
 			    	
 			    	
 			    	$('#l1').html(sub);
