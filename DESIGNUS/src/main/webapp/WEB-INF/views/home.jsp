@@ -56,20 +56,23 @@
 }
 
 #middle_content1_lv2, #middle_content2_lv2 {
-	width: auto;
+	width: 1460px;
 	height: 300px;
-	
-	overflow-x: auto;
- 	white-space: nowrap;
+ 	overflow-x: auto;
+ 	overflow-y: hidden;
+	white-space: nowrap;
 }
 
 .recommlist {
 	width: 280px;
-	height: inherit;
-	float: left;
+	height: 98%;
+	display:inline-block;
 	border: 1px solid black;
-
+	border-radius: 10px;
+	padding-left: 10px;
+	margin-left: 10px;
 }
+
 
 #footer {
 	border: 1px solid red;
@@ -95,7 +98,7 @@
 			<div id="middle_content1_lv2">
 			<c:forEach var="rl" items="${recommList}">
 				<div class="recommlist">
-				${rl.aui_img}
+				<img src="${rl.aui_img}"/><br>
 				${rl.au_title}
 				</div>
 			</c:forEach>
@@ -123,5 +126,6 @@
 			swal("로그아웃 되었습니다.");
 		}
 	}
+	
 </script>
 </html>
