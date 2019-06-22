@@ -151,4 +151,22 @@ public class BoardMM {
 		return mav;
 	}
 
+	public ModelAndView Noticedlist(Integer pageNum) {
+		String view = null;
+		mav = new ModelAndView();
+		Board bd = new Board();
+		List<Board> bdList = null;
+		int num = (pageNum == null) ? 1 : pageNum;
+		System.out.println("sdaasd" + num);
+		bdList = bDao.getNoticedlist(num);
+		System.out.println("size=" + bdList.size());
+		mav.addObject("bdInfo", bdList);
+		mav.addObject("bd_num", bd.getBd_num());
+		mav.addObject("paging", getPagingBoard(num));
+
+		view = "/popularWriterFrm";
+		mav.setViewName(view);
+		return mav;
+	}
+
 }

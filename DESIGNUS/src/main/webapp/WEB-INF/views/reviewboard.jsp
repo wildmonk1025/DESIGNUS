@@ -559,9 +559,6 @@ function articleView(num1){
 
 	}
 
-var aa='${msg}';
-if(aa='pppp'){
-	swal("댓글을 입력 하였습니다.");
-}
+
 </script>
 </html>

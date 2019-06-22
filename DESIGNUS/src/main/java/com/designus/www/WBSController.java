@@ -129,7 +129,15 @@ public class WBSController {
 	
 	
 	
+	@RequestMapping(value = "/popularWriterFrm")
+	public ModelAndView Noticedlist(Integer pageNum) {
+		mav = bm.Noticedlist(pageNum);
+		return mav;
 	
+		
+		//공지사항 리스트
+	
+	}
 	
 	
 }
