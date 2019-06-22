@@ -52,6 +52,10 @@
 		INSERT INTO NOTIFY
 		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_s},#{nf_mbid_r},#{nf_notify},0,DEFAULT)
 	</insert>
+	<insert id="setNotifyStepfive" parameterType="notify">
+		INSERT INTO NF
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},'ADMIN',#{nf_notify},0,DEFAULT)
+	</insert>
 	<!-- 이용후기 알람 End -->
 	<select id="getreviewboardlist" parameterType="Integer"
 		resultType="board">

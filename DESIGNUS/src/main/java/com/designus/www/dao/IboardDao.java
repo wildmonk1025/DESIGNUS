@@ -60,6 +60,8 @@ public interface IboardDao {
 
 	void getreviewdel(@Param("bd_num") int bd_num);
 
+	void setNotifyStepfive(Notify nf);
+
 
 
 
