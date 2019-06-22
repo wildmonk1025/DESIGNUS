@@ -117,7 +117,7 @@ public class BoardMM {
 			
 			
 			
-			view = "reviewboard";
+			view = "redirect:/reviewboard";
 		} else {
 			view = "home";
 		}

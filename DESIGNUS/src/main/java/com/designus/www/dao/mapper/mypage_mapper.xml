@@ -273,6 +273,7 @@
 		INSERT INTO NF
 		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_contents},0,DEFAULT)
 	</insert>
+	
 	<select id="revAuctionMyAcceptList"
 		parameterType="revauctionprogress" resultType="revauctionprogress">
 		<![CDATA[
