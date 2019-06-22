@@ -183,7 +183,6 @@
 </body>
 <script>
 	//var rList = ${rList}
-
 	window.onload = function() {
 		var flag = ${logout};
 		if (flag == 1) {
