@@ -12,14 +12,14 @@
 <style>
 
 #main {
-	width: 1518px;
+	width: 1520px;
 	height: 170px;
 	position: relative;
 }
 
 #mainheader {
 	border: 1px solid black;
-	width: 1520px;
+	width: 1518px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
@@ -178,7 +178,7 @@
 
 #footer {
 	border: 1px solid red;
-	width: 1514px;
+	width: 1518px;
 	height: 170px;
 	margin-top: 20px;
 	float: left;
