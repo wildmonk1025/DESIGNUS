@@ -209,6 +209,22 @@ public class BoardMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+	public ModelAndView Noticeinsert(String bd_title, String bd_contents) {
+		String view = null;
+		mav = new ModelAndView();
+		String s = (String) session.getAttribute("id");
+		if ( s.equals("ADMIN")) {
+			bDao.getNoticinsert(bd_title,bd_contents,s);
+			System.out.println("요기는? ㅜㅜㅜ");
+			view = "redirect:/popularWriterFrm";
+		} else {
+			view = "home";
+		}
+		System.out.println("fdd" + s);
+		mav.setViewName(view);
+		return mav;
+	}
 	
 
 }

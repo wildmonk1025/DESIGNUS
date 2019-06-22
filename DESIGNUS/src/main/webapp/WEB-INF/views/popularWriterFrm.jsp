@@ -162,6 +162,28 @@ select {
 	top: -1px;
 }
 
+#lightbox1 {
+	position: absolute;
+	width: 800px;
+	height: 400px;
+	left: 100px;
+	margin: auto;
+	background: white;
+	display: none;
+	text-align: center;
+	z-index: 1100;
+	overflow: scroll;
+}
+
+#lightbox-shadow1 {
+	position: relative;
+	width: 8000px;
+	height: 8000px;
+	z-index: 1000;
+	display: none;
+	margin: auto;
+	background-color: coral;
+}
 #lightbox {
 	position: absolute;
 	width: 800px;
@@ -362,6 +384,30 @@ table tr:nth-child(2n+1) {
 		<br />
 		<br />
 		<div id="freeboard2">
+		
+		<div id="lightbox-shadow1">
+				<div id="lightbox1">
+				<form action="Noticeinsert" method="post">
+					<table>
+						<tr>
+							<td>제목</td>
+							<td><input type='text' name='bd_title'/></td>
+						</tr>
+						<tr>
+							<td>내용</td>
+							<td><textarea style="width: 400px; height: 200px;" name='bd_contents'></textarea></td>
+						</tr>
+					
+					
+					</table>
+				
+					<button id="btn2" class="btn">공지사항 등록</button></form>	
+					<button onclick="location.href='popularWriterFrm' " class="btn">돌아가기</button>
+				</div>
+			</div>
+			
+			
+			
 			<div id="lightbox-shadow">
 				<div id="lightbox">
 
@@ -371,7 +417,7 @@ table tr:nth-child(2n+1) {
 					<button id="btn2" class="btn">글 삭제하기</button>
 
 
-					<button onclick="location.href='reviewboard' " class="btn">돌아가기</button>
+					<button onclick="location.href='popularWriterFrm' " class="btn">돌아가기</button>
 				</div>
 			</div>
 			<table>
@@ -396,7 +442,7 @@ table tr:nth-child(2n+1) {
 			</table>
 			
 			<div align="center">${pagings}</div>
-			<button  class="btn">글작성</button>
+			<a href="javascript:articleView1();">글작성</a>
 			<div id="articleView_layer">
 				<div id="bg_layer"></div>
 				<div id="contents_layer"></div>
@@ -412,12 +458,19 @@ table tr:nth-child(2n+1) {
 
 </body>
 <script>
+function articleView1(){
+$('#lightbox-shadow1').css("display", "inline");
+$('#lightbox1').css("display", "inline");
+}
+
+
 
  function articleView(num1){
 	var num = num1;
 	
 	$('#lightbox-shadow').css("display", "inline");
 	$('#lightbox').css("display", "inline");
+	
 	console.log(num);
 	$.ajax({
 		url : 'NoticeListInfo',

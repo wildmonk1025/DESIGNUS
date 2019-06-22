@@ -125,4 +125,7 @@
 		DELETE FROM BD WHERE BD_NUM=${bd_num}
 	</delete>
 	
-</mapper>
+	<insert id="getNoticinsert" parameterType="String">
+		INSERT INTO BD VALUES(BD_SEQ.nextval,'공지사항',#{s},#{bd_title},#{bd_contents},SYSDATE,0,0)	
+</insert>
+</mapper> 

@@ -144,5 +144,14 @@ public class WBSController {
 		System.out.println("zzzzzzzzzzz"+bd_num);
 		mav = bm.Noticedelete(bd_num);
 		return mav;
-	}
+	} //공지사항삭제
+	
+	@RequestMapping(value = "/Noticeinsert", method = RequestMethod.POST)
+	public ModelAndView Noticeinsert(String bd_title, String bd_contents) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_title);
+		System.out.println("zzzzzzzzzzz"+bd_contents);
+		mav = bm.Noticeinsert(bd_title,bd_contents);
+		return mav;
+	} //공지사항등록
 }
