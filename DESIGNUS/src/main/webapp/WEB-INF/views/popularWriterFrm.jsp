@@ -401,8 +401,8 @@ table tr:nth-child(2n+1) {
 					
 					</table>
 				
-					<button id="btn2" class="btn">공지사항 등록</button></form>	
-					<button onclick="location.href='popularWriterFrm' " class="btn">돌아가기</button>
+					<button id="btn2" class="btn">공지사항 등록</button>
+					<button onclick="location.href='popularWriterFrm' " class="btn">돌아가기</button></form>	
 				</div>
 			</div>
 			
