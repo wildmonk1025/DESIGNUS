@@ -369,8 +369,6 @@ table tr:nth-child(2n+1) {
 
 
 					<button id="btn2" class="btn">글 삭제하기</button>
-					<button id="btn1" class="btn">글 수정하기</button>
-					<button id="btn" class="btn">추천하기</button>
 
 
 					<button onclick="location.href='reviewboard' " class="btn">돌아가기</button>
@@ -396,8 +394,9 @@ table tr:nth-child(2n+1) {
 				</c:forEach>
 
 			</table>
-			<div align="center">${paging}</div>
-
+			
+			<div align="center">${pagings}</div>
+			<button  class="btn">글작성</button>
 			<div id="articleView_layer">
 				<div id="bg_layer"></div>
 				<div id="contents_layer"></div>
@@ -414,14 +413,14 @@ table tr:nth-child(2n+1) {
 </body>
 <script>
 
-/* function articleView(num1){
+ function articleView(num1){
 	var num = num1;
 	
 	$('#lightbox-shadow').css("display", "inline");
 	$('#lightbox').css("display", "inline");
 	console.log(num);
 	$.ajax({
-		url : 'NoticeListㄴㄴㄴ',
+		url : 'NoticeListInfo',
 		type: 'post',
 		data: {bd_num:num},
 		dataType : 'json',
@@ -431,33 +430,18 @@ table tr:nth-child(2n+1) {
 			console.dir(data);
 			console.log("성공");
 			console.log(data.bList);
-			console.log(data.iList);
-			console.log(data.bdc);
 			
-				result+="<div class='header'>"+"이용후기 게시판"
+				result+="<div class='header'>"+"공지사항"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
 					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</th>"+"</tr>"
 					  +"<tr>"+"<td>"+"작성자ID"+"</td>"+"<td>"+
 					  					  data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
 					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"
 					  +"내용"+"</td>"+"<td rowspan='2' colspan='4'>"+
-					  "<textarea rows='30' cols='20'style='margin: 5px; width: 650px; height: 150px; id=\"ff\" name='bd_contents'>"
-					  +data.bList.bd_contents+"</textarea>"+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
-					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+"<td>"+"추천"+"</td>"+"<td>"+data.bList.bd_like+"</td>"
-					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>"
-					  +"<input type='hidden' value='"+data.bList.bd_mbid+"' id='idc'>"
-					  for ( var i in data.iList){
-						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+data.iList[i].bdi_img
-						 +"</td></tr>"
-					  }
-					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
-					  "<table >" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
-					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
-					  +"<button id='btn5' class='btn'>"+"확인"+"</button>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
-					  for (var i in data.bdc){
-						  result+="<tr ><td>"+"아이디"+"</td>"+"<td>"+data.bdc[i].bdc_mbid+"</td>"+"<td>"+"내용"+"</td>"
-						  +"<td>"+data.bdc[i].bdc_contents+"</td></tr>"
-					  }result+="</table>"
+					  data.bList.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
+					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+
+					  "<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"</table>"
+					  
 			$("#declarelist").html(result);
 					  
 		},
@@ -465,7 +449,41 @@ table tr:nth-child(2n+1) {
 		console.log("실패");
 		console.log(error);
 	}
-	}); */
+	});
+	$("#btn2").click(function(){
+		var c = '<%=(String) session.getAttribute("id")%>';
+			var b = $("#idc").val();
+			console.log('writer', b);//글쓴사람
+			console.log('session', c);//접속중
 
+			if ( c == 'ADMIN') {
+				swal("해당글이 삭제 되었습니다.");
+			} else {
+
+				swal("글삭제 권한이 없습니다.");
+			}
+
+			$.ajax({
+				url : 'Noticedelete',
+				type : 'post',
+				data : {
+					bd_num : num,
+					bd_mbid : b
+				},
+				success : function(data) {
+					console.log("성공");
+					window.location.reload();
+					location.href = 'popularWriterFrm';
+				},
+				error : function(error) {
+
+					console.log("실패");
+				}
+			});
+
+		});
+
+	
+ }
 </script>
 </html>

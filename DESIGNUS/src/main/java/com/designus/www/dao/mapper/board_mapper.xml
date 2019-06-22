@@ -121,4 +121,8 @@
                     from bd where bd_kind='공지사항' and rownum <= #{num}*10 order by bd_num desc) 
                     where rn >= #{num}*10-9 ]]>
 	</select>
+	<delete id="getNoticedel" parameterType="int">
+		DELETE FROM BD WHERE BD_NUM=${bd_num}
+	</delete>
+	
 </mapper>

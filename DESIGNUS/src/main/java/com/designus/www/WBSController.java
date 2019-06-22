@@ -138,6 +138,11 @@ public class WBSController {
 		//공지사항 리스트
 	
 	}
-	
-	
+	@RequestMapping(value = "/Noticedelete", method = RequestMethod.POST)
+	public ModelAndView Noticedelete(int bd_num) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_num);
+		mav = bm.Noticedelete(bd_num);
+		return mav;
+	}
 }
