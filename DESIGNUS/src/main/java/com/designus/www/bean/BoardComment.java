@@ -14,5 +14,5 @@ public class BoardComment {
 	int    bdc_bdnum;
 	String bdc_mbid;
 	String bdc_contents;
-	Timestamp bdc_date;
+	String bdc_date;
 }
