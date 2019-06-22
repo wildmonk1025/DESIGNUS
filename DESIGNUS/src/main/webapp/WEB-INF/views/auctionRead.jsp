@@ -44,6 +44,7 @@ div {
 	width: 300px;
 	height: 300px;
 	text-align: center;
+	margin-top: 13px;
 }
 
 #middle_img_lv1 {
