@@ -164,7 +164,7 @@ select {
 
 #lightbox1 {
 	position: absolute;
-	width: 800px;
+	width: 500px;
 	height: 400px;
 	left: 100px;
 	margin: auto;
@@ -401,8 +401,8 @@ table tr:nth-child(2n+1) {
 					
 					</table>
 				
-					<button id="btn2" class="btn">공지사항 등록</button>
-					<button onclick="location.href='popularWriterFrm' " class="btn">돌아가기</button></form>	
+					<button id="btn2" class="btn">공지사항 등록</button></form>
+					<button onclick="location.href='popularWriterFrm'" class="btn">돌아가기</button>	
 				</div>
 			</div>
 			
@@ -442,7 +442,7 @@ table tr:nth-child(2n+1) {
 			</table>
 			
 			<div align="center">${pagings}</div>
-			<a href="javascript:articleView1();">글작성</a>
+			<a href="javascript:articleView1();" id="admin">글작성</a>
 			<div id="articleView_layer">
 				<div id="bg_layer"></div>
 				<div id="contents_layer"></div>
@@ -458,6 +458,25 @@ table tr:nth-child(2n+1) {
 
 </body>
 <script>
+$('#admin').click(function(){
+var c = '<%=(String) session.getAttribute("id")%>';
+var a = 'ADMIN';
+console.log(a);
+console.log(c);
+
+ 
+if(a==c){
+	
+}else{
+	swal("접근 권한이 없습니다.");
+setTimeout(function(){
+	
+	window.location.reload();
+	location.href = 'popularWriterFrm';
+}, 1000);
+}
+
+});
 function articleView1(){
 $('#lightbox-shadow1').css("display", "inline");
 $('#lightbox1').css("display", "inline");
