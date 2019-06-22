@@ -1,11 +1,8 @@
 package com.designus.www.service;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession; 
 
@@ -14,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Auction;
-import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Category;
-import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
 import com.designus.www.bean.RealTimeSearchRanking;
 import com.designus.www.bean.RevAuction;
@@ -24,7 +19,6 @@ import com.designus.www.bean.Sponsor;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.IcommonDao;
-import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.DateAdjust;
 import com.google.gson.Gson;
 
