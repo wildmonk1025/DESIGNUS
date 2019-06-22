@@ -414,7 +414,7 @@ table tr:nth-child(2n+1) {
 					<div class="table-users" id="declarelist"></div>
 
 
-					<button id="btn2" class="btn">글 삭제하기</button>
+					<button id="btn3" class="btn">글 삭제하기</button>
 
 
 					<button onclick="location.href='popularWriterFrm' " class="btn">돌아가기</button>
@@ -522,21 +522,25 @@ $('#lightbox1').css("display", "inline");
 		console.log(error);
 	}
 	});
-	$("#btn2").click(function(){
+	$("#btn3").click(function(){
 		var c = '<%=(String) session.getAttribute("id")%>';
 			var b = $("#idc").val();
 			console.log('writer', b);//글쓴사람
 			console.log('session', c);//접속중
 
-			if ( c == 'ADMIN') {
+			if (c == b || c == 'ADMIN') {
 				swal("해당글이 삭제 되었습니다.");
+				setTimeout(function(){
+				window.location.reload();
+				location.href = 'popularWriterFrm';
+				},1000);
 			} else {
 
 				swal("글삭제 권한이 없습니다.");
 			}
 
 			$.ajax({
-				url : 'Noticedelete',
+				url : 'reviewdelete',
 				type : 'post',
 				data : {
 					bd_num : num,
@@ -544,8 +548,7 @@ $('#lightbox1').css("display", "inline");
 				},
 				success : function(data) {
 					console.log("성공");
-					window.location.reload();
-					location.href = 'popularWriterFrm';
+					
 				},
 				error : function(error) {
 
@@ -555,7 +558,6 @@ $('#lightbox1').css("display", "inline");
 
 		});
 
-	
- }
+	}
 </script>
 </html>
