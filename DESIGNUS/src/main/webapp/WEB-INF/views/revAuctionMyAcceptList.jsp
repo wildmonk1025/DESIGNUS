@@ -98,9 +98,17 @@ div {
 	float: left;
 }
 #main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
-	text-align: center;
+	position: fixed;
+	background-color: white;
 }
 
 .bt01 {
@@ -312,11 +320,6 @@ a:hover {
 	margin-left: 10px;
 }
 
-#mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-}
 
 #setp {
 	border: 1px solid orange;
@@ -409,8 +412,9 @@ a:hover {
 }
 
 #mypagemain {
-	width: 1530px;
+	width: 1518px;
 	height: 1200px;
+	margin-top: 50px;
 	border: 1px solid black;
 }
 
@@ -516,7 +520,13 @@ position: absolute;
 	top: 500px;
 	left: 900px;
 } 
-
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 170px;
+   margin-top: 20px;
+   float: left;
+}
 </style>
 
 </head>
@@ -526,12 +536,12 @@ position: absolute;
 <div id="total"></div>
 <div id="l1"></div>
 <div id="c1"></div>
-	
-	<div id="mypagemain">
-		<div id="mainheader">
+	<div id="main">
+	<div id="mainheader">
 			<jsp:include page="main.jsp" />
-		</div>
-
+	</div>
+	</div>
+	<div id="mypagemain">
 		<jsp:include page="Mapagemain.jsp" />
 
 
@@ -543,6 +553,9 @@ position: absolute;
 				
 			</div>
         <div id="sixth">${RApaging}</div>
+		</div>
+		<div id="footer">
+		<jsp:include page="footer.jsp" />
 		</div>
 	</div>
 

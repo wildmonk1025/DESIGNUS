@@ -558,15 +558,10 @@ function articleView(num1){
 		});
 
 	}
-$("#btn5").click(function(){
-	var c = '<%=(String) session.getAttribute("id")%>';
-	console.log(c);
-	if(c!=null){
-		swal("댓글 작성 완료");
-	}else{
-		swal("댓글 작성을 하시려면 로그인이 필요합니다.");
-	}
-});
 
+var aa='${msg}';
+if(aa='pppp'){
+	swal("댓글을 입력 하였습니다.");
+}
 </script>
 </html>

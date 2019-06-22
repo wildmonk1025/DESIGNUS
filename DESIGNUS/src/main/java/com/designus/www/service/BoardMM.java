@@ -140,9 +140,11 @@ public class BoardMM {
 
 			mav.addObject("bdc_contents", bdc_contents);
 			mav.addObject("s", s);
+			mav.addObject("msg", "pppp");
 			System.out.println("contents=" + bdc_contents + s);
 			view = "redirect:/reviewboard";
 		} else {
+			mav.addObject("msg", "zzz");
 			view = "loginBox";
 		}
 		mav.setViewName(view);
