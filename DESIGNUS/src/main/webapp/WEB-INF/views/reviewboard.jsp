@@ -433,7 +433,7 @@ function articleView(num1){
 			console.log(data.bList);
 			console.log(data.iList);
 			console.log(data.bdc);
-			&nbsp;
+			
 				result+="<div class='header'>"+"이용후기 게시판"
 					  +"</div>"+"<table>"+"<tr>"+"<th colspan='2'>"+"게시판번호"+"</th>"
 					  +"<th>"+data.bList.bd_num+"</th>"+"<th>"+"게시판분류"+"</th>"+"<th width='230'>"+data.bList.bd_kind+"</th>"+"</tr>"
@@ -453,7 +453,7 @@ function articleView(num1){
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
 					  "<table >" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
 					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
-					  +"<button id='btn3' class='btn'>"+"확인"+"</button>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
+					  +"<button id='btn5' class='btn'>"+"확인"+"</button>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
 					  for (var i in data.bdc){
 						  result+="<tr ><td>"+"아이디"+"</td>"+"<td>"+data.bdc[i].bdc_mbid+"</td>"+"<td>"+"내용"+"</td>"
 						  +"<td>"+data.bdc[i].bdc_contents+"</td></tr>"
@@ -468,8 +468,18 @@ function articleView(num1){
 	});
 	var click = true;
 	$("#btn").click(function(){
-
-		
+		var c = '<%=(String) session.getAttribute("id")%>';
+		var b = $("#idc").val();
+		if(b==c){
+			swal("자신의 글은 추천할수 없습니다.");
+		}else if(click) {
+			swal("해당글을 추천 하였습니다.");
+		click=!click;
+				} else {
+			swal("중복 추천이 불가능합니다.");
+			return;
+				}
+		console.log("num확인="+b);
 		console.log("num확인="+num);
  		$.ajax({
 			url : 'reviewlike',
@@ -548,5 +558,15 @@ function articleView(num1){
 		});
 
 	}
+$("#btn5").click(function(){
+	var c = '<%=(String) session.getAttribute("id")%>';
+	console.log(c);
+	if(c!=null){
+		swal("댓글 작성 완료");
+	}else{
+		swal("댓글 작성을 하시려면 로그인이 필요합니다.");
+	}
+});
+
 </script>
 </html>
