@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 <style>
 div {
 	margin: auto;
@@ -132,21 +136,26 @@ td {
 					<td colspan="6" style="height: 150">${ss_contents}</td>
 				</tr>
 				<tr>
-					<td colspan="4">
-						<button class="bt21" onclick="sponAj(${ss_num})"
-							style="cursor: pointer">밀어주기</button>
-					</td>
+					<td colspan="4"><c:choose>
+							<c:when test="${enddate == sysdate}">
+								<button class="bt21" onclick="sponEnd2()"
+									style="background-color: gray">밀어주기</button>
+							</c:when>
+							<c:when test="${ss_goalqty != st_count}">
+								<button class="bt21" onclick="sponAj(${ss_num})"
+									style="cursor: pointer; background-color: yellow">밀어주기</button>
+							</c:when>
+							<c:when test="${ss_goalqty == st_count}">
+								<button class="bt21" onclick="sponEnd()"
+									style="background-color: gray">밀어주기</button>
+							</c:when>
+						</c:choose></td>
 					<td colspan="2">
 						<button class="bt22" onclick="location.href='sponsor'">목록보기</button>
 					</td>
 				</tr>
 			</table>
 			<table>
-		
-
-
-
-
 			</table>
 		</div>
 
@@ -157,11 +166,18 @@ td {
 
 </body>
 <script>
-	/* window.onload = function() {
-		var msg = '${msg}';
-		alert(msg);
-	} */
-	function sponAj(even) {
+
+function sponEnd2() {
+	swal("후원을 신청할 수 있는 기간이 끝났습니다!");
+}
+
+function sponEnd() {
+	swal("마감이 완료된 후원입니다!");
+}
+
+
+
+function sponAj(even) {
 		console.log(2,even)
 	     var form = {
 			ss_num : even
@@ -184,11 +200,6 @@ td {
 				}
 			});//end ajax
 	}
-	var today = new Date();
-	var dateString = ${ss_date2};
-	var dateArray = dateString.split("-"); //이렇게 쪼개서 나누어준 다음.
-	var dateObj = new Date(dateArray[0], Number(dateArray[1])-1, dateArray[2]);
-
 	
 	
 </script>
