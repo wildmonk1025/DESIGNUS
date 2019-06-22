@@ -62,6 +62,8 @@ public interface IboardDao {
 
 	void setNotifyStepfive(Notify nf);
 
+	List<Board> getNoticedlist(int num);
+
 
 
 

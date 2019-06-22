@@ -114,4 +114,11 @@
 		SELECT BDC_MBID,BDC_CONTENTS FROM BDC WHERE bdc_bdnum=${num}
 	</select>
 	
+	<select id="getNoticedlist" parameterType="Integer"
+		resultType="board">
+   		 <![CDATA[  select * from (select rownum as rn, bd_num, bd_kind, bd_mbid, 
+                    bd_title, bd_contents, bd_date, bd_like, bd_views
+                    from bd where bd_kind='공지사항' and rownum <= #{num}*10 order by bd_num desc) 
+                    where rn >= #{num}*10-9 ]]>
+	</select>
 </mapper>
