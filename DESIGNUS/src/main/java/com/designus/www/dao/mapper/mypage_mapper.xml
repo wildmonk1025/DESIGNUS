@@ -212,11 +212,15 @@
 	<select id="revAuctionMyOrderListSelect"
 		parameterType="revauctionprogress" resultType="revauctionprogress">
 		<![CDATA[
-		select * from(
-    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
-    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+		select*from(
+      select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC)AS RankNo from(
+    select RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC
      from RAPVIEW
-       where RAP_MBID_N=#{id} and rownum<=${num}*3
+       where RAP_MBID_N=#{id}
+     order by RAP_PTNUM DESC
+     ) where  rownum<=${num}*3 
      ) where rn>=${num}*3-2 AND RankNo=1
   ]]>
 	</select>

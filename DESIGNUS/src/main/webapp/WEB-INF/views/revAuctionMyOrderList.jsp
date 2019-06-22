@@ -382,15 +382,20 @@ a:hover {
 }
 
 #q1 {
-	width: 500px;
-	height: 330px;
+    border : 3px solid orange;
+	position: absolute;
+	width: 600px;
+	height: 530px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
+	top: 500px;
+	left: 900px;
+	
 }
 
 #total {
@@ -399,7 +404,7 @@ a:hover {
 	height: 200%;
 	background-color: black;
 	z-index: 1001;
-	opacity: 0.75;
+	opacity: 0.85;
 	display: none;
 }
 
@@ -428,7 +433,7 @@ a:hover {
 }
 #sixth{
  position: absolute;
-  top: 1080px;
+  top: 1130px;
   left: 1150px;  
 }
 .first{
@@ -492,7 +497,7 @@ font-size: 13px;
 color: red;
 }
 .bbttzzz{
-  width: 120px;
+  width: 150px;
   height: 50px;
   color: white;
   background-color: orange;
@@ -530,6 +535,64 @@ color: red;
 	top: 500px;
 	left: 900px;
 }
+.f1{
+ border-bottom: 1px solid orange;
+ text-align: left;
+ font-size: 17px;
+ margin-left : 40px;
+ color: red;
+ width: 500px;
+}
+.f2{
+margin-top: 20px;
+color: black;
+}
+.f3{
+
+color: black;
+}
+#butt{
+  width : 65px;
+  height : 40px;
+  border-radius: 30px;
+  background-color: orange;
+  opacity: 0.45;
+}
+#butt:hover {
+   background-color: orange;
+  opacity: 1;
+}
+.f4{
+  margin-top: 15px;
+  color: black;
+}
+.bd_title{
+  width: 300px;
+  height: 30px;
+  border:1px solid black;
+}
+textarea{
+ margin-top: 15px;
+ resize: none;
+ border:1px solid black;
+}
+
+.f5  { 
+  float: left;
+  margin-left: 50px;
+}
+
+.b3{
+
+  width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+}
+
+
+
 </style>
 
 </head>
@@ -605,7 +668,7 @@ for (var i = 0; i < revList.length; i++) {
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
-			     + "<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"btzRevMy('"+revList[i].rap_ptnum+"')\" value='고객센터 문의'/><br>"
+			     + "<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"location.href='scquestion'\" value='고객센터 문의'/><br>"
 			     + "<input class='bbttzzz' type='button' onclick=\"RevMyreview('"+revList[i].rap_ptnum+"')\" value='수령확인구매후기 쓰기'/></div></div>"
 		    
 		} else if(revList[i].rap_step==4){
@@ -755,26 +818,25 @@ function RevMyreview(even) {
 		    contentType:"application/json; charset=utf-8;",
 		    dataType:'json',
 		    success:function(data){
-		    	alert('앙앙!');
+		    	
 		    	console.log("1234567"+data.ra_oc);
 		    	 bb+="<form action='boardapply' method='post' enctype='multipart/form-data'>"
 		    	   +"<div id='q2'>"
 		    	 if(data.ra_oc=="O"){
-		    		   +"공개<input type='hidden' name='ra_oc'><br>"   
+		    		 bb+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div><br>"   
 			    	   }else{
-			    		   bb+=+"비공개<input type='hidden' name='ra_oc'><br>"   
+			    		   bb+=+"<div class='f1'>비공개<input type='hidden' name='ra_oc'></div><br>"   
 			    	   };
-		    	bb+="<h2>수령 확인 및 <br>구매 후기 쓰기</h2><br/></hr><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
-		    	   +"상품이름 :"+data.ra_title+"<input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"><br><hr>"
+		    	bb+="<h3 class='f3'>수령 확인 및 구매 후기 쓰기</h3><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ></div>"
+		    	   +"<div class='f2'>상품이름 :"+data.ra_title+"  <input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"></div>"
                    +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"')>"
                    +"<input type='hidden' name='rap_price' value='"+data.rap_price+"')>"
-		    	   +"구매후기 제목 :<input type='text' name='bd_title'><br>"    	
-		    	   +"내용</br>"
-		    	   +"<textarea rows='10' cols='70' name='bd_contents'></textarea><br>"
-		    	   +"<input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple><br>"
-		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'><br>"
-		    	   +"<input type='submit' value='완료'>"
-		    	   +"<input type='button' id='backSetp' value='취소'></div></form>";
+		    	   +"<div class='f4'>구매후기 제목 : <input type='text' class='bd_title' name='bd_title'><br>"
+		    	   +"<textarea rows='10' cols='70' name='bd_contents' placeholder='고객님들의 소중한 말 한마디가 작가 회원님들의 힘이 됩니다.'></textarea></div>"
+		    	   +"<div class='f5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple></div>"
+		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'></div><br>"
+		    	   +"<div class='f6'><input class='b3' type='submit' value='완료'>"
+		    	   +"<input type='button' class='b3' id='backSetp' value='취소'></div></div></form>";
 		    	  
 		    	$('#total').css("display", "inline");
 		    	$('#q1').css("display", "inline");
