@@ -347,7 +347,7 @@
 						<th>의뢰인의 낙찰 금액 :</th>
 						<c:set var="priceChk" value="${raCurPrice.rat_price}"/>
 						<c:if test="${priceChk eq null}">
-						<td colspan="2" style="text-align:center; color:gray">내역이 없습니다.</td></c:if>
+						<td colspan="2" style="text-align:left; color:gray">의뢰한 내역이 없습니다.</td></c:if>
 						<c:if test="${priceChk ne null}">
 						<td style="text-align:center;">${raCurPrice.rat_price}</td>
 						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td></c:if>
@@ -578,8 +578,8 @@ $(".subtn").click(function() {
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
- 	 	//end.setDate(end.getDate()+1);
- 	 	end.setMinutes(end.getMinutes()+10);
+ 	 	end.setDate(end.getDate()+1);
+ 	 	//end.setMinutes(end.getMinutes()+10);
  		var _second = 1000;
  		var _minute = _second * 60;
  		var _hour = _minute * 60;
