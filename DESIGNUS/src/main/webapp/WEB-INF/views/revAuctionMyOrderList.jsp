@@ -98,9 +98,17 @@ div {
 	float: left;
 }
 #main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
-	text-align: center;
+	position: fixed;
+	background-color: white;
 }
 
 .bt01 {
@@ -312,12 +320,6 @@ a:hover {
 	margin-left: 10px;
 }
 
-#mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-}
-
 #setp {
 	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
@@ -414,7 +416,7 @@ a:hover {
 }
 
 #mypagemain {
-	width: 1530px;
+	width: 1518px;
 	height: 1200px;
 	border: 1px solid black;
 }
@@ -508,28 +510,30 @@ color: red;
    background-color: red;
 }
 #r1{
-    position: absolute;
-	width: 400px;
-	height: 330px;
+    border : 3px solid orange;
+	position: absolute;
+	width: 600px;
+	height: 430px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
 	left: 900px;
 }
 #c1{
-  position: absolute;
+  border : 3px solid orange;
+	position: absolute;
 	width: 400px;
-	height: 330px;
+	height: 370px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
@@ -590,9 +594,100 @@ textarea{
   background-color: orange;
   opacity: 0.45;
 }
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 170px;
+   margin-top: 20px;
+   float: left;
+}
+.f50{
+ border-bottom: 1px solid orange;
+ text-align: left;
+ font-size: 20px;
+ margin-left : 20px;
+ margin-top : 10px;
+ color: orange;
+ width: 560px;
+ float: left;
+}
+.f20{
+ margin-top : 50px;
+height : auto;
+ 
+}
+.f21{
+width : 295px;
+  float: left;
+}
+.f22{
+width : 295px;
+  float: left;
+  border-bottom: 1px solid orange;
+}
+.f23{
+width : 295px;
+  float: left;
+  
+}
+.f24{
 
-
-
+width : 295px;
+  float: left;
+  border-bottom: 1px solid orange;
+}
+.f25{
+margin-left: 10px;
+  width: 600px;
+  float: left;
+  text-align: left;
+}
+.f26{
+margin-top : 10px;
+ width: 500px;
+ height: 35px;
+}
+.f27{
+margin-top : 10px;
+width: 486px;
+ height: 35px;
+}
+.f28{
+width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.f30{
+ border-bottom: 1px solid orange;
+ text-align: left;
+ font-size: 17px;
+ margin-left : 40px;
+ color: red;
+ width: 300px;
+}
+.f31{
+  margin-top: 10px;
+  
+}
+.f32{
+width : 380px;
+  margin-top: 10px;
+  margin-left : 40px;
+  padding-top : 10px;
+  float: left;
+  text-align: left;
+}
+.f33{
+ padding-top : 10px;
+ margin-top: 20px;
+  margin-left : 40px;
+   text-align: left;
+   font-size: 20px;
+}
 </style>
 
 </head>
@@ -603,11 +698,14 @@ textarea{
 <div id="r1"></div>
 <div id="c1"></div>
 <div id="q1"></div>
+
+<div id="main">
+	<div id="mainheader">
+	<jsp:include page="main.jsp" />
+	</div>
+</div>
 	
 	<div id="mypagemain">
-		<div id="mainheader">
-			<jsp:include page="main.jsp" />
-		</div>
 
 		<jsp:include page="Mapagemain.jsp" />
 
@@ -620,6 +718,9 @@ textarea{
 				
 			</div>
         <div id="sixth">${ROpaging}</div>
+		</div>
+		<div id="footer">
+		<jsp:include page="footer.jsp" />
 		</div>
 	</div>
 </body>
@@ -716,24 +817,23 @@ function requested(even) {
 			    contentType:"application/json; charset=utf-8;",
 			    dataType:'json',
 			    success:function(data){
-			    	alert('해당 상품을 추천하였습니다.');
-			    	console.log("1234567"+data);
-			    	   sub+="<form action='requestby' method='post'>"
-			    	      +"<div id='r2'>"+data.rap_mbid_w+"님에게 의뢰 요청(배송정보입력)<br>"
+			    	   sub+="<form action='requestby' method='post' onsubmit='return reqCheck();'>"
+			    	      +"<div id='r2'>"
 			    	 if(data.ra_oc=="O"){
-				    	   sub+="공개<input type='hidden' name='ra_oc'><br>"   
+				    	   sub+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div>"   
 				    	   }else{
-				    	   sub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
+				    	   sub+="<div class='f1'>비공개<input type='hidden' name='ra_oc'></div>"   
 				    	   };
-			    	sub+="거래번호 :"+data.rap_ptnum+"<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
-			    	   +"상품이름 :"+data.ra_title+"<br>"
-	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
-			    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br><hr>"
-			    	   +"이름 :<input type='text' name='rap_name'><br>"
-			    	   +"주소 :<input type='text' name='rap_address'><br>"
-			    	   +"연락처: <input type='text' name='rap_phone'><br>"
-			    	   +"<input type='submit' value='요청'><br>"
-			    	   +"<input type='button' id='back' value='취소'></div></form>";
+			    	sub+="<div class='f50'>" + data.rap_mbid_w+"님에게 의뢰 요청(배송정보입력)</div>"
+			    	   +"<div class='f20'><div class='f21'>거래번호 :"+data.rap_ptnum+"<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ></div>"
+			    	   +"<div class='f23'>상품이름 :"+data.ra_title+"</div>"
+	                   +"<div class='f22'>가격 : "+data.rap_price+"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ></div>"    	
+			    	   +"<div class='f24'>아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'></div></div>"
+			    	   +"<div class='f25'>이  름 : <input id='mb_name' class='f26' type='text' name='rap_name'><br>"
+			    	   +"주  소 :   <input id='mb_add' class='f26' type='text' name='rap_address'><br>"
+			    	   +"연락처 : <input id='mb_pho' class='f27' type='text' name='rap_phone'></div>"
+			    	   +"<input class='f28' type='submit' value='요청'>"
+			    	   +"<input class='f28' type='button' id='back' value='취소'></div></form>";
 			    	  
 			    	$('#total').css("display", "inline");
 			    	$('#r1').css("display", "inline");
@@ -754,6 +854,29 @@ function requested(even) {
 		
 	}//end sho	
 
+	function reqCheck() {
+		var bb=$("#mb_name");
+		var cc=$("#mb_pho");
+		var aa=$("#mb_add");
+		
+		if(bb.val()==""){
+			alert("이름을 입력해주세요.");
+			$("#mb_name").focus();
+			return false;
+		} else if(cc.val()==""){
+			alert("핸드폰 번호를 입력해주세요.");
+			$("#mb_pho").focus();
+			return false;
+		}else if(aa.val()==""){
+			alert("주소를 입력해주세요.");
+			$("#mb_add").focus();
+			return false;
+		}
+		
+		
+	}
+	
+	
 //스텝 1 취소 라이트박스(ajax)
 	function ravcancel(even) {
 		var form = {
@@ -767,28 +890,30 @@ function requested(even) {
 				    contentType:"application/json; charset=utf-8;",
 				    dataType:'json',
 				    success:function(data){
-				    	alert('해당 상품을 추천하였습니다.');
-				    	console.log("1234567"+data);
-				    	cub+="<form action='revaucinfocancel' method='post'>"
-				    	      +"<div id='c2'>제작의뢰 요청 취소"
+				    	
+				    	cub+="<form action='revaucinfocancel' method='post' onsubmit='return cencelCheck();'>"
+				    	      +"<div id='c2'>"
 				    	 if(data.ra_oc=="O"){
-				    		 cub+="공개<input type='hidden' name='ra_oc'><br>"   
+				    		 cub+="<div class='f30'>공개<input type='hidden' name='ra_oc'></div>"   
 					    	   }else{
-					    		   cub+=+"비공개<input type='hidden' name='ra_oc'><br>"   
+					    		   cub+="<div class='f30'>비공개<input type='hidden' name='ra_oc'></div>"   
 					    	   };
-					    cub+="<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
-				    	   +"상품이름 :"+data.ra_title+"<br>"
-		                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' ><br>"    	
-				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'><br>"
-				    	   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
+					    cub+="<div class='f31'>제작의뢰 요청 취소<input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ></div>"
+				    	   +"<div class='f32'>상품이름 :"+data.ra_title+"<br>"
+		                   +"가격 : "+data.rap_price+	"<input type='hidden' name='rap_price' value='"+data.rap_price+"' >&emsp;&emsp;"    	
+				    	   +"아이디 : "+data.rap_mbid_n+"<input type='hidden' name='rap_mbid_n' value='"+data.rap_mbid_n+"'></div>"
+				    	   +"<div class='f33'><input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
 				    	   +"<input type='hidden' name='rap_ranum' value='"+data.rap_ranum+"'>"
 				    	   +"<input type='hidden' name='ra_mbid' value='"+data.ra_mbid+"'><hr>"
 				    	   +"의뢰 취소 사유<br>" 
-				    	   +"<textarea rows='7' cols='40' name='nf_contents'></textarea><br>"
-				    	   +"<input type='submit' value='취소하기'>"
-				    	   +"<input type='button' id='back' value='돌아가기'></div></form>";
+				    	   +"<textarea  id='subm' rows='7' cols='40' name='nf_contents'></textarea></div>"
+				    	   +"<div class='f6'><input  class='b3' type='submit' value='취소하기'>"
+				    	   +"<input class='b3' type='button' id='back' value='돌아가기'></div></div></form>";
 				    	  
-				    	$('#total').css("display", "inline");
+				    	
+				    	  
+				    	   
+				    	   $('#total').css("display", "inline");
 				    	$('#c1').css("display", "inline");
 				    	
 				    	$('#c1').html(cub);
@@ -797,6 +922,9 @@ function requested(even) {
 					    	  $('#total').css("display", "none");
 							  $('#c1').css("display", "none");
 								});
+				    	 
+				    	
+				    	 
 				    },
 				    
 				    error:function(error){
@@ -805,7 +933,15 @@ function requested(even) {
 				    }
 				 });//end ajax
 	}
-
+	 function cencelCheck() {
+		   var aa=$("#subm")
+				if(aa.val()==""){
+					alert("취소 사유를 입력해 주세요!!");
+					$("#subm").focus();
+					return false;
+				}
+			 } 	 
+	 
 function RevMyreview(even) {
 	var form = {
 			rap_ptnum:even
@@ -820,7 +956,7 @@ function RevMyreview(even) {
 		    success:function(data){
 		    	
 		    	console.log("1234567"+data.ra_oc);
-		    	 bb+="<form action='boardapply' method='post' enctype='multipart/form-data'>"
+		    	 bb+="<form action='boardapply' method='post' enctype='multipart/form-data' onsubmit='return boardCheck();'>"
 		    	   +"<div id='q2'>"
 		    	 if(data.ra_oc=="O"){
 		    		 bb+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div><br>"   
@@ -831,8 +967,8 @@ function RevMyreview(even) {
 		    	   +"<div class='f2'>상품이름 :"+data.ra_title+"  <input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"></div>"
                    +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"')>"
                    +"<input type='hidden' name='rap_price' value='"+data.rap_price+"')>"
-		    	   +"<div class='f4'>구매후기 제목 : <input type='text' class='bd_title' name='bd_title'><br>"
-		    	   +"<textarea rows='10' cols='70' name='bd_contents' placeholder='고객님들의 소중한 말 한마디가 작가 회원님들의 힘이 됩니다.'></textarea></div>"
+		    	   +"<div class='f4'>구매후기 제목 : <input type='text' id='title' class='bd_title' name='bd_title'><br>"
+		    	   +"<textarea id='cont' rows='10' cols='70' name='bd_contents' placeholder='고객님들의 소중한 말 한마디가 작가 회원님들의 힘이 됩니다.'></textarea></div>"
 		    	   +"<div class='f5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple></div>"
 		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'></div><br>"
 		    	   +"<div class='f6'><input class='b3' type='submit' value='완료'>"
@@ -856,6 +992,26 @@ function RevMyreview(even) {
 		 });//end ajax
 
 }//end RevMyreview
+
+function boardCheck() {
+	var aa=$("#title");
+	var bb=$("#cont");
+	var cc=$("#fileCheck");
+	if(aa.val()==""){
+		alert("제목을 입력해 주세요!!");
+		$("#title").focus();
+		return false;
+	}else if(bb.val()==""){
+		alert("내용을 입력해 주세요!!");
+		$("#cont").focus();
+		return false;
+	}else if(cc.val()==0){
+		alert("파일을 첨부하세요");
+		$("#fileCheck").focus();
+		return false;
+	}
+}
+
 function good(data) {
 	var btn = $('#butt');
 	 $.ajax({
