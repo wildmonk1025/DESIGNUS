@@ -1,6 +1,7 @@
 package com.designus.www.service;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.IcommonDao;
 import com.designus.www.dao.ImemberDao;
+import com.designus.www.userClass.DateAdjust;
 import com.google.gson.Gson;
 
 @Service
@@ -97,17 +99,28 @@ public class CommonMM {
 		jsonStr = new Gson().toJson(jsonStr);
 		return jsonStr;
 	}
-	public ModelAndView homeSetting() {
+	public ModelAndView homeSetting() throws ParseException {
 		mav = new ModelAndView();
+		DateAdjust da = new DateAdjust();
 		List<Auction> aRecommList=cDao.getbestInfo(); //AU_RECOMM_LIST 뷰에서 가져옴
-		List<Auction> recommList = new ArrayList<>();
+		List<Auction> au_recommList = new ArrayList<>();
+		
+		boolean f = true;
 		for(int i=0;i<20;i++) {
-			recommList.add(aRecommList.get(i));
+			au_recommList.add(aRecommList.get(i));
 		}
 		
-		//String jsonObj = new Gson().toJson(recommList);
+		List<RevAuction> raRecommList = cDao.getbestInfo2();
+		List<RevAuction> ra_recommList = new ArrayList<>();
 		
-		mav.addObject("recommList", recommList);
+		for(int i=0;i<20;i++) {
+			f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
+			if(f)
+				ra_recommList.add(raRecommList.get(i));
+		}
+		
+		mav.addObject("recommList", au_recommList);
+		mav.addObject("recommList_ra", ra_recommList);
 		mav.setViewName("home");
 		return mav;
 	}

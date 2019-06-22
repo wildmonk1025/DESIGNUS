@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <head>
 <style>
@@ -161,22 +162,21 @@ select {
 	top: -1px;
 }
 
-
 #lightbox {
-position: absolute;
-	width: 1000px;
+	position: absolute;
+	width: 800px;
 	height: 900px;
 	left: 100px;
 	margin: auto;
 	background: white;
-	border:1px solid black;
 	display: none;
 	text-align: center;
 	z-index: 1100;
+	overflow: scroll;
 }
 
 #lightbox-shadow {
-position: relative;
+	position: relative;
 	width: 8000px;
 	height: 8000px;
 	z-index: 1000;
@@ -185,163 +185,160 @@ position: relative;
 	background-color: coral;
 }
 
-
 .table-users {
-  border: 1px solid #327a81;
-  border-radius: 10px;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-  max-width: calc(100% - 2em);
-  margin: 1em auto;
-  overflow: hidden;
-  width: 800px;
+	border: 1px solid #327a81;
+	border-radius: 10px;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+	max-width: calc(100% - 2em);
+	margin: 1em auto;
+	overflow: hidden;
+	width: 800px;
 }
 
 table {
-  width: 100%;
+	width: 100%;
 }
+
 table td, table th {
-  color: #2b686e;
-  padding: 10px;
+	color: #2b686e;
+	padding: 10px;
 }
+
 table td {
-  text-align: center;
-  vertical-align: middle;
+	text-align: center;
+	vertical-align: middle;
 }
+
 table td:last-child {
-  font-size: 0.95em;
-  line-height: 1.4;
-  text-align: left;
+	font-size: 0.95em;
+	line-height: 1.4;
+	text-align: left;
 }
+
 table th {
-  background-color: #daeff1;
-  font-weight: 300;
+	background-color: #daeff1;
+	font-weight: 300;
 }
+
 table tr:nth-child(2n) {
-  background-color: white;
+	background-color: white;
 }
+
 table tr:nth-child(2n+1) {
-  background-color: #edf7f8;
+	background-color: #edf7f8;
 }
 
 @media screen and (max-width: 700px) {
-  table, tr, td {
-    display: block;
-  }
-
-  td:first-child {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-    width: 100px;
-  }
-  td:not(:first-child) {
-    clear: both;
-    margin-left: 100px;
-    padding: 4px 20px 4px 90px;
-    position: relative;
-    text-align: left;
-  }
-  td:not(:first-child):before {
-    color: #91ced4;
-    content: '';
-    display: block;
-    left: 0;
-    position: absolute;
-  }
-  td:nth-child(2):before {
-    content: 'Name:';
-  }
-  td:nth-child(3):before {
-    content: 'Email:';
-  }
-  td:nth-child(4):before {
-    content: 'Phone:';
-  }
-  td:nth-child(5):before {
-    content: 'Comments:';
-  }
-
-  tr {
-    padding: 10px 0;
-    position: relative;
-  }
-  tr:first-child {
-    display: none;
-  }
-
-@media screen and (max-width: 500px) {
-  .header {
-      background-color: #daeff1;
-
-    color: #daeff1;
-    font-size: 2em;
-    font-weight: 700;
-    padding: 0;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  img {
-    border: 3px solid;
-    border-color: #daeff1;
-    height: 100px;
-    margin: 0.5rem 0;
-    width: 100px;
-  }
-
-  td:first-child {
-    background-color: #c8e7ea;
-    border-bottom: 1px solid #91ced4;
-    border-radius: 10px 10px 0 0;
-    position: relative;
-    top: 0;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    width: 100%;
-  }
-  td:not(:first-child) {
-    margin: 0;
-    padding: 5px 1em;
-    width: 100%;
-  }
-  td:not(:first-child):before {
-    font-size: .8em;
-    padding-top: 0.3em;
-    position: relative;
-  }
-  td:last-child {
-    padding-bottom: 1rem !important;
-  }
-
-  tr {
-    background-color: white !important;
-    border: 1px solid #6cbec6;
-    border-radius: 10px;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-    margin: 0.5rem 0;
-    padding: 0;
-  }
-
-  .table-users {
-    border: none;
-    box-shadow: none;
-    overflow: visible;
-  }
-
-td{
-	width: 100px;
-	height: 40px;
+	table, tr, td {
+		display: block;
+	}
+	td:first-child {
+		position: absolute;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+		width: 100px;
+	}
+	td:not (:first-child ) {
+		clear: both;
+		margin-left: 100px;
+		padding: 4px 20px 4px 90px;
+		position: relative;
+		text-align: left;
+	}
+	td:not (:first-child ):before {
+		color: #91ced4;
+		content: '';
+		display: block;
+		left: 0;
+		position: absolute;
+	}
+	td:nth-child(2):before {
+		content: 'Name:';
+	}
+	td:nth-child(3):before {
+		content: 'Email:';
+	}
+	td:nth-child(4):before {
+		content: 'Phone:';
+	}
+	td:nth-child(5):before {
+		content: 'Comments:';
+	}
+	tr {
+		padding: 10px 0;
+		position: relative;
+	}
+	tr:first-child {
+		display: none;
+	}
+	@media screen and (max-width: 500px) {
+		.header {
+			background-color: #daeff1;
+			color: #daeff1;
+			font-size: 2em;
+			font-weight: 700;
+			padding: 0;
+			text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+		}
+		img {
+			border: 3px solid;
+			border-color: #daeff1;
+			height: 100px;
+			margin: 0.5rem 0;
+			width: 100px;
+		}
+		td:first-child {
+			background-color: #c8e7ea;
+			border-bottom: 1px solid #91ced4;
+			border-radius: 10px 10px 0 0;
+			position: relative;
+			top: 0;
+			-webkit-transform: translateY(0);
+			transform: translateY(0);
+			width: 100%;
+		}
+		td:not (:first-child ) {
+			margin: 0;
+			padding: 5px 1em;
+			width: 100%;
+		}
+		td:not (:first-child ):before {
+			font-size: .8em;
+			padding-top: 0.3em;
+			position: relative;
+		}
+		td:last-child {
+			padding-bottom: 1rem !important;
+		}
+		tr {
+			background-color: white !important;
+			border: 1px solid #6cbec6;
+			border-radius: 10px;
+			box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+			margin: 0.5rem 0;
+			padding: 0;
+		}
+		.table-users {
+			border: none;
+			box-shadow: none;
+			overflow: visible;
+		}
+		td {
+			width: 100px;
+			height: 40px;
+		}
+		table {
+			width: 1100px;
+			height: 700px;
+			overflow: scroll;
+		}
+		img {
+			width: 200px;
+			height: 200px;
+		}
+	}
 }
-table{
-	width: 1100px;
-	height: 700px;
-	overflow: scroll;
-}
-img{
-	width: 200px;
-	height: 200px;
-}
-
 </style>
 <title>Home</title>
 
@@ -356,61 +353,57 @@ img{
 
 	<div id="homeMain">
 		<div id="freeboard1">
-			<button style="background-color: coral" class="btn2">이용후기 게시판</button>
-			
-			
-		</div><br/><br/><br/>
-		<div id="freeboard2">
-		<div id="lightbox-shadow">
-		<div id="lightbox">
-		
-			<div class="table-users" id="declarelist">
-   
-</div> 
-				<table>
-					<tr>
-						<td>아이디:${bdc_mbid}</td>
-						<td colspan="3">댓글:${bdc_contents}</td>
-					</tr>
-				</table>
-				
-				<button id="btn2" class="btn" >글 삭제하기</button>
-				<button id="btn1" class="btn" >글 수정하기</button>
-				<button id="btn" class="btn" >추천하기</button>
-				
+			<button style="background-color: coral" class="btn2">이용후기
+				게시판</button>
 
-			<button onclick="location.href='reviewboard' "class="btn">돌아가기</button>
+
 		</div>
-	</div>
-<table>
-	<tr bgcolor="aqua" height="30">
-		<th width="100">번호 </th>
-		<th width="100">제목 </th>
-		<th width="100">아이디</th>
-		<th width="100">작성일</th>
-		<th width="100">조회수</th>
-	</tr>
-	<c:forEach var="board" items="${bdInfo}">
-	 	 <tr>
-			<td align="center">${board.bd_num}</td>
-			<td align="center" width="400px;">
-			<a href="javascript:articleView(${board.bd_num});">${board.bd_title}</a></td>
-			<td align="center">${board.bd_mbid}</td>
-			<td align="center" width="300px;">${board.bd_date}</td>
-			<td align="center">${board.bd_views}</td>
-		</tr> 
-	</c:forEach>
-	
-	</table>
-	<div align="center">${paging}</div>
-	
-	<div id="articleView_layer">
-		<div id="bg_layer"></div>
-		<div id="contents_layer"></div>
-	</div>	
-	
+		<br />
+		<br />
+		<br />
+		<div id="freeboard2">
+			<div id="lightbox-shadow">
+				<div id="lightbox">
 
-			
+					<div class="table-users" id="declarelist"></div>
+
+
+					<button id="btn2" class="btn">글 삭제하기</button>
+					<button id="btn1" class="btn">글 수정하기</button>
+					<button id="btn" class="btn">추천하기</button>
+
+
+					<button onclick="location.href='reviewboard' " class="btn">돌아가기</button>
+				</div>
+			</div>
+			<table>
+				<tr bgcolor="aqua" height="30">
+					<th width="100">번호</th>
+					<th width="100">제목</th>
+					<th width="100">아이디</th>
+					<th width="100">작성일</th>
+					<th width="100">조회수</th>
+				</tr>
+				<c:forEach var="board" items="${bdInfo}">
+					<tr>
+						<td align="center">${board.bd_num}</td>
+						<td align="center" width="400px;"><a
+							href="javascript:articleView(${board.bd_num});">${board.bd_title}</a></td>
+						<td align="center">${board.bd_mbid}</td>
+						<td align="center" width="300px;">${board.bd_date}</td>
+						<td align="center">${board.bd_views}</td>
+					</tr>
+				</c:forEach>
+
+			</table>
+			<div align="center">${paging}</div>
+
+			<div id="articleView_layer">
+				<div id="bg_layer"></div>
+				<div id="contents_layer"></div>
+			</div>
+
+
 		</div>
 
 	</div>
@@ -458,14 +451,15 @@ function articleView(num1){
 						 +"</td></tr>"
 					  }
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
-					  "<table>" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
+					  "<table >" +"<tr>"+"<td>"+"댓글"+"<input type='hidden' name='bd_num' id='bd_num' value="+data.bList.bd_num+">"+"</td>" +"<td>"+
 					  "<textarea style='width: 400px; height: 100px;' name='bdc_contents'></textarea>"+"</td>"+"<td>"
-					  +"<input type='submit'/>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
+					  +"<button id='btn5' class='btn'>"+"확인"+"</button>" +"</td>"+"</tr>"+"</table>"+"</form>"+"<table>"
 					  for (var i in data.bdc){
-						  result+="<tr><td>"+"아이디"+"</td>"+"<td>"+data.bdc[i].bdc_mbid+"</td>"+"<td>"+"내용"+"</td>"
-						  +"<td>"+data.bdc[i].bdc_contents+"</td>"
+						  result+="<tr ><td>"+"아이디"+"</td>"+"<td>"+data.bdc[i].bdc_mbid+"</td>"+"<td>"+"내용"+"</td>"
+						  +"<td>"+data.bdc[i].bdc_contents+"</td></tr>"
 					  }result+="</table>"
 			$("#declarelist").html(result);
+					  
 		},
 	error:function(error){
 		console.log("실패");
@@ -474,14 +468,18 @@ function articleView(num1){
 	});
 	var click = true;
 	$("#btn").click(function(){
-
-		if(click) {
+		var c = '<%=(String) session.getAttribute("id")%>';
+		var b = $("#idc").val();
+		if(b==c){
+			swal("자신의 글은 추천할수 없습니다.");
+		}else if(click) {
 			swal("해당글을 추천 하였습니다.");
-			click=!click;
+		click=!click;
 				} else {
 			swal("중복 추천이 불가능합니다.");
 			return;
 				}
+		console.log("num확인="+b);
 		console.log("num확인="+num);
  		$.ajax({
 			url : 'reviewlike',
@@ -498,10 +496,17 @@ function articleView(num1){
  		
 	});
 	$("#btn1").click(function(){
+		var c = '<%=(String) session.getAttribute("id")%>';
 		var a = $("textarea").val();
 		var b = $("#idc").val();
 		console.log("num확인="+num);
 		console.log("id확인="+b);
+		if(c == b || c == 'ADMIN') {
+			swal("내용이 변경되었습니다.");
+				} else {
+			
+			  swal("글변경 권한이 없습니다.");
+				}
  		$.ajax({
 			url : 'reviewchange',
 			type: 'post',
@@ -520,26 +525,43 @@ function articleView(num1){
  		
 	});
 	$("#btn2").click(function(){
-		var b = $("#idc").val();
-		console.log("num확인="+num);
-		console.log("id확인="+b);
- 		$.ajax({
-			url : 'reviewdelete',
-			type: 'post',
-			data: {bd_num:num,
-				   bd_mbid:b},
-			success:function(data){
-				console.log("성공");
-			},
-			error:function(error){
-				
-				console.log("실패");
+		var c = '<%=(String) session.getAttribute("id")%>';
+			var b = $("#idc").val();
+			console.log('writer', b);//글쓴사람
+			console.log('session', c);//접속중
+
+			if (c == b || c == 'ADMIN') {
+				swal("해당글이 삭제 되었습니다.");
+			} else {
+
+				swal("글삭제 권한이 없습니다.");
 			}
- 		});
- 		
- 		
-	});
-	
+
+			$.ajax({
+				url : 'reviewdelete',
+				type : 'post',
+				data : {
+					bd_num : num,
+					bd_mbid : b
+				},
+				success : function(data) {
+					console.log("성공");
+					window.location.reload();
+					location.href = 'reviewboard';
+				},
+				error : function(error) {
+
+					console.log("실패");
+				}
+			});
+
+		});
+
+	}
+
+var aa='${msg}';
+if(aa='pppp'){
+	swal("댓글을 입력 하였습니다.");
 }
 </script>
 </html>

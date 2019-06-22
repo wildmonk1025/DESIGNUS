@@ -110,9 +110,14 @@ public class BoardMM {
 
 		System.out.println("bd_mbid" + bd_mbid);
 		if (s.equals(bd_mbid) || s.equals("ADMIN")) {
+			System.out.println("번호는="+bd_num);
+			bDao.getreviewdel(bd_num);
 			bDao.getreviewdelete(bd_num, bd_contents, bd_mbid);
 			bDao.getreviewimgdel(bd_num, bd_contents, bd_mbid);
-			view = "reviewboard";
+			
+			
+			
+			view = "redirect:/reviewboard";
 		} else {
 			view = "home";
 		}
@@ -135,9 +140,11 @@ public class BoardMM {
 
 			mav.addObject("bdc_contents", bdc_contents);
 			mav.addObject("s", s);
+			mav.addObject("msg", "pppp");
 			System.out.println("contents=" + bdc_contents + s);
-			view = "reviewboard";
+			view = "redirect:/reviewboard";
 		} else {
+			mav.addObject("msg", "zzz");
 			view = "loginBox";
 		}
 		mav.setViewName(view);

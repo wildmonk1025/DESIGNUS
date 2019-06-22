@@ -52,6 +52,10 @@
 		INSERT INTO NOTIFY
 		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_s},#{nf_mbid_r},#{nf_notify},0,DEFAULT)
 	</insert>
+	<insert id="setNotifyStepfive" parameterType="notify">
+		INSERT INTO NF
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},'ADMIN',#{nf_notify},0,DEFAULT)
+	</insert>
 	<!-- 이용후기 알람 End -->
 	<select id="getreviewboardlist" parameterType="Integer"
 		resultType="board">
@@ -90,18 +94,24 @@
 		BD_CONTENTS=#{bd_contents} WHERE BD_MBID=#{bd_mbid} AND
 		BD_NUM=${bd_num}
 	</update>
+	<delete id="getreviewdel">
+		DELETE FROM BDC WHERE  BDC_BDNUM=${bd_num}
+	</delete>
+	
+	<delete id="getreviewimgdel">
+		DELETE FROM BD WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
+	</delete>
 
 	<delete id="getreviewdelete">
 		DELETE FROM BDI WHERE BDI_NUM=${bd_num}
 	</delete>
 
-	<delete id="getreviewimgdel">
-		DELETE FROM BD WHERE BD_MBID=#{bd_mbid} AND BD_NUM=${bd_num}
-	</delete>
+	
 	<insert id="getreviewcomment" parameterType="map">
 		INSERT INTO BDC VALUES(BDC_SEQ.nextval,${bd_num},#{s},#{bdc_contents},SYSDATE)
 	</insert>
 	<select id="getreviewselect" parameterType="int" resultType="boardcomment">
 		SELECT BDC_MBID,BDC_CONTENTS FROM BDC WHERE bdc_bdnum=${num}
 	</select>
+	
 </mapper>
