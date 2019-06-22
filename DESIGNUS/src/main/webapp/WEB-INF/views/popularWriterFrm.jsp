@@ -394,8 +394,9 @@ table tr:nth-child(2n+1) {
 				</c:forEach>
 
 			</table>
+			
 			<div align="center">${pagings}</div>
-
+			<button  class="btn">글작성</button>
 			<div id="articleView_layer">
 				<div id="bg_layer"></div>
 				<div id="contents_layer"></div>
@@ -437,8 +438,7 @@ table tr:nth-child(2n+1) {
 					  					  data.bList.bd_mbid+"</td>"+"<td>"+"제목"+"</td>"
 					  +"<td colspan='2'>"+data.bList.bd_title+"</td>"+"</tr>"+"<tr>"+"<td rowspan='2'>"
 					  +"내용"+"</td>"+"<td rowspan='2' colspan='4'>"+
-					  "<textarea rows='30' cols='20'style='margin: 5px; width: 650px; height: 150px; id=\"ff\" name='bd_contents'>"
-					  +data.bList.bd_contents+"</textarea>"+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
+					  data.bList.bd_contents+"</td>"+"</tr>"+"</table>"+"<table>"+"<tr>"
 					  +"<td>"+"등록일"+"</td>"+"<td>"+data.bList.bd_date+"</td>"+
 					  "<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"</table>"
 					  
@@ -450,6 +450,40 @@ table tr:nth-child(2n+1) {
 		console.log(error);
 	}
 	});
+	$("#btn2").click(function(){
+		var c = '<%=(String) session.getAttribute("id")%>';
+			var b = $("#idc").val();
+			console.log('writer', b);//글쓴사람
+			console.log('session', c);//접속중
+
+			if ( c == 'ADMIN') {
+				swal("해당글이 삭제 되었습니다.");
+			} else {
+
+				swal("글삭제 권한이 없습니다.");
+			}
+
+			$.ajax({
+				url : 'Noticedelete',
+				type : 'post',
+				data : {
+					bd_num : num,
+					bd_mbid : b
+				},
+				success : function(data) {
+					console.log("성공");
+					window.location.reload();
+					location.href = 'popularWriterFrm';
+				},
+				error : function(error) {
+
+					console.log("실패");
+				}
+			});
+
+		});
+
+	
  }
 </script>
 </html>

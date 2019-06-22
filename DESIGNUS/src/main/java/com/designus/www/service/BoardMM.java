@@ -193,4 +193,22 @@ public class BoardMM {
 	
 	}
 
+	public ModelAndView Noticedelete(int bd_num) {
+		String view = null;
+		mav = new ModelAndView();
+		String s = (String) session.getAttribute("id");
+		System.out.println("fdd" + s);
+
+		if ( s.equals("ADMIN")) {
+			System.out.println("번호는="+bd_num);
+			bDao.getNoticedel(bd_num);
+			view = "redirect:/popularWriterFrm";
+		} else {
+			view = "home";
+		}
+		mav.setViewName(view);
+		return mav;
+	}
+	
+
 }

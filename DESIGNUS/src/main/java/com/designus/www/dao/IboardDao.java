@@ -64,6 +64,8 @@ public interface IboardDao {
 
 	List<Board> getNoticedlist(int num);
 
+	void getNoticedel(@Param("bd_num")int bd_num);
+
 
 
 
