@@ -129,6 +129,29 @@ public class WBSController {
 	
 	
 	
+	@RequestMapping(value = "/popularWriterFrm")
+	public ModelAndView Noticedlist(Integer pageNum) {
+		mav = bm.Noticedlist(pageNum);
+		return mav;
 	
+		
+		//공지사항 리스트
 	
+	}
+	@RequestMapping(value = "/Noticedelete", method = RequestMethod.POST)
+	public ModelAndView Noticedelete(int bd_num) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_num);
+		mav = bm.Noticedelete(bd_num);
+		return mav;
+	} //공지사항삭제
+	
+	@RequestMapping(value = "/Noticeinsert", method = RequestMethod.POST)
+	public ModelAndView Noticeinsert(String bd_title, String bd_contents) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("zzzzzzzzzzz"+bd_title);
+		System.out.println("zzzzzzzzzzz"+bd_contents);
+		mav = bm.Noticeinsert(bd_title,bd_contents);
+		return mav;
+	} //공지사항등록
 }

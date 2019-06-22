@@ -2,6 +2,7 @@ package com.designus.www;
 
 import java.io.PrintWriter; 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -74,7 +75,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView home() {
+	public ModelAndView home() throws ParseException {
 		mav = cm.homeSetting();
 		return mav;
 	}
@@ -91,11 +92,6 @@ public class HomeController {
 		return "sc_Question";
 	}
 
-	@RequestMapping(value = "/bestwriter", method = RequestMethod.GET)
-	public String bestwriter() {
-
-		return "popularWriterFrm";
-	}
 
 	@RequestMapping(value = "/norJoinFrm", method = RequestMethod.GET)
 	public String norJoinFrm() {

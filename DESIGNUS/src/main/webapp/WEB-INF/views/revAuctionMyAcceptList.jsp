@@ -7,6 +7,7 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style type="text/css">
 #one {
 	width: 100%;
@@ -98,9 +99,17 @@ div {
 	float: left;
 }
 #main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
-	text-align: center;
+	position: fixed;
+	background-color: white;
 }
 
 .bt01 {
@@ -312,11 +321,6 @@ a:hover {
 	margin-left: 10px;
 }
 
-#mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-}
 
 #setp {
 	border: 1px solid orange;
@@ -338,14 +342,15 @@ a:hover {
 }
 
 #l1 {
+	 border : 3px solid orange;
 	position: absolute;
 	width: 400px;
 	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
@@ -409,8 +414,9 @@ a:hover {
 }
 
 #mypagemain {
-	width: 1530px;
+	width: 1518px;
 	height: 1200px;
+	margin-top: 50px;
 	border: 1px solid black;
 }
 
@@ -428,7 +434,7 @@ a:hover {
 }
 #sixth{
  position: absolute;
-  top: 1080px;
+  top: 1140px;
   left: 1150px;  
 }
 .first{
@@ -503,20 +509,77 @@ color: red;
    background-color: red;
 }
 #c1{
-position: absolute;
+ border : 3px solid orange;
+	position: absolute;
 	width: 400px;
 	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
 	left: 900px;
 } 
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 170px;
+   margin-top: 20px;
+   float: left;
+}
+.f1{
+  border-bottom: 1px solid orange;
+ text-align: left;
+ font-size: 17px;
+ margin-left : 40px;
+ color: red;
+ width: 300px;
+}
+.h1{
+margin-top:10px;
+}
+.f2{
 
+margin-top:10px;
+text-align: left;
+margin-left : 40px;
+width: 350px;
+}
+hr{
+ border: 1px solid orange;
+}
+.f3{
+margin-top:10px;
+text-align: left;
+margin-left : 30px;
+width: 350px;
+}
+#rap_track{
+margin-top:10px;
+width: 300px;
+height: 30px;
+}
+.b3{
+margin-top:10px;
+  width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+}
+.f4{
+text-align: left;
+ font-size: 17px;
+ margin-left : 40px;
+ color: #BDBDBD;
+ width: 350px;
+}
+.imgg{
+  height: 180px;
+}
 </style>
 
 </head>
@@ -526,12 +589,12 @@ position: absolute;
 <div id="total"></div>
 <div id="l1"></div>
 <div id="c1"></div>
-	
-	<div id="mypagemain">
-		<div id="mainheader">
+	<div id="main">
+	<div id="mainheader">
 			<jsp:include page="main.jsp" />
-		</div>
-
+	</div>
+	</div>
+	<div id="mypagemain">
 		<jsp:include page="Mapagemain.jsp" />
 
 
@@ -543,6 +606,9 @@ position: absolute;
 				
 			</div>
         <div id="sixth">${RApaging}</div>
+		</div>
+		<div id="footer">
+		<jsp:include page="footer.jsp" />
 		</div>
 	</div>
 
@@ -561,7 +627,7 @@ for (var i = 0; i < revAList.length; i++) {
 	 }else{
 		 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 	 }
-		 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+		 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revAList[i].ra_image+"'/></a></div>"   
 			  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
 			  + "구매 금액 :"+ revAList[i].rap_price+"<br>"
 			  + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -574,7 +640,7 @@ for (var i = 0; i < revAList.length; i++) {
 				 }else{
 			    main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 				  }
-				main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+				main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revAList[i].ra_image+"'/></a></div>"   
 					 + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
 					 + "구매 금액 :"+ revAList[i].rap_price+"<br>"
 					 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -588,7 +654,7 @@ for (var i = 0; i < revAList.length; i++) {
 				 }else{
 					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 				 }
-					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revAList[i].ra_image+"'/></a></div>"   
 						  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
 						  + "구매 금액 :"+ revAList[i].rap_price+"<br>"
 						  + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -601,7 +667,7 @@ for (var i = 0; i < revAList.length; i++) {
 				 }else{
 					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 				 }
-					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revAList[i].ra_image+"'/></a></div>"   
 						  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
 						  + "구매 금액 :"+ revAList[i].rap_price+"<br>"
 						  + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -614,7 +680,7 @@ for (var i = 0; i < revAList.length; i++) {
 				 }else{
 			    main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 				  }
-				main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img src='/resources/images/"+revAList[i].ra_image+"'/></a></div>"   
+				main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revAList[i].ra_image+"'/></a></div>"   
 					 + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
 					 + "구매 금액 :"+ revAList[i].rap_price+"<br>"
 					 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -658,21 +724,21 @@ function deliinRav(even) {
 			    dataType:'json',
 			    success:function(data){
 			  
-			    	 sub+="<form action='revdelinumupload' method='post'>"
+			    	 sub+="<form action='revdelinumupload' method='post' onsubmit='return delinumCheck(); '>"
 			    	    +"<div id='l2'>"
 			    	  if(data.ra_oc=="O"){
-			    		  sub+="공개<input type='hidden' name='ra_oc'><br>"   
+			    		  sub+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div>"   
 				    	   }else {
-				    		   sub+=+"비공개<input type='hidden' name='ra_oc'><br>" 
+				    		   sub+=+"<div class='f1'>비공개<input type='hidden' name='ra_oc'></div>" 
 				    	   };
-			    	sub+="<h2>운송장 입력</h2><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ><br>"
-			    	   +"상품이름 :"+data.ra_title+"<br>"
-	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='aup_price' value='"+data.rap_price+"' ><br>"    	
-			    	   +data.rap_mbid_n+"님에게 운송장 번호전송.<br><hr>"
-			    	   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
-			    	   +"운송장번호<br/><input type='text' id='rap_track' name='rap_track'><br>"
-			    	   +"<input type='submit' value='보내기'>"
-			    	   +"<input type='button' id='back' value='취소'></div></form>"; 
+			    	sub+="<h3 class='h1'>운송장 입력</h3><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
+			    	   +"<div class='f2'>상품이름 :"+data.ra_title+"<br>"
+	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='aup_price' value='"+data.rap_price+"' ></div><hr>"    	
+			    	   +"<div class='f3'><input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"'>"
+			    	   +"운송장번호<br/><input type='text' id='rap_track' name='rap_track'></div>"
+			    	   +"<div class='f6'> <input class='b3' type='submit' value='보내기'>"
+			    	   +"<input class='b3' type='button' id='back' value='취소'></div>"
+			    	   +"<div class='f4'>('"+data.rap_mbid_n+"'님에게 운송장 번호가 전송 됩니다.)</div></div></form>"; 
 			    	  
 			    	   $('#total').css("display", "inline");
 				    	$('#l1').css("display", "inline");
@@ -690,6 +756,15 @@ function deliinRav(even) {
 			 });//end ajax
 }//End deliinRav
 
+function delinumCheck() {
+	if($("#rap_track").val()==""){
+		swal("운송장번호를 입력하지 않았습니다.");
+		$("rap_track").focus();
+		return false;
+	}
+}
+
+
 function revdelinum(even) {
 	var form = {
 			rap_ptnum:even
@@ -705,20 +780,20 @@ function revdelinum(even) {
 		  
 		    	 cub+="<div id='c2'>"
 		    	  if(data.ra_oc=="O"){
-		    		  cub+="공개<input type='hidden' name='ra_oc'><br>"   
+		    		  cub+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div>"   
 			    	   }else {
 			    		   
-			    		   cub+=+"비공개<input type='hidden' name='ra_oc'><br>" 
+			    		   cub+=+"<div class='f1'>비공개<input type='hidden' name='ra_oc'></div>" 
 			    	   };
-		    	cub+="<h2>의뢰인 배송정보</h2><br>"
-		    	   +"아이디 :"+data.rap_mbid_n+"<br>"
+		    	cub+="<h3 class='h1'>의뢰인 배송정보</h3>"
+		    	   +"<div class='f2'>아이디 :"+data.rap_mbid_n+"<br>"
                    +"이름: "+data.rap_name+"<br>"    	
 		    	   +"주소:"+data.rap_address+"<br>"
-		    	   +"연락처:"+data.rap_phone+"<br>"
-		    	   +"<input type='button' id='back' value='확인'></div>"; 
+		    	   +"연락처:"+data.rap_phone+"</div>"
+		    	   +"<input class='b3' type='button' id='back' value='확인'></div>"; 
 
 		       $('#total').css("display", "inline");
-			    $('#c1').css("display", "inline");   
+			    $('# ').css("display", "inline");   
 		    	$('#c1').html(cub);
 		    	 $('#back').click(function () {
 		    	  $('#total').css("display", "none");

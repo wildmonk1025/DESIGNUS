@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.designus.www.bean.Board;
+import com.designus.www.bean.BoardComment;
 import com.designus.www.bean.Notify;
 
 //import org.springframework.stereotype.Repository;
@@ -53,7 +54,21 @@ public interface IboardDao {
 	
 	void getreviewimgdel(@Param("bd_num") int bd_num,@Param("bd_contents") String bd_contents, @Param("bd_mbid")String bd_mbid);
 
-	void getreviewcomment(@Param("bdc_contents") String bdc_contents,@Param("s") String s);
+	boolean getreviewcomment(Map<String, Object> map);
+
+	List<BoardComment> getreviewselect(@Param("num") int num);
+
+	void getreviewdel(@Param("bd_num") int bd_num);
+
+	void setNotifyStepfive(Notify nf);
+
+	List<Board> getNoticedlist(int num);
+
+	void getNoticedel(@Param("bd_num")int bd_num);
+
+	void getNoticinsert(@Param("bd_title")String bd_title,@Param("bd_contents") String bd_contents,@Param("s") String s);
+
+
 
 
 }

@@ -9,6 +9,8 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.Category;
 import com.designus.www.bean.Notify;
 import com.designus.www.bean.RealTimeSearchRanking;
+import com.designus.www.bean.RevAuction;
+import com.designus.www.bean.Sponsor;
 import com.google.gson.JsonElement;
 
 //import org.springframework.stereotype.Repository;
@@ -20,7 +22,9 @@ public interface IcommonDao {
 
 	List<Auction> getbestInfo();
 
-
+	List<RevAuction> getbestInfo2();
+	
+	List<Sponsor> getbestInfo3();
 
 	List<RealTimeSearchRanking> getSearchRankingSelect();
 
@@ -36,7 +40,5 @@ public interface IcommonDao {
 
 	int updateArmUpdate(Notify nf);
 
-
-  
-  
+ 
 }

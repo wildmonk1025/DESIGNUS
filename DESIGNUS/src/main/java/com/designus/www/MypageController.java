@@ -186,11 +186,15 @@ public class MypageController {
 	}
 
 	@RequestMapping(value = "/revAuctionMyOrderList", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView revAuctionMyOrderList(Integer pageNum, String kind) {
+	public ModelAndView revAuctionMyOrderList(Integer pageNum, String kind, String aaaa) {
 		System.out.println("(컨트롤러)제작의뢰  시작");
 		mav = new ModelAndView();
 		mav = pm.revAuctionMyOrderList(pageNum, kind);
+		System.out.println("zzzz"+aaaa);
 		System.out.println("(컨트롤러)제작의뢰  마무리");
+		if(aaaa != null) {
+		mav.addObject("aaaa", "bbbb");
+		}
 		return mav;
 	}
 

@@ -44,6 +44,7 @@ div {
 	width: 300px;
 	height: 300px;
 	text-align: center;
+	margin-top: 13px;
 }
 
 #middle_img_lv1 {
@@ -188,7 +189,7 @@ div {
 #inbuyLB-shadow {
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 200%;
 	background-color: black;
 	z-index: 1001;
 	opacity: 0.75;
@@ -212,7 +213,7 @@ div {
 #tenderLB-shadow {
 	position: absolute;
 	width: 100%;
-	height: 1200px;
+	height: 200%;
 	background-color: black;
 	z-index: 1001;
 	opacity: 0.75;
@@ -274,7 +275,7 @@ div {
 	height: 250px;
 }
 .contentsImg:hover{
-	transform : scale(2.0);
+	transform : scale(1.75);
 }
 
 #contents {
@@ -369,7 +370,7 @@ div {
 								</div></td>
 						</tr>
 					</table>
-					<div id="auctiontime">등록일/마감일 : ${auInfo.au_date}</div>
+					<div id="auctiontime"><%-- 남은시간 : ${auInfo.au_date} --%></div>
 				</div>
 
 			</div>
@@ -557,15 +558,54 @@ div {
 		}   
 	};
 	
-	
-// 	window.onload=(function() {
-// 		var massege= ${massege} ;
-// 		console.log(massege);
-// 		var msg = '${massege}';
-// 		if (msg != ''){
-// 			alert(msg);
-// 		}
-// 	})	
+	$(document).ready(function() {
+ 		var date = new Date("${auInfo.au_date}");
+ 		CountDownTimer(date,'#auctiontime');
+		});
+
+ 		function CountDownTimer(date,id) {
+ 		var end = new Date(date);
+ 	 	end.setDate(end.getDate()+1);
+ 	 	//end.setMinutes(end.getMinutes()+10);
+ 		var _second = 1000;
+ 		var _minute = _second * 60;
+ 		var _hour = _minute * 60;
+ 		var _day = _hour * 24;
+ 		var timer;
+
+ 		function showRemaining() {
+ 		var now = new Date();
+ 		var distance = end - now;
+
+ 		if (distance < 0) {
+ 		clearInterval(timer);
+ 		$(id).html("경매가 마감되었습니다.");
+		$("#btn1").css("pointer-events","none");
+		$("#btn2").css("pointer-events","none");
+		$(".submitbtn").css("background-color","gray");
+		$("#asubmitbtn").click(function() {
+			swal("시간이 마감되어 구입이 불가능 합니다.");
+		});
+		
+ 		
+ 		if (!location.hash) { 
+ 			location.hash = '#reload';
+ 			window.location.reload();
+ 		}
+
+ 		return;
+ 		}
+ 		
+ 		var days = Math.floor(distance / _day);
+ 		var hours = Math.floor((distance % _day) / _hour);
+ 		var minutes = Math.floor((distance % _hour) / _minute);
+ 		var seconds = Math.floor((distance % _minute) / _second);
+ 	 
+ 		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
+ 		}
+ 		
+ 		timer = setInterval(showRemaining, 100);
+ 		}
 	
 </script>
 </html>
