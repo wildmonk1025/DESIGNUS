@@ -87,15 +87,13 @@ public class AuctionMM {
 		int num = (pageNum == null) ? 1 : pageNum;
 
 		auList = aDao.getAuctionListSelect(cgcode, num);
-		auimg = aDao.getAuctionImgSel(au);
-
+		System.out.println("[][][][][][][][][][] ="+auimg);
 		for (int i = 0; i < auList.size(); i++) {
 			String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
 			auList.get(i).setAu_date(new_date2);
 		}
 
 		mav.addObject("paging", AugetPaging(num, cgcode));
-		mav.addObject("auimg", auimg);
 		mav.addObject("auList", auList);
 		mav.addObject("cgcode",cgcode);
 		System.out.println("[][][][][] = "+cgcode);
