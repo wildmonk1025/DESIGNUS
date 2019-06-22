@@ -11,8 +11,8 @@
 <style>
 	::-webkit-scrollbar{width: 5px;}
 	::-webkit-scrollbar-track {background-color:white;}
-	::-webkit-scrollbar-thumb {background-color:coral;border-radius: 5px;}
-	::-webkit-scrollbar-thumb:hover {background: coral;}
+	::-webkit-scrollbar-thumb {background-color:#F5BCA9;border-radius: 5px;}
+	::-webkit-scrollbar-thumb:hover {background: #F5BCA9;}
 	::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {width:0px;height:0px;background:coral;} 
 #main {
 	width: 1520px;
@@ -82,12 +82,17 @@
 .recomm_img,.recomm_img2,.recomm_img3 {
 	width: 270px;
 	height: 220px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px; 
 }
 
 .recomm_text,.recomm_text2,.recomm_text3 {
 	width: 270px;
 	height: 50px;
 	text-align: center;
+	background-color: #E6E6E6;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px; 
 }
 
 .titlestyle {
