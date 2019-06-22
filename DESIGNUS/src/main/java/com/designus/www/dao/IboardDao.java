@@ -58,6 +58,8 @@ public interface IboardDao {
 
 	List<BoardComment> getreviewselect(@Param("num") int num);
 
+	void getreviewdel(@Param("bd_num") int bd_num);
+
 
 
 
