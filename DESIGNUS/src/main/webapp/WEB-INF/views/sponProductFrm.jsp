@@ -137,7 +137,7 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4"><c:choose>
-							<c:when test="${enddate == sysdate}">
+							<c:when test="${enddate <= sysdate}">
 								<button class="bt21" onclick="sponEnd2()"
 									style="background-color: gray">밀어주기</button>
 							</c:when>
