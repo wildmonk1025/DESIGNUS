@@ -51,6 +51,8 @@ public interface ImemberDao {
 
 	void setNotifyAuctionWriFLogin(Member mb);
 
+	Member getMemberclick(String mb_id);
+
 
 
 }

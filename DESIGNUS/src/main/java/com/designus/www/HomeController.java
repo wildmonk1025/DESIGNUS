@@ -71,7 +71,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 
 		model.addAttribute("serverTime", formattedDate);
-		return "home";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -260,6 +260,13 @@ public class HomeController {
 	public ModelAndView searching(String word) {
 		System.out.println(word);
 		mav = cm.searching(word);
+		return mav;
+	}
+	@RequestMapping(value = "/loginmove",method = RequestMethod.GET)
+	public ModelAndView loginmove() {
+		mav=new ModelAndView();
+		mav.addObject("mmssgg", "lee");
+		mav.setViewName("loginBox");
 		return mav;
 	}
 }

@@ -126,8 +126,10 @@ public class UploadFile {
 		System.out.println("multi 파라미터와 ra받는 fileUp");
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
-		System.out.println("root=" + root);
-		String path = root + "resources/upload/";
+		String root2 = "C:/Users/wildm/git/DESIGNUS/DESIGNUS/src/main/webapp/";
+		System.out.println("root=" + root2);
+		String path = root2 + "resources/upload/";
+		System.out.println("rootㅎㅎ:"+path);
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면

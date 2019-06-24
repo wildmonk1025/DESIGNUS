@@ -44,7 +44,7 @@ div {
 }
 
 #searchbox {
-	width: 470px;
+	width: 450px;
 	height: 40px;
 	float: left;
 }
@@ -62,9 +62,10 @@ div {
 }
 
 #searchbtn {
-	width: 50px;
+	position: absolute;
+	width: 50px;;
 	height: 40px;
-	margin-left: -75px;
+	margin-left: -70px;
 	display: inline;
 	font-size: 1.1em;
 	font-style: italic;
@@ -125,6 +126,7 @@ div {
 }
 
 #subcategory {
+	margin-top: 14px;
 	width: 50px;
 	height: 50px;
 	background-color: coral;
@@ -134,6 +136,7 @@ div {
 }
 
 #menu {
+	margin-top: 14px;
 	float: left;
 	width: 1400px;
 	height: 50px
@@ -142,9 +145,9 @@ div {
 .submenu {
 	margin-left: 100px;
 	padding-top: 10px;
-	width: 150px;
+	width: 200px;
 	float: left;
-	height: 50px;
+	height: 30px;
 	text-align: center;
 	font-size: 18px;
 }
@@ -249,9 +252,7 @@ nav {
 /*Menu Header Styles*/
 .menu-item h4 {
 	color: white;
-	font-size: 15px;
-	font-weight: 500;
-	padding: 7px 12px;
+	height: 30px;
 }
 
 /*ul Styles*/
@@ -267,7 +268,7 @@ nav {
 	width: 175px;
 	position: absolute;
 	z-index: 1000;
-	top: 160px; \
+	top: 170px; \
 	/*Animation*/
 	-webkit-transition: height 1s ease;
 	-moz-transition: height 1s ease;
@@ -277,11 +278,12 @@ nav {
 }
 
 .menu-item:hover ul {
-	overflow: auto;
+	/* overflow: auto; */
+	overflow: none;
 	height: 335px;
 	width: 175px;
 	position: absolute;
-	top: 160px;
+	top: 170px;
 	z-index: 1002;
 	-webkit-transition: height 1s ease;
 	-moz-transition: height 1s ease;
@@ -379,6 +381,13 @@ button:hover:before, button:hover:after {
 .atag:link {
 	text-decoration: none;
 	color: #646464;
+}
+
+#fontcolor {
+	color: white;
+	font-size: 35px;
+	align: center;
+	height: 30px;
 }
 </style>
 <meta charset="UTF-8">
@@ -481,7 +490,7 @@ button:hover:before, button:hover:after {
 	<div id="category">
 		<div id="subcategory" align="center" class="menu-item">
 			<h4>
-				<a href="#" class='atag'><h2>≡</h2></a>
+				<a href="#" class='atag'><span id="fontcolor">≡</span></a>
 			</h4>
 			<nav>
 				<ul>
