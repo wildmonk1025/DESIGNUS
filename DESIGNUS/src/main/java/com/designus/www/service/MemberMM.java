@@ -144,27 +144,30 @@ public class MemberMM {
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 
 		Member d=mDao.getMemberclick(mb.getMb_id());
-		mav.addObject("ckeck", d.getMb_ccnt());
-
+		
+		mav.addObject("ccnt", d.getMb_ccnt());
+		
+		
+		System.out.println("Asdasd"+d.getMb_ccnt());
 		if(d.getMb_ccnt()>=3) {
-			try {
-				Thread.sleep(1500);
+				
 				System.out.println("경고횟수:"+d.getMb_ccnt());
+				mav.addObject("msg1", "zzzz");
 				view = "loginBox";
-			}catch (InterruptedException e){
-				e.printStackTrace();
-			}
 		}else {
 			String pwdEncode = mDao.getSecurityPwd(mb.getMb_id());
 			if (pwdEncode != null) {
 				if (pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
+			
 					mb = mDao.getMemberInfo(mb.getMb_id());
 					session.setAttribute("id", mb.getMb_id());
 					session.setAttribute("grade", mb.getMb_grade());
 					/* session.setAttribute("mb", mb); */
 					System.out.println("grede=" + mb.getMb_grade());
 					System.out.println("id=" + mb.getMb_id());
+					mav.addObject("msg", "ddd");
 					view = "redirect:home";
+					
 				} else {
 					view = "redirect:home";
 				}
