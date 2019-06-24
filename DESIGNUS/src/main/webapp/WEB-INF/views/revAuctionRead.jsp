@@ -315,7 +315,7 @@
 					<c:if test="${code eq 200 }">유아 용품</c:if>
 			</div>
 			<div id="middle_img_lv2">
-				<%-- <img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" /> --%>
+				<%-- <img src="resources/upload/${raInfo.ra_image}" alt="${raInfo.ra_image}" width="100%" height="100%"/> --%>
 				<img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/>
 			</div>
 		</div>

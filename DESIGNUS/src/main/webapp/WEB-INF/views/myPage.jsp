@@ -391,6 +391,7 @@ margin-left:40px;
 			</div>
 
 		</div>
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">

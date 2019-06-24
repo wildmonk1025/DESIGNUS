@@ -24,13 +24,8 @@ public class SessionTnterceptor extends HandlerInterceptorAdapter {
 			System.out.println("인터셉터 PreHandler");
 			
 			if(request.getSession().getAttribute("id")==null) {
-				response.setContentType("text/html; charset=UTF-8");
-				 PrintWriter out = response.getWriter();
-				 out.println("<script>alert('권한이 없습니다.'); history.go(-1);</script>");
+				response.sendRedirect(context.getServletContext().getContextPath()+"/loginmove");
 
-				 out.flush();
-
-				response.sendRedirect(context.getServletContext().getContextPath()+"/logingo");
 				
 				return false; // 비로그인시
 			}
