@@ -128,6 +128,7 @@ public class UploadFile {
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
 		String path = root + "resources/upload/";
+		System.out.println("rootㅎㅎ:"+path);
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
