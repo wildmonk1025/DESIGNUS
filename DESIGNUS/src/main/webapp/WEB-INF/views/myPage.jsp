@@ -267,7 +267,7 @@ console.log(1,nolist);
 var main = "";
 
 
-    main+="<h3 id='hh2'>알림</h3><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
+    main+="<h3 id='hh2'>알림<img src='resources/images/notify_img0.png' width='50px' height='50px' /</h3><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
         +"<table id='sk' border= 1px solid black><tr><th>보낸 아이디</th><th>받은 아이디</th><th>알림내용</th><th>삭제</th></tr>"
 for (var i = 0; i < nolist.length; i++){
 	  if(nolist[i].nf_check==0){
