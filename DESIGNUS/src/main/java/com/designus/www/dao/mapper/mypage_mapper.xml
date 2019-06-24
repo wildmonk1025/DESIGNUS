@@ -447,7 +447,7 @@
  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
      from ssp_ss_ssi
        where SSP_MBID_N=#{id}  and rownum<=${num}*3
-     ) where rn>=${num}*3-2 AND RankNo=1
+     ) where rn>=${num}*3-2 AND RankNo=1 
    ]]>
 	</select>
 	<select id="getSuwonCountt" parameterType="String"
