@@ -185,6 +185,26 @@ div {
 }
 
 </style>
+
+<script>
+
+$(document).ready(function(){
+	 $.ajax({
+			url: 'notifyChak',
+			type:'post',
+		    dataType:'json',
+		    success:function(data){
+		    	alert("성공");
+		    }, 
+		    error:function(error){
+		    	console.log(error);
+		    	alert("실패");
+		    }
+		 });//end ajax
+});
+</script>
+
+
 </head>
 
 <body>
@@ -237,7 +257,6 @@ div {
 </body>
 
 <script>
-
 	
 </script>
 </html>
