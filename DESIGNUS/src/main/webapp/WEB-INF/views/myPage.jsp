@@ -165,43 +165,98 @@ table tr:nth-child(2n+1) {
 }
 
 
+
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	width: 1080px;
-	height: 150px;
+	
+	width: 1200px;
+	height: 250px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
-	overflow: auto;
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	
+}
+#notice:hover {
+	transform: scale(1.25);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
+}
+.noticebody{
+   
+    width: 1150px;
+	height: 150px;
+     overflow: auto;
+
 }
 
 #renking {
 	margin: 0px 10px 10px 10px;
-	width: 1080px;
+	width: 1200px;
 	height: 150px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+#renking:hover {
+	transform: scale(1.25);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
 }
 
 #auction {
 	margin: 0px 10px 10px 10px;
-	width: 1080px;
+	width: 1200px;
 	height: 300px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+#auction:hover {
+	transform: scale(1.25);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
 }
 
 #spon {
 	margin: 0px 10px 10px 10px;
-	width: 1080px;
+	width: 1200px;
 	height: 300px;
 	float: left;
 	font-size: 20px;
 	text-align: center;
-	overflow: scroll;
+	padding-top: 5px;
+/* 	overflow: scroll; */
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	
+}
+#spon:hover {
+	transform: scale(1.25);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+/* 	height: 250px; */
 }
 
 #main {
@@ -315,6 +370,7 @@ a:hover {
 }
 
 #full {
+margin-right:10px;
 	float: right;
 }
 #nonw{
@@ -326,9 +382,9 @@ a:hover {
  width: 1000px;
 }
 #sk{
-margin-left:40px;
+margin-left:10px;
  margin-top:20px;
- width: 1000px;
+ width: 1100px;
 }
 #gsc{
 margin-left:40px;
@@ -340,6 +396,24 @@ margin-left:40px;
  margin-left:40px;
  margin-top:10px;
  float: left;
+}
+
+.sponbody{ 
+ width: 1150px;
+	height: 250px;
+   overflow: auto;
+} 
+.auctionbody{
+width: 1150px;
+	height: 250px;
+   overflow: auto;
+}
+#renkingbody{
+width: 1150px;
+	height: 250px;
+}
+#e1{
+text-align: center;
 }
 </style>
 <script type="text/javascript">
@@ -376,12 +450,13 @@ margin-left:40px;
 
 
 		<div id="rightmain">
+		
 			<div id="notice"></div>
 			
 			<div id="renking">
-				<h3>랭킹</h3>
-				<table id="gsc" ><tr><th>금</th><th>은</th><th>동</th></tr>
-				<tr><td>${g}</td><td>${s}</td><td>${c}</td></tr></table>
+				<div id="renkingheader"><h3>랭킹</h3></div>
+				<div id="renkingbody"><table id="gsc" ><tr><th>금</th><th>은</th><th>동</th></tr>
+				<tr><td>${g}</td><td>${s}</td><td id='e1'>${c}</td></tr></table></div>
 			</div>
 			<div id="spon">
 				
@@ -406,7 +481,7 @@ console.log(1,nolist);
 var main = "";
 
 
-    main+="<h3 id='hh2'>알림</h3><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
+    main+="<div class='noticeheader'><h3 id='hh2'>알림</h3></div><div class='noticebody'><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
         +"<table id='sk' ><tr><th>보낸 아이디</th><th>받은 아이디</th><th>알림내용</th><th>삭제</th></tr>"
 for (var i = 0; i < nolist.length; i++){
 	  if(nolist[i].nf_check==0){
@@ -417,7 +492,7 @@ for (var i = 0; i < nolist.length; i++){
 		    +"<td><a id='nod' href='nodelete?nf_num="+nolist[i].nf_num+"'>삭제</a></td></tr>"
   }
 }
-        main+="</table>";
+        main+="</table></div>";
 $("#notice").html(main)
 
 var check=${check}
@@ -446,8 +521,8 @@ for(var j=0; j<maxList.length;j++){
 	
 	}
 var ww=tt.split(","); 
-str+="<h3>참여중인 출품경매</h3>"
-   +"<table id='Participation' ><tr><td>상품명</td><td>나의금액</td><td>최고금액</td><td>경매장으로가기</td><td>경매포기하기</td><td>경매종료일</td></tr>"
+str+="<div class='auctionheader'><h3>참여중인 출품경매</h3></div>"
+   +"<div class='auctionbody'><table id='Participation' ><tr><td>상품명</td><td>나의금액</td><td>최고금액</td><td>경매장으로가기</td><td>경매포기하기</td><td>경매종료일</td></tr>"
    for(var i=0;i<toMap.length;i++){
 	   if(toMap[i].au_date>today){
     	   str+="<tr><td>"+toMap[i].au_title+"</td>"
@@ -465,7 +540,7 @@ str+="<h3>참여중인 출품경매</h3>"
     	   +"<td>마감</td></tr>";
 	   }
    }
-   str+="</table>";
+   str+="</table></div>";
    $('#auction').html(str)
  
 
@@ -480,7 +555,7 @@ for(var j=0; j<stList.length;j++){
 
  }  
 console.log(24,qq)  
-   tt+="<h2>펀딩/후원</h2>"
+   tt+="<div class='sponheader'><h3>펀딩/후원</h3></div><div class='sponbody'>"
  for(var i=0;i<spgList.length;i++){
        if(spgList[i].ssp_step ==1 ){
 	 tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
@@ -496,7 +571,7 @@ console.log(24,qq)
     	   +"목표("+spgList[i].ss_goalqty+") 마감일 :마감 되었습니다.</div>" 
        }
  }
-  
+      tt+="</div>"
   $('#spon').html(tt);
    
   
