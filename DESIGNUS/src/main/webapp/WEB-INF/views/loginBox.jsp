@@ -366,6 +366,12 @@ console.log(aa);
 if(aa=="zzz"){
 	alert("댓글 작성을 하시려면 로그인이 필요합니다.");	
 }
+
+var bb='${mmssgg}';
+console.log(bb);
+if(bb=="lee"){
+	alert("로그인이 필요한 서비스입니다. ");	
+}
 </script>
 </head>
 <body>
