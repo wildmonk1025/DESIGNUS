@@ -20,7 +20,7 @@ public class UserService {
 
 	}
 
-	@Scheduled(cron="0 0/1 * * * * ")   
+	@Scheduled(cron="0 0/1 * * * * ")
 	public void adExpirePeriod() {
 		ScheduledMM sm = new ScheduledMM();
 		System.out.println("스케쥴러 : adExpirePeriod ");
