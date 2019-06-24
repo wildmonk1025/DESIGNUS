@@ -332,6 +332,7 @@ $(document).ready(function(){
 			</div>
         <div id="sixth">${Spqging }</div>
 		</div>
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">

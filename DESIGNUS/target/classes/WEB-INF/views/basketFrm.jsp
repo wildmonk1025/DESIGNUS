@@ -330,7 +330,10 @@ a:hover {
 	height: 1200px;
 	border: 1px solid black;
 }
-
+#dddd{
+	width: 1530px;
+	height: 1020px;
+}
 #btnset {
 	width: 450px;
 	height: 100px;
@@ -362,6 +365,7 @@ a:hover {
 		<jsp:include page="main.jsp" />
 	</div>
 	<div id="mypagemain">
+	<div id="dddd">
 		<div id="leftmain">	
 		<jsp:include page="Mapagemain.jsp" />
 		</div>
@@ -402,6 +406,8 @@ a:hover {
 				</div>
 			</div>
 		</div>
+		</div>
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 <script type="text/javascript">
