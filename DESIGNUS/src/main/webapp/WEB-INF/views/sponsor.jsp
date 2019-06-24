@@ -99,17 +99,19 @@ div {
 }
 
 #sponList {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	position: relative;
 	top: 50px;
 	left: 10px;
 	width: 1300px;
 	height: 500px;
-	overflow-y: scroll;
+	overflow-y: scroll; 
 }
 
 #spon {
 	border: 1px solid black;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 3px;
 	width: 380px;
 	height: 180px;
 	margin: 10px 20px;
@@ -118,18 +120,17 @@ div {
 
 #sponproduct {
 	border: 1px solid black;
-	width: 100px;
-	height: 120px;
-	margin: 30px;
+	width: 130px;
+	height: 150px;
+	margin: 10px;
 	float: left;
 }
 
 #sponpro {
-	border: 1px solid black;
-	width: 280px;
+	width: 220px;
 	height: 140px;
-	float: right;
-	margin-top: 40px;
+	float: left;
+	margin-top: 15px;
 }
 </style>
 <title>Sponsor</title>
@@ -174,7 +175,7 @@ div {
 													+ "<img src='resources/images/"
 									+ data[i].ssi_imgSysName +"'>"
 													+ "</div>"
-													+ "<div class='sponpro'>"
+													+ "<div id='sponpro'>"
 													+ "아이디:"
 													+ data[i].ss_mbid_w
 													+ "<br>"
