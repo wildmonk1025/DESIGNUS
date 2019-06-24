@@ -84,4 +84,12 @@ public class AjaxAuctionController {
 		jsonStr = ram.wriList(mbs);
 		return jsonStr;
 	}
+
+	@RequestMapping(value = "/notifyChak", method = { RequestMethod.POST, RequestMethod.GET }, produces="application/json; charset=utf-8")
+	public @ResponseBody String notifyChak() {
+		System.out.println("[][][][][][][][][] notifyChak in??");
+		String json = aum.notifyChak();
+		System.out.println("[][][][][][][][][] notifyChak out??");
+		return null;
+	}
 }

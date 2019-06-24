@@ -1,6 +1,8 @@
 package com.designus.www.service;
 
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,9 +16,11 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.dao.IRevAuctionDao;
 import com.designus.www.dao.IauctionDao;
+import com.designus.www.dao.ImypageDao;
 import com.designus.www.userClass.DateAdjust;
 import com.designus.www.userClass.PagingAuction;
 import com.designus.www.userClass.UploadFile;
@@ -299,5 +303,22 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
+
+	public String notifyChak() {
+		List<LocalDateTime> EndTimeList = aDao.auTimeSelect();
+		List<Notify> auTimeList = new ArrayList<Notify>();
+		Notify nf = new Notify();
+		LocalDateTime today = LocalDateTime.now();
+		for(int i = 0 ; i < EndTimeList.size() ; i++) {
+			if(EndTimeList.get(i).isBefore(today)) {
+				auTimeList.addAll(aDao.auTiNaSelect(EndTimeList.get(i)));
+				System.out.println("[][][][] auTimeList ="+auTimeList.size());
+			}
+			
+		}
+		
+		return null;
+	}
+
 
 }

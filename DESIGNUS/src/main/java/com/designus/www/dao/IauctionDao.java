@@ -1,5 +1,7 @@
 package com.designus.www.dao;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -8,6 +10,7 @@ import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Member;
+import com.designus.www.bean.Notify;
 import com.designus.www.bean.QuestionReply;
 
 //import org.springframework.stereotype.Repository;
@@ -85,6 +88,10 @@ public interface IauctionDao {
 	String getAuctionImg4(@Param("au_num") int au_num);
 
 	int getPoint(Member mb);
+
+	List<LocalDateTime> auTimeSelect();
+
+	List<Notify> auTiNaSelect(LocalDateTime localDateTime);
 
 
 
