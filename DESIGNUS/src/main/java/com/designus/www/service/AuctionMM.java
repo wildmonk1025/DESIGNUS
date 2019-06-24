@@ -83,24 +83,50 @@ public class AuctionMM {
 	public ModelAndView auctionList(Integer pageNum, int cgcode) throws ParseException {
 		mav = new ModelAndView();
 		String view = "null";
-		String auimg = null;
 		List<Auction> auList = null;
 		Auction au = new Auction();
 		AuctionTender at = new AuctionTender();
 		DateAdjust da = new DateAdjust();
+		Notify nf = new Notify();
 		int num = (pageNum == null) ? 1 : pageNum;
 
 		auList = aDao.getAuctionListSelect(cgcode, num);
-		System.out.println("[][][][][][][][][][] ="+auimg);
+		
+		for(int i = 0 ; i < auList.size(); i++) {
+			System.out.println("[][][][] auList = " + auList.get(i));
+		}
+		
+		for(int i = 0 ; i < auList.size(); i++) {
+			System.out.println("[][]111111111111111111[][]");
+			boolean new_date3 = da.compareDateToBoolean(auList.get(i).getAu_date());
+			System.out.println("[][]222222222222222222[][]");
+			if(new_date3 == false) {
+				System.out.println("[][]333333333333333333[][]");
+				if(aDao.getAuctionKind(auList.get(i).getAu_num()).equals("O")) {
+					System.out.println("[][]444444444444444444[][]");
+				nf.setNf_mbid_r(auList.get(i).getAu_mbid_w());
+				System.out.println("[][]555555555555555555[][]");
+				nf.setNf_notify(auList.get(i).getAu_title()+" 상품의 경매가 마감 되었습니다.");
+				System.out.println("[][]666666666666666666[][]");
+				aDao.setAuctionEnd(nf); // notify 등록 
+				System.out.println("[][]777777777777777777[][]");
+				
+				aDao.updateAuctionKind(auList.get(i).getAu_num()); //auctionKind 변경 O -> C
+				System.out.println("[][]888888888888888888[][]");
+				};
+			};
+		};
+		
 		for (int i = 0; i < auList.size(); i++) {
 			String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
 			auList.get(i).setAu_date(new_date2);
 		}
-
+		
+		
+		
 		mav.addObject("paging", AugetPaging(num, cgcode));
 		mav.addObject("auList", auList);
-		mav.addObject("cgcode",cgcode);
-		System.out.println("[][][][][] = "+cgcode);
+		mav.addObject("cgcode", cgcode);
 		view = "auctionList";
 		mav.setViewName(view);
 		return mav;
@@ -136,7 +162,7 @@ public class AuctionMM {
 
 		mav.addObject("paging", RagetPaging(num, cgcode));
 		mav.addObject("raList", raList);
-		mav.addObject("cgcode",cgcode);
+		mav.addObject("cgcode", cgcode);
 		view = "revAuctionList";
 		mav.setViewName(view);
 		return mav;
@@ -303,22 +329,29 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
-
+/*
 	public String notifyChak() {
 		List<LocalDateTime> EndTimeList = aDao.auTimeSelect();
+		System.out.println("[][][][] EndTimeList size = " + EndTimeList.size());
 		List<Notify> auTimeList = new ArrayList<Notify>();
 		Notify nf = new Notify();
 		LocalDateTime today = LocalDateTime.now();
-		for(int i = 0 ; i < EndTimeList.size() ; i++) {
-			if(EndTimeList.get(i).isBefore(today)) {
+		for (int i = 0; i < EndTimeList.size(); i++) {
+			if (EndTimeList.get(i).isBefore(today)) {
 				auTimeList.addAll(aDao.auTiNaSelect(EndTimeList.get(i)));
-				System.out.println("[][][][] auTimeList ="+auTimeList.size());
 			}
 			
+			for (int j = 0; j < auTimeList.size(); j++) {
+				if(aDao.notifyIdSel()) {
+					
+				}
+				
+			}
 		}
-		
 		return null;
 	}
-
-
+*/
+	
+	
+	
 }
