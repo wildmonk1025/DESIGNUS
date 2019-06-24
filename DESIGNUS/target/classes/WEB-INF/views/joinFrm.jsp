@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+body{
+background-color: coral;
+}
 div {
 	border-radius: 50px;
 	margin: auto;
@@ -18,7 +21,9 @@ div {
 	text-align: center;
 	width: 340px;
 	height: 250px;
-	border: 1px solid #FFCA6C;
+	border: 1px solid white;
+		background-color: white;
+	
 }
 
 #joinimg2 {
@@ -28,17 +33,23 @@ div {
 	text-align: center;
 	width: 340px;
 	height: 250px;
-	border: 1px solid #FFCA6C;
+	border: 1px solid white;
+		background-color: white;
+	
 }
 
 #joinbtz {
 	font-size: 45px;
 	border: none;
+		background-color: white;
+	
 }
 
 #joinbtz2 {
 	font-size: 45px;
 	border: none;
+		background-color: white;
+	
 }
 
 .img {
@@ -56,7 +67,12 @@ div {
 
 </head>
 <body>
-	<div id="full">
+
+	<div id="full" align="center">
+	
+		<a href="home"><img src="resources/images/logo.png"
+				width="450px" height="200px"></a>
+	<br/><br/><br/><br/><br/><br/><br/>
 		<div id="joinimg">
 			<form action="norJoinFrm" method="get">
 				<img class="img" src="./images/normal.png" /><br /> <br />
