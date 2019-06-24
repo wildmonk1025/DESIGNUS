@@ -96,7 +96,7 @@ input[type="file"] {
 	padding-top: 10px;
 }
 
-#middle_contents_btn1 button {
+#middle_contents_btn1 button,#middle_contents_btn1 input[type="submit"]{
 	width: 150px;
 	height: 40px;
 	background-color: coral;
@@ -278,12 +278,11 @@ input[type="file"] {
 		<div id="middle_title2">제작의뢰 페이지 (비공개 의뢰)</div>
 		<div id="middle_contents">
 			<div id="middle_contents_unlock">
-				<form action="revauctionsubmit" id="revauction" method="post"
-					enctype="multipart/form-data">
+				<form action="revauctionsubmit" id="revauction" method="post" enctype="multipart/form-data" onsubmit="return joinCheck('${id}');">
 					<table style="margin: 10px 0px 0px 10px; line-height: 210%;">
 						<tr align="center">
 							<th><div class="temp">요청제목</div></th>
-							<td><input type="text" name="ra_title"></td>
+							<td><input id="ra_title" type="text" name="ra_title"></td>
 							<td rowspan="7" style="width: 370px; margin-left: 20px">
 							<div id="pht1"><img id="LoadImg" src="#" alt="미리보기" /></div>
 							</td>
@@ -291,7 +290,7 @@ input[type="file"] {
 						<tr>
 							<th><div class="temp">카테고리</div></th>
 							<td><select id="ra_cgcode" name="ra_cgcode">
-									<option selected>선택</option>
+									<option selected value="1">선택</option>
 									<option value="100">귀금속 공예</option>
 									<option value="110">원목 공예</option>
 									<option value="120">종이 공예</option>
@@ -311,7 +310,7 @@ input[type="file"] {
 						</tr>
 						<tr>
 							<th><div class="temp">제작사항</div></th>
-							<td><input type="file" name="ra_file"></td>
+							<td><input id="fileIn" type="file" name="ra_file"></td>
 						</tr>
 						<tr>
 							<th><div class="temp">수량</div></th>
@@ -322,7 +321,7 @@ input[type="file"] {
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td><input type="checkbox" name="check"> 개인정보동의</td>
+							<td><input id="checkedd" type="checkbox" name="check"> 개인정보 제공동의</td>
 							<td><p style="color:deepskyblue; font-size:12px;">자세히보기</p></td>
 						</tr>
 					</table>
@@ -331,7 +330,7 @@ input[type="file"] {
 						style="margin-left: 10px; margin-top: 10px; width: 795px; height: 200px; resize: none;"
 						placeholder="&nbsp;작가에게 전달할 말을 적어주세요"></textarea>
 					<div id="middle_contents_btn1">
-						<button onclick="">제출하기</button>
+						<input type="submit" value="제출하기">
 						<button type="button" onclick="goBack();">돌아가기</button>
 					</div>
 					<div id="lightbox_contents_shadow"></div>
@@ -442,8 +441,7 @@ input[type="file"] {
 				var reader = new FileReader();
 
 				reader.onload = function(img) {
-					$("#pht1")
-							.html("<img src=\"" + img.target.result + "\"\ style='height: 230px; width: 260px; padding-top:10px; padding-bottom:10px;'/>");
+					$("#pht1").html("<img src=\"" + img.target.result + "\"\ style='height: 230px; width: 260px; padding-top:10px; padding-bottom:10px;'/>");
 				};
 				reader.readAsDataURL(file);
 			}
@@ -525,7 +523,58 @@ input[type="file"] {
    	});
    /* 여기까지 */
    
-       
+   	function joinCheck(sid) {
+
+		var title = $("#ra_title").val();
+		var cgcode = $("#ra_cgcode").val();
+		var image = $("#imgIn").val();
+		var file = $("#fileIn").val();
+		var checkedd = $("#checkedd").val();
+		
+		var cid = $("#ra_mbid").val();
+		var money = $("#ra_money").val();
+		var date = $("#ra_date").val();
+		
+		if (title.length == 0) {
+			swal("요청제목을 입력해주세요.");
+			$("#ra_title").focus();
+			return false;
+		}
+
+		if (cgcode == 1) {
+			swal("카테고리를 선택해주세요.");
+			$("#ra_cgcode").focus();
+			return false;
+		}
+		if (image.length == 0) {
+			swal("이미지를 등록해주세요.")
+			$("#imgIn").focus();
+			return false;
+		}
+
+		if (file.length == 0) {
+			swal("도안을 첨부해주세요.")
+			$("#fileIn").focus();
+			return false;
+		}
+
+		if ($("input:checkbox[name=check]").is(":checked") == false) {
+			swal("개인정보 수집 약관에 동의해주세요.")
+			return false;
+		}
+		
+		if(cid.length != 0) {
+			if(cid == sid) {
+				swal("본인에게는 제작의뢰 할 수 없습니다.");
+				return false;
+			}
+			if(money.length == 0 || date.length == 0) {
+				swal("비용과 희망 제작기간을 입력해주세요.");
+				return false;
+			}
+			return true;
+		}
+	}
 </script>
 
 </html>
