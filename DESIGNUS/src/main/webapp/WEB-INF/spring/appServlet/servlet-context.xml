@@ -175,6 +175,7 @@
             <exclude-mapping path="/memberpwupdate"/>
             <exclude-mapping path="/sendrndnum"/>
             <exclude-mapping path="/searching"/>
+            <exclude-mapping path="/loginmove"/>
            <beans:bean class="com.designus.www.userClass.SessionTnterceptor"/>
           </interceptor>
        </interceptors>

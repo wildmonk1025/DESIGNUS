@@ -262,4 +262,11 @@ public class HomeController {
 		mav = cm.searching(word);
 		return mav;
 	}
+	@RequestMapping(value = "/loginmove",method = RequestMethod.GET)
+	public ModelAndView loginmove() {
+		mav=new ModelAndView();
+		mav.addObject("mmssgg", "lee");
+		mav.setViewName("loginBox");
+		return mav;
+	}
 }
