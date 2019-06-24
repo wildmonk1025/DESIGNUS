@@ -267,6 +267,7 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 .decisionbtn {
 	width: 150px;
 	display: block;
+	margin-left: 60px;
 }
 
 #ra_mbid2 {
@@ -482,7 +483,6 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
- 		setInterval(function() {
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -491,7 +491,7 @@ $(".subtn").click(function() {
 				dataType:'json',
 				success: function(data) {
 
-					var str = "<tr style='background-color:#8181F7;'><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td></tr>";
+					var str = "<tr style='background-color:#8181F7;'><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td width='300'>의뢰하기</td></tr>";
 					for(var i in data) {
 					var wid = data[i].rat_mbid_w;
 					var wprice = data[i].rat_price;
@@ -499,7 +499,7 @@ $(".subtn").click(function() {
 					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
 							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file+"&ra_num="+${raInfo.ra_num}
 							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days
-							+"일</td><td width='200'><input class='decisionbtn' type='button' onclick=\"revdecision('"+wid+"','"+wprice+"','"+wdays+"');\" value='의뢰하기'></td></tr>";
+							+"일</td><td width='300'><input class='decisionbtn' type='button' onclick=\"revdecision('"+wid+"','"+wprice+"','"+wdays+"');\" value='CLICK'></td></tr>";
 					}
 					$("#tenderlist").html(str);
 					console.log(str);
@@ -509,7 +509,6 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
- 			}, 500);
 		});
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();

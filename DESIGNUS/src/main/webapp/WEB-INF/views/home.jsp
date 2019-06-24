@@ -133,7 +133,7 @@
 	</div>
 	<div id="middle">
 		<div id="middle_content1">
-			<div id="middle_content1_title">&nbsp;추천 출품작</div>
+			<div id="middle_content1_title" style="background-color:#8181f7;">&nbsp;추천 출품작</div>
 			<div id="middle_content1_lv1">
 			<div id="middle_content1_lv2">
 			<c:forEach var="rl" items="${recommList}">
@@ -146,7 +146,7 @@
 			</div>
 		</div>
 		<div id="middle_content2">
-			<div id="middle_content2_title">&nbsp;진행중인 추천 제작의뢰</div>
+			<div id="middle_content2_title" style="background-color:#F79F81;">&nbsp;진행중인 추천 제작의뢰</div>
 			<div id="middle_content2_lv1">
 			<div id="middle_content2_lv2">
 			<c:forEach var="rl2" items="${recommList_ra}">
@@ -162,7 +162,7 @@
 			</div>
 		</div>
 		<div id="middle_content3">
-			<div id="middle_content3_title">&nbsp;관심 후원</div>
+			<div id="middle_content3_title" style="background-color:#2ECCFA;">&nbsp;관심 후원</div>
 			<div id="middle_content3_lv1">
 			<div id="middle_content3_lv2">
 			<c:forEach var="rl3" items="${recommList_ss}">
