@@ -5,7 +5,7 @@
 <mapper namespace="com.designus.www.dao.IauctionDao">
 
 	<insert id="getAuctionWriteInsert" parameterType="auction">
-		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT)
+		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT,'O')
 	</insert>
 
 	<insert id="getAuctionBasketInsert" parameterType="basket">
@@ -208,13 +208,36 @@
 	</select>
 
 	<select id="auTimeSelect" parameterType="String" resultType="java.time.LocalDateTime">
-		SELECT AU_DATE+1 AS END_DATE FROM AU
+		<![CDATA[
+		select * from (
+        SELECT AU_DATE+1 AS END_DATE,
+        ROW_NUMBER() OVER(PARTITION BY au_date+1 order by au_date+1 desc) as RankNo
+        FROM AU
+        )where rankno = 1
+		]]>
 	</select>
 
-	<select id="deadlineuSelecte" parameterType="java.time.LocalDateTime"
+	<select id="auTiNaSelect" parameterType="java.time.LocalDateTime"
 		resultType="notify">
-		select au_mbid_w as nf_mbid_r, au_date+1 as nf_date from au where au_date+1 = #{localDateTime}
+		<![CDATA[
+		select * from (
+        select au_mbid_w as nf_mbid_r, au_date+1 as nf_date, 
+        ROW_NUMBER() OVER(PARTITION BY au_date+1 order by au_date+1 desc) as RankNo
+        from au where au_date+1 = #{localDateTime}
+        ) where rankno = 1
+		]]>
 	</select>
 
+	<select id="getAuctionKind" parameterType="Integer" resultType="String">
+		SELECT AU_KIND FROM AU WHERE AU_NUM = ${au_num}
+	</select>	
+	
+	<insert id="setAuctionEnd" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},'ADMIN',#{nf_notify},0,DEFAULT)
+	</insert>
+	
+	<update id="updateAuctionKind" parameterType="Integer">
+		UPDATE AU SET AU_KIND = 'C' WHERE AU_NUM = ${au_num}
+	</update>
 	
 </mapper>

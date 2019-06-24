@@ -93,15 +93,12 @@ public interface IauctionDao {
 
 	List<Notify> auTiNaSelect(LocalDateTime localDateTime);
 
+	String getAuctionKind(@Param("au_num") int au_num);
 
+	void setAuctionEnd(Notify nf);
 
-
-
+	void updateAuctionKind(@Param("au_num") int au_num);
 
 	
-
-
-
-  
   
 }
