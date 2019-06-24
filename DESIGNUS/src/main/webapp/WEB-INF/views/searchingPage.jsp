@@ -16,13 +16,15 @@ div {
 }
 
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 600px;
 }
@@ -43,10 +45,12 @@ div {
 	display: inline-block;
 }
 
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 180px;
+   margin-top: 20px;
+   border: 1px solid #f0f0f0;
 }
 
 .ipt {
@@ -146,31 +150,34 @@ div::-webkit-scrollbar {
 }
 
 .raListFrm{
-	display: inline-block;
-	border: 1px solid red;
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+    margin:5px 0px 0px 0px;
 	width: 733px;
 	height: 200px;
 }
 
 .raListImg {
 	float: left;
-	border: 1px solid blue;
+	border-radius: 15px;
 	height: 200px;
 	width: 200px;
 }
 
 .raListTitle {
 	float: left;
-	border: 1px solid gray;
-	width: 526px;
-	height: 40px;
+	border-bottom: 1px solid gray;
 	font-size: 20px;
 	text-align: center;
+	width: 526px;
+	height: 40px;
 }
 
 .raListPrice {
 	float: left;
-	border: 1px solid black;
+	border-bottom: 1px solid gray;
 	width: 526px;
 	height: 105px;
 	font-size: 20px;
@@ -178,7 +185,7 @@ div::-webkit-scrollbar {
 
 .raListDate {
 	float: left;
-	border: 1px solid green;
+	border-bottom: 1px solid gray;
 	width: 526px;
 	height: 48px;
 	font-size: 30px;
@@ -186,31 +193,34 @@ div::-webkit-scrollbar {
 }
 
 .auListFrm {
-	display: inline-block;
-	border: 1px solid red;
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+    margin:5px 0px 0px 0px;
 	width: 733px;
 	height: 200px;
 }
 
 .auListImg {
 	float: left;
-	border: 1px solid blue;
+	border-radius: 15px;
 	height: 200px;
 	width: 200px;
 }
 
 .auListTitle {
 	float: left;
-	border: 1px solid gray;
-	width: 526px;
-	height: 40px;
+	border-bottom: 1px solid gray;
 	font-size: 20px;
 	text-align: center;
+	width: 526px;
+	height: 40px;
 }
 
 .auListPrice {
 	float: left;
-	border: 1px solid black;
+	border-bottom: 1px solid gray;
 	width: 526px;
 	height: 105px;
 	font-size: 20px;
@@ -218,14 +228,16 @@ div::-webkit-scrollbar {
 
 .auListDate {
 	float: left;
-	border: 1px solid green;
+	border-bottom: 1px solid gray;
 	width: 526px;
 	height: 48px;
 	font-size: 30px;
 	color: blue;
 }
 
-
+.ListImg{
+	border-radius: 15px;
+}
 
 
 </style>
@@ -250,8 +262,8 @@ div::-webkit-scrollbar {
 					<c:forEach var="au" items="${auList}">
 						<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 							<div class="auListImg">
-								<img src="<c:url value='/resources/upload/${auimg}'/>"
-									width="100%" height="100%" />
+								<img class="ListImg" src="<c:url value='/resources/upload/${au.aui_img}'/>" 
+								width="100%" height="100%"/>
 							</div>
 							<div class="auListTitle">
 								<h3>${au.au_title }</h3>
@@ -269,7 +281,8 @@ div::-webkit-scrollbar {
 					<c:forEach var="ra" items="${raList}">
 						<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 							<div class="raListImg">
-								<%-- <img src="./images/${ra.ra_image }.png" /> --%>
+								<img class="ListImg" src="<c:url value='/resources/upload/${ra.ra_image}'/>"
+								 width="100%" height="100%"/>
 							</div>
 							<div class="raListTitle">${ra.ra_title }</div>
 							<div class="raListPrice">
@@ -288,9 +301,10 @@ div::-webkit-scrollbar {
 
 
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
-	</div>
+	<div id="footer">
+      <hr style="width:100%; border: 2px solid coral; align: center;">   
+         <jsp:include page="footer.jsp"></jsp:include>
+      </div>
 
 </body>
 
