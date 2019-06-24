@@ -10,6 +10,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+body {
+	margin: auto;
+	width: 1520px;
+	height: auto;
+	overflow: auto;
+}
+
+div {
+	margin: auto;
+}
 #join {
 	top: 500px;
 	left: 200px;
@@ -40,14 +50,12 @@
 #leftmain {
 	width: 310px;
 	height: 950x;
-	border: 1px solid black;
 	float: left;
 }
 
 #rightmain {
 	width: 1200px;
 	height: 950px;
-	border: 1px solid black;
 	float: left;
 }
 
@@ -114,7 +122,6 @@
 }
 
 #point {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -125,7 +132,6 @@
 
 #img {
 	margin-top: 20px;
-	border: 1px solid orange;
 	margin: 20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;
@@ -146,7 +152,6 @@ div {
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	border: 1px solid orange;
 	width: 1080px;
 	height: 100px;
 	text-align: center;
@@ -156,7 +161,6 @@ div {
 
 }
 #info {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 580px;
@@ -171,11 +175,7 @@ div {
 	text-align: center;
 }
 
-.bt01 {
-	position: absolute;
-	right: 100px;
-	top: 50px;
-}
+
 
 a {
 	color: red
@@ -218,12 +218,10 @@ button {
 }
 
 #spon {
-	margin: 10px; border : 1px solid orange;
+	margin: 10px; 
 	width: 1080px;
 	height: 700px;
 	float: left;
-	background-color: #cdfdee;
-	border: 1px solid orange;
 }
 
 #pp {
@@ -249,7 +247,6 @@ h, td, tr, input, textarea, select, FORM {
 #mypagemain {
 	width: 1530px;
 	height: 1200px;
-	border: 1px solid black;
 }
 
 .memberN {
@@ -326,7 +323,6 @@ a:hover {
 #subcategory {
 	width: 50px;
 	height: 50px;
-	background-color: orange;
 	color: white;
 	font-size: 30px;
 	float: left;
@@ -369,7 +365,6 @@ a:hover {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
