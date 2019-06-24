@@ -59,7 +59,7 @@ private volatile static PagingAuction instance;
 		int end = (currentGroup * pageCount >= totalPage) ? totalPage : currentGroup * pageCount;
 		
 		if (start != 1) {
-			sb.append("<a href='"+"redirect:/"+ boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode + "'>");
+			sb.append("<a href='"+ boardName + "?pageNum=" + (start - 1) + "&cgcode=" + cgcode + "'>");
 			sb.append("[◀]");
 			sb.append("</a>");
 		}
