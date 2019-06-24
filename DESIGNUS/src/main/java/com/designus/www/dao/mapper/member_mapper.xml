@@ -71,7 +71,9 @@
 	<insert id="setNotifyAuctionWriFLogin" parameterType="member">
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{mb_id},DEFAULT,#{mb_notify},0,DEFAULT)
 	</insert>
-	
+	<select id="getMemberclick" parameterType="member" resultType="member">
+		SELECT MB_CCNT FROM MB WHERE MB_ID=#{mb_id}
+	</select>
 	
 	
 </mapper>
