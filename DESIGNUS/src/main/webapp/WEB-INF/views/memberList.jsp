@@ -6,6 +6,31 @@
     <title>memberList.jsp</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
+    #customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 400px;
+	border-collapse: collapse;
+}
+
+#customers td, #customers th {
+	font-size: 1em;
+	border: 1px solid #98bf21;
+	padding: 3px 7px 2px 7px;
+}
+
+#customers th {
+	font-size: 1.1em;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	background-color: #A7C942;
+	color: #ffffff;
+}
+
+#customers tr.alt td {
+	color: #000000;
+	background-color: #EAF2D3;
+}
         body {
             margin: auto;
             width: 1520px;
@@ -144,10 +169,9 @@ a:hover {
 	border: 1px solid black;
 	color: black; display : inline;
 	float: left;
-	width: 315px;
+	width: 400px;
 	heigth: 55px;
 	display: inline;
-	background-color: coral;
 }
     </style>
 </head>
@@ -215,12 +239,12 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
-					  +"아이디:" +data[i].mb_id+"<br>"
-					  +"이름:"+data[i].mb_name+"<br>"
-					  +"회원등급:"+data[i].mb_grade+"<br>"
-					  +"경고횟수:"+data[i].mb_ccnt+"<br>"
-					  +"</a>"+"</div>";
+				result+="<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
+					  +"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
+					  +"아이디:" +data[i].mb_id+"</td></tr>" + "<tr><td>"+"이름:"
+					  +data[i].mb_name+"</td></tr>" + "<tr><td>"+"회원등급:"
+					  +data[i].mb_grade+"</td></tr>" + "<tr><td>"+"경고횟수:"
+					  +data[i].mb_ccnt+"</td></tr>" + "<tr><td>"+"</a>"+"</table>"+"</div>";
 					  }
 			$("#ListView1").html(result);
 		},
@@ -243,12 +267,12 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
-					  +"아이디:" +data[i].mb_id+"<br>"
-					  +"이름:"+data[i].mb_name+"<br>"
-					  +"회원등급:"+data[i].mb_grade+"<br>"
-					  +"경고횟수:"+data[i].mb_ccnt+"<br>"
-					  +"</a>"+"</div>";
+				result+="<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
+				  +"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
+				  +"아이디:" +data[i].mb_id+"</td></tr>" + "<tr><td>"+"이름:"
+				  +data[i].mb_name+"</td></tr>" + "<tr><td>"+"회원등급:"
+				  +data[i].mb_grade+"</td></tr>" + "<tr><td>"+"경고횟수:"
+				  +data[i].mb_ccnt+"</td></tr>" + "<tr><td>"+"</a>"+"</table>"+"</div>";
 					  }
 			$("#ListView2").html(result);
 		},
@@ -271,12 +295,12 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
-					  +"아이디:" +data[i].mb_id+"<br>"
-					  +"이름:"+data[i].mb_name+"<br>"
-					  +"회원등급:"+data[i].mb_grade+"<br>"
-					  +"경고횟수:"+data[i].mb_ccnt+"<br>"
-					  +"</a>"+"</div>";
+				result+="<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
+				  +"<a href='memberListMM?mb_id="+data[i].mb_id+"'>"
+				  +"아이디:" +data[i].mb_id+"</td></tr>" + "<tr><td>"+"이름:"
+				  +data[i].mb_name+"</td></tr>" + "<tr><td>"+"회원등급:"
+				  +data[i].mb_grade+"</td></tr>" + "<tr><td>"+"경고횟수:"
+				  +data[i].mb_ccnt+"</td></tr>" + "<tr><td>"+"</a>"+"</table>"+"</div>";
 					  }
 			$("#ListView3").html(result);
 		},

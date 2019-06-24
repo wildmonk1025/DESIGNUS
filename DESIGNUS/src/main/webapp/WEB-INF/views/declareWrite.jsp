@@ -8,6 +8,31 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+#customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 400px;
+	border-collapse: collapse;
+}
+
+#customers td, #customers th {
+	font-size: 1em;
+	border: 1px solid #98bf21;
+	padding: 3px 7px 2px 7px;
+}
+
+#customers th {
+	font-size: 1.1em;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	background-color: #A7C942;
+	color: #ffffff;
+}
+
+#customers tr.alt td {
+	color: #000000;
+	background-color: #EAF2D3;
+}
 body {
 	margin: auto;
 	width: 1520px;
@@ -60,9 +85,8 @@ ul {
 	border: 1px solid black;
 	display : inline;
 	float: left;
-	width: 800px;
+	width: 400px;
 	heigth: 150px;
-	background-color: coral;
 	size: 20px;
 	
 }
@@ -123,15 +147,14 @@ a:hover {
 						console.log("성공");
 
 						for ( var i in data) {
-							result += "<div class='best'>" +
-									"<a href='declareWriteCheck?rp_num="+data[i].rp_num+"&mb_id="
+							result += "<div class='best'>" +"<table id='customers'>"+"<tr class='alt'><td>"
+									+"<a href='declareWriteCheck?rp_num="+data[i].rp_num+"&mb_id="
 									+ data[i].rp_mbid_a+"'>"
-									+"신고번호:"+ data[i].rp_num + "<br>" + "신고자아이디:"
-									+ data[i].rp_mbid_d + "<br>" + "가해자아이디:"
-									+ data[i].rp_mbid_a + "<br>" + "신고위치:"
-									+ data[i].rp_locate + "<br>" + "신고사유:"
-									+ data[i].rp_contents + "<br>" + "등록일:"
-									+ data[i].rp_date + "<br>" +"</a>"+"</div>";
+									+"신고번호:"+ data[i].rp_num + "</tr></td>"+ "<tr><td>" + "신고자아이디:"
+									+ data[i].rp_mbid_d + "</tr></td>" + "<tr><td>"+ "가해자아이디:"
+									+ data[i].rp_mbid_a + "</tr></td>"+ "<tr><td>" + "신고위치:"
+									+ data[i].rp_locate + "</tr></td>" + "<tr><td>" + "등록일:"
+									+ data[i].rp_date +"</tr></td>" +"</a>"+"</table>"+"</div>";
 						}
 						$("#declarelist").html(result);
 					},
