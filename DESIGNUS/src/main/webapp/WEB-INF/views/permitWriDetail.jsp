@@ -214,7 +214,9 @@ function a() {
 	setTimeout(function(){
 		swal("해당회원의 작가 신청을 거부 하였습니다.");
 
-	}, 1000);
+	
+	
+	}, 1500);
 	f.action = "tcommentandrefuse?mb_id=${mb_id}";
 	// 파일 전송이 필요할 경우만 씀.
 	f.submit();
@@ -224,10 +226,11 @@ function b() {
 	setTimeout(function(){
 		swal("해당회원의 작가 신청을 승인 하였습니다.");
 
-	}, 1000);
+	
+	
+	}, 1500);
 	f.action = "tcommentandapply?mb_id=${mb_id}";
 	f.submit();
-
 }
 
 </script>

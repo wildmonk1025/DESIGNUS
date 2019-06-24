@@ -24,9 +24,9 @@ public interface IboardDao {
 
 	String getRevItemTitle(Notify nf);
 
-	String getAuBoardUserName(Notify nf);
+	//String getAuBoardUserName(Notify nf);
 
-	String getAuItemTitle(Notify nf);
+//	String getAuItemTitle(Notify nf);
 
 	void setNotifyboardyh(Notify nf);
 
