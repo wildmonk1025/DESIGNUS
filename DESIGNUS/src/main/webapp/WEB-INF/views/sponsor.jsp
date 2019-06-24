@@ -9,6 +9,30 @@
 
 <meta charset="UTF-8">
 <style>
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #F5BCA9;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #F5BCA9;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+	{
+	width: 0px;
+	height: 0px;
+	background: coral;
+}
+
 div {
 	margin: auto;
 }
@@ -86,7 +110,7 @@ div {
 
 #spon {
 	border: 1px solid black;
-	width: 350px;
+	width: 380px;
 	height: 180px;
 	margin: 10px 20px;
 	float: left;
@@ -116,9 +140,7 @@ div {
 	</div>
 
 	<div id="homeMain">
-		<div id="titleAndbtn">
-			지금 후원 가능한 작품
-		</div>
+		<div id="titleAndbtn">지금 후원 가능한 작품</div>
 		<div id="sponList"></div>
 	</div>
 
