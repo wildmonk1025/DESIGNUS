@@ -37,6 +37,7 @@ div {
 	margin: auto;
 }
 
+
 #mainheader {
 border: 1px solid #F5BCA9;
 	width: 1518px;
