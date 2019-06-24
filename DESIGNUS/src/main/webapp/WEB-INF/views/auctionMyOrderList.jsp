@@ -533,7 +533,9 @@ color: red;
 			</div>
         <div id="sixth">${ROpaging}</div>
 		</div>
+		<jsp:include page="footer.jsp" />
 	</div>
+		
 </body>
 <script>
 	var apList = ${apList};

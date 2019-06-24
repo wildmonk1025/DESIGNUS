@@ -203,51 +203,52 @@ margin: 15px 0px 0px 0px;
 			</div>
 
 			<div id="info">
-				<table width="1000">
+				<table>
 
 					<tr id="m1">
-						<td style="font-size: 27px"><a href="historylist?list=rev">제작의뢰
+						<td style="font-size: 20px"><a href="historylist?list=rev">제작의뢰
 								내역</a></td>
 					</tr>
 					<tr id="m2">
-						<td style="font-size: 27px"><a href="historylist?list=revre">제작의뢰
+						<td style="font-size: 20px"><a href="historylist?list=revre">제작의뢰
 								접수내역</a></td>
 					</tr>
 					<tr id="m3">
-						<td style="font-size: 27px"><a href="historylist?list=auc">출품작
+						<td style="font-size: 20px"><a href="historylist?list=auc">출품작
 								구매 내역</a></td>
 					</tr>
 					<tr id="m4">
-						<td style="font-size: 27px"><a href="historylist?list=aucre">출품작
+						<td style="font-size: 20px"><a href="historylist?list=aucre">출품작
 								판매 내역</a></td>
 					</tr>
 					<tr id="m5">
-						<td style="font-size: 27px"><a href="historylist?list=spon">후원진행
+						<td style="font-size: 20px"><a href="historylist?list=spon">후원진행
 								내역</a></td>
 					</tr>
 					<tr id="m6">
-						<td style="font-size: 27px"><a href="historylist?list=sponre">후원요청
+						<td style="font-size: 20px"><a href="historylist?list=sponre">후원요청
 								내역</a></td>
 					</tr>
 					<tr id="m7">
-						<td style="font-size: 27px"><a href="historylist?list=basket">꿍
+						<td style="font-size: 20px"><a href="historylist?list=basket">꿍
 								내역</a></td>
 					</tr>
 					<tr id="m8">
-						<td style="font-size: 27px"><a href="privacyedit">개인정보 수정</a></td>
+						<td style="font-size: 20px"><a href="privacyedit">개인정보 수정</a></td>
 					</tr>
 					<tr id="m9">
-						<td style="font-size: 27px"><a href="memberout">회원탈퇴 신청</a></td>
+						<td style="font-size: 20px"><a href="memberout">회원탈퇴 신청</a></td>
 					</tr>
 					<tr id="m10">
-						<td style="font-size: 27px"><a href="nortowri">작가전환 신청</a></td>
+						<td style="font-size: 20px"><a href="nortowri">작가전환 신청</a></td>
 					</tr>
 					<tr id="m11">
-						<td style="font-size: 27px"><a href="questionlist">1:1문의리스트</a></td>
+						<td style="font-size: 20px"><a href="questionlist">1:1문의리스트</a></td>
 					</tr>
 				</table>
 			</div>
 		</div>
+		
 </body>
 <script type="text/javascript">
    var grade= "${grade}";
