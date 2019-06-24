@@ -18,23 +18,22 @@
 }
 
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
 	width: 1518px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle {
 	margin-top: 50px;
 	width: 1520px;
 	height: auto;
-	border: 1px solid blue;
 }
 
 #middle_img {
 	float: left;
-	border: 1px solid red;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -42,37 +41,51 @@
 
 #middle_img_lv1 {
 	padding: 5px;
-	border: 1px solid blue;
 	width: 260px;
 	height: 35px;
 	font-weight: 800;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_img_lv2 {
 	padding: 5px;
-	border: 1px solid blue;
 	width: 260px;
 	height: 230px;
 	margin-top: 5px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents1 {
 	float: left;
-	border: 1px solid red;
 	width: 900px;
 	height: 300px;
 	text-align: center;
 }
 
 #middle_contents1_lv1 {
-	border: 1px solid blue;
 	width: 850px;
 	height: 60px;
 	font-size: 30px;
+	border: 1px solid #8181F7;
+	background-color: #8181F7;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
+#middle_title {
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 25px;
+	float: left;
+	text-align: left;
+	width: 680px;
+	height: 50px;
+}
 #middle_contents1_lv2 {
-	border: 1px solid green;
 	width: 150px;
 	height: 58px;
 	font-size: 20px;
@@ -80,33 +93,42 @@
 }
 
 #middle_contents1_lv3 {
-	border: 1px solid blue;
 	width: 850px;
 	height: 140px;
 	font-size: 20px;
 	text-align: right;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents1_lv4 {
 	margin-top: 20px;
+	padding-top: 5px;
+	padding-left: 5px;
 	width: 850px;
-	height: 80px;
+	height: 75px;
 	font-size: 35px;
 	color: red;
 	text-align: left;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents2 {
-	border: 1px solid red;
 	width: 310px;
 	height: 300px;
 	float: left;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents2_btn1 {
 	width: 130px;
 	height: 130px;
-	margin: 150px 0px 0px 100px;
+	margin: 150px 0px 0px 50px;
 	color: white;
 	border-radius: 15px;
 	background-color: coral;
@@ -115,46 +137,50 @@
 #middle_contents2_btn2 {
 	width: 130px;
 	height: 130px;
-	margin: 150px 0px 0px 100px;
+	margin: 150px 0px 0px 50px;
 	color: white;
 	border-radius: 15px;
 	background-color: gray;
 }
 
 #middle_contents3 {
-	border: 1px solid red;
 	margin-top: 10px;
 	float: left;
-	width: 1514px;
+	width: 1516px;
 	height: 200px;
+
 }
 
 #middle_contents3_lv1 {
-	border: 1px solid blue;
-	width: 1400px;
+	width: 1514px;
 	height: 150px;
 	overflow: auto;
 	margin-top: 10px;
 	font-size: 20px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents4 {
-	border: 1px solid red;
 	width: 1514px;
 	heigth: auto;
 	margin-top: 10px;
 	float: left;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents4_lv1 {
-	border: 1px solid blue;
 	padding: 10px;
 	width: 1480px;
 	height: 80px;
+	border: 1px solid #f0f0f0;
+box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 }
 
 #middle_contents4_lv2 {
-	border: 1px solid green;
 	width: 500px;
 	height: 50px;
 	float: left;
@@ -168,20 +194,20 @@
 }
 
 #middle_contents4_lv3 {
-	border: 1px solid blue;
 	width: 1500px;
 	heigth: auto;
 	margin-left: 5px;
 	margin-top: 15px;
+	margin-bottom: 30px;
 	float: left;
 }
 
 #footer {
-	border: 1px solid red;
 	width: 1518px;
-	height: 170px;
+	height: 180px;
 	margin-top: 20px;
 	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 #lightboxshadow {
@@ -222,10 +248,11 @@
 }
 
 .subtn {
+	padding-top: 10px;
 	border: none;
-	font-size: 29.5px;
-	color: red;
-	background-color: white;
+	font-size: 25.5px;
+	color: white;
+	background-color: #8181F7;
 }
 
 .file {
@@ -321,7 +348,7 @@
 		</div>
 		<div id="middle_contents1">
 			<div id="middle_contents1_lv1">
-				${raInfo.ra_title}
+				<div id="middle_title">${raInfo.ra_title}</div>
 				<div id="middle_contents1_lv2">
 					<div id="peek1">
 						<input type="submit" value="꿍누르기♥" class="subtn">
@@ -387,7 +414,6 @@
 				</div>
 			</div>
 			<div id="middle_contents4_lv3">
-				<p style="font-size: 25px; padding-left:5px">작가님께 요청드릴 사항</p><br>
 				<c:set var="contents" value="${raInfo.ra_contents}"/>
 				<c:if test="${contents ne null}">
 				<p>${raInfo.ra_contents}</p></c:if>
@@ -396,7 +422,8 @@
 			</div>
 		</div>
 		<div id="footer">
-			<jsp:include page="footer.jsp" />
+		<hr style="width:100%; border: 2px solid coral; align: center;">	
+			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
 </body>
@@ -455,7 +482,7 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-/* 		setInterval(function() { */
+ 		setInterval(function() {
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -464,7 +491,7 @@ $(".subtn").click(function() {
 				dataType:'json',
 				success: function(data) {
 
-					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td></tr>";
+					var str = "<tr style='background-color:#8181F7;'><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td></tr>";
 					for(var i in data) {
 					var wid = data[i].rat_mbid_w;
 					var wprice = data[i].rat_price;
@@ -482,7 +509,7 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
-/* 			}, 300); */
+ 			}, 500);
 		});
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();

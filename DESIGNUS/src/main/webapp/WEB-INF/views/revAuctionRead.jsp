@@ -23,7 +23,6 @@
 	height: 170px;
 	position: fixed;
 	background-color: white;
-	z-index: 1000;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
@@ -147,13 +146,13 @@
 #middle_contents3 {
 	margin-top: 10px;
 	float: left;
-	width: 1514px;
+	width: 1516px;
 	height: 200px;
 
 }
 
 #middle_contents3_lv1 {
-	width: 1400px;
+	width: 1514px;
 	height: 150px;
 	overflow: auto;
 	margin-top: 10px;
@@ -483,7 +482,7 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-/* 		setInterval(function() { */
+ 		setInterval(function() {
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -510,7 +509,7 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
-/* 			}, 300); */
+ 			}, 500);
 		});
 		/* 여기까지 */
 	var ra_mbid=$("#ra_mbid2").val();

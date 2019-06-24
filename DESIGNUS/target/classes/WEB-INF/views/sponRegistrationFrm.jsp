@@ -4,20 +4,26 @@
 <head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-div {
-	margin: auto;
+#main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
 }
 
 #mainheader {
-	border: 1px solid black;
-	width: 1520px;
+	border: 1px solid #F5BCA9;
+	width: 1518px;
 	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
-#homeMain {
-	border: 1px solid black;
+#middle {
 	width: 1520px;
-	height: 700px;
+	height: auto;
+	margin-top: 50px;
 }
 
 .btn {
@@ -28,10 +34,7 @@ div {
 	float: right;
 }
 
-.btn2 {
-	width: 47%;
-	height: 100%;
-}
+
 
 #coklist {
 	width: 1000px;
@@ -47,29 +50,43 @@ div {
 	display: block;
 }
 
-#footercheck {
-	border: 1px solid black;
-	width: 1510px;
-	height: 150px;
+#footer {
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 #title {
-	margin-top: 40px;
-	width: 1000px;
-	height: 50px;
-	font-size: 20px;
-	color: orange;
+	width: 1310px;
+	height: 60px;
+	margin-left: 100px;
+	margin-right: 100px;
+	padding-top: 20px;
+	padding-left: 10px;
+	font-size: 35px;
+	color: white;
+	background-color: #8181F7;
+	font-size: 35px;
+	color: white;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #contents {
-	border: none;
-	width: 1000px;
+	width: 1310px;
+	margin-top: 10px;
 	height: 500px;
+	border: 1px solid #f0f0f0;
+	box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);
 }
 
 #tableCont {
+	/* border:none; */
 	width: 100%;
 	height: 100%;
+
 }
 
 input {
@@ -80,16 +97,29 @@ input {
 }
 
 #btn2 {
-	border: 1px solid red;
 	float: right;
-	width: 200px;
-	height: 50px;
+	width: 350px;
+	height: 60px;
 }
 
-#LoadImg2 {
+.btn2 {
+	float: right;
+	width: 120px;
+	height: 50px;
+	background-color: coral;
+	color: white;
+	border-radius: 5px;
+	font-style: italic;
+	font-weight: 900;
+	font-size: 18px;
+	margin: 10px 10px 0px 0px;
+}
+#img_wrap {
 	width: 300px;
-	height: 200px;
-	margin: 20px;
+	height: 300px;
+}
+#LoadImg2 {
+	margin: 10px;
 	border: none;
 }
 </style>
@@ -97,31 +127,33 @@ input {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+	<div id="main">
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
+	</div>
 
-	<div id="homeMain">
+	<div id="middle">
 		<div id="title">후원 상품 등록</div>
 		<div id="contents">
 			<form action="sponupload" name="sponwriter" method="post"
 				enctype="multipart/form-data">
-				<table id="tableCont" border="1" style="text-align: center">
+				<table id="tableCont" style="text-align: center">
 					<tr style="height: 50">
-						<td style="width: 100">제품명</td>
-						<td colspan="3"><input type="text" id="ss_title"
-							name="ss_title"></td>
+						<td style="width: 150px; font-weight: 800; background-color: #F5BCA9;">제품명</td>
+						<td colspan="3" style="border:1px solid #f0f0f0;"><input type="text" id="ss_title"
+							name="ss_title" style="padding-left:10px; "></td>
 					</tr>
 					<tr style="height: 50">
-						<td>가격</td>
-						<td style="width: 400"><input id="ss_price" name="ss_price"
-							type="number" style="width: 100%"></td>
-						<td style="width: 100">목표주문량</td>
-						<td style="width: 400"><input id="ss_goalqty"
-							name="ss_goalqty" type="number" style="width: 100%"></td>
+						<td style="width: 150px; background-color: #F5BCA9; font-weight: 800;">가격</td>
+						<td style="width: 400; border:1px solid #f0f0f0;"><input id="ss_price" name="ss_price"
+							type="number" style="width: 100%; padding-left:10px;"></td>
+						<td style="width: 100; background-color: #F5BCA9; font-weight: 800;">목표주문량</td>
+						<td style="width: 400; border:1px solid #f0f0f0;"><input id="ss_goalqty"
+							name="ss_goalqty" type="number" style="width: 100%; padding-left:10px;"></td>
 					</tr>
 					<tr style="height: 50">
-						<td>이미지</td>
+						<td style=" background-color: #F5BCA9; font-weight: 800;">이미지</td>
 						<td colspan="3"><input type="file" id="ssi_imgSysName" name="ssi_imgSysName" style="width: 700px; float: left;"
 						                  value='파일 첨부'  onchange='fileChk(this)' multiple>
 							            <input type='hidden' id='fileCheck' value='0' name='fileCheck'>
@@ -131,17 +163,11 @@ input {
 						</td>
 					</tr>
 					<tr style="height: 100">
-						<td colspan="4" rowspan="2"><div id="img_wrap">
-								<img id="LoadImg2" src="*" alt="your image" />
-							</div></td>
-					</tr>
-					<tr>
-					</tr>
-					<tr style="height: 100">
-						<td colspan="4" rowspan="2"><textarea id="ss_contents"
-								name="ss_contents"
-								style="width: 1000px; height: 140px; font-size: 17px; resize: none;"
-								rows="20" cols="10" placeholder="상품 상세설명을 작성하세요."></textarea></td>
+						<td colspan="2" rowspan="2">
+						<div id="img_wrap"><img id="LoadImg2" src="*" alt="your image" style="width: 100%; height: 100%;"/></div></td>
+						<td colspan="2" rowspan="2">
+						<textarea id="ss_contents" name="ss_contents" style="margin:10px 10px 0px 0px; width: 850px; height: 300px;
+						font-size: 17px; resize: none;" rows="20" cols="10" placeholder="상품 상세설명을 작성하세요."></textarea></td>
 					</tr>
 				</table>
 				<div id="btn2">
@@ -151,9 +177,11 @@ input {
 				</div>
 			</form>
 		</div>
-	</div>
-	<div id="footercheck">
+		<div id="footer">
+		<hr style="width:100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include></div>
+	</div>
+
 
 </body>
 <script>
