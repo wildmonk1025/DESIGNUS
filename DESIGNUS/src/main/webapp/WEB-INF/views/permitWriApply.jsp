@@ -9,6 +9,32 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+#customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 400px;
+	border-collapse: collapse;
+}
+
+#customers td, #customers th {
+	font-size: 1em;
+	border: 1px solid #98bf21;
+	padding: 3px 7px 2px 7px;
+}
+
+#customers th {
+	font-size: 1.1em;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	background-color: #A7C942;
+	color: #ffffff;
+}
+
+#customers tr.alt td {
+	color: #000000;
+	background-color: #EAF2D3;
+}
+
 body {
 	margin: auto;
 	width: 1520px;
@@ -69,7 +95,6 @@ ul {
 	float: left;
 	width: 400px;
 	heigth: 150px;
-	background-color: coral;
 	size: 20px;
 	
 }
@@ -133,12 +158,13 @@ $(document).ready(function() {
 			console.log("성공");
 
 			for(var i in data){
-				result+="<div class='best'>"+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"'>"
-					  +"아이디:" +data[i].mb_id+"<br>"
-					  +"카테고리 분류번호:"+data[i].mj_cgcode+"<br>"
-					  +"포트폴리오:"+data[i].mj_contents+"<br>"
-					  +"파일설명:"+data[i].mj_portf+"<br>"
-					  +"</a>"+"</div>";
+				result+="<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>" 
+				+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"'>"
+					  +"아이디:" +data[i].mb_id+"</tr></td>"+ "<tr><td>"
+					  +"카테고리 분류번호:"+data[i].mj_cgcode+"</tr></td>"+ "<tr><td>"
+					  +"포트폴리오:"+data[i].mj_contents+"</tr></td>"+ "<tr><td>"
+					  +"파일설명:"+data[i].mj_portf+"</tr></td>"+ "<tr><td>"
+					  +"</a>"+"</table>"+"</div>";
 					  }
 			$("#transformlist").html(result);
 		},
