@@ -44,7 +44,7 @@ div {
 }
 
 #searchbox {
-	width: 470px;
+	width: 440px;
 	height: 40px;
 	float: left;
 }
@@ -62,9 +62,10 @@ div {
 }
 
 #searchbtn {
-	width: 50px;
+	position: absolute;
+	width: 50px;;
 	height: 40px;
-	margin-left: -75px;
+	margin-left: -70px;
 	display: inline;
 	font-size: 1.1em;
 	font-style: italic;
@@ -125,22 +126,14 @@ div {
 }
 
 #subcategory {
-	-ms-overflow-style: none;
-	&::-webkit-scrollbar {
-	display: none;
-}
-	
-}
-#subcategory{
-margin-top: 14px;
+	margin-top: 14px;
 	width: 50px;
 	height: 50px;
 	background-color: coral;
 	color: white;
 	font-size: 30px;
-	float: left;}
-
-
+	float: left;
+}
 
 #menu {
 	margin-top: 14px;

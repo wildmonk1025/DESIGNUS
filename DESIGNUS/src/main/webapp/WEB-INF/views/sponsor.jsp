@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <style>
 ::-webkit-scrollbar {
-	width: 15px;
+	width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -54,7 +54,7 @@ border: 1px solid #F5BCA9;
 }
 
 #homeMain {
-	width: 1520px;
+	width: 1518px;
 	height: 700px;
 }
 
@@ -64,20 +64,6 @@ border: 1px solid #F5BCA9;
 	height: 30px;
 	color: white;
 	float: right;
-}
-
-#coklist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#bestlist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
 }
 
 #footercheck {
