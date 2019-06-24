@@ -145,7 +145,7 @@ div {
 .submenu {
 	margin-left: 100px;
 	padding-top: 10px;
-	width: 150px;
+	width: 200px;
 	float: left;
 	height: 30px;
 	text-align: center;

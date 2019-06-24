@@ -37,6 +37,7 @@ div {
 	margin: auto;
 }
 
+
 #mainheader {
 border: 1px solid #F5BCA9;
 	width: 1518px;
@@ -97,7 +98,7 @@ border: 1px solid #F5BCA9;
 }
 
 #spon {
-	border: 1px solid black;
+	border: 1px solid coral;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	border-radius: 3px;
 	width: 380px;
@@ -107,7 +108,7 @@ border: 1px solid #F5BCA9;
 }
 
 #sponproduct {
-	border: 1px solid black;
+	border: 1px solid coral;
 	width: 130px;
 	height: 150px;
 	margin: 10px;
@@ -158,7 +159,7 @@ border: 1px solid #F5BCA9;
 											result += "<div id='spon'>"
 													+ "<a href='sponproduct?ss_num="
 													+ data[i].ss_num
-													+ "'>"
+													+ "'style='color: black'>"
 													+ "<div id='sponproduct'>"
 													+ "<img src='resources/images/"
 									+ data[i].ssi_imgSysName +"'>"

@@ -84,6 +84,7 @@ div {
 
 td {
 	height: 50px;
+	border: 1px solid black;
 }
 
 .ts1 {
