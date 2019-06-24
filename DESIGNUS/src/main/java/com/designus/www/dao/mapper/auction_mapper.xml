@@ -203,9 +203,17 @@
 		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{aut_notify},0,DEFAULT)
 	</insert>
 	
-	
 	<select id="getPoint" parameterType="member" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID = #{mb_id}
+	</select>
+
+	<select id="auTimeSelect" parameterType="String" resultType="java.time.LocalDateTime">
+		SELECT AU_DATE+1 AS END_DATE FROM AU
+	</select>
+
+	<select id="deadlineuSelecte" parameterType="java.time.LocalDateTime"
+		resultType="notify">
+		select au_mbid_w as nf_mbid_r, au_date+1 as nf_date from au where au_date+1 = #{localDateTime}
 	</select>
 
 	

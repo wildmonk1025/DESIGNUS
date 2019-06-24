@@ -152,5 +152,28 @@
          <beans:property name="maxInMemorySize" value="10000000"/><!-- 약 10메가 -->
        </beans:bean>
        <!-- Session Interceptor(가로채기) -->
-       
+       <interceptors>
+          <interceptor>
+          <!-- mapping의 모든 요청은 Controller에 도착하기전에 가로챈다. -->
+            <mapping path="/*"/>
+            <!-- exclude-mapping의 요청은 가로채지 않는다. -->
+            <exclude-mapping path="/"/>
+            <exclude-mapping path="/home"/>
+            <exclude-mapping path="/login"/>
+            <exclude-mapping path="/joinfrm"/>
+            <exclude-mapping path="/norJoinFrm"/>
+            <exclude-mapping path="/wriJoinFrm"/>
+            <exclude-mapping path="/memberfind"/>
+            <exclude-mapping path="/logingo"/>
+            <exclude-mapping path="/memberapply"/>
+            <exclude-mapping path="/memberlapcheck"/>
+            <exclude-mapping path="/memberidfind"/>
+            <exclude-mapping path="/memberpwfind"/>
+            <exclude-mapping path="/memberFind"/>
+            <exclude-mapping path="/memberpwupdate"/>
+            <exclude-mapping path="/sendrndnum"/>
+            <exclude-mapping path="/searching"/>
+           <beans:bean class="com.designus.www.userClass.SessionTnterceptor"/>
+          </interceptor>
+       </interceptors>
 </beans:beans>
