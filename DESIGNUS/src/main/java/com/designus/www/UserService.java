@@ -1,8 +1,11 @@
 package com.designus.www;
 
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+
+import com.designus.www.service.ScheduledMM;
 
 @Controller
 public class UserService {
@@ -17,6 +20,11 @@ public class UserService {
 
 	}
 
-	
+	@Scheduled(cron="0 0/1 * * * * ")   
+	public void adExpirePeriod() {
+		ScheduledMM sm = new ScheduledMM();
+		System.out.println("스케쥴러 : adExpirePeriod ");
+		sm.revAuctionCompleteTask();
+	}
 	
 }
