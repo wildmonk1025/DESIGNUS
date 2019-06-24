@@ -90,7 +90,6 @@ div {
 
 
 #renking {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 875px;
@@ -214,7 +213,7 @@ div {
 }
 
 #point {
-	border: 1px solid orange;
+	
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -344,8 +343,8 @@ a:hover {
 #l1 {
 	 border : 3px solid orange;
 	position: absolute;
-	width: 400px;
-	height: 330px;
+	width: 425px;
+	height: 370px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 30px;
@@ -434,7 +433,7 @@ a:hover {
 #sixth{
  position: absolute;
   top: 1080px;
-  left: 1150px;  
+  left: 1100px;  
 }
 .first{
 border: 1px solid orange;
@@ -444,6 +443,7 @@ border: 1px solid orange;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	border-radius: 5px;
 }
 .p1 {
  width: 500px;
@@ -497,7 +497,7 @@ font-size: 13px;
 color: red;
 }
 #l2{
- border : 3px solid orange;
+  border : 3px solid orange;
 	position: absolute;
 	width: 400px;
 	height: 330px;
@@ -537,11 +537,12 @@ color: red;
  color: red;
  width: 300px;
 }
+
 .h1{
 margin-top:10px;
 }
 .f2{
-margin-top:10px;
+
 text-align: left;
 margin-left : 40px;
 width: 350px;
@@ -553,6 +554,7 @@ margin-top:10px;
   border-radius: 10px;
   background-color: orange;
   opacity: 0.45;
+  
 }
 .f3{
 margin-top:10px;
@@ -566,6 +568,11 @@ text-align: left;
  margin-left : 40px;
  color: #BDBDBD;
  width: 350px;
+}
+#aup_track{
+margin-top:10px;
+width: 300px;
+height: 30px;
 }
 </style>
 
@@ -663,10 +670,7 @@ text-align: left;
 			    contentType:"application/json; charset=utf-8;",
 			    dataType:'json',
 			    success:function(data){
-			    	alert('성공');
-			    	console.log("1234567"+data.aup_ptnum);
-			    	$('#total').css("display", "inline");
-			    	$('#l2').css("display", "inline");
+			    	aa+="<div id='c2'>"
 			    	   if(data.aut_kind=="I"){
 				    	   aa+="<div class='f1'>즉시구매<input type='hidden' name='aut_kind'></div>"   
 				    	   }else if(data.aut_kind=="O"){
@@ -679,11 +683,16 @@ text-align: left;
 			    	   +"이름 : "+data.aup_name+"<br>"
 			    	   +"주소 :"+data.aup_address+"<br>"
 			    	   +"연락처 :"+data.aup_phone+"</div>"
-			    	   +"<input class='b3' type='button' id='back' value='확인'>";
+			    	   +"<input class='b3' type='button' id='back' value='확인'></div>";
 			    	  
 			    	
-			    	
+			    	   $('#total').css("display", "inline");
+				    	$('#l2').css("display", "inline");
 			    	$('#l2').html(aa); 
+			    	$('#back').click(function () {
+		    	    	$('#total').css("display", "none");
+				    	$('#l2').css("display", "none");
+					}); 
 			    },
 			    
 			    error:function(error){
@@ -709,11 +718,8 @@ text-align: left;
 			    contentType:"application/json; charset=utf-8;",
 			    dataType:'json',
 			    success:function(data){
-			    	alert('해당 상품을 추천하였습니다.');
-			    	console.log("1234567"+data.aup_ptnum);
-			    	$('#total').css("display", "inline");
-			    	$('#l1').css("display", "inline");
-			    	       sub+="<form action='delinumupload' method='post'>"
+			    	
+			    	       sub+="<form action='delinumupload' method='post' onsubmit='return delinumCheck();'>"
 			    	  if(data.aut_kind=="I"){
 				    	   sub+="<div class='f1'>즉시구매<input type='hidden' name='aut_kind'></div>"   
 				    	   }else if(data.aut_kind=="O"){
@@ -724,13 +730,18 @@ text-align: left;
 			    	sub+="<h3 class='h1'>운송장 입력</h3><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
 			    	   +"<div class='f2'>상품이름 :"+data.au_title+"<br>"
 	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ></div><hr>"    	
-			    	   +"<div class='f3'>운송장번호<br/><input type='text' name='aup_track'></div>"
+			    	   +"<div class='f3'>운송장번호<br/><input type='text' id='aup_track' name='aup_track'></div>"
 			    	   +"<div class='f6'><input class='b3' type='submit' value='보내기'>"
 			    	   +"<input class='b3' type='button' id='back' value='취소'></div>"
 			    	   +"<div class='f4'>('"+data.aup_mbid_n+"')님에게 운송장번호가 전달 됩니다.<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'></div></div></form>";
 			    	
-			    	
+			    	$('#total').css("display", "inline");
+				    $('#l1').css("display", "inline");
 			    	$('#l1').html(sub);
+			    	$('#back').click(function () {
+			    	    	$('#total').css("display", "none");
+					    	$('#l1').css("display", "none");
+						}); 
 			    },
 			    
 			    error:function(error){
@@ -740,6 +751,14 @@ text-align: left;
 			 });//end ajax
 		
 	}//end delivery	
+	
+	function delinumCheck() {
+		if($("#aup_track").val()==""){
+			swal("운송장번호를 입력하지 않았습니다.");
+			$("#aup_track").focus();
+			return false;
+		}
+	}
 	
 	//$('#setpT').html(sub);
 	/* $("#btzRevM").click(function() {
