@@ -17,6 +17,7 @@ body {
 	overflow: auto;
 }
 
+
 #join {
 	top: 500px;
 	left: 200px;
@@ -355,17 +356,14 @@ a:hover {
 	width: 1520px;
 	height: 170px;
 }
-#footer {
-   border: 1px solid red;
-   width: 1518px;
-   height: 170px;
-   margin-top: 20px;
-   float: left;
-}
+
 #mypagemain {
 	width: 1530px;
 	height: 1200px;
-	border: 1px solid black;
+}
+#dddd{
+	width: 1530px;
+	height: 1020px;
 }
 </style>
 </head>
@@ -376,6 +374,7 @@ a:hover {
 	</div>
 
 	<div id="mypagemain">
+	<div id="dddd">
 		<div id="leftmain">
 			<jsp:include page="Mapagemain.jsp" />
 		</div>
@@ -467,6 +466,7 @@ a:hover {
 	
 			</div>
 		
+		</div>
 		</div>
 		<jsp:include page="footer.jsp" />
 		</div>
