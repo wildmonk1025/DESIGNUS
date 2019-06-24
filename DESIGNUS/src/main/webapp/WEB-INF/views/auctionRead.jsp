@@ -590,6 +590,10 @@ div {
  		
  		if (!location.hash) { 
  			location.hash = '#reload';
+ 			
+ 			
+ 			location.href="auctionNotify?au_num=${au_num}";
+ 			
  			window.location.reload();
  		}
 
