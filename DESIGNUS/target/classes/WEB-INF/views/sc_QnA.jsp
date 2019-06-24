@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 <style>
 #mainheader {
-	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 700px;
 }
@@ -62,7 +60,6 @@
 }
 
 #footercheck {
-	border: 1px solid black;
 	width: 1520px;
 	height: 200px;
 }
@@ -79,7 +76,6 @@
 }
 
 .questionmenu {
-	border: 1px solid black;
 	width: 450px;
 	list-style: none;
 	color: white;

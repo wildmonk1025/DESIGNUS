@@ -9,6 +9,8 @@
 <title>permitWriDetail.jsp</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
 <style>
 body {
 	margin: auto;
@@ -209,15 +211,23 @@ margin-top: 10px;
 <script>
 function a() {
 	var f = document.formName;
+	setTimeout(function(){
+		swal("해당회원의 작가 신청을 거부 하였습니다.");
+
+	}, 1000);
 	f.action = "tcommentandrefuse?mb_id=${mb_id}";
 	// 파일 전송이 필요할 경우만 씀.
-	f.encoding = "multipart/form-data";
 	f.submit();
 }
 function b() {
 	var f = document.formName;
+	setTimeout(function(){
+		swal("해당회원의 작가 신청을 승인 하였습니다.");
+
+	}, 1000);
 	f.action = "tcommentandapply?mb_id=${mb_id}";
 	f.submit();
+
 }
 
 </script>

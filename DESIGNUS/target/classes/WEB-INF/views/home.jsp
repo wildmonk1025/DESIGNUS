@@ -40,7 +40,6 @@
 	width: 1518px;
 	height: 440px;
 	float: left;
-	border: 1px solid #f0f0f0;
 }
 
 #middle_content1_title, #middle_content2_title, #middle_content3_title {
@@ -182,6 +181,7 @@
 	</div>
 </body>
 <script>
+
 	//var rList = ${rList}
 	window.onload = function() {
 		var flag = ${logout};
