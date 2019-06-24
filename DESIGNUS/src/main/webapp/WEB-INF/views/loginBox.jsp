@@ -379,7 +379,7 @@ if(bb=="lee"){
 		
 		<div id="loginFrmmain">
 		
-			<form action="login" name="loginFrm" method="post"class="signUp">
+			<form action="login" name="loginFrm"  method="post"class="signUp">
 				<div id="login">
 				<div align="center"><a href="home"><img src="resources/images/logo.png"
 				 width="250px" height="80px"></a><br/><br/><br/><br/></div>
@@ -401,7 +401,7 @@ if(bb=="lee"){
 						<a href="memberfind">아이디 | 비빌번호 찾기</a><br/><br/>
 					</div>
 					<div id="loginbtz">
-						<button class="signUpButton">로그인</button>
+						<button class="signUpButton" id="login1">로그인</button>
 					</div>
 				</div>
 			</form>
@@ -410,7 +410,27 @@ if(bb=="lee"){
 	</div>
 </body>
 <script>
+$('#login1').click(function(){
 	
+
+var click='${ckeck}';
+console.log(click);
+
+if(click>=3){
+	swal("로그인 성공!");
+	setTimeout(function(){
+		window.location.reload();
+		location.href = 'loginbox';
+		},2000);
+
+}else{
+	swal("해당 계정은 경고 누적으로 접속 할 수 없습니다.");
+	setTimeout(function(){
+		window.location.reload();
+		location.href = 'loginbox';
+		},2000);
+}
+});
 </script>
 
 </html>
