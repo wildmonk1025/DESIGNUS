@@ -18,17 +18,18 @@
 
 #mainheader {
 	border: 1px solid black;
-	width: 1520px;
+	width: 1518px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle {
 	margin-top: 50px;
-	width: 1518px;
-	height: 700px;
-	border: 1px solid blue;
+	width: 1520px;
+	height: auto;
 }
 
 #middle_title1 {
@@ -38,10 +39,11 @@
 	margin-right: 100px;
 	padding-top: 20px;
 	padding-left: 10px;
-	background-color: coral;
+	background-color: #8181F7;
 	font-size: 35px;
 	color: white;
 	float: left;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_title2 {
@@ -51,11 +53,12 @@
 	margin-right: 100px;
 	padding-top: 20px;
 	padding-left: 10px;
-	background-color: coral;
+	background-color: #FACC2E;
 	font-size: 35px;
 	color: white;
 	float: left;
 	display: none;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents {
@@ -63,8 +66,9 @@
 	margin-top: 10px;
 	width: 850px;
 	height: 600px;
-	border: 1px solid red;
 	float: left;
+	border: 1px solid #f0f0f0;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 input[type="text"] {
@@ -85,7 +89,7 @@ input[type="file"] {
 #middle_contents_unlock {
 	padding: 20px;
 	width: 800px;
-	height: 800px;
+	height: auto;
 	display: block;
 }
 #middle_contents_btn1 {
@@ -119,14 +123,14 @@ input[type="file"] {
 	margin-top: 10px;
 	width: 450px;
 	height: 600px;
-	border: 1px solid red;
 	float: right;
+	border: 1px solid #f0f0f0;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 #middle_contents2_btn2 {
 	padding: 20px 40px 20px 40px;
 	width: 370px;
 	height: 70px;
-	border: 1px solid red;
 }
 
 #middle_contents2_btn2 input[type="button"] {
@@ -146,7 +150,7 @@ input[type="file"] {
 	padding: 20px;
 	width: 410px;
 	height: 350px;
-	border: 1px solid red;
+
 	display: none;
 }
 
@@ -155,7 +159,7 @@ input[type="file"] {
 	margin-top: 10px;
 	width: 360px;
 	height: 280px;
-	border: 1px solid gray;
+	border: 1px solid #f0f0f0;
 	box-shadow: inset -1px 0px 6px 0px rgba(0,0,0,0.27);
 	overflow: auto;
 	display: none;
@@ -166,17 +170,18 @@ input[type="file"] {
 	margin: 10px;
 	width: 320px;
 	height: 70px;
-	border: 1px solid red;
 	float: left;
 	display: none;
 	z-index: 200px;
+	border: 1px solid #2E2EFE;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 .writerInfo_lv1 {
 	padding: 1px;
 	float: left;
 	width: 65px;
 	height: 65px;
-	border: 1px solid green;
 }
 
 .writerInfo_lv2 {
@@ -262,6 +267,15 @@ input[type="file"] {
 	height: 30px;
 	margin-top: 10px;
 	background-color: #F6F6F6;
+}
+
+#footer {
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 </style>
@@ -376,6 +390,10 @@ input[type="file"] {
 				<div id="writer_Info4"></div>
 			</div>
 			</div>
+		</div>
+		<div id="footer">
+		<hr style="width:100%; border: 2px solid coral; align: center;">	
+			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
 
