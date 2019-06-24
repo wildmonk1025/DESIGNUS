@@ -5,11 +5,11 @@
 <Pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</Pattern>
 </encoder>
 </appender>
-<logger name="com.board.lee" level="trace"/>
-<logger name="jdbc.resultsettable" level="trace"/><!-- 오라클 테이블 select 등등 -->
+<logger name="com.board.lee" level="off"/> <!-- trace -->
+<logger name="jdbc.resultsettable" level="off"/><!-- 오라클 테이블 select 등등 --> <!-- trace -->
 <logger name="jdbc.audit" level="off"/>
 <logger name="jdbc.resultset" level="off"/> <!-- 결과를 가져옴 -->
-<logger name="jdbc.sqlonly" level="info"/>
+<logger name="jdbc.sqlonly" level="off"/> <!-- info -->
 <logger name="jdbc.sqltiming" level="off"/>
 <logger name="jdbc.connection" level="off"/>
 <root level="info">
