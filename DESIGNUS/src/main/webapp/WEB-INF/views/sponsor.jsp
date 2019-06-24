@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <style>
 ::-webkit-scrollbar {
-	width: 15px;
+	width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,6 +37,7 @@ div {
 	margin: auto;
 }
 
+
 #mainheader {
 border: 1px solid #F5BCA9;
 	width: 1518px;
@@ -54,7 +55,7 @@ border: 1px solid #F5BCA9;
 }
 
 #homeMain {
-	width: 1520px;
+	width: 1518px;
 	height: 700px;
 }
 
@@ -64,20 +65,6 @@ border: 1px solid #F5BCA9;
 	height: 30px;
 	color: white;
 	float: right;
-}
-
-#coklist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#bestlist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
 }
 
 #footercheck {
@@ -111,7 +98,7 @@ border: 1px solid #F5BCA9;
 }
 
 #spon {
-	border: 1px solid black;
+	border: 1px solid coral;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	border-radius: 3px;
 	width: 380px;
@@ -121,7 +108,7 @@ border: 1px solid #F5BCA9;
 }
 
 #sponproduct {
-	border: 1px solid black;
+	border: 1px solid coral;
 	width: 130px;
 	height: 150px;
 	margin: 10px;
@@ -172,7 +159,7 @@ border: 1px solid #F5BCA9;
 											result += "<div id='spon'>"
 													+ "<a href='sponproduct?ss_num="
 													+ data[i].ss_num
-													+ "'>"
+													+ "'style='color: black'>"
 													+ "<div id='sponproduct'>"
 													+ "<img src='resources/images/"
 									+ data[i].ssi_imgSysName +"'>"
