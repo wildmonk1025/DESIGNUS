@@ -36,14 +36,14 @@
 		SELECT RAP_RANUM FROM RAP
 		WHERE RAP_PTNUM = ${ptnum}
 	</select>
-	<select id="getAuBoardUserName" parameterType="notify"
-		resultType="String">
-		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${nf_num}
-	</select>
-	<select id="getAuItemTitle" parameterType="notify"
-		resultType="String">
-		SELECT AU_TITLE FROM AU WHERE AU_NUM = ${nf_num}
-	</select>
+<!-- 	<select id="getAuBoardUserName" parameterType="notify" -->
+<!-- 		resultType="String"> -->
+<!-- 		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${nf_num} -->
+<!-- 	</select> -->
+<!-- 	<select id="getAuItemTitle" parameterType="notify" -->
+<!-- 		resultType="String"> -->
+<!-- 		SELECT AU_TITLE FROM AU WHERE AU_NUM = ${nf_num} -->
+<!-- 	</select> -->
 	<select id="getAUPNumSel" resultType="Integer">
 		SELECT AUP_RANUM FROM AUP
 		WHERE AUP_PTNUM = ${ptnum}

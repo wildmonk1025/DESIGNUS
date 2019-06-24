@@ -97,22 +97,14 @@ public class AuctionMM {
 		}
 		
 		for(int i = 0 ; i < auList.size(); i++) {
-			System.out.println("[][]111111111111111111[][]");
 			boolean new_date3 = da.compareDateToBoolean(auList.get(i).getAu_date());
-			System.out.println("[][]222222222222222222[][]");
 			if(new_date3 == false) {
-				System.out.println("[][]333333333333333333[][]");
 				if(aDao.getAuctionKind(auList.get(i).getAu_num()).equals("O")) {
-					System.out.println("[][]444444444444444444[][]");
 				nf.setNf_mbid_r(auList.get(i).getAu_mbid_w());
-				System.out.println("[][]555555555555555555[][]");
 				nf.setNf_notify(auList.get(i).getAu_title()+" 상품의 경매가 마감 되었습니다.");
-				System.out.println("[][]666666666666666666[][]");
 				aDao.setAuctionEnd(nf); // notify 등록 
-				System.out.println("[][]777777777777777777[][]");
 				
 				aDao.updateAuctionKind(auList.get(i).getAu_num()); //auctionKind 변경 O -> C
-				System.out.println("[][]888888888888888888[][]");
 				};
 			};
 		};

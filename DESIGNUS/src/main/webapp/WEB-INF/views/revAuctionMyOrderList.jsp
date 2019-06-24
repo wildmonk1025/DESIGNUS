@@ -92,7 +92,7 @@ div {
 
 
 #renking {
-	border: 1px solid orange;
+	
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 875px;
@@ -216,7 +216,7 @@ div {
 }
 
 #point {
-	border: 1px solid orange;
+
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -449,8 +449,18 @@ border: 1px solid orange;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	border-radius: 5px;
+
+}
+.first:hover {
+	transform: scale(1.05);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
 }
 .p1 {
+
  width: 500px;
  float: left;
  text-align: left;
@@ -492,6 +502,7 @@ float: left;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	
 }
 .p3{
 margin-top: 60px;
@@ -530,8 +541,8 @@ color: red;
 #c1{
   border : 3px solid orange;
 	position: absolute;
-	width: 400px;
-	height: 370px;
+	width: 430px;
+	height: 400px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 30px;
@@ -640,19 +651,19 @@ width : 295px;
   border-bottom: 1px solid orange;
 }
 .f25{
-margin-left: 10px;
+margin-left: 100px;
   width: 600px;
   float: left;
   text-align: left;
 }
 .f26{
 margin-top : 10px;
- width: 500px;
+ width: 300px;
  height: 35px;
 }
 .f27{
 margin-top : 10px;
-width: 486px;
+width: 286px;
  height: 35px;
 }
 .f28{
@@ -916,7 +927,7 @@ function requested(even) {
 				    	   +"<input type='hidden' name='rap_ranum' value='"+data.rap_ranum+"'>"
 				    	   +"<input type='hidden' name='ra_mbid' value='"+data.ra_mbid+"'><hr>"
 				    	   +"의뢰 취소 사유<br>" 
-				    	   +"<textarea  id='subm' rows='7' cols='40' name='nf_contents'></textarea></div>"
+				    	   +"<textarea  id='subm' rows='7' cols='50' name='nf_contents'></textarea></div>"
 				    	   +"<div class='f6'><input  class='b3' type='submit' value='취소하기'>"
 				    	   +"<input class='b3' type='button' id='back' value='돌아가기'></div></div></form>";
 				    	  
@@ -965,7 +976,6 @@ function RevMyreview(even) {
 		    dataType:'json',
 		    success:function(data){
 		    	
-		    	console.log("1234567"+data.ra_oc);
 		    	 bb+="<form action='boardapply' method='post' enctype='multipart/form-data' onsubmit='return boardCheck();'>"
 		    	   +"<div id='q2'>"
 		    	 if(data.ra_oc=="O"){
@@ -973,13 +983,14 @@ function RevMyreview(even) {
 			    	   }else{
 			    		   bb+=+"<div class='f1'>비공개<input type='hidden' name='ra_oc'></div><br>"   
 			    	   };
-		    	bb+="<h3 class='f3'>수령 확인 및 구매 후기 쓰기</h3><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' ></div>"
+		    	bb+="<h3 class='f3'>수령 확인 및 구매 후기 쓰기</h3><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
 		    	   +"<div class='f2'>상품이름 :"+data.ra_title+"  <input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"></div>"
-                   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"')>"
+                   +"<input type='hidden' name='ra_title' value='"+data.ra_title+"' >"
+		    	   +"<input type='hidden' name='rap_mbid_w' value='"+data.rap_mbid_w+"')>"
                    +"<input type='hidden' name='rap_price' value='"+data.rap_price+"')>"
 		    	   +"<div class='f4'>구매후기 제목 : <input type='text' id='title' class='bd_title' name='bd_title'><br>"
 		    	   +"<textarea id='cont' rows='10' cols='70' name='bd_contents' placeholder='고객님들의 소중한 말 한마디가 작가 회원님들의 힘이 됩니다.'></textarea></div>"
-		    	   +"<div class='f5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple></div>"
+		    	   +"<div class='f5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple>"
 		    	   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'></div><br>"
 		    	   +"<div class='f6'><input class='b3' type='submit' value='완료'>"
 		    	   +"<input type='button' class='b3' id='backSetp' value='취소'></div></div></form>";

@@ -375,7 +375,7 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
-		int listCount = 4; // 페이지당 글의 수
+		int listCount = 3; // 페이지당 글의 수
 		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getSetpCount(id);
 		System.out.println("전체 글의 개수" + maxNum);
@@ -866,6 +866,8 @@ public class MypageMM {
 		String title = multi.getParameter("bd_title");
 		String contents = multi.getParameter("bd_contents");
 		String aumbidw = multi.getParameter("rap_mbid_w");
+		String ra_title=multi.getParameter("ra_title");
+		System.out.println("ra_title :"+ra_title);
 		int priceN = Integer.parseInt(multi.getParameter("rap_price"));
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		com.designus.www.bean.Board b = new com.designus.www.bean.Board();
@@ -880,10 +882,12 @@ public class MypageMM {
 		Notify nf = new Notify();
 		nf.setNf_num(ptnum);
 		nf.setNf_mbid_r(id);
-		nf.setNf_mbid_s(bDao.getAuBoardUserName(nf));
-		nf.setNf_contents(bDao.getAuItemTitle(nf));
+		nf.setNf_mbid_s(aumbidw);
+		nf.setNf_contents(ra_title);
+		System.out.println("ddd:"+nf.getNf_contents());
 		nf.setNf_notify(nf.getNf_mbid_r() + " 님이 작품 " + nf.getNf_contents() + " 에 후기를 남겼습니다");
 		bDao.setNotifyboardyh(nf);
+		
 		// 알림 End
 		revAuctionProgress rap = new revAuctionProgress();
 		rap.setRap_ptnum(ptnum);

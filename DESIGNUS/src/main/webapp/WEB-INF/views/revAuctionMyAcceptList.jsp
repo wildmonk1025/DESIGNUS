@@ -90,7 +90,7 @@ div {
 
 
 #renking {
-	border: 1px solid orange;
+	
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 875px;
@@ -214,7 +214,7 @@ div {
 }
 
 #point {
-	border: 1px solid orange;
+	
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -344,8 +344,8 @@ a:hover {
 #l1 {
 	 border : 3px solid orange;
 	position: absolute;
-	width: 400px;
-	height: 330px;
+	width: 410px;
+	height: 370px;
 	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 30px;
@@ -445,6 +445,14 @@ border: 1px solid orange;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	border-radius: 5px;
+}
+.first:hover {
+	transform: scale(1.05);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
 }
 .p1 {
  width: 500px;
@@ -759,7 +767,7 @@ function deliinRav(even) {
 function delinumCheck() {
 	if($("#rap_track").val()==""){
 		swal("운송장번호를 입력하지 않았습니다.");
-		$("rap_track").focus();
+		$("#rap_track").focus();
 		return false;
 	}
 }
@@ -793,7 +801,7 @@ function revdelinum(even) {
 		    	   +"<input class='b3' type='button' id='back' value='확인'></div>"; 
 
 		       $('#total').css("display", "inline");
-			    $('# ').css("display", "inline");   
+			    $('#c1 ').css("display", "inline");   
 		    	$('#c1').html(cub);
 		    	 $('#back').click(function () {
 		    	  $('#total').css("display", "none");
