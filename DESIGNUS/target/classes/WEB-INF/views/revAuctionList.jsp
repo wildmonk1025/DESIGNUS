@@ -14,13 +14,15 @@ div {
 	margin: auto;	
 }
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 600px;
 }
@@ -47,17 +49,13 @@ div {
 	border: 0.1px soild gray;
 }
 
-#list {
-	width: 1420px;
-	height: 480px;
-	float: left;
-	margin: 50px;
-}
 
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 180px;
+   margin-top: 20px;
+   border: 1px solid #f0f0f0;
 }
 
 .ipt {
@@ -85,7 +83,6 @@ div {
 }
 
 #List {
-	border: 1px solid black;
 	position: relative;
 	top: 30px;
 	width: 1500px;
@@ -205,9 +202,10 @@ a{
 
 
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
-	</div>
+	<div id="footer">
+      <hr style="width:100%; border: 2px solid coral; align: center;">   
+         <jsp:include page="footer.jsp"></jsp:include>
+      </div>
 
 </body>
 
