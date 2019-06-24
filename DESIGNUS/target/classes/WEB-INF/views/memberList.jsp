@@ -150,20 +150,20 @@ margin-top: 10px;
 }
 a:active {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 a:visited {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 a:link {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 a:hover {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 .best {
 	border: 1px solid black;

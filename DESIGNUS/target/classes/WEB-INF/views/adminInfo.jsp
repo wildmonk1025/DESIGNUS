@@ -108,22 +108,22 @@ ul {
 
 a:active {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 a:visited {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 a:link {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 a:hover {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 </style>
 </head>
