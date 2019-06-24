@@ -653,10 +653,7 @@ public class MypageMM {
 		String view = null;
 		int num = (pageNum == null) ? 1 : pageNum;
 		revList = pDao.revAuctionMyOrderListSelect(id, num);
-		System.out.println("(서비스클래스)제작의뢰  중간지점 1 revList.size(): " + revList.size());
-		System.out.println("(서비스클래스)제작의뢰  중간지점 1-2 revList.size(): " + revList.get(0).getRap_mbid_w());
-		System.out.println("(서비스클래스)제작의뢰  중간지점 1-3 revList.size(): " + revList.get(0).getRap_ptnum());
-		System.out.println("(서비스클래스)제작의뢰  중간지점 1-1 revList.size(): " + revList.get(0).getRa_title());
+		
 		Gson gson = new Gson();
 		String str = gson.toJson(revList);
 		mav.addObject("revList", str);

@@ -318,6 +318,7 @@ $(document).ready(function(){
 			</div>
         <div id="sixth">${Spaging}</div>
 		</div>
+		<jsp:include page="footer.jsp" />
 	</div>
 	
 </body>
