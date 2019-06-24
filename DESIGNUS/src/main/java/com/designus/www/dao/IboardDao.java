@@ -62,7 +62,7 @@ public interface IboardDao {
 
 	void setNotifyStepfive(Notify nf);
 
-	List<Board> getNoticedlist(int num);
+	List<Board> getNoticedlist(@Param("num")int num);
 
 	void getNoticedel(@Param("bd_num")int bd_num);
 

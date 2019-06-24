@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 /* ::-webkit-scrollbar{width: 2px;}
@@ -13,7 +14,7 @@
 ::-webkit-scrollbar-thumb:hover {background: #FFC19E;}
 ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
 width:5px;height:5px;background:#FFC19E;} */
-div{
+div {
 	margin: auto;
 }
 
@@ -73,22 +74,24 @@ div{
 	border: none;
 	color: gray;
 }
+
 #searchbtn:hover {
 	color: coral;
 }
 
 #searchbtn:active {
-	position:relative;
-	top:1px;
+	position: relative;
+	top: 1px;
 }
-#rankingbox{
+
+#rankingbox {
 	width: 150px;
 	height: 30px;
 	padding-top: 10px;
 	position: relative;
 	float: left;
-
 }
+
 #ranking {
 	width: 150px;
 	height: 30px;
@@ -96,10 +99,10 @@ div{
 	top: 5;
 	left: 5;
 	font-size: 16px;
-	font-weight:bolder;
+	font-weight: bolder;
 	font-family: Verdana, sans-serif;
-
 }
+
 #ranking span {
 	text-align: center;
 	height: 30px;
@@ -121,8 +124,6 @@ div{
 	height: 50px;
 }
 
-
-
 #subcategory {
 	width: 50px;
 	height: 50px;
@@ -140,6 +141,7 @@ div{
 
 .submenu {
 	margin-left: 100px;
+	padding-top: 10px;
 	width: 150px;
 	float: left;
 	height: 50px;
@@ -197,18 +199,19 @@ div{
 	heigth: auto;
 	background-color: white;
 	color: white;
-	padding:1px;
+	padding: 1px;
 	font-size: 10px;
 	display: none;
 	z-index: 2000;
-	box-shadow: 4px 2px 9px -4px rgba(0,0,0,0.75);
+	box-shadow: 4px 2px 9px -4px rgba(0, 0, 0, 0.75);
 	border: 1px solid black;
 }
+
 .alarmtitle {
 	text-align: center;
 	font-size: 18px;
 	background-color: #FFC19E;
-	color:gray;
+	color: gray;
 }
 
 .alarmcontents {
@@ -221,8 +224,6 @@ div{
 .alarmcontents:hover {
 	background-color: #D0F5A9;
 }
-
-
 
 * {
 	margin: 0px;
@@ -289,9 +290,80 @@ nav {
 	transition: height 1s ease;
 }
 
-.menu-item li:hover{
+.menu-item li:hover {
 	font-weight: 900;
 	background-color: white;
+}
+
+.revauctionbtn, .auctionbtn, .sponsorbtn {
+	margin-top: 20px;
+	margin-right: 10px;
+	background: coral;
+	float: right;
+	color: #fff;
+	border: none;
+	width: 150px;
+	height: 30px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+	/* 	background-color: coral;
+	margin-top: 20px;
+	margin-right: 10px;
+	width: 150px;
+	height: 30px;
+	color: white;
+	float: right; */
+}
+
+.revauctionbtn:hover, .auctionbtn:hover, .sponsorbtn:hover {
+	background: #fff;
+	color: coral;
+}
+
+.revauctionbtn:before, .auctionbtn:before, .sponsorbtn:before,
+	.revauctionbtn:after, .auctionbtn:after, .sponsorbtn:after {
+	content: '';
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #1AAB8A;
+	transition: 400ms ease all;
+}
+
+.revauctionbtn:after, .auctionbtn:after, .sponsorbtn:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
+button:hover:before, button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
+
+.mtag:visited {
+	text-decoration: none;
+	color: #646464;
+}
+
+.mtag:link {
+	text-decoration: none;
+	color: #646464;
+}
+
+.mtag:hover {
+	transform: scale(3Y);
+	transition-duration: 1s;
+	font-weight: 900;
+}
+
+.atag:hover {
+	text-decoration: none;
+	color: #646464;
 }
 
 .atag:active {
@@ -308,22 +380,6 @@ nav {
 	text-decoration: none;
 	color: #646464;
 }
-.atag:hover {
-	text-decoration: none;
-	color: #646464;
-}
-
-.revauctionbtn, .auctionbtn, .sponsorbtn {
-	background-color: coral;
-	margin-top: 20px;
-	margin-right: 10px;
-	width: 150px;
-	height: 30px;
-	color: white;
-	float: right;
-}
-
-
 </style>
 <meta charset="UTF-8">
 
@@ -332,39 +388,48 @@ nav {
 <body>
 	<div id="header">
 		<div id="logo">
-			<a href="home" class='atag'><img src="resources/images/logo.png" width="250px" height="80px"></a>
+			<a href="home" class='atag'><img src="resources/images/logo.png"
+				width="250px" height="80px"></a>
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 			<!-- <img src="./resources/images/logo.png" width="250px" height="80px" /> -->
 		</div>
 		<form name="searchingfct" action="searching" method="POST">
-		<div id="search">
-			<div id="searchbox">
-			<input type="text" id="searchtxt" name="word" placeholder="검색어를 입력해주세요." style="padding-left:5px;" />
-			<button id="searchbtn">Search</button>
+			<div id="search">
+				<div id="searchbox">
+					<input type="text" id="searchtxt" name="word"
+						placeholder="검색어를 입력해주세요." style="padding-left: 5px;" />
+					<button id="searchbtn">Search</button>
+				</div>
+				<div id="rankingbox">
+					<div id="ranking"></div>
+				</div>
 			</div>
-			<div id="rankingbox">
-			<div id="ranking">
-			</div>
-			</div>
-		</div>
 		</form>
-		<div id="loginwriter">						
+		<div id="loginwriter">
 
 			<div id="mypage">
-				<c:set var="perm" value="${grade}"/>
+				<c:set var="perm" value="${grade}" />
 				<c:choose>
-				<c:when test="${empty perm}"></c:when>
-				<c:when test="${perm eq 'M'}">
-				<a href="adminInfo" class='atag'>관리자<br>페이지</a></c:when>
-				<c:when test="${perm ne 'M'}">
-				<a href="mypage" class='atag'>마이<br>페이지</a></c:when>
+					<c:when test="${empty perm}"></c:when>
+					<c:when test="${perm eq 'M'}">
+						<a href="adminInfo" class='atag' style="color: green;">관리자<br>페이지
+						</a>
+					</c:when>
+					<c:when test="${perm ne 'M'}">
+						<a href="mypage" class='atag' style="color: green;">마이<br>페이지
+						</a>
+					</c:when>
 				</c:choose>
 			</div>
 			<div id="msg">
-			<c:set var="perm2" value="${id}"/>
-			<c:if test="${perm2 eq null}"></c:if>
-			<c:if test="${perm2 ne null}">
-				<div id="alarmBtn"><img src="resources/images/notify_img0.png" width="50px" height="50px" /></div></c:if>
+				<c:set var="perm2" value="${id}" />
+				<c:if test="${perm2 eq null}"></c:if>
+				<c:if test="${perm2 ne null}">
+					<div id="alarmBtn">
+						<img src="resources/images/notify_img0.png" width="50px"
+							height="50px" />
+					</div>
+				</c:if>
 			</div>
 			<c:set var="check" value="${id}" />
 			<c:if test="${check eq null}">
@@ -377,32 +442,37 @@ nav {
 			<c:if test="${check ne null}">
 				<div class="loginmsg">
 					<div class="mark">
-					<div id="alarmList"></div>
-					<c:choose>
-						<c:when test="${grade=='N'}">
-								<img src="resources/images/letter-n.png" width="20px" height="20px">[일반]
+						<div id="alarmList"></div>
+						<c:choose>
+							<c:when test="${grade=='N'}">
+								<img src="resources/images/letter-n.png" width="20px"
+									height="20px">[일반]
 								<c:out value="${check}" />
 								님 반가워요
 						</c:when>
-						<c:when test="${grade=='W'}">
-								<img src="resources/images/letter-w.png" width="20px" height="20px">[작가]
+							<c:when test="${grade=='W'}">
+								<img src="resources/images/letter-w.png" width="20px"
+									height="20px">[작가]
 								<c:out value="${check}" />
 								님 반가워요
 						</c:when>
-						<c:when test="${grade=='M'}">
-								<img src="resources/images/letter-m.png" width="20px" height="20px">[관리자]
+							<c:when test="${grade=='M'}">
+								<img src="resources/images/letter-m.png" width="20px"
+									height="20px">[관리자]
 								<c:out value="${check}" />
 								님 반가워요
 						</c:when>
-						<c:when test="${grade=='S'}">
-								<img src="resources/images/letter-s.png" width="20px" height="20px">[임시]
+							<c:when test="${grade=='S'}">
+								<img src="resources/images/letter-s.png" width="20px"
+									height="20px">[임시]
 								<c:out value="${check}" />
 								님 반가워요
 						</c:when>
-					</c:choose>
+						</c:choose>
 					</div>
 					<form id="logout" action="logout" method="post">
-						<input type="button" class="logbtn" onclick="javascript:logout()" value="로그아웃">
+						<input type="button" class="logbtn" onclick="javascript:logout()"
+							value="로그아웃">
 					</form>
 				</div>
 			</c:if>
@@ -414,22 +484,22 @@ nav {
 				<a href="#" class='atag'><h2>≡</h2></a>
 			</h4>
 			<nav>
-				<ul >
+				<ul>
 				</ul>
 			</nav>
 		</div>
 		<div id="menu">
 			<div class="submenu">
-				<a href="sponsor" class='atag'>후원</a>
+				<a href="sponsor" class='mtag'>후원</a>
 			</div>
 			<div class="submenu">
-				<a href="reviewboard" class='atag'>이용후기</a>
+				<a href="reviewboard" class='mtag'>이용후기</a>
 			</div>
 			<div class="submenu">
-				<a href="popularWriterFrm" class='atag'>공지사항</a>
+				<a href="popularWriterFrm" class='mtag'>공지사항</a>
 			</div>
 			<div class="submenu">
-				<a href="servicecenter" class='atag'>고객센터</a>
+				<a href="servicecenter" class='mtag'>고객센터</a>
 			</div>
 
 		</div>
@@ -440,15 +510,21 @@ nav {
 			<button class="auctionbtn" onclick="location.href='auctionWrite'">출품등록하기</button>
 		</c:when>
 		<c:when test="${grade!='W'}">
-			<button class="sponsorbtn" onclick="noAuthority()" style="background-color:gray">후원상품등록</button>
-			<button class="auctionbtn" onclick="noAuthority()" style="background-color:gray">출품등록하기</button>
+			<button class="sponsorbtn" onclick="noAuthority()"
+				style="background-color: gray">후원상품등록</button>
+			<button class="auctionbtn" onclick="noAuthority()"
+				style="background-color: gray">출품등록하기</button>
 		</c:when>
 	</c:choose>
 	<c:choose>
 		<c:when test="${grade != null}">
-		<button class="revauctionbtn" onclick="location.href='revauctionWrite'">제작의뢰요청하기</button></c:when>
+			<button class="revauctionbtn"
+				onclick="location.href='revauctionWrite'">제작의뢰요청하기</button>
+		</c:when>
 		<c:when test="${grade == null}">
-		<button class="revauctionbtn" onclick="noAuthority()" style="background-color:gray">제작의뢰요청하기</button></c:when>
+			<button class="revauctionbtn" onclick="noAuthority()"
+				style="background-color: gray">제작의뢰요청하기</button>
+		</c:when>
 	</c:choose>
 
 </body>
@@ -461,117 +537,132 @@ nav {
 		$('#logout').submit();
 	}
 
-	
-	var i=0;
- 	function ranking() {
+	var i = 0;
+	function ranking() {
 		$.ajax({
-    		type:'POST',
-    		url:'ajax/searchranking',
-    		dataType:'json',
-    		success: function(data) {
-    			var str='';
-    			if(i<10) {
-    			str="<span>"+(i+1)+". <a href=\"javascript:searchingfct('"+data[i].rtsr_word+"')\" class='atag'>"+data[i].rtsr_word+"</a></span>";
-    			$("#ranking").html(str);
-    	        $("#rankingbox").delay(4850).animate({top:8},function(){
-    	        	$("#ranking span:first");
-    	        	$("#rankingbox").css({top:0});
-    	        });
-    			i++;
-    			}
-    			else if(i==10) {
-    				i=0;
-    				str="<span>실시간 검색순위</span>";
-        			$("#ranking").html(str);
-    			}
-    		},
-			error: function(error) {
-    		}
-    	}); //ajax End
-	}
-	
-	function searchingfct(word) {
-	      	var f = document.searchingfct;
-	        // input태그의 값들을 전송하는 주소
-	        f.action = "searching"
-	        
-	       	f.word.value = word;
-	        // 전송 방식 : post
-	        f.method = "post"
-	        f.submit();
-	}
-	
-	
-	$(document).ready(function() {
-		$.ajax({
-    		type:'POST',
-    		url:'ajax/category',
-    		dataType:'json',
-    		success: function(data) {
-    			var str='';
-    			for(var i in data) {
-				str+="<li><a href='auctionList?cgcode="+data[i].cg_code+"' class='atag'>"+data[i].cg_name+"</a></li>";
-    			}
-    			$("#subcategory ul").html(str);
-    		},
-			error: function(error) {
-    		}
-    	}); //ajax End
-	});
-	
-$("#alarmBtn").click(function() {
-	$('#alarmList').css('display','block');
-	$('.alarmcontents').css('display','block');
- 	setTimeout(function() {
-		$('#alarmList').css('display','none');
-		$('.alarmcontents').css('display','none');		
-	},2500);
-});
-
-/*
- $(document).ajaxStart(function() {
-	poll();
-});
- setTimeout($("#ranking").html("<span>실시간 검색순위</span>"),100);
- setInterval(ranking,5300);
- 	
- 	function poll() {
-		$.ajax({
-			type:'POST',
-			url:'ajax/notification',
-			dataType:'json',
-			success: function(data) {
-				var str="<div class='alarmtitle'>알림</div>";
-				var str2='';
-				for(var i in data) {
-					str+="<div class='alarmcontents' onclick='updateArm("+data[i].nf_num+");'>["+data[i].nf_mbid_s+"] "+data[i].nf_contents+"<br>수신일 "+data[i].nf_date+"</div>";
-					}
-					if(data.length>6) {
-						str2="<img src='resources/images/notify_img6.png' width='50px' height='50px'/>";	
-					} else {
-						str2="<img src='resources/images/notify_img"+data.length+".png' width='50px' height='50px'/>";
-					}
-				$("#alarmList").html(str);
-				$("#alarmBtn").html(str2);
+			type : 'POST',
+			url : 'ajax/searchranking',
+			dataType : 'json',
+			success : function(data) {
+				var str = '';
+				if (i < 10) {
+					str = "<span>" + (i + 1)
+							+ ". <a href=\"javascript:searchingfct('"
+							+ data[i].rtsr_word + "')\" class='atag'>"
+							+ data[i].rtsr_word + "</a></span>";
+					$("#ranking").html(str);
+					$("#rankingbox").delay(4850).animate({
+						top : 8
+					}, function() {
+						$("#ranking span:first");
+						$("#rankingbox").css({
+							top : 0
+						});
+					});
+					i++;
+				} else if (i == 10) {
+					i = 0;
+					str = "<span>실시간 검색순위</span>";
+					$("#ranking").html(str);
 				}
-			}); //ajax End
-		}
-	
+			},
+			error : function(error) {
+			}
+		}); //ajax End
+	}
+
+	function searchingfct(word) {
+		var f = document.searchingfct;
+		// input태그의 값들을 전송하는 주소
+		f.action = "searching"
+
+		f.word.value = word;
+		// 전송 방식 : post
+		f.method = "post"
+		f.submit();
+	}
+
+	$(document).ready(
+			function() {
+				$.ajax({
+					type : 'POST',
+					url : 'ajax/category',
+					dataType : 'json',
+					success : function(data) {
+						var str = '';
+						for ( var i in data) {
+							str += "<li><a href='auctionList?cgcode="
+									+ data[i].cg_code + "' class='atag'>"
+									+ data[i].cg_name + "</a></li>";
+						}
+						$("#subcategory ul").html(str);
+					},
+					error : function(error) {
+					}
+				}); //ajax End
+			});
+
+	$("#alarmBtn").click(function() {
+		$('#alarmList').css('display', 'block');
+		$('.alarmcontents').css('display', 'block');
+		setTimeout(function() {
+			$('#alarmList').css('display', 'none');
+			$('.alarmcontents').css('display', 'none');
+		}, 2500);
+	});
+
+	$(document).ajaxStart(function() {
+		poll();
+	});
+	setTimeout($("#ranking").html("<span>실시간 검색순위</span>"), 100);
+	setInterval(ranking, 5300);
+
+	function poll() {
+		$
+				.ajax({
+					type : 'POST',
+					url : 'ajax/notification',
+					dataType : 'json',
+					success : function(data) {
+						var str = "<div class='alarmtitle'>알림</div>";
+						var str2 = '';
+						for ( var i in data) {
+							str += "<div class='alarmcontents' onclick='updateArm("
+									+ data[i].nf_num
+									+ ");'>["
+									+ data[i].nf_mbid_s
+									+ "] "
+									+ data[i].nf_contents
+									+ "<br>수신일 "
+									+ data[i].nf_date + "</div>";
+						}
+						if (data.length > 6) {
+							str2 = "<img src='resources/images/notify_img6.png' width='50px' height='50px'/>";
+						} else {
+							str2 = "<img src='resources/images/notify_img"+data.length+".png' width='50px' height='50px'/>";
+						}
+						$("#alarmList").html(str);
+						$("#alarmBtn").html(str2);
+					}
+				}); //ajax End
+	}
+
 	function updateArm(num) {
 		$.ajax({
-			type:'POST',
-			url:'ajax/updatearm',
-			data: {nf_num:num},
-			dataType:'json',
-			success: function(data) {
-				$('#alarmList').css('display','none');
-				$('.alarmcontents').css('display','none');
+			type : 'POST',
+			url : 'ajax/updatearm',
+			data : {
+				nf_num : num
+			},
+			dataType : 'json',
+			success : function(data) {
+				$('#alarmList').css('display', 'none');
+				$('.alarmcontents').css('display', 'none');
 				poll();
-				},
-			error: function(error) {
-				}
-			});
-		} 
-*/
+			},
+			error : function(error) {
+			}
+		});
+	}
 </script>
 </html>

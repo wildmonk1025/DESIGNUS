@@ -9,7 +9,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>Home</title>
 <style>
-	::-webkit-scrollbar{width: 5px;}
+	::-webkit-scrollbar{width: 3px;}
 	::-webkit-scrollbar-track {background-color:white;}
 	::-webkit-scrollbar-thumb {background-color:#F5BCA9;border-radius: 5px;}
 	::-webkit-scrollbar-thumb:hover {background: #F5BCA9;}
@@ -21,16 +21,16 @@
 }
 
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
 	width: 1518px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle {
-	border: 1px solid black;
 	width: 1520px;
 	height: auto;
 	margin-top: 50px;
@@ -40,7 +40,7 @@
 	width: 1518px;
 	height: 440px;
 	float: left;
-	border: 1px solid orange;
+	border: 1px solid #f0f0f0;
 }
 
 #middle_content1_title, #middle_content2_title, #middle_content3_title {
@@ -48,10 +48,13 @@
 	height: 40px;
 	float: left;
 	margin: 20px 20px 10px 20px;
+	padding-top: 5px;
 	padding-left: 10px;
-	font-size: 25px;
+	font-size: 29px;
 	font-weight: 800;
-	border: 1px solid orange;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_content1_lv1, #middle_content2_lv1, #middle_content3_lv1 {
@@ -59,7 +62,6 @@
 	height: 330px;
 	float: left;
 	margin: 0px 20px 0px 20px;
-	border: 1px solid orange;
 }
 
 #middle_content1_lv2, #middle_content2_lv2, #middle_content3_lv2 {
@@ -68,17 +70,20 @@
  	overflow-x: auto;
  	overflow-y: hidden;
 	white-space: nowrap;
-
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 .recommlist, .recommlist2, .recommlist3 {
 	width: 280px;
 	height: 280px;
 	display:inline-block;
-	border: 1px solid black;
+	border: 1px solid #f0f0f0;
 	border-radius: 10px;
 	margin-top: 10px;
 	margin-left: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 .recommlist:hover, .recommlist2:hover, .recommlist3:hover {
@@ -99,7 +104,7 @@
 	width: 270px;
 	height: 50px;
 	text-align: center;
-	background-color: #E6E6E6;
+	background-color: #FBEFF2;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px; 
 }
@@ -112,9 +117,10 @@
 #footer {
 	border: 1px solid red;
 	width: 1518px;
-	height: 170px;
+	height: 180px;
 	margin-top: 20px;
 	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 
@@ -128,7 +134,7 @@
 	</div>
 	<div id="middle">
 		<div id="middle_content1">
-			<div id="middle_content1_title">추천 출품작</div>
+			<div id="middle_content1_title">&nbsp;추천 출품작</div>
 			<div id="middle_content1_lv1">
 			<div id="middle_content1_lv2">
 			<c:forEach var="rl" items="${recommList}">
@@ -141,7 +147,7 @@
 			</div>
 		</div>
 		<div id="middle_content2">
-			<div id="middle_content2_title">진행중인 추천 제작의뢰</div>
+			<div id="middle_content2_title">&nbsp;진행중인 추천 제작의뢰</div>
 			<div id="middle_content2_lv1">
 			<div id="middle_content2_lv2">
 			<c:forEach var="rl2" items="${recommList_ra}">
@@ -157,7 +163,7 @@
 			</div>
 		</div>
 		<div id="middle_content3">
-			<div id="middle_content3_title">관심 후원</div>
+			<div id="middle_content3_title">&nbsp;관심 후원</div>
 			<div id="middle_content3_lv1">
 			<div id="middle_content3_lv2">
 			<c:forEach var="rl3" items="${recommList_ss}">
@@ -169,15 +175,14 @@
 			</div>
 			</div>
 		</div>
-		
 		<div id="footer">
+		<hr style="width:100%; border: 2px solid coral; align: center;">	
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
 </body>
 <script>
 	//var rList = ${rList}
-
 	window.onload = function() {
 		var flag = ${logout};
 		if (flag == 1) {

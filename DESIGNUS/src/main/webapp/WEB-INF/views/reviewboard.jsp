@@ -471,10 +471,10 @@ function articleView(num1){
 		var c = '<%=(String) session.getAttribute("id")%>';
 		var b = $("#idc").val();
 		console.log(c);
-		if(c==null){
+		console.log(b);
+		if(c==null||c==''){
 			swal("비로그인은 추천할수 없습니다.");
-		}
-		if(b==c){
+		}else if(b==c){
 			swal("자신의 글은 추천할수 없습니다.");
 		}else if(click) {
 			swal("해당글을 추천 하였습니다.");
@@ -536,6 +536,10 @@ function articleView(num1){
 
 			if (c == b || c == 'ADMIN') {
 				swal("해당글이 삭제 되었습니다.");
+				setTimeout(function(){
+				window.location.reload();
+				location.href = 'reviewboard';
+				},1000);
 			} else {
 
 				swal("글삭제 권한이 없습니다.");
@@ -550,8 +554,7 @@ function articleView(num1){
 				},
 				success : function(data) {
 					console.log("성공");
-					window.location.reload();
-					location.href = 'reviewboard';
+					
 				},
 				error : function(error) {
 
