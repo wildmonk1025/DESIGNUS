@@ -11,7 +11,7 @@
 
 <style>
 ::-webkit-scrollbar {
-	width: 15px;
+	width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -84,6 +84,7 @@ div {
 
 td {
 	height: 50px;
+	border: 1px solid black;
 }
 
 .ts1 {

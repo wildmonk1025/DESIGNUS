@@ -6,17 +6,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#mainheader {
-	border: 1px solid black;
+
+#main {
 	width: 1520px;
 	height: 170px;
+	position: relative;
+}
+#mainheader {
+	border: 1px solid #F5BCA9;
+	width: 1518px;
+	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
-	height: 600px;
+	height: auto;
+	magin-top: 50px;
+	border: 1px solid #f0f0f0;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 .btn1 {
@@ -42,17 +54,21 @@
 }
 
 #list {
-	width: 1420px;
-	height: 480px;
+	width: 1400px;
+	height: 600px;
 	float: left;
 	margin: 50px;
 	display: inline-block;
+	border: 1px solid #f0f0f0;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 .ipt {
@@ -70,20 +86,23 @@ select {
 }
 
 #mainTable {
+	margin-top: 20px;
 	margin-left: 50px;
 	float: left;
 	width: 450px;
 	border-bottom: 0.5px solid orange;
 	border-top: 0.5px solid orange;
+	border: 1px solid #f0f0f0;
 }
 
 #phtDiv {
+	margin-top: 20px;
 	margin-left: 50px; float : left;
-	border: 1px solid black;
 	position: relative;
 	width: 400px;
 	height: 380px;
 	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 #File {
@@ -106,7 +125,8 @@ input[type="file"] {
 }
 
 #contents {
-	margin-left :25px;
+	margin-left : 10px;
+	padding-left : 10px;
 	float: left;
 	position: relative;
 	width: 400px;
@@ -114,10 +134,12 @@ input[type="file"] {
 }
 
 textarea {
+	margin-top: 20px;
 	width: 400px;
 	height: 380px;
 	resize: none;
 	font-size: 18px;
+	border: 1px solid #f0f0f0;
 }
 
 #pht1 {
@@ -137,8 +159,13 @@ input[type="file"]{
 	float: right;
 	width: 120px;
 	height: 50px;
+	background-color: coral;
+	color: white;
+	border-radius: 5px;
+	font-style: italic;
+	font-weight: 900;
 	font-size: 18px;
-	margin: 18px 18px 0px 0px;
+	margin: 38px 18px 0px 0px;
 }
 a{
 	text-decoration: none;
@@ -151,13 +178,16 @@ a{
 </head>
 
 <body>
+	<div id="main">
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
+	</div>
 	</div>
 
 	<div id="homeMain">
 		<div id="list">
-			<h3 style="color: orange;">출품 등록</h3>
+			<div style="color: white; background-color:#8181F7; font-size:35px; width: 1390px; height:80px;
+			padding-top: 20px; padding-left:10px; float:left; box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);">출품 등록</div>
 			<form action="auctionWriteSubmit" name="auctionWriteFrm" method="post" enctype="multipart/form-data">
 				<table id="mainTable">
 					<tr>
@@ -225,10 +255,12 @@ a{
 		</div>
 
 
-
+		<div id="footer">
+		<hr style="width:100%; border: 2px solid coral; align: center;">
+		<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include></div>
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

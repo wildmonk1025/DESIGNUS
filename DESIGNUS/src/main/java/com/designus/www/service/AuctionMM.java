@@ -83,24 +83,42 @@ public class AuctionMM {
 	public ModelAndView auctionList(Integer pageNum, int cgcode) throws ParseException {
 		mav = new ModelAndView();
 		String view = "null";
-		String auimg = null;
 		List<Auction> auList = null;
 		Auction au = new Auction();
 		AuctionTender at = new AuctionTender();
 		DateAdjust da = new DateAdjust();
+		Notify nf = new Notify();
 		int num = (pageNum == null) ? 1 : pageNum;
 
 		auList = aDao.getAuctionListSelect(cgcode, num);
-		System.out.println("[][][][][][][][][][] ="+auimg);
+		
+		for(int i = 0 ; i < auList.size(); i++) {
+			System.out.println("[][][][] auList = " + auList.get(i));
+		}
+		
+		for(int i = 0 ; i < auList.size(); i++) {
+			boolean new_date3 = da.compareDateToBoolean(auList.get(i).getAu_date());
+			if(new_date3 == false) {
+				if(aDao.getAuctionKind(auList.get(i).getAu_num()).equals("O")) {
+				nf.setNf_mbid_r(auList.get(i).getAu_mbid_w());
+				nf.setNf_notify(auList.get(i).getAu_title()+" 상품의 경매가 마감 되었습니다.");
+				aDao.setAuctionEnd(nf); // notify 등록 
+				
+				aDao.updateAuctionKind(auList.get(i).getAu_num()); //auctionKind 변경 O -> C
+				};
+			};
+		};
+		
 		for (int i = 0; i < auList.size(); i++) {
 			String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
 			auList.get(i).setAu_date(new_date2);
 		}
-
+		
+		
+		
 		mav.addObject("paging", AugetPaging(num, cgcode));
 		mav.addObject("auList", auList);
-		mav.addObject("cgcode",cgcode);
-		System.out.println("[][][][][] = "+cgcode);
+		mav.addObject("cgcode", cgcode);
 		view = "auctionList";
 		mav.setViewName(view);
 		return mav;
@@ -136,7 +154,7 @@ public class AuctionMM {
 
 		mav.addObject("paging", RagetPaging(num, cgcode));
 		mav.addObject("raList", raList);
-		mav.addObject("cgcode",cgcode);
+		mav.addObject("cgcode", cgcode);
 		view = "revAuctionList";
 		mav.setViewName(view);
 		return mav;
@@ -303,22 +321,29 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
-
+/*
 	public String notifyChak() {
 		List<LocalDateTime> EndTimeList = aDao.auTimeSelect();
+		System.out.println("[][][][] EndTimeList size = " + EndTimeList.size());
 		List<Notify> auTimeList = new ArrayList<Notify>();
 		Notify nf = new Notify();
 		LocalDateTime today = LocalDateTime.now();
-		for(int i = 0 ; i < EndTimeList.size() ; i++) {
-			if(EndTimeList.get(i).isBefore(today)) {
+		for (int i = 0; i < EndTimeList.size(); i++) {
+			if (EndTimeList.get(i).isBefore(today)) {
 				auTimeList.addAll(aDao.auTiNaSelect(EndTimeList.get(i)));
-				System.out.println("[][][][] auTimeList ="+auTimeList.size());
 			}
 			
+			for (int j = 0; j < auTimeList.size(); j++) {
+				if(aDao.notifyIdSel()) {
+					
+				}
+				
+			}
 		}
-		
 		return null;
 	}
-
-
+*/
+	
+	
+	
 }

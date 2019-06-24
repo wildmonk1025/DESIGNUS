@@ -143,24 +143,41 @@ public class MemberMM {
 
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 
-		String pwdEncode = mDao.getSecurityPwd(mb.getMb_id());
-		if (pwdEncode != null) {
-			if (pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
-				mb = mDao.getMemberInfo(mb.getMb_id());
-				session.setAttribute("id", mb.getMb_id());
-				session.setAttribute("grade", mb.getMb_grade());
-				/* session.setAttribute("mb", mb); */
-				System.out.println("grede=" + mb.getMb_grade());
-				System.out.println("id=" + mb.getMb_id());
-				view = "redirect:home";
-			} else {
+		Member d=mDao.getMemberclick(mb.getMb_id());
+		
+		mav.addObject("ccnt", d.getMb_ccnt());
+		
+		
+		System.out.println("Asdasd"+d.getMb_ccnt());
+		if(d.getMb_ccnt()>=3) {
+				
+				System.out.println("경고횟수:"+d.getMb_ccnt());
+				mav.addObject("msg1", "zzzz");
 				view = "loginBox";
-				mav.addObject("ckeck", 2);
+		}else {
+			String pwdEncode = mDao.getSecurityPwd(mb.getMb_id());
+			if (pwdEncode != null) {
+				if (pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
+			
+					mb = mDao.getMemberInfo(mb.getMb_id());
+					session.setAttribute("id", mb.getMb_id());
+					session.setAttribute("grade", mb.getMb_grade());
+					/* session.setAttribute("mb", mb); */
+					System.out.println("grede=" + mb.getMb_grade());
+					System.out.println("id=" + mb.getMb_id());
+					mav.addObject("msg", "ddd");
+					view = "redirect:home";
+					
+				} else {
+					view = "redirect:home";
+				}
+			} else {
+				view = "redirect:home";
 			}
-		} else {
-			view = "loginBox";
-			mav.addObject("ckeck", 2);
+			view = "redirect:home";
 		}
+		
+	
 		mav.setViewName(view);
 		return mav;
 	}

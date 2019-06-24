@@ -14,13 +14,15 @@ div {
 	margin: auto;	
 }
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 600px;
 }
@@ -36,7 +38,7 @@ div {
 .btn2 {
 	width: 140px;
 	height: 50px;
-	background-color: orange;
+	background-color: #ff7f50;
 	border: 0.1px soild gray;
 }
 
@@ -47,18 +49,13 @@ div {
 	border: 0.1px soild gray;
 }
 
-#list {
-	width: 1420px;
-	height: 480px;
-	float: left;
-	margin: 50px;
-	display: inline-block;
-}
 
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 180px;
+   margin-top: 20px;
+   border: 1px solid #f0f0f0;
 }
 
 .ipt {
@@ -86,7 +83,6 @@ div {
 }
 
 #List {
-	border: 1px solid black;
 	position: relative;
 	top: 30px;
 	width: 1500px;
@@ -94,8 +90,10 @@ div {
 }
 
 #ListView1 {
-	border: 1px solid black;
 	position: absolute;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	top: 50px;
 	left: 10px;
 	width: 1480px;
@@ -104,11 +102,10 @@ div {
 
 
 .paging1{
-	border:1px solid red;
 	position:absolute;
 	float:left;
 	left:0px;
-	bottom:0px;
+	bottom:-27px;
 	height: 50px;
 	width: 1500px;
 	text-align: center;
@@ -116,72 +113,51 @@ div {
 
 .raListFrm{
 	display:inline-block;
-	border:1px solid red;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+    margin:5px 0px 0px 0px;
 	width: 487px;
 	height: 150px;
 }
 .raListImg{
 	float: left;
-	border: 1px solid blue;
 	height: 149px;
 	width: 150px;
-}
-.raListTitle{
-	float: left;
-	border: 1px solid gray;
-	width: 333px;
-	height: 30px;	
-	font-size: 20px;
-	text-align: center;
-}
-.raListPrice{
-	float: left;
-	border: 1px solid black;
-	width: 333px;
-	height: 65px;
-}
-.raListDate{
-	float: left;
-	border: 1px solid green;
-	width: 333px;
-	height: 49px;
-	font-size: 17px;
-	color: blue;
+	border-radius: 15px;
 }
 
-.auListFrm{
-	display:inline-block;
-	border:1px solid red;
-	width: 487px;
-	height: 150px;
+.ListImg{
+	border-radius: 15px;
 }
-.auListImg{
+
+.raListTitle{
 	float: left;
-	border: 1px solid blue;
-	height: 149px;
-	width: 150px;
-}
-.auListTitle{
-	float: left;
-	border: 1px solid gray;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 30px;	
 	font-size: 20px;
 	text-align: center;
 }
-.auListPrice{
+
+.raListPrice{
 	float: left;
-	border: 1px solid black;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 85px;
 }
-.auListDate{
+.raListDate{
 	float: left;
-	border: 1px solid green;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 28px;
 	font-size: 17px;
 	color: blue;
+}
+
+a{
+	text-decoration: noen;
+	color: black;
 }
 
 </style>
@@ -202,7 +178,7 @@ div {
 			<c:forEach var="ra" items="${raList}">
 				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 					<div class="raListImg">
-						<%-- <img src="./images/${ra.ra_image }.png" /> --%>
+						<img class="ListImg" src="<c:url value='/resources/upload/${ra.ra_image}'/>" width="100%" height="100%"/>
 					</div>
 					<div class="raListTitle">
 						${ra.ra_title }
@@ -226,9 +202,10 @@ div {
 
 
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
-	</div>
+	<div id="footer">
+      <hr style="width:100%; border: 2px solid coral; align: center;">   
+         <jsp:include page="footer.jsp"></jsp:include>
+      </div>
 
 </body>
 
