@@ -17,9 +17,7 @@ body {
 	overflow: auto;
 }
 
-div {
-	margin: auto;
-}
+
 #join {
 	top: 500px;
 	left: 200px;
@@ -145,16 +143,12 @@ div {
 	height: 100%;
 }
 
-div {
-	margin: auto;
-}
 
 #notice {
 	padding-top: 5px;
 	margin: 10px;
 	width: 1080px;
 	height: 100px;
-	text-align: center;
 	font-size: 20px;
 	float: left;
 }
@@ -172,7 +166,6 @@ div {
 #main {
 	width: 1520px;
 	height: 170px;
-	text-align: center;
 }
 
 
@@ -181,7 +174,7 @@ a {
 	color: red
 }
 
-button {
+.btn1 {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
@@ -191,7 +184,6 @@ button {
 	padding: 0 24px;
 	font-size: 14px;
 	color: white;
-	text-align: center;
 	text-decoration: none;
 	text-shadow: 0 1px #154c86;
 	background-color: #247edd;
@@ -220,7 +212,7 @@ button {
 #spon {
 	margin: 10px; 
 	width: 1080px;
-	height: 700px;
+	height: 800px;
 	float: left;
 }
 
@@ -228,9 +220,7 @@ button {
 	color: red;
 }
 
-#btn1 {
-	text-align: center;
-}
+
 
 h, td, tr, input, textarea, select, FORM {
 	font-family: 고딕;
@@ -317,7 +307,6 @@ a:hover {
 	margin: 50px, 20px;
 	width: 300px;
 	height: 30px;
-	align: center;
 }
 
 #subcategory {
@@ -339,7 +328,6 @@ a:hover {
 	width: 150px;
 	float: left;
 	height: 50px;
-	text-align: center;
 	font-size: 18px;
 }
 
@@ -368,6 +356,15 @@ a:hover {
 	width: 1520px;
 	height: 170px;
 }
+
+#mypagemain {
+	width: 1530px;
+	height: 1200px;
+}
+#dddd{
+	width: 1530px;
+	height: 1020px;
+}
 </style>
 </head>
 
@@ -376,7 +373,8 @@ a:hover {
 		<jsp:include page="main.jsp" />
 	</div>
 
-	
+	<div id="mypagemain">
+	<div id="dddd">
 		<div id="leftmain">
 			<jsp:include page="Mapagemain.jsp" />
 		</div>
@@ -384,12 +382,13 @@ a:hover {
 			<div id="notice">
 				<h2>개인 정보 수정</h2>
 			</div>
+			
 			<div id="spon">
 				<form action=" memberrevise" method="POST"
 					enctype="multipart/form-data">
 					<table cellspacing="1" id="table1">
 						<tr>
-							<td text-align="center">아이디</td>
+							<td>아이디</td>
 							<td>${id}</td>
 						</tr>
 						<tr align="left">
@@ -399,7 +398,7 @@ a:hover {
 						</tr>
 						<tr>
 							<td>비밀번호 확인</td>
-							<td><input type="password" />&nbsp;비밀번호 확인 메게지</td>
+							<td><input type="password" />&nbsp;비밀번호 확인 메세지</td>
 						</tr>
 						<tr>
 						<th>주소</th>
@@ -462,10 +461,16 @@ a:hover {
 						onclick="location.href='mypage' ">돌아가기</button>
 
 				</div>
+		
 				</form>
-				
+	
 			</div>
+		
 		</div>
+		</div>
+		<jsp:include page="footer.jsp" />
+		</div>
+		
 </body>
 <script>
 	function fileChk(elem) {

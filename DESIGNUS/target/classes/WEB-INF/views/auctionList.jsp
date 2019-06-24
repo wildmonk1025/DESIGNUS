@@ -36,7 +36,7 @@ div {
 .btn2 {
 	width: 140px;
 	height: 50px;
-	background-color: orange;
+	background-color: #FF7F50;
 	border: 0.1px soild gray;
 }
 
@@ -86,7 +86,6 @@ div {
 }
 
 #List {
-	border: 1px solid black;
 	position: relative;
 	top: 30px;
 	width: 1500px;
@@ -96,74 +95,48 @@ div {
 
 #ListView2 {
 	position: absolute;
-	border: 1px solid black;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	top: 50px;
 	left: 10px;
 	width: 1480px;
-	height: 470px;
+	height: 490px;
 }
 
 .paging2{
-	border:1px solid red;
 	position:absolute;
 	float:left;
 	left:0px;
-	bottom:0px;
+	bottom:-27px;
 	height: 50px;
 	width: 1500px;
 	text-align: center;
 }
 
-.raListFrm{
-	display:inline-block;
-	border:1px solid red;
-	width: 487px;
-	height: 150px;
-}
-.raListImg{
-	float: left;
-	border: 1px solid blue;
-	height: 149px;
-	width: 150px;
-}
-.raListTitle{
-	float: left;
-	border: 1px solid gray;
-	width: 333px;
-	height: 30px;	
-	font-size: 20px;
-	text-align: center;
-}
-.raListPrice{
-	float: left;
-	border: 1px solid black;
-	width: 333px;
-	height: 65px;
-}
-.raListDate{
-	float: left;
-	border: 1px solid green;
-	width: 333px;
-	height: 49px;
-	font-size: 17px;
-	color: blue;
-}
-
 .auListFrm{
 	display:inline-block;
-	border:1px solid red;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+    margin:5px 0px 0px 0px;
 	width: 487px;
 	height: 150px;
 }
 .auListImg{
 	float: left;
-	border: 1px solid blue;
 	height: 149px;
 	width: 150px;
+	border-radius: 15px;
 }
+
+.ListImg{
+	border-radius: 15px;
+}
+
 .auListTitle{
 	float: left;
-	border: 1px solid gray;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 30px;	
 	font-size: 20px;
@@ -171,17 +144,22 @@ div {
 }
 .auListPrice{
 	float: left;
-	border: 1px solid black;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 85px;
 }
 .auListDate{
 	float: left;
-	border: 1px solid green;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 28px;
 	font-size: 17px;
 	color: blue;
+}
+
+a{
+	text-decoration: noen;
+	color: black;
 }
 
 </style>
@@ -204,7 +182,7 @@ div {
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
-						<img src="<c:url value='/resources/upload/${au.aui_img}'/>" width="100%" height="100%"/>
+						<img class="ListImg" src="<c:url value='/resources/upload/${au.aui_img}'/>" width="100%" height="100%"/>
 					</div>
 					<div class="auListTitle">
 						${au.au_title }

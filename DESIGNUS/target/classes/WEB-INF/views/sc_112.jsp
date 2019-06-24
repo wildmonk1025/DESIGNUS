@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 <style>
 #mainheader {
-	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 700px;
 }
@@ -62,7 +60,6 @@
 }
 
 #footercheck {
-	border: 1px solid black;
 	width: 1520px;
 	height: 200px;
 }
@@ -103,7 +100,6 @@ select {
 	text-align-last: center;
 	width: 150px;
 	height: 47px;
-	border: 1px solid black;
 	top: -105px;
 	left: 170px;
 	float: left;
@@ -113,7 +109,6 @@ select {
 	text-align-last: center;
 	width: 150px;
 	height: 47px;
-	border: 1px solid black;
 	top: -105px;
 	left: 170px;
 	float: left;
@@ -124,7 +119,6 @@ select {
 	text-align-last: center;
 	width: 200px;
 	height: 47px;
-	border: 1px solid black;
 	top: -178px;
 	left: 340px;
 	float: left;
@@ -134,7 +128,6 @@ select {
 	text-align-last: center;
 	width: 500px;
 	height: 47px;
-	border: 1px solid black;
 	top: -178px;
 	left: 340px;
 	float: left;

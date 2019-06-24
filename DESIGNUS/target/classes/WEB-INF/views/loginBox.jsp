@@ -366,6 +366,12 @@ console.log(aa);
 if(aa=="zzz"){
 	alert("댓글 작성을 하시려면 로그인이 필요합니다.");	
 }
+
+var bb='${mmssgg}';
+console.log(bb);
+if(bb=="lee"){
+	alert("로그인이 필요한 서비스입니다. ");	
+}
 </script>
 </head>
 <body>
@@ -373,7 +379,7 @@ if(aa=="zzz"){
 		
 		<div id="loginFrmmain">
 		
-			<form action="login" name="loginFrm" method="post"class="signUp">
+			<form action="login" name="loginFrm"  method="post"class="signUp">
 				<div id="login">
 				<div align="center"><a href="home"><img src="resources/images/logo.png"
 				 width="250px" height="80px"></a><br/><br/><br/><br/></div>
@@ -395,7 +401,7 @@ if(aa=="zzz"){
 						<a href="memberfind">아이디 | 비빌번호 찾기</a><br/><br/>
 					</div>
 					<div id="loginbtz">
-						<button class="signUpButton">로그인</button>
+						<button class="signUpButton" id="login1">로그인</button>
 					</div>
 				</div>
 			</form>
@@ -404,7 +410,27 @@ if(aa=="zzz"){
 	</div>
 </body>
 <script>
+$('#login1').click(function(){
 	
+
+var click='${ckeck}';
+console.log(click);
+
+if(click>=3){
+	swal("로그인 성공!");
+	setTimeout(function(){
+		window.location.reload();
+		location.href = 'loginbox';
+		},2000);
+
+}else{
+	swal("해당 계정은 경고 누적으로 접속 할 수 없습니다.");
+	setTimeout(function(){
+		window.location.reload();
+		location.href = 'loginbox';
+		},2000);
+}
+});
 </script>
 
 </html>
