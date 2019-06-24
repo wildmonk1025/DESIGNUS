@@ -9,11 +9,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+body {
+	background-color: coral;
+}
+
 div {
 	margin: auto;
 }
 
 #join {
+	background-color: white;
 	width: 800px;
 	height: 800px;
 	text-align: center;
@@ -146,15 +151,17 @@ div {
 	height: 100px;
 	text-align: left;
 }
-#eacheck{
-  display: none;
+
+#eacheck {
+	display: none;
 }
 </style>
 </head>
 <body>
 	<div id="join">
 		<div id="null"></div>
-		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
+		<a href="home"><img src="resources/images/logo.png" width="270px"
+			height="100px"></a>
 
 		<form action="wriapply" name="wrimemberapplyFrm" method="post"
 			enctype="multipart/form-data" onsubmit="return joinCheck2()">
@@ -202,12 +209,13 @@ div {
 					</tr>
 					<tr>
 						<th>전공</th>
-						<td><select id="mj_cg_code" name="mj_cg_code" class="memberN">
-								<option value="100">전공선택</option>
-								<option value="110">귀금속</option>
-								<option value="120">도예</option>
-								<option value="130">가죽</option>
-						</select></td>
+						<td>
+							<div id="subcategory" align="center" class="menu-item">
+								<select id="mj_cg_code" name="mj_cg_code" class="memberN">
+								</select>
+						</div>
+
+						</td>
 					</tr>
 					<tr>
 						<th>포트폴리오</th>
@@ -262,9 +270,9 @@ div {
 						<td><input id="joinhidden" type="hidden"></td>
 					</tr>
 					<tr id="eacheck">
-					<th>인증번호 입력</th>
-					<td><input id="emailNum" type="text"
-					     style="width: 300px; height: 30px"></td>
+						<th>인증번호 입력</th>
+						<td><input id="emailNum" type="text"
+							style="width: 300px; height: 30px"></td>
 						<td><input id="sendRndNumCheck" type="button" value="인증 확인"></td>
 					</tr>
 				</table>
@@ -284,6 +292,24 @@ div {
 	</div>
 </body>
 <script>
+	$(document).ready(
+			function() {
+				$.ajax({
+					type : 'POST',
+					url : 'ajax/category',
+					dataType : 'json',
+					success : function(data) {
+						var str = "<option value='1'>선택</option>";
+						for ( var i in data) {
+							str += "<option value="+data[i].cg_code+">"
+									+ data[i].cg_name + "</option>";
+						}
+						$("#mj_cg_code").html(str);
+					},
+					error : function(error) {
+					}
+				}); //ajax End
+			});
 	function fileChk(elem) {
 		console.dir(elem);
 		if (elem.value == "") {
@@ -501,7 +527,9 @@ div {
 		$.ajax({
 			url : "sendrndnum",
 			type : "post",
-			data :{"mb_email" : $("#mb_email").val()},
+			data : {
+				"mb_email" : $("#mb_email").val()
+			},
 			dataType : "html",
 			/*data:{m_id : $('#m_id').val(), sdf:"sdfsdfdfsdf"},*/
 			success : function(data) {
@@ -510,8 +538,8 @@ div {
 				console.log("mail" + mail);
 				$("#eacheck").show();
 				alert("인증번호를  발송하였습니다");
-		
-		},
+
+			},
 
 			error : function(error) {
 

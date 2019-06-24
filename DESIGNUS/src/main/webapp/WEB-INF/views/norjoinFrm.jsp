@@ -10,8 +10,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
+body{
+	background-color: coral;
+
+}
 div {
 	margin: auto;
+	background-color:white;
+	
 }
 
 #join {
@@ -150,7 +156,8 @@ div {
 <body>
 	<div id="join">
 
-		<a href="home"><img id="logoimg" src="./images/logo.png" /></a>
+		<a href="home"><img src="resources/images/logo.png"
+				width="270px" height="100px"></a>
 
 		<form action="memberapply" name="memberapplyFrm" method="post"
 			enctype="multipart/form-data" onsubmit="return joinCheck()">
