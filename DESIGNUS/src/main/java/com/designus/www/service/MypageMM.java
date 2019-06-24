@@ -567,16 +567,15 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("그럼 여기는??");
 		boolean a = pDao.delinumuploadupdate(ap);
-		
-		//운송장 번호 입력 = 배송보냄 알람
+
+		// 운송장 번호 입력 = 배송보냄 알람
 		Notify nf = new Notify();
 		nf.setNf_mbid_s(id);
 		nf.setNf_mbid_r(pDao.getAuTrackId(ap));
-		nf.setNf_notify(nf.getNf_mbid_s()+" 님이 상품을 배송을 보냈습니다. ");
+		nf.setNf_notify(nf.getNf_mbid_s() + " 님이 상품을 배송을 보냈습니다. ");
 		pDao.setNotifyAuTrack(nf);
-		//알람끝
-		
-		
+		// 알람끝
+
 		System.out.println("nnnnuuuummmm::::" + ap.getAup_ptnum());
 		System.out.println("getAup_track::::" + ap.getAup_track());
 
@@ -700,21 +699,27 @@ public class MypageMM {
 	@Transactional
 	public ModelAndView requestby(revAuctionProgress rap) {
 		mav = new ModelAndView();
+	
+		boolean b = false;
 		System.out.println("(서비스클래스)제작의뢰 스텝1 요청 시작");
 		int point = mDao.ravmemberNpoint(rap);
 		System.out.println("(서비스클래스)제작의뢰 스텝1 요청 1차 중간 확인 !ponitN :" + point);
-		boolean a = pDao.requestbyupdate(rap);
 		System.out.println("여기 까지는 오는 건가요//????");
 		rap.setPointN(point);
-		if (a) {
-			boolean b = pDao.requestbyREVupdate(rap);
-			System.out.println("여기 까지는 오는 건가요11//????");
+		if (rap.getRap_price() < rap.getPointN()) {
+			b = pDao.requestbyREVupdate(rap);
 			if (b) {
-				mav.addObject("msg", 1);
-			} else {
-				mav.addObject("msg", 2);
+				boolean a = pDao.requestbyupdate(rap);
+				if (a) {
+					mav.addObject("msg", "1");
+				} else {
+					mav.addObject("msg", "2");
+				}
 			}
-
+		} else {
+			System.out.println("돈이없으면 여기로 포워딩");
+			
+			mav.addObject("aaaa", "bbbb");
 		}
 
 		mav.setViewName("redirect:/revAuctionMyOrderList");
@@ -798,7 +803,7 @@ public class MypageMM {
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
 		int listCount = 3; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
+		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getreASetpCount(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
 		String boardName = "revAuctionMyAcceptList";
@@ -828,15 +833,15 @@ public class MypageMM {
 		boolean a = pDao.revdelinumupload(rap);
 		System.out.println("(서비스클래스)제작의뢰 스텝2 배송보내기 마무리");
 		mav.setViewName("redirect:/revAuctionMyAcceptList");
-		
-		//운송장 번호 입력 = 배송보냄 알람
-				Notify nf = new Notify();
-			nf.setNf_mbid_s(id);
-			nf.setNf_mbid_r(pDao.getRaTrackId(rap));
-			nf.setNf_notify(nf.getNf_mbid_s()+" 님이 상품을 배송을 보냈습니다. ");
-			pDao.setNotifyRaTrack(nf);
-		//알람끝
-		
+
+		// 운송장 번호 입력 = 배송보냄 알람
+		Notify nf = new Notify();
+		nf.setNf_mbid_s(id);
+		nf.setNf_mbid_r(pDao.getRaTrackId(rap));
+		nf.setNf_notify(nf.getNf_mbid_s() + " 님이 상품을 배송을 보냈습니다. ");
+		pDao.setNotifyRaTrack(nf);
+		// 알람끝
+
 		return mav;
 	}
 
@@ -923,32 +928,31 @@ public class MypageMM {
 		List<Notify> NoList = null;
 		List<AuctionTender> apsList = null;
 		List<Integer> maxpList = new ArrayList<Integer>();
-		List<SponsorProgress> spList=null;
+		List<SponsorProgress> spList = null;
 		List<Integer> stList = new ArrayList<Integer>();
 		String today = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss.S"));
-				//("yyyy-MM-dd hh:mm:ss.S");
-		
-		System.out.println("today="+today);
+		// ("yyyy-MM-dd hh:mm:ss.S");
+
+		System.out.println("today=" + today);
 		String id = session.getAttribute("id").toString();
-		
-		
+
 		Member mb = new Member();
 		mb = pDao.mypagemoveSelect(id);
 		NoList = pDao.notismypageSelect(id);
 		// apsList=pDao.AuctionProSelect(id);
 		apsList = pDao.auctionInfoSelect(id);
-        spList = pDao.sponsorProgress(id);
-        for (int i = 0; i < spList.size(); i++) {
-        	stList.addAll(pDao.SponsorTenderSelect(spList.get(i)));
-        }
-        System.out.println("그럼 마지막은??=" + stList.size());
-        Gson gson = new Gson();
+		spList = pDao.sponsorProgress(id);
+		for (int i = 0; i < spList.size(); i++) {
+			stList.addAll(pDao.SponsorTenderSelect(spList.get(i)));
+		}
+		System.out.println("그럼 마지막은??=" + stList.size());
+		Gson gson = new Gson();
 		String spgList = gson.toJson(spList);
 		String Mapst = gson.toJson(stList);
 		mav.addObject("stList", stList);
 		mav.addObject("spgList", spgList);
 		mav.addObject("today", today);
-		//mav.addObject("today", todayy);
+		// mav.addObject("today", todayy);
 		// 금,은,동
 		int g = pDao.gold(id);
 		int s = pDao.silver(id);
@@ -960,9 +964,9 @@ public class MypageMM {
 		for (int i = 0; i < apsList.size(); i++) {
 			maxpList.addAll(pDao.auctionMaxSelect(apsList.get(i).getAut_aunum()));
 		}
-	
+
 		// apsMap.put("maxpList",maxpList);
-		
+
 		String str = gson.toJson(NoList);
 
 		String apssList = gson.toJson(apsList);
@@ -1307,56 +1311,56 @@ public class MypageMM {
 
 	@Transactional
 	public ModelAndView WriteAReview(MultipartHttpServletRequest multi) {
-		//맴버 업데이트
-		String view=null;
-	    String wid= multi.getParameter("ss_mbid_w"); 
-	    int price= Integer.parseInt(multi.getParameter("ss_price")); 
-		Member mb=new Member();
+		// 맴버 업데이트
+		String view = null;
+		String wid = multi.getParameter("ss_mbid_w");
+		int price = Integer.parseInt(multi.getParameter("ss_price"));
+		Member mb = new Member();
 		mb.setMb_id(wid);
-		int pointW=pDao.pointcheck(mb);
+		int pointW = pDao.pointcheck(mb);
 		mb.setMb_point(pointW);
 		mb.setPointW(price);
-		boolean a=pDao.memberupdatespon(mb);
-		//스폰서 업데이트
-		int ptnum=Integer.parseInt(multi.getParameter("ssp_ptnum"));
-		SponsorProgress sp=new SponsorProgress();
+		boolean a = pDao.memberupdatespon(mb);
+		// 스폰서 업데이트
+		int ptnum = Integer.parseInt(multi.getParameter("ssp_ptnum"));
+		SponsorProgress sp = new SponsorProgress();
 		sp.setSsp_ptnum(ptnum);
-		
-		boolean b=pDao.sponsorupdatettt(sp);
-		 
-		if(b) {
-			String kind="이용후기";
+
+		boolean b = pDao.sponsorupdatettt(sp);
+
+		if (b) {
+			String kind = "이용후기";
 			int check = Integer.parseInt(multi.getParameter("fileCheck"));
-			String cont=multi.getParameter("bd_contents");
-			String id=session.getAttribute("id").toString();
-			String title=multi.getParameter("bd_title");
-			Board bd= new Board();
+			String cont = multi.getParameter("bd_contents");
+			String id = session.getAttribute("id").toString();
+			String title = multi.getParameter("bd_title");
+			Board bd = new Board();
 			bd.setBd_contents(cont);
 			bd.setBd_mbid(id);
 			bd.setBd_title(title);
 			bd.setBd_kind(kind);
-			
+
 			pDao.WriteAReviewspon(bd);
 			boolean f = false;
-			if(check ==1 ) {
-				f = upload.sponfileUp(multi,bd.getBd_num());
-				if(f) {
+			if (check == 1) {
+				f = upload.sponfileUp(multi, bd.getBd_num());
+				if (f) {
 					System.out.println("어디로");
 					view = "redirect:/fundingAcceptList";
-				}else {
+				} else {
 					System.out.println("간겨???");
 					view = "myPage";
 				}
 			}
-			
+
 		}
-	    mav.setViewName(view);
+		mav.setViewName(view);
 		return mav;
 	}
 
 	public ModelAndView stepfive(revAuctionProgress rap) {
-		mav=new ModelAndView();
-		boolean a=pDao.stepfiveupDate(rap);
+		mav = new ModelAndView();
+		boolean a = pDao.stepfiveupDate(rap);
 		String id = session.getAttribute("id").toString();
 		// 알림 Start
 		Notify nf = new Notify();
@@ -1364,34 +1368,35 @@ public class MypageMM {
 		nf.setNf_num(bDao.getRAPNumSel(ptnum));
 		nf.setNf_mbid_r(bDao.getRevBoardUserName(nf));
 		nf.setNf_contents(bDao.getRevItemTitle(nf));
-		nf.setNf_notify(id + " 작가님이 비공개제작의뢰 "+nf.getNf_contents()+" 를 수락 하셧습니다.");
+		nf.setNf_notify(id + " 작가님이 비공개제작의뢰 " + nf.getNf_contents() + " 를 수락 하셧습니다.");
 		bDao.setNotifyStepfive(nf);
 		// 알림 End
-		
-		if(a) {
+
+		if (a) {
 			mav.addObject("secc", 1);
-		}else {
+		} else {
 			mav.addObject("secc", 2);
 		}
-		 mav.setViewName("redirect:/revAuctionMyAcceptList");
+		mav.setViewName("redirect:/revAuctionMyAcceptList");
 		return mav;
 	}
+
 	@Transactional
 	public ModelAndView stepfiveDele(revAuctionProgress rap) {
-		mav=new ModelAndView();
-		boolean a=pDao.stepfiveDelete(rap);
-		if(a) {
-			boolean b=pDao.stepfiveautDelete(rap);
-				if(b) {
-					mav.addObject("secc", 1);
-				}else {
-					mav.addObject("secc", 2);
-				}
-			
-		}else {
+		mav = new ModelAndView();
+		boolean a = pDao.stepfiveDelete(rap);
+		if (a) {
+			boolean b = pDao.stepfiveautDelete(rap);
+			if (b) {
+				mav.addObject("secc", 1);
+			} else {
+				mav.addObject("secc", 2);
+			}
+
+		} else {
 			mav.addObject("secc", 2);
 		}
-		 mav.setViewName("redirect:/revAuctionMyAcceptList");
+		mav.setViewName("redirect:/revAuctionMyAcceptList");
 		return mav;
 	}
 

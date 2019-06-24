@@ -137,17 +137,21 @@ td {
 				</tr>
 				<tr>
 					<td colspan="4"><c:choose>
-							<c:when test="${enddate == sysdate}">
+							<c:when test="${ss_mbid_w == id}">
+								<button class="bt21" onclick="sponEnd3()"
+									style="background-color: gray">밀어주기</button>
+							</c:when>
+							<c:when test="${enddate <= sysdate}">
 								<button class="bt21" onclick="sponEnd2()"
+									style="background-color: gray">밀어주기</button>
+							</c:when>
+							<c:when test="${ss_goalqty == st_count}">
+								<button class="bt21" onclick="sponEnd()"
 									style="background-color: gray">밀어주기</button>
 							</c:when>
 							<c:when test="${ss_goalqty != st_count}">
 								<button class="bt21" onclick="sponAj(${ss_num})"
 									style="cursor: pointer; background-color: yellow">밀어주기</button>
-							</c:when>
-							<c:when test="${ss_goalqty == st_count}">
-								<button class="bt21" onclick="sponEnd()"
-									style="background-color: gray">밀어주기</button>
 							</c:when>
 						</c:choose></td>
 					<td colspan="2">
@@ -166,6 +170,11 @@ td {
 
 </body>
 <script>
+
+
+function sponEnd3() {
+	swal("자신이 올린 제품에는 후원할 수 없습니다.");
+}
 
 function sponEnd2() {
 	swal("후원을 신청할 수 있는 기간이 끝났습니다!");

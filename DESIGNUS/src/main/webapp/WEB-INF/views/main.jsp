@@ -140,6 +140,7 @@ div{
 
 .submenu {
 	margin-left: 100px;
+	padding-top: 10px;
 	width: 150px;
 	float: left;
 	height: 50px;
@@ -294,6 +295,37 @@ nav {
 	background-color: white;
 }
 
+.revauctionbtn, .auctionbtn, .sponsorbtn {
+	background-color: coral;
+	margin-top: 20px;
+	margin-right: 10px;
+	width: 150px;
+	height: 30px;
+	color: white;
+	float: right;
+}
+
+.mtag:visited {
+	text-decoration: none;
+	color: #646464;
+}
+
+.mtag:link {
+	text-decoration: none;
+	color: #646464;
+}
+
+.mtag:hover {
+	transform: scale(3Y);
+	transition-duration: 1s;
+	font-weight: 900;
+}
+
+.atag:hover {
+	text-decoration: none;
+	color: #646464;
+}
+
 .atag:active {
 	text-decoration: none;
 	color: #646464;
@@ -308,21 +340,6 @@ nav {
 	text-decoration: none;
 	color: #646464;
 }
-.atag:hover {
-	text-decoration: none;
-	color: #646464;
-}
-
-.revauctionbtn, .auctionbtn, .sponsorbtn {
-	background-color: coral;
-	margin-top: 20px;
-	margin-right: 10px;
-	width: 150px;
-	height: 30px;
-	color: white;
-	float: right;
-}
-
 
 </style>
 <meta charset="UTF-8">
@@ -355,9 +372,9 @@ nav {
 				<c:choose>
 				<c:when test="${empty perm}"></c:when>
 				<c:when test="${perm eq 'M'}">
-				<a href="adminInfo" class='atag'>관리자<br>페이지</a></c:when>
+				<a href="adminInfo" class='atag' style="color: green;">관리자<br>페이지</a></c:when>
 				<c:when test="${perm ne 'M'}">
-				<a href="mypage" class='atag'>마이<br>페이지</a></c:when>
+				<a href="mypage" class='atag' style="color: green;">마이<br>페이지</a></c:when>
 				</c:choose>
 			</div>
 			<div id="msg">
@@ -420,16 +437,16 @@ nav {
 		</div>
 		<div id="menu">
 			<div class="submenu">
-				<a href="sponsor" class='atag'>후원</a>
+				<a href="sponsor" class='mtag'>후원</a>
 			</div>
 			<div class="submenu">
-				<a href="reviewboard" class='atag'>이용후기</a>
+				<a href="reviewboard" class='mtag'>이용후기</a>
 			</div>
 			<div class="submenu">
-				<a href="bestwriter" class='atag'>공지사항</a>
+				<a href="popularWriterFrm" class='mtag'>공지사항</a>
 			</div>
 			<div class="submenu">
-				<a href="servicecenter" class='atag'>고객센터</a>
+				<a href="servicecenter" class='mtag'>고객센터</a>
 			</div>
 
 		</div>
@@ -528,13 +545,13 @@ $("#alarmBtn").click(function() {
 	},2500);
 });
 
-/*
+
  $(document).ajaxStart(function() {
 	poll();
 });
  setTimeout($("#ranking").html("<span>실시간 검색순위</span>"),100);
  setInterval(ranking,5300);
- 	
+
  	function poll() {
 		$.ajax({
 			type:'POST',
@@ -571,7 +588,6 @@ $("#alarmBtn").click(function() {
 			error: function(error) {
 				}
 			});
-		} 
-*/
+		}
 </script>
 </html>

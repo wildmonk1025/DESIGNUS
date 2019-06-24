@@ -119,6 +119,8 @@ public class SponsorMM {
 		sm.setSs_num(ss_num);
 		sp.setSsp_ssnum(ss_num);
 
+		String id = (String) session.getAttribute("id");
+
 		String st = sm.getEnd_data2();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String to = transFormat.format(date);
@@ -132,7 +134,7 @@ public class SponsorMM {
 		String mon = st.substring(5, 7);
 		String day = st.substring(8, 10);
 
-		String endDate = year + mon + day;
+		String enddate = year + mon + day;
 
 		String year2 = st2.substring(0, 4);
 		String mon2 = st2.substring(5, 7);
@@ -140,12 +142,15 @@ public class SponsorMM {
 
 		String sysdate = year2 + mon2 + day2;
 
+		System.out.println(enddate);
+		System.out.println(sysdate);
 		int cnt = 0;
 		cnt = sp.getSsp_count();
 
 		if (ss_num == sm.getSs_num()) {
 			System.out.println("여긴뭐지");
 			mav.addObject("ss_num", sm.getSs_num());
+			mav.addObject("id", id);
 			mav.addObject("ss_mbid_w", sm.getSs_mbid_w());
 			mav.addObject("ss_title", sm.getSs_title());
 			mav.addObject("ssi_ssi_imgSysName", sm.getSsi_imgSysName());
@@ -155,7 +160,7 @@ public class SponsorMM {
 			mav.addObject("ss_date", sm.getSs_date());
 			mav.addObject("ss_date2", sm.getEnd_data2());
 			mav.addObject("st_count", cnt);
-			mav.addObject("enddate", endDate);
+			mav.addObject("enddate", enddate);
 			mav.addObject("sysdate", sysdate);
 			view = "sponProductFrm";
 		} else {

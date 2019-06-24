@@ -92,11 +92,6 @@ public class HomeController {
 		return "sc_Question";
 	}
 
-	@RequestMapping(value = "/bestwriter", method = RequestMethod.GET)
-	public String bestwriter() {
-
-		return "popularWriterFrm";
-	}
 
 	@RequestMapping(value = "/norJoinFrm", method = RequestMethod.GET)
 	public String norJoinFrm() {
