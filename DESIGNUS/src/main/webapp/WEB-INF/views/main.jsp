@@ -44,7 +44,7 @@ div {
 }
 
 #searchbox {
-	width: 440px;
+	width: 450px;
 	height: 40px;
 	float: left;
 }
