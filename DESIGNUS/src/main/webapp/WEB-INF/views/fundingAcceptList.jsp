@@ -285,7 +285,6 @@ $(document).ready(function(){
 		    success:function(data){
 		    }, 
 		    error:function(error){
-		    	alert('정상적인 추천이 실패했습니다.');
 		    	console.log(error);
 		    }
 		 });//end ajax

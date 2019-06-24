@@ -24,7 +24,7 @@
 	<resources mapping="/images/**" location="/resources/images/"/>
 	<resources mapping="/css/**" location="/resources/css/"/>
 	<resources mapping="/js/**" location="/resources/js/"/>
-	<resources mapping="/upload/**" location="file:///C:/Users/wildm/Desktop/[ICIA]SPRINGTOOL3_WORK/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/DESIGNUS/resources/upload"/>
+	<resources mapping="/resources/**" location="/resources/"/>
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean

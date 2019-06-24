@@ -9,14 +9,41 @@
 
 <meta charset="UTF-8">
 <style>
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #F5BCA9;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #F5BCA9;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+	{
+	width: 0px;
+	height: 0px;
+	background: coral;
+}
+
 div {
 	margin: auto;
 }
 
 #mainheader {
-	border: 1px solid black;
-	width: 1520px;
+border: 1px solid #F5BCA9;
+	width: 1518px;
 	height: 170px;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #sponproduct {
@@ -27,7 +54,6 @@ div {
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 700px;
 }
@@ -75,18 +101,20 @@ div {
 }
 
 #sponList {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	position: relative;
 	top: 50px;
 	left: 10px;
 	width: 1300px;
 	height: 500px;
-	overflow-y: scroll;
+	overflow-y: scroll; 
 }
 
 #spon {
 	border: 1px solid black;
-	width: 350px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 3px;
+	width: 380px;
 	height: 180px;
 	margin: 10px 20px;
 	float: left;
@@ -94,18 +122,17 @@ div {
 
 #sponproduct {
 	border: 1px solid black;
-	width: 100px;
-	height: 120px;
-	margin: 30px;
+	width: 130px;
+	height: 150px;
+	margin: 10px;
 	float: left;
 }
 
 #sponpro {
-	border: 1px solid black;
-	width: 280px;
+	width: 220px;
 	height: 140px;
-	float: right;
-	margin-top: 40px;
+	float: left;
+	margin-top: 15px;
 }
 </style>
 <title>Sponsor</title>
@@ -116,9 +143,7 @@ div {
 	</div>
 
 	<div id="homeMain">
-		<div id="titleAndbtn">
-			지금 후원 가능한 작품
-		</div>
+		<div id="titleAndbtn">지금 후원 가능한 작품</div>
 		<div id="sponList"></div>
 	</div>
 
@@ -152,7 +177,7 @@ div {
 													+ "<img src='resources/images/"
 									+ data[i].ssi_imgSysName +"'>"
 													+ "</div>"
-													+ "<div class='sponpro'>"
+													+ "<div id='sponpro'>"
 													+ "아이디:"
 													+ data[i].ss_mbid_w
 													+ "<br>"
