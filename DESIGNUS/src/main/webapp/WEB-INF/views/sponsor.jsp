@@ -38,9 +38,12 @@ div {
 }
 
 #mainheader {
-	border: 1px solid black;
-	width: 1520px;
+border: 1px solid #F5BCA9;
+	width: 1518px;
 	height: 170px;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #sponproduct {
@@ -51,7 +54,6 @@ div {
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 700px;
 }

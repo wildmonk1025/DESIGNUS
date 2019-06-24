@@ -10,20 +10,45 @@
 
 
 <style>
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #F5BCA9;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #F5BCA9;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+	{
+	width: 0px;
+	height: 0px;
+	background: coral;
+}
+
 div {
 	margin: auto;
 }
 
 #mainheader {
-	border: 1px solid black;
-	width: 1520px;
+	border: 1px solid #F5BCA9;
+	width: 1518px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
-	height: 700px;
+	height: auto;
 }
 
 .btn {
@@ -32,20 +57,6 @@ div {
 	height: 30px;
 	color: white;
 	float: right;
-}
-
-#coklist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#bestlist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
 }
 
 #footercheck {
@@ -65,8 +76,10 @@ div {
 
 #board {
 	width: 1000px;
-	height: 800px;
+	height: auto;
 	font-size: 20px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	margin-bottom: 30px;
 }
 
 td {
@@ -133,7 +146,7 @@ td {
 					<td class="ts2">${st_count}</td>
 				</tr>
 				<tr>
-					<td colspan="6" style="height: 150">${ss_contents}</td>
+					<td colspan="6" style="height: 200px">${ss_contents}</td>
 				</tr>
 				<tr>
 					<td colspan="4"><c:choose>
