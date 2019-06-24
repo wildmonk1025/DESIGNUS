@@ -83,6 +83,7 @@ public class AuctionMM {
 	public ModelAndView auctionList(Integer pageNum, int cgcode) throws ParseException {
 		mav = new ModelAndView();
 		String view = "null";
+		int price = 0;
 		List<Auction> auList = null;
 		Auction au = new Auction();
 		AuctionTender at = new AuctionTender();
@@ -91,10 +92,14 @@ public class AuctionMM {
 		int num = (pageNum == null) ? 1 : pageNum;
 
 		auList = aDao.getAuctionListSelect(cgcode, num);
-		
+	/*	
 		for(int i = 0 ; i < auList.size(); i++) {
-			System.out.println("[][][][] auList = " + auList.get(i));
+			price = auList.get(i).getAut_price();
+			String str = String.format("%,d",price);
+			int to = Integer.parseInt(str);
+			auList.get(i).setAut_price(to);
 		}
+	*/	
 		
 		for(int i = 0 ; i < auList.size(); i++) {
 			boolean new_date3 = da.compareDateToBoolean(auList.get(i).getAu_date());
