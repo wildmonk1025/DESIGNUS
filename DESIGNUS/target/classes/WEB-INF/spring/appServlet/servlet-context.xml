@@ -160,8 +160,7 @@
 			약 10메가 -->
 	</beans:bean>
 	<!-- Session Interceptor(가로채기) -->
-	<beans:bean id="sessionInterceptor"
-		class="com.designus.www.userClass.SessionInterceptor" />
+	
 	<interceptors>
 		<interceptor>
 			<!-- mapping의 모든 요청은 Controller에 도착하기전에 가로챈다. -->
@@ -185,7 +184,7 @@
 			<exclude-mapping path="/searching" />
 			<exclude-mapping path="/loginmove" />
 			<exclude-mapping path="/memberpwFind" />
-			<beans:ref bean="sessionInterceptor" />
+			<beans:bean class="com.designus.www.userClass.SessionInterceptor" />
 
 		</interceptor>
 	</interceptors>
