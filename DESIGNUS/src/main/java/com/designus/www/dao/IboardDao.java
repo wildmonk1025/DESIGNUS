@@ -68,6 +68,8 @@ public interface IboardDao {
 
 	void getNoticinsert(@Param("bd_title")String bd_title,@Param("bd_contents") String bd_contents,@Param("s") String s);
 
+	String selBoardUserId(@Param("bd_num") int bd_num);
+
 
 
 

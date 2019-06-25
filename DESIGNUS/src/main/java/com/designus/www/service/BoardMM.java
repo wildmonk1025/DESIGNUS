@@ -16,6 +16,7 @@ import com.designus.www.userClass.Paging;
 import com.designus.www.userClass.PagingBoard;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.BoardComment;
+import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.dao.IboardDao;
 import com.google.gson.Gson;
@@ -116,13 +117,17 @@ public class BoardMM {
 		mav = new ModelAndView();
 		String s = (String) session.getAttribute("id");
 		System.out.println("fdd" + s);
-
-		System.out.println("bd_mbid" + bd_mbid);
-		if (s.equals(bd_mbid) || s.equals("ADMIN")) {
+		Member mb=new Member();
+		String mb_id = null;
+		mb_id = bDao.selBoardUserId(bd_num);
+		mav.addObject("mb_id",mb_id);
+		
+		System.out.println("mb_id" + mb_id);
+		if (s.equals(mb_id) || s.equals("ADMIN")) {
 			System.out.println("번호는="+bd_num);
 			bDao.getreviewdel(bd_num);
-			bDao.getreviewdelete(bd_num, bd_contents, bd_mbid);
-			bDao.getreviewimgdel(bd_num, bd_contents, bd_mbid);
+			bDao.getreviewdelete(bd_num, bd_contents, mb_id);
+			bDao.getreviewimgdel(bd_num, bd_contents, mb_id);
 			
 			
 			
