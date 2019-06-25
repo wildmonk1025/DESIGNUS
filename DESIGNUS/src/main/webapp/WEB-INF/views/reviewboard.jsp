@@ -461,7 +461,8 @@ function articleView(num1){
 					  +"<td>"+"조회수"+"</td>"+"<td>"+data.bList.bd_views+"</td>"+"</tr>"+"<tr>"+"<td colspan='5'>"+"후기이미지"+"</td></tr>"
 					  +"<input type='hidden' value='"+data.bList.bd_mbid+"' id='idc'>"
 					  for ( var i in data.iList){
-						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+data.iList[i].bdi_img
+						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+
+						  "<img src='resources/upload/'"+data.iList[i].bdi_img+ "/>"
 						 +"</td></tr>"
 					  }
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+

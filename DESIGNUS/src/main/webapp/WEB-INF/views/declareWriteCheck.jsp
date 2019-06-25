@@ -200,6 +200,10 @@ margin-top: 10px;
 	width: 120px;
 	height: 30px;
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+}
 </style>
 </head>
 
@@ -218,7 +222,7 @@ margin-top: 10px;
 	<div id="adminopt">
 		<form name="formName" method="post">
 			<div class="opt"><br/><br/>
-				<h3	style="margin-left: 20px; font-size: 25px; background-color: coral; width:820px; ">신고
+				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">신고
 					상세내역</h3>
 				<hr>
 				<div id="declarelist">

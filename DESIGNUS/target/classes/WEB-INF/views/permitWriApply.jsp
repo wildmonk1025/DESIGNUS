@@ -93,7 +93,6 @@ ul {
 	width: 230px;
 	padding-left: 20px;
 	float: left;
-	background-color: orange;
 	color: white;
 }
 
@@ -131,6 +130,10 @@ a:hover {
 	text-decoration: none;
 	color: black;
 }   
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+text-align: center;
+}
 </style>
 </head>
 
@@ -147,10 +150,9 @@ a:hover {
         </ul>
     </div>
 	<div id="adminwriterjoin">
-		<div class="writerjoin">
-			<div id="writerjointitle">
-				<p>작가 가입신청 리스트</p>
-			</div>
+		<div class="writerjoin"><br/>
+				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">
+				작가 가입신청 리스트</h3>
 			<div id="writerjoinlist">
 				<div id="transformlist">
 					

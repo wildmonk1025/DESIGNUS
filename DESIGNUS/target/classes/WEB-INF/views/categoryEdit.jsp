@@ -66,7 +66,6 @@ ul {
 	width: 230px;
 	padding-left: 20px;
 	float: left;
-	background-color: orange;
 	color: white;
 }
 
@@ -257,6 +256,10 @@ margin-top: 10px;
    -webkit-box-shadow: inset 0 -2px #EBEBEB;
    box-shadow: inset 0 -2px #EBEBEB;
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+text-align: center;
+}
 </style>
 </head>
 
@@ -273,10 +276,8 @@ margin-top: 10px;
         </ul>
     </div>
 	<div id="admincatefrm">
-		<div class="writercatefrm">
-			<div id="writercateitlefrm">
-				<p>카테고리 관리</p>
-			</div>
+		<div class="writercatefrm"><br/>
+				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:870px; ">카테고리 관리</h3>
 			<div id="writercatecontents">현재 카테고리</div>
 			<form action="categoryadd" method="post">
 			<div id="cateup"><input type="submit" value="카테고리추가" class="btn2"></div>

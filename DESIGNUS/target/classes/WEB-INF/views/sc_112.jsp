@@ -21,7 +21,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
 	background: #F5BCA9;
-}
+} 
 
 #mainheader {
 	border: 1px solid #F5BCA9;

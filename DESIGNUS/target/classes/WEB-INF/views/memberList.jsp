@@ -191,6 +191,10 @@ a:hover {
 	heigth: 55px;
 	display: inline;
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+text-align: center;
+}
 </style>
 </head>
 <body>
@@ -207,8 +211,7 @@ a:hover {
 	</div>
 	<div id="adminopt">
 		<div class="opt"><br/><br/>
-			<h3
-				style="text-align: center; font-size: 25px; background-color: orange;">회원관리</h3>
+			<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">회원관리</h3>
 			<div class="btnArray" id="normal">
 				<button id="Lbtn1" class="btn2">일반회원 리스트</button>
 			</div>
