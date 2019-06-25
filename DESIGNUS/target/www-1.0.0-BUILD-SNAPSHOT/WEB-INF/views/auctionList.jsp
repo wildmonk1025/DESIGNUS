@@ -1,20 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> <!-- 숫자 컴마찍기 -->
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+div {
+	margin: auto;	
+}
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: 600px;
 }
@@ -30,22 +39,24 @@
 .btn2 {
 	width: 140px;
 	height: 50px;
-	background-color: orange;
-	border: none;
+	background-color: #FF7F50;
+	border: 0.1px soild gray;
 }
 
-#list {
-	width: 1420px;
-	height: 480px;
-	float: left;
-	margin: 50px;
-	display: inline-block;
+.btn3 {
+	width: 140px;
+	height: 50px;
+	background-color: white;
+	border: 0.1px soild gray;
 }
 
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
+
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 180px;
+   margin-top: 20px;
+   border: 1px solid #f0f0f0;
 }
 
 .ipt {
@@ -73,82 +84,57 @@
 }
 
 #List {
-	border: 1px solid black;
 	position: relative;
 	top: 30px;
 	width: 1500px;
-	height: 550px;
+	height: 570px;
 }
 
-#ListView1 {
-	border: 1px solid black;
-	position: absolute;
-	top: 50px;
-	left: 10px;
-	width: 1480px;
-	height: 480px;
-}
 
 #ListView2 {
-	display: none;
 	position: absolute;
-	border: 1px solid black;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	top: 50px;
 	left: 10px;
 	width: 1480px;
-	height: 480px;
+	height: 490px;
 }
 
-.raListFrm{
-	display:inline-block;
-	border:1px solid red;
-	width: 487px;
-	height: 150px;
-}
-.raListImg{
-	float: left;
-	border: 1px solid blue;
-	height: 149px;
-	width: 150px;
-}
-.raListTitle{
-	float: left;
-	border: 1px solid gray;
-	width: 333px;
-	height: 30px;	
-	font-size: 20px;
+.paging2{
+	position:absolute;
+	float:left;
+	left:0px;
+	bottom:-27px;
+	height: 50px;
+	width: 1500px;
 	text-align: center;
-}
-.raListPrice{
-	float: left;
-	border: 1px solid black;
-	width: 333px;
-	height: 65px;
-}
-.raListDate{
-	float: left;
-	border: 1px solid green;
-	width: 333px;
-	height: 49px;
-	font-size: 20px;
-	color: red;
 }
 
 .auListFrm{
 	display:inline-block;
-	border:1px solid red;
+	border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+    margin:5px 0px 0px 0px;
 	width: 487px;
 	height: 150px;
 }
 .auListImg{
 	float: left;
-	border: 1px solid blue;
 	height: 149px;
 	width: 150px;
+	border-radius: 15px;
 }
+
+.ListImg{
+	border-radius: 15px;
+}
+
 .auListTitle{
 	float: left;
-	border: 1px solid gray;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 30px;	
 	font-size: 20px;
@@ -156,20 +142,26 @@
 }
 .auListPrice{
 	float: left;
-	border: 1px solid black;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 85px;
 }
 .auListDate{
 	float: left;
-	border: 1px solid green;
+	border-bottom: 1px solid gray;
 	width: 333px;
 	height: 28px;
-	font-size: 20px;
-	color: red;
+	font-size: 17px;
+	color: blue;
+}
+
+a{
+	text-decoration: noen;
+	color: black;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -180,75 +172,48 @@
 	<div id="homeMain">
 		
 		<div id="List">
-			<button id="Lbtn1" class="btn2">제작의뢰 리스트</button>
-			<button id="Lbtn2" class="btn2">출품 리스트</button>
-			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
-			<div id="ListView1">
-			<c:forEach var="ra" items="${raList}">
-				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
-					<div class="raListImg">
-						<img src="./images/${ra.ra_image }.png" />
-					</div>
-					<div class="raListTitle">
-						${ra.ra_title }
-					</div>
-					<div class="raListPrice">
-						<p>경매최저가 : ${ra.ra_min }</p>
-						<p>경매최고가 : ${ra.ra_max }</p>
-					</div>
-					<div class="raListDate">
-						마감시간 : ${ra.ra_date}
-					</div>
-					</div>
-			</c:forEach>
-			</div>
+			<button class="btn2">출품 리스트</button>
+			<button class="btn3" onclick="location.href='revauctionList?cgcode=${cgcode}'">제작의뢰 리스트</button>
 			<div id="ListView2">
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
-						<img src="./images/logo.png" />
+						<img class="ListImg" src="<c:url value='/resources/upload/${au.aui_img}'/>" 
+						width="100%" height="100%"/>
 					</div>
 					<div class="auListTitle">
 						${au.au_title }
 					</div>
 					<div class="auListPrice">
-						즉시구매가능수량 : ${au.au_qty -1}		<br>
-						경매시작가 : ${au.au_minprice}     <br>
-						즉시구매가 : ${au.au_inprice}     <br>
-						경매최고가 : ${au.aut_price}
+						즉시구매가능수량 : ${au.au_qty -1}	<br>
+						경매시작가 : <fmt:formatNumber value="${au.au_minprice}" pattern="#,###"/>      <br>
+						즉시구매가 : <fmt:formatNumber value="${au.au_inprice}" pattern="#,###"/>      <br>
+						경매최고가 : <fmt:formatNumber value="${au.aut_price}" pattern="#,###"/>
 					</div>
 					<div class="auListDate">
-						마감시간 :  ${au.au_date }
+						${au.au_date }
 					</div>
 					
 					</div>
 			</c:forEach>
 			</div>
-
+			
+			<div class = paging2>
+				${paging}
+			</div>
 		</div>
 
 
 
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
-	</div>
+	<div id="footer">
+      <hr style="width:100%; border: 2px solid coral; align: center;">   
+         <jsp:include page="footer.jsp"></jsp:include>
+      </div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-	
-	$("#Lbtn1").click(function() {
-		$("#ListView1").css("display", "inline");
-		$("#ListView2").css("display", "none");
-	});
 
-	$("#Lbtn2").click(function() {
-		$("#ListView1").css("display", "none");
-		$("#ListView2").css("display", "inline");
-	});
-	
-	
+<script>
 	
 </script>
 </html>

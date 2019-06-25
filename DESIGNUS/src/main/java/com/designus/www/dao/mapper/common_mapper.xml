@@ -4,7 +4,7 @@
 
 <mapper namespace="com.designus.www.dao.IcommonDao">
 
-	<select id="getbestInfo" resultType="auction">
+ 	<select id="getbestInfo" resultType="auction">
 	<![CDATA[
 		SELECT * FROM AU_RECOMM_LIST WHERE ROWNUM<=20
 	]]>
@@ -22,11 +22,11 @@
 	]]>
 	</select>
 	
-	<select id="getSearchRankingSelect" resultType="rtsr">
+<!-- 	<select id="getSearchRankingSelect" resultType="rtsr">
             <![CDATA[
             SELECT * FROM (SELECT * FROM RTSR ORDER BY RTSR_CNT DESC) WHERE ROWNUM<=10
             ]]>
-	</select>
+	</select> -->
 	
 	<select id="getSearchingSelect" parameterType="String" resultType="rtsr">
             SELECT * FROM RTSR WHERE RTSR_WORD LIKE '%'||#{word}||'%'
