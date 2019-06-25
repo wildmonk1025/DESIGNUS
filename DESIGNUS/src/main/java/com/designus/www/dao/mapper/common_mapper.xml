@@ -4,17 +4,22 @@
 
 <mapper namespace="com.designus.www.dao.IcommonDao">
 
-
 	<select id="getbestInfo" resultType="auction">
+	<![CDATA[
 		SELECT * FROM AU_RECOMM_LIST WHERE ROWNUM<=20
+	]]>
 	</select>
 	
 	<select id="getbestInfo2" resultType="revauction">
+	<![CDATA[
 		SELECT * FROM RA_RECOMM_LIST WHERE ROWNUM<=20
+	]]>
 	</select>
 	
 	<select id="getbestInfo3" resultType="sponsor">
+	<![CDATA[
 		SELECT * FROM SS_RECOMM_LIST WHERE ROWNUM<=20
+	]]>
 	</select>
 	
 	<select id="getSearchRankingSelect" resultType="rtsr">

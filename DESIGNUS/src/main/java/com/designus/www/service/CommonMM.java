@@ -105,7 +105,7 @@ public class CommonMM {
 		List<Auction> au_recommList = new ArrayList<>();
 
 		for(int i=0;i<aRecommList.size();i++) {
-			//f = da.compareDateToBoolean(aRecommList.get(i).getAu_date());
+			f = da.compareDateToBoolean(aRecommList.get(i).getAu_date());
 			if(f)
 			au_recommList.add(aRecommList.get(i));
 		}
@@ -114,7 +114,7 @@ public class CommonMM {
 		List<RevAuction> ra_recommList = new ArrayList<>();
 		
 		for(int i=0;i<raRecommList.size();i++) {
-			//f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
+			f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
 			if(f)
 				ra_recommList.add(raRecommList.get(i));
 		}
@@ -124,7 +124,7 @@ public class CommonMM {
 		List<Sponsor> ss_recommList = new ArrayList<>();
 			
 		for(int i=0;i<ssRecommList.size();i++) {
-			//f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
+			f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
 			if(f)
 				ss_recommList.add(ssRecommList.get(i));
 		}
