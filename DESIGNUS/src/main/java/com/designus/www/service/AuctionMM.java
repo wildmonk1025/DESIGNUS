@@ -201,6 +201,7 @@ public class AuctionMM {
 		Basket bk = new Basket();
 		Member mb = new Member();
 		AuctionTender at = new AuctionTender();
+		cgList = aDao.getcgCode();
 		at.setAut_aunum(au_num);
 		mb.setMb_id(id);
 		mb.setMb_point(aDao.getPoint(mb));
@@ -219,7 +220,8 @@ public class AuctionMM {
 		au.setAui_imgSysName2(aDao.getAuctionImg2(au_num));
 		au.setAui_imgSysName3(aDao.getAuctionImg3(au_num));
 		au.setAui_imgSysName4(aDao.getAuctionImg4(au_num));
-
+		
+		mav.addObject("cgList",cgList);
 		mav.addObject("point", mb.getMb_point());
 		mav.addObject("peice", price);
 		mav.addObject("chkID", chkID);
@@ -321,6 +323,16 @@ public class AuctionMM {
 			view = "redirect:/auctionRead";
 		}
 		mav.setViewName(view);
+		return mav;
+	}
+
+	public ModelAndView auctionWrite() {
+		mav = new ModelAndView();
+		List<Category> cgList = null; 
+		cgList = aDao.getcgCode();
+		
+		mav.addObject("cgList",cgList);
+		mav.setViewName("auctionWrite");
 		return mav;
 	}
 

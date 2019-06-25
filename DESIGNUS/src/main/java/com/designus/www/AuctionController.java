@@ -23,6 +23,7 @@ public class AuctionController {
 	@RequestMapping(value = "/auctionWrite" )
 	public ModelAndView auctionWrite() {
 		mav = new ModelAndView();
+		mav = aum.auctionWrite();
 		return mav;
 	}
 	

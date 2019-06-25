@@ -15,12 +15,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Category;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.MemberSearch;
 import com.designus.www.bean.RevAuction;
 import com.designus.www.bean.RevAuctionTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IRevAuctionDao;
+import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.userClass.DateAdjust;
 import com.designus.www.userClass.UploadFile;
@@ -33,6 +35,8 @@ public class RevAuctionMM {
 	@Autowired
 	HttpSession session;
 	@Autowired
+	private IauctionDao aDao;
+	@Autowired
 	private IRevAuctionDao rDao;
 	@Autowired
 	private ImemberDao mDao;
@@ -44,7 +48,7 @@ public class RevAuctionMM {
 	public ModelAndView revAuctionSubmit(MultipartHttpServletRequest multi) {
 		String view = null;
 		mav = new ModelAndView();
-
+		
 		String ra_mbid = session.getAttribute("id").toString();
 		String ra_title = multi.getParameter("ra_title");
 		String ra_contents = multi.getParameter("ra_contents");
@@ -73,6 +77,7 @@ public class RevAuctionMM {
 			int rat_price = Integer.parseInt(multi.getParameter("ra_price"));
 			int rat_days = Integer.parseInt(multi.getParameter("ra_date"));
 			RevAuctionTender rat = new RevAuctionTender();
+			
 			rat.setRat_ranum(currval);
 			rat.setRat_mbid_w(rat_mbid_w);
 			rat.setRat_price(rat_price);
@@ -95,12 +100,9 @@ public class RevAuctionMM {
 				rap.setRap_notify(rat_mbid_w+" 님에게 비공개 제작의뢰 '"+ra_title+"'을(를) 신청을 하였습니다. ");
 				rDao.setNotifyrevAuctionN(rap);
 				
-				
-				
 			} else
 				System.out.println("비공개가 rat테이블에 insert안됨");
 		}
-		
 		
 		if (currval != 0) {
 			//글쓰기 성공 view = "redirect:boardList";
@@ -121,12 +123,13 @@ public class RevAuctionMM {
 		String view = null;
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
-
+		List<Category> cgList = null;
 		int nb = 1;
 		String decidechk = null;
 		RevAuction ra = new RevAuction();
 		Member mb = new Member();
 		Basket bk = new Basket();
+		cgList = aDao.getcgCode();
 		ra.setRa_num(ra_num);
 		ra = rDao.revAuctionReadSelect(ra);
 		
@@ -150,6 +153,7 @@ public class RevAuctionMM {
 				decidechk = "HIDE";
 			}
 		}
+		mav.addObject("cgList",cgList);
 		mav.addObject("decidechk", decidechk);
 		mav.addObject("nb", bk.getRab_ranum());
 		mav.addObject("raInfo", ra);
@@ -319,5 +323,15 @@ public class RevAuctionMM {
 			}
 			String str = new Gson().toJson(mList);
 		return str;
+	}
+
+
+	public ModelAndView revauctionWrite() {
+		mav = new ModelAndView();
+		List<Category> cgList = null; 
+		cgList = aDao.getcgCode();
+		mav.addObject("cgList",cgList);
+		mav.setViewName("revauctionWrite");
+		return mav;
 	}
 }

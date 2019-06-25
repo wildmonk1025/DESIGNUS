@@ -29,6 +29,7 @@ public class AuctionController_sub {
 	@RequestMapping(value = "/revauctionWrite", method = RequestMethod.GET)
 	public ModelAndView revAuctionWrite() {
 		mav = new ModelAndView();
+		mav = ram.revauctionWrite();
 		mav.setViewName("revAuctionWrite"); // joinFrm 하나 생성
 		return mav;
 	}
