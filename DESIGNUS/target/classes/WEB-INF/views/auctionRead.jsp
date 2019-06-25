@@ -352,7 +352,6 @@ div {
 				</div>
 				<div id="middle_img_lv2">
 				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
-
 				</div>
 				
 			</div>
@@ -480,9 +479,10 @@ div {
 
 		</div>
 
-		<div id="footercheck">
-			<jsp:include page="footer.jsp"></jsp:include>
-		</div>
+		<div id="footer">
+      <hr style="width:100%; border: 2px solid coral; align: center;">   
+         <jsp:include page="footer.jsp"></jsp:include>
+      </div>
 
 
 	</div>

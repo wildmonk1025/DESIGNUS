@@ -171,7 +171,7 @@ table tr:nth-child(2n+1) {
 	margin: 10px;
 	
 	width: 1200px;
-	height: 250px;
+	height: 350px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -186,34 +186,14 @@ table tr:nth-child(2n+1) {
 	background-color : white;
 	border: 2px solid coral;
 	transition-duration: 1s;
-	height: 250px;
+	height: 400px;
 }
 .noticebody{
    
     width: 1150px;
-	height: 150px;
+	height: 250px;
      overflow: auto;
 
-}
-
-#renking {
-	margin: 0px 10px 10px 10px;
-	width: 1200px;
-	height: 150px;
-	text-align: center;
-	font-size: 20px;
-	float: left;
-	display:inline-block;
-	border: 1px solid #f0f0f0;
-	border-radius: 10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-#renking:hover {
-	transform: scale(1.25);
-	background-color : white;
-	border: 2px solid coral;
-	transition-duration: 1s;
-	height: 250px;
 }
 
 #auction {
@@ -408,10 +388,7 @@ width: 1150px;
 	height: 250px;
    overflow: auto;
 }
-#renkingbody{
-width: 1150px;
-	height: 250px;
-}
+
 #e1{
 text-align: center;
 }
@@ -453,11 +430,6 @@ text-align: center;
 		
 			<div id="notice"></div>
 			
-			<div id="renking">
-				<div id="renkingheader"><h3>랭킹</h3></div>
-				<div id="renkingbody"><table id="gsc" ><tr><th>금</th><th>은</th><th>동</th></tr>
-				<tr><td>${g}</td><td>${s}</td><td id='e1'>${c}</td></tr></table></div>
-			</div>
 			<div id="spon">
 				
 			</div>
