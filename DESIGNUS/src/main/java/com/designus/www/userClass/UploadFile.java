@@ -464,14 +464,10 @@ public class UploadFile {
 		System.out.println(oriFileName4);
 
 		// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
-		String sysFileName1 = (System.currentTimeMillis() + 1) + "."
-				+ oriFileName1.substring(oriFileName1.lastIndexOf(".") + 1);
-		String sysFileName2 = (System.currentTimeMillis() + 2) + "."
-				+ oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
-		String sysFileName3 = (System.currentTimeMillis() + 3) + "."
-				+ oriFileName3.substring(oriFileName1.lastIndexOf(".") + 1);
-		String sysFileName4 = (System.currentTimeMillis() + 4) + "."
-				+ oriFileName4.substring(oriFileName2.lastIndexOf(".") + 1);
+		String sysFileName1 = (System.currentTimeMillis() + 1) + "." + oriFileName1.substring(oriFileName1.lastIndexOf(".") + 1);
+		String sysFileName2 = (System.currentTimeMillis() + 2) + "." + oriFileName2.substring(oriFileName2.lastIndexOf(".") + 1);
+		String sysFileName3 = (System.currentTimeMillis() + 3) + "." + oriFileName3.substring(oriFileName3.lastIndexOf(".") + 1);
+		String sysFileName4 = (System.currentTimeMillis() + 4) + "." + oriFileName4.substring(oriFileName4.lastIndexOf(".") + 1);
 
 		au.setAui_imgSysName1(sysFileName1);
 		au.setAui_imgSysName2(sysFileName2);
