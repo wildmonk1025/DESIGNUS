@@ -168,6 +168,7 @@ div {
 }
 
 #inbuyLB {
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	position: absolute;
 	width: 400px;
 	height: 230px;
@@ -205,6 +206,7 @@ div {
 }
 
 #tenderLB {
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	position: absolute;
 	width: 400px;
 	height: 230px;
@@ -370,8 +372,8 @@ div {
 				<div id="middle_contents1_lv3">
 					<table style="margin: 10px 0px 0px 10px; line-height: 200%">
 						<tr>
-							<th>작성자 :</th>
-							<td>${auInfo.au_mbid_w}님</td>
+							<th>작성자 : </th>
+							<td> ${auInfo.au_mbid_w}님</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -622,7 +624,7 @@ div {
  		var minutes = Math.floor((distance % _hour) / _minute);
  		var seconds = Math.floor((distance % _minute) / _second);
  	 
- 		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
+ 		$(id).html("남은 시간 : "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
  		timer = setInterval(showRemaining, 100);

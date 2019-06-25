@@ -315,6 +315,7 @@ public class AuctionMM {
 			mav.addObject("au_num", tenderNum);
 			view = "redirect:/auctionRead";
 		}
+		
 		if (price >= tenderPrice) {
 			mav.addObject("au_num", tenderNum);
 			view = "redirect:/auctionRead";
