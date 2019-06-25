@@ -57,12 +57,9 @@ ul {
 	height: 40px;
 	padding-left: 20px;
 	float: left;
-	background-color: orange;
-	color: white;
 }
 
 #onequestionmain {
-	border: 1px solid black;
 	margin: 10px;
 	padding: 20px;
 	width: 900px;
@@ -71,7 +68,6 @@ ul {
 }
 
 #questiontitle {
-	border: 1px solid red;
 	float: left;
 	margin: 5px;
 	width: 800px;
@@ -79,7 +75,6 @@ ul {
 }
 
 #questioncontents {
-	border: 1px solid red;
 	float: left;
 	margin: 5px;
 	width: 800px;
@@ -87,7 +82,6 @@ ul {
 }
 
 #questionfile {
-	border: 1px solid red;
 	float: left;
 	margin: 5px;
 	width: 800px;
@@ -191,6 +185,9 @@ margin-top: 10px;
 	width: 120px;
 	height: 30px;
 }
+.dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
 </style>
 </head>
 
@@ -208,12 +205,12 @@ margin-top: 10px;
 	</div>
 	<div id="onequestionmain">
 	<form name="formName"  action="questionreply" method="post">
-		<div id="onequestion">1:1문의 접수 내역</div>
+		<div  id="onequestion" class="dd" style="background-color:#F6D8CE;">1:1문의 접수 내역</div>
 		<br> <br> <br> <br>
 		
-			<div id="questiontitle">글 제목: ${aq_title}</div>
-			<div id="questioncontents">글 내용: ${aq_contents}</div>
-			<div id="questionfile">첨부파일 : ${aqi_img}</div>
+			<div id="questiontitle" class="dd">글 제목: ${aq_title}</div>
+			<div id="questioncontents"  class="dd">글 내용: ${aq_contents}</div>
+			<div id="questionfile"  class="dd">첨부파일 : ${aqi_img}</div>
 			<input type="hidden" name="aq_num" id="aq_num" value="${aq_num}">
 			
 				<textarea rows="30" cols="20"

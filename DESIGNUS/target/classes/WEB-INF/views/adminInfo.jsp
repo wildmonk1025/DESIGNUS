@@ -91,6 +91,7 @@ ul {
 	margin-top: 5px;
 	width: 1000px;
 	height: 240px;
+	
 }
 
 #declarelist {
@@ -141,6 +142,10 @@ a:hover {
 	text-decoration: none;
 	color: black;
 }
+.dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+}
 </style>
 </head>
 <body>
@@ -154,16 +159,16 @@ a:hover {
 	</div>
 	<div id="adminopt">
 		<div class="opt"><br/><br/>
-			<h3
-				style="text-align: center; font-size: 25px; background-color: orange;">신고내역</h3>
+			<h3 class="dd"
+				style="text-align: center; font-size: 25px; background-color:#F6D8CE;">신고내역</h3>
 			<hr />
 			<div id="declarelist"></div>
 		</div>
 
 
 		<div class="opt"><br/><br/>
-			<h3
-				style="text-align: center; font-size: 25px; background-color: orange;">판매자
+			<h3 class="dd"
+				style="text-align: center; font-size: 25px; background-color:#F6D8CE;">판매자
 				전환신청</h3>
 			<div id="transformlist"></div>
 		</div>

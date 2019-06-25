@@ -200,6 +200,10 @@ margin-top: 10px;
 	width: 120px;
 	height: 30px;
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+}
     </style>
 </head>
 
@@ -219,7 +223,7 @@ margin-top: 10px;
     <div id="adminopt">
             <div class="opt"><br/><br/>
             <form action="membercaution" method="post" id="form1">
-                <h3 style="margin-left:  20px; font-size: 25px; background-color: orange;">회원 상세보기</h3>
+                <h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">회원 상세보기</h3>
                 <hr>
                 <div id="declarelist">
                     <table id="customers">

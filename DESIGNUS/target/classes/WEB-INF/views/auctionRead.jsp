@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -353,7 +354,7 @@ div {
 					<c:if test="${code eq 200 }">유아</c:if>    
 				</div>
 				<div id="middle_img_lv2">
-				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
+				<img class="img" src="<spring:url value='/resources/auction/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
 				</div>
 				
 			</div>
@@ -429,7 +430,7 @@ div {
 						<div class="wList"
 							onclick="location.href='auctionRead?au_num=${auw.au_num}'">
 							<div class="wListPhoto">
-							<img class="img" src="<c:url value='/resources/upload/${auw.aui_img}'/>" width="100%" height="100%"/>
+							<img class="img" src="<c:url value='resources/auction/${auw.aui_img}'/>" width="100%" height="100%"/>
 								
 							</div>
 							<div class="wListTitle">${auw.au_title}</div>
@@ -464,30 +465,27 @@ div {
 			<div id="middle_contents1_lv6">
 				<h2>작품설명</h2>
 				<div class="contentsImg">
-				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
+				<img class="img" src="<spring:url value='/resources/auction/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
 				</div>
 				<div class="contentsImg">
-				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName2}'/>" width="100%" height="100%"/>
+				<img class="img" src="<spring:url value='/resources/auction/${auInfo.aui_imgSysName2}'/>" width="100%" height="100%"/>
 				</div>
 				<div class="contentsImg">
-				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName3}'/>" width="100%" height="100%"/>
+				<img class="img" src="<spring:url value='/resources/auction/${auInfo.aui_imgSysName3}'/>" width="100%" height="100%"/>
 				</div>
 				<div class="contentsImg">
-				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName4}'/>" width="100%" height="100%"/>
+				<img class="img" src="<spring:url value='/resources/auction/${auInfo.aui_imgSysName4}'/>" width="100%" height="100%"/>
 				</div>
 				<div id="contents">${auInfo.au_contents }</div>
 			</div>
 
-
+		</div>
 		</div>
 
 		<div id="footer">
       <hr style="width:100%; border: 2px solid coral; align: center;">   
          <jsp:include page="footer.jsp"></jsp:include>
       </div>
-
-
-	</div>
 
 
 </body>
