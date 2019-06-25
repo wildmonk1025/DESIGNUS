@@ -203,6 +203,12 @@ margin-top: 10px;
 #dd{
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 
+
+}
+
+#footercheck {
+	width: 1520px;
+	height: 150px;
 }
     </style>
 </head>
@@ -268,6 +274,9 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
        
         </div>
     </div>
+    	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 <script>
 

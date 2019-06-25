@@ -12,6 +12,10 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 <style>
+#footercheck {
+	width: 1520px;
+	height: 150px;
+}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -49,7 +53,7 @@ ul {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: 800px;
+	height: 500px;
 }
 
 .writerjoinfrm {
@@ -226,6 +230,9 @@ text-align: center;
 			
 		</div>
 		</form>
+	</div>
+	 	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 <script>
