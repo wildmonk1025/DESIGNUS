@@ -303,20 +303,14 @@ input[type="file"] {
 						</tr>
 						<tr>
 							<th><div class="temp">카테고리</div></th>
-							<td><select id="ra_cgcode" name="ra_cgcode">
-									<option selected value="1">선택</option>
-									<option value="100">귀금속 공예</option>
-									<option value="110">원목 공예</option>
-									<option value="120">종이 공예</option>
-									<option value="130">가죽 공예</option>
-									<option value="140">천 공예</option>
-									<option value="150">플라스틱 공예</option>
-									<option value="160">도자기 공예</option>
-									<option value="170">가공 식품</option>
-									<option value="180">휴대폰 액세서리</option>
-									<option value="190">페인팅,캐리커쳐,캘리</option>
-									<option value="200">유아 용품</option>
-							</select></td>
+							<td>
+							<select name="au_cgcode" id="cgcode">
+								<option>선택해주세요</option>
+								<c:forEach var="cg" items="${cgList}">
+									<option value="${cg.cg_code}">${cg.cg_name}</option>
+								</c:forEach>
+							</select>
+							</td>
 						</tr>
 						<tr>
 							<th><div class="temp">대표이미지</div></th>

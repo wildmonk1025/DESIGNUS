@@ -100,6 +100,8 @@ public interface IauctionDao {
 
 	void updateAuctionKind(@Param("au_num") int au_num);
 
+	List<Category> getcgCode();
+
 
 	
   
