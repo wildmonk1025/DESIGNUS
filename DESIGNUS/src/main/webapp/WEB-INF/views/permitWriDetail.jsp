@@ -107,7 +107,7 @@ ul {
 
 #customers tr.alt td {
 	color: #000000;
-	background-color: #EAF2D3;
+	background-color:#F6D8CE;
 }
 tr{
 width: 300px;
@@ -197,7 +197,7 @@ text-align: center;
 		
 			
 				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:870px; ">작가 신청
-					상세내역</h3>
+					상세내역</h3><br/>
 			<div id="writerjoincontents">
 				<table id="customers">
 					<tr  class="alt">

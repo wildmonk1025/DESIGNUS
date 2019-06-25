@@ -120,7 +120,7 @@ td {
 
 #customers td, #customers th {
 	font-size: 1em;
-	border: 1px solid #98bf21;
+	border: 1px solid black;
 	padding: 3px 7px 2px 7px;
 }
 
@@ -135,7 +135,7 @@ td {
 
 #customers tr.alt td {
 	color: #000000;
-	background-color: #EAF2D3;
+	background-color:#F6D8CE;
 }
 .btn2{
 margin-top: 10px;
@@ -224,7 +224,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			<div class="opt"><br/><br/>
 				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">신고
 					상세내역</h3>
-				<hr>
+				<hr><br/>
 				<div id="declarelist">
 
 					<table id="customers">

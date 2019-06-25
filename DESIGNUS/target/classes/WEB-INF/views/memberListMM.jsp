@@ -116,7 +116,7 @@
 
 #customers td, #customers th {
 	font-size: 1em;
-	border: 1px solid #98bf21;
+	border: 1px solid black;
 	padding: 3px 7px 2px 7px;
 }
 
@@ -131,7 +131,7 @@
 
 #customers tr.alt td {
 	color: #000000;
-	background-color: #EAF2D3;
+	background-color:#F6D8CE;
 }
 tr{
 width: 300px;
@@ -224,7 +224,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
             <div class="opt"><br/><br/>
             <form action="membercaution" method="post" id="form1">
                 <h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">회원 상세보기</h3>
-                <hr>
+                <hr><br/>
                 <div id="declarelist">
                     <table id="customers">
                         <tr  class="alt">
@@ -247,7 +247,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
                             <td width="100" height="20">${mbInfo.mb_ccnt}</td>
                         </tr>
                         
-                        <tr  class="alt">
+                        <tr  >
                             <td colspan="6" width="600" height="170"> <br>
                                 주소 : ${mbInfo.mb_address}<br>
                         </tr>
