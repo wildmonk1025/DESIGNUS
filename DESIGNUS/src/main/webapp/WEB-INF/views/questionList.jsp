@@ -7,6 +7,21 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+#main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid #F5BCA9;
+	width: 1518px;
+	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
 #customers {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	width: 400px;
@@ -120,7 +135,7 @@ a:hover {
 </head>
 
 <body>
-	<div id="mainheader">
+	<div id="main">
 		<div id="mainheader">
 			<jsp:include page="main.jsp" />
 		</div>
@@ -133,7 +148,7 @@ a:hover {
 	</div>
 	<div id="adminopt">
 		<form name="form" method="get">
-			<div class="opt">
+			<div class="opt"><br/><br/>
 				<h3
 					style="margin-left: 20px; font-size: 25px; background-color: orange;">1:1문의
 					접수 리스트</h3>

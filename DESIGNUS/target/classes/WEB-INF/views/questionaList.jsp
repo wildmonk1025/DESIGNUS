@@ -6,6 +6,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+#main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid #F5BCA9;
+	width: 1518px;
+	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
 #one {
 	width: 100%;
 	height: 100%;
@@ -200,8 +215,10 @@ width: 900px;
 
 <body>
 	<div id="mypagemain">
-		<div id="mainheader">
+		<div id="main">
+			<div id="mainheader">
 			<jsp:include page="main.jsp" />
+			</div>
 		</div>
 
 		<jsp:include page="Mapagemain.jsp" />

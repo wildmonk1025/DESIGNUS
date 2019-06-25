@@ -3,10 +3,12 @@ package com.designus.www.bean;
 import org.apache.ibatis.type.Alias;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Alias("auction")
-@Data
-
+@Getter
+@Setter
 public class Auction {
 	int    au_num;
 	String au_mbid_w;

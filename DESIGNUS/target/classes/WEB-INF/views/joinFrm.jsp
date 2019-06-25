@@ -68,6 +68,7 @@ div {
 </head>
 <body>
 
+</script>
 	<div id="full" align="center">
 	
 		<a href="home"><img src="resources/images/logo.png"
