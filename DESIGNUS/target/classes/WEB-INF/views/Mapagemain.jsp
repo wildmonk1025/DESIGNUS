@@ -236,9 +236,6 @@ margin: 15px 0px 0px 0px;
 					<tr id="m8">
 						<td style="font-size: 20px"><a href="privacyedit">개인정보 수정</a></td>
 					</tr>
-					<tr id="m9">
-						<td style="font-size: 20px"><a href="memberout">회원탈퇴 신청</a></td>
-					</tr>
 					<tr id="m10">
 						<td style="font-size: 20px"><a href="nortowri">작가전환 신청</a></td>
 					</tr>
