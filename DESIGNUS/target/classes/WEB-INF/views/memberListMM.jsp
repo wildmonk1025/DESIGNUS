@@ -7,6 +7,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
+    #main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid #F5BCA9;
+	width: 1518px;
+	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
         body {
             margin: auto;
             width: 1520px;
@@ -20,7 +35,6 @@
         }
 
         #mainheader {
-            border: 1px solid black;
             width: 1518px;
             height: 170px;
         }
@@ -190,8 +204,10 @@ margin-top: 10px;
 </head>
 
 <body>
+   <div id="main">
    <div id="mainheader">
 		<jsp:include page="main.jsp"/>
+	</div>
 	</div>
     <div id="adminmenu">
         <ul>
@@ -201,7 +217,7 @@ margin-top: 10px;
     </div>
     <div id="adminopt">
     <div id="adminopt">
-            <div class="opt">
+            <div class="opt"><br/><br/>
             <form action="membercaution" method="post" id="form1">
                 <h3 style="margin-left:  20px; font-size: 25px; background-color: orange;">회원 상세보기</h3>
                 <hr>
