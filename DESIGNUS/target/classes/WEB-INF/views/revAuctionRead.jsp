@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 
 <!DOCTYPE html>
@@ -377,7 +378,7 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 						<c:if test="${priceChk eq null}">
 						<td colspan="2" style="text-align:left; color:gray">의뢰한 내역이 없습니다.</td></c:if>
 						<c:if test="${priceChk ne null}">
-						<td style="text-align:center;">${raCurPrice.rat_price}</td>
+						<td style="text-align:center;"> <fmt:formatNumber value="${raCurPrice.rat_price}" pattern="#,###"/></td>
 						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td></c:if>
 						<td style="text-align:left; color:blue;"></td>
 					</tr>
