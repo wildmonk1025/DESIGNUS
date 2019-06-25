@@ -536,7 +536,7 @@ $('#lightbox1').css("display", "inline");
 	});
 	$("#btn3").click(function(){
 		var c = '<%=(String) session.getAttribute("id")%>';
-			var b = $("#idc").val();
+			var b = '${mb_id}';
 			console.log('writer', b);//글쓴사람
 			console.log('session', c);//접속중
 
