@@ -173,7 +173,6 @@ a{
 		<div id="List">
 			<button class="btn3" onclick="location.href='auctionList?cgcode=${cgcode}'">출품리스트</button>
 			<button class="btn2">제작의뢰 리스트</button>
-			 <a href="#">공지사항 [ 제작의뢰/출품 방식 설명서       LEE수원   추천수  조회수  date]</a>
 			<div id="ListView1">
 			<c:forEach var="ra" items="${raList}">
 				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">

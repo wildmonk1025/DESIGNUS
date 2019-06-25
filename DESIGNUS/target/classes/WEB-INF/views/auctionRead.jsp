@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,26 +14,31 @@ div {
 }
 
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #homeMain {
-	border: 1px solid black;
 	width: 1520px;
 	height: auto;
 }
 
-#footercheck {
-	border: 1px solid black;
-	width: 1520px;
-	height: 150px;
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 180px;
+   margin-top: 20px;
+   border: 1px solid #f0f0f0;
 }
 
 #List {
-	border: 1px solid black;
-	margin: 20px;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin: 40px 20px 20px 20px;
 	width: 1480px;
 	height: 1425px;
 	width: 1480px;
@@ -40,7 +46,6 @@ div {
 
 #middle_img {
 	float: left;
-	border: 1px solid red;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -49,62 +54,62 @@ div {
 
 #middle_img_lv1 {
 	padding: 5px;
-	border: 1px solid blue;
 	width: 260px;
 	height: 35px;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_img_lv2 {
 	padding: 5px;
-	border: 1px solid blue;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	width: 260px;
-	height: 230px;
+	height: 240px;
 	margin-top: 5px;
 }
 
 #middle_contents1 {
 	float: left;
-	border: 1px solid red;
-	width: 900px;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	width: 890px;
 	height: 300px;
+	margin: 13px 0px 0px 0px;
 	display: table-cell;
 }
 
 #middle_contents1_lv1 {
-	border: 1px solid blue;
 	width: 850px;
 	height: 60px;
 	font-size: 30px;
+	border-bottom: 1px solid gray;
 }
 
 #middle_contents1_lv2 {
-	border: 1px solid green;
 	width: 150px;
 	height: 58px;
 	font-size: 20px;
 	float: right;
 }
 
-/*  #peek2 {
-	display: none;
-}  */
 #middle_contents1_lv3 {
-	border: 1px solid blue;
 	width: 850px;
 	height: 140px;
 	font-size: 20px;
 	text-align: right;
+	border-bottom: 1px solid gray;
 }
 
 #middle_contents1_lv4 {
-	border: 1px soild orange;
 	width: 1480px;
 	height: 200px;
 	float: left;
 }
 
 #middle_Person {
-	border: 1px soild green;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	width: 1440px;
 	height: 125px;
 	margin: 20px;
@@ -125,7 +130,8 @@ div {
 }
 
 #middle_item {
-	border: 1px solid black;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	display: inline-block;
 	width: 1440px;
 	height: 200px;
@@ -140,11 +146,13 @@ div {
 	display: table-cell;
 	vertical-align: middle;
 	height: 90px;
-	border: 1px solid red;
+	border-bottom: 1px solid gray;
 }
 
 #asubmitbtn {
-	border: 1px solid red;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin: 13px 0px 0px 10px;
 	width: 18.5%;
 	height: 300px;
 	float: left;
@@ -241,26 +249,27 @@ div {
 	width: 33.2%;
 	height: 100%;
 	float: left;
-	border: 0.5px solid red;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 .wListPhoto {
-	border: 0.5px solid black;
 	height: 100%;
 	width: 40%;
 	float: left;
 }
 
 .wListTitle {
-	border: 0.5px solid black;
+	border-bottom: 1px solid gray;
 	height: 25%;
 	width: 59.5%;
 	float: left;
 	text-align: center;
+	font-size: 20px;
 }
 
 .wListContents {
-	border: 0.5px solid green;
+	border-bottom: 1px solid gray;
 	width: 59.5%;
 	height: 74.5%;
 	float: left;
@@ -268,7 +277,8 @@ div {
 }
 
 .contentsImg {
-	border: 1px solid gray;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	float: left;
 	margin: 0px 20px 10px 20px;
 	width: 328px;
@@ -279,12 +289,18 @@ div {
 }
 
 #contents {
-	border: 1px solid gray;
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	float: left;
 	margin: 0px 20px 0px 20px;
 	width: 1438px;
 	height: 340px;
 }
+.img{
+	border-radius:10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+
 </style>
 </head>
 
@@ -332,10 +348,10 @@ div {
 					<c:if test="${code eq 170 }">가공식품</c:if>
 					<c:if test="${code eq 180 }">휴대폰</c:if>
 					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
-					<c:if test="${code eq 200 }">유아</c:if>
+					<c:if test="${code eq 200 }">유아</c:if>    
 				</div>
 				<div id="middle_img_lv2">
-				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
+				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
 
 				</div>
 				
@@ -366,7 +382,8 @@ div {
 						</tr>
 						<tr>
 							<th>즉시구매가격 :</th>
-							<td colspan="2"><div id="tender_result">${auInfo.au_inprice}원
+							<td colspan="2"><div id="tender_result">
+							<fmt:formatNumber value="${auInfo.au_inprice}" pattern="#,###"/>원
 								</div></td>
 						</tr>
 					</table>
@@ -397,7 +414,7 @@ div {
 								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px">${at.aut_price}</td>
+								<td style="width: 100px"><fmt:formatNumber value="${at.aut_price}" pattern="#,###"/></td>
 								<td style="width: 30px">원</td>
 							</tr>
 						</table>
@@ -411,7 +428,7 @@ div {
 						<div class="wList"
 							onclick="location.href='auctionRead?au_num=${auw.au_num}'">
 							<div class="wListPhoto">
-							<img src="<c:url value='/resources/upload/${auw.aui_img}'/>" width="100%" height="100%"/>
+							<img class="img" src="<c:url value='/resources/upload/${auw.aui_img}'/>" width="100%" height="100%"/>
 								
 							</div>
 							<div class="wListTitle">${auw.au_title}</div>
@@ -425,12 +442,12 @@ div {
 									</tr>
 									<tr style="height: 32.5px">
 										<th>경매시작가</th>
-										<td style="text-align: right;">${auw.au_minprice}</td>
+										<td style="text-align: right;"><fmt:formatNumber value="${auw.au_minprice}" pattern="#,###"/></td>
 										<td>원</td>
 									</tr>
 									<tr style="height: 32.5px">
 										<th>즉시구매가</th>
-										<td style="text-align: right;">${auw.au_inprice}</td>
+										<td style="text-align: right;"><fmt:formatNumber value="${auw.au_inprice}" pattern="#,###"/></td>
 										<td>원</td>
 									</tr>
 									<tr style="height: 32.5px">
@@ -446,16 +463,16 @@ div {
 			<div id="middle_contents1_lv6">
 				<h2>작품설명</h2>
 				<div class="contentsImg">
-				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
+				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
 				</div>
 				<div class="contentsImg">
-				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName2}'/>" width="100%" height="100%"/>
+				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName2}'/>" width="100%" height="100%"/>
 				</div>
 				<div class="contentsImg">
-				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName3}'/>" width="100%" height="100%"/>
+				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName3}'/>" width="100%" height="100%"/>
 				</div>
 				<div class="contentsImg">
-				<img src="<c:url value='/resources/upload/${auInfo.aui_imgSysName4}'/>" width="100%" height="100%"/>
+				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName4}'/>" width="100%" height="100%"/>
 				</div>
 				<div id="contents">${auInfo.au_contents }</div>
 			</div>

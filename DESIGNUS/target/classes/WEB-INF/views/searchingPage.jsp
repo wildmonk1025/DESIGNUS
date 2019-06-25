@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -269,8 +270,10 @@ div::-webkit-scrollbar {
 								<h3>${au.au_title }</h3>
 							</div>
 							<div class="auListPrice">
-								즉시구매가능수량 : ${au.au_qty -1} <br> 경매시작가 : ${au.au_minprice} <br>
-								즉시구매가 : ${au.au_inprice} <br> 경매최고가 : ${au.aut_price}
+								즉시구매가능수량 : ${au.au_qty -1} <br> 
+								경매시작가 : <fmt:formatNumber value="${au.au_minprice}" pattern="#,###"/> <br>
+								즉시구매가 : <fmt:formatNumber value="${au.au_inprice}" pattern="#,###"/> <br> 
+								경매최고가 : <fmt:formatNumber value="${au.aut_price}" pattern="#,###"/>
 							</div>
 							<div class="auListDate">${au.au_date }</div>
 						</div>
@@ -287,8 +290,8 @@ div::-webkit-scrollbar {
 							<div class="raListTitle">${ra.ra_title }</div>
 							<div class="raListPrice">
 								<br>
-								<p>경매최저가 : ${ra.ra_min }</p>
-								<p>경매최고가 : ${ra.ra_max }</p>
+								<p>경매최저가 : <fmt:formatNumber value="${ra.ra_min }" pattern="#,###"/></p>
+								<p>경매최고가 : <fmt:formatNumber value="${ra.ra_max }" pattern="#,###"/></p>
 							</div>
 							<div class="raListDate">${ra.ra_date}</div>
 						</div>
