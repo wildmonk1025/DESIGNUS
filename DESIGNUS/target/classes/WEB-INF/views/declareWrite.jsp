@@ -31,7 +31,7 @@
 
 #customers td, #customers th {
 	font-size: 1em;
-	border: 1px solid #98bf21;
+	border: none;
 	padding: 3px 7px 2px 7px;
 }
 
@@ -40,13 +40,13 @@
 	text-align: left;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	background-color: #A7C942;
+	background-color:#F6D8CE;
 	color: #ffffff;
 }
 
 #customers tr.alt td {
 	color: #000000;
-	background-color: #EAF2D3;
+	background-color:#F6D8CE;
 }
 body {
 	margin: auto;
