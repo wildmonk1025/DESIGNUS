@@ -77,7 +77,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
-		String path = root2 + "resources/member/";
+		String path = root2 + "file/member/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -128,7 +128,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/revauction/";
+		String path = root2 + "file/revauction/";
 		System.out.println("rootㅎㅎ:"+path);
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
@@ -242,8 +242,8 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
-		String path = root2 + "resources/member/";
-		String path2 = root2 + "resources/port/";
+		String path = root2 + "file/member/";
+		String path2 = root2 + "file/port/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		File dir2 = new File(path2);
@@ -317,7 +317,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/portf/";
+		String path = root2 + "file/portf/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -361,7 +361,7 @@ public class UploadFile {
 	public String revTenderfileUp(MultipartHttpServletRequest multi) {
 		String root = multi.getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
-		String path = root2 + "resources/tender/";
+		String path = root2 + "file/tender/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -399,7 +399,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/board/";
+		String path = root2 + "file/board/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -442,7 +442,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/auction/";
+		String path = root2 + "file/auction/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -513,7 +513,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/sponsor/";
+		String path = root2 + "file/sponsor/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -556,7 +556,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/question/";
+		String path = root2 + "file/question/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -588,7 +588,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/report/";
+		String path = root2 + "file/report/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -620,7 +620,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "resources/sponfile/";
+		String path = root2 + "file/sponfile/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
