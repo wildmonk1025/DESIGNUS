@@ -560,13 +560,13 @@ console.log(24,qq)
        if(spgList[i].ssp_step ==1 ){
 	 tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
 	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
-	   +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
+	   +"0<progress value="+stList[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
        
 	   +"목표("+spgList[i].ss_goalqty+") 마감일 :"+spgList[i].ss_date+"</div>" 
        }else if(spgList[i].ssp_step <=2 ){
     	   tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
     	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
-    	   +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
+    	   +"0<progress value="+stList[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
            
     	   +"목표("+spgList[i].ss_goalqty+") 마감일 :마감 되었습니다.</div>" 
        }

@@ -186,6 +186,14 @@ border: 1px solid orange;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+	border-radius: 5px;
+}
+.first:hover {
+	transform: scale(1.05);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
 }
 .p1 {
  width: 500px;
@@ -248,14 +256,15 @@ margin-top: 60px;
 	display: none;
 }
 #l1 {
+	 border : 3px solid orange;
 	position: absolute;
-	width: 400px;
-	height: 330px;
+	width: 600px;
+	height: 430px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
@@ -275,6 +284,83 @@ margin-top: 60px;
 	top: 500px;
 	left: 900px;
 }
+.b3{
+margin-top:10px;
+  width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+}
+.bbttzzz{
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: orange;
+  margin-top: 20px;
+}
+.bbttzzz:hover {
+   background-color: red;
+}
+.f50{
+ border-bottom: 1px solid orange;
+ text-align: left;
+ font-size: 20px;
+ margin-left : 20px;
+ margin-top : 10px;
+ color: orange;
+ width: 560px;
+ float: left;
+}
+.f22{
+width : 295px;
+  float: left;
+  border-bottom: 1px solid orange;
+}
+.f23{
+width : 295px;
+  float: left;
+  
+}
+.f24{
+
+width : 295px;
+  float: left;
+  border-bottom: 1px solid orange;
+}
+.f25{
+margin-left: 100px;
+  width: 600px;
+  float: left;
+  text-align: left;
+}
+.f26{
+margin-top : 10px;
+ width: 300px;
+ height: 35px;
+}
+.f27{
+margin-top : 10px;
+width: 286px;
+ height: 35px;
+}
+.f28{
+width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.f21{
+width : 295px;
+  float: left;
+
+}
+.f20{
+ margin-top : 50px;
+height : auto;
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -290,6 +376,13 @@ $(document).ready(function(){
 		 });//end ajax
 });
 // contentType:"application/json; charset=utf-8;",
+</script>
+<script type="text/javascript">
+var aa="${aaaa}";
+console.log(aa);
+if(aa=="bbbb"){
+	alert("포인트가 부족합니다. 충전후 사용하세요");
+}	
 </script>
 </head>
 
@@ -379,7 +472,7 @@ for(var i=0; i<spgList.length;i++){
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
-			  +"<div class='Fifth'><input type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
+			  +"<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
 		}else if(spgList[i].ssp_step==4){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
@@ -391,7 +484,7 @@ for(var i=0; i<spgList.length;i++){
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 :"+spgList[i].ssp_track+"</div></div>"
 			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
-			  +"<div class='Fifth'><input type='button' onclick=\"Board('"+ spgList[i].ssp_ptnum+ "')\" value='후원 후기 쓰기'/></div></div>"
+			  +"<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"Board('"+ spgList[i].ssp_ptnum+ "')\" value='후원 후기 쓰기'/></div></div>"
 		}else if(spgList[i].ssp_step==6){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 :"+spgList[i].ssp_track+"</div></div>"
@@ -480,16 +573,19 @@ function spo(even) {
 		success : function(data) {
 			alert('해당 상품을 추천하였습니다.');
 			console.log("12" + data.ss_price);
-			sub+="<form action='funddeliupload' method='post'>"
+			sub+="<form action='funddeliupload' method='post' onsubmit='return reqCheck();'>"
+			   +"<div id='r2'>"
 			   +"<input type='hidden' name='ssp_ptnum' value='"+data.ssp_ptnum+"'>"
-			   +"<div class='l2'>"+data.ss_mbid_w+"님에게 배송정보 입력</div>"
-			   +"<div class='l3'><h2>"+data.ss_title+"</h2><h4>"+data.ss_price+"</h4></div>"
-			   +"<div class='l4'>아이디 :"+data.ssp_mbid_n+" <input type='hidden' name='ssp_mbid_n' id='ssp_mbid_n'><br>"
-			   +"이름 : <input type='text' name='ssp_name' id='ssp_name'><br>"
-			   +"주소 : <input type='text' name='ssp_address' id='ssp_address'><br>"
-			   +"연락처 : <input type='text' name='ssp_phone' id='ssp_phone'><br>"
-			   +"<div class='l5'><input type='submit' value='요청'>"
-			   +"<input type='button' id='back' value='취소'>"
+			   +"<div class='f50'>"+data.ss_mbid_w+"님에게 배송정보 입력</div>"
+			   +"<div class='f20'><div class='f21'>거래번호 :"+ data.ssp_ptnum+ "<input type='hidden' name='aup_ptnum' value='"+data.ssp_ptnum+"' ></div>"
+			   +"<div class='f23'>상품이름 :"+data.ss_title+"</div>"
+			   +"<div class='f22'>가격 :"+data.ss_price+"<input type='hidden' name='aup_price' value='"+data.ss_price+"' ></div>"
+			   +"<div class='f24'>아이디 :"+data.ssp_mbid_n+" <input type='hidden' name='ssp_mbid_n' id='ssp_mbid_n'value='"+data.ssp_mbid_n+"'></div></div>"
+			   +"<div class='f25'>이름 : <input id='mb_name' class='f26' type='text' name='ssp_name'><br>"
+			   +"주소 : <input type='text' class='f26' name='ssp_address' id='mb_add'><br>"
+			   +"연락처 : <input type='text' class='f27' name='ssp_phone' id='mb_pho'></div>"
+			   +"<div class='l5'><input class='f28' type='submit' value='요청'>"
+			   +"<input class='f28' type='button' id='back' value='취소'>"
 			   +"</div></div></form>";
 			
 			
@@ -511,6 +607,26 @@ function spo(even) {
 	});//end ajax
 }
 
+function reqCheck() {
+	var bb=$("#mb_name");
+	var cc=$("#mb_pho");
+	var aa=$("#mb_add");
+	
+	if(bb.val()==""){
+		alert("이름을 입력해주세요.");
+		$("#mb_name").focus();
+		return false;
+	}else if(aa.val()==""){
+		alert("주소를 입력해주세요.");
+		$("#mb_add").focus();
+		return false;
+	}else if(cc.val()==""){
+		alert("핸드폰 번호를 입력해주세요.");
+		$("#mb_pho").focus();
+		return false;
+	} 
+	
+}
 
 
 	$("#action").click(function() {
