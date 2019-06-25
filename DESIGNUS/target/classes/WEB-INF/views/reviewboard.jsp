@@ -350,6 +350,10 @@ table tr:nth-child(2n+1) {
 		}
 	}
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+text-align: center;
+}
 </style>
 <title>Home</title>
 
@@ -364,13 +368,10 @@ table tr:nth-child(2n+1) {
 	</div>
 	</div>
 
-	<div id="homeMain">
-		<div id="freeboard1">
-			<button style="background-color: coral" class="btn2">이용후기
-				게시판</button>
-
-
-		</div>
+	<div id="homeMain"><br/><br/>
+	<h1 id="dd"  style="background-color:#F6D8CE;">이용후기
+				게시판</h1>
+	
 		<br />
 		<br />
 		<br />
