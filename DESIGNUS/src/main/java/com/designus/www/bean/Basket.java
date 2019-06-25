@@ -21,4 +21,5 @@ public class Basket {
 	String ab_mbid;
 	String aui_img;
 	String au_title;
+	String au_inprice;
 }

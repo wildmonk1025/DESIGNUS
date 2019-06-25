@@ -352,7 +352,6 @@ div {
 				</div>
 				<div id="middle_img_lv2">
 				<img class="img" src="<c:url value='/resources/upload/${auInfo.aui_imgSysName1}'/>" width="100%" height="100%"/>
-
 				</div>
 				
 			</div>
