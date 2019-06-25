@@ -281,9 +281,9 @@ var st="";
  $("#spon").html(que)
  
  if(quest.abc != null){
-	 st+=quest.abc
+	 st+="<div class='q1'>"+quest.abc+"</div>"
  }else{
-	 st+="<p class='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p>"
+	 st+="<div class='q1'><p class='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p></div>"
  }
  $("#auction").html(st)
 </script>
