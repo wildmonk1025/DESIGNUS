@@ -153,7 +153,7 @@ a:hover {
 		<jsp:include page="admininclud.jsp"></jsp:include>
 	</div>
 	<div id="adminopt">
-		<div class="opt">
+		<div class="opt"><br/><br/>
 			<h3
 				style="text-align: center; font-size: 25px; background-color: orange;">신고내역</h3>
 			<hr />
@@ -161,7 +161,7 @@ a:hover {
 		</div>
 
 
-		<div class="opt">
+		<div class="opt"><br/><br/>
 			<h3
 				style="text-align: center; font-size: 25px; background-color: orange;">판매자
 				전환신청</h3>

@@ -217,7 +217,7 @@ margin-top: 10px;
 
 	<div id="adminopt">
 		<form name="formName" method="post">
-			<div class="opt">
+			<div class="opt"><br/><br/>
 				<h3	style="margin-left: 20px; font-size: 25px; background-color: coral; width:820px; ">신고
 					상세내역</h3>
 				<hr>

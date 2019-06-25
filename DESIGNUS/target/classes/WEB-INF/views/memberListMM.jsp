@@ -217,7 +217,7 @@ margin-top: 10px;
     </div>
     <div id="adminopt">
     <div id="adminopt">
-            <div class="opt">
+            <div class="opt"><br/><br/>
             <form action="membercaution" method="post" id="form1">
                 <h3 style="margin-left:  20px; font-size: 25px; background-color: orange;">회원 상세보기</h3>
                 <hr>

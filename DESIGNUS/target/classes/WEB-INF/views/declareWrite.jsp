@@ -137,7 +137,7 @@ a:hover {
 		</div>
 		<form action="" enctype="multipart/form-data">
 		<div id="adminopt">
-			<div class="opt">
+			<div class="opt"><br/><br/>
 				<h3 style="text-align: center; font-size: 25px; background-color: orange;">회원
 					신고내역</h3>
 				<hr>

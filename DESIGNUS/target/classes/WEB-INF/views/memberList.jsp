@@ -206,7 +206,7 @@ a:hover {
 		</ul>
 	</div>
 	<div id="adminopt">
-		<div class="opt">
+		<div class="opt"><br/><br/>
 			<h3
 				style="text-align: center; font-size: 25px; background-color: orange;">회원관리</h3>
 			<div class="btnArray" id="normal">

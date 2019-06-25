@@ -148,7 +148,7 @@ a:hover {
 	</div>
 	<div id="adminopt">
 		<form name="form" method="get">
-			<div class="opt">
+			<div class="opt"><br/><br/>
 				<h3
 					style="margin-left: 20px; font-size: 25px; background-color: orange;">1:1문의
 					접수 리스트</h3>
