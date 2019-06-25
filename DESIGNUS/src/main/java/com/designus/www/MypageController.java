@@ -36,6 +36,7 @@ public class MypageController {
 	@Autowired
 	HttpSession session;
 	ModelAndView mav;
+	
 
 	@RequestMapping(value = "/historylist", method = RequestMethod.GET)
 	public ModelAndView historylist(String list) {
@@ -315,11 +316,14 @@ public class MypageController {
 
 	@RequestMapping(value = "/fundingAcceptList", method = { RequestMethod.GET, RequestMethod.POST })
 
-	public ModelAndView fundingAcceptList(Integer pageNum, String kind) {
+	public ModelAndView fundingAcceptList(Integer pageNum, String kind,String aaaa) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러].후원 진행 내역:시작");
 		mav = pm.fundingAcceptList(pageNum, kind);
 		System.out.println("[컨트롤러].후원 진행 내역:마무리!!");
+		if(aaaa != null) {
+			mav.addObject("aaaa", "bbbb");
+			}
 		return mav;
 	}
 

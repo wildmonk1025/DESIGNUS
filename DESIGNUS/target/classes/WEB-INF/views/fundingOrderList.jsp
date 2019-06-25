@@ -185,6 +185,25 @@ border: 1px solid orange;
 	text-align: center;
 	font-size: 20px;
 	float: left;
+border-radius: 5px;
+}
+.first:hover {
+	transform: scale(1.05);
+	background-color : white;
+	border: 2px solid coral;
+	transition-duration: 1s;
+	height: 250px;
+}
+.bbttzzz{
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: orange;
+  margin-top: 20px;
+}
+
+.bbttzzz:hover {
+   background-color: red;
 }
 .p1 {
  width: 500px;
@@ -247,18 +266,19 @@ margin-top: 60px;
 	display: none;
 }
 #q1 {
+	 border : 3px solid orange;
 	position: absolute;
-	width: 800px;
-	height: 530px;
+	width: 400px;
+	height: 330px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
-	top: 400px;
-	left: 700px;
+	top: 500px;
+	left: 900px;
 }
 #back{
   position : absolute;
@@ -288,6 +308,23 @@ margin-top: 60px;
  width: 400px;
  margin-top: 60px;
  margin-left: 30px;
+}
+.h1{
+margin-top:10px;
+}
+.f2{
+margin-top:10px;
+text-align: left;
+margin-left : 40px;
+width: 350px;
+}
+.b3{
+margin-top:10px;
+  width : 65px;
+  height : 40px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
 }
 </style>
 <script type="text/javascript">
@@ -394,8 +431,8 @@ for(var i=0; i<spgList.length;i++){
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
-			  +"<div class='Fifth'><input type='button' onclick=\"funddeliin('"+ spgList[i].ssp_ssnum+ "')\" value='후원인 배송정보'/>"
-			  +"<input type='button' onclick=\"funddelinu('"+ spgList[i].ssp_ptnum+ "')\" value='배송 보내기'/></div></div>"
+			  +"<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"funddeliin('"+ spgList[i].ssp_ptnum+ "')\" value='후원인 배송정보'/>"
+			  +"<input class='bbttzzz' type='button' onclick=\"funddelinu('"+ spgList[i].ssp_ptnum+ "')\" value='배송 보내기'/></div></div>"
 		}else if(spgList[i].ssp_step==5){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : "+spgList[i].ssp_track+"</div></div>"
@@ -450,7 +487,7 @@ function funddelinu(even) {
 }
 
 function funddeliin(even) {
-	var form = {ssp_ssnum : even}
+	var form = {ssp_ptnum : even}
 	var cub = "";
 	$.ajax({
 		url : 'funddeliinfo',
@@ -462,16 +499,13 @@ function funddeliin(even) {
 			console.info("13" + data.length);
 			alert('해당 상품을 추천하였습니다.');
 			 
-			cub+="<div id='q2'>후원인들의 배송정보</div>"
-			   +"<table id='q3'><tr><th>아이디</th><th>이름</th><th>주소</th><th>연락처</th></tr>"
-			for(var i=0; i<data.length;i++){
-			   if(data[i].ssp_step==4){
-				 cub+="<tr><td>"+data[i].ssp_mbid_n+"</td><td>"+data[i].ssp_name+"</td>"
-				    +"<td>"+data[i].ssp_address+"</td><td>"+data[i].ssp_phone+"</td></tr>"
-			   }	 
-				 
-			}
-			   cub+="</table><button id='back'>확인</button>";
+			cub+="<div id='c2'><h3 class='h1'>후원인들의 배송정보</h3>"
+			   +"<div class='f2'>아이디 :"+data.ssp_mbid_n+"<br>"
+			   +"이름: "+data.ssp_name+"</br>"
+			   +"주소: "+data.ssp_address+"</br>"
+			   +"연락처: "+data.ssp_phone+"</div>"
+			   +"<input class='b3' type='button' id='back' value='확인'></div>"
+				    
 			$('#total').css("display", "inline");
 		    $('#q1').css("display", "inline");		
 			$('#q1').html(cub);
