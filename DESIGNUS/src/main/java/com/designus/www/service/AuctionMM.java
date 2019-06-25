@@ -92,15 +92,7 @@ public class AuctionMM {
 		int num = (pageNum == null) ? 1 : pageNum;
 
 		auList = aDao.getAuctionListSelect(cgcode, num);
-	/*	
-		for(int i = 0 ; i < auList.size(); i++) {
-			price = auList.get(i).getAut_price();
-			String str = String.format("%,d",price);
-			int to = Integer.parseInt(str);
-			auList.get(i).setAut_price(to);
-		}
-	*/	
-		
+	
 		for(int i = 0 ; i < auList.size(); i++) {
 			boolean new_date3 = da.compareDateToBoolean(auList.get(i).getAu_date());
 			if(new_date3 == false) {

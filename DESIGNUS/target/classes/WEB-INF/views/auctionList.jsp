@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> <!-- 숫자 컴마찍기 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -187,9 +188,9 @@ a{
 					</div>
 					<div class="auListPrice">
 						즉시구매가능수량 : ${au.au_qty -1}	<br>
-						경매시작가 : ${au.au_minprice}     <br>
-						즉시구매가 : ${au.au_inprice}      <br>
-						경매최고가 : ${au.aut_price}
+						경매시작가 : <fmt:formatNumber value="${au.au_minprice}" pattern="#,###"/>      <br>
+						즉시구매가 : <fmt:formatNumber value="${au.au_inprice}" pattern="#,###"/>      <br>
+						경매최고가 : <fmt:formatNumber value="${au.aut_price}" pattern="#,###"/>
 					</div>
 					<div class="auListDate">
 						${au.au_date }
