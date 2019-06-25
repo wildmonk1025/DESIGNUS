@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.designus.www.dao.IauctionDao">
+
+	<insert id="getAuctionWriteInsert" parameterType="auction">
+		INSERT INTO AU VALUES(AU_SEQ.NEXTVAL,#{au_mbid_w},#{au_title},#{au_cgcode},#{au_qty},#{au_minprice},#{au_inprice},#{au_contents},DEFAULT,'O')
+	</insert>
+
+	<insert id="getAuctionBasketInsert" parameterType="basket">
+		INSERT INTO AUCTION_BASKET VALUES(${ab_aunum},#{ab_mbid})
+	</insert>
+	
+	<delete id="getAuctionBasketDelete" parameterType="basket">
+		DELETE FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
+	</delete>
+		
+	<select id="getAuctionBasketSelect" parameterType="basket" resultType="Integer">
+		SELECT NVL(max(ab_aunum),0)FROM AUCTION_BASKET WHERE AB_AUNUM = ${ab_aunum} AND AB_MBID = #{ab_mbid}
+	</select>	
+
+	<select id="getAuctionListSelect"  resultType="auction">
+	  <![CDATA[
+	  	SELECT * FROM (
+		SELECT ROWNUM AS RN, AU_NUM, AU_MBID_W, AU_TITLE, AU_CGCODE, AU_QTY, AU_MINPRICE, AU_INPRICE,
+        AU_CONTENTS, AU_DATE, AUT_PRICE, AUI_IMG FROM (
+		SELECT  a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
+		a.au_contents, a.au_date, b.aut_price, a.aui_img FROM AU_RECOMM_LIST a  LEFT OUTER JOIN 
+		(select aut_aunum, MAX(aut_price) as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
+		ON  a.AU_NUM = b.AUT_AUNUM
+		where a.au_cgcode = ${cgcode} 
+        ORDER BY AU_NUM DESC
+        ) WHERE ROWNUM<=${num1}*9 
+        ) WHERE RN>=${num1}*9-8
+      ]]>
+	</select>
+
+	<select id="getListCount"  resultType="Integer">
+	  SELECT COUNT(*) FROM AU WHERE AU_CGCODE = ${cgcode}
+	</select>
+
+	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
+	   SELECT * FROM AU WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%')
+	   OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%') ORDER BY AU_NUM DESC
+	</select>
+
+	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
+		SELECT * FROM AU WHERE AU_NUM = ${au_num}
+	</select>
+	<!-- auctionRead Img Call -->
+	<select id="getAuctionImg1"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 1
+		]]>
+	</select>
+	<select id="getAuctionImg2"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 2
+		]]>
+	</select>
+	<select id="getAuctionImg3"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 3
+		]]>
+	</select>
+	<select id="getAuctionImg4"  resultType="String">
+		<![CDATA[
+		SELECT aui_img from( select rownum as rn, aui_img, aui_num, ROW_NUMBER() 
+		over(partition by aui_num order by aui_num desc)as rankNo FROM aui WHERE AUI_NUM = ${au_num})
+		where rn = 4
+		]]>
+	</select>
+	<!--  End  -->
+	<select id="getAuctionTenderPrice" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_INPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+
+	<insert id="setAuctionTenderI" parameterType="auctiontender">
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'I',DEFAULT)
+	</insert>
+
+	<insert id="setAuctionTenderT" parameterType="auctiontender">
+		INSERT INTO AUCTIONTENDER VALUES(${aut_aunum},#{aut_mbid},${aut_price},'T',DEFAULT)
+	</insert>
+	
+	<update id="setAuctionTenderDel" parameterType="auctiontender">
+		UPDATE AU SET AU_QTY = AU_QTY-(${aut_price}/AU_INPRICE) WHERE AU_NUM = ${aut_aunum}
+	</update>
+
+	<select id="auctionTenderSel" parameterType="auctiontender" resultType="String">
+		SELECT max(AUT_PRICE) FROM AUCTIONTENDER WHERE aut_aunum = ${aut_aunum} AND aut_kind != 'I'
+	</select>
+
+	<select id="auctionTenderPriceSel" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_MINPRICE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+
+	<select id="getAuctionTenderQty" parameterType="auctiontender" resultType="Integer">
+		SELECT AU_QTY-${aut_qty} FROM AU WHERE au_num = ${aut_aunum}
+	</select>
+
+	<select id="getAuctionInfoID" parameterType="auction" resultType="String">
+		SELECT AU_MBID_W FROM AU WHERE au_num = ${au_num}
+	</select>
+
+	<select id="getAuctionTenderList" parameterType="auctiontender" resultType="auctiontender">
+		  <![CDATA[
+		SELECT *FROM(SELECT ROWNUM AS A, AUT_AUNUM, AUT_MBID, AUT_PRICE, AUT_KIND 
+        FROM AUT  
+        WHERE AUT_AUNUM = ${aut_aunum} AND AUT_KIND != 'I' AND AUT_KIND !='O'
+        ORDER BY AUT_PRICE DESC
+        )WHERE  ROWNUM <=3
+ 		]]>
+	</select>
+
+	<select id="getAuctionWriterListSel" parameterType="auction" resultType="auction">
+		  <![CDATA[
+ 			select * from(
+    		select rownum AS RN, a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty,
+    		a.au_minprice, a.au_inprice, a.au_contents, a.au_date, b.aui_img, ROW_NUMBER() 
+   		 	OVER(PARTITION BY AU_NUM ORDER BY au_num DESC) AS AUM
+     		from AU a JOIN AUI b  
+     		on a.au_num = b.aui_num
+     		where au_num != ${au_num} and au_mbid_w = #{au_mbid_w} 
+     		order by dbms_random.value
+     		) where AUM =1 and rownum <=3
+ 			]]>
+	</select>
+
+		<!-- 		
+		SELECT * FROM AU 
+		WHERE ROWNUM <=3 AND AU_NUM != ${au_num} AND AU_MBID_W = #{au_mbid_w}
+		ORDER BY AU_NUM DESC 
+		-->
+	<insert id="setAuctionUTI" parameterType="auctiontender">
+		INSERT INTO AUCTION_PROGRESS
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,${aut_qty},${aut_price},DEFAULT,1,DEFAULT)
+	</insert>
+
+	<!-- aup 등록 sql 
+	<insert id="setAuctionUTT" parameterType="auctiontender">
+		INSERT INTO AUCTION_PROGRESS
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,DEFAULT)
+	</insert> 
+	
+	--> 
+ 
+	<select id="getAuctionWriteSel" parameterType="auction" resultType="Integer">
+		SELECT MAX(AU_NUM) FROM AU
+	</select>
+
+	<select id="getAuctionWriteIdSel" parameterType="auction" resultType="String">
+		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${au_num}
+	</select>
+     <!-- 출품 이미지 등록 -->
+	<insert id="AuctionImageInsert1" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName1})
+	</insert>
+	<insert id="AuctionImageInsert2" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName2})
+	</insert>
+	<insert id="AuctionImageInsert3" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName3})
+	</insert>
+	<insert id="AuctionImageInsert4" parameterType="auction">
+		INSERT INTO AUI
+        VALUES(${au_num},#{aui_imgSysName4})
+	</insert>
+	<!-- 출품 이미지 등록 -->
+	
+	<select id="getAuctionImgSel" parameterType="auction" resultType="String">
+		<![CDATA[
+		SELECT * FROM (
+		SELECT ROWNUM AS RN, AUI_NUM, AUI_IMG, ROW_NUMBER()
+		OVER(PARTITION BY AUI_NUM ORDER BY AUI_IMG ) AS AUI
+		FROM AUI WHERE AUI_NUM = ${au_num}
+		) WHERE AUI = 1
+		]]>
+	</select>
+	
+	<insert id="setNotifyAuctionInsert" parameterType="auction">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{au_mbid_w},DEFAULT,#{au_contents},0,DEFAULT)
+	</insert>
+
+	<select id="getAuctionWID" parameterType="auctiontender" resultType="String">
+		SELECT AU_MBID_W FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+	
+	<select id="getAuctionTitle" parameterType="auctiontender" resultType="String">
+		SELECT AU_TITLE FROM AU WHERE AU_NUM = ${aut_aunum}
+	</select>
+
+	<insert id="setNotifyAuctionTender" parameterType="auctiontender">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{aut_mbid},DEFAULT,#{aut_notify},0,DEFAULT)
+	</insert>
+	
+	<select id="getPoint" parameterType="member" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID = #{mb_id}
+	</select>
+
+	<select id="auTimeSelect" parameterType="String" resultType="java.time.LocalDateTime">
+		<![CDATA[
+		select * from (
+        SELECT AU_DATE+1 AS END_DATE,
+        ROW_NUMBER() OVER(PARTITION BY au_date+1 order by au_date+1 desc) as RankNo
+        FROM AU
+        )where rankno = 1
+		]]>
+	</select>
+
+	<select id="auTiNaSelect" parameterType="java.time.LocalDateTime"
+		resultType="notify">
+		<![CDATA[
+		select * from (
+        select au_mbid_w as nf_mbid_r, au_date+1 as nf_date, 
+        ROW_NUMBER() OVER(PARTITION BY au_date+1 order by au_date+1 desc) as RankNo
+        from au where au_date+1 = #{localDateTime}
+        ) where rankno = 1
+		]]>
+	</select>
+
+	<select id="getAuctionKind" parameterType="Integer" resultType="String">
+		SELECT AU_KIND FROM AU WHERE AU_NUM = ${au_num}
+	</select>	
+	
+	<insert id="setAuctionEnd" parameterType="notify">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},'ADMIN',#{nf_notify},0,DEFAULT)
+	</insert>
+	
+	<update id="updateAuctionKind" parameterType="Integer">
+		UPDATE AU SET AU_KIND = 'C' WHERE AU_NUM = ${au_num}
+	</update>
+
+</mapper>

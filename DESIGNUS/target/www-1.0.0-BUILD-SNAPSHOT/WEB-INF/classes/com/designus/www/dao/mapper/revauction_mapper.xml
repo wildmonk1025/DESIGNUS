@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.designus.www.dao.IRevAuctionDao">
+<!-- 	<insert id="revAuctionSubmitInsert" parameterType="revauction">
+		INSERT INTO RA 
+		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},${ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},DEFAULT,#{ra_contents})
+	</insert> -->
+	
+	<!-- useGeneratedKeys = "true"(자동증가값을 얻을때) -->
+	<!-- KeyProperty = "b_num"(필드명) : MySQL은 명시해줘야함. -->
+	<insert id="revAuctionSubmitInsert" parameterType="revauction" useGeneratedKeys="true" keyProperty="ra_num">
+		<selectKey keyProperty = "ra_num" resultType="int" order="AFTER">
+			SELECT RA_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+		INSERT INTO RA 
+		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},${ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},DEFAULT,#{ra_contents})
+	</insert>
+	
+	<select id="getRevAuctionListSelect"  resultType="revauction">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM AS RN ,RA_NUM, RA_MBID, RA_TITLE, RA_CGCODE, RA_IMAGE, RA_FILE, 
+				RA_OC, RA_DATE, RA_CONTENTS FROM (
+				SELECT RA_NUM, RA_MBID, RA_TITLE, RA_CGCODE, RA_IMAGE, RA_FILE, RA_OC, RA_DATE, RA_CONTENTS
+				FROM RA WHERE RA_CGCODE = #{cgcode} AND RA_OC='O'
+        		ORDER BY RA_NUM DESC
+				)where rownum <= ${num2}*9 
+        	)WHERE RN >= ${num2}*9-8
+		]]>
+	</select>
+		
+	<select id="getrevListCount"  resultType="Integer">
+	  SELECT COUNT(*) FROM RA WHERE RA_CGCODE = ${cgcode} AND RA_OC = 'O'
+	</select>	
+		
+	<select id="getRevAuctionListSelect2" parameterType="String" resultType="revauction">
+	   SELECT * FROM RA WHERE RA_OC='O' AND (UPPER(RA_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(RA_CONTENTS) LIKE UPPER('%'||#{word}||'%')) ORDER BY RA_DATE DESC
+	</select>
+	
+	<select id="revAuctionReadSelect" parameterType="revauction" resultType="revauction">
+		SELECT * FROM RA WHERE RA_NUM = ${ra_num}
+	</select>
+
+	<select id="setRevAuctionTenderMinValue" parameterType="revauction" resultType="String">
+		<![CDATA[
+		SELECT MIN(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num} AND RAT_PRICE>0
+		]]>
+	</select>
+	
+	<select id="setRevAuctionTenderMaxValue" parameterType="revauction" resultType="String">
+		<![CDATA[
+		SELECT MAX(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num}
+		]]>
+	</select>
+
+	<insert id="getrevAuctionBasketInsert" parameterType="basket">
+		INSERT INTO REVAUCTION_BASKET VALUES(${rab_ranum},#{rab_mbid})
+	</insert>
+	
+	<delete id="getrevAuctionBasketDelete" parameterType="basket">
+		DELETE FROM REVAUCTION_BASKET WHERE RAB_RANUM = ${rab_ranum} AND RAB_MBID = #{rab_mbid}
+	</delete>
+		
+	<select id="getrevAuctionBasketSelect" parameterType="basket" resultType="Integer">
+		SELECT NVL(max(rab_ranum),0)FROM REVAUCTION_BASKET WHERE RAB_RANUM = ${rab_ranum} AND RAB_MBID = #{rab_mbid}
+	</select>
+	
+	<select id="revAuctionAjaxSelect" parameterType="revauctiontender" resultType="revauctiontender">
+		SELECT * FROM RAT WHERE RAT_NUM = ${rat_ranum} ORDER BY RAT_PRICE ASC
+	</select>
+	
+	<delete id="revAuctionApplyDelete" parameterType="revauctiontender">
+		DELETE FROM RAT WHERE RAT_NUM = ${rat_ranum} AND RAT_MBID_W = #{rat_mbid_w}
+	</delete>
+	
+	<insert id="revAuctionApplyInsert" parameterType="revauctiontender">
+		INSERT INTO RAT VALUES(${rat_ranum},#{rat_mbid_w},${rat_price},#{rat_file},${rat_days},DEFAULT)
+	</insert>
+
+	<select id="getDecideCheckSelect" parameterType="revauction" resultType="revauctiontender">
+		SELECT RAT_DECIDE FROM RAT WHERE RAT_NUM=${ra_num}
+	</select>
+	
+	<update id="reqDecisionUpdate" parameterType="revauctionprogress">
+		UPDATE RAT SET RAT_DECIDE='O' WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w}
+	</update>
+	
+	<insert id="reqDecisionInsert" parameterType="revauctionprogress">
+		INSERT INTO RAP VALUES(RAP_SEQ.NEXTVAL,${rap_ranum},#{rap_mbid_n},DEFAULT,DEFAULT,DEFAULT,#{rap_mbid_w},${rap_price},DEFAULT,${rap_days},DEFAULT)
+	</insert>
+	
+		<insert id="reqDecisionInsert2" parameterType="revauctionprogress">
+		INSERT INTO RAP VALUES(RAP_SEQ.NEXTVAL,${rap_ranum},#{rap_mbid_n},DEFAULT,DEFAULT,DEFAULT,#{rap_mbid_w},${rap_price},DEFAULT,${rap_days},5)
+	</insert>
+	
+	<select id="reqDecisionSelect" parameterType="revauctionprogress" resultType="int">
+		SELECT COUNT(*) FROM RAP WHERE RAP_MBID_W=#{rap_mbid_w} AND RAP_MBID_N=#{rap_mbid_n} AND RAP_RANUM=${rap_ranum}
+	</select>
+	
+	<select id="myCurbaMountSelect" parameterType="revauction" resultType="revauctiontender">
+		SELECT * FROM RAT
+		WHERE RAT_PRICE=(SELECT MIN(RAT_PRICE) FROM RAT WHERE RAT_NUM=${ra_num} AND RAT_DECIDE='O') AND RAT_NUM=${ra_num} AND RAT_DECIDE='O'
+	</select>
+	
+	<select id="wriListSelect" parameterType="membersearch" resultType="membersearch">
+		SELECT * FROM MBS WHERE MB_ID LIKE #{mb_id}||'%' AND MB_GRADE='W'
+	</select>
+	
+	<insert id="setNotifyrevAuctionW" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_w},#{rap_mbid_n},#{rap_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyrevAuctionN" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_n},#{rap_mbid_n},#{rap_notify},0,DEFAULT)
+	</insert>
+
+	<select id="selectNID" parameterType="revauctiontender" resultType="String">
+		SELECT RA_MBID FROM RA WHERE RA_NUM = ${rat_ranum}
+	</select>
+
+	<insert id="setNotifyrevAuctionApply" parameterType="revauctiontender">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rat_mbid_n},#{rat_mbid_w},#{rat_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyrevAuctionPickN" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_n},DEFAULT,#{rap_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyrevAuctionPickW" parameterType="revauctionprogress">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{rap_mbid_w},#{rap_mbid_n},#{rap_notify},0,DEFAULT)
+	</insert>
+
+</mapper>
