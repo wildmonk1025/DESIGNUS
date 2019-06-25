@@ -161,8 +161,8 @@ border: 1px solid #F5BCA9;
 													+ data[i].ss_num
 													+ "'style='color: black'>"
 													+ "<div id='sponproduct'>"
-													+ "<img src='resources/images/"
-									+ data[i].ssi_imgSysName +"'>"
+													+ "<img src='/sponsor/"
+									+ data[i].ssi_img +"' width='100%' height='100%'>"
 													+ "</div>"
 													+ "<div id='sponpro'>"
 													+ "아이디:"

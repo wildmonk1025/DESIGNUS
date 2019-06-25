@@ -18,10 +18,9 @@ div {
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	margin-top : 10px;
 	width: 1080px;
 	height: 50px;
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	float: left;
 	overflow: auto;
@@ -29,11 +28,11 @@ div {
 
 #renking {
 	
-	margin: 10px 10px 10px 10px;
+	margin: 5px 10px 10px 10px;
 	line-height: 120px;
 	width: 1080px;
 	height: 80px;
-	text-align: center;
+	text-align: left;
 	font-size: 30px;
 	float: left;
 }
@@ -194,6 +193,8 @@ width: 900px;
 	float: left;
 	font-size: 20px;
 	text-align: left;
+	border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 #auction {
     line-height: 80px;
@@ -204,6 +205,8 @@ width: 900px;
 	text-align: left;
 	font-size: 20px;
 	float: left;
+	border-radius: 5px;
+    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 .pp{
   color: #D5D5D5;
@@ -221,6 +224,9 @@ width: 900px;
 position: absolute;
 bottom: 100px;
 }
+.q1{
+ margin-left: 30px;
+}
 </style>
 
 </head>
@@ -237,7 +243,7 @@ bottom: 100px;
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>1:1 문의 상세보기</h2><hr>
+			 <h3>1:1 문의 상세보기</h3><hr>
 			</div>
 			
 			<div id="renking">
@@ -264,20 +270,20 @@ var h="";
 var que="";
 var st="";
 
- h+=quest.aq_title
+ h+="제목 : "+quest.aq_title
  
  $("#renking").html(h)
 
- que+=quest.aq_contents
+ que+="<div class='q1'>"+quest.aq_contents
  if(quest.aqi_img !=null){
-	 que+="<div class='aqiimg'><a href='download?aqi_img="+quest.aqi_img+"'>"+quest.aqi_img+"</a></div>"
+	 que+="<div class='aqiimg'>관련 자료 : <a href='download?aqi_img="+quest.aqi_img+"'>"+quest.aqi_img+"</a></div></div>"
  }
  $("#spon").html(que)
  
  if(quest.abc != null){
-	 st+=quest.abc
+	 st+="<div class='q1'>"+quest.abc+"</div>"
  }else{
-	 st+="<p class='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p>"
+	 st+="<div class='q1'><p class='pp'>처리 대기중입니다 잠시만 기다려 주세요...</p></div>"
  }
  $("#auction").html(st)
 </script>

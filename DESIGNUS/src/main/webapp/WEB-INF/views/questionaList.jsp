@@ -7,19 +7,17 @@
 <title>Insert title here</title>
 <style type="text/css">
 #main {
-	width: 1520px;
+	width: 1518px;
 	height: 170px;
 	position: relative;
 }
 
 #mainheader {
-	border: 1px solid #F5BCA9;
-	width: 1518px;
+	border: 1px solid black;
+	width: 1520px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
-	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 #one {
 	width: 100%;
@@ -33,17 +31,16 @@ div {
 #notice {
 	padding-top: 5px;
 	margin: 10px;
-	margin-top : 10px;
+	margin-top:50px;
 	width: 1080px;
 	height: 50px;
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	float: left;
 	overflow: auto;
 }
 
 #renking {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 875px;
@@ -54,16 +51,7 @@ div {
 
 
 
-
-
-#main {
-	width: 1520px;
-	height: 170px;
-	text-align: center;
-}
-
 #point {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -158,14 +146,10 @@ a:hover {
 	margin-left: 10px;
 }
 
-#mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-}
+
 
 #mypagemain {
-	width: 1530px;
+	width: 1518px;
 	height: 1200px;
 	border: 1px solid black;
 }
@@ -192,25 +176,17 @@ margin-left:40px;
  width: 1000px;
 }
 #vvo{
-margin-left:80px;
+margin-left:50px;
  margin-top:30px;
-width: 900px;
+width: 1000px;
 }
 #gay{
  color: #D5D5D5;
 }
-#spon{
-
-	margin: 0px 10px 10px 10px;
-	width: 1080px;
-	height: 30px;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-}
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-
+#sixth{
+ position: absolute;
+  top: 1130px;
+  left: 1150px;  
 }
 </style>
 
@@ -218,30 +194,34 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body>
-	<div id="mypagemain">
+	
 		<div id="main">
 			<div id="mainheader">
 			<jsp:include page="main.jsp" />
 			</div>
 		</div>
-
+     
+     <div id="mypagemain">
 		<jsp:include page="Mapagemain.jsp" />
 
 
 		<div id="rightmain">
 			<div id="notice">
-			<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">1:1 문의리스트</h3>
+			<h3	>나의 1:1 문의리스트</h3>
 			 <hr>
 			</div>
 			
 			<div id="renking">
-			
+			 
 				
 			</div>
 			<div id="spon"> 
-			${Aqpaging}
+		
 			</div>
-            
+            <div id="sixth">${Aqpaging}</div>
+		</div>
+		<div id="footer">
+		<jsp:include page="footer.jsp" />
 		</div>
 	</div>
 </body>

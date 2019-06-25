@@ -1019,7 +1019,6 @@ public class MypageMM {
 		List<AloneQuestion> aqList = null;
 		int num = (pageNum == null) ? 1 : pageNum;
 		aqList = pDao.questionlist(id, num);
-		System.out.println("ddddd=" + aqList.get(0).getAq_date());
 		if (aqList != null) {
 			for (int i = 0; i < aqList.size(); i++) {
 				if (aqList.get(i).getAbc() != null) {
@@ -1029,12 +1028,10 @@ public class MypageMM {
 				}
 			}
 		}
-		System.out.println("ddd+9" + aqList.get(0).getAq_num());
 		// qrList = pDao.questionalistSelect(aqList.get(i).getAq_num());
 
 		Gson gson = new Gson();
 		String aqgList = gson.toJson(aqList);
-		System.out.println("11111:" + aqList.get(0).getAbc());
 		mav.addObject("aqgList", aqgList);
 		mav.addObject("Aqpaging", getAqpaging(num, kind));
 		view = "questionaList";

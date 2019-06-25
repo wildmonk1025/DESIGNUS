@@ -177,7 +177,7 @@ a{
 			<c:forEach var="ra" items="${raList}">
 				<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 					<div class="raListImg">
-						<img class="ListImg" src="<c:url value='/resources/upload/${ra.ra_image}'/>" 
+						<img class="ListImg" src="/revauction/${ra.ra_image}"
 						width="100%" height="100%"/>
 					</div>
 					<div class="raListTitle">

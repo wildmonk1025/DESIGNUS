@@ -244,7 +244,7 @@ public class UploadFile {
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
 		String path = root2 + "file/member/";
-		String path2 = root2 + "file/port/";
+		String path2 = root2 + "file/board/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		File dir2 = new File(path2);
@@ -318,7 +318,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "file/portf/";
+		String path = root2 + "file/board/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -362,7 +362,7 @@ public class UploadFile {
 	public String revTenderfileUp(MultipartHttpServletRequest multi) {
 		String root = multi.getServletContext().getRealPath("/");
 		System.out.println("root=" + root);
-		String path = root2 + "file/tender/";
+		String path = root2 + "file/board/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -558,7 +558,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "file/question/";
+		String path = root2 + "file/board/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -590,7 +590,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "file/report/";
+		String path = root2 + "file/board/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면
@@ -622,7 +622,7 @@ public class UploadFile {
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
 		System.out.println("root=" + root2);
-		String path = root2 + "file/sponfile/";
+		String path = root2 + "file/sponsor/";
 		// 2.폴더 생성을 꼭 할것...
 		File dir = new File(path);
 		if (!dir.isDirectory()) { // upload폴더 없다면

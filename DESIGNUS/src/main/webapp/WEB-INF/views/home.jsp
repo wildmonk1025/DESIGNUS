@@ -138,7 +138,7 @@
 			<div id="middle_content1_lv2">
 			<c:forEach var="rl" items="${recommList}">
 				<div class="recommlist" onclick="javascript:location.href='auctionRead?au_num=${rl.au_num}'">
-				<div class="recomm_img"><img src="resources/upload/${rl.aui_img}" width="100%" height="100%"/></div>
+				<div class="recomm_img"><img src="/auction/${rl.aui_img}" width="100%" height="100%"/></div>
 				<div class="recomm_text"><p class="titlestyle">${rl.au_title}</p><p>구매가:${rl.au_inprice}원 | 작가:${rl.au_mbid_w}</p></div>
 				</div>
 			</c:forEach>
@@ -151,7 +151,7 @@
 			<div id="middle_content2_lv2">
 			<c:forEach var="rl2" items="${recommList_ra}">
 				<div class="recommlist2" onclick="javascript:location.href='revauctionread?ra_num=${rl2.ra_num}'">
-				<div class="recomm_img2"><img src="resources/upload/${rl2.ra_image}" width="100%" height="100%"/></div>
+				<div class="recomm_img2"><img src="/revauction/${rl2.ra_image}" width="100%" height="100%"/></div>
 				<c:if test="${rl2.rat_price != 0}">
 				<div class="recomm_text2"><p class="titlestyle">${rl2.ra_title}</p><p>의뢰접수 최저가:${rl2.rat_price}원</p></div></c:if>
 				<c:if test="${rl2.rat_price == 0}">
@@ -167,7 +167,7 @@
 			<div id="middle_content3_lv2">
 			<c:forEach var="rl3" items="${recommList_ss}">
 				<div class="recommlist3" onclick="javascript:location.href='sponproduct?ss_num=${rl3.ss_num}'">
-				<div class="recomm_img3"><img src="resources/upload/${rl3.ssi_img}" width="100%" height="100%"/></div>
+				<div class="recomm_img3"><img src="/sponsor/${rl3.ssi_img}" width="100%" height="100%"/></div>
 				<div class="recomm_text3"><p class="titlestyle">${rl3.ss_title}</p><p>후원 진행상황: ${rl3.ss_curPercent} %</p></div>
 				</div>
 			</c:forEach>
