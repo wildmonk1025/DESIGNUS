@@ -41,7 +41,8 @@
 	</select>
 
 	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
-	   SELECT * FROM AU WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%')
+	   SELECT * FROM AU WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%')
+	   OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%') ORDER BY AU_NUM DESC
 	</select>
 
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
@@ -239,5 +240,5 @@
 	<update id="updateAuctionKind" parameterType="Integer">
 		UPDATE AU SET AU_KIND = 'C' WHERE AU_NUM = ${au_num}
 	</update>
-	
+
 </mapper>
