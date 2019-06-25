@@ -241,4 +241,10 @@
 		UPDATE AU SET AU_KIND = 'C' WHERE AU_NUM = ${au_num}
 	</update>
 
+	<select id="getcgCode"  resultType="category">
+		SELECT * FROM CG
+	</select>
+	
+	
+		
 </mapper>

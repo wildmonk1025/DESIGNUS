@@ -33,8 +33,12 @@
 }
 
 #homeMain {
-	width: 1520px;
+	border: 1px solid gray;
+	margin-top: 50px;
 	height: 700px;
+	width: 1400px;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #revauctionbtn, #auctionbtn {
@@ -48,9 +52,7 @@
 #list {
 	width: 1302px;
 	height: 450px;
-	float: left;
-	margin-left: 100px;
-	margin-top: 20px;
+	margin-top: 70px;
 }
 
 #text1 {
@@ -119,24 +121,18 @@
 }
 
 #h, #s {
-	top: 10px;
-	left: 50px;
 	float: left;
 }
 
 #s {
 	color: red;
-	top: -6px;
 	float: left;
 }
 
 #list {
-	width: 1300px;
+	width: 1302px;
 	height: 450px;
-	float: left;
-	margin-left: 100px;
-	margin-top: 20px;
-	border: 1px solid black;
+	margin-top: 70px;
 }
 
 #l1 {
@@ -153,12 +149,20 @@
 	padding: 15px;
 }
 
+.b1:hover {
+	color: red;
+}
+
+.b1:active {
+	color: orange;
+}
+
 #questionm {
-	width: 1360px;
-	height: 50px;
+	width: 1330px;
+	height: 80px;
 	float: left;
-	margin-left: 100px;
-	margin-top: 10px;
+	margin-top: 20px;
+	margin-left: 50px;
 }
 
 #selectt {
@@ -170,7 +174,7 @@
 	height: 80px;
 	float: left;
 	margin-left: 100px;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 .questionmenu {
@@ -180,19 +184,12 @@
 	height: 50px;
 	padding-top: 5px;
 	margin: 1px;
+	float: left;
 	list-style: none;
 	color: white;
 	/* background-color: #FFCA6C; */
-	float: left;
 	line-height: 40px;
 	text-align: center;
-	border-bottom: 1px solid orange;
-	width: 432px;
-	height: 50px;
-	padding-top: 5px;
-	margin: 1px;
-	list-style: none;
-	color: white;
 }
 
 #buy {
@@ -218,7 +215,7 @@
 	display: none;
 }
 
-#mypage {
+#mypage2 {
 	float: left;
 	height: 450px;
 	width: 1080px;
@@ -242,9 +239,12 @@ ul {
 	cursor: pointer;
 	border: none;
 	width: 1080px;
-	background-color: white;
-	font-size: 24px;
+	background-color: #f9e6e0;
+	font-size: 17px;
+	color: gray;
+	padding-top: 7px;
 	text-align: left;
+	padding-top: 7px;
 }
 
 .hide {
@@ -252,13 +252,15 @@ ul {
 }
 
 .ul {
-	border-bottom: 0.5px solid orange;
+	border-bottom: 0.5px solid white;
+	background-color: #f9e6e0;
 	height: 40px;
 }
 
 .li {
 	height: 200px;
 	width: 1079px;
+	background-color: #f9e6e0;
 	font-size: 20px;
 	position: absolute;
 	background-color: white;
@@ -270,7 +272,6 @@ ul {
 		<jsp:include page="main.jsp" />
 	</div>
 	<div id="homeMain">
-
 		<div id="Sctext">
 			<h2 id="h">고객센터</h2>
 			<br> <br>
@@ -286,7 +287,6 @@ ul {
 
 		</div>
 		<div id="mainss">
-
 			<div id="list">
 				<div id="l1">
 					<button class="b1" id="btn1" onclick="buy('경매')">경매</button>
@@ -303,18 +303,18 @@ ul {
 					<div id="buy"></div>
 					<div id="sell"></div>
 					<div id="spon"></div>
-					<div id="mypage"></div>
+					<div id="mypage2"></div>
 					<div id="other"></div>
-
 
 				</div>
 			</div>
 
 		</div>
+	</div>
 
-		<div id="footercheck">
-			<jsp:include page="footer.jsp"></jsp:include></div>
-		-
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include></div>
+	-
 </body>
 <script>
 	/*
@@ -333,19 +333,19 @@ ul {
 		$("#buy").css("display", "inline");
 		$("#sell").css("display", "none");
 		$("#spon").css("display", "none");
-		$("#mypage").css("display", "none");
+		$("#mypage2").css("display", "none");
 		$("#other").css("display", "none");
 	});
 	$("#btn2").click(function() {
 		$("#sell").css("display", "inline");
 		$("#buy").css("display", "none");
 		$("#spon").css("display", "none");
-		$("#mypage").css("display", "none");
+		$("#mypage2").css("display", "none");
 		$("#other").css("display", "none");
 	});
 	$("#btn3").click(function() {
 		$("#spon").css("display", "inline");
-		$("#mypage").css("display", "none");
+		$("#mypage2").css("display", "none");
 		$("#buy").css("display", "none");
 		$("#sell").css("display", "none");
 		$("#other").css("display", "none");
@@ -355,14 +355,14 @@ ul {
 		$("#buy").css("display", "none");
 		$("#sell").css("display", "none");
 		$("#spon").css("display", "none");
-		$("#mypage").css("display", "inline");
+		$("#mypage2").css("display", "inline");
 	});
 	$("#btn5").click(function() {
 		$("#other").css("display", "inline");
 		$("#buy").css("display", "none");
 		$("#sell").css("display", "none");
 		$("#spon").css("display", "none");
-		$("#mypage").css("display", "none");
+		$("#mypage2").css("display", "none");
 	});
 
 	function buy(even) {
@@ -509,7 +509,7 @@ ul {
 									+ "<div class='li' style='border:1px solid orange';>"
 									+ data[i].qna_a + "</div>" + "</li>"
 									+ "</ul>" + "</li>" + "</ul>";
-							$('#mypage').html(cub);
+							$('#mypage2').html(cub);
 						}
 						$(document).ready(function() {
 							$(".cl").click(function() {
