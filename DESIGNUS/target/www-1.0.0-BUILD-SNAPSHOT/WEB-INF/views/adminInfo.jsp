@@ -1,135 +1,235 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>adminInfo.jsp</title>
-	<meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style>
-        body {
-            margin: auto;
-            width: 1520px;
-            height: auto;
-        }
+<title>adminInfo.jsp</title>
+<meta charset="utf-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+#main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
+}
 
-        div {
-            margin: auto;
-            border: 1px solid blue;
-        }
+#mainheader {
+	border: 1px solid #F5BCA9;
+	width: 1518px;
+	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
 
-        ul {
-            list-style: none;
-        }
+#customers {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 400px;
+	border-collapse: collapse;
+}
 
-        #mainheader {
-            border: 1px solid black;
-            width: 1518px;
-            height: 170px;
-        }
+#customers td, #customers th {
+	font-size: 1em;
+	border: 1px solid #98bf21;
+	padding: 3px 7px 2px 7px;
+}
 
-        #adminmenu {
-            float: left;
-            width: 300px;
-            height: 500px;
-        }
+#customers th {
+	font-size: 1.1em;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	background-color: #A7C942;
+	color: #ffffff;
+}
 
-        #adminopt {
-            float: left;
-            align-content: center;
-            width: 1216px;
-            height: 500px;
-        }
+#customers tr.alt td {
+	color: #000000;
+	background-color: #EAF2D3;
+}
 
-        .opt {
-            padding: inherit;
-            margin: auto;
-            margin-top: 5px;
-            width: 1000px;
-            height: 240px;
-        }
+body {
+	margin: auto;
+	width: 1520px;
+	height: auto;
+}
 
-        #declarelist {
-            width: 990px;
-            height: 170px;
-            overflow-y: scroll;
-            border: 1px solid grey;
-        }
-        
-        #declarelist td{
-            width: 120px;
+ul {
+	list-style: none;
+}
 
-        }
+#mainheader {
+	width: 1518px;
+	height: 170px;
+}
 
-        #transformlist {
-            width: 990px;
-            height: 170px;
-            overflow-y: scroll;
-            border: 1px solid grey;
-        }
-        
-        #transformlist td{
-            width: 200px;
-        }
+#adminmenu {
+	float: left;
+	width: 300px;
+	height: 500px;
+}
 
-    </style>
+#adminopt {
+	float: left;
+	align-content: center;
+	width: 1216px;
+	height: 500px;
+}
+
+#trans {
+	float: left;
+	align-content: center;
+	width: 1216px;
+	height: 500px;
+}
+
+.opt {
+	padding: inherit;
+	margin: auto;
+	margin-top: 5px;
+	width: 1000px;
+	height: 240px;
+}
+
+#declarelist {
+	width: 990px;
+	height: 170px;
+	overflow-y: scroll;
+}
+
+#declarelist td {
+	width: 120px;
+}
+
+#transformlist {
+	width: 990px;
+	height: 170px;
+	overflow-y: scroll;
+}
+
+.lipont {
+	font-size: 20px;
+}
+
+.best {
+	border: 1px solid black;
+	display: inline;
+	float: left;
+	width: 400px;
+	heigth: 150px;
+	size: 20px;
+}
+
+a:active {
+	text-decoration: none;
+	color: black;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+	color: black;
+}
+</style>
 </head>
 <body>
-    <div id="mainheader">
+	<div id="main">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
+	</div>
+	<div id="adminmenu">
+		<jsp:include page="admininclud.jsp"></jsp:include>
+	</div>
+	<div id="adminopt">
+		<div class="opt"><br/><br/>
+			<h3
+				style="text-align: center; font-size: 25px; background-color: orange;">신고내역</h3>
+			<hr />
+			<div id="declarelist"></div>
+		</div>
 
-    </div>
-    <div id="adminmenu">
-        <ul>
-            <li style="text-align: center; font-size: 20px">관리내역</li>
-            <li>게시판/댓글</li>
-            <li>신고내역</li>
-            <li>1:1문의</li>
-            <li>회원관리</li>
-            <li>작가 전환신청</li>
-            <li>작가 가입신청</li>
-            <li>카테고리 관리</li>
-            <li>게시판/댓글</li>
-            <li>게시판/댓글</li>
 
-        </ul>
-    </div>
-    <div id="adminopt">
-        <div class="opt">
-            <h3>신고내역</h3>
-            <div id="declarelist">
-                <table id="declareinfo">
+		<div class="opt"><br/><br/>
+			<h3
+				style="text-align: center; font-size: 25px; background-color: orange;">판매자
+				전환신청</h3>
+			<div id="transformlist"></div>
+		</div>
+	</div>
 
-                </table>
-            </div>
-        </div>
-        <div class="opt">
-            <h3>판매자 전환신청</h3>
-            <div id="transformlist">
-                <table id="transforminfo">
-                    
-                </table>
-            </div>
-        </div>
-    </div>
 </body>
 <script>
-    var x="";
-    var y="";
-    $("#declareinfo").addClass(function(){
-        for(var j=0;j<4;j++) {
-            x+="<tr><td>신고번호</td><td>신고유형</td><td>사유</td><td>피해자ID</td><td>피의자ID</td>"
-                            +"<td>제목</td><td>신고일</td><td rowspan=\"2\">첨부파일 확인<br><button>첨부 파일</button></td></tr><tr>"
-                            +"<td colspan=\"8\" style=\"text-align: center\">[내용]</td></tr><br>";
-        }
-        $("#declareinfo").html(x);
-    });
-    $("#transforminfo").addClass(function(){
-        for(var j=0;j<3;j++) {
-            y+="<tr><td>신청번호</td><td>아이디</td><td>전공분야</td><td>자료여부(O,X)</td>"
-                            +"<td rowspan=\"3\">첨부파일 확인<br><button>첨부파일</button></td></tr>"
-                            +"<tr><td>내용</td></tr><tr><td>파일명</td><td>사진</td></tr>";
-        }
-        $("#transforminfo").html(y);
-    });
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : 'Declarelist',
+					type : 'post',
+					contentType : "application/json; charset=utf-8;",
+					dataType : 'json',
+					//contentType:'application/json',
+					success : function(data) {
+						var result = "";
+						console.dir(data);
+						console.log("성공");
+
+						for ( var i in data) {
+							result += "<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
+									+ "<a href='declareWrite'>" + "신고번호:"
+									+ data[i].rp_num + "</td></tr>" + "<tr><td>"+"신고자아이디:"
+									+ data[i].rp_mbid_d + "</tr></td>" +"<tr><td>"+ "가해자아이디:"
+									+ data[i].rp_mbid_a + "</tr></td>" +"<tr><td>"+ "신고위치:"
+									+ data[i].rp_locate + "</tr></td>" + "</a>"
+									+ "</table>"+"</div>";
+						}
+						$("#declarelist").html(result);
+					},
+					error : function(error) {
+						console.log("실패");
+						console.log(error);
+					}
+				});
+			});
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : 'transformList ',
+					type : 'post',
+					contentType : "application/json; charset=utf-8;",
+					dataType : 'json',
+					//contentType:'application/json',
+					success : function(data) {
+						var result = "";
+						console.dir(data);
+						console.log("성공");
+
+						for ( var i in data) {
+							result += "<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
+									+ "<a href='permitWriApply'>" + "아이디:"
+									+ data[i].mb_id + "</tr></td>" + "<tr><td>"+"카테고리 분류번호:"
+									+ data[i].mj_cgcode + "</tr></td>" + "<tr><td>"+"포트폴리오:"
+									+ data[i].mj_contents + "</tr></td>" + "<tr><td>"+"파일설명:"
+									+ data[i].mj_portf + "</tr></td>" + "</a>"
+									+"</table>"+ "</div>";
+						}
+						$("#transformlist").html(result);
+					},
+					error : function(error) {
+						console.log("실패");
+						console.log(error);
+					}
+				});
+			});
 </script>
 </html>

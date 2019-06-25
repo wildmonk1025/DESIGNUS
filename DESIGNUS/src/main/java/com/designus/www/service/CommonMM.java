@@ -104,8 +104,8 @@ public class CommonMM {
 		List<Auction> aRecommList=cDao.getbestInfo(); //AU_RECOMM_LIST 뷰에서 가져옴
 		List<Auction> au_recommList = new ArrayList<>();
 
-		for(int i=0;i<20;i++) {
-			//f = da.compareDateToBoolean(aRecommList.get(i).getAu_date());
+		for(int i=0;i<aRecommList.size();i++) {
+			f = da.compareDateToBoolean(aRecommList.get(i).getAu_date());
 			if(f)
 			au_recommList.add(aRecommList.get(i));
 		}
@@ -113,17 +113,18 @@ public class CommonMM {
 		List<RevAuction> raRecommList = cDao.getbestInfo2();
 		List<RevAuction> ra_recommList = new ArrayList<>();
 		
-		for(int i=0;i<20;i++) {
-			//f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
+		for(int i=0;i<raRecommList.size();i++) {
+			f = da.compareDateToBoolean(raRecommList.get(i).getRa_date());
 			if(f)
 				ra_recommList.add(raRecommList.get(i));
 		}
 		
 		
-		/*List<Sponsor> ssRecommList = cDao.getbestInfo3();
+		List<Sponsor> ssRecommList = cDao.getbestInfo3();
 		List<Sponsor> ss_recommList = new ArrayList<>();
-		for(int i=0;i<2;i++) {
-			//f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
+			
+		for(int i=0;i<ssRecommList.size();i++) {
+			f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
 			if(f)
 				ss_recommList.add(ssRecommList.get(i));
 		}
@@ -141,11 +142,11 @@ public class CommonMM {
 			} else {
 				ss_recommList.get(i).setSs_curPercent((double)0);
 			}
-		}*/
+		}
 
 		mav.addObject("recommList", au_recommList);
 		mav.addObject("recommList_ra", ra_recommList);
-		//mav.addObject("recommList_ss", ss_recommList);
+		mav.addObject("recommList_ss", ss_recommList);
 		mav.setViewName("home");
 		return mav;
 

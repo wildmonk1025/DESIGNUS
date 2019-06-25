@@ -1,41 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>제작의뢰 상세보기</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
-div {
-	margin: auto;
-}
 
 #main {
-	width: 1518px;
+	width: 1520px;
 	height: 170px;
 	position: relative;
 }
 
 #mainheader {
-	border: 1px solid black;
-	width: 1520px;
+	border: 1px solid #F5BCA9;
+	width: 1518px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle {
 	margin-top: 50px;
 	width: 1520px;
 	height: auto;
-	border: 1px solid blue;
 }
 
 #middle_img {
 	float: left;
-	border: 1px solid red;
 	width: 300px;
 	height: 300px;
 	text-align: center;
@@ -43,36 +42,51 @@ div {
 
 #middle_img_lv1 {
 	padding: 5px;
-	border: 1px solid blue;
 	width: 260px;
 	height: 35px;
+	font-weight: 800;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_img_lv2 {
 	padding: 5px;
-	border: 1px solid blue;
 	width: 260px;
 	height: 230px;
 	margin-top: 5px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents1 {
 	float: left;
-	border: 1px solid red;
 	width: 900px;
 	height: 300px;
 	text-align: center;
 }
 
 #middle_contents1_lv1 {
-	border: 1px solid blue;
 	width: 850px;
 	height: 60px;
 	font-size: 30px;
+	border: 1px solid #8181F7;
+	background-color: #8181F7;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
+#middle_title {
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 25px;
+	float: left;
+	text-align: left;
+	width: 680px;
+	height: 50px;
+}
 #middle_contents1_lv2 {
-	border: 1px solid green;
 	width: 150px;
 	height: 58px;
 	font-size: 20px;
@@ -80,105 +94,129 @@ div {
 }
 
 #middle_contents1_lv3 {
-	border: 1px solid blue;
 	width: 850px;
 	height: 140px;
 	font-size: 20px;
 	text-align: right;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents1_lv4 {
-	margin-top: 5px;
+	margin-top: 20px;
+	padding-top: 5px;
+	padding-left: 5px;
 	width: 850px;
-	height: 80px;
-	font-size: 50px;
+	height: 75px;
+	font-size: 35px;
 	color: red;
 	text-align: left;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents2 {
-	border: 1px solid red;
 	width: 310px;
 	height: 300px;
 	float: left;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
-#middle_contents2_btn {
+#middle_contents2_btn1 {
 	width: 130px;
 	height: 130px;
-	margin: 150px 0px 0px 100px;
+	margin: 150px 0px 0px 50px;
 	color: white;
 	border-radius: 15px;
 	background-color: coral;
 }
 
+#middle_contents2_btn2 {
+	width: 130px;
+	height: 130px;
+	margin: 150px 0px 0px 50px;
+	color: white;
+	border-radius: 15px;
+	background-color: gray;
+}
+
 #middle_contents3 {
-	border: 1px solid red;
 	margin-top: 10px;
 	float: left;
-	width: 1514px;
+	width: 1516px;
 	height: 200px;
+
 }
 
 #middle_contents3_lv1 {
-	border: 1px solid blue;
-	width: 1400px;
+	width: 1514px;
 	height: 150px;
 	overflow: auto;
 	margin-top: 10px;
 	font-size: 20px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents4 {
-	border: 1px solid red;
 	width: 1514px;
 	heigth: auto;
 	margin-top: 10px;
 	float: left;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_contents4_lv1 {
-	border: 1px solid blue;
-	padding: 30px;
-	width: 1300px;
-	height: 100px;
+	padding: 10px;
+	width: 1480px;
+	height: 80px;
+	border: 1px solid #f0f0f0;
+box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 }
 
 #middle_contents4_lv2 {
-	border: 1px solid green;
-	width: 1000px;
-	height: 80px;
+	width: 500px;
+	height: 50px;
 	float: left;
 }
 
 #middle_contents4_btn {
 	width: 150px;
+	height: 30px;
+	margin-right: 10px;
 	float: right;
 }
 
 #middle_contents4_lv3 {
-	border: 1px solid blue;
-	width: 1492px;
+	width: 1500px;
 	heigth: auto;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-top: 15px;
+	margin-bottom: 30px;
 	float: left;
 }
 
 #footer {
-	border: 1px solid red;
-	width: 1514px;
-	height: 170px;
+	width: 1518px;
+	height: 180px;
 	margin-top: 20px;
 	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 #lightboxshadow {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 1650px;
-	height: 2000px;
+	width: 100%;
+	height: 200%;
 	background: #000;
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 1000;
@@ -190,14 +228,17 @@ div {
 	position: absolute;
 	background-color: coral;
 	left: 30%;
-	top: 10%;
+	top: 20%;
 	padding: 50px;
 	text-align: center;
 	width: 500px;
-	height: 500px;
+	height: 300px;
 	opacity: 100;
 	z-index: 1010;
 	display: none;
+	border-radius: 20px;
+	box-shadow: -60px 0px 30px -90px #000000,
+                60px 0px 30px -90px #000000;
 }
 
 #revamn {
@@ -208,10 +249,11 @@ div {
 }
 
 .subtn {
+	padding-top: 10px;
 	border: none;
-	font-size: 29.5px;
-	color: red;
-	background-color: white;
+	font-size: 25.5px;
+	color: white;
+	background-color: #8181F7;
 }
 
 .file {
@@ -222,85 +264,24 @@ div {
 #tenderlist {
 	text-align: center;
 }
+
+.decisionbtn {
+	width: 150px;
+	display: block;
+	margin-left: 60px;
+}
+
+#ra_mbid2 {
+	border: none;
+	height: 25px;
+	width: 150px;
+	font-size: 25px;
+	text-align: center;
+}
 </style>
 </head>
 
 <body>
-	<div id="main">
-		<div id="mainheader">
-			<jsp:include page="main.jsp" />
-		</div>
-	</div>
-	<div id="middle">
-		<!-- div 카테고리와 이미지 -->
-		<div id="middle_img">
-			<div id="middle_img_lv1">카테고리 > ${raInfo.ra_cgcode}</div>
-			<div id="middle_img_lv2">
-				<img src="resources/images/${raInfo.ra_image}" alt="${raInfo.ra_image}" />
-			</div>
-		</div>
-		<div id="middle_contents1">
-			<div id="middle_contents1_lv1">
-				${raInfo.ra_title}
-				<div id="middle_contents1_lv2">
-					<div id="peek1">
-						<input type="submit" value="꿍누르기♥" class="subtn">
-					</div>
-					<div id="peek2">
-						<input type="submit" value="꿍누르기♡" class="subtn">
-					</div>
-				</div>
-			</div>
-			<div id="middle_contents1_lv3">
-				<table style="margin: 10px 0px 0px 10px; line-height: 200%">
-					<tr>
-						<th>작성자 :</th>
-						<td>'${raInfo.ra_mbid}' 님</td>
-						<td></td>
-					</tr>
-					<tr>
-						<th>수량 :</th>
-						<td style="font-size: 15px;">1EA(짝/켤레/쌍)</td>
-						<td style="color: gray; font-size: 11px;">제작의뢰 수량은 DEFAULT 1개
-							입니다.</td>
-					</tr>
-					<tr>
-						<th>회원님이 낙찰한 금액 :</th>
-						<td colspan="2"><div id="tender_result">0원</div></td>
-					</tr>
-				</table>
-				<div id="middle_contents1_lv4">경매 남은 시간 표시</div>
-			</div>
-		</div>
-		<div id="middle_contents2">
-			<button id="middle_contents2_btn">
-				작가 의뢰 접수 <br> 및 견적서 첨부
-			</button>
-		</div>
-		<div id="middle_contents3">
-			<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
-			<div id="middle_contents3_lv1">
-				<table id="tenderlist">
-
-				</table>
-			</div>
-		</div>
-		<div id="middle_contents4">
-			<p style="font-size: 25px; margin: 10px 0px 10px 10px;">의뢰인 요청사항</p>
-			<div id="middle_contents4_lv1">
-				<p style="font-size: 20px; color: blue;">제작 의뢰 도안(첨부파일)</p>
-				<div id="middle_contents4_lv2">
-					${raInfo.ra_file}
-					<button id="middle_contents4_btn">DOWNLOAD</button>
-				</div>
-			</div>
-			<div id="middle_contents4_lv3">
-				<p style="font-size: 25px;">작성예시 및 유의사항
-				<p>${raInfo.ra_contents}</p>
-			</div>
-		</div>
-		<div id="footer">여기는 푸터 입니다.</div>
-
 		<!-- 여기서부턴 라이트 박스 -->
 		<div id="lightboxshadow"></div>
 		<form id="tenderlightbox" enctype="multipart/form-data">
@@ -339,9 +320,116 @@ div {
 				</div>
 			</div>
 		</form>
+		<!-- 라이트박스 끝 -->
+	<div id="main">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 	</div>
-
+	<div id="middle">
+		<!-- div 카테고리와 이미지 -->
+		<div id="middle_img">
+			<div id="middle_img_lv1">카테고리 > 
+			 <c:set var="code" value="${raInfo.ra_cgcode}" />
+					<c:if test="${code eq 100 }">귀금속공예</c:if>
+					<c:if test="${code eq 110 }">원목공예</c:if>
+					<c:if test="${code eq 120 }">종이공예</c:if>
+					<c:if test="${code eq 130 }">가죽공예</c:if>
+					<c:if test="${code eq 140 }">천공예</c:if>
+					<c:if test="${code eq 150 }">플라스틱공예</c:if>
+					<c:if test="${code eq 160 }">도자기</c:if>
+					<c:if test="${code eq 170 }">가공식품</c:if>
+					<c:if test="${code eq 180 }">휴대폰</c:if>
+					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
+					<c:if test="${code eq 200 }">유아 용품</c:if>
+			</div>
+			<div id="middle_img_lv2">
+				<%-- <img src="resources/upload/${raInfo.ra_image}" alt="${raInfo.ra_image}" width="100%" height="100%"/> --%>
+				<img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/>
+			</div>
+		</div>
+		<div id="middle_contents1">
+			<div id="middle_contents1_lv1">
+				<div id="middle_title">${raInfo.ra_title}</div>
+				<div id="middle_contents1_lv2">
+					<div id="peek1">
+						<input type="submit" value="꿍누르기♥" class="subtn">
+					</div>
+					<div id="peek2">
+						<input type="submit" value="꿍누르기♡" class="subtn">
+					</div>
+				</div>
+			</div>
+			<div id="middle_contents1_lv3">
+				<table style="margin: 10px 0px 0px 10px; line-height: 200%">
+					<tr>
+						<th>작성자 :</th>
+						<td><input id="ra_mbid2" type="text" value="${raInfo.ra_mbid}" readonly="readonly"></td>
+						<td style="text-align:left;">님</td>
+					</tr>
+					<tr>
+						<th>수량 :</th>
+						<td style="font-size: 15px; text-align:center;">1EA(짝/켤레/쌍)</td>
+						<td style="color: gray; font-size: 11px; text-align:left;">제작의뢰 수량은 DEFAULT 1개 입니다.</td>
+					</tr>
+					<tr>
+						<th>의뢰인의 낙찰 금액 :</th>
+						<c:set var="priceChk" value="${raCurPrice.rat_price}"/>
+						<c:if test="${priceChk eq null}">
+						<td colspan="2" style="text-align:left; color:gray">의뢰한 내역이 없습니다.</td></c:if>
+						<c:if test="${priceChk ne null}">
+						<td style="text-align:center;"> <fmt:formatNumber value="${raCurPrice.rat_price}" pattern="#,###"/></td>
+						<td style="text-align:left;">원  <input type="text" value="(${raCurPrice.rat_mbid_w}님)" readonly="readonly" style="border:none; text-align: left; font-size:20px; color:maroon;"></td></c:if>
+						<td style="text-align:left; color:blue;"></td>
+					</tr>
+				</table>
+				<div id="middle_contents1_lv4"></div>
+			</div>
+		</div>
+		<div id="middle_contents2">
+			<c:set var="decidechk" value="${decidechk}" />
+			<c:if test="${decidechk eq null}">
+				<button id="middle_contents2_btn1">
+					작가 의뢰 접수 <br> 및 견적서 첨부
+				</button>
+			</c:if>
+			<c:if test="${decidechk eq 'HIDE'}">
+				<button id="middle_contents2_btn2">
+					의뢰접수 권한이 <br> 없습니다.
+				</button>
+			</c:if>
+		</div>
+		<div id="middle_contents3">
+			<p style="font-size: 25px; margin-left: 10px;">작가 접수내역</p>
+			<div id="middle_contents3_lv1">
+				<table id="tenderlist">
+				</table>
+			</div>
+		</div>
+		<div id="middle_contents4">
+			<p style="font-size: 25px; margin: 10px 0px 10px 10px;">의뢰인 요청사항</p>
+			<div id="middle_contents4_lv1">
+				<p style="font-size: 20px; color: blue;">제작 의뢰 도안(첨부파일)</p>
+				<div id="middle_contents4_lv2">
+					<c:set var="ttt" value="${msgfile}"/>
+					<div>${raInfo.ra_file}<button id="middle_contents4_btn" onclick="location.href='ratfiledownload?rat_file=${raInfo.ra_file}&ra_num=${raInfo.ra_num}'">다운로드</button></div>
+				</div>
+			</div>
+			<div id="middle_contents4_lv3">
+				<c:set var="contents" value="${raInfo.ra_contents}"/>
+				<c:if test="${contents ne null}">
+				<p>${raInfo.ra_contents}</p></c:if>
+				<c:if test="${contents eq null}">
+				<p><br>추가 요청내역이 없습니다.</p></c:if>
+			</div>
+		</div>
+		<div id="footer">
+		<hr style="width:100%; border: 2px solid coral; align: center;">	
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
+	</div>
 </body>
+
 <script>
 if(${nb} > 0){
 	$("#peek2").css("display", "none");
@@ -375,7 +463,7 @@ $(".subtn").click(function() {
 		});	
 });
 
-	$("#middle_contents2_btn").click(function() {
+	$("#middle_contents2_btn1").click(function() {
 		$('#lightboxshadow').css("display", "block")
 		$('#lightbox_contents1').css("display", "block")
 	});
@@ -388,7 +476,7 @@ $(".subtn").click(function() {
 		$('#lightbox_contents1').css("display", "none")
 	});
 	$("#nopermitapply").click(function() {
-		alert("접근 권한이 없습니다.");
+		swal("접근 권한이 없습니다.");
 		$('#lightboxshadow').css("display", "none")
 		$('#lightbox_contents1').css("display", "none")
 	});
@@ -396,7 +484,6 @@ $(".subtn").click(function() {
 	/* 여기부터 */
  	var ra_num = ${ra_num};
 	$(document).ready(function() {
-		//setInterval(function() {
 			$.ajax({
 				type:'POST',
 				url:'ajax/revauction',
@@ -404,11 +491,16 @@ $(".subtn").click(function() {
 				data: { rat_ranum : ra_num},
 				dataType:'json',
 				success: function(data) {
-					var str = "<tr><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td></td>";
+
+					var str = "<tr style='background-color:#8181F7;'><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td width='300'>의뢰하기</td></tr>";
 					for(var i in data) {
+					var wid = data[i].rat_mbid_w;
+					var wprice = data[i].rat_price;
+					var wdays = data[i].rat_days;
 					str+="<tr><td width='300'>"+data[i].rat_mbid_w+"님</td><td width='300'>"+data[i].rat_price
-							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file
-							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days+"일</td>";
+							+"원(수량 1ea 기준)</td><td width='300' class='file'><a href='ratfiledownload?rat_file="+data[i].rat_file+"&ra_num="+${raInfo.ra_num}
+							+"'>견적서 다운로드</a></td><td width='300'>"+data[i].rat_days
+							+"일</td><td width='300'><input class='decisionbtn' type='button' onclick=\"revdecision('"+wid+"','"+wprice+"','"+wdays+"');\" value='CLICK'></td></tr>";
 					}
 					$("#tenderlist").html(str);
 					console.log(str);
@@ -418,18 +510,16 @@ $(".subtn").click(function() {
 					$("#tenderlist").html(str);
 				}
 			}); //ajax End
-			//}, 300);
 		});
 		/* 여기까지 */
-
+	var ra_mbid=$("#ra_mbid2").val();
 	function revauctionapply() {
-			//var formData = new FormData(document.getElementById("#tenderlightbox"));
 			var $file = $("#revfile");
 			var formData = new FormData();
 			formData.append("revamoney",$("#revamoney").val());
 			formData.append("revadate",$("#revadate").val());
 			formData.append("file",$file[0].files[0]);
-			formData.append("ra_num",${ra_num});
+			formData.append("ra_num",ra_num);
 			console.log(formData);
 			$.ajax({
 				type:'POST',
@@ -439,15 +529,117 @@ $(".subtn").click(function() {
 				data: formData,
 				dataType:'json',
 				success: function(data) {
-					alert(data);
-					$('#lightboxshadow').css("display", "none")
-					$('#lightbox_contents1').css("display", "none")
+					swal(data);
+					$('#lightboxshadow').css("display", "none");
+					$('#lightbox_contents1').css("display", "none");
 				},
 				error: function(error) {
-					alert("해당 정보를 다시 입력하여 주시기 바랍니다.");
+					swal("해당 정보를 다시 입력하여 주시기 바랍니다.");
 				}
 			}); //ajax End
 		}
+		
+ 	function revdecision(wid,wprice,wdays) {
+ 		var str='';
+ 		str+="(가격: "+wprice+"원, 제작기간: "+wdays+"일) \n작가'"+wid+"'님 에게 의뢰를 요청 하시겠습니까?";
+ 		swal(str, {
+ 			  buttons: {
+ 			    cancel: "뒤로가기",
+ 			    
+ 			    catch: { 
+ 			    	text: "네, 의뢰합니다.",
+ 					value: "go",
+ 			    },
+ 			  },
+ 			}).then((value) => {
+ 			  switch (value) {
+ 			    case "go":
+ 			      console.log(str);
+ 			      var form = {
+ 			    		  rap_ranum:ra_num,
+ 			    		  rap_mbid_w:wid,
+ 			    		  rap_price:wprice,
+ 			    		  rap_days:wdays,
+ 			    		  rap_mbid_n:ra_mbid
+ 			      }
+ 			      $.ajax({
+ 						type:'POST',
+ 						url:'ajax/reqdecision',
+ 						contentType: "application/json; charset=utf-8;",
+ 						data: JSON.stringify(form),
+ 						dataType:'json',
+ 						success: function(data) {
+ 							console.log(data);
+ 							if(data == '0') {
+ 								swal("의뢰접수한 작가님 본인은 신청 할 수 없습니다.");
+ 							} else if(data == '1') {
+ 								swal("의뢰한 본인의 의뢰하기 완료");
+ 							} else if(data == '2') {
+ 								swal("다른사람의 의뢰하기 완료");
+ 							} else if(data == '3') {
+ 								swal("의뢰완료! 마이페이지-[제작의뢰 내역]을 확인해주세요.");
+ 							} else if(data == '4') {
+ 								swal("이미 해당 작가님께 의뢰중인 접수내역이 있습니다!");
+ 							} else if(data == '5') {
+ 								swal("경매가 마감되어, 의뢰를 요청할 수 없습니다.");
+ 							}							
+ 						},
+ 						error: function(error) {
+ 						}
+ 					});
+ 			      break;
+ 			      
+ 			    default:
+ 			  }
+ 			});
+ 	}
+ 	
+ 	//시간 표시
+ 	//CountDownTimer('01/01/2017', 'countdown'); // 2017년 1월 1일까지
+ 	//CountDownTimer('01/01/2018 00:00 AM', 'newcountdown'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
+ 	
+		$(document).ready(function() {
+ 		var date = new Date("${raInfo.ra_date}");
+ 		CountDownTimer(date,'#middle_contents1_lv4');
+		});
 
+ 		function CountDownTimer(date,id) {
+ 		var end = new Date(date);
+ 	 	end.setDate(end.getDate()+1);
+ 	 	//end.setMinutes(end.getMinutes()+10);
+ 		var _second = 1000;
+ 		var _minute = _second * 60;
+ 		var _hour = _minute * 60;
+ 		var _day = _hour * 24;
+ 		var timer;
+
+ 		function showRemaining() {
+ 		var now = new Date();
+ 		var distance = end - now;
+
+ 		if (distance < 0) {
+ 		clearInterval(timer);
+ 		$(id).html("경매가 마감되었습니다.");
+
+ 		if (!location.hash) { 
+ 			location.hash = '#reload';
+ 			window.location.reload();
+ 		}
+
+ 		return;
+ 		}
+ 		
+ 		var days = Math.floor(distance / _day);
+ 		var hours = Math.floor((distance % _day) / _hour);
+ 		var minutes = Math.floor((distance % _hour) / _minute);
+ 		var seconds = Math.floor((distance % _minute) / _second);
+ 	 
+ 		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
+ 		}
+ 		
+ 		timer = setInterval(showRemaining, 100);
+ 		}
+ 		// Source: stackoverflow
+ 		
 </script>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
+import com.designus.www.bean.Category;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
 import com.designus.www.bean.RevAuction;
@@ -192,6 +193,7 @@ public class AuctionMM {
 		String id = (String) session.getAttribute("id");
 		List<AuctionTender> atList = null;
 		List<Auction> auwList = null;
+		List<Category> cgList = null;
 		String chkID = null;
 		Auction au = new Auction();
 		Basket bk = new Basket();

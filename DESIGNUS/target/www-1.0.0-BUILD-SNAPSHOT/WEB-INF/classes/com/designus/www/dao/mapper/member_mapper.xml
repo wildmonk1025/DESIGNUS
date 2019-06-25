@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.designus.www.dao.ImemberDao">
+
+	<!-- <resultMap type="member" id="member"> <result property="mb_id" column="MB_ID" 
+		/> <result property="mb_pw" column="MB_PW" /> <result property="mb_name" 
+		column="MB_NAME" /> <result property="mb_brith" column="MB_BIRTH" /> <result 
+		property="mb_profile" column="MB_PROFILE" /> <result property="mb_address" 
+		column="MB_ADDRESS" /> <result property="mb_email" column="MB_EMAIL" /> <result 
+		property="mb_point" column="MB_POINT" /> <result property="mb_grade" column="MB_GRADE" 
+		/> <result property="mb_ccnt" column="MB_CCNT" /> </resultMap> -->
+	<insert id="memberapplyInsert" parameterType="member">
+		INSERT INTO MEMBER
+		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'N',DEFAULT)
+	</insert>
+	<insert id="wrimemberapplyInsert" parameterType="member">
+		INSERT INTO
+		MEMBER
+		VALUES(#{mb_id},#{mb_pw},#{mb_name},#{mb_birth},#{mb_profile},#{mb_address},#{mb_email},DEFAULT,'S',DEFAULT)
+	</insert>
+	<insert id="wrimajorInsert" parameterType="major">
+		INSERT INTO MAJOR
+		VALUES(#{mj_id},${mj_cg_code},#{mj_portf},'0',0)
+	</insert>
+	<select id="getSecurityPwd" parameterType="String"
+		resultType="String">
+		SELECT MB_PW FROM MB WHERE MB_ID=#{mb_id}
+	</select>
+	<select id="getMemberInfo" parameterType="String"
+		resultType="member">
+		SELECT * FROM MB WHERE MB_ID=#{mb_id}
+	</select>
+	<select id="memberlapcheck" parameterType="String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE mb_id=#{mb_id}
+	</select>
+	
+	<select id="memberFind" parameterType="member" resultType="String">
+		SELECT MB_ID FROM MEMBER WHERE MB_ID=#{MB_ID}
+	</select>
+	<select id="getMemberNameInfo" parameterType="member" resultType="member">
+		SELECT MB_ID FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name}
+	</select>
+	<select id="memberNpoint" parameterType="auctionprogress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{aup_mbid_n}
+	</select>
+	<select id="getMemberpwInfo" parameterType="member" resultType="member">
+		SELECT MB_PW, MB_ID FROM MEMBER WHERE MB_EMAIL=#{mb_email} AND MB_NAME=#{mb_name} AND MB_ID=#{mb_id}
+	</select>
+	<update id="getMemberPwUpdate" parameterType="member">
+		UPDATE MB SET MB_PW=#{mb_pw} WHERE MB_ID=#{mb_id}
+	</update>
+	<select id="memberWpoint" parameterType="auctionprogress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{au_mbid_w}
+	</select>
+	<select id="ravmemberNpoint" parameterType="revAuctionProgress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{rap_mbid_n}
+	</select>
+	<select id="memberWrevpoint" parameterType="revAuctionProgress" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{rap_mbid_w}
+	</select>
+	<insert id="setNotifyAuctionApply" parameterType="member">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{mb_id},DEFAULT,#{mb_notify},0,DEFAULT)
+	</insert>
+	
+	<insert id="setNotifyAuctionWriInsert" parameterType="member">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{mb_id},#{mb_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyAuctionWriFLogin" parameterType="member">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,#{mb_id},DEFAULT,#{mb_notify},0,DEFAULT)
+	</insert>
+	<select id="getMemberclick" parameterType="member" resultType="member">
+		SELECT MB_CCNT FROM MB WHERE MB_ID=#{mb_id}
+	</select>
+	
+	
+</mapper>

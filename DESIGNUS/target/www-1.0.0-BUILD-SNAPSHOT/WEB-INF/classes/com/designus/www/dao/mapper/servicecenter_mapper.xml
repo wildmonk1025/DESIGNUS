@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.designus.www.dao.IServiceCenterDao">  
+     
+      
+     <insert id="setAloneQuestion" parameterType="questionreply">
+		INSERT INTO AQ VALUES(AQ_SEQ.NEXTVAL,#{qr_mbid},#{qr_type},#{qr_title},#{qr_contents},DEFAULT)
+	 </insert>
+      
+     <insert id="QuestionImageInsert" parameterType="questionreply">
+		INSERT INTO AQI VALUES(${qr_aqnum},#{aqi_imgSysName})
+	 </insert>
+
+     <select id="getQuestionSel" parameterType="questionreply" resultType="Integer">
+		SELECT MAX(AQ_NUM) FROM AQ
+	 </select>
+
+     <select id="QnAselect" parameterType="qna" resultType="qna">
+		SELECT * FROM QNA WHERE QNA_KIND = #{qna_kind}
+	 </select>
+
+     <insert id="setReport" parameterType="report">
+		INSERT INTO RP VALUES(RP_SEQ.NEXTVAL,#{rp_mbid_d},#{rp_mbid_a},#{rp_locate},#{rp_reason},#{rp_title},#{rp_contents},DEFAULT)
+	 </insert>
+
+     <select id="getReportSel" parameterType="report" resultType="Integer">
+		SELECT MAX(RP_NUM) FROM RP
+	 </select>
+
+     <insert id="ReportImageInsert" parameterType="report">
+		INSERT INTO RPI VALUES(${rp_num},#{rqi_imgSysName})
+	 </insert>
+
+	<insert id="setNotifyQuestionInsert" parameterType="questionreply">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{qr_mbid},#{qr_notify},0,DEFAULT)
+	</insert>
+
+	<insert id="setNotifyReportInsert" parameterType="report">
+		INSERT INTO NOTIFY VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{rp_mbid_d},#{rp_notify},0,DEFAULT)
+	</insert>
+       
+</mapper>

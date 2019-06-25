@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.designus.www.dao.ImypageDao">
+
+	<select id="privacyeditSelect" parameterType="String"
+		resultType="member">
+		SELECT * FROM MB WHERE MB_ID=#{id}
+	</select>
+
+	<update id="memberreviseupdate" parameterType="member">
+		UPDATE MB SET
+		MB_PW
+		=#{mb_pw},MB_ADDRESS=#{mb_address},MB_PROFILE=#{mb_profile},MB_EMAIL=#{mb_email}
+		WHERE MB_ID=#{mb_id}
+	</update>
+	<select id="withdrawalconfirmselect" parameterType="String"
+		resultType="String">
+		SELECT MB_PW FROM MB WHERE MB_ID=#{id}
+	</select>
+	<select id="withdrawalconfirmselect2" parameterType="String"
+		resultType="member">
+		SELECT * FROM MB WHERE MB_ID=#{id}
+	</select>
+	<insert id="withdrawalconfirmInsert" parameterType="member">
+		INSERT INTO
+		WITHDRAWAL
+		VALUES(#{mb_id},#{mb_name},#{mb_birth},#{mb_email},DEFAULT)
+	</insert>
+	<delete id="withdrawalconfirmDelete" parameterType="member">
+		DELETE FROM
+		MB WHERE MB_ID=#{mb_id}
+	</delete>
+	<insert id="nortowriapplyInsert" parameterType="major">
+		INSERT INTO MAJOR
+		VALUES(#{mj_mbid},#{mj_cgcode},#{mj_portf},#{mj_contents},DEFAULT)
+	</insert>
+	<update id="nortowriapplyupdate" parameterType="major">
+		UPDATE MB SET
+		MB_GRADE='X' WHERE MB_ID=#{mj_mbid}
+	</update>
+
+	<select id="basketAuctionselect" parameterType="String"
+		resultType="basket">
+		SELECT * FROM IA
+		WHERE B.AB_MBID=#{id}
+	</select>
+
+	<select id="basketRevAuctionselect" parameterType="String"
+		resultType="basket">
+		SELECT * FROM IV WHERE R.RAB_MBID=#{id}
+	</select>
+
+	<select id="basketSponsorselect" parameterType="String"
+		resultType="basket">
+		SELECT * FROM ISP
+		WHERE B.SB_MBID=#{id}
+	</select>
+	<select id="basketFrmSelect" resultType="basket">
+		
+      <![CDATA[
+   select * from(
+    select rownum AS RN,AB_AUNUM,AB_MBID,AUI_IMG,AU_TITLE,
+    ROW_NUMBER() OVER(PARTITION BY AB_AUNUM ORDER BY AB_AUNUM DESC) AS RankNo
+     from IA
+       where AB_MBID=#{id} and rownum<=#{num}*5
+     ) where rn>=#{num}*5-4 AND RankNo=1
+  ]]>
+
+	</select>
+	<select id="basketFrmRSelect" resultType="basket">
+		
+      <![CDATA[
+      select * from(
+   select rownum AS RN,RAB_RANUM,RAB_MBID,RA_IMAGE,RA_TITLE from IV
+       where RAB_MBID=#{id} and rownum<=#{num}*5
+     ) where rn>=#{num}*5-4
+  ]]>
+	</select>
+	<select id="basketFrmSSelect" resultType="basket">
+		
+      <![CDATA[
+    select * from(
+    select rownum AS RN,SB_SSNUM,SB_MBID,SSI_IMG,SS_TITLE,
+    ROW_NUMBER() OVER(PARTITION BY SB_SSNUM ORDER BY SB_SSNUM DESC) AS RankNo from ISP
+       where SB_MBID=#{id} and rownum<=#{num}*5
+     ) where rn>=#{num}*5-4 AND RankNo=1
+  ]]>
+
+	</select>
+	<select id="getBoardCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from IA where AB_MBID=#{id}
+	</select>
+	<select id="getrevCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from IV where RAB_MBID=#{id}
+	</select>
+	<select id="getsponCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from ISP where SB_MBID=#{id}
+	</select>
+	<select id="auctionMyOrderListSelect"
+		resultType="auctionprogress">
+		<![CDATA[
+		select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND
+     from AUPVIEWTEST
+       where AUP_MBID_N=#{id} 
+        order by AUP_PTNUM DESC
+     ) where rownum<=#{num}*3
+     )where rn>=#{num}*3-2 AND RankNo=1
+		
+  ]]>
+	</select>
+
+	<select id="getSetpCount" resultType="Integer">
+		select count(*) from
+		AUPVIEWTEST where AUP_MBID_N=#{id}
+	</select>
+
+
+	<update id="aucapplyMbNupdate" parameterType="auctionprogress">
+		update MB SET
+		mb_point=#{ponitN}-#{aup_price}
+		where mb_id=#{aup_mbid_n}
+	</update>
+	<update id="reviewBoardyhWriteupDate"
+		parameterType="auctionprogress">
+		update AUP SET aup_step=4
+		where aup_ptnum=${aup_ptnum}
+	</update>
+	<delete id="auccancelDelete">
+		DELETE FROM AUP
+		WHERE AUP_PTNUM=${aup_ptnum}
+	</delete>
+	<select id="auctionMyAcceptListSelect"
+		resultType="auctionprogress">
+		<![CDATA[
+		
+		select * from(
+ select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND
+     from AUPVIEWTEST
+       where AU_MBID_W=#{id}
+         order by AUP_PTNUM DESC
+     ) where rownum<=#{num}*3
+     )where rn>=#{num}*3-2 AND RankNo=1
+	
+  ]]>
+	</select>
+	<select id="getSetpWCount" resultType="Integer">
+		select count(*) from
+		AUPVIEWTEST where AU_MBID_W=#{id}
+	</select>
+	<update id="delinumuploadupdate" parameterType="auctionprogress">
+		update AUP SET
+		aup_track=#{aup_track},aup_step=3
+		where aup_ptnum=#{aup_ptnum}
+	</update>
+	<select id="sendsSelect" resultType="auctionprogress">
+		<![CDATA[
+		select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEW
+       where aup_ptnum=${aup_ptnum}
+     ) where  RankNo=1  
+  ]]>
+	</select>
+	<select id="enterSelect" parameterType="auctionprogress"
+		resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWtest
+       where AUP_PTNUM=${aup_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
+	<delete id="autcancelDelete">
+		DELETE FROM AUT
+		WHERE AUT_AUNUM=${aup_ranum} AND
+		AUT_MBID=#{aup_mbid_n} AND
+		AUT_DATE=to_date(#{aut_date}, 'RR/MM/DD
+		HH24:MI:SS')
+	</delete>
+
+	<select id="scheckSelect" parameterType="auctionprogress"
+		resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWtest
+       where AUP_PTNUM=${aup_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
+	<select id="reviewboardSelect" parameterType="auctionprogress"
+		resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWtest
+       where AUP_PTNUM=${aup_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
+	<update id="memberpointup" parameterType="auctionprogress">
+		update MB SET
+		mb_point=#{ponitW}+#{aup_price}
+		where mb_id=#{au_mbid_w}
+	</update>
+	<select id="revAuctionMyOrderListSelect"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
+		<![CDATA[
+		select*from(
+      select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC)AS RankNo from(
+    select RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC
+     from RAPVIEW
+       where RAP_MBID_N=#{id}
+     order by RAP_PTNUM DESC
+     ) where  rownum<=${num}*3 
+     ) where rn>=${num}*3-2 AND RankNo=1
+  ]]>
+	</select>
+	<select id="getreSetpCount" resultType="Integer">
+		select count(*) from
+		RAPVIEW where RAP_MBID_N=#{id}
+	</select>
+	<select id="requestSelect" parameterType="revauctionprogress"
+		resultType="revauctionprogress">
+		<![CDATA[
+		SELECT * FROM RAPVIEW
+         where  RAP_PTNUM=${rap_ptnum}  
+  ]]>
+	</select>
+	<update id="requestbyupdate" parameterType="revauctionprogress">
+		UPDATE RAP SET
+		RAP_NAME=#{rap_name},RAP_address=#{rap_address},RAP_phone=#{rap_phone},RAP_step=2
+		where RAP_PTNUM=${rap_ptnum}
+	</update>
+	<update id="requestbyREVupdate"
+		parameterType="revauctionprogress">
+		update MB SET
+		mb_point=#{pointN}-#{rap_price}
+		where
+		mb_id=#{rap_mbid_n}
+	</update>
+	<select id="revauccancelSelect"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
+		<![CDATA[
+		select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK
+    ,RAP_DAYS,RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum} 
+     ) where RankNo=1
+  ]]>
+	</select>
+	<delete id="revaucinfocancelDelete">
+		delete from rap
+		where rap_ptnum=${rap_ptnum}
+	</delete>
+	<update id="revaucinfocancelupDate"
+		parameterType="revauctionprogress">
+		UPDATE RAT SET
+		RAT_DECIDE='N'
+		WHERE RAT_NUM=${rap_ranum}
+		AND RAT_MBID_W=#{rap_mbid_w}
+	</update>
+	<insert id="revaucinfocancelInsert" parameterType="notify">
+		INSERT INTO NF
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_contents},0,DEFAULT)
+	</insert>
+	
+	<select id="revAuctionMyAcceptList"
+		parameterType="revauctionprogress" resultType="revauctionprogress">
+		<![CDATA[
+		select * from(
+     select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC 
+     from RAPVIEW
+       where RAP_MBID_W=#{id} 
+        order by RAP_PTNUM DESC
+     )  where rownum<=${num}*3
+     )where rn>=${num}*3-2 AND RankNo=1
+		
+  ]]>
+	</select>
+	<select id="getreASetpCount" resultType="Integer">
+		select count(*) from
+		RAPVIEW where RAP_MBID_W=#{id}
+	</select>
+	<select id="delinumSelect" resultType="revauctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum}
+     ) where RankNo=1
+  ]]>
+	</select>
+	<update id="revdelinumupload" parameterType="revauctionprogress">
+		UPDATE RAP SET
+		RAP_TRACK=#{rap_track},RAP_STEP=3
+		WHERE RAP_PTNUM=${rap_ptnum}
+	</update>
+	<select id="boardwriteSelect" resultType="revauctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,RAP_PTNUM,RAP_RANUM,RAP_MBID_N,RAP_NAME,RAP_ADDRESS,RAP_MBID_W,RAP_PHONE,RAP_PRICE,RAP_TRACK,RAP_DAYS,
+    RAP_STEP,RA_MBID,RA_IMAGE,RA_TITLE,RA_OC,ROW_NUMBER() OVER(PARTITION BY RAP_PTNUM ORDER BY RAP_PTNUM DESC) AS RankNo
+     from RAPVIEW
+       where RAP_PTNUM=${rap_ptnum}
+     ) where RankNo=1
+  ]]>
+	</select>
+	<update id="revmemberpointup" parameterType="revAuctionProgress">
+		update MB SET
+		mb_point=#{pointW}+#{rap_price}
+		where mb_id=#{rap_mbid_w}
+	</update>
+	<update id="revBoardyhWriteupDate"
+		parameterType="revauctionprogress">
+		update RAP SET RAP_STEP=4
+		where rap_ptnum=${rap_ptnum}
+	</update>
+	<update id="aucapplyMbWupdate" parameterType="auctionprogress">
+		update AUP SET
+		aup_name=#{aup_name},aup_address=#{aup_address},aup_phone=#{aup_phone},aup_step=2
+		where aup_ptnum=#{aup_ptnum}
+	</update>
+	<select id="mypagemoveSelect" parameterType="String"
+		resultType="member">
+
+		SELECT * FROM MB
+		WHERE MB_ID=#{id}
+
+	</select>
+	<select id="notismypageSelect" parameterType="String"
+		resultType="notify">
+		SELECT * FROM NF WHERE NF_MBID_R=#{id}
+	</select>
+	<select id="getAuTrackId" parameterType="auctionprogress"
+		resultType="String">
+		SELECT AUP_MBID_N FROM AUP WHERE AUP_PTNUM=${aup_ptnum}
+	</select>
+	<select id="getRaTrackId" parameterType="revauctionprogress"
+		resultType="String">
+		SELECT RAP_MBID_N FROM RAP WHERE RAP_PTNUM=${rap_ptnum}
+	</select>
+	<delete id="fullDelete">
+		UPDATE NF SET NF_CHECK=2
+		WHERE NF_MBID_R=#{id}
+	</delete>
+	<delete id="nodelete" parameterType="notify">
+		UPDATE NF SET NF_CHECK=2
+		WHERE NF_NUM=${nf_num}
+
+	</delete>
+	<select id="auctionInfoSelect" parameterType="String"
+		resultType="auctiontender">
+		<![CDATA[
+		 select * from(
+    select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE+3 as AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
+     from AU_AUT
+       where AUT_MBID=#{id} AND AUT_KIND != 'I'
+     )  where  RankNo=1
+  ]]>
+	</select>
+	<select id="auctionMaxSelect" resultType="Integer">
+		SELECT MAX(AUT_PRICE)
+		FROM AUT
+		WHERE AUT_AUNUM=${aut_aunum}
+	</select>
+	<delete id="AuctionGiveUpDelete">
+		DELETE FROM AUT
+		WHERE AUT_AUNUM=${aut_aunum} AND
+		AUT_MBID=#{aut_mbid} AND AUT_KIND !='I'
+	</delete>
+	<select id="gold" resultType="Integer">
+		select count(aw_kind) from aw
+		where
+		aw_mbid=#{id} and aw_kind='금'
+	</select>
+	<select id="silver" resultType="Integer">
+		select count(aw_kind) from aw
+		where aw_mbid=#{id} and aw_kind='은'
+	</select>
+	<select id="copper" resultType="Integer">
+		select count(aw_kind) from aw
+		where aw_mbid=#{id} and aw_kind='동'
+	</select>
+	<select id="auccancelDeleteDel" parameterType="auctionprogress"
+		resultType="auctionprogress">
+		<![CDATA[
+		 select * from(
+    select rownum AS RN,AUP_PTNUM,AUP_RANUM,AUP_MBID_N,AUP_NAME,AUP_ADDRESS,AUP_PHONE,AUP_QTY,AUP_PRICE,AUP_TRACK,
+    AUP_STEP,AUI_IMG,AU_MBID_W,AU_TITLE,AUT_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUP_PTNUM ORDER BY AUP_PTNUM DESC) AS RankNo
+     from AUPVIEWTEST
+       where AUP_PTNUM=${aup_ptnum}
+     ) where RankNo=1
+  ]]>
+	</select>
+	<select id="questionlist" resultType="alonequestion">
+		<![CDATA[
+		 select * from( select rownum AS RN,AQ_NUM,AQ_MBID,AQ_TYE,AQ_TITLE,
+		 AQ_CONTENTS,AQ_DATE,ABC,AQI_IMG from AQ_QR 
+		 where aq_mbid=#{id} and rownum<=${num}*8 ) where rn>=${num}*8-7
+		 order by AQ_NUM desc
+		]]>
+	</select>
+	<select id="questionalistSelect" parameterType="Integer"
+		resultType="questionreply">
+		select * from qr
+		where QR_AQNUM=#{aq_num}
+	</select>
+	<select id="getAqpagingCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from aq
+		where aq_mbid=#{id}
+	</select>
+	<select id="questionreadSelct" resultType="alonequestion">
+		select * from AQ_QR
+		where aq_num=${aq_num}
+	</select>
+	<select id="fundingAcceptListSelect" parameterType="sponpro"
+		resultType="sponpro"> 
+ 		<![CDATA[ 
+ 		 select * from(
+     select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo from(
+ select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date
+     from ssp_ss_ddd
+       where SSP_MBID_N=#{id} 
+       order by SSP_PTNUM DESC
+     ) where  rownum<=${num}*3
+     )where rn>=${num}*3-2 AND RankNo=1
+ 		
+   ]]>
+	</select>
+	<select id="getSuwonCountt" parameterType="String"
+		resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from ssp_ss_ssi
+         where SSP_MBID_N=#{id} 
+   ]]>
+	</select>
+	<select id="SponsorTenderSelect" resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from sst
+         where sst_ssnum=${ssp_ssnum}
+   ]]>
+	</select>
+	<update id="supportupdate" parameterType="sponpro">
+		UPDATE ssp SET ssp_step= 3
+		where ssp_ptnum=${ssp_ptnum}
+	</update>
+	<select id="getOpPeriodList" resultType="map">
+		select ss_date from ss
+	</select>
+	<select id="fundingOrderListSelect" resultType="sponpro"> 
+ 		<![CDATA[ 
+ 	select * from(
+ select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+     from ssp_ss_ssi
+       where SS_MBID_W=#{id}  and rownum<=${num}*3
+     ) where rn>=${num}*3-2 AND RankNo=1
+   ]]>
+	</select>
+	<select id="fundingOrderLisSelect" resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from sst
+         where sst_ssnum=${ssp_ssnum}
+   ]]>
+	</select>
+	<select id="getSuonCountt" parameterType="String"
+		resultType="Integer">
+ 		<![CDATA[ 
+ 		 select count(*) from ssp_ss_ssi
+         where SS_MBID_W=#{id}
+         
+   ]]>
+	</select>
+	<insert id="setNotifyWriApply" parameterType="notify">
+		INSERT INTO NOTIFY
+		VALUES(NF_SEQ.NEXTVAL,'ADMIN',#{nf_mbid_r},#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyAuTrack" parameterType="notify">
+		INSERT INTO NOTIFY
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_notify},0,DEFAULT)
+	</insert>
+	<insert id="setNotifyRaTrack" parameterType="notify">
+		INSERT INTO NOTIFY
+		VALUES(NF_SEQ.NEXTVAL,#{nf_mbid_r},#{nf_mbid_s},#{nf_notify},0,DEFAULT)
+	</insert>
+	<select id="deadlineSelect" parameterType="String"
+		resultType="java.time.LocalDateTime">
+		SELECT SS_DATE+3 AS END_DATE FROM SS
+	</select>
+	<update id="deadlineupdate" >
+		 UPDATE ssp SET ssp_step= 2
+         where ssp_ptnum=${ssp_ptnum}
+	</update> 
+	<select id="deadlineuSelecte" parameterType="java.time.LocalDateTime"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE+3 as SS_DATE ,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi  
+         )where ss_date=#{localDateTime} and RankNo=1
+   ]]>
+	</select>
+	<select id="fundapplySelect" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_PTNUM=${ssp_ptnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<update id="funddeliuploadupdate" parameterType="sponpro">
+		 update ssp set ssp_name=#{ssp_name}, ssp_address=#{ssp_address}, ssp_phone=#{ssp_phone}, ssp_step=4
+         where ssp_ptnum=${ssp_ptnum}
+	</update>
+	<select id="funddeliinfoSelect" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_SSNUM=${ssp_ssnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<select id="funddelinumSelect" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_PTNUM=${ssp_ptnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<update id="funddelinumuploadupdate" parameterType="sponpro">
+		 update ssp set ssp_track=#{ssp_track}, ssp_step=5
+         where SSP_PTNUM=${ssp_ptnum} 
+	</update>
+	<select id="SponBoardWriteupdate" parameterType="sponpro"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_PTNUM=${ssp_ptnum}
+         )where RankNo=1
+   ]]>
+	</select>
+	<select id="pointcheck" parameterType="String"
+		resultType="Integer">
+ 		select mb_point from mb
+         where mb_id=#{mb_id}
+	</select>
+	<update id="memberupdatespon" parameterType="member">
+		update MB SET
+		mb_point=#{mb_point}+#{pointW}
+		where mb_id=#{mb_id}
+	</update>
+	<update id="sponsorupdatettt" parameterType="sponpro">
+		 update ssp set ssp_step=6
+         where SSP_PTNUM=${ssp_ptnum} 
+	</update>
+	<insert id="WriteAReviewspon" parameterType="board">
+	<selectKey keyProperty="bd_num" resultType="int" order="AFTER">
+	   SELECT BD_SEQ.CURRVAL FROM DUAL 
+	</selectKey>
+		INSERT  INTO BOARD 
+       VALUES(BD_SEQ.NEXTVAL,#{bd_kind},#{bd_mbid},#{bd_title},#{bd_contents},DEFAULT,DEFAULT,DEFAULT)
+	
+	</insert>
+	<select id="sponsorProgress" parameterType="String"
+		resultType="sponpro">
+ 		<![CDATA[ 
+ 		   select * from(
+  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+  SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE+3 AS SS_DATE ,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+      from ssp_ss_ssi 
+        where SSP_MBID_N=#{id}
+         )where RankNo=1
+   ]]>
+	</select>
+	<update id="stepfiveupDate" parameterType="revauctionprogress">
+		update RAP SET RAP_STEP=1
+		where RAP_PTNUM=${rap_ptnum}
+	</update>
+	
+	<delete id="stepfiveDelete">
+		DELETE FROM RAP
+		WHERE RAP_PTNUM=${rap_ptnum}
+	</delete>
+	<delete id="stepfiveautDelete">
+		DELETE FROM RAT
+		WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w} AND RAT_DECIDE !='O'
+	</delete>
+</mapper>

@@ -20,16 +20,17 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<task:annotation-driven/>
+	<task:annotation-driven />
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<!-- <resources mapping="/resources/**" location="/resources/"/> -->
-	<resources mapping="/images/**" location="/resources/images/"/>
-	<resources mapping="/css/**" location="/resources/css/"/>
-	<resources mapping="/js/**" location="/resources/js/"/>
+	<resources mapping="/images/**" location="/resources/images/" />
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/upload/**"
+		location="file:///C:/Users/wildm/git/DESIGNUS/DESIGNUS/src/main/webapp/resources/upload" />
 	<!-- <resources mapping="/upload/**" location="file:///C:/Users/wildm/Desktop/[ICIA]SPRINGTOOL3_WORK/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/DESIGNUS/resources/upload"/> -->
 	<!-- <resources mapping="/upload/**" location="/resources/upload/"/> -->
-	<resources mapping="/upload/**" location="file:///C:/Users/wildm/git/DESIGNUS/DESIGNUS/src/main/webapp/resources/upload"/>
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -59,7 +60,7 @@
 		<beans:property name="mapperLocations"
 			value="classpath:com/**/mapper/*.xml" />
 	</beans:bean>
-	<!-- DAO using 최종 : ImemberDao-->
+	<!-- DAO using 최종 : ImemberDao -->
 	<beans:bean id="mDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -67,7 +68,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.ImemberDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IcommonDao-->
+	<!-- DAO using 최종 : IcommonDao -->
 	<beans:bean id="cDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -75,7 +76,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IcommonDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IauctionDao-->
+	<!-- DAO using 최종 : IauctionDao -->
 	<beans:bean id="aDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -83,7 +84,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IauctionDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IadminDao-->
+	<!-- DAO using 최종 : IadminDao -->
 	<beans:bean id="iDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -91,7 +92,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IadminDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : ImypageDao-->
+	<!-- DAO using 최종 : ImypageDao -->
 	<beans:bean id="pDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -99,7 +100,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.ImypageDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IRevAuctionDao-->
+	<!-- DAO using 최종 : IRevAuctionDao -->
 	<beans:bean id="rDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -107,7 +108,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IRevAuctionDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IServiceCenterDao-->
+	<!-- DAO using 최종 : IServiceCenterDao -->
 	<beans:bean id="hDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -115,7 +116,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IServiceCenterDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IsponsorDao-->
+	<!-- DAO using 최종 : IsponsorDao -->
 	<beans:bean id="sDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -123,7 +124,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IsponsorDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IwriterDao-->
+	<!-- DAO using 최종 : IwriterDao -->
 	<beans:bean id="wDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -131,7 +132,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IwriterDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IboardDao-->
+	<!-- DAO using 최종 : IboardDao -->
 	<beans:bean id="bDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="sqlSessionFactory"
@@ -139,49 +140,52 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IboardDao" />
 	</beans:bean>
-	
-	
+
+
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
-	
+
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
-		
-		 <!-- 파일 업로드 설정 -->
-       <beans:bean id="multipartResolver"
-            class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-         <beans:property name="defaultEncoding" value="UTF-8"/>
-         <beans:property name="maxUploadSize" value="10000000"/><!-- 약 10메가 -->
-         <beans:property name="maxInMemorySize" value="10000000"/><!-- 약 10메가 -->
-       </beans:bean>
-       <!-- Session Interceptor(가로채기) -->
-              
-       <interceptors>
-          <interceptor>
-          <!-- mapping의 모든 요청은 Controller에 도착하기전에 가로챈다. -->
-            <mapping path="/*"/>
-            <!-- exclude-mapping의 요청은 가로채지 않는다. -->
-            <exclude-mapping path="/"/>
-            <exclude-mapping path="/home"/>
-            <exclude-mapping path="/login"/>
-            <exclude-mapping path="/joinfrm"/>
-            <exclude-mapping path="/norJoinFrm"/>
-            <exclude-mapping path="/wriJoinFrm"/>
-            <exclude-mapping path="/memberfind"/>
-            <exclude-mapping path="/logingo"/>
-            <exclude-mapping path="/memberapply"/>
-            <exclude-mapping path="/memberlapcheck"/>
-            <exclude-mapping path="/memberidfind"/>
-            <exclude-mapping path="/memberpwfind"/>
-            <exclude-mapping path="/memberFind"/>
-            <exclude-mapping path="/memberpwupdate"/>
-            <exclude-mapping path="/sendrndnum"/>
-            <exclude-mapping path="/searching"/>
-            <exclude-mapping path="/loginmove"/>
-            <exclude-mapping path="/memberpwFind"/>
-           <beans:bean class="com.designus.www.userClass.SessionTnterceptor"/>
-          </interceptor>
-       </interceptors>
+
+	<!-- 파일 업로드 설정 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="UTF-8" />
+		<beans:property name="maxUploadSize" value="10000000" /><!-- 
+			약 10메가 -->
+		<beans:property name="maxInMemorySize" value="10000000" /><!-- 
+			약 10메가 -->
+	</beans:bean>
+	<!-- Session Interceptor(가로채기) -->
+	
+	<interceptors>
+		<interceptor>
+			<!-- mapping의 모든 요청은 Controller에 도착하기전에 가로챈다. -->
+			<mapping path="/*" />
+			<!-- exclude-mapping의 요청은 가로채지 않는다. -->
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/home" />
+			<exclude-mapping path="/login" />
+			<exclude-mapping path="/joinfrm" />
+			<exclude-mapping path="/norJoinFrm" />
+			<exclude-mapping path="/wriJoinFrm" />
+			<exclude-mapping path="/memberfind" />
+			<exclude-mapping path="/logingo" />
+			<exclude-mapping path="/memberapply" />
+			<exclude-mapping path="/memberlapcheck" />
+			<exclude-mapping path="/memberidfind" />
+			<exclude-mapping path="/memberpwfind" />
+			<exclude-mapping path="/memberFind" />
+			<exclude-mapping path="/memberpwupdate" />
+			<exclude-mapping path="/sendrndnum" />
+			<exclude-mapping path="/searching" />
+			<exclude-mapping path="/loginmove" />
+			<exclude-mapping path="/memberpwFind" />
+			<beans:bean class="com.designus.www.userClass.SessionInterceptor" />
+
+		</interceptor>
+	</interceptors>
 </beans:beans>
