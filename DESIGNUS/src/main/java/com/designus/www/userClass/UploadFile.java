@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
@@ -436,7 +437,8 @@ public class UploadFile {
 			return true;
 		return false;
 	}
-
+	
+	@Transactional
 	public void fileUpImage(MultipartHttpServletRequest multi, Auction au) {
 		System.out.println("multi 파라미터와 ra받는 fileUp");
 		// 1.이클립스의 물리적 저장경로 찾기
