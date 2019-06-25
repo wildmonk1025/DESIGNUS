@@ -22,11 +22,11 @@
 	]]>
 	</select>
 	
-<!-- 	<select id="getSearchRankingSelect" resultType="rtsr">
+ 	<select id="getSearchRankingSelect" resultType="rtsr">
             <![CDATA[
             SELECT * FROM (SELECT * FROM RTSR ORDER BY RTSR_CNT DESC) WHERE ROWNUM<=10
             ]]>
-	</select> -->
+	</select>
 	
 	<select id="getSearchingSelect" parameterType="String" resultType="rtsr">
             SELECT * FROM RTSR WHERE RTSR_WORD LIKE '%'||#{word}||'%'
