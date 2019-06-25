@@ -128,4 +128,7 @@
 	<insert id="getNoticinsert" parameterType="String">
 		INSERT INTO BD VALUES(BD_SEQ.nextval,'공지사항',#{s},#{bd_title},#{bd_contents},SYSDATE,0,0)	
 </insert>
+<select id="selBoardUserId" parameterType="Integer" resultType="String">
+		SELECT BD_MBID FROM BD WHERE BD_NUM = ${bd_num}
+</select>
 </mapper> 

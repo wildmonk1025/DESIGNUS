@@ -759,7 +759,7 @@ for (var i = 0; i < revList.length; i++) {
 	 }else{
     main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 	  }
-	main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
+	main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 		 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 		 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 		 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -773,7 +773,7 @@ for (var i = 0; i < revList.length; i++) {
 		   }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -786,7 +786,7 @@ for (var i = 0; i < revList.length; i++) {
 		  }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			  }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -800,7 +800,7 @@ for (var i = 0; i < revList.length; i++) {
 		   }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -813,7 +813,7 @@ for (var i = 0; i < revList.length; i++) {
 		  }else{
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
-			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='resources/images/"+revList[i].ra_image+"'/></a></div>"   
+			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 			     + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"

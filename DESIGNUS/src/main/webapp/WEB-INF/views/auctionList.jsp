@@ -178,8 +178,7 @@ a{
 			<c:forEach var="au" items="${auList}">
 				<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 					<div class="auListImg">
-						<img class="ListImg" src="<c:url value='/resources/upload/${au.aui_img}'/>" 
-						width="100%" height="100%"/>
+						<img class="ListImg" src="/auction/${au.aui_img}" width="100%" height="100%"/>
 					</div>
 					<div class="auListTitle">
 						${au.au_title }

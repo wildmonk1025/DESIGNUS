@@ -331,21 +331,13 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 		<div id="middle_img">
 			<div id="middle_img_lv1">카테고리 > 
 			 <c:set var="code" value="${raInfo.ra_cgcode}" />
-					<c:if test="${code eq 100 }">귀금속공예</c:if>
-					<c:if test="${code eq 110 }">원목공예</c:if>
-					<c:if test="${code eq 120 }">종이공예</c:if>
-					<c:if test="${code eq 130 }">가죽공예</c:if>
-					<c:if test="${code eq 140 }">천공예</c:if>
-					<c:if test="${code eq 150 }">플라스틱공예</c:if>
-					<c:if test="${code eq 160 }">도자기</c:if>
-					<c:if test="${code eq 170 }">가공식품</c:if>
-					<c:if test="${code eq 180 }">휴대폰</c:if>
-					<c:if test="${code eq 190 }">페인팅,캐리커쳐,캘리</c:if>
-					<c:if test="${code eq 200 }">유아 용품</c:if>
+					<c:forEach var="cg" items="${cgList}">
+						<c:if test="${code eq cg.cg_code }">${cg.cg_name}</c:if>
+					</c:forEach>
 			</div>
 			<div id="middle_img_lv2">
-				<%-- <img src="resources/upload/${raInfo.ra_image}" alt="${raInfo.ra_image}" width="100%" height="100%"/> --%>
-				<img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/>
+				<img src="/revauction/${raInfo.ra_image}" width="100%" height="100%"/>
+				<%-- <img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/> --%>
 			</div>
 		</div>
 		<div id="middle_contents1">
@@ -532,6 +524,7 @@ $(".subtn").click(function() {
 					swal(data);
 					$('#lightboxshadow').css("display", "none");
 					$('#lightbox_contents1').css("display", "none");
+					window.location.reload();
 				},
 				error: function(error) {
 					swal("해당 정보를 다시 입력하여 주시기 바랍니다.");
