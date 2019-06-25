@@ -479,9 +479,10 @@ div {
 
 		</div>
 
-		<div id="footercheck">
-			<jsp:include page="footer.jsp"></jsp:include>
-		</div>
+		<div id="footer">
+      <hr style="width:100%; border: 2px solid coral; align: center;">   
+         <jsp:include page="footer.jsp"></jsp:include>
+      </div>
 
 
 	</div>
