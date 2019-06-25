@@ -120,9 +120,9 @@ public class CommonMM {
 		}
 		
 		
-		List<Sponsor> ssRecommList = cDao.getbestInfo3();
+		/*List<Sponsor> ssRecommList = cDao.getbestInfo3();
 		List<Sponsor> ss_recommList = new ArrayList<>();
-		for(int i=0;i<20;i++) {
+		for(int i=0;i<2;i++) {
 			//f = da.compareDateToBoolean(ssRecommList.get(i).getSs_date());
 			if(f)
 				ss_recommList.add(ssRecommList.get(i));
@@ -141,11 +141,11 @@ public class CommonMM {
 			} else {
 				ss_recommList.get(i).setSs_curPercent((double)0);
 			}
-		}
+		}*/
 
 		mav.addObject("recommList", au_recommList);
 		mav.addObject("recommList_ra", ra_recommList);
-		mav.addObject("recommList_ss", ss_recommList);
+		//mav.addObject("recommList_ss", ss_recommList);
 		mav.setViewName("home");
 		return mav;
 
