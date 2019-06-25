@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -42,7 +43,8 @@ public class AuctionMM {
 	private UploadFile upload;
 
 	private ModelAndView mav;
-
+	
+	@Transactional
 	public ModelAndView auctionWriteSubmit(MultipartHttpServletRequest multi) {
 		mav = new ModelAndView();
 		String id = (String) session.getAttribute("id");
@@ -320,29 +322,7 @@ public class AuctionMM {
 		mav.setViewName(view);
 		return mav;
 	}
-/*
-	public String notifyChak() {
-		List<LocalDateTime> EndTimeList = aDao.auTimeSelect();
-		System.out.println("[][][][] EndTimeList size = " + EndTimeList.size());
-		List<Notify> auTimeList = new ArrayList<Notify>();
-		Notify nf = new Notify();
-		LocalDateTime today = LocalDateTime.now();
-		for (int i = 0; i < EndTimeList.size(); i++) {
-			if (EndTimeList.get(i).isBefore(today)) {
-				auTimeList.addAll(aDao.auTiNaSelect(EndTimeList.get(i)));
-			}
-			
-			for (int j = 0; j < auTimeList.size(); j++) {
-				if(aDao.notifyIdSel()) {
-					
-				}
-				
-			}
-		}
-		return null;
-	}
-*/
-	
+
 	
 	
 }
