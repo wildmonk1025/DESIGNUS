@@ -36,7 +36,13 @@
 	</select>	
 		
 	<select id="getRevAuctionListSelect2" parameterType="String" resultType="revauction">
-	   SELECT * FROM RA WHERE RA_OC='O' AND (UPPER(RA_TITLE) LIKE UPPER('%'||#{word}||'%') OR UPPER(RA_CONTENTS) LIKE UPPER('%'||#{word}||'%')) ORDER BY RA_DATE DESC
+	   <![CDATA[
+	   select * from ra r left outer join( 
+       select rat_num, max(rat_price) as ra_max, min(rat_price) as ra_min from rat t group by rat_num) t
+       on r.ra_num = t.rat_num
+	   WHERE RA_OC='O' AND (UPPER(RA_TITLE) LIKE UPPER('%'||#{word}||'%') 
+	   OR UPPER(RA_CONTENTS) LIKE UPPER('%'||#{word}||'%')) ORDER BY RA_DATE DESC
+	   ]]>
 	</select>
 	
 	<select id="revAuctionReadSelect" parameterType="revauction" resultType="revauction">

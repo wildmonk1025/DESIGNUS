@@ -208,6 +208,10 @@ width: 900px;
 	font-size: 20px;
 	text-align: center;
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+}
 </style>
 
 </head>
@@ -226,7 +230,8 @@ width: 900px;
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>1:1 문의리스트</h2><hr>
+			<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">1:1 문의리스트</h3>
+			 <hr>
 			</div>
 			
 			<div id="renking">

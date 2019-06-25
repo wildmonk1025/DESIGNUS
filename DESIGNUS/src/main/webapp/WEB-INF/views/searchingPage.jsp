@@ -290,8 +290,15 @@ div::-webkit-scrollbar {
 							<div class="raListTitle">${ra.ra_title }</div>
 							<div class="raListPrice">
 								<br>
-								<p>경매최저가 : <fmt:formatNumber value="${ra.ra_min }" pattern="#,###"/></p>
-								<p>경매최고가 : <fmt:formatNumber value="${ra.ra_max }" pattern="#,###"/></p>
+								<c:set var="min" value="${ra.ra_min}" />
+								<c:if test="${min eq null }"><p>경매최소가 : - </p></c:if>
+								<c:if test="${min ne null }"><p>경매최소가 : 
+								<fmt:formatNumber value="${ra.ra_min}" pattern="#,###"/></p></c:if>
+								<c:set var="max" value="${ra.ra_max}" />
+								<c:if test="${max eq null }"><p>경매최대가 : - </p></c:if>
+								<c:if test="${max ne null }"><p>경매최대가 : 
+								<fmt:formatNumber value="${ra.ra_max}" pattern="#,###"/></p></c:if>
+								
 							</div>
 							<div class="raListDate">${ra.ra_date}</div>
 						</div>

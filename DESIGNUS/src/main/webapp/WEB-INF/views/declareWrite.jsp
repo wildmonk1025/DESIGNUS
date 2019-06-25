@@ -122,6 +122,10 @@ a:hover {
 	text-decoration: none;
 	color: black;
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+}
 </style>
 </head>
 <body>
@@ -138,11 +142,10 @@ a:hover {
 		<form action="" enctype="multipart/form-data">
 		<div id="adminopt">
 			<div class="opt"><br/><br/>
-				<h3 style="text-align: center; font-size: 25px; background-color: orange;">회원
+				<h3 id="dd" style="text-align: center; font-size: 25px; background-color:#F6D8CE;">회원
 					신고내역</h3>
 				<hr>
 				<div id="declarelist"></div>
-				<h3 style="text-align: center; color: blue;">페이징</h3>
 			</div>
 		</div>
 	</form>

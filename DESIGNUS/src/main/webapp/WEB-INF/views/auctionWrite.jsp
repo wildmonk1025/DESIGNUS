@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 
 #main {
@@ -237,19 +238,18 @@ a{
 					
 
 					<div id="attachFileDiv">
-						<input type="file" name="aui_imgSysName1" id="imgIn"
-						 value="" onchange="fileChk(this)"multiple> 
-						<input type="file" name="aui_imgSysName2" multiple> 
-						<input type="file" name="aui_imgSysName3" multiple> 
-						<input type="file" name="aui_imgSysName4" multiple> 
-						<!-- <input type="button" value="추가" id="addBtn" onclick="attachFile.add()"> -->
+						<input  type="file" name="aui_imgSysName1" id="imgIn" 
+						value="" onchange="fileChk(this)"multiple> 
+						<input id="fuimg2" type="file" name="aui_imgSysName2" multiple> 
+						<input id="fuimg3" type="file" name="aui_imgSysName3" multiple> 
+						<input id="fuimg4" type="file" name="aui_imgSysName4" multiple> 
 					</div>
 
 				</div>
 				<div id="contents">
 					<textarea placeholder=" 이곳에 작품 설명을 적어주세요 " name="au_contents" id="contents"></textarea>
 				</div>
-				<input type="submit" value="출품하기" class="Btn5">
+				<input type="submit" value="출품하기" class="Btn5" id="Btn5">
 			</form>
 				<button class="Btn5"><a href="home">돌아가기</a></button>
 		</div>
@@ -266,16 +266,36 @@ a{
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="JavaScript">
 	
-	
-	
 	var count = 0;
-	 
+	
 	$(document).ready(
 		    function() {
 		        $('#imgIn').change(function() {
 		                addPreview($(this)); 
 		        });
 		    });
+
+	$("#Btn5").click(function() {
+		
+	if(!$("#imgIn").val()){
+		swal(" 1번 파일이 없습니다 등록해 주세요 ");
+		return false;
+	}  
+	if(!$("#fuimg2").val()) {
+		swal(" 2번 파일이 없습니다 등록해 주세요 ");
+		return false;
+	}  
+	if(!$("#fuimg3").val()) {
+		swal(" 3번 파일이 없습니다 등록해 주세요 ");
+		return false;
+	} 
+	if(!$("#fuimg4").val()) {
+		swal(" 4번 파일이 없습니다 등록해 주세요 ");
+		return false;
+	};
+	
+	});
+	
 
 	function addPreview(input) {
         if (input[0].files) {
