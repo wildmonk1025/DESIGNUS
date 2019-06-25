@@ -238,7 +238,7 @@ public class MypageMM {
 		return mav;
 	}
 
-	public ModelAndView basketFrmrev(Integer pageNum, String kind) {
+	public ModelAndView basketFrmrev(Integer pageNum ,String kind) {
 
 		mav = new ModelAndView();
 		String view = null;
@@ -248,8 +248,7 @@ public class MypageMM {
 		System.out.println("id=" + id);
 		System.out.println("num=" + num);
 		rList = pDao.basketFrmRSelect(num, id);
-		mav.addObject("rList", rList);
-		mav.addObject("paging", getPaging(num, kind));// 현재 페이지 번호 ${paging}
+		mav.addObject("paREVging", getREVPaging(num,kind));// 현재 페이지 번호 ${paging}
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(rList);
 		mav.addObject("jsonStr", jsonStr);
@@ -259,48 +258,18 @@ public class MypageMM {
 
 	}
 
-	/*
-	 * private String gettPaging(int pageNum, String kind) { String
-	 * id=session.getAttribute("id").toString();
-	 * System.out.println("dddddddddd="+id); int maxNum = pDao.getrevCount(id); //
-	 * 전체 글의 개수 int listCount = 5; // 페이지당 글의 수 int pageCount = 2;// 그룹당 페이지 수
-	 * String boardName = "ajax/lbrev"; // 개시판이 여러개 일때
-	 * System.out.println("dddddddddd:"+boardName);
-	 * com.designus.www.userClass.Paging paging = new
-	 * com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount,
-	 * boardName,kind); return paging.makeHtmlPaging(); }
-	 */
-
-	public ModelAndView basketFrmspon(Integer pageNum, String kind) {
-
-		mav = new ModelAndView();
-		String view = null;
-		List<Basket> sList = null;
+	private Object getREVPaging(int pageNum, String kind) {
 		String id = session.getAttribute("id").toString();
-		int num = (pageNum == null) ? 1 : pageNum;
-		System.out.println("id=" + id);
-		System.out.println("num=" + num);
-		sList = pDao.basketFrmSSelect(num, id);
-		mav.addObject("sList", sList);
-		mav.addObject("paging", getPaging(num, kind));// 현재 페이지 번호 ${paging}
-		Gson gsonObj = new Gson();
-		String jsonStr = gsonObj.toJson(sList);
-		mav.addObject("jsonStr", jsonStr);
-		view = "basketFrmspon";
-		mav.setViewName(view);
-		return mav;
-	}
+		System.out.println("dddddddd=" + id);
+		int maxNum = pDao.RevgetBoardCount(id); // 전체 글의 개수
+		int listCount = 6; // 페이지당 글의 수
+		int pageCount = 5;// 그룹당 페이지 수
+		String boardName ="basketFrmrev" ;// 개시판이 여러개 일때
 
-	/*
-	 * private Object getsponPaging(int pageNum, String kind) { String
-	 * id=session.getAttribute("id").toString();
-	 * System.out.println("dddddddddd="+id); int maxNum = pDao.getsponCount(id); //
-	 * 전체 글의 개수 int listCount = 5; // 페이지당 글의 수 int pageCount = 2;// 그룹당 페이지 수
-	 * String boardName = "basketFrm"; // 개시판이 여러개 일때
-	 * com.designus.www.userClass.Paging paging = new
-	 * com.designus.www.userClass.Paging(maxNum, pageNum, listCount, pageCount,
-	 * boardName,kind); return paging.makeHtmlPaging(); }
-	 */
+		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
+				pageCount, boardName, kind);
+		return paging.makeHtmlPaging();
+	}
 
 	public ModelAndView basketFrm(Integer pageNum, String kind) {
 		mav = new ModelAndView();
@@ -311,7 +280,6 @@ public class MypageMM {
 		System.out.println("id=" + id);
 		System.out.println("num=" + num);
 		bList = pDao.basketFrmSelect(num, id);
-		mav.addObject("bList", bList);
 		mav.addObject("paging", getPaging(num, kind));// 현재 페이지 번호 ${paging}
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(bList);
@@ -326,16 +294,9 @@ public class MypageMM {
 		String id = session.getAttribute("id").toString();
 		System.out.println("dddddddd=" + id);
 		int maxNum = pDao.getBoardCount(id); // 전체 글의 개수
-		int listCount = 5; // 페이지당 글의 수
+		int listCount = 6; // 페이지당 글의 수
 		int pageCount = 2;// 그룹당 페이지 수
-		if (kind.equals("A")) {
-			a = "basketFrm";
-		} else if (kind.equals("R")) {
-			a = "basketFrmrev";
-		} else {
-			a = "basketFrmspon";
-		}
-		String boardName = a;// 개시판이 여러개 일때
+		String boardName = "basketFrm";// 개시판이 여러개 일때
 
 		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
 				pageCount, boardName, kind);

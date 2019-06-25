@@ -116,16 +116,6 @@ public class MypageController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/basketFrmspon", method = RequestMethod.GET)
-
-	public ModelAndView basketFrmspon(Integer pageNum, String kind) {
-		System.out.println("여기로 와야 하는데....1111");
-		System.out.println("카인드 뭐야??" + kind);
-		mav = new ModelAndView();
-		mav = pm.basketFrmspon(pageNum, kind);
-		return mav;
-	}
-
 	@RequestMapping(value = "/auctionMyOrderList", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public ModelAndView auctionMyOrderList(Integer pageNum, String kind) {

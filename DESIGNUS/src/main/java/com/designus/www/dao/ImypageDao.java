@@ -53,8 +53,6 @@ public interface ImypageDao {
 
 	List<Basket> basketFrmRSelect(@Param("num") int num,@Param("id") String id);
 
-	List<Basket> basketFrmSSelect(@Param("num") int num,@Param("id") String id);
-
 	int getrevCount(String id);
 
 	int getsponCount(String id);
@@ -220,6 +218,8 @@ String getRaTrackId(revAuctionProgress rap);
 void setNotifyRaTrack(Notify nf);
 
 boolean fuddememberupdate(SponsorProgress sp);
+
+int RevgetBoardCount(String id);
 
 	/* int getSppagingCountt(String id); */
 
