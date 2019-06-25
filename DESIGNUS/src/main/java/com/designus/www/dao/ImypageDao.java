@@ -185,7 +185,6 @@ List<SponsorProgress> deadlineuSelecte(LocalDateTime localDateTime);
 boolean deadlineupdate(SponsorProgress sponsorProgress);
 
 SponsorProgress fundapplySelect(SponsorProgress sp);
-
 boolean funddeliuploadupdate(SponsorProgress sp);
 
 List<SponsorProgress> funddeliinfoSelect(SponsorProgress sp);
@@ -219,6 +218,8 @@ void setNotifyAuTrack(Notify nf);
 String getRaTrackId(revAuctionProgress rap);
 
 void setNotifyRaTrack(Notify nf);
+
+boolean fuddememberupdate(SponsorProgress sp);
 
 	/* int getSppagingCountt(String id); */
 

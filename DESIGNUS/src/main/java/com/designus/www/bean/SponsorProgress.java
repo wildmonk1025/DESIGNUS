@@ -27,5 +27,7 @@ public class SponsorProgress {
 	String sst_mbid;// 후원 밀어주기 아이디
 	String end_date;
 	int ssp_count;
+	int pointN;//일반 아이디 포인트
+	int pointW;//작가 아이디 포인트
 
 }

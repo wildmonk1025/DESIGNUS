@@ -1263,14 +1263,31 @@ public class MypageMM {
 		System.out.println("(서비스클래스)후원진행내역 마무리!!!");
 		return json;
 	}
-
+	@Transactional
 	public ModelAndView funddeliupload(SponsorProgress sp) {
 		mav = new ModelAndView();
 		String view = null;
-		boolean a = pDao.funddeliuploadupdate(sp);
-		if (a) {
-			view = "redirect:/fundingAcceptList";
-		}
+		boolean b = false;
+		System.out.println("111111111111111:"+sp.getSsp_mbid_n());
+		Integer point = mDao.funmemberNpoint(sp);
+		sp.setPointN(point);
+         if(sp.getSs_price()<sp.getPointN()) {
+        	 b=pDao.fuddememberupdate(sp);
+        	  if(b) {
+      		 boolean a = pDao.funddeliuploadupdate(sp);
+        		  if (a) {
+ 					mav.addObject("msg", "1");
+				} else { 					
+					mav.addObject("msg", "2");  				
+					}
+        	  }
+         }else {
+        	 System.out.println("돈이없으면 여기로 포워딩");
+ 			
+ 			mav.addObject("aaaa", "bbbb");
+         }
+
+		view = "redirect:/fundingAcceptList";
 		mav.setViewName(view);
 		return mav;
 	}

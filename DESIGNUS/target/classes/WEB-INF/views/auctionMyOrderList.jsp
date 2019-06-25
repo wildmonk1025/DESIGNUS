@@ -737,7 +737,7 @@ color: black;
 								+ "주소 :<input id='mb_add' class='f26' type='text' name='aup_address'><br>"
 								+ "연락처: <input id='mb_pho' class='f27' type='text' name='aup_phone'></div>"
 								+ "<input class='f28' type='submit' value='요청'>"
-								+ "<input class='f28' type='button' id='back' value='취소'></div></form>";
+								+ "<input class='f28' type='button' id='back' value='취소'></div></div></form>";
 
 						$('#total').css("display", "inline");
 						$('#l1').css("display", "inline");

@@ -73,7 +73,10 @@
 	</insert>
 	<select id="getMemberclick" parameterType="member" resultType="member">
 		SELECT MB_CCNT FROM MB WHERE MB_ID=#{mb_id}
+		
 	</select>
-	
+	<select id="funmemberNpoint" parameterType="sponpro" resultType="Integer">
+		SELECT MB_POINT FROM MB WHERE MB_ID=#{ssp_mbid_n}
+	</select>
 	
 </mapper>

@@ -477,12 +477,17 @@
 	</select>
 	<select id="fundingOrderListSelect" resultType="sponpro"> 
  		<![CDATA[ 
- 	select * from(
+ 		select * from(
+     select RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo from(
  select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
- SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
+ SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,SS_DATE+3 as end_date
      from ssp_ss_ssi
-       where SS_MBID_W=#{id}  and rownum<=${num}*3
-     ) where rn>=${num}*3-2 AND RankNo=1
+       where SS_MBID_W=#{id}
+       order by SSP_PTNUM DESC
+     ) where rownum<=${num}*3
+     )where rn>=${num}*3-2 AND RankNo=1
+ 
    ]]>
 	</select>
 	<select id="fundingOrderLisSelect" resultType="Integer">
@@ -541,9 +546,9 @@
    ]]>
 	</select>
 	<update id="funddeliuploadupdate" parameterType="sponpro">
-		 update ssp set ssp_name=#{ssp_name}, ssp_address=#{ssp_address}, ssp_phone=#{ssp_phone}, ssp_step=4
-         where ssp_ptnum=${ssp_ptnum}
-	</update>
+ 		 update ssp set ssp_name=#{ssp_name}, ssp_address=#{ssp_address}, ssp_phone=#{ssp_phone}, ssp_step=4 
+          where ssp_ptnum=${ssp_ptnum}
+ 	</update>
 	<select id="funddeliinfoSelect" parameterType="sponpro"
 		resultType="sponpro">
  		<![CDATA[ 
@@ -551,7 +556,7 @@
   select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
   SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
       from ssp_ss_ssi 
-        where SSP_SSNUM=${ssp_ssnum}
+        where SSP_SSNUM=${ssp_ptnum}
          )where RankNo=1
    ]]>
 	</select>
@@ -627,4 +632,12 @@
 		DELETE FROM RAT
 		WHERE RAT_NUM=${rap_ranum} AND RAT_MBID_W=#{rap_mbid_w} AND RAT_DECIDE !='O'
 	</delete>
+	
+	<update id="fuddememberupdate"
+		parameterType="sponpro">
+		update MB SET
+		mb_point=#{pointN}-#{ss_price}
+		where
+		mb_id=#{ssp_mbid_n}
+	</update>
 </mapper>
