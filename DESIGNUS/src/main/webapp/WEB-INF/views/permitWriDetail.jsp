@@ -172,6 +172,10 @@ margin-top: 10px;
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+text-align: center;
+}
 </style>
 </head>
 
@@ -189,12 +193,11 @@ margin-top: 10px;
 	</div>
 	<div id="adminwriterjoinfrm">
 	<form name="formName" method="post">
-		<div class="writerjoinfrm">
+		<div class="writerjoinfrm"><br/>
 		
-			<div id="writerjointitlefrm">
 			
-				<p>작가 가입요청 관리</p>
-			</div>
+				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:870px; ">작가 신청
+					상세내역</h3>
 			<div id="writerjoincontents">
 				<table id="customers">
 					<tr  class="alt">

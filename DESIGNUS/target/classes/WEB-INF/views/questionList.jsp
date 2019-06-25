@@ -131,6 +131,17 @@ a:hover {
 	display: inline;
 }
 }
+#dd{
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+}
+.opt {
+	padding: inherit;
+	position: relative;
+	margin-top: 5px;
+	width: 1000px;
+	height: 450px;
+}
 </style>
 </head>
 
@@ -149,9 +160,8 @@ a:hover {
 	<div id="adminopt">
 		<form name="form" method="get">
 			<div class="opt"><br/><br/>
-				<h3
-					style="margin-left: 20px; font-size: 25px; background-color: orange;">1:1문의
-					접수 리스트</h3>
+			<h3	id="dd" align="center" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">
+					1:1문의 접수 리스트</h3>
 				<hr>
 				<div id="questionlist"></div>
 			</div>
