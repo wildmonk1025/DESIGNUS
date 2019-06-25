@@ -556,12 +556,10 @@ button:hover:before, button:hover:after {
 				var str = '';
 				if (i < 10) {
 					str = "<span>" + (i + 1)
-							+ ". <a href=\"javascript:searchingfct('"
-							+ data[i].rtsr_word + "')\" class='atag'>"
+							+ ". <a href=\"javascript:searchingfct('" + data[i].rtsr_word + "')\" class='atag'>"
 							+ data[i].rtsr_word + "</a></span>";
 					$("#ranking").html(str);
-					$("#rankingbox").delay(4850).animate({
-						top : 8
+					$("#rankingbox").delay(4850).animate({top : 8
 					}, function() {
 						$("#ranking span:first");
 						$("#rankingbox").css({
