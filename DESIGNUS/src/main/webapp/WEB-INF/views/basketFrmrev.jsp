@@ -23,19 +23,18 @@ div {
 }
 
 #notice {
-	padding-top: 5px;
+		padding-top: 5px;
 	margin: 10px;
-	border: 1px solid orange;
 	width: 1080px;
-	height: 100px;
-	text-align: center;
+	height: 50px;
+	text-align: left;
 	font-size: 20px;
 	float: left;
-	font-size: 100%
+	overflow: auto;
 }
 
 #info {
-	border: 1px solid orange;
+	
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 580px;
@@ -45,9 +44,17 @@ div {
 }
 
 #main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
-	text-align: center;
+	position: fixed;
+	background-color: white;
 }
 
 .bt01 {
@@ -93,6 +100,7 @@ a {
 }
 
 .bt {
+ margin-left:50px;
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -118,8 +126,8 @@ a {
 		rgb(237, 237, 237) 100%);
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
-	width: 130px;
-	height: 45px;
+	width: 330px;
+	height: 105px;
 	border-color: rgb(223, 192, 86);
 	border-width: 1px;
 	-moz-border-radius: 3px;
@@ -212,7 +220,6 @@ a {
 }
 
 #point {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -291,19 +298,6 @@ a:hover {
 	float: left;
 }
 
-#leftmain {
-	width: 310px;
-	height: 950x;
-	border: 1px solid black;
-	float: left;
-}
-
-#rightmain {
-	width: 1200px;
-	height: 950px;
-	border: 1px solid black;
-	float: left;
-}
 
 #mypageimg {
 	float: left;
@@ -319,14 +313,8 @@ a:hover {
 	margin-left: 10px;
 }
 
-#mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-}
-
 #mypagemain {
-	width: 1530px;
+	width: 1518px;
 	height: 1200px;
 	border: 1px solid black;
 }
@@ -351,6 +339,97 @@ a:hover {
 	border: 1px solid black;
 	height: 200px;
 }
+#renking {
+    border-bottom: 5px solid orange;
+	margin: 0px 10px 10px 10px;
+	width: 1080px;
+	height: 155px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+}
+#spon {
+ 
+	margin: 0px 10px 10px 10px;
+	width: 1100px;
+	height: 50px;
+	float: left;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 5px;
+
+}
+#auction {
+	margin: 0px 10px 10px 10px;
+	width: 1100px;
+	height: 600px;
+	text-align: center;
+	font-size: 20px;
+	float: left;
+	display:inline-block;
+	border: 1px solid #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+.maucba{
+border: 1px solid orange;
+margin-left:30px;
+margin-top:15px;
+width: 500px;
+height: 160px;
+float: left;
+border-radius: 5px;
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+.bimg{
+
+ width: 180px;
+ height: 130px;
+ margin-top:10px;
+ margin-left:10px;
+ float:left;
+ 
+}
+.cnavfn{
+
+ width: 280px;
+ height: 70px;
+ margin-top:20px;
+ margin-left:10px;
+ float:left;
+ font-size: 18px;
+ text-align: left;
+}
+.btzz{
+
+ width: 280px;
+ height: 50px;
+ margin-top:10px;
+ margin-left:10px;
+ float:left;
+
+}
+.b3{
+
+  width : 60px;
+  height : 35px;
+  border-radius: 10px;
+  background-color: orange;
+  opacity: 0.45;
+ margin-left:20px;
+}
+#sixth{
+ position: absolute;
+  top: 1130px;
+  left: 1150px;  
+}
+#footer {
+   border: 1px solid red;
+   width: 1518px;
+   height: 170px;
+   margin-top: 20px;
+   float: left;
+}
 </style>
 
 </head>
@@ -358,175 +437,58 @@ a:hover {
 
 <body>
 
+	<div id="main">
 	<div id="mainheader">
-		<jsp:include page="main.jsp" />
+	<jsp:include page="main.jsp" />
 	</div>
-	<div id="mypagemain">
-		<div id="leftmain">
-			<jsp:include page="Mapagemain.jsp" />
-		</div>
-
+</div>
+    
+    <div id="mypagemain">
+	 <jsp:include page="Mapagemain.jsp" />
+      
 		<div id="rightmain">
 			<div id="notice">
-				<h2>꿍 리스트</h2>
+				<h2>꿍 리스트</h2><hr>
 			</div>
-			<div id="spon1">
-				<div id="btnset">
-					<button id="Lbtn1" class="bt"
+			<div id="renking">
+				<button id="Lbtn1" class="bt"
 						onclick="location.href='basketFrm?kind=A'">출품 꿍리스트</button>
 					<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 					<button id="Lbtn2" class="bt"
 						onclick="location.href='basketFrmrev?kind=R'">제작의뢰 꿍리스트</button>
-					<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-					<button id="Lbtn3" class="bt"
-						onclick="location.href='basketFrmspon?kind=S'">후원 꿍리스트</button>
-				</div>
-				<div id="list">
-					<div id="ListView1">
-						<div id="listdiv">
-							<p align="center" style="font-size: 25px;">제작의뢰 꿍리스트</p>
-						</div>
-						<div id="cnavfn">
-							<c:forEach var="board" items="${rList}">
-								<a href='#' onclick="articleView(${board.rab_ranum})"> <img
-									src='/resources/images/${board.ra_image}'></a>
-								<P>상품 제목 : ${board.ra_title}</P>
-							</c:forEach>
-						</div>
-						<div class="lv5">${paging}</div>
-					</div>
-					<div class="lv6">
-						<button type="button" class="bt"
-							onclick="location.href='myPage.html' ">돌아가기</button>
-					</div>
-				</div>
 			</div>
+			   
+			   <div id="spon">
+				<h3>제작의뢰 꿍리스트♥</h3>
+			</div>
+				
+				<div id="auction">
+				 
+			</div>
+			<div id="sixth"> ${paREVging}</div>
 		</div>
-	</div>
+		<div id="footer">
+		<jsp:include page="footer.jsp" />
+		</div>
+     </div>
+
 </body>
 <script type="text/javascript">
+ var revb=${jsonStr};
+ console.log(revb);
  
- var btn1=$("#Lbtn1");
- var btn2=$("#Lbtn2");
- var btn3=$("#Lbtn3");
+ var ss="";
 
- /*function Aucbtn() {
-	 
-	  $("#ListView1").css("display", "inline");
-      $("#ListView2").css("display", "none");
-      $("#ListView3").css("display", "none");
-     
-      $.ajax({
-  		url: "ajax/lbauc",
-  		type:"post",
-  	    processData : false,
-  	    dataType:"json",//생략가능
-  	    success:function(data){
-  	    
-  	    	console.log(data);
-  	    	//console.log(data[0][0].aui_img);
-  	    	console.log(data[0].aui_img);
-  	    	var rList='';
-			for(key in data){
-					rList+="<a href='auctionread?ab_aunum="+data[key].ab_aunum+"'>"
-							+data[key].aui_img+"</a>"
-					       +'상품 이름 : '+data[key].au_title+"<br/>";
-			}
-			$('#cnfvna').html(rList);
-  	    	
-  	    },
-  	    error:function(error){
-  	    	alert('에러');
-  	    	console.log(error);
-  	    }
-  		 
-  	 });
-}*/
- /*function ReAucbtn() {
-	 
-	
-			 
-	 $("#ListView1").css("display", "none");
-     $("#ListView2").css("display", "inline");
-     $("#ListView3").css("display", "none");
-     $.ajax({
-   		url: "ajax/lbrev",
-   		type:"post",
-   	    processData : false,
-   	    dataType:"json",//생략가능
-   	    success:function(data){
-   	    console.log(1,data);
-   	     var result='';
-   	     var data2=data.rList;
-		for(key in data.rList){
-		
-				result+="<a href='auctionread?rab_ranum="+data2[key].rab_ranum+"'>"
-				      +"<img src='"+data2[key].ra_image+"'></a>"+"<br/>"
-				      +"<p>상품 제목 : "+data2[key].ra_title+"</p><br/>";
-		}
-		$('#wpwkr').html(result);
-		$('#pagerev').html(data.paging);
-   	    },
-   	    error:function(error){
-   	    	alert('에러');
-   	    	console.log(error);
-   	    }
-   		 
-   	 });
-}*/
- /*function sponbtn() {
-	
-	 
-     $("#ListView1").css("display", "none");
-     $("#ListView2").css("display", "none");
-     $("#ListView3").css("display", "inline");
-     $.ajax({
-   		url: "ajax/lbspon",
-   		type:"post",
-   	    processData : false,
-   	    dataType:"json",//생략가능
-   	    success:function(data){
-   	    console.log(data);
-   	 var result='';
-	     var data2=data.sList;
-	for(key in data.sList){
-	
-			result+="<a href='auctionread?rab_ranum="+data2[key].sb_ssnum+"'>"
-			      +"<img src='"+data2[key].ssi_img+"'></a>"+"<br/>"
-			      +"<p>상품 제목 : "+data2[key].ss_title+"</p><br/>";
-	}
-	$('#gndnjs').html(result);
-	$('#pagingspon').html(data.paging);
-   	    	
-   	    },
-   	    error:function(error){
-   	    	alert('에러');
-   	    	console.log(error);
-   	    }
-   		 
-   	 });
-}
-    
-    /*$("#Lbtn1").click(function() {
-        $("#ListView1").css("display", "inline");
-        $("#ListView2").css("display", "none");
-        $("#ListView3").css("display", "none");
-     
-    });
+ for(var i=0; i<revb.length;i++){
+ 	ss+="<div class='maucba'><div class='bimg'><img src='"+revb[i].ra_image+"'></div>"
+ 	  +"<div class='cnavfn'>상품 번호 : "+revb[i].rab_ranum+"<br>"
+ 	  +"상품 이름 : "+revb[i].ra_title+"</div>"
+ 	  +"<div class='btzz'><input class='b3' type='button' value='보러가기' onclick=\"location.href='auctionRead?au_num="+revb[i].rab_ranum+"'\">"
+ 	  +"<input class='b3' type='button' value='취소하기' onclick=\"location.href='basketcencle?au_num="+revb[i].rab_ranum+"'\">"	
+       +"</div></div>"
+ }
 
-    $("#Lbtn2").click(function() {
-    	 
-        $("#ListView1").css("display", "none");
-        $("#ListView2").css("display", "inline");
-        $("#ListView3").css("display", "none");
-        
-    });
-    $("#Lbtn3").click(function() {
-    	 
-        $("#ListView1").css("display", "none");
-        $("#ListView2").css("display", "none");
-        $("#ListView3").css("display", "inline");
-        
-    });*/
+ $("#auction").html(ss);
+ 
 </script>
 </html>

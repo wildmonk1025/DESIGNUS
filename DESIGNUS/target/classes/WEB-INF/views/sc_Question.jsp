@@ -34,8 +34,12 @@
 }
 
 #homeMain {
-	width: 1520px;
+	border: 1px solid gray;
+	margin-top: 50px;
 	height: 700px;
+	width: 1400px;
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #revauctionbtn, #auctionbtn {
@@ -46,25 +50,10 @@
 	float: right;
 }
 
-/* #coklist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#bestlist {
-	width: 1100px;
-	height: 150px;
-	float: left;
-	display: block;
-} */
 #list {
 	width: 1302px;
 	height: 450px;
-	float: left;
-	margin-left: 100px;
-	margin-top: 20px;
+	margin-top: 70px;
 }
 
 #footercheck {
@@ -84,8 +73,6 @@
 }
 
 #h, #s {
-	top: 10px;
-	left: 50px;
 	float: left;
 }
 
@@ -97,39 +84,55 @@
 
 select {
 	font-size: 20px;
-	width: 150px;
+	width: 300px;
 	height: 40px;
-	top: -30px;
 	float: left;
-}
-
-#title {
-	font-size: 25px;
-	text-align-last: center;
-	width: 150px;
-	height: 47px;
-	top: -100px;
-	left: 170px;
-	float: left;
+	margin: 5px;
 }
 
 #qr_title {
-	font-size: 25px;
-	text-align-last: center;
-	width: 1000px;
+	font-size: 20px;
+	text-align-last: right;
+	width: 1130px;
 	height: 40px;
+	margin: 5px;
 	border: 1px solid black;
-	top: -178px;
-	left: 340px;
-	float: left;
 }
 
 textarea {
 	width: 1300px;
-	height: 300px;
-	top: -178px;
+	height: 250px;
 	resize: none;
 	float: left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#titlesl {
+	font-size: 20px;
+	text-align-last: center;
+	color: gray;
+	width: 150px;
+	height: 40px;
+	margin: 3px;
+	background-color: #f9e6e0;
+	border-radius: 5px;
+	float: left;
+	padding-top: 6px;
+}
+
+#title {
+	font-size: 20px;
+	text-align-last: center;
+	color: gray;
+	width: 150px;
+	height: 40px;
+	background-color: #f9e6e0;
+	border-radius: 5px;
+	margin: 3px;
+	float: left;
+	padding-top: 6px;
+	width: 150px;
 }
 
 .c1 {
@@ -151,10 +154,10 @@ textarea {
 	height: 50px;
 	padding-top: 5px;
 	margin: 1px;
+	float: left;
 	list-style: none;
 	color: white;
 	/* background-color: #FFCA6C; */
-	float: left;
 	line-height: 40px;
 	text-align: center;
 }
@@ -168,18 +171,79 @@ textarea {
 }
 
 #questionm {
-	width: 1360px;
-	height: 50px;
+	width: 1330px;
+	height: 80px;
 	float: left;
-	margin-left: 100px;
-	margin-top: 10px;
+	margin-top: 20px;
+	margin-left: 50px;
 }
 
 #apply {
-	font-size: 20px;
+	/*General*/
+	display: inline-block;
+	text-decoration: none;
+	/*Text*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 240%;
+	float: right;
+	color: #e27c6d;
+	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
+	/*Button*/
+	background-color: #FFE79E;
+	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
+		0%, rgb(237, 237, 237) 100%);
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
 	width: 250px;
 	height: 45px;
-	float: right;
+	border-color: #e27c6d;
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
+		0px rgba(255, 255, 255, 0.25);
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
+		rgba(255, 255, 255, 0.25);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3)";
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
+		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
+		Strength=3);
+	display: inline-block;
+	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
+		212)), color-stop(1, rgb(237, 237, 237)));
+	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
+		rgb(237, 237, 237) 100%);
+}
+
+#apply:hover {
+	color: white;
+}
+
+#apply:active {
+	color: red;
 }
 
 #Sctext {
@@ -187,7 +251,25 @@ textarea {
 	height: 80px;
 	float: left;
 	margin-left: 100px;
+	margin-top: 30px;
+}
+
+#btnsession {
+	width: 1300px;
+	height: 70px;
 	margin-top: 20px;
+}
+
+#mainss {
+	width: 1400px;
+	margin-top: 30px;
+	height: auto;
+}
+
+#title1, #title2 {
+	width: 1380px;
+	margin: 5px;
+	float: left;
 }
 </style>
 </head>
@@ -210,27 +292,38 @@ textarea {
 				<li class="questionmenu"><a class="menuLink" href="scdeclare">신고하기</a></li>
 			</ul>
 		</div>
-		<form action="sc_questionFrm" name="sc_questionFrm" method="post"
-			enctype="multipart/form-data">
-			<div id="list">
-				<select name="qr_type">
-					<option>질문 유형</option>
-					<option>거래</option>
-					<option>판매</option>
-					<option>이수원</option>
-					<option>정병남</option>
-					<option>조용환</option>
-				</select>
-				<p id="title">제목</p>
-				<input id="qr_title" type="text" name="qr_title">
-				<textarea style="font-size: 20px;" placeholder="이곳에 내용을 적어주세요"
-					name="qr_contents"></textarea>
-				<input class="c1" type="file" name="aqi_imgSysName"
-					id="aqi_imgSysName"> <span class="c1" style="color: red">사진은
-					jpg,png 파일들만 등록할 수 있습니다.</span>
-				<button class="c1" id="apply">문의하기</button>
-			</div>
-		</form>
+		<div id="mainss">
+			<form action="sc_questionFrm" name="sc_questionFrm" method="post"
+				enctype="multipart/form-data">
+				<div id="list">
+					<div id="title1">
+						<p id="titlesl">질문 유형</p>
+						<select name="qr_type">
+							<option>질문의 종류를 선택하세요.</option>
+							<option>거래</option>
+							<option>판매</option>
+							<option>이수원</option>
+							<option>정병남</option>
+							<option>조용환</option>
+						</select>
+					</div>
+					<div id="title2">
+						<p id="title">제목</p>
+						<input id="qr_title" type="text" name="qr_title">
+					</div>
+					<textarea style="font-size: 20px;" placeholder="이곳에 내용을 적어주세요"
+						name="qr_contents"></textarea>
+
+					<div id="btnsession">
+
+						<input class="c1" type="file" name="aqi_imgSysName"
+							id="aqi_imgSysName"> <span class="c1" style="color: red; font-size:15px;">사진은
+							jpg,png 파일들만 등록할 수 있습니다.</span>
+						<button class="c1" id="apply">문의하기</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include></div>
