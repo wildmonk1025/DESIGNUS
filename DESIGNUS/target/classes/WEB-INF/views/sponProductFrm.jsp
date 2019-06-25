@@ -119,7 +119,7 @@ td {
 			<table border="1" style="text-align: center">
 				<tr>
 					<td colspan="2" rowspan="4" style="width: 200; height: 200"><img
-						src="resources/images/${ssi_imgSysName}" width="150px"
+						src="/sponsor/${ssi_img}" width="150px"
 						height="180px"></td>
 					<td style="width: 100; height: 50;">제품명</td>
 					<td colspan="3" style="width: 700">(${ss_num})${ss_title}</td>
