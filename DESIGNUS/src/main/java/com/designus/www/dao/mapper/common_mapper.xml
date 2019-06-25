@@ -4,7 +4,7 @@
 
 <mapper namespace="com.designus.www.dao.IcommonDao">
 
-<!-- 	<select id="getbestInfo" resultType="auction">
+ 	<select id="getbestInfo" resultType="auction">
 	<![CDATA[
 		SELECT * FROM AU_RECOMM_LIST WHERE ROWNUM<=20
 	]]>
@@ -20,7 +20,7 @@
 	<![CDATA[
 		SELECT * FROM SS_RECOMM_LIST WHERE ROWNUM<=20
 	]]>
-	</select> -->
+	</select>
 	
 <!-- 	<select id="getSearchRankingSelect" resultType="rtsr">
             <![CDATA[
