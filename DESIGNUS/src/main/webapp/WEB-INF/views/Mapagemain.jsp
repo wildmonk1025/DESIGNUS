@@ -273,7 +273,7 @@ margin: 15px 0px 0px 0px;
 			    dataType:'json',
 			    success:function(data){
 			    	
-			    	aa+="<h2>프로필 사진</h2><br>"+"<img src='"+data.mb_profile+"'>";
+			    	aa+="<h2>프로필 사진</h2><br>"+"<img src='/member/"+data.mb_profile+"' width='100%' height='100%'>";
 			    	bb+="포인트:"+data.mb_point;
 			    	$("#img").html(aa)
 			    	$("#point").html(bb)

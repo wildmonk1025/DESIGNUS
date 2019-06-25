@@ -432,7 +432,7 @@ console.log(4,spgList.length);
 for(var i=0; i<spgList.length;i++){
 	if(spgList[i].ssp_step==1){
 		cc+="<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-		  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+		  +"<div class='third'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></div>"
 		  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress>("+ww[i]/spgList[i].ss_goalqty*100+"%)</div>"
 		  +"<div class='Fifth'><p class='p3'>후원진행중</p></div></div>"
 			  var ptnum=spgList[i].ssp_ptnum;
@@ -464,31 +464,31 @@ for(var i=0; i<spgList.length;i++){
 		}else if(spgList[i].ssp_step==2){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='third'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><p class='p3'>목표 후원에<br>도달하진 못했어요ㅜㅜ</p></div></div>"
 		}else if(spgList[i].ssp_step==3){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='third'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
 		}else if(spgList[i].ssp_step==4){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='third'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><p class='p3'>제작을<br>진행중 입니다.</p></div></div>"
 		}else if(spgList[i].ssp_step==5){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 :"+spgList[i].ssp_track+"</div></div>"
-			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='third'><img src='/sponsor/"+spgList[i].ssi_img+"'  width='100%' height='100%'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"Board('"+ spgList[i].ssp_ptnum+ "')\" value='후원 후기 쓰기'/></div></div>"
 		}else if(spgList[i].ssp_step==6){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 :"+spgList[i].ssp_track+"</div></div>"
-			  +"<div class='third'><img src='"+spgList[i].ssi_img+"'></div>"
+			  +"<div class='third'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원요청 작가 :"+spgList[i].ss_mbid_w+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><p class='p3'>완료</p></div></div>"
 		}

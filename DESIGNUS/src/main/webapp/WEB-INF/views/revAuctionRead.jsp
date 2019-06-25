@@ -344,8 +344,8 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 					<c:if test="${code eq 200 }">유아 용품</c:if>
 			</div>
 			<div id="middle_img_lv2">
-				<%-- <img src="resources/upload/${raInfo.ra_image}" alt="${raInfo.ra_image}" width="100%" height="100%"/> --%>
-				<img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/>
+				<img src="/revauction/${raInfo.ra_image}" width="100%" height="100%"/>
+				<%-- <img src="<spring:url value='resources/upload/${raInfo.ra_image}'/>" alt="${raInfo.ra_image}" width="100%" height="100%"/> --%>
 			</div>
 		</div>
 		<div id="middle_contents1">
