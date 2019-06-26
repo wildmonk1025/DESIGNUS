@@ -87,6 +87,8 @@ public interface IadminDao {
 
 	void setNotifyDeclareReply(Notify nf);
 
+	Member getmmInfo(@Param("mb_id")String mb_id);
+
 
   
 }
