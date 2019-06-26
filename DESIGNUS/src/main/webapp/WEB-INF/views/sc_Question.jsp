@@ -36,7 +36,7 @@
 #homeMain {
 	border: 1px solid gray;
 	margin-top: 50px;
-	height: 700px;
+	height: 730px;
 	width: 1400px;
 	border-radius: 10px;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
