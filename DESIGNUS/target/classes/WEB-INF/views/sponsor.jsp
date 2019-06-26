@@ -67,7 +67,6 @@ div {
 }
 
 #footercheck {
-	border: 1px solid black;
 	width: 1520px;
 	height: 200px;
 }
@@ -80,6 +79,11 @@ div {
 	height: 40px;
 	font-size: 20px;
 	color: orange;
+}
+
+#sponname {
+	width: 220px;
+	height: 27px;
 }
 
 #btn1 {
@@ -134,6 +138,7 @@ div {
 	</div>
 
 	<div id="footercheck">
+	<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include></div>
 
 </body>
@@ -141,56 +146,60 @@ div {
 	function msg() {
 		alert("작가만 등록할 수 있습니다.")
 	}
-	$(document).ready(
-			function() {
-				$.ajax({
-					url : 'productinfo',
-					type : 'post',
-					dataType : 'json',
-					contentType : "application/json; charset=utf-8;",
-					success : function(data) {
-						var result = "";
-						console.dir(data);
-						console.log("성공");
-						for ( var i in data) {
-							result += "<div id='spon'>"
-									+ "<a href='sponproduct?ss_num="
-									+ data[i].ss_num
-									+ "'style='color: black'>"
-									+ "<div id='sponproduct'>"
-									+ "<img src='/sponsor/"
-									+ data[i].ssi_img
-									+ "' width='100%' height='100%'>"
-									+ "</div>"
-									+ "<div id='sponpro'>"
-									+ "상품 이름"
-									+ data[i].ss_title
-									+ "<br>"
-									+ "아이디:"
-									+ data[i].ss_mbid_w
-									+ "<br>"
-									+ "후원번호:"
-									+ data[i].ss_num
-									+ "<br>"
-									+ "목표수량:"
-									+ data[i].ss_goalqty
-									+ "<br>"
-									+ "후원제품가격:"
-									+ data[i].ss_price
-									+ "<br>"
-									+ "후원날짜:"
-									+ "<br>"
-									+ data[i].ss_date
-									+ "</div>" + "<br>" + "</a>" + "</div>"
-						}
-						$("#sponList").html(result);
-					},
-					error : function(error) {
-						console.log("실패");
-						console.log(error);
-					}
-				});
-			});
+	$(document)
+			.ready(
+					function() {
+						$
+								.ajax({
+									url : 'productinfo',
+									type : 'post',
+									dataType : 'json',
+									contentType : "application/json; charset=utf-8;",
+									success : function(data) {
+										var result = "";
+										console.dir(data);
+										console.log("성공");
+										for ( var i in data) {
+											result += "<div id='spon'>"
+													+ "<a href='sponproduct?ss_num="
+													+ data[i].ss_num
+													+ "'style='color: black'>"
+													+ "<div id='sponproduct'>"
+													+ "<img src='/sponsor/"
+													+ data[i].ssi_img
+													+ "' width='100%' height='100%'>"
+													+ "</div>"
+													+ "<div id='sponpro'>"
+													+ "<div id='sponname' style='font-size:17px; font-weight: bolder; margin-bottom:3px; background-color:#f9e6e0'>"
+													+ data[i].ss_title
+													+ "</div>"
+													+ "<div id='contents' style='font-size:15px;'>"
+													+ "아이디 : "
+													+ data[i].ss_mbid_w
+													+ "<br>"
+													+ "후원번호 : "
+													+ data[i].ss_num
+													+ "<br>"
+													+ "목표수량 : "
+													+ data[i].ss_goalqty
+													+ "<br>"
+													+ "후원제품가격 : "
+													+ data[i].ss_price
+													+ "<br>"
+													+ "후원등록날짜 : "
+													+ data[i].ss_date
+													+ "</div></div>"
+													+ "<br>"
+													+ "</a>" + "</div>"
+										}
+										$("#sponList").html(result);
+									},
+									error : function(error) {
+										console.log("실패");
+										console.log(error);
+									}
+								});
+					});
 
 	$('#spon').click(function() {
 		$('#spon')

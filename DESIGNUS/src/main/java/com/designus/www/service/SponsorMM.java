@@ -28,6 +28,7 @@ import com.designus.www.bean.SponsorProgress;
 import com.designus.www.bean.SponsorTender;
 import com.designus.www.bean.revAuctionProgress;
 import com.designus.www.dao.IsponsorDao;
+import com.designus.www.userClass.DateAdjust;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 
@@ -85,6 +86,11 @@ public class SponsorMM {
 	}
 
 	public String productinfo() {
+
+		mav = new ModelAndView();
+
+		DateAdjust da = new DateAdjust();
+
 		System.out.println("후원리스트 불러오기");
 		List<Sponsor> spList = sDao.productinfo();
 		Gson gs = new Gson();
