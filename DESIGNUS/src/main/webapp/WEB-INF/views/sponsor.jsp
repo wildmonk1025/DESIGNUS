@@ -58,6 +58,11 @@ div {
 	height: 700px;
 }
 
+#date {
+	margin-top: 3px;
+	color: red;
+}
+
 .btn {
 	background-color: orange;
 	width: 150px;
@@ -138,7 +143,7 @@ div {
 	</div>
 
 	<div id="footercheck">
-	<hr style="width: 100%; border: 2px solid coral; align: center;">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include></div>
 
 </body>
@@ -186,10 +191,14 @@ div {
 													+ "후원제품가격 : "
 													+ data[i].ss_price
 													+ "<br>"
+
+													+ "<div id='date'>"
+													+ "<hr style='border: 1px solid #edaea0;'>"
 													+ data[i].ss_date
-													+ "</div></div>"
+													+ "</div></div></div>"
 													+ "<br>"
-													+ "</a>" + "</div>"
+													+ "</a>"
+													+ "</div>"
 										}
 										$("#sponList").html(result);
 									},
