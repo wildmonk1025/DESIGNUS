@@ -186,7 +186,6 @@ div {
 													+ "후원제품가격 : "
 													+ data[i].ss_price
 													+ "<br>"
-													+ "후원등록날짜 : "
 													+ data[i].ss_date
 													+ "</div></div>"
 													+ "<br>"
