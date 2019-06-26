@@ -85,6 +85,46 @@ public class DateAdjust {
 		return val;
 	}
 	
+	public String changeDateToString2(String date) throws ParseException {
+		LocalDateTime original_setDate = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+		
+		String new_date = adjustTime2(original_setDate);
+		return new_date;
+	}
+
+	public String adjustTime2(LocalDateTime original_setDate) {
+	//시간 표시
+
+		
+		LocalDateTime currentDateTime = LocalDateTime.now();    // 컴퓨터의 현재 날짜와 시간 정보. 결과 : 2018-07-26T16:34:24.757
+		//LocalDateTime targetDateTime = LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond);
+
+		//DB로 부터 받아온 시간에 1일을 더함. 1일 뒤 종료하는것으로 구성
+		original_setDate = original_setDate.plusDays(7); //예: original_setDate.minusDays(1);
+		//original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
+		
+		String val = null;
+		if(original_setDate.isAfter(currentDateTime)) {
+			
+			long d = currentDateTime.until(original_setDate, ChronoUnit.DAYS);
+			currentDateTime = currentDateTime.plusDays(d);
+			
+			long h = currentDateTime.until(original_setDate, ChronoUnit.HOURS);
+			currentDateTime = currentDateTime.plusHours(h);
+			
+			long m = currentDateTime.until(original_setDate, ChronoUnit.MINUTES);
+			currentDateTime = currentDateTime.plusMinutes(m);
+			
+			long s = currentDateTime.until(original_setDate, ChronoUnit.SECONDS);
+	
+			val = "남은시간 : "+d + "일 " + h + "시간 " + m +"분 " + s + "초 남음";
+
+		} else {
+			val = "경매가 마감되었습니다.";
+		}
+		return val;
+	}
+	
 	public boolean compareDateToBoolean(String date) throws ParseException {
 		LocalDateTime original_setDate = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
 		/* LocalDateTime original_setDate = LocalDateTime.parse(date, formatter) */
