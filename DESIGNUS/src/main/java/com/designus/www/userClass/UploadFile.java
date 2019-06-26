@@ -419,8 +419,7 @@ public class UploadFile {
 			String oriFileName = file.get(i).getOriginalFilename(); // a.txt
 			fMap.put("oriFileName", oriFileName);
 			// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
-			String sysFileName = System.currentTimeMillis() + "."
-					+ oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+			String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
 			fMap.put("sysFileName", sysFileName);
 
 			// 5.메모리->실제 파일 업로드

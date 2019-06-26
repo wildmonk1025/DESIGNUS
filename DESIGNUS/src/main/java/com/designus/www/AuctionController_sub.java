@@ -53,7 +53,7 @@ public class AuctionController_sub {
 	throws Exception{
 		System.out.println("rat_file="+params.get("rat_file"));
 		//params.put("root",request.getSession().getServletContext().getRealPath("/")); //다운로드할 파일이 있는 경로를 설정
-		params.put("root","C:/Users/wildm/git/DESIGNUS/DESIGNUS/src/main/webapp/"); //다운로드할 파일이 있는 경로를 설정
+		params.put("root","C:/test/file/revauction/"); //다운로드할 파일이 있는 경로를 설정
 		
 		params.put("response", response);
 		mav = ram.ratFileDownload(params);
