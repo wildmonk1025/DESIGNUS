@@ -212,7 +212,7 @@ public class RevAuctionMM {
 		String root = (String) params.get("root");
 		String rat_file = (String) params.get("rat_file");
 		//파일 없을경우 넘길 글번호
-		String fullPath = root + "/resources/upload/" + rat_file;
+		String fullPath = root + rat_file;
 		System.out.println(fullPath);
 
 		HttpServletResponse resp = (HttpServletResponse) params.get("response");
