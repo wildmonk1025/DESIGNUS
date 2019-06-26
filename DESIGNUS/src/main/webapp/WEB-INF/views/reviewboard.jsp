@@ -462,7 +462,7 @@ function articleView(num1){
 					  +"<input type='hidden' value='"+data.bList.bd_mbid+"' id='idc'>"
 					  for ( var i in data.iList){
 						  result+="<tr>"+"<td rowspan='3' colspan='5'>"+
-						  "<img src=\"/board/"+data.iList[i].bdi_img+" width='100%' height='100%' \"/>"
+						  "<img src=/board/"+data.iList[i].bdi_img+" 'width='200px' height='200px'>"
 						 +"</td></tr>"
 					  }
 					  result+="</table>"+"<form action='reviewcomment'method='post'>"+
