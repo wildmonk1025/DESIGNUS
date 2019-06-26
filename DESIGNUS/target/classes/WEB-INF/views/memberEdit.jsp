@@ -353,8 +353,12 @@ a:hover {
 }
 
 #mainheader {
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #mypagemain {
@@ -362,8 +366,17 @@ a:hover {
 	height: 1200px;
 }
 #dddd{
-	width: 1530px;
-	height: 1020px;
+	width: 1518px;
+	height: 1000px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	margin-top: 40px;
+}
+#footer {
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
@@ -467,8 +480,9 @@ a:hover {
 			</div>
 		
 		</div>
-		</div>
-		<jsp:include page="footer.jsp" />
+		<div id="footer">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 		
 </body>

@@ -93,7 +93,6 @@ ul {
 	width: 990px;
 	height: 350px;
 	overflow-y: scroll;
-	border: 1px solid grey;
 }
 
 #declarelist td {
@@ -101,7 +100,8 @@ ul {
 }
 
 .best {
-	border: 1px solid black;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin:5px 5px 5px 5px;
 	display : inline;
 	float: left;
 	width: 400px;

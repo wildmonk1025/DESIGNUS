@@ -315,9 +315,9 @@ a:hover {
 }
 
 #mainheader {
-	border: 1px solid black;
 	width: 1520px;
 	height: 170px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #setp {
@@ -416,7 +416,7 @@ a:hover {
 #mypagemain {
 	width: 1530px;
 	height: 1200px;
-	border: 1px solid black;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #2list {
@@ -653,10 +653,11 @@ color: black;
 				
 			</div>
         <div id="sixth">${MPpaging}</div>
+		<div id="footer">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
-		<jsp:include page="footer.jsp" />
-	</div>
-		
+		</div>
 </body>
 <script>
 	var apList = ${apList};
