@@ -71,16 +71,18 @@
 	width: 850px;
 	height: 60px;
 	font-size: 30px;
-	border: 1px solid #8181F7;
-	background-color: #8181F7;
+	border: 1px solid #58ACFA;
+	background-color: #58ACFA;
 	border-radius: 5px;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #middle_title {
 	padding-top: 10px;
-	padding-left: 10px;
+	padding-left: 20px;
 	font-size: 25px;
+	font-weight: 800;
+	color: white;
 	float: left;
 	text-align: left;
 	width: 680px;
@@ -127,19 +129,23 @@
 }
 
 #middle_contents2_btn1 {
-	width: 130px;
-	height: 130px;
-	margin: 150px 0px 0px 50px;
+	width: 150px;
+	height: 150px;
+	margin: 100px 0px 30px 80px;
 	color: white;
+	font-size: 20px;
+	font-weight: 800;
 	border-radius: 15px;
-	background-color: coral;
+	background-color: #58ACFA;
 }
 
 #middle_contents2_btn2 {
-	width: 130px;
-	height: 130px;
-	margin: 150px 0px 0px 50px;
+	width: 150px;
+	height: 150px;
+	margin: 100px 0px 30px 80px;
 	color: white;
+	font-size: 20px;
+	font-weight: 800;
 	border-radius: 15px;
 	background-color: gray;
 }
@@ -226,7 +232,7 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 #lightbox_contents1 {
 	border: 1px solid white;
 	position: absolute;
-	background-color: coral;
+	background-color: #58ACFA;
 	left: 30%;
 	top: 20%;
 	padding: 50px;
@@ -242,10 +248,21 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 }
 
 #revamn {
-	border: 1px solid white;
 	margin-top: 40px;
 	text-align: center;
-	width: 400px
+	width: 400px;
+	line-height: 200%;
+}
+
+#revamn input[type="button"]{
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	font-size: 20px;
+	color: #58ACFA;
+	border-radius: 5px;
+	box-shadow: -60px 0px 30px -90px #000000,
+                60px 0px 30px -90px #000000;
 }
 
 .subtn {
@@ -253,7 +270,7 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 	border: none;
 	font-size: 25.5px;
 	color: white;
-	background-color: #8181F7;
+	background-color: #58ACFA;
 }
 
 .file {
@@ -286,21 +303,21 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 		<div id="lightboxshadow"></div>
 		<form id="tenderlightbox" enctype="multipart/form-data">
 			<div id="lightbox_contents1">
-				<p>의뢰 접수 및 견적서 첨부</p>
-				<hr style="color: black">
+				<p style="font-size: 30px; font-weight: 700; color: white;">의뢰 접수 및 견적서 첨부</p>
+				<hr style="color: white">
 				<div id="revamn">
 					<table>
-						<tr style="width: 400px;">
-							<td>의뢰접수금액</td>
-							<td><input type="text" id="revamoney" name="revamoney"></td>
+						<tr>
+							<td style="width: 100px; color:white; padding-right: 30px;">의뢰접수금액</td>
+							<td style="width: 200px;"><input type="text" id="revamoney" name="revamoney"  placeholder="원 단위 금액 입력" style="width:200px;"></td>
 						</tr>
 						<tr>
-							<td>견적서 첨부</td>
-							<td><input type="file" id="revfile" name="revfile"></td>
+							<td style="width: 100px; color:white; padding-right: 30px;">견적서 첨부</td>
+							<td style="width: 200px;"><input type="file" id="revfile" name="revfile" style="width:200px;"></td>
 						</tr>
 						<tr>
-							<td>제작소요기간</td>
-							<td><input type="text" id="revadate" name="revadate">일</td>
+							<td style="width: 100px; color:white; padding-right: 30px;">제작소요기간</td>
+							<td style="width: 200px;"><input type="text" id="revadate" name="revadate" placeholder="일 단위 기간 입력" style="width:200px;"></td>
 						</tr>
 
 					</table>
@@ -387,7 +404,7 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 			</c:if>
 			<c:if test="${decidechk eq 'HIDE'}">
 				<button id="middle_contents2_btn2">
-					의뢰접수 권한이 <br> 없습니다.
+					의뢰접수 <br> 권한이 <br> 없습니다.
 				</button>
 			</c:if>
 		</div>
@@ -484,7 +501,7 @@ $(".subtn").click(function() {
 				dataType:'json',
 				success: function(data) {
 
-					var str = "<tr style='background-color:#8181F7;'><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td width='300'>의뢰하기</td></tr>";
+					var str = "<tr style='background-color:#58ACFA;'><td width='300'>작가ID</td><td width='300'>접수금액</td><td width='300'>첨부파일</td><td width='300'>제작기간</td><td width='300'>의뢰하기</td></tr>";
 					for(var i in data) {
 					var wid = data[i].rat_mbid_w;
 					var wprice = data[i].rat_price;

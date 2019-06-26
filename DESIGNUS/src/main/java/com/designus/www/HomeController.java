@@ -257,7 +257,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/searching",method = RequestMethod.POST)
-	public ModelAndView searching(String word) {
+	public ModelAndView searching(String word) throws ParseException {
 		System.out.println(word);
 		mav = cm.searching(word);
 		return mav;

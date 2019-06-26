@@ -183,13 +183,14 @@ a:hover {
 }
 
 .best {
-	border: 1px solid black;
 	color: black;
 	display: inline;
 	float: left;
 	width: 400px;
 	heigth: 55px;
 	display: inline;
+	margin:5px 5px 5px 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 #dd{
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
@@ -216,7 +217,8 @@ text-align: center;
 	</div>
 	<div id="adminopt">
 		<div class="opt"><br/><br/>
-			<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">회원관리</h3>
+			<h3 id="dd" style="text-align: center; font-size: 25px; background-color:#F6D8CE;">1:1 문의 접수 리스트</h3>
+				<hr>
 			<div class="btnArray" id="normal">
 				<button id="Lbtn1" class="btn2">일반회원 리스트</button>
 			</div>

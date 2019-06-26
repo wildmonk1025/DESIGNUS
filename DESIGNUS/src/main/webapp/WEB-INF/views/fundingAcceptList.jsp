@@ -500,7 +500,7 @@ for(var i=0; i<spgList.length;i++){
 			cc+="<input type='hidden' id='ptnum' value='"+spgList[i].ssp_ptnum+"'>" 
 			  +"<div class='first'><div class='second'><div class='p1'>"+spgList[i].ss_date+"</div><div class='p2'>운송장번호 : -</div></div>"
 			  +"<div class='third'>"
-			  +"<a href='sponproduct?ss_num="+spgList[i].ssp_ssnum+"'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></a>/div>"
+			  +"<a href='sponproduct?ss_num="+spgList[i].ssp_ssnum+"'><img src='/sponsor/"+spgList[i].ssi_img+"' width='100%' height='100%'></a></div>"
 			  +"<div class='fourth'>"+spgList[i].ss_title+"<br>후원 총 인원 : "+ww[i]+"/"+spgList[i].ss_goalqty+"<br>후원 마감 :"+spgList[i].end_date+"<br>후원 진행상황 <progress value="+ww[i]+" max="+spgList[i].ss_goalqty+"></progress></div>"
 			  +"<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"spo('"+ spgList[i].ssp_ptnum+ "')\" value='배송정보 입력'/></div></div>"
 		}else if(spgList[i].ssp_step==4){
