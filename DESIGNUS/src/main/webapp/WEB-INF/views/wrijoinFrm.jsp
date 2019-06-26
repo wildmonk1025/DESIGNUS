@@ -20,7 +20,7 @@ div {
 #join {
 	background-color: white;
 	width: 800px;
-	height: 800px;
+	height: 900px;
 	text-align: center;
 	border: 1px solid black;
 }
@@ -213,7 +213,7 @@ div {
 							<div id="subcategory" align="center" class="menu-item">
 								<select id="mj_cg_code" name="mj_cg_code" class="memberN">
 								</select>
-						</div>
+							</div>
 
 						</td>
 					</tr>
@@ -385,6 +385,7 @@ div {
 		var mbaddr = $("#addr1").val();
 		var mbaddr2 = $("#addr2").val();
 		var mbaddr3 = $("#addr3").val();
+		var emailval = $("#joinhidden").val();
 
 		if (mbid.length == 0) {
 			alert("아이디를 입력해주세요.");
@@ -428,7 +429,7 @@ div {
 			$("#addr3").focus();
 			return false;
 		}
-		if (cate == "") {
+		if (cate.length == 0) {
 			alert("카테고리를 선택해주세요.")
 			return false;
 		}
@@ -445,10 +446,16 @@ div {
 			$("#mb_email").focus();
 			return false;
 		}
-		if ($("input:checkbox[name=chk2]").is(":checked") == false) {
-			alert("이용약관에 동의해주세요.")
+		if (emailval != 1) {
+			alert("이메일 인증을 진행해주세요.")
+			$("#mb_email").focus();
 			return false;
 		}
+		if (email)
+			if ($("input:checkbox[name=chk2]").is(":checked") == false) {
+				alert("이용약관에 동의해주세요.")
+				return false;
+			}
 
 		if ($("input:checkbox[name=chk3]").is(":checked") == false) {
 			alert("개인정보 수집 약관에 동의해주세요.")
@@ -460,8 +467,14 @@ div {
 				alert("아이디 중복체크를 진행해주세요.")
 				return false;
 			} else {
-				alert("정상적으로 가입신청 되었습니다!");
-				$("#wrimemberapplyFrm").submit();
+				if (confirm(msg) != 0) {
+					alert("정상적으로 가입신청 되었습니다!");
+					$("#wrimemberapplyFrm").submit();
+				} else {
+					alert("가입신청을 중단했습니다.")
+					return false;
+
+				}
 			}
 		}
 	}
@@ -561,10 +574,11 @@ div {
 			$('#joinbtn').prop("disabled", false);
 
 			alert("인증되었습니다")
-
+			$("#joinhidden").val('1');
 		} else {
 
 			alert("인증번호를 다시 확인해주세요")
+			$("#joinhidden").val('2');
 
 		}
 
