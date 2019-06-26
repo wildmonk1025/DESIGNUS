@@ -9,7 +9,7 @@
 	</insert> -->
 	
 	<select id="selectRevAuction" resultType="revauction">
-			SELECT * FROM RA
+			SELECT * FROM RA WHERE RA_OC != 'N'
 	</select>
 	
 	<update id="changeRaocColumn" parameterType="int">
