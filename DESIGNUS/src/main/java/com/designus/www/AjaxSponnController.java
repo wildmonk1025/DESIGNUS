@@ -1,5 +1,7 @@
 package com.designus.www;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +36,7 @@ public class AjaxSponnController {
 
 	@RequestMapping(value = "/productinfo", produces = "application/json;charset=utf8", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String productinfo() {
+	public String productinfo() throws ParseException {
 
 		System.out.println("후원정보 불러오기");
 
