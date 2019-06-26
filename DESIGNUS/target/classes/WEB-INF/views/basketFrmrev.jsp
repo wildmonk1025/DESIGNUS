@@ -230,7 +230,6 @@ a {
 
 #img {
 	margin-top: 20px;
-	border: 1px solid orange;
 	margin: 20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;

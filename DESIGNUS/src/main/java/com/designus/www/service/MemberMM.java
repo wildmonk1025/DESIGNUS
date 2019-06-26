@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,19 +32,20 @@ public class MemberMM {
 	@Autowired
 	private com.designus.www.userClass.UploadFile upload;
 
+	@Transactional
 	public ModelAndView wriapply(MultipartHttpServletRequest multi, String kind) {
 		System.out.println("작가 회원가입");
 		mav = new ModelAndView();
 		kind = "S";
 		String view = null;
-		
+
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		int check2 = Integer.parseInt(multi.getParameter("fileCheck2"));
 		String id = multi.getParameter("mb_id");
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("addr1")+multi.getParameter("addr2")+multi.getParameter("addr3");
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 		String wriid = multi.getParameter("mb_id");
 		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
@@ -62,7 +64,7 @@ public class MemberMM {
 
 		Major mj = new Major();
 		mj.setMj_mbid(wriid);
-		mj.setMj_cgcode(wricate);
+		mj.setMj_cg_code(wricate);
 		/* mj.setMj_contents(wricon); */
 		/* mj.setMj_like(wriLike); */
 
@@ -72,7 +74,7 @@ public class MemberMM {
 			// 이클립스 서버에 파일을 업로드 한 후,
 			// 오리지널 파일명,시스텀 파일명을 리턴 후 맵에 저장
 			f = upload.fileUp(multi, mb, kind, mj);
-			
+
 			if (f) {
 				System.out.println("작가회원 신청");
 				view = "loginBox";
@@ -99,7 +101,7 @@ public class MemberMM {
 		String pw = multi.getParameter("mb_pw");
 		String name = multi.getParameter("mb_name");
 		String birth = multi.getParameter("mb_birth");
-		String address = multi.getParameter("addr1")+multi.getParameter("addr2")+multi.getParameter("addr3");
+		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 
 		Member mb = new Member();
@@ -143,22 +145,21 @@ public class MemberMM {
 
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 
-		Member d=mDao.getMemberclick(mb.getMb_id());
-		
+		Member d = mDao.getMemberclick(mb.getMb_id());
+
 		mav.addObject("ccnt", d.getMb_ccnt());
-		
-		
-		System.out.println("Asdasd"+d.getMb_ccnt());
-		if(d.getMb_ccnt()>=3) {
-				
-				System.out.println("경고횟수:"+d.getMb_ccnt());
-				mav.addObject("msg1", "zzzz");
-				view = "loginBox";
-		}else {
+
+		System.out.println("Asdasd" + d.getMb_ccnt());
+		if (d.getMb_ccnt() >= 3) {
+
+			System.out.println("경고횟수:" + d.getMb_ccnt());
+			mav.addObject("msg1", "zzzz");
+			view = "loginBox";
+		} else {
 			String pwdEncode = mDao.getSecurityPwd(mb.getMb_id());
 			if (pwdEncode != null) {
 				if (pwdEncoder.matches(mb.getMb_pw(), pwdEncode)) {
-			
+
 					mb = mDao.getMemberInfo(mb.getMb_id());
 					session.setAttribute("id", mb.getMb_id());
 					session.setAttribute("grade", mb.getMb_grade());
@@ -167,7 +168,7 @@ public class MemberMM {
 					System.out.println("id=" + mb.getMb_id());
 					mav.addObject("msg", "ddd");
 					view = "redirect:home";
-					
+
 				} else {
 					view = "redirect:home";
 				}
@@ -176,8 +177,7 @@ public class MemberMM {
 			}
 			view = "redirect:home";
 		}
-		
-	
+
 		mav.setViewName(view);
 		return mav;
 	}
@@ -187,13 +187,13 @@ public class MemberMM {
 		mav = new ModelAndView();
 		String view = null;
 		mb = mDao.getMemberNameInfo(mb);
-		if(mb!=null) {
-		mav.addObject("findid", "아이디는 "+ mb.getMb_id()+"입니다.");
-		System.out.println("id"+mb.getMb_id());
-		view = "memberFind";
+		if (mb != null) {
+			mav.addObject("findid", "아이디는 " + mb.getMb_id() + "입니다.");
+			System.out.println("id" + mb.getMb_id());
+			view = "memberFind";
 		} else {
 			view = "memberFind";
-			mav.addObject("findid","입력하신 정보는 없는 정보입니다.");
+			mav.addObject("findid", "입력하신 정보는 없는 정보입니다.");
 		}
 		mav.setViewName(view);
 		return mav;
@@ -203,15 +203,15 @@ public class MemberMM {
 		mav = new ModelAndView();
 		String view = null;
 		mb = mDao.getMemberpwInfo(mb);
-		if(mb!=null) {
-		System.out.println("id"+mb.getMb_pw());
-		System.out.println("ididididi::"+mb.getMb_id());
-		mav.addObject("findpw1","비밀번호 변경하기.");
-		mav.addObject("mb", mb);
-		view = "memberpwFind";
+		if (mb != null) {
+			System.out.println("id" + mb.getMb_pw());
+			System.out.println("ididididi::" + mb.getMb_id());
+			mav.addObject("findpw1", "비밀번호 변경하기.");
+			mav.addObject("mb", mb);
+			view = "memberpwFind";
 		} else {
 			view = "memberpwFind";
-		mav.addObject("findpw","입력하신 정보는 없는 정보입니다.");
+			mav.addObject("findpw", "입력하신 정보는 없는 정보입니다.");
 		}
 		mav.setViewName(view);
 		return mav;
@@ -222,21 +222,21 @@ public class MemberMM {
 		String view = null;
 		String id = mb.getMb_id();
 		String pw = mb.getMb_pw();
-		System.out.println("너 널이니?"+mb);
+		System.out.println("너 널이니?" + mb);
 		mb.setMb_id(id);
 		System.out.println(mb.getMb_pw());
 		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		mb.setMb_pw(pwdEncoder.encode(pw));
 		System.out.println(mb.getMb_pw());
 		int check = mDao.getMemberPwUpdate(mb);
-		System.out.println("넌뭐하는애니?"+check);
-		
-		if(check!=0) {
-		System.out.println("여기오냐?");
-		view = "loginBox";
+		System.out.println("넌뭐하는애니?" + check);
+
+		if (check != 0) {
+			System.out.println("여기오냐?");
+			view = "loginBox";
 		} else {
 			view = "memberpwFind";
-		System.out.println();
+			System.out.println();
 		}
 		mav.setViewName(view);
 		return mav;
@@ -266,18 +266,14 @@ public class MemberMM {
 
 	public String mem() {
 		System.out.println("여기와요??ㅎㅎ");
-		String id=session.getAttribute("id").toString();
-		
+		String id = session.getAttribute("id").toString();
+
 		System.out.println("여기는 올것 같은데...??ㅎㅎ");
-		Member mb=pDao.mypagemoveSelect(id);
-		System.out.println("과연 mb의 값은???"+mb);
+		Member mb = pDao.mypagemoveSelect(id);
+		System.out.println("과연 mb의 값은???" + mb);
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(mb);
 		return jsonStr;
 	}
-
-
-
-	
 
 }

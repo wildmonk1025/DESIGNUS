@@ -548,7 +548,7 @@
   select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
   SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
       from ssp_ss_ssi 
-        where SSP_SSNUM=${ssp_ptnum}
+        where SSP_PTNUM=${ssp_ptnum}
          )where RankNo=1
    ]]>
 	</select>
