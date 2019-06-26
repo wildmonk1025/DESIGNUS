@@ -85,6 +85,7 @@ public class SponsorMM {
 	}
 
 	public String productinfo() {
+
 		System.out.println("후원리스트 불러오기");
 		List<Sponsor> spList = sDao.productinfo();
 		Gson gs = new Gson();

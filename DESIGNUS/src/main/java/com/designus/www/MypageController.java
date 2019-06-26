@@ -380,9 +380,17 @@ public class MypageController {
 	public ModelAndView basketcencle(Basket b ) {
 		mav = new ModelAndView();
 		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:시작");
-		System.out.println("dddddd:"+b.getRab_ranum());
 		
 		mav = pm.basketcencle(b);
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/aubasketcencle", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView aubasketcencle(Basket b ) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:시작");
+		
+		mav = pm.aubasketcencle(b);
 		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:마무리!!");
 		return mav;
 	}
