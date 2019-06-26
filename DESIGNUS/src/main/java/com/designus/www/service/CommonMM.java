@@ -50,10 +50,10 @@ public class CommonMM {
 		String json = new Gson().toJson(sList);
 		return json;
 	}
-	public ModelAndView searching(String word) {
+	public ModelAndView searching(String word) throws ParseException {
 		mav = new ModelAndView();
-		
 		List<RealTimeSearchRanking> check = cDao.getSearchingSelect(word);
+		DateAdjust da = new DateAdjust();
 		System.out.println("검색어 체크결과="+check);
 		if(check.isEmpty()) {
 			cDao.searchingInsert(word);
@@ -64,8 +64,16 @@ public class CommonMM {
 		}
 		
 		List<Auction> auList = aDao.getAuctionListSelect2(word);
+		for(int i = 0 ; i < auList.size(); i++) {
+			String new_Audate = da.changeDateToString(auList.get(i).getAu_date());
+			auList.get(i).setAu_date(new_Audate);
+		}
 		List<RevAuction> raList = rDao.getRevAuctionListSelect2(word);
-	      
+		for(int i = 0 ; i < raList.size(); i++) {
+			String new_Radate = da.changeDateToString(raList.get(i).getRa_date());
+			raList.get(i).setRa_date(new_Radate);
+		}
+		
 		mav.addObject("auList",auList);
 		mav.addObject("raList",raList);
 		//mav.addObject("paging", getPaging(num));
