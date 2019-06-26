@@ -195,6 +195,11 @@ a:hover {
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 text-align: center;
 }
+
+#footercheck {
+	width: 1520px;
+	height: 150px;
+}
 </style>
 </head>
 <body>
@@ -233,6 +238,9 @@ text-align: center;
 
 			</div>
 		</div>
+	</div>
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 <script>

@@ -146,6 +146,11 @@ a:hover {
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 
 }
+
+#footercheck {
+	width: 1520px;
+	height: 150px;
+}
 </style>
 </head>
 <body>
@@ -173,7 +178,9 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			<div id="transformlist"></div>
 		</div>
 	</div>
-
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 <script>
 	$(document).ready(

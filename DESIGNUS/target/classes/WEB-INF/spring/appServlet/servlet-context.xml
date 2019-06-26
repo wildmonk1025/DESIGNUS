@@ -182,6 +182,7 @@
 			<exclude-mapping path="/searching" />
 			<exclude-mapping path="/loginmove" />
 			<exclude-mapping path="/memberpwFind" />
+			<exclude-mapping path="/wriapply" />
 			<beans:bean class="com.designus.www.userClass.SessionInterceptor" />
 
 		</interceptor>

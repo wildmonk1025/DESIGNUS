@@ -9,6 +9,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+
+#footercheck {
+	width: 1520px;
+	height: 150px;
+}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -161,6 +166,9 @@ text-align: center;
 				
 			</div>
 		</div>
+	</div>
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 <script>

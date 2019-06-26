@@ -9,6 +9,10 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+#footercheck {
+	width: 1600px;
+	height: 150px;
+}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -301,6 +305,11 @@ text-align: center;
 							placeholder="change after name" autofocus required ></div></form>
 			
 		</div>
+	</div>
+	<div id="footercheck"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/>
+	
+		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 <script>

@@ -71,6 +71,7 @@
 #footercheck {
 	width: 1520px;
 	height: 200px;
+	margin-top: 40px;
 }
 
 .menuLink {
@@ -248,6 +249,7 @@ ul {
 }
 
 .hide {
+	margin-top: 3px;
 	display: none;
 }
 
@@ -259,11 +261,12 @@ ul {
 
 .li {
 	height: 200px;
-	width: 1079px;
-	background-color: #f9e6e0;
+	width: 1078px;
+	border: 1px solid #f9e6e0;
 	font-size: 20px;
 	position: absolute;
 	background-color: white;
+	color: gray;
 }
 </style>
 </head>
@@ -284,7 +287,6 @@ ul {
 					style="color: coral;">QnA</a></li>
 				<li class="questionmenu"><a class="menuLink" href="scdeclare">신고하기</a></li>
 			</ul>
-
 		</div>
 		<div id="mainss">
 			<div id="list">
@@ -313,6 +315,7 @@ ul {
 	</div>
 
 	<div id="footercheck">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include></div>
 	-
 </body>
@@ -386,7 +389,7 @@ ul {
 									+ "</button>"
 									+ "<ul class='hide'>"
 									+ "<li>"
-									+ "<div class='li' style='border:1px solid orange';>"
+									+ "<div class='li' style='border:2px solid #f4cfc3';>"
 									+ data[i].qna_a + "</div>" + "</li>"
 									+ "</ul>" + "</li>" + "</ul>";
 							$('#buy').html(cub);
@@ -426,7 +429,7 @@ ul {
 									+ "</button>"
 									+ "<ul class='hide'>"
 									+ "<li>"
-									+ "<div class='li' style='border:1px solid orange';>"
+									+ "<div class='li' style='border:2px solid #f4cfc3';>"
 									+ data[i].qna_a + "</div>" + "</li>"
 									+ "</ul>" + "</li>" + "</ul>";
 							$('#sell').html(cub);
@@ -466,7 +469,7 @@ ul {
 									+ "</button>"
 									+ "<ul class='hide'>"
 									+ "<li>"
-									+ "<div class='li' style='border:1px solid orange';>"
+									+ "<div class='li' style='border:2px solid #f4cfc3';>"
 									+ data[i].qna_a + "</div>" + "</li>"
 									+ "</ul>" + "</li>" + "</ul>";
 							$('#spon').html(cub);
@@ -506,7 +509,7 @@ ul {
 									+ "</button>"
 									+ "<ul class='hide'>"
 									+ "<li>"
-									+ "<div class='li' style='border:1px solid orange';>"
+									+ "<div class='li' style='border:2px solid #f4cfc3';>"
 									+ data[i].qna_a + "</div>" + "</li>"
 									+ "</ul>" + "</li>" + "</ul>";
 							$('#mypage2').html(cub);
@@ -546,7 +549,7 @@ ul {
 									+ "</button>"
 									+ "<ul class='hide'>"
 									+ "<li>"
-									+ "<div class='li' style='border:1px solid orange';>"
+									+ "<div class='li' style=border:2px solid #f4cfc3';>"
 									+ data[i].qna_a + "</div>" + "</li>"
 									+ "</ul>" + "</li>" + "</ul>";
 							$('#other').html(cub);

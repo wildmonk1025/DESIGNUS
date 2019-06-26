@@ -9,6 +9,10 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+#footercheck {
+	width: 1520px;
+	height: 150px;
+}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -223,7 +227,9 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			</form>
 			
 		</div>
-	
+	<div id="footercheck">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 
 
 </body>
