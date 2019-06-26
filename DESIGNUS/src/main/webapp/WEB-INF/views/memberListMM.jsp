@@ -105,9 +105,6 @@
             height: 30px;
         }
 
-        td {
-            border: 1px solid grey;
-        }
 #customers {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	width: 820px;
@@ -116,7 +113,6 @@
 
 #customers td, #customers th {
 	font-size: 1em;
-	border: 1px solid black;
 	padding: 3px 7px 2px 7px;
 }
 
@@ -210,6 +206,16 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	width: 1520px;
 	height: 150px;
 }
+.best {
+	display : inline;
+	float: left;
+	width: 100%;
+	heigth: 150px;
+	size: 20px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin:5px 5px 5px 5px;
+	
+}
     </style>
 </head>
 
@@ -232,6 +238,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
                 <h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">회원 상세보기</h3>
                 <hr><br/>
                 <div id="declarelist">
+                <div class="best">
                     <table id="customers">
                         <tr  class="alt">
                             <td colspan="6" width="600" height="20">회원등급 : ${mbInfo.mb_grade}</td>
@@ -258,6 +265,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
                                 주소 : ${mbInfo.mb_address}<br>
                         </tr>
                     </table>
+                    </div>
                 </div>
                 <input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
                 <div class="btnArray" id="btn1"><input type="submit" value="경고" class="btn2" ></div>
