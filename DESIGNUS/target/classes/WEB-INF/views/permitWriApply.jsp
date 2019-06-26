@@ -109,12 +109,13 @@ ul {
 	height: auto;
 }
 .best {
-	border: 1px solid black;
 	display : inline;
 	float: left;
 	width: 400px;
 	heigth: 150px;
 	size: 20px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin:5px 5px 5px 5px;
 	
 }
 
