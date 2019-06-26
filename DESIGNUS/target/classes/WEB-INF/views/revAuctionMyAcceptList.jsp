@@ -225,7 +225,7 @@ div {
 
 #img {
 	margin-top: 20px;
-	border: 1px solid orange;
+
 	margin: 20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;
@@ -608,7 +608,7 @@ text-align: left;
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>제작의뢰 구매 내역</h2><hr>
+			 <h2>제작의뢰 판매 내역</h2><hr>
 			</div>
 			<div id="renking">
 				

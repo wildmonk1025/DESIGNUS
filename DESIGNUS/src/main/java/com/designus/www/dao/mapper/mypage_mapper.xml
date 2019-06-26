@@ -369,7 +369,7 @@
 		resultType="auctiontender">
 		<![CDATA[
 		 select * from(
-    select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE+3 as AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
+    select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE+1 as AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
      from AU_AUT
        where AUT_MBID=#{id} AND AUT_KIND != 'I'
      )  where  RankNo=1
@@ -548,7 +548,7 @@
   select rownum AS RN,SSP_PTNUM,SSP_SSNUM,SSP_MBID_N,SSP_NAME,SSP_ADDRESS,SSP_PHONE,SSP_TRACK,SSP_STEP,SSI_IMG,SS_MBID_W,
   SS_TITLE,SS_PRICE,SS_GOALQTY,SS_DATE,SS_CONTENTS,ROW_NUMBER() OVER(PARTITION BY SSP_PTNUM ORDER BY SSP_PTNUM DESC) AS RankNo
       from ssp_ss_ssi 
-        where SSP_SSNUM=${ssp_ptnum}
+        where SSP_PTNUM=${ssp_ptnum}
          )where RankNo=1
    ]]>
 	</select>

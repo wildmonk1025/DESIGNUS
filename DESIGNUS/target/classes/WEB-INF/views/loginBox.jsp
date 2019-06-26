@@ -390,6 +390,12 @@ console.log(bb);
 if(bb=="lee"){
 	alert("로그인이 필요한 서비스입니다. ");	
 }
+
+var gg='${msg2}';
+if(gg == 'nono'){
+	swal(" 비밀번호가 틀렸습니다. ");
+}
+
 </script>
 </head>
 <body>
@@ -439,7 +445,6 @@ if(bb=="lee"){
 </body>
 <script> 
 var a = 
-
 
 
 

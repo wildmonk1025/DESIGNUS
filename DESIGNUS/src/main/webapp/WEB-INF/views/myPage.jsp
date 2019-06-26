@@ -245,14 +245,7 @@ table tr:nth-child(2n+1) {
 	text-align: center;
 }
 
-#point {
-	margin: 0px 10px 10px 10px;
-	width: 280px;
-	height: 60px;
-	text-align: left;
-	font-size: 15px;
-	float: left;
-}
+
 
 #img {
 	margin-top: 20px;

@@ -263,8 +263,7 @@ div::-webkit-scrollbar {
 					<c:forEach var="au" items="${auList}">
 						<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 							<div class="auListImg">
-								<img class="ListImg" src="<c:url value='/resources/upload/${au.aui_img}'/>" 
-								width="100%" height="100%"/>
+								<img class="ListImg" src="/auction/${au.aui_img}" width="100%" height="100%"/>
 							</div>
 							<div class="auListTitle">
 								<h3>${au.au_title }</h3>
@@ -284,8 +283,7 @@ div::-webkit-scrollbar {
 					<c:forEach var="ra" items="${raList}">
 						<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 							<div class="raListImg">
-								<img class="ListImg" src="<c:url value='/resources/upload/${ra.ra_image}'/>"
-								 width="100%" height="100%"/>
+								<img class="ListImg" src="/revauction/${ra.ra_image}" width="100%" height="100%"/>
 							</div>
 							<div class="raListTitle">${ra.ra_title }</div>
 							<div class="raListPrice">

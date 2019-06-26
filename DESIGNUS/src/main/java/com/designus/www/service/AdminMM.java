@@ -90,8 +90,9 @@ public class AdminMM {
 
 		MemberSearch ms = new MemberSearch();
 		// rp.setRp_num(rp_num);
-
+		Member mb = new Member();
 		ms = iDao.permitWriDetail(mb_id);
+		mb = iDao.getmmInfo(mb_id);
 		ms.setMb_id(mb_id);
 		if (mb_id == ms.getMb_id()) {
 			System.out.println("ffffffff ㅋㅋㅋㅋ");
@@ -99,6 +100,7 @@ public class AdminMM {
 			mav.addObject("mj_cgcode", ms.getMj_cgcode());
 			mav.addObject("mj_contents", ms.getMj_contents());
 			mav.addObject("mj_portf", ms.getMj_portf());
+			mav.addObject("mbInfo", mb);
 			view = "permitWriDetail";
 		} else {
 			view = "permitWriDetail";
