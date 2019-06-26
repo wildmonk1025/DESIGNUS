@@ -69,4 +69,8 @@ public interface IRevAuctionDao {
 	List<RevAuction> getRevAuctionListSelect2(@Param("word") String word);
 
 	int getrevListCount(@Param("cgcode") int cgcode);
+
+	List<RevAuction> selectRevAuction();
+
+	int changeRaocColumn(@Param("ra_num") int ra_num);
 }
