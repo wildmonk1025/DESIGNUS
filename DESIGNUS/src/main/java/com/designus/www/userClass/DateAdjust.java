@@ -99,4 +99,35 @@ public class DateAdjust {
 		}
 		return false;
 	}
+
+	public boolean EndDateToBoolean(String date) throws ParseException {
+		LocalDateTime original_setDate = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+		/* LocalDateTime original_setDate = LocalDateTime.parse(date, formatter) */
+		
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		
+		original_setDate = original_setDate.plusDays(3); //예: original_setDate.minusDays(1);
+		//original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
+		
+		if(original_setDate.isAfter(currentDateTime)) {
+			return true;
+		}
+		return false;
+	}
+	
+	   public boolean deleteDateToBoolean(String date) throws ParseException {
+		      LocalDateTime original_setDate = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+		      /* LocalDateTime original_setDate = LocalDateTime.parse(date, formatter) */
+		         
+		      LocalDateTime currentDateTime = LocalDateTime.now();
+		      
+		      original_setDate = original_setDate.plusDays(3); //예: original_setDate.minusDays(1);
+		      //original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
+		      
+		      if(original_setDate.isAfter(currentDateTime)) {
+		         return true;
+		      }
+		      return false;
+		   }
+	
 }
