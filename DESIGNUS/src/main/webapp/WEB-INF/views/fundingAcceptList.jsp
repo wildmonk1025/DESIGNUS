@@ -30,7 +30,6 @@ div {
 }
 
 #renking {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 875px;
@@ -50,7 +49,6 @@ div {
 }
 
 #point {
-	border: 1px solid orange;
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -61,7 +59,6 @@ div {
 
 #img {
 	margin-top: 20px;
-	border: 1px solid orange;
 	margin: 20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;
