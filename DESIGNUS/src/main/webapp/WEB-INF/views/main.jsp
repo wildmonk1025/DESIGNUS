@@ -304,9 +304,11 @@ nav {
 	float: right;
 	color: #fff;
 	border: none;
-	width: 150px;
-	height: 30px;
-	font-size: 15px;
+	width: 170px;
+	height: 40px;
+	font-size: 20px;
+	border: 1px solid #f0f0f0;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	cursor: pointer;
 	transition: 800ms ease all;
 	outline: none;
@@ -348,16 +350,22 @@ button:hover:before, button:hover:after {
 }
 
 .mtag:visited {
+	font-size: 22px;
+	font-weight: 800;
 	text-decoration: none;
 	color: #646464;
 }
 
 .mtag:link {
+	font-size: 22px;
+	font-weight: 800;
 	text-decoration: none;
 	color: #646464;
 }
 
 .mtag:hover {
+	font-size: 22px;
+	font-weight: 800;
 	transform: scale(3Y);
 	transition-duration: 1s;
 	font-weight: 900;
