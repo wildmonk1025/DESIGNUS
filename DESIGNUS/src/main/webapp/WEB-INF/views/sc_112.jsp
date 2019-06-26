@@ -35,7 +35,7 @@
 #homeMain {
 	border: 1px solid gray;
 	margin-top: 50px;
-	height: 700px;
+	height: 770px;
 	width: 1400px;
 	border-radius: 10px;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
@@ -129,12 +129,11 @@ select {
 
 #rp_mbid_a {
 	font-size: 20px;
-	text-align-last: center;
+	text-align-last: right;
 	width: 200px;
 	height: 40px;
-	top: -178px;
-	left: 340px;
-	float: left;
+	margin: 5px;
+	border: 1px solid black;
 }
 
 #rp_title {
@@ -279,15 +278,19 @@ textarea {
 	margin-top: 30px;
 	height: auto;
 }
+
+#title1, #title2, #title3 {
+	width: 1380px;
+	margin: 5px;
+	float: left;
+}
 </style>
 </head>
 <body>
 	<div id="mainheader">
 		<jsp:include page="main.jsp" />
 	</div>
-
-
-	<div id="homemain">
+	<div id="homeMain">
 		<div id="one">
 			<div id="Sctext">
 				<h2 id="h">고객센터</h2>
@@ -307,23 +310,30 @@ textarea {
 			<form action="sc_reportFrm" name="sc_reportFrm" method="post"
 				enctype="multipart/form-data">
 				<div id="list">
-					<select name="rp_locate">
-						<option>질문 유형</option>
-						<option>거래</option>
-						<option>판매</option>
-						<option>등등...</option>
-					</select> <select name="rp_reason">
-						<option>유형</option>
-						<option>사기</option>
-						<option>욕설/비방</option>
-						<option>등등...</option>
-					</select>
+					<div id="title1">
+						<p id="title">신고 유형 선택</p>
+						<select name="rp_locate">
+							<option>신고 유형을 선택하세요.</option>
+							<option>거래</option>
+							<option>판매</option>
+							<option>등등...</option>
+						</select> <select name="rp_reason">
+							<option>신고 사유를 선택하세요.</option>
+							<option>사기</option>
+							<option>욕설/비방</option>
+							<option>등등...</option>
+						</select>
 
-					<p id="repoID">신고대상아이디</p>
-					<input id="rp_mbid_a" type="text" name="rp_mbid_a">
-					<p id="title">제목</p>
-					<input id="rp_title" type="text" name="rp_title">
-					<hr>
+					</div>
+					<div id="title2">
+						<p id="title">신고대상아이디</p>
+						<input id="rp_mbid_a" type="text" name="rp_mbid_a">
+					</div>
+					<div id="title3">
+						<p id="title">제목</p>
+						<input id="rp_title" type="text" name="rp_title">
+					</div>
+
 					<textarea name="rp_contents" style="font-size: 20px;"
 						placeholder="여기에 내용을 적습니다."></textarea>
 					<div id="btnsession">

@@ -36,7 +36,7 @@
 #homeMain {
 	border: 1px solid gray;
 	margin-top: 50px;
-	height: 700px;
+	height: 730px;
 	width: 1400px;
 	border-radius: 10px;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
@@ -303,9 +303,9 @@ textarea {
 							<option>질문의 종류를 선택하세요.</option>
 							<option>거래</option>
 							<option>판매</option>
-							<option></option>
-							<option>정병남</option>
-							<option>조용환</option>
+							<option>후원</option>
+							<option>작가 전환</option>
+							<option>탈퇴하기</option>
 						</select>
 					</div>
 					<div id="title2">
