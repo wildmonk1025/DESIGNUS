@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,6 +32,7 @@ public class MemberMM {
 	@Autowired
 	private com.designus.www.userClass.UploadFile upload;
 
+	@Transactional
 	public ModelAndView wriapply(MultipartHttpServletRequest multi, String kind) {
 		System.out.println("작가 회원가입");
 		mav = new ModelAndView();
@@ -62,7 +64,7 @@ public class MemberMM {
 
 		Major mj = new Major();
 		mj.setMj_mbid(wriid);
-		mj.setMj_cgcode(wricate);
+		mj.setMj_cg_code(wricate);
 		/* mj.setMj_contents(wricon); */
 		/* mj.setMj_like(wriLike); */
 
