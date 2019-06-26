@@ -268,14 +268,15 @@ margin-top: 60px;
 	left: 900px;
 }
 #v1 {
+	 border : 3px solid orange;
 	position: absolute;
 	width: 600px;
-	height: 430px;
+	height: 530px;
 	border-radius: 100px;
 	z-index: 1002;
-	padding-top: 70px;
+	padding-top: 30px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
 	display: none;
 	font-size: 22px;
 	top: 500px;
@@ -358,6 +359,35 @@ width : 295px;
 .f20{
  margin-top : 50px;
 height : auto;
+}
+.f3{
+
+color: black;
+}
+.f2{
+margin-top: 20px;
+color: black;
+}
+.f4{
+  margin-top: 15px;
+  color: black;
+}
+.f5  { 
+  float: left;
+  margin-left: 50px;
+}
+textarea{
+ margin-top: 15px;
+ resize: none;
+ border:1px solid black;
+}
+#butt{
+  width : 65px;
+  height : 40px;
+  border-radius: 30px;
+  background-color: orange;
+  opacity: 0.45;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -506,26 +536,27 @@ function Board(even) {
 		success : function(data) {
 			alert('해당 상품을 추천하였습니다.');
 			console.log("12" + data.ss_price);
-			vub+="<form action='WriteAReview' method='post' enctype='multipart/form-data'>"
-			   +"<input type='hidden' name='ss_mbid_w' value='"+data.ss_mbid_w+"'>"
+			vub+="<form action='WriteAReview' method='post' enctype='multipart/form-data' onsubmit='return boardCheck();'>"
+			   +"<div id='q2'><input type='hidden' name='ss_mbid_w' value='"+data.ss_mbid_w+"'>"
 			   +"<input type='hidden' name='ss_price'  value='"+data.ss_price+"'>"
 			   +"<input type='hidden' name='ssp_ptnum'  value='"+data.ssp_ptnum+"'>"
-			   +"<div class='v2'>후원 후기 쓰기<input type='button' id='butt' value='추천하기' onclick=\"good('"+ data.ss_mbid_w+ "')\"><br></div>"
-			   +"<div class='v3'><h2>"+data.ss_title+"</h2><h4>"+data.ss_price+"</h4></div>"
-			   +"<div class='v4'>구매후기 쓰기<input type='text' name='bd_title' ><br>"
-			   +"<textarea rows='10' cols='70' name='bd_contents'></textarea></div>"
-			   +"<div class='v5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple>"
-			   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'></div>"
-			   +"<div class='v6'><input type='submit' value='완료'>"
-			   +"<input type='button' value='취소'></div></form>"
-			   
-			
-			
+			   +"<h3 class='f3'>후원 후기 쓰기</h3>"
+			   +"<div class='f2'>상품이름"+data.ss_title+"<input type='button' id='butt' value='추천하기' onclick=\"good('"+ data.ss_mbid_w+ "')\"></div>"
+			   +"<div class='f4'>구매후기 제목: <input id='title' type='text' name='bd_title'  ><br>"
+			   +"<textarea id='cont' rows='10' cols='70' name='bd_contents' placeholder='고객님들의 소중한 말 한마디가 작가 회원님들의 힘이 됩니다.'></textarea></div>"
+			   +"<div class='f5'><input type='file' name='bd_imgSysName' id='bd_imgSysName' value='파일 첨부'  onchange='fileChk(this)' multiple>"
+			   +"<input type='hidden' id='fileCheck' value='0' name='fileCheck'></div><br>"
+			   +"<div class='f6'><input class='b3' type='submit' value='완료'>"
+			   +"<input id='back' class='b3' type='button' value='취소'></div></div></form>";
+		
 			
 				$('#total').css("display", "inline");
 			    $('#v1').css("display", "inline");		
 				$('#v1').html(vub);
-				
+				$("#back").click(function() {
+					$("#total").css("display", "none");
+					$("#v1").css("display", "none");
+					});
 		},
 
 		error : function(error) {
@@ -533,6 +564,25 @@ function Board(even) {
 			console.log(error);
 		}
 	});//end ajax
+}
+
+function boardCheck() {
+	var aa=$("#title");
+	var bb=$("#cont");
+	var cc=$("#fileCheck");
+	if(aa.val()==""){
+		alert("제목을 입력해 주세요!!");
+		$("#title").focus();
+		return false;
+	}else if(bb.val()==""){
+		alert("내용을 입력해 주세요!!");
+		$("#cont").focus();
+		return false;
+	}else if(cc.val()==0){
+		alert("파일을 첨부하세요");
+		$("#fileCheck").focus();
+		return false;
+	}
 }
 
 function good(data) {
