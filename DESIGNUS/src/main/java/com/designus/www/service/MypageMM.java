@@ -1121,7 +1121,7 @@ public class MypageMM {
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
 		int listCount = 3; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
+		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getSuwonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
 		String boardName = "fundingAcceptList";
@@ -1172,7 +1172,7 @@ public class MypageMM {
 		System.out.println("dddddddd=" + id);
 		// 전체 글의 개수
 		int listCount = 3; // 페이지당 글의 수
-		int pageCount = 2;// 그룹당 페이지 수
+		int pageCount = 5;// 그룹당 페이지 수
 		int maxNum = pDao.getSuonCountt(id);
 		System.out.println("(서비스클래스)제작의뢰  중간지점 2 전체 글의 개수: " + maxNum);
 		String boardName = "fundingOrderList";
@@ -1384,6 +1384,8 @@ public class MypageMM {
 		mav.setViewName("redirect:/revAuctionMyAcceptList");
 		return mav;
 	}
+
+	
 
 	/*
 	 * public String autdeadline() { // TODO Auto-generated method stub return null;

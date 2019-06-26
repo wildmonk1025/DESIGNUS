@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.designus.www.bean.AloneQuestion;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
+import com.designus.www.bean.Basket;
 import com.designus.www.bean.Board;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
@@ -372,6 +373,16 @@ public class MypageController {
 		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:중간확인 ="+rap.getRap_ptnum());
 		
 		mav = pm.stepfiveDele(rap);
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:마무리!!");
+		return mav;
+	}
+	@RequestMapping(value = "/basketcencle", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView basketcencle(Basket b ) {
+		mav = new ModelAndView();
+		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:시작");
+		System.out.println("dddddd:"+b.getRab_ranum());
+		
+		mav = pm.basketcencle(b);
 		System.out.println("[컨트롤러] 비공개 제작의뢰 삭제:마무리!!");
 		return mav;
 	}
