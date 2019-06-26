@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class Major {
 	String mj_mbid;
-	int mj_cgcode;
+	int mj_cg_code;
 	String mj_portf;
 	String mj_contents;
 	int mj_like;

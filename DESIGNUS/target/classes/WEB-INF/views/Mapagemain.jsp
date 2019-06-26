@@ -164,7 +164,7 @@ margin: 15px 0px 0px 0px;
 	float: left;
 }
     #point {
-	margin: 15px 10px 10px 10px;
+	margin: 40px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
 	text-align: left;

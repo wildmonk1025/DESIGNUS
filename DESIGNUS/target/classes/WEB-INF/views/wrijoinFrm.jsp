@@ -428,7 +428,7 @@ div {
 			$("#addr3").focus();
 			return false;
 		}
-		if (cate == 100) {
+		if (cate == "") {
 			alert("카테고리를 선택해주세요.")
 			return false;
 		}
