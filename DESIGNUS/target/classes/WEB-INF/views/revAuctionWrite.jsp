@@ -304,7 +304,7 @@ input[type="file"] {
 						<tr>
 							<th><div class="temp">카테고리</div></th>
 							<td>
-							<select name="au_cgcode" id="cgcode">
+							<select name="ra_cgcode" id="cgcode">
 								<option>선택해주세요</option>
 								<c:forEach var="cg" items="${cgList}">
 									<option value="${cg.cg_code}">${cg.cg_name}</option>
@@ -338,7 +338,7 @@ input[type="file"] {
 						style="margin-left: 10px; margin-top: 10px; width: 795px; height: 200px; resize: none;"
 						placeholder="&nbsp;작가에게 전달할 말을 적어주세요"></textarea>
 					<div id="middle_contents_btn1">
-						<input type="submit" value="제출하기">
+						<input id="submBtn" type="submit" value="제출하기">
 						<button type="button" onclick="goBack();">돌아가기</button>
 					</div>
 					<div id="lightbox_contents_shadow"></div>
@@ -587,6 +587,16 @@ input[type="file"] {
 			return true;
 		}
 	}
+   
+   	$("#submBtn").click(function() {
+
+   		if ($("#cgcode").val() == "선택해주세요"){
+			swal(" 카테고리를 선택해주세요 ");
+			return false;
+		}
+		
+	});
+   
 </script>
 
 </html>
