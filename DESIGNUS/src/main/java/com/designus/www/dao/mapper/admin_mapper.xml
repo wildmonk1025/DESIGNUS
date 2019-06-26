@@ -43,6 +43,9 @@
 	<select id="permitWriDetail" parameterType="String" resultType="membersearch">
 		SELECT * FROM MBS WHERE MB_ID = #{mb_id}
 	</select>
+	<select id="getmmInfo" parameterType="String" resultType="member">
+		SELECT * FROM MB WHERE MB_ID = #{mb_id}
+	</select>
 	
 	
 	<update id="getreAuthorfuse" parameterType="membersearch">

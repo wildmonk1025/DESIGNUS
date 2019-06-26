@@ -108,6 +108,13 @@ public class AuctionMM {
 				};
 			};
 		};
+
+		for(int i = 0 ; i < auList.size(); i++) {
+			boolean new_date4 = da.EndDateToBoolean(auList.get(i).getAu_date());
+			if(new_date4 == false) {
+				aDao.AuctionEndproduct(auList.get(i).getAu_num());
+			};
+		};
 		
 		for (int i = 0; i < auList.size(); i++) {
 			String new_date2 = da.changeDateToString(auList.get(i).getAu_date());
