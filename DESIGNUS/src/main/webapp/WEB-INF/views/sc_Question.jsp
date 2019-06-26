@@ -36,7 +36,7 @@
 #homeMain {
 	border: 1px solid gray;
 	margin-top: 50px;
-	height: 700px;
+	height: 730px;
 	width: 1400px;
 	border-radius: 10px;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
@@ -59,6 +59,7 @@
 #footercheck {
 	width: 1520px;
 	height: 200px;
+	margin-top: 40px;
 }
 
 .menuLink {
@@ -302,9 +303,9 @@ textarea {
 							<option>질문의 종류를 선택하세요.</option>
 							<option>거래</option>
 							<option>판매</option>
-							<option>이수원</option>
-							<option>정병남</option>
-							<option>조용환</option>
+							<option>후원</option>
+							<option>작가 전환</option>
+							<option>탈퇴하기</option>
 						</select>
 					</div>
 					<div id="title2">
@@ -317,15 +318,18 @@ textarea {
 					<div id="btnsession">
 
 						<input class="c1" type="file" name="aqi_imgSysName"
-							id="aqi_imgSysName"> <span class="c1" style="color: red; font-size:15px;">사진은
-							jpg,png 파일들만 등록할 수 있습니다.</span>
+							id="aqi_imgSysName"> <span class="c1"
+							style="color: red; font-size: 15px;">사진은 jpg,png 파일들만 등록할
+							수 있습니다.</span>
 						<button class="c1" id="apply">문의하기</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
+
 	<div id="footercheck">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include></div>
 
 

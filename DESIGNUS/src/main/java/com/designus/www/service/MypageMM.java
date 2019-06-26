@@ -213,7 +213,7 @@ public class MypageMM {
 
 		Major mj = new Major();
 		mj.setMj_mbid(id);
-		mj.setMj_cgcode(cate);
+		mj.setMj_cg_code(cate);
 		mj.setMj_contents(conten);
 		//Notify Start
 		Notify nf = new Notify();
@@ -245,7 +245,7 @@ public class MypageMM {
 		return mav;
 	}
 
-	public ModelAndView basketFrmrev(Integer pageNum ,String kind) {
+	public ModelAndView basketFrmrev(Integer pageNum, String kind) {
 
 		mav = new ModelAndView();
 		String view = null;
@@ -255,7 +255,7 @@ public class MypageMM {
 		System.out.println("id=" + id);
 		System.out.println("num=" + num);
 		rList = pDao.basketFrmRSelect(num, id);
-		mav.addObject("paREVging", getREVPaging(num,kind));// 현재 페이지 번호 ${paging}
+		mav.addObject("paREVging", getREVPaging(num, kind));// 현재 페이지 번호 ${paging}
 		Gson gsonObj = new Gson();
 		String jsonStr = gsonObj.toJson(rList);
 		mav.addObject("jsonStr", jsonStr);
@@ -271,7 +271,7 @@ public class MypageMM {
 		int maxNum = pDao.RevgetBoardCount(id); // 전체 글의 개수
 		int listCount = 6; // 페이지당 글의 수
 		int pageCount = 5;// 그룹당 페이지 수
-		String boardName ="basketFrmrev" ;// 개시판이 여러개 일때
+		String boardName = "basketFrmrev";// 개시판이 여러개 일때
 
 		com.designus.www.userClass.Paging paging = new com.designus.www.userClass.Paging(maxNum, pageNum, listCount,
 				pageCount, boardName, kind);
@@ -621,7 +621,7 @@ public class MypageMM {
 		String view = null;
 		int num = (pageNum == null) ? 1 : pageNum;
 		revList = pDao.revAuctionMyOrderListSelect(id, num);
-		
+
 		Gson gson = new Gson();
 		String str = gson.toJson(revList);
 		mav.addObject("revList", str);
@@ -664,7 +664,7 @@ public class MypageMM {
 	@Transactional
 	public ModelAndView requestby(revAuctionProgress rap) {
 		mav = new ModelAndView();
-	
+
 		boolean b = false;
 		System.out.println("(서비스클래스)제작의뢰 스텝1 요청 시작");
 		int point = mDao.ravmemberNpoint(rap);
@@ -683,7 +683,7 @@ public class MypageMM {
 			}
 		} else {
 			System.out.println("돈이없으면 여기로 포워딩");
-			
+
 			mav.addObject("aaaa", "bbbb");
 		}
 
@@ -834,8 +834,8 @@ public class MypageMM {
 		String title = multi.getParameter("bd_title");
 		String contents = multi.getParameter("bd_contents");
 		String aumbidw = multi.getParameter("rap_mbid_w");
-		String ra_title=multi.getParameter("ra_title");
-		System.out.println("ra_title :"+ra_title);
+		String ra_title = multi.getParameter("ra_title");
+		System.out.println("ra_title :" + ra_title);
 		int priceN = Integer.parseInt(multi.getParameter("rap_price"));
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 		com.designus.www.bean.Board b = new com.designus.www.bean.Board();
@@ -852,10 +852,10 @@ public class MypageMM {
 		nf.setNf_mbid_r(id);
 		nf.setNf_mbid_s(aumbidw);
 		nf.setNf_contents(ra_title);
-		System.out.println("ddd:"+nf.getNf_contents());
+		System.out.println("ddd:" + nf.getNf_contents());
 		nf.setNf_notify(nf.getNf_mbid_r() + " 님이 작품 " + nf.getNf_contents() + " 에 후기를 남겼습니다");
 		bDao.setNotifyboardyh(nf);
-		
+
 		// 알림 End
 		revAuctionProgress rap = new revAuctionProgress();
 		rap.setRap_ptnum(ptnum);
@@ -1228,29 +1228,30 @@ public class MypageMM {
 		System.out.println("(서비스클래스)후원진행내역 마무리!!!");
 		return json;
 	}
+
 	@Transactional
 	public ModelAndView funddeliupload(SponsorProgress sp) {
 		mav = new ModelAndView();
 		String view = null;
 		boolean b = false;
-		System.out.println("111111111111111:"+sp.getSsp_mbid_n());
+		System.out.println("111111111111111:" + sp.getSsp_mbid_n());
 		Integer point = mDao.funmemberNpoint(sp);
 		sp.setPointN(point);
-         if(sp.getSs_price()<sp.getPointN()) {
-        	 b=pDao.fuddememberupdate(sp);
-        	  if(b) {
-      		 boolean a = pDao.funddeliuploadupdate(sp);
-        		  if (a) {
- 					mav.addObject("msg", "1");
-				} else { 					
-					mav.addObject("msg", "2");  				
-					}
-        	  }
-         }else {
-        	 System.out.println("돈이없으면 여기로 포워딩");
- 			
- 			mav.addObject("aaaa", "bbbb");
-         }
+		if (sp.getSs_price() < sp.getPointN()) {
+			b = pDao.fuddememberupdate(sp);
+			if (b) {
+				boolean a = pDao.funddeliuploadupdate(sp);
+				if (a) {
+					mav.addObject("msg", "1");
+				} else {
+					mav.addObject("msg", "2");
+				}
+			}
+		} else {
+			System.out.println("돈이없으면 여기로 포워딩");
+
+			mav.addObject("aaaa", "bbbb");
+		}
 
 		view = "redirect:/fundingAcceptList";
 		mav.setViewName(view);

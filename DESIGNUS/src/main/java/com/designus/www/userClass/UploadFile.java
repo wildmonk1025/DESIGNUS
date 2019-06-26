@@ -234,7 +234,7 @@ public class UploadFile {
 		System.out.println("mb_profile=" + mb.getMb_profile());
 		// Major
 		System.out.println("mjid=" + mj.getMj_mbid());
-		System.out.println("mjcate=" + mj.getMj_cgcode());
+		System.out.println("mjcate=" + mj.getMj_cg_code());
 		System.out.println("mjport=" + mj.getMj_portf());
 		System.out.println("mjlike=" + mj.getMj_like());
 		/* System.out.println("mjcontents=" + mj.getMj_contents()); */
@@ -419,8 +419,7 @@ public class UploadFile {
 			String oriFileName = file.get(i).getOriginalFilename(); // a.txt
 			fMap.put("oriFileName", oriFileName);
 			// 4.시스템파일이름 생성 a.txt ==>112323242424.txt
-			String sysFileName = System.currentTimeMillis() + "."
-					+ oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
+			String sysFileName = System.currentTimeMillis() + "." + oriFileName.substring(oriFileName.lastIndexOf(".") + 1);
 			fMap.put("sysFileName", sysFileName);
 
 			// 5.메모리->실제 파일 업로드

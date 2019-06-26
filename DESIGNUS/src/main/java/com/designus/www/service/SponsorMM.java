@@ -153,7 +153,7 @@ public class SponsorMM {
 			mav.addObject("id", id);
 			mav.addObject("ss_mbid_w", sm.getSs_mbid_w());
 			mav.addObject("ss_title", sm.getSs_title());
-			mav.addObject("ssi_ssi_imgSysName", sm.getSsi_imgSysName());
+			mav.addObject("ssi_img", sm.getSsi_img());
 			mav.addObject("ss_contents", sm.getSs_contents());
 			mav.addObject("ss_price", sm.getSs_price());
 			mav.addObject("ss_goalqty", sm.getSs_goalqty());
