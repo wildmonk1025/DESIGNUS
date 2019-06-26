@@ -116,6 +116,7 @@ ul {
 tr{
 width: 300px;
 height: 60px;
+box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 .btn2{
 margin-top: 10px;
@@ -180,6 +181,7 @@ margin-top: 10px;
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 text-align: center;
 }
+
 </style>
 </head>
 
@@ -205,20 +207,28 @@ text-align: center;
 			<div id="writerjoincontents">
 				<table id="customers">
 					<tr  class="alt">
-						<td colspan="2">전문분야:${mj_cgcode}</td>
+						<td >전문분야:${mj_cgcode}</td>
 						<td>아이디 : ${mb_id}</td>
 					</tr>
 				
 					<tr >
 						<td colspan="1" rowspan="3">설명 :</td>
-						<td colspan="2" rowspan="3">${mj_contents}</td>
+						<td colspan="1" rowspan="3">${mj_contents}</td>
 					</tr>
 					</table>
 				
 					<table id="customers">
 					<tr class="alt">
 						<td>포트폴리오</td>
-						<td colspan="2">${mj_portf}</td>
+						<td >${mj_portf}</td>
+					</tr>
+					<tr >
+						<td>이름:${mbInfo.mb_name}</td>
+						<td >생년월일:${mbInfo.mb_birth}</td>
+					</tr>
+					<tr class="alt">
+						<td>주소:${mbInfo.mb_address}</td>
+						<td >경고횟수:${mbInfo.mb_ccnt}</td>
 					</tr>
 					
 				</table>
