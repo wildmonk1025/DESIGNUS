@@ -667,7 +667,7 @@ color: black;
 	for (var i = 0; i < apList.length; i++) {
 		if (apList[i].aup_step == 1) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-			     +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+			     +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 				 + "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 				 + "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -676,7 +676,7 @@ color: black;
 
 		} else if (apList[i].aup_step == 2) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -684,7 +684,7 @@ color: black;
 
 		} else if (apList[i].aup_step == 3) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apList[i].aup_track+"</div></div>"
-				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -693,7 +693,7 @@ color: black;
 
 		} else if (apList[i].aup_step == 4) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apList[i].aup_track+"</div></div>"
-		            +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/></a></div>"
+		            +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 			        + "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 			        + "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 			        + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"

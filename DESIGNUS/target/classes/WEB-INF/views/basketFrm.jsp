@@ -484,7 +484,8 @@ console.log(1,auc);
 var ss="";
 
 for(var i=0; i<auc.length;i++){
-	ss+="<div class='maucba'><div class='bimg'><img src='/auction/"+auc[i].aui_img+"' width='100%' height='100%'></div>"
+	ss+="<div class='maucba'><div class='bimg'>"
+	  +"<a href='auctionRead?au_num="+auc[i].ab_aunum+"'><img src='/auction/"+auc[i].aui_img+"' width='100%' height='100%'></a></div>"
 	  +"<div class='cnavfn'>상품 이름 : "+auc[i].au_title+"<br>"
 	  +"즉시 구매 : "+auc[i].au_inprice+"원</div>"
 	  +"<div class='btzz'><input class='b3' type='button' value='보러가기' onclick=\"location.href='auctionRead?au_num="+auc[i].ab_aunum+"'\">"
