@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -371,17 +372,9 @@ a:hover {
 					<tr>
 						<td text-align="center">${id}</td>
 						<td>전문분야 <select name="mj_cg_code" id="mj_cg_code">
-								<option value="100">귀금속 공예</option>
-								<option value="110">원목 공예</option>
-								<option value="120">종이 공예</option>
-								<option value="130">가죽 공예</option>
-								<option value="140">천 공예</option>
-								<option value="150">플라스틱 공예</option>
-								<option value="160">도자기 공예</option>
-								<option value="170">가공 식품</option>
-								<option value="180">휴대폰 액세서리</option>
-								<option value="190">페인팅,캐리커쳐,캘리</option>
-								<option value="200">유아 용품</option>
+								<c:forEach var="cg" items="${cgList}">
+									<option value="${cg.cg_code}">${cg.cg_name}</option>
+								</c:forEach>
 						</select>
 
 						</td>

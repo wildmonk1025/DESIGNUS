@@ -24,6 +24,7 @@ import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.AuctionTender;
 import com.designus.www.bean.Basket;
 import com.designus.www.bean.Board;
+import com.designus.www.bean.Category;
 import com.designus.www.bean.Major;
 import com.designus.www.bean.Member;
 import com.designus.www.bean.Notify;
@@ -31,6 +32,7 @@ import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.SponsorProgress;
 import com.designus.www.bean.SponsorTender;
 import com.designus.www.bean.revAuctionProgress;
+import com.designus.www.dao.IauctionDao;
 import com.designus.www.dao.IboardDao;
 import com.designus.www.dao.ImemberDao;
 import com.designus.www.dao.ImypageDao;
@@ -39,6 +41,8 @@ import com.google.gson.Gson;
 @Service
 public class MypageMM {
 	ModelAndView mav;
+	@Autowired
+	private IauctionDao aDao;
 	@Autowired
 	private ImypageDao pDao;
 	@Autowired
@@ -109,6 +113,9 @@ public class MypageMM {
 	public ModelAndView nortowri() {
 		mav = new ModelAndView();
 		String id = session.getAttribute("id").toString();
+		List<Category> cgList = null;
+		cgList = aDao.getcgCode();
+		mav.addObject("cgList",cgList);
 		mav.addObject("id", id);
 		mav.setViewName("memberTransform");
 		return mav;
@@ -208,12 +215,12 @@ public class MypageMM {
 		mj.setMj_mbid(id);
 		mj.setMj_cgcode(cate);
 		mj.setMj_contents(conten);
-
+		//Notify Start
 		Notify nf = new Notify();
 		nf.setNf_mbid_r(id);
 		nf.setNf_notify(id + " 님이 작가 전환신청을 하였습니다.");
 		pDao.setNotifyWriApply(nf);
-
+		//Notify End
 		boolean f = false;
 		if (check == 1) { // 첨부된 파일이 있다면....
 			// upload=new UploadFile(); //프로토타입
@@ -1347,7 +1354,7 @@ public class MypageMM {
 		nf.setNf_notify(id + " 작가님이 비공개제작의뢰 " + nf.getNf_contents() + " 를 수락 하셧습니다.");
 		bDao.setNotifyStepfive(nf);
 		// 알림 End
-
+		
 		if (a) {
 			mav.addObject("secc", 1);
 		} else {
