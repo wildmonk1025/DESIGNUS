@@ -1385,6 +1385,26 @@ public class MypageMM {
 		return mav;
 	}
 
+	public ModelAndView basketcencle(Basket b) {
+		mav=new ModelAndView();
+		String id=session.getAttribute("id").toString();
+		b.setRab_mbid(id);
+		boolean d=pDao.basketcencle(b);
+		
+	   mav.setViewName("redirect:/basketFrmrev");
+		return mav;
+	}
+
+	public ModelAndView aubasketcencle(Basket b) {
+		mav=new ModelAndView();
+		String id=session.getAttribute("id").toString();
+		b.setAb_mbid(id);;
+		boolean d=pDao.aubasketcencle(b);
+		
+	   mav.setViewName("redirect:/basketFrm");
+		return mav;
+	}
+
 	
 
 	/*
