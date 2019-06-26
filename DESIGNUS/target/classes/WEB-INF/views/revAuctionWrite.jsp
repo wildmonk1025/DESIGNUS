@@ -481,7 +481,7 @@ input[type="file"] {
     			var major='';
 
     			for(var i in data) {
-    			str="<div class='writerInfo_lv1'><img src='"+data[i].mb_profile+"' style='font-size:10px;'></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
+    			str="<div class='writerInfo_lv1'><img src='/member/"+data[i].mb_profile+"' width='100%' height='100%'/></div><div class='writerInfo_lv2'>"+data[i].mb_id+"</div>";
     			var n = data[i].mj_cgcode;
     			switch(n) {
     				case 100:
