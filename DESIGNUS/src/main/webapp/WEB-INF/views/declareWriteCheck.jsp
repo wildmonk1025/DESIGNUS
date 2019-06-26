@@ -15,7 +15,6 @@
 }
 
 #mainheader {
-	border: 1px solid #F5BCA9;
 	width: 1518px;
 	height: 170px;
 	position: fixed;
@@ -67,14 +66,12 @@ ul {
 	margin-left: 20px;
 	width: 820px;
 	height: 340px;
-	border: 1px solid grey;
 	float: left;
 }
 
 #declareinfo {
 	width: 820px;
 	height: 340px;
-	border: 1px solid red;
 }
 
 .btnArray {
@@ -104,9 +101,7 @@ ul {
 	height: 30px;
 }
 
-td {
-	border: 1px solid grey;
-}
+
 
 .lipont {
 	font-size: 20px;
@@ -115,13 +110,13 @@ td {
 #customers {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	width: 820px;
-	border-collapse: collapse;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #customers td, #customers th {
 	font-size: 1em;
-	border: 1px solid black;
 	padding: 3px 7px 2px 7px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #customers th {
@@ -130,6 +125,7 @@ td {
 	padding-top: 5px;
 	padding-bottom: 4px;
 	background-color: #A7C942;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	color: #ffffff;
 }
 

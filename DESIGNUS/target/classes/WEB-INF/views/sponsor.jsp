@@ -175,10 +175,10 @@ div {
 													+ "' width='100%' height='100%'>"
 													+ "</div>"
 													+ "<div id='sponpro'>"
-													+ "<div id='sponname' style='font-size:17px; font-weight: bolder; margin-bottom:3px; background-color:#f9e6e0'>"
+													+ "<div id='sponname' style='font-size:17px; font-weight: bolder; margin-bottom:3px;'>"
 													+ data[i].ss_title
 													+ "</div>"
-													+ "<div id='contents' style='font-size:15px;'>"
+													+ "<div id='contents' style='font-size:14px; margin-top:3px;'>"
 													+ "아이디 : "
 													+ data[i].ss_mbid_w
 													+ "<br>"
@@ -193,7 +193,7 @@ div {
 													+ "<br>"
 
 													+ "<div id='date'>"
-													+ "<hr style='border: 1px solid #edaea0;'>"
+													+ "<hr style='border: 0.5px solid #edaea0; font-size:15px; margin-top:4px; font-weight:border;'>"
 													+ data[i].ss_date
 													+ "</div></div></div>"
 													+ "<br>"

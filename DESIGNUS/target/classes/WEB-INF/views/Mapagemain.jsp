@@ -173,7 +173,8 @@ margin: 15px 0px 0px 0px;
 }
 
 #img {
-	margin:10px 10px 10px 10px;
+    margin-top: 20px;
+	margin:20px 10px 10px 10px;
 	width: 280px;
 	height: 290px;
 	text-align: left;
@@ -188,7 +189,14 @@ margin: 15px 0px 0px 0px;
 	text-align: left;
 	float: left;
 }
-
+#footer {
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	border: 1px solid #f0f0f0;
+	 float: left;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
