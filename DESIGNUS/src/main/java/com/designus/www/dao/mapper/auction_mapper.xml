@@ -24,12 +24,12 @@
 	  <![CDATA[
 	  	SELECT * FROM (
 		SELECT ROWNUM AS RN, AU_NUM, AU_MBID_W, AU_TITLE, AU_CGCODE, AU_QTY, AU_MINPRICE, AU_INPRICE,
-        AU_CONTENTS, AU_DATE, AUT_PRICE, AUI_IMG FROM (
+        AU_CONTENTS, AU_DATE, AU_KIND, AUT_PRICE, AUI_IMG FROM (
 		SELECT  a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty, a.au_minprice, a.au_inprice,
-		a.au_contents, a.au_date, b.aut_price, a.aui_img FROM AU_RECOMM_LIST a  LEFT OUTER JOIN 
+		a.au_contents, a.au_date, a.au_kind, b.aut_price, a.aui_img FROM AU_RECOMM_LIST a  LEFT OUTER JOIN 
 		(select aut_aunum, MAX(aut_price) as aut_price FROM aut where aut_kind != 'I' group by aut_aunum) b
 		ON  a.AU_NUM = b.AUT_AUNUM
-		where a.au_cgcode = ${cgcode} 
+		where a.au_cgcode = ${cgcode} AND a.au_kind != 'D'
         ORDER BY AU_NUM DESC
         ) WHERE ROWNUM<=${num1}*9 
         ) WHERE RN>=${num1}*9-8
@@ -37,7 +37,7 @@
 	</select>
 
 	<select id="getListCount"  resultType="Integer">
-	  SELECT COUNT(*) FROM AU WHERE AU_CGCODE = ${cgcode}
+	  SELECT COUNT(*) FROM AU WHERE AU_CGCODE = ${cgcode} AND AU_KIND != 'D'
 	</select>
 
 	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
@@ -239,6 +239,10 @@
 	
 	<update id="updateAuctionKind" parameterType="Integer">
 		UPDATE AU SET AU_KIND = 'C' WHERE AU_NUM = ${au_num}
+	</update>
+
+	<update id="AuctionEndproduct" parameterType="Integer">
+		UPDATE AU SET AU_KIND = 'D' WHERE AU_NUM = ${au_num}
 	</update>
 
 	<select id="getcgCode"  resultType="category">

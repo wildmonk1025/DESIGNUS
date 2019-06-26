@@ -102,6 +102,8 @@ public interface IauctionDao {
 
 	List<Category> getcgCode();
 
+	void AuctionEndproduct(@Param("au_num") int au_num);
+
 
 	
   

@@ -105,11 +105,12 @@ div {
 }
 
 #mainheader {
-	border: 1px solid black;
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
-	position: fixed;
-	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 .bt01 {
@@ -416,8 +417,8 @@ a:hover {
 #mypagemain {
 	width: 1518px;
 	height: 1200px;
-	margin-top: 50px;
-	border: 1px solid black;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	margin-top: 40px;
 }
 
 #2list {
@@ -532,11 +533,11 @@ color: red;
 	left: 900px;
 } 
 #footer {
-   border: 1px solid red;
-   width: 1518px;
-   height: 170px;
-   margin-top: 20px;
-   float: left;
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	border: 1px solid #f0f0f0;
 }
 .f1{
   border-bottom: 1px solid orange;
@@ -616,7 +617,8 @@ text-align: left;
         <div id="sixth">${RApaging}</div>
 		</div>
 		<div id="footer">
-		<jsp:include page="footer.jsp" />
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
 
