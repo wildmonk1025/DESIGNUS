@@ -636,4 +636,8 @@
  	select count(*) from ab
     where ab_mbid=#{id}
 	</select>
+	<delete id="basketcencle">
+		DELETE FROM RAB
+		WHERE RAB_RANUM=${rab_ranum} AND RAB_MBID=#{rab_mbid}
+	</delete>
 </mapper>
