@@ -489,7 +489,7 @@ for(var i=0; i<auc.length;i++){
 	  +"<div class='cnavfn'>상품 이름 : "+auc[i].au_title+"<br>"
 	  +"즉시 구매 : "+auc[i].au_inprice+"원</div>"
 	  +"<div class='btzz'><input class='b3' type='button' value='보러가기' onclick=\"location.href='auctionRead?au_num="+auc[i].ab_aunum+"'\">"
-	  +"<input class='b3' type='button' value='취소하기' onclick=\"location.href='basketcencle?au_num="+auc[i].ab_aunum+"'\">"	
+	  +"<input class='b3' type='button' value='취소하기' onclick=\"location.href='aubasketcencle?ab_aunum="+auc[i].ab_aunum+"'\">"	
       +"</div></div>"
 }
 

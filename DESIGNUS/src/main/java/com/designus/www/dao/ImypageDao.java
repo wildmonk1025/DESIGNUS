@@ -223,6 +223,8 @@ int RevgetBoardCount(String id);
 
 boolean basketcencle(Basket b);
 
+boolean aubasketcencle(Basket b);
+
 	/* int getSppagingCountt(String id); */
 
   
