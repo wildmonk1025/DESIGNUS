@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@ div {
 	width: 1520px;
 	height: 170px;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #homeMain {
@@ -27,20 +27,19 @@ div {
 }
 
 #footer {
-   border: 1px solid red;
-   width: 1518px;
-   height: 180px;
-   margin-top: 20px;
-   border: 1px solid #f0f0f0;
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	border: 1px solid #f0f0f0;
 }
 
 #List {
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	margin: 40px 20px 20px 20px;
 	width: 1480px;
-	height: 1425px;
-	width: 1480px;
+	height: auto;
 }
 
 #middle_img {
@@ -55,14 +54,14 @@ div {
 	padding: 5px;
 	width: 260px;
 	height: 35px;
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #middle_img_lv2 {
 	padding: 5px;
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	width: 260px;
 	height: 240px;
 	margin-top: 5px;
@@ -70,8 +69,8 @@ div {
 
 #middle_contents1 {
 	float: left;
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	width: 890px;
 	height: 300px;
 	margin: 13px 0px 0px 0px;
@@ -107,8 +106,8 @@ div {
 }
 
 #middle_Person {
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	width: 1440px;
 	height: 125px;
 	margin: 20px;
@@ -124,13 +123,16 @@ div {
 #middle_contents1_lv6 {
 	border: 1px soild orange;
 	width: 1480px;
-	height: 650px;
+	height: auto;
 	float: left;
+}
+#clear{
+	clear: both;
 }
 
 #middle_item {
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	display: inline-block;
 	width: 1440px;
 	height: 200px;
@@ -149,8 +151,8 @@ div {
 }
 
 #asubmitbtn {
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	margin: 13px 0px 0px 10px;
 	width: 18.5%;
 	height: 300px;
@@ -167,7 +169,7 @@ div {
 }
 
 #inbuyLB {
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	position: absolute;
 	width: 400px;
 	height: 230px;
@@ -205,7 +207,7 @@ div {
 }
 
 #tenderLB {
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	position: absolute;
 	width: 400px;
 	height: 230px;
@@ -250,8 +252,8 @@ div {
 	width: 33.2%;
 	height: 100%;
 	float: left;
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 .wListPhoto {
@@ -278,52 +280,58 @@ div {
 }
 
 .contentsImg {
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	float: left;
 	margin: 0px 20px 10px 20px;
 	width: 328px;
 	height: 250px;
 }
-.contentsImg:hover{
-	transform : scale(1.75);
+
+.contentsImg:hover {
+	transform: scale(1.75);
 }
 
 #contents {
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	float: left;
-	margin: 0px 20px 0px 20px;
-	width: 1438px;
-	height: 340px;
-}
-.img{
-	border-radius:10px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin: 0px 20px 20px 20px;
+	width: 1432px;
+	height: auto;
 }
 
+.img {
+	border-radius: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+}
 </style>
 </head>
 
 <body>
 	<div id="inbuyLB">
-		<form action="auctioninbuy" method="post" onsubmit="return checkk(${auInfo.au_qty -1})">
-			<input type="hidden" name="inbuyNum" value="${au_num}"> 
-			구입수량 :<input type="number" id="inbuyInput" name="inbuyQty" max="999"  min="1" 
-			placeholder="최대  999EA" maxlength="3" oninput="maxLengthCheck(this)"><br> <br> 
-			<input type="submit" class="btn11" value="구입"> 
-			<input type="reset" class="btn11" value="취소">
+		<form action="auctioninbuy" method="post"
+			onsubmit="return checkk(${auInfo.au_qty -1})">
+			<input type="hidden" name="inbuyNum" value="${au_num}"> 구입수량
+			:<input type="number" id="inbuyInput" name="inbuyQty" max="999"
+				min="1" placeholder="최대  999EA" maxlength="3"
+				oninput="maxLengthCheck(this)"><br> <br> <input
+				type="submit" class="btn11" value="구입"> <input type="reset"
+				class="btn11" value="취소">
 		</form>
 	</div>
 	<!--   -->
 	<div id="inbuyLB-shadow"></div>
 	<div id="tenderLB">
-	<h3>최소 입찰금액 : ${auInfo.au_minprice}</h3>
-		<form action="auctiontender" method="post" onsubmit="return check2(${point})">
-			<input type="hidden" name="tenderNum" value="${au_num}"> 
-			입찰가격 :<input type="number" id="tenderInput" name="tenderPrice" max="99999999"  
-			min="${auInfo.au_minprice}" maxlength="8" oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"> <br> <br> 
-			 <input type="submit" class="btn11" value="구입"> <input type="reset" class="btn11" value="취소">
+		<h3>최소 입찰금액 : ${auInfo.au_minprice}</h3>
+		<form action="auctiontender" method="post"
+			onsubmit="return check2(${point})">
+			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격
+			:<input type="number" id="tenderInput" name="tenderPrice"
+				max="99999999" min="${auInfo.au_minprice}" maxlength="8"
+				oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"> <br>
+			<br> <input type="submit" class="btn11" value="구입"> <input
+				type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<div id="tenderLB-shadow"></div>
@@ -344,9 +352,10 @@ div {
 					</c:forEach>
 				</div>
 				<div id="middle_img_lv2">
-				<img class="img" src="/auction/${auInfo.aui_imgSysName1}" width="100%" height="100%"/>
+					<img class="img" src="/auction/${auInfo.aui_imgSysName1}"
+						width="100%" height="100%" />
 				</div>
-				
+
 			</div>
 			<div id="middle_contents1">
 				<div id="middle_contents1_lv1">
@@ -363,8 +372,8 @@ div {
 				<div id="middle_contents1_lv3">
 					<table style="margin: 10px 0px 0px 10px; line-height: 200%">
 						<tr>
-							<th>작성자 : </th>
-							<td> ${auInfo.au_mbid_w}님</td>
+							<th>작성자 :</th>
+							<td>${auInfo.au_mbid_w}님</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -375,11 +384,14 @@ div {
 						<tr>
 							<th>즉시구매가격 :</th>
 							<td colspan="2"><div id="tender_result">
-							<fmt:formatNumber value="${auInfo.au_inprice}" pattern="#,###"/>원
+									<fmt:formatNumber value="${auInfo.au_inprice}" pattern="#,###" />
+									원
 								</div></td>
 						</tr>
 					</table>
-					<div id="auctiontime"><%-- 남은시간 : ${auInfo.au_date} --%></div>
+					<div id="auctiontime">
+						<%-- 남은시간 : ${auInfo.au_date} --%>
+					</div>
 				</div>
 
 			</div>
@@ -406,7 +418,8 @@ div {
 								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px"><fmt:formatNumber value="${at.aut_price}" pattern="#,###"/></td>
+								<td style="width: 100px"><fmt:formatNumber
+										value="${at.aut_price}" pattern="#,###" /></td>
 								<td style="width: 30px">원</td>
 							</tr>
 						</table>
@@ -420,8 +433,9 @@ div {
 						<div class="wList"
 							onclick="location.href='auctionRead?au_num=${auw.au_num}'">
 							<div class="wListPhoto">
-							<img class="img" src="/auction/${auw.aui_img}" width="100%" height="100%"/>
-								
+								<img class="img" src="/auction/${auw.aui_img}" width="100%"
+									height="100%" />
+
 							</div>
 							<div class="wListTitle">${auw.au_title}</div>
 							<div class="wListContents">
@@ -434,12 +448,14 @@ div {
 									</tr>
 									<tr style="height: 32.5px">
 										<th>경매시작가</th>
-										<td style="text-align: right;"><fmt:formatNumber value="${auw.au_minprice}" pattern="#,###"/></td>
+										<td style="text-align: right;"><fmt:formatNumber
+												value="${auw.au_minprice}" pattern="#,###" /></td>
 										<td>원</td>
 									</tr>
 									<tr style="height: 32.5px">
 										<th>즉시구매가</th>
-										<td style="text-align: right;"><fmt:formatNumber value="${auw.au_inprice}" pattern="#,###"/></td>
+										<td style="text-align: right;"><fmt:formatNumber
+												value="${auw.au_inprice}" pattern="#,###" /></td>
 										<td>원</td>
 									</tr>
 									<tr style="height: 32.5px">
@@ -455,27 +471,33 @@ div {
 			<div id="middle_contents1_lv6">
 				<h2>작품설명</h2>
 				<div class="contentsImg">
-				<img class="img" src="/auction/${auInfo.aui_imgSysName1}" width="100%" height="100%"/>
+					<img class="img" src="/auction/${auInfo.aui_imgSysName1}"
+						width="100%" height="100%" />
 				</div>
 				<div class="contentsImg">
-				<img class="img" src="/auction/${auInfo.aui_imgSysName2}" width="100%" height="100%"/>
+					<img class="img" src="/auction/${auInfo.aui_imgSysName2}"
+						width="100%" height="100%" />
 				</div>
 				<div class="contentsImg">
-				<img class="img" src="/auction/${auInfo.aui_imgSysName3}" width="100%" height="100%"/>
+					<img class="img" src="/auction/${auInfo.aui_imgSysName3}"
+						width="100%" height="100%" />
 				</div>
 				<div class="contentsImg">
-				<img class="img" src="/auction/${auInfo.aui_imgSysName4}" width="100%" height="100%"/>
+					<img class="img" src="/auction/${auInfo.aui_imgSysName4}"
+						width="100%" height="100%" />
 				</div>
 				<div id="contents">${auInfo.au_contents }</div>
 			</div>
-
+			<div id="clear">
+			</div>
 		</div>
-		</div>
 
+	</div>
 		<div id="footer">
-      <hr style="width:100%; border: 2px solid coral; align: center;">   
-         <jsp:include page="footer.jsp"></jsp:include>
-      </div>
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
+
 
 
 </body>

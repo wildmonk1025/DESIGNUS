@@ -410,9 +410,9 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 			<div id="middle_contents4_lv3">
 				<c:set var="contents" value="${raInfo.ra_contents}"/>
 				<c:if test="${contents ne null}">
-				<p>${raInfo.ra_contents}</p></c:if>
+				<p style="text-align:center">${raInfo.ra_contents}</p></c:if>
 				<c:if test="${contents eq null}">
-				<p><br>추가 요청내역이 없습니다.</p></c:if>
+				<p style="text-align:center"><br>추가 요청내역이 없습니다.</p></c:if>
 			</div>
 		</div>
 		<div id="footer">
