@@ -8,6 +8,15 @@
 		VALUES(RA_SEQ.NEXTVAL,#{ra_mbid},#{ra_title},${ra_cgcode},#{ra_image},#{ra_file},#{ra_oc},DEFAULT,#{ra_contents})
 	</insert> -->
 	
+	<select id="selectRevAuction" resultType="revauction">
+			SELECT * FROM RA
+	</select>
+	
+	<update id="changeRaocColumn" parameterType="int">
+		UPDATE RA SET RA_OC='N' WHERE RA_NUM=${ra_num}
+	</update>
+	
+	
 	<!-- useGeneratedKeys = "true"(자동증가값을 얻을때) -->
 	<!-- KeyProperty = "b_num"(필드명) : MySQL은 명시해줘야함. -->
 	<insert id="revAuctionSubmitInsert" parameterType="revauction" useGeneratedKeys="true" keyProperty="ra_num">
