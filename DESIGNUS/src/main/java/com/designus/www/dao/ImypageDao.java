@@ -185,7 +185,7 @@ boolean deadlineupdate(SponsorProgress sponsorProgress);
 SponsorProgress fundapplySelect(SponsorProgress sp);
 boolean funddeliuploadupdate(SponsorProgress sp);
 
-List<SponsorProgress> funddeliinfoSelect(SponsorProgress sp);
+SponsorProgress funddeliinfoSelect(SponsorProgress sp);
 
 SponsorProgress funddelinumSelect(SponsorProgress sp);
 

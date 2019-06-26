@@ -1261,8 +1261,9 @@ public class MypageMM {
 	public String funddeliinfo(SponsorProgress sp) {
 		String json = null;
 		List<SponsorProgress> spList = null;
-		spList = pDao.funddeliinfoSelect(sp);
-		json = new Gson().toJson(spList);
+		sp = pDao.funddeliinfoSelect(sp);
+		System.out.println("dma.....:"+sp.getSsp_mbid_n());
+		json = new Gson().toJson(sp);
 		return json;
 	}
 

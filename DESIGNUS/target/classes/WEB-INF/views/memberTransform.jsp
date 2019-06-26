@@ -118,7 +118,6 @@
 }
 
 #img {
-	border: 1px solid orange;
 	position: absolute;
 	width: 300px;
 	height: 310px;
