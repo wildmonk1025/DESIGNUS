@@ -41,8 +41,12 @@
 	</select>
 
 	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
+	   <![CDATA[
+	   SELECT * FROM (
 	   SELECT * FROM AU WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%')
-	   OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%') ORDER BY AU_NUM DESC
+	   OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%') AND AU_KIND != 'D' ORDER BY AU_NUM DESC
+		) WHERE AU_KIND != 'D'
+		]]>
 	</select>
 
 	<select id="getAuctionReadSelect" parameterType="auction" resultType="auction">
