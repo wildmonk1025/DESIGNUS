@@ -67,7 +67,6 @@ div {
 }
 
 #footercheck {
-	border: 1px solid black;
 	width: 1520px;
 	height: 200px;
 }
@@ -139,6 +138,7 @@ div {
 	</div>
 
 	<div id="footercheck">
+	<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include></div>
 
 </body>
