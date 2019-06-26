@@ -484,7 +484,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
  	  +"<div class='cnavfn'>상품 번호 : "+revb[i].rab_ranum+"<br>"
  	  +"상품 이름 : "+revb[i].ra_title+"</div>"
  	  +"<div class='btzz'><input class='b3' type='button' value='보러가기' onclick=\"location.href='revauctionread?ra_num="+revb[i].rab_ranum+"'\">"
- 	  +"<input class='b3' type='button' value='취소하기' onclick=\"location.href='basketcencle?au_num="+revb[i].rab_ranum+"'\">"	
+ 	  +"<input class='b3' type='button' value='취소하기' onclick=\"location.href='basketcencle?ra_num="+revb[i].rab_ranum+"'\">"	
        +"</div></div>"
  }
 

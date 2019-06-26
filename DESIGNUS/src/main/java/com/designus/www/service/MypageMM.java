@@ -1385,6 +1385,8 @@ public class MypageMM {
 		return mav;
 	}
 
+	
+
 	/*
 	 * public String autdeadline() { // TODO Auto-generated method stub return null;
 	 * }
