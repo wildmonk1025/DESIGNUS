@@ -129,7 +129,6 @@ select {
 
 #rp_mbid_a {
 	font-size: 20px;
-	text-align-last: right;
 	width: 200px;
 	height: 40px;
 	margin: 5px;
@@ -138,7 +137,6 @@ select {
 
 #rp_title {
 	font-size: 20px;
-	text-align-last: right;
 	width: 1130px;
 	height: 40px;
 	margin: 5px;

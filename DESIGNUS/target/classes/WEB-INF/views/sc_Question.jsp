@@ -93,7 +93,6 @@ select {
 
 #qr_title {
 	font-size: 20px;
-	text-align-last: right;
 	width: 1130px;
 	height: 40px;
 	margin: 5px;
