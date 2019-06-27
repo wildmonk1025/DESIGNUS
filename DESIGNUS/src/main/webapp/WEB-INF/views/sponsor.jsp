@@ -82,7 +82,7 @@ div {
 	left: 30px;
 	width: 1300px;
 	height: 40px;
-	font-size: 20px;
+	font-size: 25px;
 	color: orange;
 }
 

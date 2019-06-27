@@ -66,10 +66,10 @@ div {
 
 #title {
 	left: 50px;
-	width: 1000px;
-	margin-top: 30px;
+	width: 1200px;
+	margin-top: 50px;
 	height: 60px;
-	font-size: 20px;
+	font-size: 25px;
 	color: orange;
 }
 
