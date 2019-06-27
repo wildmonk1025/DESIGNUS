@@ -211,7 +211,7 @@ div {
 						<th>전공</th>
 						<td>
 							<div id="subcategory" align="center" class="menu-item">
-								<select id="mj_cg_code" name="mj_cg_code" class="memberN">
+								<select id="mj_cgcode" name="mj_cgcode" class="memberN">
 								</select>
 							</div>
 
@@ -380,7 +380,7 @@ div {
 		var mbbirth = $("#mb_birth").val();
 		var chk1 = $("#chk2").val();
 		var chk2 = $("#chk3").val();
-		var cate = $("#mj_cg_code").val();
+		var cate = $("#mj_cgcode").val();
 		var email = $("#mb_email").val()
 		var mbaddr = $("#addr1").val();
 		var mbaddr2 = $("#addr2").val();

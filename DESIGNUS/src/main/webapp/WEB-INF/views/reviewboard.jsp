@@ -14,15 +14,15 @@
 	height: 170px;
 	position: relative;
 }
+
 #mainheader {
 	border: 1px solid #F5BCA9;
 	width: 1518px;
 	height: 170px;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
-
 
 #homeMain {
 	width: 1520px;
@@ -89,19 +89,6 @@
 		rgb(237, 237, 237) 100%);
 }
 
-#coklist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
-
-#bestlist {
-	width: 1000px;
-	height: 150px;
-	float: left;
-	display: block;
-}
 
 #footercheck {
 	width: 1520px;
@@ -238,6 +225,7 @@ table tr:nth-child(2n+1) {
 	background-color: #edf7f8;
 }
 
+
 @media screen and (max-width: 700px) {
 	table, tr, td {
 		display: block;
@@ -256,7 +244,7 @@ table tr:nth-child(2n+1) {
 		position: relative;
 		text-align: left;
 	}
-	td:not (:first-child ):before {
+	td:not (:first-child):before {
 		color: #91ced4;
 		content: '';
 		display: block;
@@ -308,7 +296,7 @@ table tr:nth-child(2n+1) {
 			transform: translateY(0);
 			width: 100%;
 		}
-		td:not (:first-child) {
+		td:not (:first-child ) {
 			margin: 0;
 			padding: 5px 1em;
 			width: 100%;
@@ -349,12 +337,24 @@ table tr:nth-child(2n+1) {
 		}
 	}
 }
-#dd{
-margin-top:50px;
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-text-align: center;
-color:white;
-}
+
+/* #dd {
+	margin-top: 10px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	text-align: center;
+	color: white;
+} */
+
+#title{
+margin-top:5px;
+box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	text-align: center;
+	color: white;
+	font-size:30px;
+width:1200px;
+padding-top:10px;
+height:50px;}
+
 </style>
 <title>Home</title>
 
@@ -364,18 +364,19 @@ color:white;
 
 
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 	</div>
 
-	<div id="homeMain"><br/><br/>
-	<h1 id="dd"  style="background-color:#F6D8CE;">이용후기
-				게시판</h1>
-	
+	<div id="homeMain">
 		<br />
 		<br />
-		<br />
+		<div id="title" style="background-color: #F6D8CE; border-radius:5px;">
+		<span id="dd" >이용후기 게시판</span>
+		</div>
+
+		<br /> <br /> <br />
 		<div id="freeboard2">
 			<div id="lightbox-shadow">
 				<div id="lightbox">
@@ -423,6 +424,7 @@ color:white;
 
 	</div>
 	<div id="footercheck">
+	<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 
@@ -552,10 +554,10 @@ function articleView(num1){
 
 			if (c == b || c == 'ADMIN') {
 				swal("해당글이 삭제 되었습니다.");
-				setTimeout(function(){
-				window.location.reload();
-				location.href = 'reviewboard';
-				},1000);
+				setTimeout(function() {
+					window.location.reload();
+					location.href = 'reviewboard';
+				}, 1000);
 			} else {
 
 				swal("글삭제 권한이 없습니다.");
@@ -570,7 +572,7 @@ function articleView(num1){
 				},
 				success : function(data) {
 					console.log("성공");
-					
+
 				},
 				error : function(error) {
 
@@ -581,7 +583,5 @@ function articleView(num1){
 		});
 
 	}
-
-
 </script>
 </html>
