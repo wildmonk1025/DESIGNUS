@@ -259,14 +259,18 @@ margin: 15px 0px 0px 0px;
    var grade= "${grade}";
    var id="${id}";
    console.log(grade);
-  if(grade=="N" || grade=="X"){
+  if(grade=="N"){
 	  $("#m2").hide();
 	  $("#m4").hide();
 	  $("#m6").hide();
+  }else if(grade=="X"){
+	  $("#m2").hide();
+	  $("#m4").hide();
+	  $("#m6").hide();
+	  $("#m10").hide();
   }else{
 	  $("#m10").hide();
   }
-  
   $(document).ready(function() {
 	 	   var aa="";
 	 	   var bb=""

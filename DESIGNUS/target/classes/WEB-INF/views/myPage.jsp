@@ -213,7 +213,7 @@ table tr:nth-child(2n+1) {
 	background-color : white;
 	border: 2px solid coral;
 	transition-duration: 1s;
-	height: 250px;
+	height: 300px;
 }
 
 #spon {
@@ -393,7 +393,7 @@ text-align: center;
 }
 </style>
 <script type="text/javascript">
-/* $(document).ready(function(){
+ $(document).ready(function(){
 	var toMap=${toMap};
 	console.log(77,toMap)
 
@@ -406,11 +406,10 @@ text-align: center;
 		    	alert('성공??');
 		    }, 
 		    error:function(error){
-		    	alert('정상적인 추천이 실패했습니다.');
 		    	console.log(error);
 		    }
 		 });//end ajax
-}); */
+});
 // contentType:"application/json; charset=utf-8;",
 </script>
 </head>
@@ -445,6 +444,12 @@ text-align: center;
 	</div>
 </body>
 <script type="text/javascript">
+var w="${zz}";
+console.log(w);
+if(w=="aaa"){
+	alert("작가 전환이 완료 되었습니다. 관리자 승인 후 작가 로그인이 가능합니다.");
+}
+
 var grade='${grade}';
 if(grade != 'W'){
 	$('#renking').hide();
@@ -502,14 +507,14 @@ str+="<div class='auctionheader'><h3>참여중인 출품경매</h3></div>"
 	   if(toMap[i].au_date>today){
     	   str+="<tr><td>"+toMap[i].au_title+"</td>"
     	   +"<td>"+toMap[i].aut_price+"</td>"
-    	   +"<td>"+ww[i]+"</td>"
+    	   +"<td>"+maxList[i]+"</td>"
     	   +"<td><a href='auctionRead?au_num="+toMap[i].aut_aunum+"'>移動</a></td>"
     	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
     	   +"<td>"+toMap[i].au_date+"</td></tr>";
 	   }else if(toMap[i].au_date<=today){
 		   str+="<tr><td>"+toMap[i].au_title+"</td>"
     	   +"<td>"+toMap[i].aut_price+"</td>"
-    	   +"<td>"+ww[i]+"</td>"
+    	   +"<td>"+maxList[i]+"</td>"
     	   +"<td><a href='auctionRead?au_num="+toMap[i].aut_aunum+"'>移動</a></td>"
     	   +"<td><a href='AuctionGiveUp?aut_aunum="+toMap[i].aut_aunum+"&kind=Aut'>抛棄</a></td>"
     	   +"<td>마감</td></tr>";

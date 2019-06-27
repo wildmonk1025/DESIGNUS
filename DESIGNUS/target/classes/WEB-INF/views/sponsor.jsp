@@ -82,7 +82,7 @@ div {
 	left: 30px;
 	width: 1300px;
 	height: 40px;
-	font-size: 20px;
+	font-size: 25px;
 	color: orange;
 }
 
@@ -128,6 +128,13 @@ div {
 	height: 140px;
 	float: left;
 	margin-top: 15px;
+}
+
+#sponname {
+	width: 220px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 </style>
 <title>Sponsor</title>
