@@ -347,6 +347,7 @@
 	<select id="notismypageSelect" parameterType="String"
 		resultType="notify">
 		SELECT * FROM NF WHERE NF_MBID_R=#{id}
+		ORDER BY NF_NUM DESC
 	</select>
 	<select id="getAuTrackId" parameterType="auctionprogress"
 		resultType="String">

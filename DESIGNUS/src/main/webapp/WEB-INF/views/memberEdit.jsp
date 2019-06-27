@@ -458,13 +458,7 @@ a:hover {
 						<tr>
 							<td>이메일</td>
 							<td><input type="text" name="mb_email" id="mb_email"
-								value="${mb.mb_email}" /> @ <input type="text" /> &nbsp;&nbsp;
-								<select>
-									<option>직접입력</option>
-									<option>naver.com</option>
-									<option>daum.net</option>
-									<option>nate.com</option>
-							</select></td>
+								value="${mb.mb_email}" /></td>
 						</tr>
 
 					</table>
