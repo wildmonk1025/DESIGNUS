@@ -193,7 +193,7 @@ div {
 													+ "<br>"
 
 													+ "<div id='date'>"
-													+ "<hr style='border: 0.5px solid #edaea0; font-size:15px; margin-top:4px; font-weight:border;'>"
+													+ "<hr style='border: 0.5px solid #edaea0; font-size:16px; margin-top:4px; font-weight:border;'>"
 													+ data[i].ss_date
 													+ "</div></div></div>"
 													+ "<br>"
