@@ -362,10 +362,10 @@ box-shadow: inset 0px 1px 6px -3px rgba(0,0,0,0.62);
 				<div id="middle_title">${raInfo.ra_title}</div>
 				<div id="middle_contents1_lv2">
 					<div id="peek1">
-						<input type="submit" value="꿍누르기♥" class="subtn">
+						<input type="submit" value="꿍♥" class="subtn">
 					</div>
 					<div id="peek2">
-						<input type="submit" value="꿍누르기♡" class="subtn">
+						<input type="submit" value="꿍♡" class="subtn">
 					</div>
 				</div>
 			</div>
