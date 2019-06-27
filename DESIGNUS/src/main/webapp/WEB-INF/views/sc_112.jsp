@@ -356,7 +356,8 @@ textarea {
 <script>
 
 $("#apply").click(function() {
-
+	var MyID = '<%=(String) session.getAttribute("id")%>';
+	
 	if ($("#rp_locate").val() == '신고 유형을 선택하세요.') {
 		swal(" 신고유형을 선택해 주세요 ");
 		return false;
@@ -367,6 +368,14 @@ $("#apply").click(function() {
 	}
 	if (!$("#rp_mbid_a").val()) {
 		swal(" 신고대상 아이디를 입력해 주세요 ");
+		return false;
+	}
+	if ($("#rp_mbid_a").val() == 'ADMIN') {
+		swal(" 신고 대상자가 아닙니다. ");
+		return false;
+	}
+	if ($("#rp_mbid_a").val() == MyID ) {
+		swal(" 자신을 신고할수 없습니다. ");
 		return false;
 	}
 	if (!$("#rp_title").val()) {

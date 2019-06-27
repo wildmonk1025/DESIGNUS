@@ -43,7 +43,6 @@ public class AjaxAuctionController {
 		
 		int number = ram.revbasketSelect(num);
 		
-		
 		return number;
 	}
 

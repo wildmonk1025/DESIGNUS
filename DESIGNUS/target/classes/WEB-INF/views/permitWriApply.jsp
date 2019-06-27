@@ -154,8 +154,8 @@ ul {
 								test = "임시";
 								result += "<tr class='contents'><td>" + test + "</td><td>"
 								+ data[i].mb_id + "</td><td>"
-								+ data[i].mj_cgcode + "</td><td>"
-								+ data[i].mj_portf + "</td><td>"
+								+ data[i].mj_cgcode + "</td><td><a href='mjfiledownload?mj_portf="+data[i].mj_portf+"'>"
+								+ data[i].mj_portf + "</a></td><td>"
 								+ data[i].mj_contents + "</td><td>"
 								+ "<a href='permitWriDetail?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
 								break;
@@ -163,8 +163,8 @@ ul {
 								test = "전환";
 								result += "<tr class='contents' style='background-color:#F8E0EC;'><td>" + test + "</td><td>"
 								+ data[i].mb_id + "</td><td>"
-								+ data[i].mj_cgcode + "</td><td>"
-								+ data[i].mj_portf + "</td><td>"
+								+ data[i].mj_cgcode + "</td><td><a href='mjfiledownload?mj_portf="+data[i].mj_portf+"'>"
+								+ data[i].mj_portf + "</a></td><td>"
 								+ data[i].mj_contents + "</td><td>"
 								+ "<a href='permitWriDetail?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
 								break;

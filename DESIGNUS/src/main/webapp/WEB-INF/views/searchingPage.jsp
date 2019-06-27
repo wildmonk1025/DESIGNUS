@@ -28,6 +28,7 @@ div {
 #homeMain {
 	width: 1520px;
 	height: 600px;
+	margin-top: 25px;
 }
 
 .btn1 {

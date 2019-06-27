@@ -1,9 +1,15 @@
 package com.designus.www;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.designus.www.bean.Member;
@@ -180,4 +186,18 @@ public class AdminController {
 		mav = adm.categorychange(cg_name,cg_cname);
 		return mav;
 	}//카테고리변경
+	
+	@RequestMapping(value = "/mjfiledownload", method = RequestMethod.GET)
+	public ModelAndView download(@RequestParam Map<String,Object> params,HttpServletRequest request,HttpServletResponse response)
+	throws Exception{
+		System.out.println("mj_portf="+params.get("mj_portf"));
+		//params.put("root",request.getSession().getServletContext().getRealPath("/")); //다운로드할 파일이 있는 경로를 설정
+		params.put("root","C:/test/file/board/"); //다운로드할 파일이 있는 경로를 설정
+		
+		params.put("response", response);
+		mav = adm.mjFileDownload(params);
+		
+		return mav;
+	}
+	
 }
