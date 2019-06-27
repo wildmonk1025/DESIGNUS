@@ -68,6 +68,7 @@ public class CommonMM {
 			String new_Audate = da.changeDateToString(auList.get(i).getAu_date());
 			auList.get(i).setAu_date(new_Audate);
 		}
+		
 		List<RevAuction> raList = rDao.getRevAuctionListSelect2(word);
 		for(int i = 0 ; i < raList.size(); i++) {
 			String new_Radate = da.changeDateToString(raList.get(i).getRa_date());

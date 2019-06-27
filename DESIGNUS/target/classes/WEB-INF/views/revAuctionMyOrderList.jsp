@@ -11,11 +11,6 @@
 .imgg{
   height: 180px;
 }
-#one {
-	width: 100%;
-	height: 100%;
-}
-
 div {
 	margin: auto;
 }
@@ -113,107 +108,7 @@ div {
 	height: 170px;
 	z-index: 1000;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
-}
-
-.bt01 {
-	border: none;
-	float: right;
-	margin-right: 30px;
-	width: 100px;
-	height: 80px;
-}
-
-#lightbox {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
-}
-
-#lightbox1 {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow1 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
-}
-
-#lightbox2 {
-	border: 1px solid orange;
-	position: absolute;
-	top: 200px;
-	left: 600px;
-	width: 800px;
-	height: 700px;
-	margin: auto;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-	background-color: orange;
-	text-align: center;
-}
-
-#lightbox-shadow2 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
-}
-
-#lightbox-shadow3 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 8000px;
-	height: 8000px;
-	background: #000;
-	opacity: 1;
-	z-index: 1000;
-	display: none;
+	position: fixed;
 }
 
 #point {
@@ -221,16 +116,6 @@ div {
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
-	text-align: left;
-	font-size: 20px;
-	float: left;
-}
-
-#img {
-	margin-top: 20px;
-	margin: 20px 10px 10px 10px;
-	width: 280px;
-	height: 290px;
 	text-align: left;
 	font-size: 20px;
 	float: left;
@@ -255,21 +140,6 @@ a:hover {
 	text-decoration: none;
 	color: #646464;
 }
-
-#header {
-	padding: 3px;
-	width: 1510px;
-	height: 100px;
-	float: left;
-}
-
-#logo {
-	padding: 5px;
-	width: 270px;
-	height: 80px;
-	float: left;
-}
-
 #loginwriter {
 	padding: 3px;
 	padding-top: 20px;
@@ -293,99 +163,12 @@ a:hover {
 	height: 50px
 }
 
-#submenu {
-	margin-left: 100px;
-	width: 150px;
-	float: left;
-	height: 50px;
-	text-align: center;
-	font-size: 18px;
-}
-
 #msg {
 	width: 50px;
 	height: 50px;
 	margin-left: 10px;
 	float: left;
 }
-
-#mypageimg {
-	float: left;
-	width: 50px;
-	height: 50px;
-	margin-left: 5px;
-}
-
-#loginmsg {
-	float: left;
-	width: 130px;
-	height: 50px;
-	margin-left: 10px;
-}
-
-#setp {
-	border: 1px solid orange;
-	margin: 0px 10px 10px 10px;
-	width: 1200px;
-	height: 840px;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-	overflow: auto;
-}
-
-#setpT {
-	width: 1200px;
-	margin: 0px 10px 10px 10px;
-	height: 900px;
-	float: left;
-	border: none;
-}
-
-#l1 {
-	position: absolute;
-	width: 400px;
-	height: 330px;
-	border-radius: 100px;
-	z-index: 1002;
-	padding-top: 70px;
-	text-align: center;
-	background-color: #FFE08C;
-	display: none;
-	font-size: 22px;
-	top: 500px;
-	left: 900px;
-}
-
-#l3 {
-	position: absolute;
-	width: 600px;
-	height: 530px;
-	border-radius: 100px;
-	z-index: 1002;
-	padding-top: 70px;
-	text-align: center;
-	background-color: #FFE08C;
-	display: none;
-	font-size: 22px;
-	top: 500px;
-	left: 900px;
-}
-#w3 {
-	position: absolute;
-	width: 600px;
-	height: 530px;
-	border-radius: 100px;
-	z-index: 1002;
-	padding-top: 70px;
-	text-align: center;
-	background-color: #FFE08C;
-	display: none;
-	font-size: 22px;
-	top: 500px;
-	left: 900px;
-}
-
 #q1 {
     border : 3px solid orange;
 	position: absolute;
@@ -412,30 +195,11 @@ a:hover {
 	opacity: 0.85;
 	display: none;
 }
-
-.t1 {
-	top: 100;
-	left: -200;
-}
-
 #mypagemain {
 	width: 1518px;
 	height: 1200px;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	margin-top: 40px;
-}
-
-#2list {
-	width: 1000px;
-	height: 250px;
-	float: left;
-}
-
-#sangimg {
-	margin: 10px;
-	height: 150px;
-	width: 150px;
-	float: left;
 }
 #sixth{
  position: absolute;
@@ -615,6 +379,7 @@ textarea{
 	height: 180px;
 	margin-top: 20px;
 	border: 1px solid #f0f0f0;
+	 float: left;
 }
 .f50{
  border-bottom: 1px solid orange;
@@ -742,7 +507,7 @@ if(aa=="bbbb"){
         <div id="sixth">${ROpaging}</div>
 		</div>
 		<div id="footer">
-			<hr style="width: 100%; border: 2px solid coral; align: center;">
+<!-- 			<hr style="width: 100%; border: 2px solid coral; align: center;"> -->
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
@@ -1065,23 +830,7 @@ function fileChk(elem) {
 		console.log("Notempty")
 		$('#fileCheck').val(1);//파일 첨부 했음
 	}
-}//end fileChk
-	/* $("#action").click(function() {
-		$('#lightbox-shadow').css("display", "inline")
-		$('#lightbox').css("display", "inline")
-	});
-	$("#cancel").click(function() {
-		$('#lightbox-shadow1').css("display", "inline")
-		$('#lightbox1').css("display", "inline")
-	});
-	$("#service").click(function() {
-		$('#lightbox-shadow2').css("display", "inline")
-		$('#lightbox2').css("display", "inline")
-	});
-	$("#review").click(function() {
-		$('#lightbox-shadow3').css("display", "inline")
-		$('#lightbox3').css("display", "inline")
-	}); */
+}
 </script>
 
 </html>

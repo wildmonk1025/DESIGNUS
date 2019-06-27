@@ -182,7 +182,7 @@ table tr:nth-child(2n+1) {
 	
 }
 #notice:hover {
-	transform: scale(1.25);
+	transform: scale(1.05);
 	background-color : white;
 	border: 2px solid coral;
 	transition-duration: 1s;
@@ -209,7 +209,7 @@ table tr:nth-child(2n+1) {
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 #auction:hover {
-	transform: scale(1.25);
+	transform: scale(1.05);
 	background-color : white;
 	border: 2px solid coral;
 	transition-duration: 1s;
@@ -232,7 +232,7 @@ table tr:nth-child(2n+1) {
 	
 }
 #spon:hover {
-	transform: scale(1.25);
+	transform: scale(1.05);
 	background-color : white;
 	border: 2px solid coral;
 	transition-duration: 1s;
@@ -240,9 +240,19 @@ table tr:nth-child(2n+1) {
 }
 
 #main {
+	width: 1518px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid #F5BCA9;
+	background-color: white;
 	width: 1520px;
 	height: 170px;
-	text-align: center;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	position: fixed;
 }
 
 
@@ -331,15 +341,11 @@ a:hover {
 	height: 50px;
 	margin-left: 10px;
 }
-
-#mainheader {
-	width: 1520px;
-	height: 170px;
-}
-
 #mypagemain {
 	width: 1530px;
 	height: 1200px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	margin-top: 50px;
 }
 
 #full {
@@ -411,11 +417,12 @@ text-align: center;
 
 
 <body>
+<div id="main">
+	<div id="mainheader">
+	<jsp:include page="main.jsp" />
+	</div>
+</div>
 	<div id="mypagemain">
-		<div id="mainheader">
-			<jsp:include page="main.jsp" />
-		</div>
-
 		<jsp:include page="Mapagemain.jsp" />
 
 
@@ -431,7 +438,10 @@ text-align: center;
 			</div>
 
 		</div>
-		<jsp:include page="footer.jsp" />
+		<div id="footer">
+<!-- 			<hr style="width: 100%; border: 2px solid coral; align: center;"> -->
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
 </body>
 <script type="text/javascript">
