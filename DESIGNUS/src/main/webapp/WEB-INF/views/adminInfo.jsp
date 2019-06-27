@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>adminInfo.jsp</title>
 <meta charset="utf-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 #main {
 	width: 1520px;
@@ -24,38 +24,6 @@
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 400px;
-	border-collapse: collapse;
-}
-
-#customers td, #customers th {
-	font-size: 1em;
-	border: none;
-	padding: 3px 7px 2px 7px;
-}
-
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	color: #ffffff;
-	background-color:#F6D8CE;
-}
-
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
-
-body {
-	margin: auto;
-	width: 1520px;
-	height: auto;
-}
-
 ul {
 	list-style: none;
 }
@@ -63,6 +31,12 @@ ul {
 #mainheader {
 	width: 1518px;
 	height: 170px;
+}
+
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 50px;
 }
 
 #adminmenu {
@@ -86,44 +60,55 @@ ul {
 }
 
 .opt {
-	padding: inherit;
-	margin: auto;
 	margin-top: 5px;
-	width: 1000px;
-	height: 240px;
-	
+	width: 1200px;
+	height: 400px;
+	border: 1px solid blue;
 }
 
 #declarelist {
-	width: 990px;
-	height: 170px;
-	overflow-y: scroll;
+	margin-top: 10px;
+	width: 100%;
+	height: 400px;
+	overflow: auto;
+	border: 1px solid blue;
 }
-
-#declarelist td {
-	width: 120px;
-	
-}
-
 #transformlist {
-	width: 990px;
-	height: 170px;
-	overflow-y: scroll;
+	margin-top: 10px;
+	width: 100%;
+	height: 400px;
+	overflow-y: auto;
 }
 
-.lipont {
-	font-size: 20px;
-}
 
-.best {
-	
-	display: inline;
+.best {	
 	float: left;
-	width: 400px;
-	heigth: 150px;
-	size: 20px;
+	width: 1100px;
+	heigth: auto;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	margin:5px 5px 5px 5px;
+}
+
+.object {
+	width: 1100px;
+}
+
+.object td {
+	width: 280px;
+	font-size: 25px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.contents {
+	width: 1100px;
+}
+
+.contents td {
+	width: 280px;
+	height: 40px;
+	font-size: 18px;
+	text-align: center;
 }
 
 a:active {
@@ -162,27 +147,26 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			<jsp:include page="main.jsp" />
 		</div>
 	</div>
+	<div id="middle">
 	<div id="adminmenu">
 		<jsp:include page="admininclud.jsp"></jsp:include>
 	</div>
 	<div id="adminopt">
-		<div class="opt"><br/><br/>
-			<h3 class="dd"
-				style="text-align: center; font-size: 25px; background-color:#F6D8CE;">신고내역</h3>
-			<hr />
-			<div id="declarelist"></div>
+		<div class="opt">
+			<h3 class="dd" style="text-align: center; font-size: 30px;">신고내역</h3>
+			<div id="declarelist">
+			</div>
 		</div>
 
 
 		<div class="opt"><br/><br/>
-			<h3 class="dd"
-				style="text-align: center; font-size: 25px; background-color:#F6D8CE;">판매자
-				전환신청</h3>
+			<h3 class="dd" style="text-align: center; font-size: 30px;">판매자 전환신청</h3>
 			<div id="transformlist"></div>
 		</div>
 	</div>
 	<div id="footercheck">
 		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 	</div>
 </body>
 <script>
@@ -195,19 +179,15 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "";
-						console.dir(data);
+						var result = "<div id='best'><table><tr class='object'><td>신고번호</td><td>신고자 아이디</td><td>신고대상 아이디</td><td>신고위치</td><td>상세보기</td></tr>";
 						console.log("성공");
-
 						for ( var i in data) {
-							result += "<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
-									+ "<a href='declareWrite'>" + "신고번호:"
-									+ data[i].rp_num + "</td></tr>" + "<tr><td>"+"신고자아이디:"
-									+ data[i].rp_mbid_d + "</tr></td>" +"<tr><td>"+ "가해자아이디:"
-									+ data[i].rp_mbid_a + "</tr></td>" +"<tr><td>"+ "신고위치:"
-									+ data[i].rp_locate + "</tr></td>" + "</a>"
-									+ "</table>"+"</div>";
+							result += "<tr class='contents'><td>"+data[i].rp_num+"</td><td>"
+									+ data[i].rp_mbid_d + "</td><td>"
+									+ data[i].rp_mbid_a + "</td><td>"
+									+ data[i].rp_locate + "</td><td><a href='declareWrite'>클릭</a></td></tr>"
 						}
+						result+="</table></div>";
 						$("#declarelist").html(result);
 					},
 					error : function(error) {
