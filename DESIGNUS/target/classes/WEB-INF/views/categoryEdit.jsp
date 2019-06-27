@@ -261,7 +261,7 @@ ul {
 						<input type="submit" value="카테고리삭제" class="btn2">
 					</div>
 					<div id="catedownload">
-						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
+						<input type="text" id="change1" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				<form action="categorychange" method="post">
@@ -269,7 +269,7 @@ ul {
 						<input type="submit" value="카테고리변경" class="btn2">
 					</div>
 					<div id="cateone">
-						<input type="text" id="change" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
+						<input type="text" id="change2" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
 						<input type="text" name="cg_cname" class="signUpInput" placeholder="변경후 카테고리명 입력" autofocus required>
 					</div>
 				</form>
@@ -309,7 +309,8 @@ ul {
 
 	function catap(num) {
 		console.log(num);
-		$("#change").val(num);
+		$("#change1").val(num);
+		$("#change2").val(num);
 	}
 </script>
 

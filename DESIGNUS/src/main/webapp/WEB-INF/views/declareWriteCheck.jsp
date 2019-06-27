@@ -8,6 +8,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+
 #main {
 	width: 1520px;
 	height: 170px;
@@ -64,14 +65,18 @@ ul {
 	float: left;
 }
 
-#declareinfo {
-	width: 820px;
-	height: 340px;
+
+#btngrp {
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 20px;
+	width: 900px;
+	height: 200px;
+	float: left;	
 }
 
 .btnArray {
 	margin-left: 10px;
-	position: absolute;
 	float: left;
 	width: 120px;
 }
@@ -96,65 +101,7 @@ ul {
 	height: 30px;
 }
 
-.btn2{
-margin-top: 10px;
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-}
+
 #atag{
 	width: 120px;
 	height: 30px;
@@ -190,34 +137,38 @@ margin-top: 10px;
 				<div id="declarelist">
 					<table>
 						<tr class="alt">
-							<td colspan="5" width="900px" height="40px" style="font-size: 25px;">신고번호 ${rp_num}</td>
+							<td colspan="5" width="900px" height="40px" style="font-size: 25px; background-color:#c8e7ea;">신고번호 ${rp_num}</td>
 						</tr>
 						<tr>
-							<td width="100" height="30">신고위치</td>
-							<td width="100" height="30">신고사유</td>
-							<td width="200" height="30">신고자ID</td>
-							<td width="200" height="30">신고대상ID</td>
-							<td width="300" height="30">신고일</td>
+							<td width="100" height="30" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고위치</td>
+							<td width="100" height="30" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고사유</td>
+							<td width="200" height="30" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고자ID</td>
+							<td width="200" height="30" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고대상ID</td>
+							<td width="300" height="30" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고일</td>
 						</tr>
 
 						<tr class="alt">
-							<td width="100" height="30">${rp_locate}</td>
-							<td width="100" height="30">${rp_reason}</td>
-							<td width="200" height="30">${rp_mbid_d}</td>
-							<td width="200" height="30">${rp_mbid_a}</td>
-							<td width="300" height="30">${rp_date}</td>
+							<td width="100" height="30" style="font-size: 15px; text-align: center;">${rp_locate}</td>
+							<td width="100" height="30" style="font-size: 15px; text-align: center;">${rp_reason}</td>
+							<td width="200" height="30" style="font-size: 15px; text-align: center;">${rp_mbid_d}</td>
+							<td width="200" height="30" style="font-size: 15px; text-align: center;">${rp_mbid_a}</td>
+							<td width="300" height="30" style="font-size: 15px; text-align: center;">${rp_date}</td>
 						</tr>
 						<tr>
-							<td colspan="5" width="900" height="40">제목:${rp_title}</td>
+							<td width="100" height="50" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">제목</td>
+							<td width="800" colspan="4" height="50" style="font-size: 15px; text-align: center;">${rp_title}</td>
 						</tr>
 						<tr class="alt">
-							<td colspan="5" width="900" height="170">내용 : ${rp_contents}</td>
+							<td width="100" height="400" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">내용</td>
+							<td width="800" colspan="4"  height="400" style="font-size: 15px; text-align: center;">${rp_contents}</td>
 						</tr>
 						<tr>
-							<td colspan="5" width="500" height="30">첨부사진 : ${rp_img}</td>
+							<td width="100" height="50" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">첨부사진</td>
+							<td width="800" height="50" colspan="4"><img src="/board/${rp_img}"></td>
 						</tr>
 					</table>
-				</div >
+				</div>
+				<div id="btngrp">
 				<div class="btnArray" id="btn1">
 					<input type="button" value="적합" onclick="b();" class="btn2" />
 				</div>
@@ -226,8 +177,8 @@ margin-top: 10px;
 					<input type="button" value="부적합" onclick="a();" class="btn2" />
 				</div>
 				<div class="btnArray" id="btn3">
-					
-						<a href="declareWrite" class="btn2" id="atag">돌아가기<br /></a>
+					<a href="declareWrite" class="btn2" id="atag">돌아가기</a>
+				</div>
 				</div>
 			</div>
 		</form>
