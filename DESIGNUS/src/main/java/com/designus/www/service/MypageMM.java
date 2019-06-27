@@ -231,6 +231,7 @@ public class MypageMM {
 				boolean b = pDao.nortowriapplyupdate(mj.getMj_mbid());
 				if (b) {
 					view = "redirect:/mypage";
+			        mav.addObject("zz", "aaa");
 				} else {
 					view = "memberTransform";
 				}
