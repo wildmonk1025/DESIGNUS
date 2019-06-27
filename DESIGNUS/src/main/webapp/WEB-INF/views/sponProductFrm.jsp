@@ -66,8 +66,8 @@ div {
 
 #title {
 	left: 50px;
-	width: 1000px;
-	margin-top: 30px;
+	width: 1300px;
+	margin-top: 50px;
 	height: 60px;
 	font-size: 20px;
 	color: orange;

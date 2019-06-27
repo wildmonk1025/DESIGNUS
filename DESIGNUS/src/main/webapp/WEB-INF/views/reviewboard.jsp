@@ -18,7 +18,6 @@
 	border: 1px solid #F5BCA9;
 	width: 1518px;
 	height: 170px;
-	position: fixed;
 	background-color: white;
 	z-index: 1000;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
@@ -27,7 +26,7 @@
 
 #homeMain {
 	width: 1520px;
-	height: 700px;
+	height: 900px;
 }
 
 .btn {
@@ -250,7 +249,7 @@ table tr:nth-child(2n+1) {
 		transform: translateY(-50%);
 		width: 100px;
 	}
-	td:not (:first-child ) {
+	td:not (:first-child) {
 		clear: both;
 		margin-left: 100px;
 		padding: 4px 20px 4px 90px;
@@ -309,7 +308,7 @@ table tr:nth-child(2n+1) {
 			transform: translateY(0);
 			width: 100%;
 		}
-		td:not (:first-child ) {
+		td:not (:first-child) {
 			margin: 0;
 			padding: 5px 1em;
 			width: 100%;
@@ -351,8 +350,10 @@ table tr:nth-child(2n+1) {
 	}
 }
 #dd{
+margin-top:50px;
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 text-align: center;
+color:white;
 }
 </style>
 <title>Home</title>
