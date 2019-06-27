@@ -6,13 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>questionWriteCheck.jsp</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-#footercheck {
-	width: 1520px;
-	height: 150px;
-}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -26,17 +21,13 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-body {
-	margin: auto;
-	width: 1520px;
-	height: auto;
-	overflow: auto;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
-div {
-	margin: auto;
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 60px;
 }
 
 ul {
@@ -54,21 +45,12 @@ ul {
 	height: 500px;
 }
 
-#onequestion {
-	margin: 10px;
-	padding-top: 20px;
-	width: 400px;
-	height: 40px;
-	padding-left: 20px;
-	float: left;
-}
 
 #onequestionmain {
-	margin: 10px;
-	padding: 20px;
-	width: 900px;
-	height: 700px;
 	float: left;
+	align-content: center;
+	width: 1216px;
+	height: 500px;
 }
 
 #questiontitle {
@@ -189,8 +171,13 @@ margin-top: 10px;
 	width: 120px;
 	height: 30px;
 }
-.dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
@@ -201,16 +188,16 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			<jsp:include page="main.jsp" />
 		</div>
 	</div>
+	<div id="middle">
 	<div id="adminmenu">
 		<ul>
 			<jsp:include page="admininclud.jsp"></jsp:include>
-
 		</ul>
 	</div>
-	<div id="onequestionmain">
 	<form name="formName"  action="questionreply" method="post">
-		<div  id="onequestion" class="dd" style="background-color:#F6D8CE;">1:1문의 접수 내역</div>
-		<br> <br> <br> <br>
+	<div id="onequestionmain">
+	
+		<h3 style="text-align: center; font-size: 30px;">1:1문의 접수 내역</h3>
 		
 			<div id="questiontitle" class="dd">글 제목: ${aq_title}</div>
 			<div id="questioncontents"  class="dd">글 내용: ${aq_contents}</div>
@@ -224,13 +211,14 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 				 <a href="questionList" class="btn2">돌아가기</a>
 				
 				
+		</div>
 			</form>
 			
-		</div>
-	<div id="footercheck">
+	<div id="footer">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-
+</div>
 
 </body>
 <script>

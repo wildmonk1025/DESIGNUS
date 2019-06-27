@@ -67,7 +67,7 @@ ul {
 
 #paper {
 	color: black;
-	background-color:#F2F2F2;
+	background-color:#FAFAFA;
 	box-shadow: 1px -1px 6px 0px rgba(0,0,0,0.31);
 }
 
@@ -186,7 +186,7 @@ ul {
 					<table id="paper">
 						<tr>
 							<th width="100" height="50" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고번호</th>
-							<td colspan="4" width="800" height="50" style="font-size: 15px;  padding-left: 10px;">${rp_num}</td>
+							<th colspan="4" width="800" height="50" style="font-size: 15px;  padding-left: 10px;">${rp_num} 번</th>
 						</tr>
 						<tr>
 							<th width="100" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">신고위치</th>

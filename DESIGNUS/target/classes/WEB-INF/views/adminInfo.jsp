@@ -154,7 +154,7 @@ a:hover {
 		</div>
 		
 		<div class="opt"><br/><br/>
-			<h3 style="text-align: center; font-size: 30px;">작가등급 전환신청</h3>
+			<h3 style="text-align: center; font-size: 30px;">작가가입/전환 신청내역</h3>
 			<div id="transformlist"></div>
 		</div>
 		
