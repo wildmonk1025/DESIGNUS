@@ -249,21 +249,22 @@ a:hover {
 		$("#ListView1").css("display", "block");
 		$("#ListView2").css("display", "none");
 		$("#ListView3").css("display", "none");
-
+		val1();
 	});
 	$("#Lbtn2").click(function() {
 		$("#ListView1").css("display", "none");
 		$("#ListView2").css("display", "block");
 		$("#ListView3").css("display", "none");
-
+		val2();
 	});
 	$("#Lbtn3").click(function() {
 		$("#ListView1").css("display", "none");
 		$("#ListView2").css("display", "none");
 		$("#ListView3").css("display", "block");
+		val3();
 	});
 	$(document).ready(
-			function() {
+			function val1() {
 				$.ajax({
 					url : 'memberseclist',
 					type : 'post',
@@ -305,8 +306,7 @@ a:hover {
 					}
 				});
 			});
-	$(document).ready(
-			function() {
+			function val2() {
 				$.ajax({
 					url : 'memberAuthorlist',
 					type : 'post',
@@ -314,24 +314,32 @@ a:hover {
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "";
-						console.dir(data);
+						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>이름</td><td>회원등급</td><td>경고횟수</td><td>상세보기</td></tr>";
 						console.log("성공");
-
-						for ( var i in data) {
-							result += "<div class='best'>"
-									+ "<table id='customers'>"
-									+ "<tr class='alt'><td>"
-									+ "<a href='memberListMM?mb_id="
-									+ data[i].mb_id + "'>" + "아이디:"
-									+ data[i].mb_id + "</td></tr>" + "<tr><td>"
-									+ "이름:" + data[i].mb_name + "</td></tr>"
-									+ "<tr><td>" + "회원등급:" + data[i].mb_grade
-									+ "</td></tr>" + "<tr><td>" + "경고횟수:"
-									+ data[i].mb_ccnt + "</td></tr>"
-									+ "<tr><td>" + "</a>" + "</table>"
-									+ "</div>";
+						
+						for(var i in data) {
+							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
+									+ data[i].mb_name + "</td><td>";
+									var test = data[i].mb_grade
+									switch(test) {
+									case 'N':
+										result+="일반</td><td>";
+										break;
+									case 'W':
+										result+="작가</td><td>"
+										break;
+									case 'S':
+										result+="임시</td><td>"
+										break;
+									case 'X':
+										result+="전환</td><td>"
+										break;
+									}
+									result += data[i].mb_ccnt + "</td><td>"
+									+ "<a href='memberListMM?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
 						}
+						result+="</table></div>";
+						
 						$("#ListView2").html(result);
 					},
 					error : function(error) {
@@ -339,9 +347,8 @@ a:hover {
 						console.log(error);
 					}
 				});
-			});
-	$(document).ready(
-			function() {
+			}
+			function val3() {
 				$.ajax({
 					url : 'memberBlacklist',
 					type : 'post',
@@ -349,24 +356,32 @@ a:hover {
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "";
-						console.dir(data);
+						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>이름</td><td>회원등급</td><td>경고횟수</td><td>상세보기</td></tr>";
 						console.log("성공");
-
-						for ( var i in data) {
-							result += "<div class='best'>"
-									+ "<table id='customers'>"
-									+ "<tr class='alt'><td>"
-									+ "<a href='memberListMM?mb_id="
-									+ data[i].mb_id + "'>" + "아이디:"
-									+ data[i].mb_id + "</td></tr>" + "<tr><td>"
-									+ "이름:" + data[i].mb_name + "</td></tr>"
-									+ "<tr><td>" + "회원등급:" + data[i].mb_grade
-									+ "</td></tr>" + "<tr><td>" + "경고횟수:"
-									+ data[i].mb_ccnt + "</td></tr>"
-									+ "<tr><td>" + "</a>" + "</table>"
-									+ "</div>";
+						
+						for(var i in data) {
+							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
+									+ data[i].mb_name + "</td><td>";
+									var test = data[i].mb_grade
+									switch(test) {
+									case 'N':
+										result+="일반</td><td>";
+										break;
+									case 'W':
+										result+="작가</td><td>"
+										break;
+									case 'S':
+										result+="임시</td><td>"
+										break;
+									case 'X':
+										result+="전환</td><td>"
+										break;
+									}
+									result += data[i].mb_ccnt + "</td><td>"
+									+ "<a href='memberListMM?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
 						}
+						result+="</table></div>";
+						
 						$("#ListView3").html(result);
 					},
 					error : function(error) {
@@ -374,6 +389,6 @@ a:hover {
 						console.log(error);
 					}
 				});
-			});
+			}
 </script>
 </html>
