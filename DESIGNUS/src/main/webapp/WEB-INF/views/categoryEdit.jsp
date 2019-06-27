@@ -37,12 +37,6 @@
 	height: 500px;
 }
 
-#adminwriterjoinfrm {
-	float: left;
-	align-content: center;
-	width: 1216px;
-	height: 800px;
-}
 
 .writerjoinfrm {
 	padding: inherit;
@@ -56,27 +50,18 @@
 	align-content: center;
 	width: 1216px;
 	height: 1000px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #writercatecontents {
 	margin-left: 50px;
+	margin-top: 20px;
 	width: 600px;
-	height: 960px;
+	height: 940px;
 	float: left;
 	overflow: auto;
-}
-
-#writercatecontents2 {
-	margin: 20px;
-	width: 500px;
-	height: 600px;
-	float: left;
-	overflow: auto;
-}
-#best {
-	width: 500px;
-	height: auto;
-	border: 1px solid red;
 }
 
 .opt button {
@@ -84,56 +69,35 @@
 	width: 290px;
 	height: 100px;
 	float: left;
+	background-color: #c8e7ea;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	
 }
 
-#cateup {
-	margin: 10px 0px 10px 40px;
-	text-align: center;
-	width: 100px;
-	height: 40px;
+#writercatecontents2 {
+	margin: 20px;
+	width: 500px;
+	height: 920px;
 	float: left;
 }
 
-#cateupload {
+
+
+#cateup, #catedown, #catechange {
+	margin: 10px 0px 10px 40px;
+	text-align: center;
+	width: 400px;
+	height: 60px;
+	float: left;
+}
+
+#cateupload, #catedownload, #cateone {
 	margin: 10px 5px;
-	width: 693px;
-	height: 40px;
+	width: 450px;
+	height: 60px;
 	float: left;
-}
-
-#catedown {
-	margin: 10px 0px 10px 40px;
-	width: 100px;
-	height: 40px;
-	float: left;
-}
-
-#catedownload {
-	margin: 12px 5px;
-	width: 693px;
-	height: 40px;
-	float: left;
-}
-
-#catechange {
-	margin: 10px 0px 10px 40px;
-	text-align: center;
-	width: 100px;
-	height: 40px;
-	float: left;
-}
-
-#cateone {
-	margin: 10px 5px;
-	width: 693px;
-	height: 40px;
-	float: left;
-}
-
-#catech {
-	float: left;
-	width: 85px;
-	text-align: center;
 }
 
 }
@@ -184,7 +148,7 @@
 	text-decoration: none;
 	/*Text*/
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
+	font-size: 25px;
 	font-weight: bold;
 	line-height: 240%;
 	color: rgb(162, 136, 44);
@@ -204,8 +168,8 @@
 		rgb(237, 237, 237) 100%);
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
+	width: 200px;
+	height: 50px;
 	border-color: rgb(223, 192, 86);
 	border-width: 1px;
 	-moz-border-radius: 3px;
@@ -238,11 +202,12 @@
 }
 
 .signUpInput {
-	width: 150px;
+	width: 200px;
 	height: 50px;
+	float:left;
+	margin-left: 10px;
 	margin-bottom: 25px;
-	padding: 0 15px 2px;
-	font-size: 17px;
+	font-size: 15px;
 	background: white;
 	border: 2px solid #EBEBEB;
 	border-radius: 4px;
@@ -282,11 +247,12 @@ ul {
 				
 				<div id="writercatecontents2">
 				<form action="categoryadd" method="post">
-					<div id="cateup"><input type="submit" value="카테고리추가" class="btn2"></div>
+					<div id="cateup">
+					<input type="submit" value="카테고리추가" class="btn2"></div>
 
 					<div id="cateupload">
-						<input type="text" name="cg_code" class="signUpInput" placeholder="category code" autofocus required>
-						<input type="text" name="cg_name" class="signUpInput" placeholder="category name" autofocus required>
+						<input type="text" name="cg_code" class="signUpInput" placeholder="추가할 코드입력" autofocus required>
+						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				<form action="categorydelete" method="post">
@@ -294,7 +260,7 @@ ul {
 						<input type="submit" value="카테고리삭제" class="btn2">
 					</div>
 					<div id="catedownload">
-						<input type="text" name="cg_name" class="signUpInput" placeholder="category name" autofocus required>
+						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				<form action="categorychange" method="post">
@@ -302,8 +268,8 @@ ul {
 						<input type="submit" value="카테고리변경" class="btn2">
 					</div>
 					<div id="cateone">
-						<input type="text" id="change" name="cg_name" class="signUpInput" placeholder="change Before name" autofocus required>
-						<input type="text" name="cg_cname" class="signUpInput" placeholder="change after name" autofocus required>
+						<input type="text" id="change" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
+						<input type="text" name="cg_cname" class="signUpInput" placeholder="변경후 카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				</div>
