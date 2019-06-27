@@ -129,6 +129,13 @@ div {
 	float: left;
 	margin-top: 15px;
 }
+
+#sponname {
+	width: 220px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 </style>
 <title>Sponsor</title>
 </head>

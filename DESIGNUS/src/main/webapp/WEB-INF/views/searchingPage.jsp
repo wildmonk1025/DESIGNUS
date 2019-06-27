@@ -24,7 +24,7 @@ div {
 	z-index: 1000;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
-
+ 
 #homeMain {
 	width: 1520px;
 	height: 600px;
@@ -183,7 +183,7 @@ div::-webkit-scrollbar {
 	height: 105px;
 	font-size: 20px;
 }
-
+ 
 .raListDate {
 	float: left;
 	border-bottom: 1px solid gray;
