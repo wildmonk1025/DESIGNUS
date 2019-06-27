@@ -20,51 +20,17 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 400px;
-	border-collapse: collapse;
-}
-
-#customers td, #customers th {
-	font-size: 1em;
-	border: none;
-	padding: 3px 7px 2px 7px;
-}
-
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color:#F6D8CE;
-	color: #ffffff;
-}
-
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
-
-body {
-	margin: auto;
-	width: 1520px;
-	height: auto;
-}
-
-div {
-	margin: auto;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 50px;
 }
 
 #adminmenu {
@@ -81,24 +47,33 @@ ul {
 }
 
 .opt {
-	padding: inherit;
-	margin: auto;
 	margin-top: 5px;
-	width: 1000px;
-	height: 450px;
-	background-color: white;
+	width: 1200px;
+	height: 980px;
+	overflow: auto;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
+.opt:hover {
+	transform: scale(1.02);
+	transition-duration: 1s;
+}
+
+
 #declarelist {
-	width: 990px;
-	height: 325px;
-	overflow-y: scroll;
+	margin-top: 10px;
+	width: 100%;
+	height: 980px;
 }
 
 .btnArray {
+	margin-top:20px;
+	margin-left: 30px;
 	float: left;
-	width: 331px;
-	height: auto;
+	width: 340px;
+	height: 70px;
 	text-align: center;
 }
 
@@ -164,111 +139,128 @@ ul {
 
 a:active {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 a:visited {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 a:link {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 a:hover {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 .best {
-	color: black;
-	display: inline;
 	float: left;
-	width: 400px;
-	heigth: 55px;
-	display: inline;
-	margin:5px 5px 5px 5px;
+	width: 1100px;
+	height: auto;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-text-align: center;
+	margin:5px 5px 5px 5px;
 }
 
-#footercheck {
-	width: 1520px;
-	height: 150px;
+.object {
+	background-color: #c8e7ea;
+	width: 1100px;
+}
+
+.object td {
+	width: 280px;
+	font-size: 23px;
+	text-align: center;
+}
+
+.contents {
+	font-size: 18px;
+	font-weight: 600;
+	width: 1100px;
+}
+
+.contents td {
+	width: 280px;
+	height: 50px;
+	font-size: 18px;
+	text-align: center;
+}
+
+#ListView2 {
+	display: none; 
+}
+
+#ListView3 {
+	display: none; 
+}
+
+
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
 <body>
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
-	</div>
-	<div id="adminmenu">
-		<ul>
-			<jsp:include page="admininclud.jsp"></jsp:include>
-
-		</ul>
-	</div>
-	<div id="adminopt">
-		<div class="opt"><br/><br/>
-			<h3 id="dd" style="text-align: center; font-size: 25px; background-color:#F6D8CE;">1:1 문의 접수 리스트</h3>
-				<hr>
-			<div class="btnArray" id="normal">
-				<button id="Lbtn1" class="btn2">일반회원 리스트</button>
-			</div>
-			<div class="btnArray" id="writer">
-				<button id="Lbtn2" class="btn2">작가회원 리스트</button>
-			</div>
-			<div class="btnArray" id="blkmember">
-				<button id="Lbtn3" class="btn2">블랙회원 리스트</button>
-			</div>
-			<hr>
-			<br />
-			<br />
-			<br />
-			<br />
-			<div id="declarelist">
-				<div id="ListView1"></div>
-				<div id="ListView2" class="view"></div>
-				<div id="ListView3" class="view"></div>
-
-			</div>
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
+	<div id="middle">
+		<div id="adminmenu">
+			<ul>
+				<jsp:include page="admininclud.jsp"></jsp:include>
+			</ul>
+		</div>
+		<div id="adminopt">
+			<div class="opt">
+				<h3 style="text-align: center; font-size: 30px;">가입회원 리스트</h3>
+				<div class="btnArray" id="normal">
+					<button id="Lbtn1" class="btn2">일반회원 리스트</button>
+				</div>
+				<div class="btnArray" id="writer">
+					<button id="Lbtn2" class="btn2">작가회원 리스트</button>
+				</div>
+				<div class="btnArray" id="blkmember">
+					<button id="Lbtn3" class="btn2">블랙회원 리스트</button>
+				</div>
+				<div id="declarelist">
+					<div id="ListView1"></div>
+					<div id="ListView2"></div>
+					<div id="ListView3"></div>
+
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
 </body>
 <script>
 	$("#Lbtn1").click(function() {
-		$("#ListView1").css("display", "inline");
+		$("#ListView1").css("display", "block");
 		$("#ListView2").css("display", "none");
 		$("#ListView3").css("display", "none");
-		$(".paging1").css("display", "inline");
-		$(".paging2").css("display", "none");
-		$(".paging3").css("display", "none");
+
 	});
 	$("#Lbtn2").click(function() {
 		$("#ListView1").css("display", "none");
-		$("#ListView2").css("display", "inline");
+		$("#ListView2").css("display", "block");
 		$("#ListView3").css("display", "none");
-		$(".paging1").css("display", "none");
-		$(".paging2").css("display", "inline");
-		$(".paging3").css("display", "none");
+
 	});
 	$("#Lbtn3").click(function() {
 		$("#ListView1").css("display", "none");
 		$("#ListView2").css("display", "none");
-		$("#ListView3").css("display", "inline");
-		$(".paging1").css("display", "none");
-		$(".paging2").css("display", "none");
-		$(".paging3").css("display", "inline");
+		$("#ListView3").css("display", "block");
 	});
 	$(document).ready(
 			function() {
@@ -279,24 +271,32 @@ text-align: center;
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "";
-						console.dir(data);
+						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>이름</td><td>회원등급</td><td>경고횟수</td><td>상세보기</td></tr>";
 						console.log("성공");
-
-						for ( var i in data) {
-							result += "<div class='best'>"
-									+ "<table id='customers'>"
-									+ "<tr class='alt'><td>"
-									+ "<a href='memberListMM?mb_id="
-									+ data[i].mb_id + "'>" + "아이디:"
-									+ data[i].mb_id + "</td></tr>" + "<tr><td>"
-									+ "이름:" + data[i].mb_name + "</td></tr>"
-									+ "<tr><td>" + "회원등급:" + data[i].mb_grade
-									+ "</td></tr>" + "<tr><td>" + "경고횟수:"
-									+ data[i].mb_ccnt + "</td></tr>"
-									+ "<tr><td>" + "</a>" + "</table>"
-									+ "</div>";
+						
+						for(var i in data) {
+							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
+									+ data[i].mb_name + "</td><td>";
+									var test = data[i].mb_grade
+									switch(test) {
+									case 'N':
+										result+="일반</td><td>";
+										break;
+									case 'W':
+										result+="작가</td><td>"
+										break;
+									case 'S':
+										result+="임시</td><td>"
+										break;
+									case 'X':
+										result+="전환</td><td>"
+										break;
+									}
+									result += data[i].mb_ccnt + "</td><td>"
+									+ "<a href='memberListMM?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
 						}
+						result+="</table></div>";
+						
 						$("#ListView1").html(result);
 					},
 					error : function(error) {
