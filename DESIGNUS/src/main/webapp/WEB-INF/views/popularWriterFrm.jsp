@@ -14,6 +14,7 @@
 	height: 170px;
 	position: relative;
 }
+
 #mainheader {
 	border: 1px solid #F5BCA9;
 	width: 1518px;
@@ -21,7 +22,7 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #homeMain {
@@ -194,6 +195,7 @@ select {
 	margin: auto;
 	background-color: coral;
 }
+
 #lightbox {
 	position: absolute;
 	width: 800px;
@@ -271,120 +273,320 @@ table tr:nth-child(2n+1) {
 		transform: translateY(-50%);
 		width: 100px;
 	}
-	td:not (:first-child ) {
-		clear: both;
-		margin-left: 100px;
-		padding: 4px 20px 4px 90px;
+	td
+	
+	
+	
+	
+	:not
+	
+	
+	 
+	
+	
+	(
+	:first-child
+	
+	
+	 
+	
+	
+	)
+	{
+	clear
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	both
+	
+	
+	
+	
+	;
+	margin-left
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	100
+	px
+	
+	
+	
+	
+	;
+	padding
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	4
+	px
+	
+	
+	 
+	
+	
+	20
+	px
+	
+	
+	 
+	
+	
+	4
+	px
+	
+	
+	 
+	
+	
+	90
+	px
+	
+	
+	
+	
+	;
+	position
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	relative
+	
+	
+	
+	
+	;
+	text-align
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	left
+	
+	
+	
+	
+	;
+}
+
+td:not (:first-child ):before {
+	color: #91ced4;
+	content: '';
+	display: block;
+	left: 0;
+	position: absolute;
+}
+
+td:nth-child(2):before {
+	content: 'Name:';
+}
+
+td:nth-child(3):before {
+	content: 'Email:';
+}
+
+td:nth-child(4):before {
+	content: 'Phone:';
+}
+
+td:nth-child(5):before {
+	content: 'Comments:';
+}
+
+tr {
+	padding: 10px 0;
+	position: relative;
+}
+
+tr:first-child {
+	display: none;
+}
+
+@media screen and (max-width: 500px) {
+	.header {
+		background-color: #daeff1;
+		color: #daeff1;
+		font-size: 2em;
+		font-weight: 700;
+		padding: 0;
+		text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+	}
+	img {
+		border: 3px solid;
+		border-color: #daeff1;
+		height: 100px;
+		margin: 0.5rem 0;
+		width: 100px;
+	}
+	td:first-child {
+		background-color: #c8e7ea;
+		border-bottom: 1px solid #91ced4;
+		border-radius: 10px 10px 0 0;
 		position: relative;
-		text-align: left;
+		top: 0;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		width: 100%;
 	}
-	td:not (:first-child ):before {
-		color: #91ced4;
-		content: '';
-		display: block;
-		left: 0;
-		position: absolute;
-	}
-	td:nth-child(2):before {
-		content: 'Name:';
-	}
-	td:nth-child(3):before {
-		content: 'Email:';
-	}
-	td:nth-child(4):before {
-		content: 'Phone:';
-	}
-	td:nth-child(5):before {
-		content: 'Comments:';
-	}
-	tr {
-		padding: 10px 0;
-		position: relative;
-	}
-	tr:first-child {
-		display: none;
-	}
-	@media screen and (max-width: 500px) {
-		.header {
-			background-color: #daeff1;
-			color: #daeff1;
-			font-size: 2em;
-			font-weight: 700;
-			padding: 0;
-			text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-		}
-		img {
-			border: 3px solid;
-			border-color: #daeff1;
-			height: 100px;
-			margin: 0.5rem 0;
-			width: 100px;
-		}
-		td:first-child {
-			background-color: #c8e7ea;
-			border-bottom: 1px solid #91ced4;
-			border-radius: 10px 10px 0 0;
-			position: relative;
-			top: 0;
-			-webkit-transform: translateY(0);
-			transform: translateY(0);
-			width: 100%;
-		}
-		td:not (:first-child ) {
-			margin: 0;
-			padding: 5px 1em;
-			width: 100%;
-		}
-		td:not (:first-child ):before {
-			font-size: .8em;
-			padding-top: 0.3em;
-			position: relative;
-		}
-		td:last-child {
-			padding-bottom: 1rem !important;
-		}
-		tr {
-			background-color: white !important;
-			border: 1px solid #6cbec6;
-			border-radius: 10px;
-			box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-			margin: 0.5rem 0;
-			padding: 0;
-		}
-		.table-users {
-			border: none;
-			box-shadow: none;
-			overflow: visible;
-		}
-		td {
-			width: 100px;
-			height: 40px;
-		}
-		table {
-			width: 1100px;
-			height: 700px;
-			overflow: scroll;
-		}
-		img {
-			width: 200px;
-			height: 200px;
-		}
-	}
+	td
+	
+	
+	
+	
+	:not
+	
+	
+	 
+	
+	
+	(
+	:first-child
+	
+	
+	 
+	
+	
+	)
+	{
+	margin
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	0;
+	padding
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	5
+	px
+	
+	
+	 
+	
+	
+	1
+	em
+	
+	
+	
+	
+	;
+	width
+	
+	
+	
+	
+	:
+	
+	
+	 
+	
+	
+	100%;
+}
+
+td:not (:first-child ):before {
+	font-size: .8em;
+	padding-top: 0.3em;
+	position: relative;
+}
+
+td:last-child {
+	padding-bottom: 1rem !important;
+}
+
+tr {
+	background-color: white !important;
+	border: 1px solid #6cbec6;
+	border-radius: 10px;
+	box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+	margin: 0.5rem 0;
+	padding: 0;
+}
+
+.table-users {
+	border: none;
+	box-shadow: none;
+	overflow: visible;
+}
+
+td {
+	width: 100px;
+	height: 40px;
+}
+
+table {
+	width: 1100px;
+	height: 700px;
+	overflow: scroll;
+}
+
+img {
+	width: 200px;
+	height: 200px;
+}
+
+}
 }
 /* #dd{
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 text-align: center;
 } */
-
-#title{
-
+#title {
 	text-align: left;
 	color: #5ecddf;
-	font-size:25px;
-width:1200px;
-
-height:60px;}
-
+	font-size: 25px;
+	width: 1200px;
+	height: 60px;
+}
 </style>
 <title>Home</title>
 
@@ -394,41 +596,44 @@ height:60px;}
 
 
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 	</div>
 
-	<div id="homeMain"><br/><br/>
-	<div id="title" style=" border-radius:5px;">
-	<span id="dd" >공지사항 게시판</span>
-	</div>
-		
+	<div id="homeMain">
+		<br /> <br />
+		<div id="title" style="border-radius: 5px;">
+			<span id="dd">공지사항 게시판</span>
+		</div>
+
 		<br />
 		<div id="freeboard2">
-		<div id="lightbox-shadow1">
+			<div id="lightbox-shadow1">
 				<div id="lightbox1">
-				<form action="Noticeinsert" method="post">
-					<table>
-						<tr>
-							<td>제목</td>
-							<td><input type='text' name='bd_title'/></td>
-						</tr>
-						<tr>
-							<td>내용</td>
-							<td><textarea style="width: 400px; height: 200px;" name='bd_contents'></textarea></td>
-						</tr>
-					
-					
-					</table>
-				
-					<button id="btn2" class="btn">공지사항 등록</button></form>
-					<button onclick="location.href='popularWriterFrm'" class="btn">돌아가기</button>	
+					<form action="Noticeinsert" method="post">
+						<table>
+							<tr>
+								<td>제목</td>
+								<td><input type='text' name='bd_title' /></td>
+							</tr>
+							<tr>
+								<td>내용</td>
+								<td><textarea style="width: 400px; height: 200px;"
+										name='bd_contents'></textarea></td>
+							</tr>
+
+
+						</table>
+
+						<button id="btn2" class="btn">공지사항 등록</button>
+					</form>
+					<button onclick="location.href='popularWriterFrm'" class="btn">돌아가기</button>
 				</div>
 			</div>
-			
-			
-			
+
+
+
 			<div id="lightbox-shadow">
 				<div id="lightbox">
 
@@ -461,9 +666,14 @@ height:60px;}
 				</c:forEach>
 
 			</table>
-			
+
 			<div align="center">${pagings}</div>
-			<a href="javascript:articleView1();" id="admin">글작성</a>
+			<div id="adbtn" style="width: 1200px; height: 50px;">
+				<div id="btn2"
+					style="width: 90px; padding-top: 8px; height: 40px; background-color: #b9e5f2; float: right; border-radius: 5px; text-align: center;">
+					<a href="javascript:articleView1();" id="admin">글작성</a>
+				</div>
+			</div>
 			<div id="articleView_layer">
 				<div id="bg_layer"></div>
 				<div id="contents_layer"></div>
@@ -474,7 +684,7 @@ height:60px;}
 
 	</div>
 	<div id="footercheck">
-	<hr style="width: 100%; border: 2px solid coral; align: center;">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 
@@ -552,10 +762,10 @@ $('#lightbox1').css("display", "inline");
 
 			if (c == b || c == 'ADMIN') {
 				swal("해당글이 삭제 되었습니다.");
-				setTimeout(function(){
-				window.location.reload();
-				location.href = 'popularWriterFrm';
-				},1000);
+				setTimeout(function() {
+					window.location.reload();
+					location.href = 'popularWriterFrm';
+				}, 1000);
 			} else {
 
 				swal("글삭제 권한이 없습니다.");
@@ -570,7 +780,7 @@ $('#lightbox1').css("display", "inline");
 				},
 				success : function(data) {
 					console.log("성공");
-					
+
 				},
 				error : function(error) {
 
