@@ -520,7 +520,7 @@ if(aa=="bbbb"){
         <div id="sixth">${ROpaging}</div>
 		</div>
 		<div id="footer">
-<!-- 			<hr style="width: 100%; border: 2px solid coral; align: center;"> -->
+		<hr style="width: 100%; border: 2px solid coral; align: center;"> 
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
