@@ -207,13 +207,13 @@ public class MypageMM {
 		String view = null;
 
 		String id = session.getAttribute("id").toString();
-		int cate = Integer.parseInt(multi.getParameter("mj_cg_code"));
+		int cate = Integer.parseInt(multi.getParameter("mj_cgcode"));
 		String conten = multi.getParameter("mj_contents");
 		int check = Integer.parseInt(multi.getParameter("fileCheck"));
 
 		Major mj = new Major();
 		mj.setMj_mbid(id);
-		mj.setMj_cg_code(cate);
+		mj.setMj_cgcode(cate);
 		mj.setMj_contents(conten);
 		//Notify Start
 		Notify nf = new Notify();
@@ -230,7 +230,7 @@ public class MypageMM {
 			if (f) {
 				boolean b = pDao.nortowriapplyupdate(mj.getMj_mbid());
 				if (b) {
-					view = "myPage";
+					view = "redirect:/mypage";
 				} else {
 					view = "memberTransform";
 				}

@@ -66,8 +66,8 @@ div {
 
 #title {
 	left: 50px;
-	width: 1000px;
-	margin-top: 30px;
+	width: 1300px;
+	margin-top: 50px;
 	height: 60px;
 	font-size: 20px;
 	color: orange;
@@ -124,37 +124,52 @@ td {
 			<img src="/sponsor/${ssi_img}" width="100%" height="100%">
 		</div>
 		<div id="contents"
-			style="width: 600px; margin-top: 10px; text-align: left; margin-bottom: 10px; height: auto;">
-			<div id="spid">
-				<span style="font-weight: border;"> 작성자 </span> ${ss_mbid_w}
-			</div>
-			<div id="spprice">
-				<div id="spprice" style="width: 300px; float: left;">
-					<span>가격</span> ${ss_price}
+			style="width: 640px; margin-top: 10px; text-align: left; margin-bottom: 10px; height: auto;">
+			<div id="spid"
+				style="font-weight: border; width: 215px; float:left; height: 40px; margin-top: 10px;">
+				<span> 작성자 </span>
+			</div> 
+			<div id="spid2"
+				style="width: 320px; float: left; font-size: 17px; margin-top: 10px; text-align: left;">
+				${ss_mbid_w}</div>
+			
+			<div id="spprice" style="float:left;">
+				<div id="spprice"
+					style="font-weight: bord; width: 150px; height: 40px; margin-top: 3px; float: left;">
+					<span>가격</span>
 				</div>
-				<div id="spqty" style="width: 300px; float: left;">
-					<span> 후원 목표량 </span>${ss_goalqty}
+				<div id="spprice2"
+					style="width: 170px; float: left; font-size: 17px; margin-top: 5px; text-align: center;">${ss_price}</div>
+				<div id="spqty"
+					style="font-weight: bord; width: 150px; float: left; margin-top: 3px;">
+					<span> 후원 목표량 </span>
 				</div>
+				<div id="spqty2"
+					style="width: 170px; float: left; font-size: 17px; margin-top: 7px; text-align: center;">${ss_goalqty}</div>
 			</div>
 			<br>
-			<hr>
+			<hr style="width: 100%; border: 0.5px solid #dceefa; align: center;">
 			<div id="spdate"
-				style="width: 640px; height: 40px; float: left; font-size: 27px; color: red;">
+				style="width: 640px; height: 60px; float: left; margin-top: 20px; font-size: 23px; color: red;">
 				<span id="spdate2"> 여기 </span>
 			</div>
-			<hr>
-			<div id="spon">
-				<span style="font-size: 15px; color: blue;"> 현재 ${st_count}
-					명이 후원중입니다! </span>
+			<hr style="width: 100%; border: 0.5px solid #dceefa; align: center;">
+			<div id="spon" style="height: 50px; margin-top: 30px;">
+				<span style="font-size: 15px; color: #1e8ccd;"> 현재
+					${st_count} 명이 후원중입니다! </span>
 			</div>
-			<span style="margin: 20px; height: 30px; text-align: center;">상품 정보</span>
-			<hr>
+			<hr style="border: 4px solid #dceefa; align: center;">
+			<div id="sponcon"
+				style="text-align: center; margin-top: 10px; height: 50px; font-size: 22px;">
+				<span style="margin: 20px; height: 30px;">상품 정보</span>
+			</div>
+			<hr style="width: 100%; border: 0.5px solid #dceefa; align: center;">
 			<div id="spcontents"
-				style="margin-top: 10px; margin-bottom: 10px; width: 600px; height: 300px; text-align: center">
+				style="margin-top: 10px; font-size: 17px; margin-bottom: 10px; width: 600px; height: 300px; text-align: center">
 				${ss_contents}</div>
 		</div>
 
-		<div id="btn" style="width: 640px; height:100px;">
+		<div id="btn" style="width: 640px; height: 100px;">
 			<div id="btn1" style="float: left; width: 320px;">
 				<c:choose>
 					<c:when test="${ss_mbid_w == id}">
@@ -167,7 +182,7 @@ td {
 					</c:when>
 					<c:when test="${ss_goalqty != st_count}">
 						<button class="bt21" onclick="sponAj(${ss_num})"
-							style="cursor: pointer; background-color: yellow">밀어주기</button>
+							style="cursor: pointer; background: linear-gradient(to bottom, white, #a7e4f6)">밀어주기</button>
 					</c:when>
 				</c:choose>
 			</div>
@@ -270,11 +285,12 @@ td {
 			contentType : "application/json; charset=utf-8;",
 			dataType : 'json',
 			success : function(data) {
-				swal('밀어주기 성공! 작가를 응원합니다!');
+				swal('밀어주기 성공! 작가를 응원합니다!')
+				.then((value) =>{
+				location.href="sponproduct?ss_num=${ss_num}";
+				});
 				console.log("1234567" + data.aup_ptnum);
-
 			},
-
 			error : function(error) {
 				swal('한 번만 후원할 수 있어요!');
 				console.log(error);
@@ -312,8 +328,7 @@ td {
 		});
  		if (!location.hash) { 
  			location.hash = '#reload';
- 			location.href="auctionNotify?au_num=${au_num}";
- 			
+ 			location.href="sponproduct?ss_num=${ss_num}";
  			window.location.reload();
  		}
 
