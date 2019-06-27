@@ -362,10 +362,10 @@ div {
 					${auInfo.au_title }
 					<div id="middle_contents1_lv2">
 						<div id="peek1">
-							<input type="submit" value="꿍누르기♥" class="subtn">
+							<input type="submit" value="꿍♥" class="subtn">
 						</div>
 						<div id="peek2">
-							<input type="submit" value="꿍누르기♡" class="subtn">
+							<input type="submit" value="꿍♡" class="subtn">
 						</div>
 					</div>
 				</div>
