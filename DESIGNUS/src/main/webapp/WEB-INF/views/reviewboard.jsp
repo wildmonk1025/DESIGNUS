@@ -347,7 +347,6 @@ table tr:nth-child(2n+1) {
 
 #title{
 margin-top:5px;
-
 	text-align: left;
 	color: #5ecddf;
 	font-size:25px;
@@ -371,12 +370,11 @@ height:60px;}
 
 	<div id="homeMain">
 		<br />
-		<br />
 		<div id="title" style=" border-radius:5px;">
 		<span id="dd" >이용후기 게시판</span>
 		</div>
 
-		<br /> <br /> <br />
+		<br />
 		<div id="freeboard2">
 			<div id="lightbox-shadow">
 				<div id="lightbox">

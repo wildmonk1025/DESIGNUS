@@ -26,7 +26,7 @@
 
 #homeMain {
 	width: 1520px;
-	height: 700px;
+	height: 850px;
 }
 
 .btn {
@@ -371,10 +371,21 @@ table tr:nth-child(2n+1) {
 		}
 	}
 }
-#dd{
+/* #dd{
 box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 text-align: center;
-}
+} */
+
+#title{
+margin-top:5px;
+
+	text-align: left;
+	color: #5ecddf;
+	font-size:25px;
+width:1200px;
+padding-top:15px;
+height:60px;}
+
 </style>
 <title>Home</title>
 
@@ -390,11 +401,12 @@ text-align: center;
 	</div>
 
 	<div id="homeMain"><br/><br/>
-	<h1 id="dd"  style="background-color:#F6D8CE;">공지사항 게시판</h1>
+	<div id="title" style=" border-radius:5px;">
+	<span id="dd" >공지사항 게시판</span>
+	</div>
 		
 		<br />
-		<br />
-		<br />
+		
 		<div id="freeboard2">
 		
 		<div id="lightbox-shadow1">
@@ -465,6 +477,7 @@ text-align: center;
 
 	</div>
 	<div id="footercheck">
+	<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 
