@@ -122,14 +122,7 @@
 		<beans:property name="mapperInterface"
 			value="com.designus.www.dao.IsponsorDao" />
 	</beans:bean>
-	<!-- DAO using 최종 : IwriterDao -->
-	<beans:bean id="wDao"
-		class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<beans:property name="sqlSessionFactory"
-			ref="sqlSessionFactory" />
-		<beans:property name="mapperInterface"
-			value="com.designus.www.dao.IwriterDao" />
-	</beans:bean>
+	
 	<!-- DAO using 최종 : IboardDao -->
 	<beans:bean id="bDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">

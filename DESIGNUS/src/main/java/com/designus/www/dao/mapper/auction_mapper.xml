@@ -128,11 +128,11 @@
 		  <![CDATA[
  			select * from(
     		select rownum AS RN, a.au_num, a.au_mbid_w, a.au_title, a.au_cgcode, a.au_qty,
-    		a.au_minprice, a.au_inprice, a.au_contents, a.au_date, b.aui_img, ROW_NUMBER() 
+    		a.au_minprice, a.au_inprice, a.au_contents, a.au_date, a.au_kind, b.aui_img, ROW_NUMBER() 
    		 	OVER(PARTITION BY AU_NUM ORDER BY au_num DESC) AS AUM
      		from AU a JOIN AUI b  
      		on a.au_num = b.aui_num
-     		where au_num != ${au_num} and au_mbid_w = #{au_mbid_w} 
+     		where au_num != ${au_num} and au_mbid_w = #{au_mbid_w} and au_kind != 'D'
      		order by dbms_random.value
      		) where AUM =1 and rownum <=3
  			]]>
