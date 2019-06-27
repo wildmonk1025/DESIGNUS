@@ -23,6 +23,7 @@ div {
 	margin: 10px;
 	width: 1080px;
 	height: 50px;
+	color:#95deea;
 	text-align: left;
 	font-size: 20px;
 	float: left;
@@ -176,7 +177,6 @@ margin-left:40px;
  width: 1000px;
 }
 .first{
-border: 1px solid orange;
 	margin: 10px 10px 10px 10px;
 	width: 1060px;
 	height: 250px;
@@ -188,22 +188,27 @@ border: 1px solid orange;
 .first:hover {
 	transform: scale(1.05);
 	background-color : white;
-	border: 2px solid coral;
+	border: 2px solid #95deea;
 	transition-duration: 1s;
 	height: 250px;
 }
 .p1 {
+padding-left:20px;
+margin-top:5px;
  width: 500px;
- float: left;
+ font-weight:bord;
+ float: left; 
  text-align: left;
 }
 .p2{
+margin-top:5px;
 width: 500px;
 text-align: left;
 float: left;
 }
 .second{
-    background-color : #F6D8CE;
+	background-color: #c3ecf3;
+	border-radius: 5px;
 	margin: 10px 10px 10px 10px;
 	width: 1040px;
 	height: 40px;
@@ -212,9 +217,9 @@ float: left;
 	float: left;
 }
 .third{
-	margin: 5px 10px 10px 10px;
-	width: 270px;
-	height: 175px;
+margin: 5px 10px 10px 10px;
+	width: 250px;
+	height: 155px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -237,14 +242,15 @@ float: left;
 }
 .p3{
 margin-top: 50px;
-color: coral;
+color: #55cadd;
 font-weight:bold;
 font-size: 17pt;
 }
 #sixth{
  position: absolute;
-  top: 1080px;
-  left: 1150px;  
+ width:300px;
+  top: 1100px;
+  left: 1000px;  
 }
 #total {
 	position: absolute;
@@ -293,15 +299,19 @@ margin-top:10px;
   background-color: orange;
   opacity: 0.45;
 }
-.bbttzzz{
-  width: 120px;
+
+.bbttzzz {
+  width: 150px;
   height: 50px;
-  color: white;
-  background-color: coral;
+  color: black;
+  cursor:pointer;
+  background-color: #95deea;
+  border-radius:5px;
   margin-top: 20px;
 }
+
 .bbttzzz:hover {
-   background-color: red;
+	background-color: #c7c9f4;
 }
 .f50{
  border-bottom: 1px solid orange;
@@ -441,7 +451,7 @@ if(aa=="bbbb"){
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>후원 진행내역</h2><hr>
+			 <h2>후원 진행내역</h2>
 			</div>
 			
 			<div id="renking">

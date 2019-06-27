@@ -99,6 +99,7 @@ div {
 	position: absolute;
 	top: 5;
 	left: 5;
+	float: left;
 	font-size: 16px;
 	font-weight: bolder;
 	font-family: Verdana, sans-serif;

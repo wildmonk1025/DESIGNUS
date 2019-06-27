@@ -84,15 +84,14 @@ div {
 	margin: 10px;
 	width: 1080px;
 	height: 50px;
+	color:#95deea;
 	text-align: left;
 	font-size: 20px;
 	float: left;
 	overflow: auto;
 }
 
-
 #renking {
-	
 	margin: 0px 10px 10px 10px;
 	width: 1080px;
 	height: 875px;
@@ -100,6 +99,7 @@ div {
 	font-size: 20px;
 	float: left;
 }
+
 #main {
 	width: 1520px;
 	height: 170px;
@@ -208,7 +208,6 @@ div {
 }
 
 #point {
-	
 	margin: 0px 10px 10px 10px;
 	width: 280px;
 	height: 60px;
@@ -307,6 +306,11 @@ a:hover {
 	margin-left: 5px;
 }
 
+.imgg {
+	width: 240px;
+	height: 170px;
+}
+
 #loginmsg {
 	float: left;
 	width: 130px;
@@ -340,7 +344,7 @@ a:hover {
 }
 
 #l1 {
-	 border : 3px solid orange;
+	border: 3px solid orange;
 	position: absolute;
 	width: 600px;
 	height: 430px;
@@ -356,7 +360,7 @@ a:hover {
 }
 
 #l3 {
-	 border : 3px solid orange;
+	border: 3px solid orange;
 	position: absolute;
 	width: 600px;
 	height: 530px;
@@ -370,8 +374,9 @@ a:hover {
 	top: 500px;
 	left: 900px;
 }
+
 #w3 {
-	border : 3px solid orange;
+	border: 3px solid orange;
 	position: absolute;
 	width: 430px;
 	height: 400px;
@@ -431,13 +436,15 @@ a:hover {
 	width: 150px;
 	float: left;
 }
-#sixth{
- position: absolute;
-  top: 1080px;
-  left: 1150px;  
+
+#sixth {
+	position: absolute;
+	width: 300px;
+	top: 1100px;
+	left: 1000px; 
 }
-.first{
-border: 1px solid orange;
+
+.first {
 	margin: 10px 10px 10px 10px;
 	width: 1060px;
 	height: 250px;
@@ -446,25 +453,34 @@ border: 1px solid orange;
 	float: left;
 	border-radius: 5px;
 }
+
 .first:hover {
 	transform: scale(1.05);
-	background-color : white;
-	border: 2px solid coral;
+	background-color: white;
+	border: 2px solid #95deea;
 	transition-duration: 1s;
 	height: 250px;
 }
+
 .p1 {
+padding-left:20px;
+margin-top:5px;
  width: 500px;
+ font-weight:bord;
  float: left;
  text-align: left;
 }
-.p2{
+
+.p2 {
+margin-top:5px;
 width: 500px;
 text-align: left;
 float: left;
 }
-.second{
-    background-color : #F6D8CE;
+
+.second {
+	background-color: #c3ecf3;
+	border-radius: 5px;
 	margin: 10px 10px 10px 10px;
 	width: 1040px;
 	height: 40px;
@@ -472,15 +488,17 @@ float: left;
 	font-size: 20px;
 	float: left;
 }
-.third{
+
+.third {
 	margin: 5px 10px 10px 10px;
-	width: 270px;
-	height: 175px;
+	width: 250px;
+	height: 155px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
 }
-.fourth{
+
+.fourth {
 	margin: 5px 10px 10px 10px;
 	width: 570px;
 	height: 175px;
@@ -488,146 +506,165 @@ float: left;
 	font-size: 20px;
 	float: left;
 }
-.Fifth{
+
+.Fifth {
 	margin: 5px 10px 10px 10px;
-	width: 130px;
+	width: 150px;
 	height: 175px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
 }
-.p3{
+
+.p3 {
 margin-top: 50px;
-color: coral;
+color: #55cadd;
 font-weight:bold;
 font-size: 17pt;
 }
-.p4{
-margin-top: 30px;
-font-size: 13px;
-color: red;
+
+.p4 {
+	margin-top: 30px;
+	font-size: 13px;
+	color: red;
 }
-.bbttzzz{
+
+.bbttzzz {
   width: 150px;
   height: 50px;
-  color: white;
-  background-color: coral;
+  color: black;
+  cursor:pointer;
+  background-color: #95deea;
+  border-radius:5px;
   margin-top: 20px;
 }
 
 .bbttzzz:hover {
-   background-color: red;
+	background-color: #c7c9f4;
 }
-.f1{
- border-bottom: 1px solid orange;
- text-align: left;
- font-size: 17px;
- margin-left : 40px;
- color: red;
- width: 500px;
-}
-.f50{
- border-bottom: 1px solid orange;
- text-align: left;
- font-size: 20px;
- margin-left : 20px;
- margin-top : 10px;
- color: orange;
- width: 560px;
- float: left;
-}
-.f22{
-width : 295px;
-  float: left;
-  border-bottom: 1px solid orange;
-}
-.f23{
-width : 450px;
-  float: left;
-  
-}
-.f24{
 
-width : 295px;
-  float: left;
-  border-bottom: 1px solid orange;
+.f1 {
+	border-bottom: 1px solid orange;
+	text-align: left;
+	font-size: 17px;
+	margin-left: 40px;
+	color: red;
+	width: 500px;
 }
-.f25{
-margin-left: 100px;
-  width: 600px;
-  float: left;
-  text-align: left;
-}
-.f26{
-margin-top : 10px;
- width: 300px;
- height: 35px;
-}
-.f27{
-margin-top : 10px;
-width: 286px;
- height: 35px;
-}
-.f28{
-width : 65px;
-  height : 40px;
-  border-radius: 10px;
-  background-color: orange;
-  opacity: 0.45;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-.f30{
- border-bottom: 1px solid orange;
- text-align: left;
- font-size: 17px;
- margin-left : 40px;
- color: red;
- width: 300px;
-}
-.f31{
-  margin-top: 10px;
-  
-}
-.f32{
-width : 380px;
-  margin-top: 10px;
-  margin-left : 40px;
-  padding-top : 10px;
-  float: left;
-  text-align: left;
-}
-.f33{
- padding-top : 10px;
- margin-top: 20px;
-  margin-left : 40px;
-   text-align: left;
-   font-size: 20px;
-}
-.b3{
 
-  width : 65px;
-  height : 40px;
-  border-radius: 10px;
-  background-color: orange;
-  opacity: 0.45;
+.f50 {
+	border-bottom: 1px solid orange;
+	text-align: left;
+	font-size: 20px;
+	margin-left: 20px;
+	margin-top: 10px;
+	color: orange;
+	width: 560px;
+	float: left;
 }
-textarea{
- margin-top: 15px;
- resize: none;
- border:1px solid black;
-}
-.f3{
 
-color: black;
+.f22 {
+	width: 295px;
+	float: left;
+	border-bottom: 1px solid orange;
 }
-.f4{
-  margin-top: 15px;
-  color: black;
+
+.f23 {
+	width: 450px;
+	float: left;
 }
-.f5  { 
-  float: left;
-  margin-left: 50px;
+
+.f24 {
+	width: 295px;
+	float: left;
+	border-bottom: 1px solid orange;
+}
+
+.f25 {
+	margin-left: 100px;
+	width: 600px;
+	float: left;
+	text-align: left;
+}
+
+.f26 {
+	margin-top: 10px;
+	width: 300px;
+	height: 35px;
+}
+
+.f27 {
+	margin-top: 10px;
+	width: 286px;
+	height: 35px;
+}
+
+.f28 {
+	width: 65px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: orange;
+	opacity: 0.45;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.f30 {
+	border-bottom: 1px solid orange;
+	text-align: left;
+	font-size: 17px;
+	margin-left: 40px;
+	color: red;
+	width: 300px;
+}
+
+.f31 {
+	margin-top: 10px;
+}
+
+.f32 {
+	width: 380px;
+	margin-top: 10px;
+	margin-left: 40px;
+	padding-top: 10px;
+	float: left;
+	text-align: left;
+}
+
+.f33 {
+	padding-top: 10px;
+	margin-top: 20px;
+	margin-left: 40px;
+	text-align: left;
+	font-size: 20px;
+}
+
+.b3 {
+	width: 65px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: orange;
+	opacity: 0.45;
+}
+
+textarea {
+	margin-top: 15px;
+	resize: none;
+	border: 1px solid black;
+}
+
+.f3 {
+	color: black;
+}
+
+.f4 {
+	margin-top: 15px;
+	color: black;
+}
+
+.f5 {
+	float: left;
+	margin-left: 50px;
 }
 </style>
 
@@ -650,7 +687,7 @@ color: black;
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>출품작 구매 내역</h2><hr>
+			 <h2>출품작 구매 내역</h2>
 			</div>
 			<div id="renking">
 				
@@ -671,7 +708,7 @@ color: black;
 	for (var i = 0; i < apList.length; i++) {
 		if (apList[i].aup_step == 1) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-			     +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
+			     +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img class='imgg' src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 				 + "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 				 + "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -680,7 +717,7 @@ color: black;
 
 		} else if (apList[i].aup_step == 2) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 : -</div></div>"
-				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
+				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img class='imgg' src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
 					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
@@ -688,19 +725,19 @@ color: black;
 
 		} else if (apList[i].aup_step == 3) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apList[i].aup_track+"</div></div>"
-				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
+				    +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img class='imgg' src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 					+ "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 					+ "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
-					+ "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+					+ "<p class='p4'>구매후기 작성버튼을 누르시면 수령확인이 완료됩니다. <br> 기타 문의는 고객센터를 이용해주세요!</p></div>"
 					+ "<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"location.href='scquestion'\" value='고객센터 문의'/><br>"
-					+ "<input class='bbttzzz' type='button' onclick=\"review('"+ apList[i].aup_ptnum+ "')\" value='수령확인구매후기 쓰기'/></div></div>";
+					+ "<input class='bbttzzz' type='button' onclick=\"review('"+ apList[i].aup_ptnum+ "')\" value='구매후기 작성'/></div></div>";
 
 		} else if (apList[i].aup_step == 4) {
 			main += "<div class='first'><div class='second'><div class='p1'>"+apList[i].aut_date+"</div><div class='p2'>운송장번호 :"+apList[i].aup_track+"</div></div>"
-		            +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
+		            +"<div class='third'><a href='auctionRead?au_num="+apList[i].aup_ranum+"'><img class='imgg' src='/resources/images/"+apList[i].aui_img+"'/ width='100%' height='100%'></a></div>"
 			        + "<div class='fourth'>상품번호 :"+ apList[i].aup_ptnum+"<br>상품명 :"+apList[i].au_title+"<br>"
 			        + "구매 금액 :"+ apList[i].aup_price+"<br>상품 수량 :"+apList[i].aup_qty+"<br>"
-			        + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+			        + "<p class='p4'>완료된 거래입니다.<br> 물건에 대한 불만이나, 기타 문의사항은 고객센터를 이용해주세요!</p></div>"
 					+ "<div class='Fifth'><p class='p3'>완료</p></div></div>";
 		}
 	}

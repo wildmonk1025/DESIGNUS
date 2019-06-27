@@ -9,10 +9,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-#footercheck {
-	width: 1600px;
-	height: 150px;
-}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -26,23 +22,13 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-div {
-	margin: auto;
-}
- body {
-            margin: auto;
-            width: 1520px;
-            height: auto;
-        }
-ul {
-	list-style: none;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 60px;
 }
 
 #adminmenu {
@@ -51,12 +37,6 @@ ul {
 	height: 500px;
 }
 
-#adminwriterjoinfrm {
-	float: left;
-	align-content: center;
-	width: 1216px;
-	height: 800px;
-}
 
 .writerjoinfrm {
 	padding: inherit;
@@ -65,92 +45,65 @@ ul {
 	height: 450px;
 }
 
-#writercateitlefrm {
-	margin: 10px;
-	width: 230px;
-	padding-left: 20px;
-	float: left;
-	color: white;
-}
-
 #admincatefrm {
 	float: left;
-	margin: 25px;
-	left: 40px;
-	float: left;
-	width: 900px;
-	height: 500px;
+	align-content: center;
+	width: 1216px;
+	height: 1000px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #writercatecontents {
-	margin: 10px 40px;
-	width: 800px;
-	height: 200px;
+	margin-left: 50px;
+	margin-top: 20px;
+	width: 600px;
+	height: 940px;
 	float: left;
-	overflow-y: scroll;
+	overflow: auto;
 }
 
-#cateup {
+.opt button {
+	margin: 5px;
+	width: 290px;
+	height: 100px;
+	float: left;
+	background-color: #c8e7ea;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	
+}
+
+#writercatecontents2 {
+	margin: 20px;
+	width: 500px;
+	height: 920px;
+	float: left;
+}
+
+
+
+#cateup, #catedown, #catechange {
 	margin: 10px 0px 10px 40px;
 	text-align: center;
-	width: 100px;
-	height: 40px;
+	width: 400px;
+	height: 60px;
 	float: left;
 }
 
-#cateupload {
+#cateupload, #catedownload, #cateone {
 	margin: 10px 5px;
-	width: 693px;
-	height: 40px;
+	width: 450px;
+	height: 60px;
 	float: left;
 }
 
-#catedown {
-	margin: 10px 0px 10px 40px;
-	width: 100px;
-	height: 40px;
-	float: left;
 }
 
-#catedownload {
-	margin: 12px 5px;
-	width: 693px;
-	height: 40px;
-	float: left;
-}
-
-#catechange {
-	margin: 10px 0px 10px 40px;
-	text-align: center;
-	width: 100px;
-	height: 40px;
-	float: left;
-}
-
-#cateone {
-	margin: 10px 5px;
-	width: 693px;
-	height: 40px;
-	float: left;
-}
-
-
-
-#catech {
-	float: left;
-	width: 85px;
-	text-align: center;
-}
-.best {
-	color: black;
-	display : inline;
-	float: left;
-	width: 250px;
-	heigth: 55px;
-	display: inline;
-}
-.btn1{
-margin-top: 10px;
+.btn1 {
+	margin-top: 10px;
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
@@ -164,7 +117,6 @@ margin-top: 10px;
 	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
 	/*Button*/
 	background-color: coral;
-	
 	width: 220px;
 	height: 70px;
 	border-color: rgb(223, 192, 86);
@@ -186,17 +138,17 @@ margin-top: 10px;
 		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
 		Strength=3);
 	display: inline-block;
-	color:white;
-	
+	color: white;
 }
-.btn2{
-margin-top: 10px;
+
+.btn2 {
+	margin-top: 10px;
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
 	/*Text*/
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
+	font-size: 25px;
 	font-weight: bold;
 	line-height: 240%;
 	color: rgb(162, 136, 44);
@@ -216,8 +168,8 @@ margin-top: 10px;
 		rgb(237, 237, 237) 100%);
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
+	width: 200px;
+	height: 50px;
 	border-color: rgb(223, 192, 86);
 	border-width: 1px;
 	-moz-border-radius: 3px;
@@ -248,106 +200,116 @@ margin-top: 10px;
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
 }
+
 .signUpInput {
-   width: 150px;
-   height: 50px;
-   margin-bottom: 25px;
-   padding: 0 15px 2px;
-   font-size: 17px;
-   background: white;
-   border: 2px solid #EBEBEB;
-   border-radius: 4px;
-   -webkit-box-shadow: inset 0 -2px #EBEBEB;
-   box-shadow: inset 0 -2px #EBEBEB;
+	width: 200px;
+	height: 50px;
+	float:left;
+	margin-left: 10px;
+	margin-bottom: 25px;
+	font-size: 15px;
+	background: white;
+	border: 2px solid #EBEBEB;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 -2px #EBEBEB;
+	box-shadow: inset 0 -2px #EBEBEB;
 }
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-text-align: center;
+
+ul {
+	list-style: none;
+}
+
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
 
 <body>
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp"/>
-	</div>
-	</div>
-    <div id="adminmenu">
-        <ul>
-                <jsp:include page="admininclud.jsp"></jsp:include>
-
-        </ul>
-    </div>
-	<div id="admincatefrm">
-		<div class="writercatefrm"><br/>
-				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:870px; ">카테고리 관리</h3>
-			<div id="writercatecontents">현재 카테고리</div>
-			<form action="categoryadd" method="post">
-			<div id="cateup"><input type="submit" value="카테고리추가" class="btn2"></div>
-			
-			<div id="cateupload">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" name="cg_code" class="signUpInput" 
-							placeholder="category code" autofocus required >&nbsp;&nbsp;
-							         <input type="text" name="cg_name" class="signUpInput" 
-							placeholder="category name" autofocus required ></div></form>
-			<form action="categorydelete" method="post">
-			<div id="catedown"><input type="submit" value="카테고리삭제" class="btn2"></div>
-			<div id="catedownload">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" name="cg_name" class="signUpInput" 
-							placeholder="category name" autofocus required ></div></form>
-			<form action="categorychange" method="post">
-			<div id="catechange"><input type="submit" value="카테고리변경" class="btn2"></div>
-			<div id="cateone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text"  id="change" name="cg_name" class="signUpInput" 
-							placeholder="change Before name" autofocus required >
-								&nbsp;&nbsp;<input type="text" name="cg_cname" class="signUpInput" 
-							placeholder="change after name" autofocus required ></div></form>
-			
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
 	</div>
-	<div id="footercheck"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	
-		<jsp:include page="footer.jsp"></jsp:include>
+	<div id="middle">
+		<div id="adminmenu">
+			<ul>
+				<jsp:include page="admininclud.jsp"></jsp:include>
+			</ul>
+		</div>
+		<div id="admincatefrm">
+				<h3 style="text-align: center; font-size: 30px;">카테고리 관리</h3>
+				<div id="writercatecontents">현재 카테고리</div>
+				
+				<div id="writercatecontents2">
+				<form action="categoryadd" method="post">
+					<div id="cateup">
+					<input type="submit" value="카테고리추가" class="btn2"></div>
+
+					<div id="cateupload">
+						<input type="text" name="cg_code" class="signUpInput" placeholder="추가할 코드입력" autofocus required>
+						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
+					</div>
+				</form>
+				<form action="categorydelete" method="post">
+					<div id="catedown">
+						<input type="submit" value="카테고리삭제" class="btn2">
+					</div>
+					<div id="catedownload">
+						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
+					</div>
+				</form>
+				<form action="categorychange" method="post">
+					<div id="catechange">
+						<input type="submit" value="카테고리변경" class="btn2">
+					</div>
+					<div id="cateone">
+						<input type="text" id="change" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
+						<input type="text" name="cg_cname" class="signUpInput" placeholder="변경후 카테고리명 입력" autofocus required>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
 </body>
 <script>
-/* $("#atag").on("click", function(){
-	var dd = ${cg_name}
-}); */
-$(document).ready(function() {
-	$.ajax({
-		url : 'categorycurrent',
-		type: 'post',
-		contentType:"application/json; charset=utf-8;",
-		dataType : 'json',
-		//contentType:'application/json',
-		success:function(data){
-			var result = "";
-			console.dir(data);
-			console.log("성공");
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : 'categorycurrent',
+					type : 'post',
+					contentType : "application/json; charset=utf-8;",
+					dataType : 'json',
+					//contentType:'application/json',
+					success : function(data) {
+						var result = '';
+						console.log("성공");
+						for ( var i in data) {
+							result += "<div class='opt'><button class='btn1' onclick=\"catap('" + data[i].cg_name + "')\">"
+										+ "카테고리 번호:" + data[i].cg_code + "<br>"
+										+ "카테고리 종류:" + data[i].cg_name + "</button></div>";
+						}
+						$("#writercatecontents").html(result);
+					},
+					error : function(error) {
+						console.log("실패");
+						console.log(error);
+					}
+				});
+			});
 
-			for(var i in data){
-				result+="<div class='best'>"+"<button class='btn1' onclick=\"catap('"+data[i].cg_name+"')\">"
-					  +"카테고리 번호:"+data[i].cg_code+"<br>"
-					  +"카테고리 종류:"+data[i].cg_name+"<br>"
-					  +"</button>"
-					  +"</div>";
-					  }
-			$("#writercatecontents").html(result);
-		},
-	error:function(error){
-		console.log("실패");
-		console.log(error);
+	function catap(num) {
+		console.log(num);
+		$("#change").val(num);
 	}
-	});
-});
-
-function catap(num) {
-	console.log(num);
-	$("#change").val(num);
-}
 </script>
 
 </html>
