@@ -42,10 +42,13 @@
 
 	<select id="getAuctionListSelect2" parameterType="String" resultType="auction">
 	   <![CDATA[
-	   SELECT * FROM (
-	   SELECT * FROM AU WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%')
-	   OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%') AND AU_KIND != 'D' ORDER BY AU_NUM DESC
-		) WHERE AU_KIND != 'D'
+	  	 SELECT * FROM (
+	  	 SELECT * FROM AU LEFT OUTER JOIN (SELECT AUI_NUM, AUI_IMG, ROW_NUMBER() 
+      	 OVER(PARTITION BY AUI_NUM ORDER BY AUI_NUM DESC) AS AUM FROM AUI ) AUI
+      	 ON AU.AU_NUM = AUI.AUI_NUM
+	  	 WHERE UPPER(AU_TITLE) LIKE UPPER('%'||#{word}||'%')
+	  	 OR UPPER(AU_CONTENTS) LIKE UPPER('%'||#{word}||'%') ORDER BY AU_NUM DESC
+		) WHERE AU_KIND != 'D' AND AUM = 1
 		]]>
 	</select>
 
