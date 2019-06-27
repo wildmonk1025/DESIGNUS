@@ -7,11 +7,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-#footercheck {
-	width: 1520px;
-	height: 150px;
-}
-
 #main {
 	width: 1520px;
 	height: 170px;
@@ -27,57 +22,15 @@
 	z-index: 1000;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 400px;
-	border-collapse: collapse;
-}
-
-#customers td, #customers th {
-	font-size: 1em;
-	border: none;
-	padding: 3px 7px 2px 7px;
-}
-
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color:#F6D8CE;
-	color: #ffffff;
-}
-
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
-
-body {
-	margin: auto;
-	width: 1520px;
-	height: auto;
-	overflow: auto;
-}
-
-div {
-	margin: auto;
-}
 
 ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
-}
-
 #middle {
-	float: left;
-	width: 1518px;
+	width: 1520px;
 	height: auto;
-	overflow: auto;
+	margin-top: 50px;
 }
 
 #adminmenu {
@@ -89,65 +42,70 @@ ul {
 #adminopt {
 	float: left;
 	align-content: center;
-	width: 1214px;
+	width: 1216px;
 	height: 500px;
 }
 
-#declarelist {
-	margin-left: 20px;
-	width: 960px;
-	height: 320px;
-	float: left;
+.opt {
+	margin-top: 5px;
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
+
+
+.opt:hover {
+	transform: scale(1.02);
+	transition-duration: 1s;
+}
+
 
 #questionlist {
-	width: 990px;
-	height: 400px;
-	overflow-y: scroll;
-}
-
-a:active {
-	text-decoration: none;
-	color: black;
-}
-
-a:visited {
-	text-decoration: none;
-	color: black;
-}
-
-a:link {
-	text-decoration: none;
-	color: black;
-}
-
-a:hover {
-	text-decoration: none;
-	color: black;
+	margin-top: 10px;
+	width: 100%;
+	height: 980px;
+	overflow: auto;
 }
 
 .best {
-	
-	color: black;
-	display: inline;
 	float: left;
-	width: 400px;
-	heigth: 55px;
-	display: inline;
-	margin:5px 5px 5px 5px;
+	width: 1100px;
+	heigth: auto;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	margin:5px 5px 5px 5px;
 }
+.object {
+	background-color: #c8e7ea;
+	width: 1100px;
 }
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 
+.object td {
+	width: 280px;
+	font-size: 23px;
+	text-align: center;
 }
-.opt {
-	padding: inherit;
-	position: relative;
-	margin-top: 5px;
-	width: 1000px;
-	height: 450px;
+
+.contents {
+	font-size: 18px;
+	font-weight: 600;
+	width: 1100px;
+}
+
+.contents td {
+	width: 280px;
+	height: 50px;
+	font-size: 18px;
+	text-align: center;
+}
+
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
@@ -158,6 +116,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			<jsp:include page="main.jsp" />
 		</div>
 	</div>
+	<div id="middle">
 	<div id="adminmenu">
 		<ul>
 			<jsp:include page="admininclud.jsp"></jsp:include>
@@ -166,15 +125,15 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	</div>
 	<div id="adminopt">
 		<form name="form" method="get">
-			<div class="opt"><br/><br/>
-				<h3 id="dd" style="text-align: center; font-size: 25px; background-color:#F6D8CE;">1:1 문의 접수 리스트</h3>
-				<hr>
+			<div class="opt">
+				<h3 id="dd" style="text-align: center; font-size: 30px;">1:1 문의 접수 리스트</h3>
 				<div id="questionlist"></div>
 			</div>
 		</form>
 	</div>
-	<div id="footercheck">
+	<div id="footer">
 		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 	</div>
 </body>
 <script>
@@ -187,20 +146,19 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "";
-						console.dir(data);
+						var result = "<div id='best'><table><tr class='object'><td>문의번호</td><td>문의 아이디</td><td>질문유형</td><td>제목</td><td>등록일</td><td>상세보기</td></tr>";
 						console.log("성공");
-
-						for ( var i in data) {
-							result += "<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
-									+ "<a href='questionWriteCheck?aq_num="+ data[i].aq_num + "'>" + "문의번호:"
-									+ data[i].aq_num + "</td></tr>" + "<tr><td>" + "문의자아이디:"
-									+ data[i].aq_mbid +"</td></tr>" + "<tr><td>" + "질문유형:"
-									+ data[i].aq_tye +"</td></tr>" + "<tr><td>" + "제목:"
-									+ data[i].aq_title +"</td></tr>" + "<tr><td>" + "등록일:"
-									+ data[i].aq_date + "</td></tr>" + "<tr><td>" + "</a>"
-									+"</table>" +"</div>";
+						
+						for(var i in data) {
+							result += "<tr class='contents'><td>"+data[i].aq_num+"</td><td>"
+									+ data[i].aq_mbid + "</td><td>"
+									+ data[i].aq_tye + "</td><td>"
+									+ data[i].aq_title + "</td><td>"
+									+ data[i].aq_date + "</td><td>"
+									+ "<a href='questionWriteCheck?aq_num="+ data[i].aq_num + "'>클릭</a></td></tr>";
 						}
+						result+="</table></div>";
+						
 						$("#questionlist").html(result);
 					},
 					error : function(error) {

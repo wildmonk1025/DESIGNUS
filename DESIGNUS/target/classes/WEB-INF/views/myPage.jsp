@@ -184,7 +184,7 @@ table tr:nth-child(2n+1) {
 #notice:hover {
 	transform: scale(1.05);
 	background-color : white;
-	border: 2px solid coral;
+	border: 2px solid #5ecddf;
 	transition-duration: 1s;
 	height: 400px;
 }
@@ -211,7 +211,7 @@ table tr:nth-child(2n+1) {
 #auction:hover {
 	transform: scale(1.05);
 	background-color : white;
-	border: 2px solid coral;
+	border: 2px solid #5ecddf;
 	transition-duration: 1s;
 	height: 300px;
 }
@@ -234,7 +234,7 @@ table tr:nth-child(2n+1) {
 #spon:hover {
 	transform: scale(1.05);
 	background-color : white;
-	border: 2px solid coral;
+	border: 2px solid #5ecddf;
 	transition-duration: 1s;
 /* 	height: 250px; */
 }
@@ -374,6 +374,7 @@ margin-left:40px;
 /* border: 1px solid orange; */
  margin-left:40px;
  margin-top:10px;
+ text-align:left;
  float: left;
 }
 
@@ -461,7 +462,7 @@ console.log(1,nolist);
 var main = "";
 
 
-    main+="<div class='noticeheader'><h3 id='hh2'>알림</h3></div><div class='noticebody'><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
+    main+="<div class='noticeheader' style='margin-top:10px; height:auto;'><h3 id='hh2'>알림</h3></div><div class='noticebody'><a id='full' href='fullDelete'>전체 삭제</a><br><hr>"
         +"<table id='sk' ><tr><th>보낸 아이디</th><th>받은 아이디</th><th>알림내용</th><th>삭제</th></tr>"
 for (var i = 0; i < nolist.length; i++){
 	  if(nolist[i].nf_check==0){
@@ -540,13 +541,13 @@ console.log(24,qq)
        if(spgList[i].ssp_step ==1 ){
 	 tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
 	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
-	   +"0<progress value="+stList[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
+	   +"<progress value="+stList[i]+" max="+spgList[i].ss_goalqty+"></progress>   ("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
        
-	   +"목표("+spgList[i].ss_goalqty+") 마감일 :"+spgList[i].ss_date+"</div>" 
+	   +"  목표("+spgList[i].ss_goalqty+"개)<span style='color:#26aabf;'>  마감일 : "+spgList[i].ss_date+"</span></div>" 
        }else if(spgList[i].ssp_step <=2 ){
     	   tt+="<div class=t1><h3 class='h'>"+spgList[i].ss_title+"</h3>"
     	   /* +"0<progress value="+qq[i]+" max="+spgList[i].ss_goalqty+"></progress>("+qq[i]/spgList[i].ss_goalqty*100+"%)" */
-    	   +"0<progress value="+stList[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
+    	   +"<progress value="+stList[i]+" max="+spgList[i].ss_goalqty+"></progress>("+(stList[i] / spgList[i].ss_goalqty)*100+"%)"
            
     	   +"목표("+spgList[i].ss_goalqty+") 마감일 :마감 되었습니다.</div>" 
        }
