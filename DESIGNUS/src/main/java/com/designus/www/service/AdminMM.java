@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
+import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 
 @Service
@@ -28,6 +30,8 @@ public class AdminMM {
 	private ModelAndView mav;
 	@Autowired
 	private IadminDao iDao;
+	@Autowired
+	private UploadFile upload;
 
 	public String declarewritecheck() {
 		List<MemberSearch> rList = iDao.getrepInfo();
@@ -349,6 +353,22 @@ public class AdminMM {
 		view = "categoryEdit";
 		mav.setViewName(view);
 		return mav;
+	}
+
+	public ModelAndView mjFileDownload(Map<String, Object> params) throws Exception {
+			mav = new ModelAndView();
+			String root = (String) params.get("root");
+			String mj_portf = (String) params.get("mj_portf");
+			//파일 없을경우 넘길 글번호
+			String fullPath = root + mj_portf;
+
+			HttpServletResponse resp = (HttpServletResponse) params.get("response");
+			//실제 다운로드
+			boolean chk = upload.downloadWri(fullPath, mj_portf, resp);
+			if(chk==false) {
+				mav.setViewName("redirect:/permitWriApply");
+			}
+			return mav;
 	}
 
 }
