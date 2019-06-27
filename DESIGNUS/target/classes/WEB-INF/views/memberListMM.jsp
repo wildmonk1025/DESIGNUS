@@ -303,9 +303,9 @@ $("#form").on("click", function(){
 $("#form1").on("click", function(){
 	var dd = ${mbInfo.mb_ccnt};
 	console.log(dd);
-	if(dd>=5){
+	if(dd>=3){
 		
-		swal("경고횟수가 5이상 누를수없습니다.");
+		swal("경고횟수가 3이상 누를수없습니다.");
 		return false;
 	} else{
 		swal("해당회원이 경고되었습니다.");
