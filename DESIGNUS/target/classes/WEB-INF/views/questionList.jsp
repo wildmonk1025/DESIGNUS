@@ -30,7 +30,7 @@ ul {
 #middle {
 	width: 1520px;
 	height: auto;
-	margin-top: 50px;
+	margin-top: 60px;
 }
 
 #adminmenu {
@@ -47,7 +47,6 @@ ul {
 }
 
 .opt {
-	margin-top: 5px;
 	width: 1200px;
 	height: 990px;
 	border: 1px solid #f0f0f0;
@@ -132,6 +131,7 @@ ul {
 		</form>
 	</div>
 	<div id="footer">
+				<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 	</div>

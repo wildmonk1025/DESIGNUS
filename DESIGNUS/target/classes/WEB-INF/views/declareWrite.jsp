@@ -28,7 +28,7 @@
 #middle {
 	width: 1520px;
 	height: auto;
-	margin-top: 50px;
+	margin-top: 60px;
 }
 
 #adminmenu {
@@ -45,7 +45,6 @@
 }
 
 .opt {
-	margin-top: 5px;
 	width: 1200px;
 	height: 990px;
 	border: 1px solid #f0f0f0;

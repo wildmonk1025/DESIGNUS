@@ -9,11 +9,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-
-#footercheck {
-	width: 1520px;
-	height: 150px;
-}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -27,49 +22,13 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 400px;
-	border-collapse: collapse;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
-#customers td, #customers th {
-	font-size: 1em;
-	border: none;
-	padding: 3px 7px 2px 7px;
-}
-
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color:#F6D8CE;
-	color: #ffffff;
-}
-
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
-
-body {
-	margin: auto;
+#middle {
 	width: 1520px;
 	height: auto;
-}
-
-
-
-ul {
-	list-style: none;
-}
-
-#mainheader {
-	width: 1518px;
-	height: 170px;
+	margin-top: 60px;
 }
 
 #adminmenu {
@@ -82,126 +41,144 @@ ul {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: 600px;
-	overflow-y: scroll;
+	height: 500px;
 }
 
 .writerjoin {
-	padding: inherit;
-	margin-top: 30px;
-	width: 1000px;
-	height: 450px;
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
-#writerjointitle {
-	margin: 10px;
-	width: 230px;
-	padding-left: 20px;
-	float: left;
-	color: white;
+.writerjoin:hover {
+	transform: scale(1.02);
+	transition-duration: 1s;
 }
-
-#writerjoinlist {
-	margin: 25px;
-	left: 40px;
-	float: left;
-	width: 900px;
-	height: auto;
+#transformlist {
+	margin-top: 10px;
+	width: 100%;
+	height: 980px;
+	overflow: auto;
 }
 .best {
-	display : inline;
 	float: left;
-	width: 400px;
-	heigth: 150px;
-	size: 20px;
+	width: 1100px;
+	height: auto;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	margin:5px 5px 5px 5px;
-	
 }
 
-a:active {
-	text-decoration: none;
-	color: black;
+.object {
+	background-color: #c8e7ea;
+	width: 1100px;
 }
 
-a:visited {
-	text-decoration: none;
-	color: black;
+.object td {
+	width: 280px;
+	font-size: 23px;
+	text-align: center;
 }
-a:link {
-	text-decoration: none;
-	color: black;
+
+.contents {
+	font-size: 18px;
+	font-weight: 600;
+	width: 1100px;
 }
-a:hover {
-	text-decoration: none;
-	color: black;
-}   
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-text-align: center;
+
+.contents td {
+	width: 280px;
+	height: 50px;
+	font-size: 18px;
+	text-align: center;
+}
+
+
+ul {
+	list-style: none;
+}
+
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
 
 <body>
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp"/>
-	</div>
-	</div>
-    <div id="adminmenu">
-        <ul>
-                <jsp:include page="admininclud.jsp"></jsp:include>
-
-        </ul>
-    </div>
-	<div id="adminwriterjoin">
-		<div class="writerjoin"><br/>
-				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">
-				작가 가입신청 리스트</h3>
-			<div id="writerjoinlist">
-				<div id="transformlist">
-					
-				</div>
-			
-				
-			</div>
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
 	</div>
-	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
+	<div id="middle">
+		<div id="adminmenu">
+			<ul>
+				<jsp:include page="admininclud.jsp"></jsp:include>
+			</ul>
+		</div>
+		<div id="adminwriterjoin">
+			<div class="writerjoin">
+				<h3 style="text-align: center; font-size: 30px;">작가 가입/전환신청 리스트</h3>
+				<div id="transformlist"></div>
+			</div>
+		</div>
+		<div id="footer">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
 </body>
 <script>
-$(document).ready(function() {
-	$.ajax({
-		url : 'transformwridetail ',
-		type: 'post',
-		contentType:"application/json; charset=utf-8;",
-		dataType : 'json',
-		//contentType:'application/json',
-		success:function(data){
-			var result = "";
-			console.dir(data);
-			console.log("성공");
+	$(document).ready(
+			function() {
+				$.ajax({
+					url : 'transformwridetail ',
+					type : 'post',
+					contentType : "application/json; charset=utf-8;",
+					dataType : 'json',
+					//contentType:'application/json',
+					success : function(data) {
+						var result = "<div id='best'><table><tr class='object'><td>분류</td><td>아이디</td><td>전문분야</td><td>포트폴리오</td><td>파일설명</td><td>상세보기</td></tr>";
+						console.log("성공");
 
-			for(var i in data){
-				result+="<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>" 
-				+"<a href='permitWriDetail?mb_id="+data[i].mb_id+"'>"
-					  +"아이디:" +data[i].mb_id+"</tr></td>"+ "<tr><td>"
-					  +"카테고리 분류번호:"+data[i].mj_cgcode+"</tr></td>"+ "<tr><td>"
-					  +"포트폴리오:"+data[i].mj_contents+"</tr></td>"+ "<tr><td>"
-					  +"파일설명:"+data[i].mj_portf+"</tr></td>"+ "<tr><td>"
-					  +"</a>"+"</table>"+"</div>";
-					  }
-			$("#transformlist").html(result);
-		},
-	error:function(error){
-		console.log("실패");
-		console.log(error);
-	}
-	});
-});
+						for ( var i in data) {
+							var test = data[i].mb_grade;
+							console.log(test);
+							switch(test) {
+							case 'S':
+								test = "임시";
+								result += "<tr class='contents'><td>" + test + "</td><td>"
+								+ data[i].mb_id + "</td><td>"
+								+ data[i].mj_cgcode + "</td><td>"
+								+ data[i].mj_portf + "</td><td>"
+								+ data[i].mj_contents + "</td><td>"
+								+ "<a href='permitWriDetail?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
+								break;
+							case 'X':
+								test = "전환";
+								result += "<tr class='contents' style='background-color:#F8E0EC;'><td>" + test + "</td><td>"
+								+ data[i].mb_id + "</td><td>"
+								+ data[i].mj_cgcode + "</td><td>"
+								+ data[i].mj_portf + "</td><td>"
+								+ data[i].mj_contents + "</td><td>"
+								+ "<a href='permitWriDetail?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
+								break;
+							}
+						}
+							result+= "</table>" + "</div>";
+						$("#transformlist").html(result);
+					},
+					error : function(error) {
+						console.log("실패");
+						console.log(error);
+					}
+				});
+			});
 </script>
 
 </html>

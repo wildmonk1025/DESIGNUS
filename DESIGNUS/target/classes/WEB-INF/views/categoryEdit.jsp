@@ -9,10 +9,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-#footercheck {
-	width: 1600px;
-	height: 150px;
-}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -26,25 +22,17 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
-div {
-	margin: auto;
-}
- body {
-            margin: auto;
-            width: 1520px;
-            height: auto;
-        }
 ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 60px;
 }
-
 #adminmenu {
 	float: left;
 	width: 300px;
@@ -260,9 +248,9 @@ margin-top: 10px;
    -webkit-box-shadow: inset 0 -2px #EBEBEB;
    box-shadow: inset 0 -2px #EBEBEB;
 }
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-text-align: center;
+
+#footer{
+	
 }
 </style>
 </head>
