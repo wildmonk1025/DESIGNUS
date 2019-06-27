@@ -480,9 +480,9 @@ button:hover:before, button:hover:after {
 								<c:out value="${check}" />
 								님 반가워요
 						</c:when>
-							<c:when test="${grade=='S'}">
+							<c:when test="${grade=='X'}">
 								<img src="resources/images/letter-s.png" width="20px"
-									height="20px">[임시]
+									height="20px">[전환]
 								<c:out value="${check}" />
 								님 반가워요
 						</c:when>

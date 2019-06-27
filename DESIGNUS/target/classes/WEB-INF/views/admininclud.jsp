@@ -22,8 +22,9 @@
 	padding-left: 10px;
 }
 .lipont:hover{
-	background-color: coral;
-	transform: scale(1.05);
+	background-color: #F8E0EC;
+	color: white;
+	transform: scale(1.15);
 	transition-duration: 1s;
 }
 .atag:active {
@@ -42,7 +43,7 @@
 }
 .atag:hover {
 	text-decoration: none;
-	color: #646464;
+	color: white;
 }   
 </style>
 </head>
