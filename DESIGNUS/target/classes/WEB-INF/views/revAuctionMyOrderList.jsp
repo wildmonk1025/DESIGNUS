@@ -539,9 +539,9 @@ for (var i = 0; i < revList.length; i++) {
 	} else if(revList[i].rap_step==2){
 			main+="<div class='first'><div class='second'>"
 	       if(revList[i].ra_oc=="O"){
-			main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+			main +="<div class='p1'>의뢰 공개 여부 : 공개</div><div class='p2'>운송장번호 : -</div></div>"
 		   }else{
-			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+			main +="<div class='p1'>의뢰 공개 여부 : 비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
 			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
