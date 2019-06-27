@@ -304,7 +304,7 @@ div {
 							str += "<option value="+data[i].cg_code+">"
 									+ data[i].cg_name + "</option>";
 						}
-						$("#mj_cg_code").html(str);
+						$("#mj_cgcode").html(str);
 					},
 					error : function(error) {
 					}
