@@ -312,14 +312,6 @@ a:hover {
 }
 
 #mainheader {
-	border: 1px solid black;
-	width: 1520px;
-	height: 170px;
-	position: fixed;
-	background-color: white;
-}
-
-#mainheader {
 	border: 1px solid #F5BCA9;
 	background-color: white;
 	width: 1520px;
@@ -437,6 +429,12 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	height: 180px;
 	margin-top: 20px;
 	border: 1px solid #f0f0f0;
+}
+#mypagemain {
+	width: 1518px;
+	height: 1200px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	margin-top: 40px;
 }
 </style>
 
