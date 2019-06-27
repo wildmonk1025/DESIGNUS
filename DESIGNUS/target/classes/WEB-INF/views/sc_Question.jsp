@@ -6,6 +6,7 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 ::-webkit-scrollbar {
 	width: 4px;
@@ -298,7 +299,7 @@ textarea {
 				<div id="list">
 					<div id="title1">
 						<p id="titlesl">질문 유형</p>
-						<select name="qr_type">
+						<select id="qr_type" name="qr_type">
 							<option>질문의 종류를 선택하세요.</option>
 							<option>거래</option>
 							<option>판매</option>
@@ -312,7 +313,7 @@ textarea {
 						<input id="qr_title" type="text" name="qr_title">
 					</div>
 					<textarea style="font-size: 20px;" placeholder="이곳에 내용을 적어주세요"
-						name="qr_contents"></textarea>
+						id="qr_contents" name="qr_contents"></textarea>
 
 					<div id="btnsession">
 
@@ -335,6 +336,21 @@ textarea {
 
 </body>
 <script>
+$("#apply").click(function() {
+
+	if ($("#qr_type").val() == '질문의 종류를 선택하세요.') {
+		swal(" 질문의 종류를 선택해 주세요 ");
+		return false;
+	}
+	if (!$("#qr_title").val()) {
+		swal(" 제목을 입력해 주세요 ");
+		return false;
+	}
+	if (!$("#qr_contents").val()) {
+		swal(" 내용을 입력해 주세요 ");
+		return false;
+	}
 	
+});
 </script>
 </html>

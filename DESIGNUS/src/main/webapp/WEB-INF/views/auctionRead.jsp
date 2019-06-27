@@ -316,7 +316,7 @@ div {
 			:<input type="number" id="inbuyInput" name="inbuyQty" max="999"
 				min="1" placeholder="최대  999EA" maxlength="3"
 				oninput="maxLengthCheck(this)"><br> <br> <input
-				type="submit" class="btn11" value="구입"> <input type="reset"
+				type="submit" id="submBtnB" class="btn11" value="구입"> <input type="reset"
 				class="btn11" value="취소">
 		</form>
 	</div>
@@ -330,7 +330,7 @@ div {
 			:<input type="number" id="tenderInput" name="tenderPrice"
 				max="99999999" min="${auInfo.au_minprice}" maxlength="8"
 				oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"> <br>
-			<br> <input type="submit" class="btn11" value="구입"> <input
+			<br> <input type="submit" id="submBtnT" class="btn11" value="구입"> <input
 				type="reset" class="btn11" value="취소">
 		</form>
 	</div>
@@ -418,8 +418,8 @@ div {
 								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px"><fmt:formatNumber
-										value="${at.aut_price}" pattern="#,###" /></td>
+								<td style="width: 100px"><input class="price" type="hidden" value="${at.aut_price}"> 
+								<fmt:formatNumber value="${at.aut_price}" pattern="#,###" /></td>
 								<td style="width: 30px">원</td>
 							</tr>
 						</table>
@@ -638,7 +638,33 @@ div {
  		}
  		
  		timer = setInterval(showRemaining, 100);
- 		}
+ 		};
+ 		
+ 		$("#submBtnB").click(function() {
+ 			if (!$("#inbuyInput").val()) {
+ 				swal(" 구매수량을 입력해 주세요 ");
+ 				return false;
+ 			}
+ 			if ($("#inbuyInput").val() > ${auInfo.au_qty -1} ) {
+ 				swal(" 최대 수량보다 많은 값을 구입하실수 없습니다. ");
+ 				return false;
+ 			}
+ 		});
+ 		
+ 		$("#submBtnT").click(function() {
+ 			if (!$("#tenderInput").val()) {
+ 				swal(" 입찰가 를 입력해 주세요 ");
+ 				return false;
+ 			}
+ 			if ($("#tenderInput").val() < ${auInfo.au_minprice} ) {
+ 				swal(" 최소 입찰가 이상을 입력해 주세요  ");
+ 				return false;
+ 			};
+ 			if ($("#tenderInput").val() < $(".price").val() ){
+ 				swal(" 최대 입찰가 이하는 입력하실수 없습니다. ");
+ 				return false;
+ 			}
+ 		});
 	
 </script>
 </html>
