@@ -541,7 +541,9 @@ $(".subtn").click(function() {
 					swal(data);
 					$('#lightboxshadow').css("display", "none");
 					$('#lightbox_contents1').css("display", "none");
-					window.location.reload();
+					setTimeout(function() {
+						window.location.reload();
+					}, 3000);
 				},
 				error: function(error) {
 					swal("해당 정보를 다시 입력하여 주시기 바랍니다.");
