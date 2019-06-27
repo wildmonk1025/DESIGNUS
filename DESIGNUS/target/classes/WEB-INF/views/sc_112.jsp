@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 ::-webkit-scrollbar {
 	width: 4px;
@@ -310,12 +311,13 @@ textarea {
 				<div id="list">
 					<div id="title1">
 						<p id="title">신고 유형 선택</p>
-						<select name="rp_locate">
+						<select id="rp_locate" name="rp_locate">
 							<option>신고 유형을 선택하세요.</option>
 							<option>거래</option>
 							<option>판매</option>
 							<option>등등...</option>
-						</select> <select name="rp_reason">
+						</select> 
+						<select id="rp_reason" name="rp_reason">
 							<option>신고 사유를 선택하세요.</option>
 							<option>사기</option>
 							<option>욕설/비방</option>
@@ -332,7 +334,7 @@ textarea {
 						<input id="rp_title" type="text" name="rp_title">
 					</div>
 
-					<textarea name="rp_contents" style="font-size: 20px;"
+					<textarea id ="rp_contents" name="rp_contents" style="font-size: 20px;"
 						placeholder="여기에 내용을 적습니다."></textarea>
 					<div id="btnsession">
 						<input class="c1" type="file" name="rqi_imgSysName"
@@ -351,4 +353,33 @@ textarea {
 
 
 </body>
+<script>
+
+$("#apply").click(function() {
+
+	if ($("#rp_locate").val() == '신고 유형을 선택하세요.') {
+		swal(" 신고유형을 선택해 주세요 ");
+		return false;
+	}
+	if ($("#rp_reason").val() == '신고 사유를 선택하세요.') {
+		swal(" 신고사유를 선택해 주세요 ");
+		return false;
+	}
+	if (!$("#rp_mbid_a").val()) {
+		swal(" 신고대상 아이디를 입력해 주세요 ");
+		return false;
+	}
+	if (!$("#rp_title").val()) {
+		swal(" 제목을 입력해 주세요 ");
+		return false;
+	};
+	if (!$("#rp_contents").val()) {
+		swal(" 내용을 입력해 주세요 ");
+		return false;
+	}
+	
+});
+
+</script>
+
 </html>

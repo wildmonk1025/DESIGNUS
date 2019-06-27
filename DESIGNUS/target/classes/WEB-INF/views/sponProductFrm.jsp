@@ -120,8 +120,8 @@ td {
 				${ss_date}</span>
 		</div>
 
-		<div id="spimg" style="width: 640px; height: 300px; margin-top: 20px;">
-			<img src="/sponsor/${ssi_img}" width="100%" height="100%">
+		<div id="spimg" style="width: 500px; height: 300px; margin-top: 20px;">
+			<img src="/sponsor/${ssi_img}" width="auto" height="100%">
 		</div>
 		<div id="contents"
 			style="width: 640px; margin-top: 10px; text-align: left; margin-bottom: 10px; height: auto;">

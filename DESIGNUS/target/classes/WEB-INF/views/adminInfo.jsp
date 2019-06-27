@@ -28,11 +28,6 @@ ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
-}
-
 #middle {
 	width: 1520px;
 	height: auto;
@@ -52,18 +47,18 @@ ul {
 	height: 500px;
 }
 
-#trans {
-	float: left;
-	align-content: center;
-	width: 1216px;
-	height: 500px;
-}
-
 .opt {
 	margin-top: 5px;
 	width: 1200px;
-	height: 400px;
-	border: 1px solid blue;
+	height: 490px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+
+.opt:hover {
+	transform: scale(1.02);
+	transition-duration: 1s;
 }
 
 #declarelist {
@@ -71,7 +66,6 @@ ul {
 	width: 100%;
 	height: 400px;
 	overflow: auto;
-	border: 1px solid blue;
 }
 #transformlist {
 	margin-top: 10px;
@@ -90,54 +84,56 @@ ul {
 }
 
 .object {
+	background-color: #c8e7ea;
 	width: 1100px;
 }
 
 .object td {
 	width: 280px;
-	font-size: 25px;
-	font-weight: 600;
+	font-size: 23px;
 	text-align: center;
 }
 
 .contents {
+	font-size: 18px;
+	font-weight: 600;
 	width: 1100px;
 }
 
 .contents td {
 	width: 280px;
-	height: 40px;
+	height: 50px;
 	font-size: 18px;
 	text-align: center;
 }
 
+
 a:active {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 a:visited {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 a:link {
 	text-decoration: none;
-	color: black;
+	color: blue;
 }
 
 a:hover {
 	text-decoration: none;
-	color: black;
-}
-.dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-
+	color: blue;
 }
 
-#footercheck {
-	width: 1520px;
-	height: 150px;
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 </style>
 </head>
@@ -153,18 +149,18 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 	</div>
 	<div id="adminopt">
 		<div class="opt">
-			<h3 class="dd" style="text-align: center; font-size: 30px;">신고내역</h3>
-			<div id="declarelist">
-			</div>
+			<h3 style="text-align: center; font-size: 30px;">신고내역</h3>
+			<div id="declarelist"></div>
 		</div>
-
-
+		
 		<div class="opt"><br/><br/>
-			<h3 class="dd" style="text-align: center; font-size: 30px;">판매자 전환신청</h3>
+			<h3 style="text-align: center; font-size: 30px;">작가등급 전환신청</h3>
 			<div id="transformlist"></div>
 		</div>
+		
 	</div>
-	<div id="footercheck">
+	<div id="footer">
+	<hr style="width:100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 	</div>
@@ -185,7 +181,7 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 							result += "<tr class='contents'><td>"+data[i].rp_num+"</td><td>"
 									+ data[i].rp_mbid_d + "</td><td>"
 									+ data[i].rp_mbid_a + "</td><td>"
-									+ data[i].rp_locate + "</td><td><a href='declareWrite'>클릭</a></td></tr>"
+									+ data[i].rp_locate + "</td><td><a href='declareWrite'>클릭</a></td></tr>";
 						}
 						result+="</table></div>";
 						$("#declarelist").html(result);
@@ -205,19 +201,16 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "";
-						console.dir(data);
+						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>카테고리 분류</td><td>포트폴리오</td><td>파일설명</td><td>상세보기</td></tr>";
 						console.log("성공");
-
 						for ( var i in data) {
-							result += "<div class='best'>"+"<table id='customers'>"+"<tr class='alt'><td>"
-									+ "<a href='permitWriApply'>" + "아이디:"
-									+ data[i].mb_id + "</tr></td>" + "<tr><td>"+"카테고리 분류번호:"
-									+ data[i].mj_cgcode + "</tr></td>" + "<tr><td>"+"포트폴리오:"
-									+ data[i].mj_contents + "</tr></td>" + "<tr><td>"+"파일설명:"
-									+ data[i].mj_portf + "</tr></td>" + "</a>"
-									+"</table>"+ "</div>";
+							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
+									+ data[i].mj_cgcode + "</td><td>"
+									+ data[i].mj_contents + "</td><td>"
+									+ data[i].mj_portf + "</td><td><a href='permitWriApply'>클릭</a></td></tr>";
+									
 						}
+						result+="</table></div>";
 						$("#transformlist").html(result);
 					},
 					error : function(error) {
