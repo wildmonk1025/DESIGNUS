@@ -204,7 +204,7 @@ a:hover {
 #sixth{
  position: absolute;
   top: 1130px;
-  left: 1150px;  
+  left: 1050px;  
 }
 .first{
 border: 1px solid orange;
@@ -236,7 +236,7 @@ text-align: left;
 float: left;
 }
 .second{
-    background-color : #FFBB00;
+    background-color : #F6D8CE;
 	margin: 10px 10px 10px 10px;
 	width: 1040px;
 	height: 40px;
@@ -262,7 +262,7 @@ float: left;
 }
 .Fifth{
 	margin: 5px 10px 10px 10px;
-	width: 130px;
+	width: 150px;
 	height: 175px;
 	text-align: center;
 	font-size: 20px;
@@ -270,7 +270,10 @@ float: left;
 	
 }
 .p3{
-margin-top: 60px;
+margin-top: 50px;
+color: coral;
+font-weight:bold;
+font-size: 17pt;
 }
 .p4{
 margin-top: 30px;
@@ -281,7 +284,7 @@ color: red;
   width: 150px;
   height: 50px;
   color: white;
-  background-color: orange;
+  background-color: coral;
   margin-top: 20px;
 }
 

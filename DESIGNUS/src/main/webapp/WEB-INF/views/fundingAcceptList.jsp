@@ -203,7 +203,7 @@ text-align: left;
 float: left;
 }
 .second{
-    background-color : #FFBB00;
+    background-color : #F6D8CE;
 	margin: 10px 10px 10px 10px;
 	width: 1040px;
 	height: 40px;
@@ -236,7 +236,10 @@ float: left;
 	float: left;
 }
 .p3{
-margin-top: 60px;
+margin-top: 50px;
+color: coral;
+font-weight:bold;
+font-size: 17pt;
 }
 #sixth{
  position: absolute;
@@ -294,7 +297,7 @@ margin-top:10px;
   width: 120px;
   height: 50px;
   color: white;
-  background-color: orange;
+  background-color: coral;
   margin-top: 20px;
 }
 .bbttzzz:hover {
@@ -388,6 +391,14 @@ textarea{
   background-color: orange;
   opacity: 0.45;
 }
+#footer {
+	border: 1px solid red;
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	border: 1px solid #f0f0f0;
+	 float: left;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -438,7 +449,10 @@ if(aa=="bbbb"){
 			</div>
         <div id="sixth">${Spaging}</div>
 		</div>
-		<jsp:include page="footer.jsp" />
+		<div id="footer">
+<!-- 			<hr style="width: 100%; border: 2px solid coral; align: center;"> -->
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
 	
 </body>

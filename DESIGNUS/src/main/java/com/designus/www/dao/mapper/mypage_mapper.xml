@@ -373,6 +373,7 @@
     select  AUT_AUNUM,AUT_MBID,AU_TITLE,AUT_PRICE,AU_DATE+1 as AU_DATE,AUT_KIND,ROW_NUMBER() OVER(PARTITION BY AUT_AUNUM ORDER BY AUT_PRICE DESC) AS RankNo
      from AU_AUT
        where AUT_MBID=#{id} AND AUT_KIND != 'I'
+        order by AUT_AUNUM desc
      )  where  RankNo=1
   ]]>
 	</select>

@@ -148,9 +148,12 @@ public class HomeController {
 	 */
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public ModelAndView mypage() {
+	public ModelAndView mypage(String zz) {
       mav=new ModelAndView();
       mav=pm.mypagemove();
+      if(zz != null) {
+			mav.addObject("zz", "aaa");
+			}
 		return mav;
 	}
 
