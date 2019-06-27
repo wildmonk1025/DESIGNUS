@@ -40,9 +40,6 @@ div {
 }
 
 
-
-
-
 #main {
 	width: 1520px;
 	height: 170px;
@@ -144,7 +141,7 @@ a:hover {
 }
 
 #mainheader {
-	border: 1px solid black;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56); 
 	width: 1520px;
 	height: 170px;
 }
@@ -152,7 +149,7 @@ a:hover {
 #mypagemain {
 	width: 1530px;
 	height: 1200px;
-	border: 1px solid black;
+
 }
 
 #full {
@@ -460,7 +457,7 @@ if(aa=="bbbb"){
         <div id="sixth">${Spaging}</div>
 		</div>
 		<div id="footer">
-<!-- 			<hr style="width: 100%; border: 2px solid coral; align: center;"> -->
+		<hr style="width: 100%; border: 2px solid coral; align: center;"> 
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>

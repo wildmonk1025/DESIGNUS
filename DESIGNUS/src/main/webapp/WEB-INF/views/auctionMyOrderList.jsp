@@ -445,7 +445,7 @@ a:hover {
 }
 
 .first {
-	margin: 10px 10px 10px 10px;
+	
 	width: 1060px;
 	height: 250px;
 	text-align: center;

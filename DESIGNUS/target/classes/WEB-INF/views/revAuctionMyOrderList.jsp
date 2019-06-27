@@ -200,7 +200,7 @@ a:hover {
 #mypagemain {
 	width: 1518px;
 	height: 1200px;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	
 	margin-top: 40px;
 }
 #sixth{
