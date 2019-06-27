@@ -56,9 +56,9 @@
 }
 
 #writercatecontents {
-	margin-left: 50px;
+	margin-left: 20px;
 	margin-top: 20px;
-	width: 600px;
+	width: 630px;
 	height: 940px;
 	float: left;
 	overflow: auto;
@@ -95,7 +95,7 @@
 
 #cateupload, #catedownload, #cateone {
 	margin: 10px 5px;
-	width: 450px;
+	width: 480px;
 	height: 60px;
 	float: left;
 }
@@ -143,12 +143,13 @@
 
 .btn2 {
 	margin-top: 10px;
+	padding-bottom: 10px;
 	/*General*/
 	display: inline-block;
 	text-decoration: none;
 	/*Text*/
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 25px;
+	font-size: 23px;
 	font-weight: bold;
 	line-height: 240%;
 	color: rgb(162, 136, 44);
@@ -205,7 +206,7 @@
 	width: 200px;
 	height: 50px;
 	float:left;
-	margin-left: 10px;
+	margin-left: 20px;
 	margin-bottom: 25px;
 	font-size: 15px;
 	background: white;
@@ -260,7 +261,7 @@ ul {
 						<input type="submit" value="카테고리삭제" class="btn2">
 					</div>
 					<div id="catedownload">
-						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
+						<input type="text" id="change1" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				<form action="categorychange" method="post">
@@ -268,14 +269,14 @@ ul {
 						<input type="submit" value="카테고리변경" class="btn2">
 					</div>
 					<div id="cateone">
-						<input type="text" id="change" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
+						<input type="text" id="change2" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
 						<input type="text" name="cg_cname" class="signUpInput" placeholder="변경후 카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				</div>
-			</div>
 		</div>
 		<div id="footer">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
@@ -308,7 +309,8 @@ ul {
 
 	function catap(num) {
 		console.log(num);
-		$("#change").val(num);
+		$("#change1").val(num);
+		$("#change2").val(num);
 	}
 </script>
 

@@ -200,7 +200,7 @@ a:hover {
 #mypagemain {
 	width: 1518px;
 	height: 1200px;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	
 	margin-top: 40px;
 }
 #sixth{
@@ -520,7 +520,7 @@ if(aa=="bbbb"){
         <div id="sixth">${ROpaging}</div>
 		</div>
 		<div id="footer">
-<!-- 			<hr style="width: 100%; border: 2px solid coral; align: center;"> -->
+		<hr style="width: 100%; border: 2px solid coral; align: center;"> 
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
