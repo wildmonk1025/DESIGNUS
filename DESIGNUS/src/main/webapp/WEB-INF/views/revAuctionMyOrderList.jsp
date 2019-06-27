@@ -761,7 +761,7 @@ function RevMyreview(even) {
 		    	 if(data.ra_oc=="O"){
 		    		 bb+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div><br>"   
 			    	   }else{
-			    		   bb+=+"<div class='f1'>비공개<input type='hidden' name='ra_oc'></div><br>"   
+			         bb+="<div class='f1'>비공개<input type='hidden' name='ra_oc'></div><br>"   
 			    	   };
 		    	bb+="<h3 class='f3'>수령 확인 및 구매 후기 쓰기</h3><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
 		    	   +"<div class='f2'>상품이름 :"+data.ra_title+"  <input type='button' id='butt' value='추천하기' onclick=\"good('"+data.rap_mbid_w+"')\"></div>"

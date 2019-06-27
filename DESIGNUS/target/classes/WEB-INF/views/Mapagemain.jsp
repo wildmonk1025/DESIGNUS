@@ -157,10 +157,10 @@ table tr:nth-child(2n+1) {
   }
 }
 #leftmain {
-margin: 15px 0px 0px 0px;
+margin: 10px 0px 0px 0px;
 	width: 310px;
 	height: 900x;
-	/*border: 1px solid black;*/
+/* 	border: 1px solid black; */
 	float: left;
 }
     #point {
