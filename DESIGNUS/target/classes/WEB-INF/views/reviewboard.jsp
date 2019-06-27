@@ -347,13 +347,13 @@ table tr:nth-child(2n+1) {
 
 #title{
 margin-top:5px;
-box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
-	text-align: center;
-	color: white;
-	font-size:30px;
+
+	text-align: left;
+	color: #5ecddf;
+	font-size:25px;
 width:1200px;
-padding-top:10px;
-height:50px;}
+padding-top:15px;
+height:60px;}
 
 </style>
 <title>Home</title>
@@ -372,7 +372,7 @@ height:50px;}
 	<div id="homeMain">
 		<br />
 		<br />
-		<div id="title" style="background-color: #F6D8CE; border-radius:5px;">
+		<div id="title" style=" border-radius:5px;">
 		<span id="dd" >이용후기 게시판</span>
 		</div>
 
