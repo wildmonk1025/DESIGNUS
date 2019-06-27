@@ -234,11 +234,11 @@ public class UploadFile {
 		System.out.println("mb_profile=" + mb.getMb_profile());
 		// Major
 		System.out.println("mjid=" + mj.getMj_mbid());
-		System.out.println("mjcate=" + mj.getMj_cg_code());
+		System.out.println("mjcate=" + mj.getMj_cgcode());
 		System.out.println("mjport=" + mj.getMj_portf());
 		System.out.println("mjlike=" + mj.getMj_like());
 		/* System.out.println("mjcontents=" + mj.getMj_contents()); */
-
+ 
 		System.out.println("fileUp");
 		// 1.이클립스의 물리적 저장경로 찾기
 		String root = multi.getSession().getServletContext().getRealPath("/");
