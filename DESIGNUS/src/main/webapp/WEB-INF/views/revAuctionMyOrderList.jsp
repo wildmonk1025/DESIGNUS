@@ -9,7 +9,8 @@
 <title>본인의 제작의뢰 내역</title>
 <style type="text/css">
 .imgg{
-  height: 180px;
+width:240px;
+  height: 170px;
 }
 div {
 	margin: auto;
@@ -79,6 +80,7 @@ div {
 	margin: 10px;
 	width: 1080px;
 	height: 50px;
+	color:#95deea;
 	text-align: left;
 	font-size: 20px;
 	float: left;
@@ -203,11 +205,12 @@ a:hover {
 }
 #sixth{
  position: absolute;
+ width:300px;
   top: 1130px;
   left: 1050px;  
 }
 .first{
-border: 1px solid orange;
+
 	margin: 10px 10px 10px 10px;
 	width: 1060px;
 	height: 250px;
@@ -220,23 +223,27 @@ border: 1px solid orange;
 .first:hover {
 	transform: scale(1.05);
 	background-color : white;
-	border: 2px solid coral;
+	border: 2px solid #95deea;
 	transition-duration: 1s;
 	height: 250px;
 }
 .p1 {
-
+padding-left:20px;
+margin-top:5px;
  width: 500px;
+ font-weight:bord;
  float: left;
  text-align: left;
 }
 .p2{
+margin-top:5px;
 width: 500px;
 text-align: left;
 float: left;
 }
 .second{
-    background-color : #F6D8CE;
+    background-color : #c3ecf3;
+    border-radius:5px;
 	margin: 10px 10px 10px 10px;
 	width: 1040px;
 	height: 40px;
@@ -246,8 +253,8 @@ float: left;
 }
 .third{
 	margin: 5px 10px 10px 10px;
-	width: 270px;
-	height: 175px;
+	width: 250px;
+	height: 155px;
 	text-align: center;
 	font-size: 20px;
 	float: left;
@@ -271,25 +278,27 @@ float: left;
 }
 .p3{
 margin-top: 50px;
-color: coral;
+color: #55cadd;
 font-weight:bold;
 font-size: 17pt;
 }
 .p4{
-margin-top: 30px;
+margin-top: 50px;
 font-size: 13px;
 color: red;
 }
 .bbttzzz{
   width: 150px;
   height: 50px;
-  color: white;
-  background-color: coral;
+  color: black;
+  cursor:pointer;
+  background-color: #95deea;
+  border-radius:5px;
   margin-top: 20px;
 }
 
 .bbttzzz:hover {
-   background-color: red;
+   background-color: #c7c9f4;
 }
 #r1{
     border : 3px solid orange;
@@ -341,7 +350,8 @@ color: black;
   width : 65px;
   height : 40px;
   border-radius: 30px;
-  background-color: orange;
+cursor: pointer;
+ background: linear-gradient(to bottom, white, #a7e4f6);
   opacity: 0.45;
 }
 #butt:hover {
@@ -502,7 +512,7 @@ if(aa=="bbbb"){
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>제작의뢰 구매 내역</h2><hr>
+			 <h2>제작의뢰 구매 내역</h2>
 			</div>
 			<div id="renking">
 				
@@ -532,21 +542,21 @@ for (var i = 0; i < revList.length; i++) {
 	main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 		 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 		 + "구매 금액 :"+ revList[i].rap_price+"<br>"
-		 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+		 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는<br>  추가 요금 및, 작업 완료일이 늘어날 수 있습니다.</p></div>"
 	     + "<div class='Fifth'><input class='bbttzzz' id='btzRevM' type='button' onclick=\"javascript:requested('"+revList[i].rap_ptnum+"')\" value='요청'/><br>"
 	     + "<input type='button' class='bbttzzz' onclick=\"javascript:ravcancel('"+revList[i].rap_ptnum+"')\" value='취소'/></div></div>"
              
 	} else if(revList[i].rap_step==2){
 			main+="<div class='first'><div class='second'>"
 	       if(revList[i].ra_oc=="O"){
-			main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+			main +="<div class='p1'> 공개</div><div class='p2'>운송장번호 : -</div></div>"
 		   }else{
-			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+			main +="<div class='p1'> 비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
 			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
-				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
-				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
-				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				 + "<div class='fourth'>상품번호 : "+ revList[i].rap_ptnum+"<br>상품명 : "+revList[i].ra_title+"<br>"
+				 + "구매 금액 : "+ revList[i].rap_price+"<br>"
+				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 <br>추가 요금 및, 작업 완료일이 늘어날 수 있습니다.</p></div>"
                  + "<div class='Fifth'><p class='p3'>배송대기중...</p></div></div>";				
 		    
 		}else if(revList[i].rap_step==3){
@@ -557,11 +567,11 @@ for (var i = 0; i < revList.length; i++) {
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			  }
 			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
-				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
-				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
-			     + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				 + "<div class='fourth'>상품번호 : "+ revList[i].rap_ptnum+"<br>상품명 : "+revList[i].ra_title+"<br>"
+				 + "구매 금액 : "+ revList[i].rap_price+"<br>"
+			     + "<p class='p4'> 구매후기 작성버튼을 누르시면 수령확인이 완료됩니다. <br> 기타 문의는 고객센터를 이용해주세요!</p></div>"
 			     + "<div class='Fifth'><input class='bbttzzz' type='button' onclick=\"location.href='scquestion'\" value='고객센터 문의'/><br>"
-			     + "<input class='bbttzzz' type='button' onclick=\"RevMyreview('"+revList[i].rap_ptnum+"')\" value='수령확인구매후기 쓰기'/></div></div>"
+			     + "<input class='bbttzzz' type='button' onclick=\"RevMyreview('"+revList[i].rap_ptnum+"')\" value='구매후기 작성'/></div></div>"
 		    
 		} else if(revList[i].rap_step==4){
 			main+="<div class='first'><div class='second'>"
@@ -571,9 +581,9 @@ for (var i = 0; i < revList.length; i++) {
 			main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
 			 }
 			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
-				 + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
-				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
-				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				 + "<div class='fourth'>상품번호 : "+ revList[i].rap_ptnum+"<br>상품명 : "+revList[i].ra_title+"<br>"
+				 + "구매 금액 : " + revList[i].rap_price+"<br>"
+				 + "<p class='p4'>완료된 거래입니다.<br> 물건에 대한 불만이나, 기타 문의사항은 고객센터를 이용해주세요!</p></div>"
 				 + "<div class='Fifth'><p class='p3'>완료</p></div></div>";
 		
 		}else{
@@ -586,7 +596,7 @@ for (var i = 0; i < revList.length; i++) {
 			main +="<div class='third'><a href='revauctionread?ra_num="+revList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 			     + "<div class='fourth'>상품번호 :"+ revList[i].rap_ptnum+"<br>상품명 :"+revList[i].ra_title+"<br>"
 				 + "구매 금액 :"+ revList[i].rap_price+"<br>"
-				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 추가 요금 및,<br> 작업 완료일이 늘어날 수 있습니다.</p></div>"
+				 + "<p class='p4'>작업이 확정된 시점의 요청사항 추가는 <br>  추가 요금 및,작업 완료일이 늘어날 수 있습니다.</p></div>"
 				 + "<div class='Fifth'><p class='p3'>비공개 제작의뢰 요청중입니다...</p></div></div>";
 		}    
 }
