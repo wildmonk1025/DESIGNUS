@@ -48,7 +48,7 @@ public class MemberMM {
 		String address = multi.getParameter("addr1") + multi.getParameter("addr2") + multi.getParameter("addr3");
 		String email = multi.getParameter("mb_email");
 		String wriid = multi.getParameter("mb_id");
-		int wricate = Integer.parseInt(multi.getParameter("mj_cg_code"));
+		int wricate = Integer.parseInt(multi.getParameter("mj_cgcode"));
 		String wriport = multi.getParameter("mj_portf");
 		/* String wricon = multi.getParameter("mj_contents"); */
 		/* int wriLike = Integer.parseInt(multi.getParameter("mj_like")); */
@@ -64,7 +64,7 @@ public class MemberMM {
 
 		Major mj = new Major();
 		mj.setMj_mbid(wriid);
-		mj.setMj_cg_code(wricate);
+		mj.setMj_cgcode(wricate);
 		/* mj.setMj_contents(wricon); */
 		/* mj.setMj_like(wriLike); */
 
