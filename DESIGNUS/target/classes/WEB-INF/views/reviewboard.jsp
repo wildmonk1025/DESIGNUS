@@ -346,7 +346,7 @@ table tr:nth-child(2n+1) {
 } */
 
 #title{
-margin-top:5px;
+margin-top:10px;
 	text-align: left;
 	color: #5ecddf;
 	font-size:25px;

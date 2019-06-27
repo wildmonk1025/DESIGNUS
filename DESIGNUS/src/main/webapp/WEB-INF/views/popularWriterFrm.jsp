@@ -377,13 +377,12 @@ text-align: center;
 } */
 
 #title{
-margin-top:5px;
 
 	text-align: left;
 	color: #5ecddf;
 	font-size:25px;
 width:1200px;
-padding-top:15px;
+
 height:60px;}
 
 </style>
@@ -406,9 +405,7 @@ height:60px;}
 	</div>
 		
 		<br />
-		
 		<div id="freeboard2">
-		
 		<div id="lightbox-shadow1">
 				<div id="lightbox1">
 				<form action="Noticeinsert" method="post">
