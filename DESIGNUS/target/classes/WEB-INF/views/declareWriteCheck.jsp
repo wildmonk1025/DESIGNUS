@@ -15,30 +15,23 @@
 }
 
 #mainheader {
+	border: 1px solid #F5BCA9;
 	width: 1518px;
 	height: 170px;
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-body {
-	margin: auto;
-	width: 1520px;
-	height: auto;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
-div {
-	margin: auto;
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 60px;
 }
 
 ul {
 	list-style: none;
-}
-
-#mainheader {
-	width: 1518px;
-	height: 170px;
 }
 
 #adminmenu {
@@ -51,21 +44,23 @@ ul {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: 500px;
+	height: 1000px;
 }
 
 .opt {
-	padding: inherit;
-	position: relative;
-	margin-top: 5px;
-	width: 1000px;
-	height: 450px;
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
 
 #declarelist {
-	margin-left: 20px;
-	width: 820px;
-	height: 340px;
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 20px;
+	width: 900px;
+	height: 500px;
 	float: left;
 }
 
@@ -101,38 +96,6 @@ ul {
 	height: 30px;
 }
 
-
-
-.lipont {
-	font-size: 20px;
-}
-
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 820px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-
-#customers td, #customers th {
-	font-size: 1em;
-	padding: 3px 7px 2px 7px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color: #A7C942;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-	color: #ffffff;
-}
-
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
 .btn2{
 margin-top: 10px;
 	/*General*/
@@ -196,13 +159,13 @@ margin-top: 10px;
 	width: 120px;
 	height: 30px;
 }
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 
-}
-#footercheck {
-	width: 1520px;
-	height: 150px;
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
+	float: left;
+	border: 1px solid #f0f0f0;
 }
 
 </style>
@@ -214,44 +177,41 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 			<jsp:include page="main.jsp" />
 		</div>
 	</div>
+	
+	<div id="middle">
 	<div id="adminmenu">
 		<jsp:include page="admininclud.jsp"></jsp:include>
-
 	</div>
-
 
 	<div id="adminopt">
 		<form name="formName" method="post">
-			<div class="opt"><br/><br/>
-				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">신고
-					상세내역</h3>
-				<hr><br/>
+			<div class="opt">
+				<h3	style="text-align: center; font-size: 30px;">신고 상세내역</h3>
 				<div id="declarelist">
-
-					<table id="customers">
+					<table>
 						<tr class="alt">
-							<td colspan="5" width="500" height="20">신고번호 ${rp_num}</td>
+							<td colspan="5" width="900px" height="40px" style="font-size: 25px;">신고번호 ${rp_num}</td>
 						</tr>
 						<tr>
-							<td width="100" height="20">신고위치</td>
-							<td width="100" height="20">신고사유</td>
-							<td width="100" height="20">신고자ID</td>
-							<td width="100" height="20">신고대상ID</td>
-							<td width="100" height="20">신고일</td>
+							<td width="100" height="30">신고위치</td>
+							<td width="100" height="30">신고사유</td>
+							<td width="200" height="30">신고자ID</td>
+							<td width="200" height="30">신고대상ID</td>
+							<td width="300" height="30">신고일</td>
 						</tr>
 
 						<tr class="alt">
-							<td width="100" height="20">${rp_locate}</td>
-							<td width="100" height="20">${rp_reason}</td>
-							<td width="100" height="20">${rp_mbid_d}</td>
-							<td width="100" height="20">${rp_mbid_a}</td>
-							<td width="100" height="20">${rp_date}</td>
+							<td width="100" height="30">${rp_locate}</td>
+							<td width="100" height="30">${rp_reason}</td>
+							<td width="200" height="30">${rp_mbid_d}</td>
+							<td width="200" height="30">${rp_mbid_a}</td>
+							<td width="300" height="30">${rp_date}</td>
 						</tr>
 						<tr>
-							<td colspan="5" width="500" height="40">제목:${rp_title}</td>
+							<td colspan="5" width="900" height="40">제목:${rp_title}</td>
 						</tr>
 						<tr class="alt">
-							<td colspan="5" width="500" height="170">내용 : ${rp_contents}</td>
+							<td colspan="5" width="900" height="170">내용 : ${rp_contents}</td>
 						</tr>
 						<tr>
 							<td colspan="5" width="500" height="30">첨부사진 : ${rp_img}</td>
@@ -268,14 +228,14 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 				<div class="btnArray" id="btn3">
 					
 						<a href="declareWrite" class="btn2" id="atag">돌아가기<br /></a>
-				
 				</div>
-				<!-- <div class="btnArray" id="btn3"><input type="button" onclick="location.href='home'" value="돌아가기"></div> -->
 			</div>
 		</form>
 	</div>
-	<div id="footercheck">
+	<div id="footer">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 	</div>
 
 </body>
