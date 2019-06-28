@@ -433,8 +433,8 @@ a:hover {
 }
 #sixth{
  position: absolute;
-  top: 1080px;
-  left: 1100px;  
+  top: 1130px;
+  left: 800px;  
 }
 .first{
 border: 1px solid orange;

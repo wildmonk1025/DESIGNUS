@@ -435,8 +435,8 @@ a:hover {
 }
 #sixth{
  position: absolute;
-  top: 1140px;
-  left: 1150px;  
+   top: 1130px;
+  left: 800px;  
 }
 .first{
 border: 1px solid orange;
@@ -663,9 +663,9 @@ for (var i = 0; i < revAList.length; i++) {
 		}else if(revAList[i].rap_step==3){
 			 main+="<div class='first'><div class='second'>"
 				   if(revAList[i].ra_oc=="O"){
-					 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+					 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 :"+revList[i].rap_track+"</div></div>"
 				 }else{
-					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 :"+revList[i].rap_track+"</div></div>"	 
 				 }
 					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revAList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 						  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
@@ -676,9 +676,9 @@ for (var i = 0; i < revAList.length; i++) {
 		} else if(revAList[i].rap_step==4){
 			main+="<div class='first'><div class='second'>"
 				   if(revAList[i].ra_oc=="O"){
-					 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 : -</div></div>"
+					 main +="<div class='p1'>공개</div><div class='p2'>운송장번호 :"+revList[i].rap_track+"</div></div>"
 				 }else{
-					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 : -</div></div>"	 
+					 main +="<div class='p1'>비공개</div><div class='p2'>운송장번호 :"+revList[i].rap_track+"</div></div>"	 
 				 }
 					 main +="<div class='third'><a href='revauctionread?ra_num="+revAList[i].rap_ranum+"'><img class='imgg' src='/revauction/"+revAList[i].ra_image+"' width='100%' height='100%'/></a></div>"   
 						  + "<div class='fourth'>상품번호 :"+ revAList[i].rap_ptnum+"<br>상품명 :"+revAList[i].ra_title+"<br>"
