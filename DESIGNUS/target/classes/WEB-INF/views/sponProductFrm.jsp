@@ -311,7 +311,7 @@ td {
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
- 		end.setDate(end.getDate()+7);
+ 		end.setDate(end.getDate()+3);
  	 	/* end.setMinutes(end.getMinutes()+10);  */
  		var _second = 1000;
  		var _minute = _second * 60;
