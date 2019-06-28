@@ -160,6 +160,7 @@ a:hover {
 
 .object {
 	background-color: #dceefa;
+	font-weight: 600;
 	width: 1100px;
 }
 
@@ -171,7 +172,7 @@ a:hover {
 
 .contents {
 	font-size: 18px;
-	font-weight: 600;
+	
 	width: 1100px;
 }
 
