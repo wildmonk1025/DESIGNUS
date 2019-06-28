@@ -71,7 +71,6 @@ div {
 
 </head>
 <body>
-
 	<div id="full" align="center">
 		<div id="logo">
 		<a href="home"><img src="resources/images/logo2.png" width="450px" height="100%" style="margin-top:10px;"></a>
