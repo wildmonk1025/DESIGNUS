@@ -124,6 +124,7 @@ div {
 	float: left;
 	height: 149px;
 	width: 150px;
+	border: 1px solid #f0f0f0;
 	border-radius: 15px;
 }
 
@@ -131,28 +132,36 @@ div {
 	border-radius: 15px;
 }
 
+.raListdivv{
+	margin-left:10px;
+	float: right;
+	width: 325px;
+	height: 149px;
+}
+
 .raListTitle{
 	float: left;
-	border-bottom: 1px solid gray;
-	width: 333px;
+	width: 320px;
 	height: 30px;	
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
+	font-weight: 800;
+	color: #0B0B61;
 }
 
 .raListPrice{
 	float: left;
 	border-bottom: 1px solid gray;
-	width: 333px;
+	width: 320px;
 	height: 85px;
 }
 .raListDate{
 	float: left;
-	border-bottom: 1px solid gray;
-	width: 333px;
+	width: 320px;
 	height: 28px;
 	font-size: 17px;
-	color: blue;
+	font-weight: 700;
+	color: red;
 }
 
 a{
@@ -180,8 +189,9 @@ a{
 						<img class="ListImg" src="/revauction/${ra.ra_image}"
 						width="100%" height="100%"/>
 					</div>
+					<div class="raListdivv">
 					<div class="raListTitle">
-						${ra.ra_title }
+						[${ra.ra_title}]
 					</div>
 					<div class="raListPrice">
 						<p>경매최저가 : ${ra.ra_min }</p>
@@ -190,6 +200,7 @@ a{
 					</div>
 					<div class="raListDate">
 							${ra.ra_date}
+					</div>
 					</div>
 					</div>
 			</c:forEach>

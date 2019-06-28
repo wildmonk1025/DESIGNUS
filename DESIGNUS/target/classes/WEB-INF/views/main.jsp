@@ -8,12 +8,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
-/* ::-webkit-scrollbar{width: 2px;}
+::-webkit-scrollbar{width: 2px;}
 ::-webkit-scrollbar-track {background-color:#FFC19E;}
 ::-webkit-scrollbar-thumb {background-color:#FFC19E;border-radius: 5px; height: 10px;}
 ::-webkit-scrollbar-thumb:hover {background: #FFC19E;}
 ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-width:5px;height:5px;background:#FFC19E;} */
+width:5px;height:5px;background:#FFC19E;}
 div {
 	margin: auto;
 }
@@ -373,23 +373,26 @@ button:hover:before, button:hover:after {
 }
 
 .atag:hover {
-	text-decoration: none;
-	color: #646464;
+	color: white;
+	font-weight: 900;
 }
 
 .atag:active {
 	text-decoration: none;
-	color: #646464;
+	color: white;
+	font-weight: 900;
 }
 
 .atag:visited {
 	text-decoration: none;
 	color: #646464;
+	font-weight: 900;
 }
 
 .atag:link {
 	text-decoration: none;
-	color: #646464;
+	color: white;
+	font-weight: 900;
 }
 
 #fontcolor {

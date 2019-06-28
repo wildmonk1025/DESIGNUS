@@ -134,14 +134,15 @@ input[type="file"] {
 }
 
 #middle_contents2_btn2 input[type="button"] {
-	width: 100px;
-	height: 50px;
+	width: 130px;
+	height: 60px;
 	background-color: #6799FF;
-	margin: 10px 40px 10px 40px;
+	margin: 10px 20px 10px 20px;
 	text-align: center;
-	color: black;
+	color: white;
+	font-size: 22px;
+	font-weight: 800;
 	border-radius: 10px;
-	font-weight: 900;
 	box-shadow: -60px 0px 30px -90px #000000,
                  60px 0px 30px -90px #000000;
 }

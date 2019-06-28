@@ -169,10 +169,6 @@ ul {
 }
 
 
-#07 {
-	width: 300px;
-	font-size:15px;
-}
 
 </style>
 </head>
