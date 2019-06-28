@@ -736,14 +736,14 @@ function deliinRav(even) {
 			    contentType:"application/json; charset=utf-8;",
 			    dataType:'json',
 			    success:function(data){
-			  
+			            console.log(data.ra_oc);
 			    	 sub+="<form action='revdelinumupload' method='post' onsubmit='return delinumCheck(); '>"
 			    	    +"<div id='l2'>"
 			    	  if(data.ra_oc=="O"){
 			    		  sub+="<div class='f1'>공개<input type='hidden' name='ra_oc'></div>"   
-				    	   }else {
-				    		   sub+=+"<div class='f1'>비공개<input type='hidden' name='ra_oc'></div>" 
-				    	   };
+				    	   }else if(data.ra_oc=="C") {
+				    		   sub+="<div class='f1'>비공개<input type='hidden' name='ra_oc'></div>" 
+				    	   }
 			    	sub+="<h3 class='h1'>운송장 입력</h3><input type='hidden' name='rap_ptnum' value='"+data.rap_ptnum+"' >"
 			    	   +"<div class='f2'>상품이름 :"+data.ra_title+"<br>"
 	                   +"가격 : "+data.rap_price+	"<input type='hidden' name='aup_price' value='"+data.rap_price+"' ></div><hr>"    	

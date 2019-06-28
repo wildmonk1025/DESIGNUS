@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-
 <head>
-<meta charset="UTF-8">
-<title>questionWriteCheck.jsp</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>신고내역상세보기</title>
+<meta charset="utf-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+ 
 #main {
 	width: 1520px;
 	height: 170px;
@@ -34,84 +35,62 @@ ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
-}
-
 #adminmenu {
 	float: left;
 	width: 300px;
 	height: 500px;
 }
 
-
-#onequestionmain {
+#adminopt {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: 500px;
+	height: 1000px;
 }
 
-#questiontitle {
+.opt {
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+}
+
+#declarelist {
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 40px;
+	width: 900px;
+	height: 650px;
 	float: left;
-	margin: 5px;
-	width: 800px;
-	height: 30px;
 }
 
-#questioncontents {
-	float: left;
-	margin: 5px;
-	width: 800px;
-	height: 200px;
-}
-
-#questionfile {
-	float: left;
-	margin: 5px;
-	width: 800px;
-	height: 30px;
-}
-
-.button {
-	margin: 10px 10px 10px 10px;
-	width: 200px;
-	height: 50px;
-	background-color: orange;
-	position: static;
-	color: white;
+#paper {
+	color: black;
+	background-color:#FAFAFA;
+	box-shadow: 1px -1px 6px 0px rgba(0,0,0,0.31);
 }
 
 input[type=submit] {
-	margin: 10px 100px 0px 0px;
+	margin: 10px 50px 20px 30px;
 	float: right;;
-	width: 100px;
+	width: 150px;
 	height: 40px;
 	background-color: orange;
 	color: white;
 }
-a:active {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
+
+#btngrp {
+	width: 230px;
+	height: 200px;
+	float:right;
 }
 
-a:visited {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
-}
-a:link {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
-}
-a:hover {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
-} 
 .btn2{
-margin-top: 10px;
+	margin-top: 20px;
+	margin-left: 30px;
 	/*General*/
-	display: inline-block;
+	float: left;
 	text-decoration: none;
 	/*Text*/
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -135,7 +114,7 @@ margin-top: 10px;
 		rgb(237, 237, 237) 100%);
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
-	width: 150px;
+	width: 148px;
 	height: 40px;
 	border-color: rgb(223, 192, 86);
 	border-width: 1px;
@@ -167,10 +146,7 @@ margin-top: 10px;
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
 }
-#atag{
-	width: 120px;
-	height: 30px;
-}
+
 
 #footer {
 	width: 1518px;
@@ -179,6 +155,7 @@ margin-top: 10px;
 	float: left;
 	border: 1px solid #f0f0f0;
 }
+
 </style>
 </head>
 
@@ -188,41 +165,67 @@ margin-top: 10px;
 			<jsp:include page="main.jsp" />
 		</div>
 	</div>
+	
 	<div id="middle">
 	<div id="adminmenu">
-		<ul>
-			<jsp:include page="admininclud.jsp"></jsp:include>
-		</ul>
+		<jsp:include page="admininclud.jsp"></jsp:include>
 	</div>
-	<form name="formName"  action="questionreply" method="post">
-	<div id="onequestionmain">
-	
-		<h3 style="text-align: center; font-size: 30px;">1:1문의 접수 내역</h3>
-		
-			<div id="questiontitle" class="dd">글 제목: ${aq_title}</div>
-			<div id="questioncontents"  class="dd">글 내용: ${aq_contents}</div>
-			<div id="questionfile"  class="dd">첨부파일 : ${aqi_img}</div>
-			<input type="hidden" name="aq_num" id="aq_num" value="${aq_num}">
-			
-				<textarea rows="30" cols="20"
-					style="margin: 5px; width: 800px; height: 100px;" id="ff"
-					placeholder="여기에 답글을 달 수 있습니다" name="qr_contents"></textarea>
-				<input type="submit" value="답변하기" class="btn2">
-				 <a href="questionList" class="btn2">돌아가기</a>
-				
-				
-		</div>
+
+	<div id="adminopt">
+			<div class="opt">
+				<h3	style="text-align: center; font-size: 30px;">1:1문의 접수내역</h3>
+		<form name="formName"  action="questionreply" method="post">
+				<div id="declarelist">
+				<input type="hidden" name="aq_num" id="aq_num" value="${aq_num}">
+					<table id="paper">
+						<tr>
+							<th width="100" height="50" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">문의번호</th>
+							<th colspan="2" width="800" height="50" style="font-size: 15px;  padding-left: 10px;">${aq_num} 번</th>
+
+						</tr>
+						<tr>
+							<th width="100" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">문의유형</th>
+							<th width="300" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">문의 아이디</th>
+							<th width="500" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">등록일</th>
+						</tr>
+
+						<tr>
+							<td width="100" height="30" style="font-size: 15px; text-align: center;">${aq_tye}</td>
+							<td width="300" height="30" style="font-size: 15px; text-align: center;">${aq_mbid}</td>
+							<td width="500" height="30" style="font-size: 15px; text-align: center;">${aq_date}</td>
+						</tr>
+						<tr>
+							<th width="100" height="50" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">제목</th>
+							<td width="800" colspan="2" height="50" style="font-size: 15px; text-align: center;">${aq_title}</td>
+						</tr>
+						<tr>
+							<th width="100" height="200" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">내용</th>
+							<td width="800" colspan="2"  height="200" style="font-size: 15px; text-align: center;">${aq_contents}</td>
+						</tr>
+						<tr>
+							<th width="100" height="200" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">첨부사진</th>
+							<td width="800" height="200" colspan="2"><img src="/board/${aqi_img}" width="200px" height="200px"></td>
+						</tr>
+						<tr>
+							<td colspan="3"><textarea rows="30" cols="20" name="qr_contents" style="margin:5px; width:650px; height: 200px; resize: none;" placeholder="여기에 답글 입력하세요."></textarea>
+							<div id="btngrp">
+							<input type="submit" value="답변하기" class="btn2">
+				 			<a href="questionList" class="btn2">돌아가기</a>
+				 			</div>
+							</td>
+						</tr>					
+					</table>
+				</div>
 			</form>
-			
+			</div>
+	</div>
 	<div id="footer">
 		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-</div>
+	</div>
 
 </body>
 <script>
-
 </script>
-
 </html>

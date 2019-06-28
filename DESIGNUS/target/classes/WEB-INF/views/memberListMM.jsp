@@ -288,24 +288,23 @@ box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 </body>
 <script>
 
-$("#form").on("click", function(){
+$("#btn2").on("click", function(){
 	var dd = ${mbInfo.mb_ccnt};
 	console.log(dd);
 	if(dd<1){
-		
-		swal("경고횟수가 0이하로 누를수없습니다.");
+		swal("경고횟수를 0이하로 누를 수 없습니다.");
 		return false;
 	} else{
 		swal("해당회원이 경고되었습니다.");
 		return true;
 	}
 });
-$("#form1").on("click", function(){
+$("#btn1").on("click", function(){
 	var dd = ${mbInfo.mb_ccnt};
 	console.log(dd);
 	if(dd>=3){
 		
-		swal("경고횟수가 3이상 누를수없습니다.");
+		swal("경고횟수를 3이상으로 누를 수 없습니다.");
 		return false;
 	} else{
 		swal("해당회원이 경고되었습니다.");
