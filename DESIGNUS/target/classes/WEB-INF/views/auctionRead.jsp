@@ -55,13 +55,11 @@ div {
 	width: 260px;
 	height: 35px;
 	border-radius: 10px;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #middle_img_lv2 {
 	padding: 5px;
 	border-radius: 10px;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	width: 260px;
 	height: 240px;
 	margin-top: 5px;
@@ -70,7 +68,6 @@ div {
 #middle_contents1 {
 	float: left;
 	border-radius: 10px;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	width: 890px;
 	height: 300px;
 	margin: 13px 0px 0px 0px;
@@ -81,7 +78,7 @@ div {
 	width: 850px;
 	height: 60px;
 	font-size: 30px;
-	border-bottom: 1px solid gray;
+	border-bottom: 4px solid #d0e8f6;
 }
 
 #middle_contents1_lv2 {
@@ -89,6 +86,7 @@ div {
 	height: 58px;
 	font-size: 20px;
 	float: right;
+	text-align: right;
 }
 
 #middle_contents1_lv3 {
@@ -96,7 +94,6 @@ div {
 	height: 140px;
 	font-size: 20px;
 	text-align: right;
-	border-bottom: 1px solid gray;
 }
 
 #middle_contents1_lv4 {
@@ -126,7 +123,8 @@ div {
 	height: auto;
 	float: left;
 }
-#clear{
+
+#clear {
 	clear: both;
 }
 
@@ -147,25 +145,50 @@ div {
 	display: table-cell;
 	vertical-align: middle;
 	height: 90px;
-	border-bottom: 1px solid gray;
+	border-bottom: 0.5px solid #d0e8f6;
 }
 
 #asubmitbtn {
 	border-radius: 10px;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+	padding-top: 40px;
 	margin: 13px 0px 0px 10px;
 	width: 18.5%;
-	height: 300px;
+	height: 200px;
 	float: left;
+	margin: 13px 0px 0px 10px;
 }
 
 .submitbtn {
-	background-color: coral;
-	width: 120px;
-	height: 60px;
+	background-color: #dceefa;
 	margin: 45px 75px 30px 75px;
+	width: 120px;
+	height: 80px;
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+}
+
+.submitbtn:hover {
+	background-color: #476e9e;
 	color: white;
-	border-radius: 15px;
+}
+
+.submitbtn:active {
+	position: relative;
+	top: 1px;
 }
 
 #inbuyLB {
@@ -173,25 +196,25 @@ div {
 	position: absolute;
 	width: 400px;
 	height: 230px;
-	top: 500px;
-	left: 60%;
-	border-radius: 100px;
+	top: 400px;
+	left: 50%;
+	border-radius: 30px;
 	z-index: 1002;
 	padding-top: 170px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
+	border: 1px solid gray;
 	display: none;
-	font-size: 22px;
 }
 
 #inbuyInput {
-	height: 40px;
+	height: 30px;
 	width: 150px;
 	font-size: 20px;
 }
 
 #tenderInput {
-	height: 40px;
+	height: 30px;
 	width: 200px;
 	font-size: 16px;
 }
@@ -210,14 +233,15 @@ div {
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	position: absolute;
 	width: 400px;
-	height: 230px;
-	top: 500px;
-	left: 60%;
-	border-radius: 100px;
+	height: 280px;
+	top: 400px;
+	left: 50%;
+	border-radius: 30px;
 	z-index: 1002;
-	padding-top: 170px;
+	padding-top: 130px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
+	border: 1px solid gray;
 	display: none;
 }
 
@@ -239,8 +263,25 @@ div {
 }
 
 .btn11 {
+	background-color: #dceefa;
 	width: 70px;
 	height: 40px;
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
 }
 
 .atList {
@@ -316,22 +357,23 @@ div {
 			:<input type="number" id="inbuyInput" name="inbuyQty" max="999"
 				min="1" placeholder="최대  999EA" maxlength="3"
 				oninput="maxLengthCheck(this)"><br> <br> <input
-				type="submit" id="submBtnB" class="btn11" value="구입"> <input type="reset"
-				class="btn11" value="취소">
+				type="submit" id="submBtnB" class="btn11" value="구입"> <input
+				type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<!--   -->
 	<div id="inbuyLB-shadow"></div>
 	<div id="tenderLB">
-		<h3>최소 입찰금액 : ${auInfo.au_minprice}</h3>
+		<h2>최소 입찰금액 : ${auInfo.au_minprice}</h2>
+		<br>
 		<form action="auctiontender" method="post"
 			onsubmit="return check2(${point})">
 			<input type="hidden" name="tenderNum" value="${au_num}"> 입찰가격
-			:<input type="number" id="tenderInput" name="tenderPrice"
+			: <input type="number" id="tenderInput" name="tenderPrice"
 				max="99999999" min="${auInfo.au_minprice}" maxlength="8"
 				oninput="maxLengthCheck(this)" placeholder="최대 입찰가 이상 입력"> <br>
-			<br> <input type="submit" id="submBtnT" class="btn11" value="구입"> <input
-				type="reset" class="btn11" value="취소">
+			<br> <input type="submit" id="submBtnT" class="btn11" value="구입">
+			<input type="reset" class="btn11" value="취소">
 		</form>
 	</div>
 	<div id="tenderLB-shadow"></div>
@@ -372,7 +414,7 @@ div {
 				<div id="middle_contents1_lv3">
 					<table style="margin: 10px 0px 0px 10px; line-height: 200%">
 						<tr>
-							<th>작성자 :</th>
+							<th>작성자 : </th>
 							<td>${auInfo.au_mbid_w}님</td>
 							<td></td>
 						</tr>
@@ -418,8 +460,9 @@ div {
 								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px"><input class="price" type="hidden" value="${at.aut_price}"> 
-								<fmt:formatNumber value="${at.aut_price}" pattern="#,###" /></td>
+								<td style="width: 100px"><input class="price" type="hidden"
+									value="${at.aut_price}"> <fmt:formatNumber
+										value="${at.aut_price}" pattern="#,###" /></td>
 								<td style="width: 30px">원</td>
 							</tr>
 						</table>
@@ -488,15 +531,14 @@ div {
 				</div>
 				<div id="contents">${auInfo.au_contents }</div>
 			</div>
-			<div id="clear">
-			</div>
+			<div id="clear"></div>
 		</div>
 
 	</div>
-		<div id="footer">
-			<hr style="width: 100%; border: 2px solid coral; align: center;">
-			<jsp:include page="footer.jsp"></jsp:include>
-		</div>
+	<div id="footer">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 
 
 
@@ -634,7 +676,7 @@ div {
  		var minutes = Math.floor((distance % _hour) / _minute);
  		var seconds = Math.floor((distance % _minute) / _second);
  	 
- 		$(id).html("남은 시간 : "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
+ 		$(id).html(" 마감까지 "+days + " 일 " + hours + " 시간 " + minutes +" 분 " + seconds + " 초 남았습니다.");
  		}
  		
  		timer = setInterval(showRemaining, 100);
