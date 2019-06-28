@@ -82,6 +82,7 @@ div {
 	margin: 10px;
 	width: 1080px;
 	height: 50px;
+	color: #95deea;
 	text-align: left;
 	font-size: 20px;
 	float: left;
@@ -341,7 +342,7 @@ a:hover {
 }
 
 #l1 {
-	 border : 3px solid orange;
+	 border : 3px solid gray;
 	position: absolute;
 	width: 425px;
 	height: 370px;
@@ -353,7 +354,7 @@ a:hover {
 	display: none;
 	font-size: 22px;
 	top: 500px;
-	left: 900px;
+	left: 700px;
 }
 
 #l3 {
@@ -368,7 +369,7 @@ a:hover {
 	display: none;
 	font-size: 22px;
 	top: 500px;
-	left: 900px;
+	left: 7c00px;
 }
 #w3 {
 	position: absolute;
@@ -437,8 +438,6 @@ a:hover {
   left: 800px;  
 }
 .first{
-border: 1px solid orange;
-	margin: 10px 10px 10px 10px;
 	width: 1060px;
 	height: 250px;
 	text-align: center;
@@ -447,17 +446,22 @@ border: 1px solid orange;
 	border-radius: 5px;
 }
 .p1 {
- width: 500px;
- float: left;
- text-align: left;
+	padding-left: 20px;
+	margin-top: 5px;
+	width: 500px;
+	font-weight: bord;
+	float: left;
+	text-align: left;
 }
 .p2{
-width: 500px;
-text-align: left;
-float: left;
+	margin-top: 5px;
+	width: 500px;
+	text-align: left;
+	float: left;
 }
 .second{
-    background-color : #F6D8CE;
+	background-color: #c3ecf3;
+	border-radius: 5px;
 	margin: 10px 10px 10px 10px;
 	width: 1040px;
 	height: 40px;
@@ -491,7 +495,7 @@ float: left;
 }
 .p3{
 margin-top: 50px;
-color: coral;
+color: #55cadd;
 font-weight:bold;
 font-size: 17pt;
 }
@@ -501,7 +505,7 @@ font-size: 13px;
 color: red;
 }
 #l2{
-  border : 3px solid orange;
+  border : 3px solid gray;
 	position: absolute;
 	width: 400px;
 	height: 330px;
@@ -513,18 +517,20 @@ color: red;
 	display: none;
 	font-size: 22px;
 	top: 500px;
-	left: 900px;
+	left: 700px;
 }
-.bbttzzz{
-  width: 120px;
-  height: 50px;
-  color: white;
-  background-color: coral;
-  margin-top: 20px;
+.bbttzzz {
+	width: 150px;
+	height: 50px;
+	color: black;
+	cursor: pointer;
+	background-color: #95deea;
+	border-radius: 5px;
+	margin-top: 20px;
 }
 
 .bbttzzz:hover {
-   background-color: red;
+	background-color: #c7c9f4;
 }
 #footer {
 	border: 1px solid red;
@@ -547,23 +553,32 @@ margin-top:10px;
 }
 .f2{
 
-text-align: left;
+text-align: center;
 margin-left : 40px;
 width: 350px;
 }
 .b3{
-margin-top:10px;
-  width : 65px;
-  height : 40px;
-  border-radius: 10px;
-  background-color: orange;
-  opacity: 0.45;
-  
+width: 65px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #dceefa;
+	color:black;
+	margin-left: 10px;
+	margin-top: 10px;
 }
+.b3:hover{
+	background-color: #476e9e;
+	color: white;}
+	.b3:active{
+		position: relative;
+	top: 1px;
+	}
+
 .f3{
 margin-top:10px;
 text-align: left;
 margin-left : 30px;
+text-align:center;
 width: 350px;
 }
 .f4{
@@ -601,7 +616,7 @@ height: 30px;
 
 		<div id="rightmain">
 			<div id="notice">
-			 <h2>출품작 판매 내역</h2><hr>
+			 <h2 >출품작 판매 내역</h2>
 			</div>
 			<div id="renking">
 				
@@ -683,7 +698,7 @@ height: 30px;
 				    	   }else{
 				    	   aa+=+"<div class='f1'>입찰<input type='hidden' name='aut_kind'></div>" 
 				    	   };
-			    	aa+="<h3 class='h1'>의뢰인 배송정보</h3><hr>"
+			    	aa+="<h3 class='h1'>의뢰인 배송정보</h3><br><hr><br>"
 			    	   +"<div class='f2'>아이디 : "+data.aup_mbid_n+"<br>"
 			    	   +"이름 : "+data.aup_name+"<br>"
 			    	   +"주소 :"+data.aup_address+"<br>"
@@ -733,7 +748,7 @@ height: 30px;
 				    	   sub+=+"<div class='f1'>입찰<input type='hidden' name='aut_kind'></div>" 
 				    	   };
 			    	sub+="<h3 class='h1'>운송장 입력</h3><input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ><br>"
-			    	   +"<div class='f2'>상품이름 :"+data.au_title+"<br>"
+			    	   +"<div class='f2'>"+data.au_title+"<br>"
 	                   +"가격 : "+data.aup_price+	"<input type='hidden' name='aup_price' value='"+data.aup_price+"' ></div><hr>"    	
 			    	   +"<div class='f3'>운송장번호<br/><input type='text' id='aup_track' name='aup_track'></div>"
 			    	   +"<div class='f6'><input class='b3' type='submit' value='보내기'>"

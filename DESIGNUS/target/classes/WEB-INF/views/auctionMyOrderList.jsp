@@ -115,18 +115,17 @@ div {
 }
 
 #lightbox {
-	border: 1px solid gray;
+	border: 1px solid orange;
 	position: absolute;
-	border-radius: 30px;
 	top: 200px;
 	left: 600px;
 	width: 800px;
 	height: 700px;
 	margin: auto;
-	/* 	background: #fff; */
+	background: #fff;
 	z-index: 1001;
 	display: none;
-	background-color: white;
+	background-color: orange;
 	text-align: center;
 }
 
@@ -143,22 +142,18 @@ div {
 }
 
 #lightbox1 {
-	border: 1px solid gray; position : absolute; border-radius : 30px; top :
-	200px; left : 600px; width : 800px; height : 700px; margin : auto;
-	/* 	background: #fff; */ z-index : 1001; display : none;
-	background-color : white;
-	text-align: center;
+	border: 1px solid orange;
 	position: absolute;
-	border-radius: 30px;
 	top: 200px;
 	left: 600px;
 	width: 800px;
 	height: 700px;
 	margin: auto;
-	/* 	background: #fff; */
+	background: #fff;
 	z-index: 1001;
 	display: none;
-	background-color: white;
+	background-color: orange;
+	text-align: center;
 }
 
 #lightbox-shadow1 {
@@ -174,22 +169,18 @@ div {
 }
 
 #lightbox2 {
-	border: 1px solid gray; position : absolute; border-radius : 30px; top :
-	200px; left : 600px; width : 800px; height : 700px; margin : auto;
-	/* 	background: #fff; */ z-index : 1001; display : none;
-	background-color : white;
-	text-align: center;
+	border: 1px solid orange;
 	position: absolute;
-	border-radius: 30px;
 	top: 200px;
 	left: 600px;
 	width: 800px;
 	height: 700px;
 	margin: auto;
-	/* 	background: #fff; */
+	background: #fff;
 	z-index: 1001;
 	display: none;
-	background-color: white;
+	background-color: orange;
+	text-align: center;
 }
 
 #lightbox-shadow2 {
@@ -355,33 +346,33 @@ a:hover {
 #l1 {
 	border: 3px solid gray;
 	position: absolute;
-	width: 600px;
+	width: 500px;
 	height: 430px;
-	border-radius: 50px;
+	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 30px;
 	text-align: center;
 	background-color: white;
-	font-size: 22px;
-	display: none; top : 500px;
-	left: 700px;
+	display: none;
+	font-size: 20px;
 	top: 500px;
+	left: 600px;
 }
 
 #l3 {
-	border: 3px solid gray;
+	border: 3px solid gray;;
 	position: absolute;
 	width: 600px;
-	height: 430px;
-	border-radius: 50px;
+	height: 530px;
+	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 30px;
 	text-align: center;
 	background-color: white;
-	font-size: 22px;
 	display: none;
+	font-size: 20px;
 	top: 500px;
-	left: 700px;
+	left: 600px;
 }
 
 #w3 {
@@ -395,20 +386,19 @@ a:hover {
 	text-align: center;
 	background-color: white;
 	display: none;
-	font-size: 22px;
+	font-size: 20px;
 	top: 500px;
-	left: 700px;
+	left: 600px;
 }
 
-# {
+#Q1 {
 	width: 500px;
 	height: 330px;
-	border-radius: 50px;
+	border-radius: 100px;
 	z-index: 1002;
 	padding-top: 70px;
 	text-align: center;
-	background-color: white;
-	border: 1px solid gray;
+	background-color: #FFE08C;
 	display: none;
 	font-size: 22px;
 }
@@ -422,6 +412,10 @@ a:hover {
 	opacity: 0.75;
 	display: none;
 }
+
+#btn22{
+width:200px;
+height:40px;}
 
 .t1 {
 	top: 100;
@@ -562,18 +556,19 @@ a:hover {
 }
 
 .f50 {
-	border-bottom: 1px solid orange;
 	text-align: left;
 	font-size: 20px;
-	margin-left: 20px;
+	margin-left: 40px;
 	margin-top: 10px;
 	color: orange;
-	width: 560px;
+	width: 500px;
 	float: left;
+
 }
 
 .f22 {
-	width: 295px;
+	width: 250px;
+	height:40px;
 	float: left;
 	border-bottom: 1px solid orange;
 }
@@ -581,30 +576,33 @@ a:hover {
 .f23 {
 	width: 450px;
 	float: left;
+	margin:auto;	
 }
 
 .f24 {
-	width: 295px;
+	height:40px;
+	width: 250px;
 	float: left;
 	border-bottom: 1px solid orange;
 }
 
 .f25 {
 	margin-left: 100px;
-	width: 600px;
+	margin-top:20px;
+	width: 400px;
 	float: left;
 	text-align: left;
 }
 
 .f26 {
 	margin-top: 10px;
-	width: 300px;
+	width: 250px;
 	height: 35px;
 }
 
 .f27 {
 	margin-top: 10px;
-	width: 286px;
+	width: 240px;
 	height: 35px;
 }
 
@@ -612,12 +610,20 @@ a:hover {
 	width: 65px;
 	height: 40px;
 	border-radius: 10px;
-	background-color: orange;
-	opacity: 0.45;
+	background-color: #dceefa;
+	color:black;
 	margin-left: 10px;
 	margin-top: 10px;
 }
 
+.f28:hover{
+	background-color: #476e9e;
+	color: white;}
+	
+	.f28:active{
+		position: relative;
+	top: 1px;
+	}
 .f30 {
 	border-bottom: 1px solid orange;
 	text-align: left;
@@ -649,12 +655,21 @@ a:hover {
 }
 
 .b3 {
-	width: 65px;
+width: 65px;
 	height: 40px;
 	border-radius: 10px;
-	background-color: orange;
-	opacity: 0.45;
+	background-color: #dceefa;
+	color:black;
+	margin-left: 10px;
+	margin-top: 10px;
 }
+.b3:hover{
+	background-color: #476e9e;
+	color: white;}
+	.b3:active{
+		position: relative;
+	top: 1px;
+	}
 
 textarea {
 	margin-top: 15px;
@@ -708,10 +723,7 @@ textarea {
 	</div>
 </body>
 <script>
-	var apList = $
-	{
-		apList
-	};
+	var apList = ${apList}; 
 	console.log(11, apList);
 
 	var main = "";
@@ -848,23 +860,25 @@ textarea {
 						sub += "<div class='f50'>"
 								+ data.au_mbid_w
 								+ "님에게 의뢰 요청(배송정보입력)</div>"
-								+ "<div class='f20'><div class='f21'>거래번호 :"
+								+ "<div class='f20'>"
+								+ +"<div class='f21'><br><br>거래번호 :"
+
 								+ data.aup_ptnum
 								+ "<input type='hidden' name='aup_ptnum' value='"+data.aup_ptnum+"' ></div>"
-								+ "<div class='f23'>상품이름 :"
+								+ "<div class='f23' style='font-size:25px; margin:auto;'>"
 								+ data.au_title
 								+ "</div>"
-								+ "<div class='f22'>가격 : "
+								+ "<div class='f22'>가격  "
 								+ data.aup_price
 								+ "<input type='hidden' name='aup_price' value='"+data.aup_price+"' ></div>"
-								+ "<div class='f24'>아이디 : "
+								+ "<div class='f24'>아이디  "
 								+ data.aup_mbid_n
 								+ "<input type='hidden' name='aup_mbid_n' value='"+data.aup_mbid_n+"'></div></div>"
-								+ "<div class='f25'>이름 :<input id='mb_name' class='f26' type='text' name='aup_name'><br>"
-								+ "주소 :<input id='mb_add' class='f26' type='text' name='aup_address'><br>"
-								+ "연락처: <input id='mb_pho' class='f27' type='text' name='aup_phone'></div>"
-								+ "<input class='f28' type='submit' value='요청'>"
-								+ "<input class='f28' type='button' id='back' value='취소'></div></div></form>";
+								+ "<div class='f25'>이름 <input id='mb_name' class='f26' type='text' name='aup_name'><br>"
+								+ "주소 <input id='mb_add' class='f26' type='text' name='aup_address'><br>"
+								+ "연락처 <input id='mb_pho' class='f27' type='text' name='aup_phone'></div>"
+								+ "<div id='btn22'><input class='f28' type='submit' value='요청'>"
+								+ "<input class='f28' type='button' id='back' value='취소'></div></div></div></form>";
 
 						$('#total').css("display", "inline");
 						$('#l1').css("display", "inline");
