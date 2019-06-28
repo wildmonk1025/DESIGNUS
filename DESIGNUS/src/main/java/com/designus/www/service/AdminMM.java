@@ -219,6 +219,7 @@ public class AdminMM {
 		mav.addObject("aq_title", n.getAq_title());
 		mav.addObject("aq_contents", n.getAq_contents());
 		mav.addObject("aqi_img", n.getAqi_img());
+		mav.addObject("aq_date", n.getAq_date());
 		view = "questionWriteCheck";
 		mav.setViewName(view);
 		return mav;
