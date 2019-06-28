@@ -11,9 +11,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div {
-	margin: auto;	
-}
 #mainheader {
 	border: 1px solid #F5BCA9;
 	background-color: white;
@@ -116,7 +113,7 @@ div {
 	display:inline-block;
 	border: 1px solid #f0f0f0;
     border-radius: 5px;
-    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.52);
     margin:5px 0px 0px 0px;
 	width: 487px;
 	height: 150px;
@@ -125,6 +122,8 @@ div {
 	float: left;
 	height: 149px;
 	width: 150px;
+	border: 1px solid #f2f2f2;
+	box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.18);
 	border-radius: 15px;
 }
 
@@ -132,27 +131,35 @@ div {
 	border-radius: 15px;
 }
 
+.auListdivv{
+	margin-left:10px;
+	float: right;
+	width: 325px;
+	height: 149px;
+}
+
 .auListTitle{
 	float: left;
-	border-bottom: 1px solid gray;
-	width: 333px;
+	width: 320px;
 	height: 30px;	
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
+	font-weight: 800;
+	color: #0B0B61;
 }
 .auListPrice{
 	float: left;
 	border-bottom: 1px solid gray;
-	width: 333px;
+	width: 320px;
 	height: 85px;
 }
 .auListDate{
 	float: left;
-	border-bottom: 1px solid gray;
-	width: 333px;
+	width: 320px;
 	height: 28px;
 	font-size: 17px;
-	color: blue;
+	font-weight: 700;
+	color: red;
 }
 
 a{
@@ -180,8 +187,9 @@ a{
 					<div class="auListImg">
 						<img class="ListImg" src="/auction/${au.aui_img}" width="100%" height="100%"/>
 					</div>
+					<div class="auListdivv">
 					<div class="auListTitle">
-						${au.au_title }
+						[${au.au_title }]
 					</div>
 					<div class="auListPrice">
 						즉시구매가능수량 : ${au.au_qty -1}	<br>
@@ -192,7 +200,7 @@ a{
 					<div class="auListDate">
 						${au.au_date }
 					</div>
-					
+					</div>
 					</div>
 			</c:forEach>
 			</div>
