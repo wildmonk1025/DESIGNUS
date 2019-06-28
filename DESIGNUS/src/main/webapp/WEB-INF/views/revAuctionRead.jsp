@@ -618,8 +618,7 @@ $(".subtn").click(function() {
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
  	 	//end.setDate(end.getDate()+1);
- 	 	end.setHours(end.getHours()+14);
- 	 	end.setMinutes(end.getMinutes()+3);
+ 	 	end.setHours(end.getHours()+15);
  	 	//end.setMinutes(end.getMinutes()+10);
  		var _second = 1000;
  		var _minute = _second * 60;
