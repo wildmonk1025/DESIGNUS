@@ -170,17 +170,15 @@ ul {
 	$(document)
 			.ready(
 					function() {
-						$
-								.ajax({
-									url : 'transformwridetail ',
-									type : 'post',
-									contentType : "application/json; charset=utf-8;",
-									dataType : 'json',
-									//contentType:'application/json',
-									success : function(data) {
-										var result = "<div id='best'><table><tr class='object'><td id='o6'>분류</td><td id='o1'>아이디</td><td id='o2'>전문분야</td><td id='o3'>포트폴리오</td><td id='o4'>파일설명</td><td id='o5'>상세보기</td></tr>";
-										console.log("성공");
-
+						$.ajax({
+								url : 'transformwridetail ',
+								type : 'post',
+								contentType : "application/json; charset=utf-8;",
+								dataType : 'json',
+								//contentType:'application/json',
+								success : function(data) {
+									var result = "<div id='best'><table><tr class='object'><td id='o6'>분류</td><td id='o1'>아이디</td><td id='o2'>전문분야</td><td id='o3'>포트폴리오</td><td id='o4'>파일설명</td><td id='o5'>상세보기</td></tr>";
+									console.log("성공");
 										for ( var i in data) {
 											var test = data[i].mb_grade;
 											console.log(test);
