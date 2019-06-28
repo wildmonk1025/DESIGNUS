@@ -246,8 +246,10 @@ div::-webkit-scrollbar {
 }
 
 .ListImg{
-	border-radius: 15px;
 	margin-right: 10px;
+	border: 1px solid #f2f2f2;
+	box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.18);
+	border-radius: 15px;
 }
 
 
@@ -273,7 +275,7 @@ div::-webkit-scrollbar {
 					<c:forEach var="au" items="${auList}">
 						<div class="auListFrm" onclick="location.href='auctionRead?au_num=${au.au_num}'">
 							<div class="auListImg">
-								<img class="ListImg" src="/auction/${au.aui_img}" width="100%" height="100%"/>
+								<img class="ListImg" src="/auction/${au.aui_img}" width="99%" height="99%"/>
 							</div>
 							<div class="auListdivv">
 							<div class="auListTitle">
@@ -295,7 +297,7 @@ div::-webkit-scrollbar {
 					<c:forEach var="ra" items="${raList}">
 						<div class="raListFrm" onclick="location.href='revauctionread?ra_num=${ra.ra_num}'">
 							<div class="raListImg">
-								<img class="ListImg" src="/revauction/${ra.ra_image}" width="100%" height="100%"/>
+								<img class="ListImg" src="/revauction/${ra.ra_image}" width="99%" height="99%"/>
 							</div>
 							<div class="raListdivv">
 							<div class="raListTitle">
@@ -320,10 +322,6 @@ div::-webkit-scrollbar {
 				</div>
 			</div>
 		</div>
-
-
-
-
 	</div>
 	<div id="footer">
       <hr style="width:100%; border: 2px solid coral; align: center;">   

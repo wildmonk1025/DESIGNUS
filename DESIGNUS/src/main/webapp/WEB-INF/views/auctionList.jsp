@@ -113,7 +113,7 @@
 	display:inline-block;
 	border: 1px solid #f0f0f0;
     border-radius: 5px;
-    box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.52);
     margin:5px 0px 0px 0px;
 	width: 487px;
 	height: 150px;
@@ -122,7 +122,8 @@
 	float: left;
 	height: 149px;
 	width: 150px;
-	border: 1px solid #f0f0f0;
+	border: 1px solid #f2f2f2;
+	box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.18);
 	border-radius: 15px;
 }
 
