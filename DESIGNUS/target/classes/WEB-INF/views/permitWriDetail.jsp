@@ -214,7 +214,8 @@ ul {
 						</tr>
 						<tr>
 							<th width="100" height="50" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">포트폴리오</th>
-							<td width="800" colspan="4" height="50" style="font-size: 15px; text-align: center;">${mj_portf}</td>
+							<td width="800" colspan="4" height="50" style="font-size: 15px; text-align: center;">
+							<a style="color:#f8876a;" href="mjfiledownload?mj_portf=${mj_portf}">${mj_portf}</a></td>
 						</tr>
 						<tr>
 							<th width="100" height="400" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">내용</th>
