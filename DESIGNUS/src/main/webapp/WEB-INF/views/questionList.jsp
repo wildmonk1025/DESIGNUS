@@ -7,6 +7,30 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #F5BCA9;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #F5BCA9;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+	{
+	width: 0px;
+	height: 0px;
+	background: coral;
+}
+
 #main {
 	width: 1520px;
 	height: 170px;
@@ -61,9 +85,9 @@ ul {
 
 #questionlist {
 	margin-top: 10px;
-	margin:auto;
+	margin: auto;
 	width: 1000px;
-	height: 980px;
+	height: 800px;
 	overflow: auto;
 }
 
@@ -73,6 +97,11 @@ ul {
 	heigth: auto;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 	margin: 5px 5px 5px 5px;
+}
+
+#best {
+	margin: auto;
+	width:930px;
 }
 
 .object {
@@ -156,7 +185,8 @@ ul {
 		<div id="adminopt">
 			<form name="form" method="get">
 				<div class="opt">
-					<h3 id="dd" style="text-align: center; font-size: 25px; margin-top:20px; margin-bottom: 30px;">1:1
+					<h3 id="dd"
+						style="text-align: center; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">1:1
 						문의 접수 리스트</h3>
 					<div id="questionlist"></div>
 				</div>

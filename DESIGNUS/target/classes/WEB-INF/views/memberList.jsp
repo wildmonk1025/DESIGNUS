@@ -7,6 +7,31 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #F5BCA9;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #F5BCA9;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+	{
+	width: 0px;
+	height: 0px;
+	background: coral;
+}
+
 #main {
 	width: 1520px;
 	height: 170px;
@@ -39,6 +64,12 @@ ul {
 	height: 500px;
 }
 
+#btnarr {
+	margin: auto;
+	width: 1030px;
+	height: 80px;
+}
+
 #adminopt {
 	float: left;
 	align-content: center;
@@ -49,17 +80,16 @@ ul {
 .opt {
 	width: 1200px;
 	height: 980px;
-	overflow: auto;
+/* 	overflow: auto; */
 	border: 1px solid #f0f0f0;
 	border-radius: 5px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 .opt:hover {
 	transform: scale(1.02);
 	transition-duration: 1s;
 }
-
 
 #declarelist {
 	margin-top: 10px;
@@ -68,72 +98,38 @@ ul {
 }
 
 .btnArray {
-	margin-top:20px;
-	margin-left: 30px;
-	float: left;
+	margin-top: 20px;
+	margin: auto; float : left;
 	width: 340px;
 	height: 70px;
 	text-align: center;
+	float: left;
 }
 
 .btn2 {
-	margin-top: 10px;
-	/*General*/
+	background-color: #dceefa;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
 	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	padding: 15px 38px;
 	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
+	text-shadow: 0px 1px 0px #283966;
+}
+
+.btn2:hover {
+	background-color: #476e9e;
+	color: white;
+}
+
+.btn2:active {
+	position: relative;
+	top: 1px;
 }
 
 a:active {
@@ -156,16 +152,14 @@ a:hover {
 	color: blue;
 }
 
-.best {
-	float: left;
-	width: 1100px;
+#best {
+	width: 700px;
+	margin: auto;
 	height: auto;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-	margin:5px 5px 5px 5px;
 }
 
 .object {
-	background-color: #c8e7ea;
+	background-color: #dceefa;
 	width: 1100px;
 }
 
@@ -188,14 +182,33 @@ a:hover {
 	text-align: center;
 }
 
+
+#ListView1 {
+
+	margin: auto;
+	width: 700px;
+	height: 800px;
+	overflow: auto;
+	
+}
+
 #ListView2 {
-	display: none; 
+	
+	margin: auto;
+	width: 700px;
+	height: 800px;
+	overflow: auto;
+	display: none;
 }
 
 #ListView3 {
-	display: none; 
-}
 
+	margin: auto;
+	width: 700px;
+	height: 800px;
+	overflow: auto;
+	display: none;
+}
 
 #footer {
 	width: 1518px;
@@ -203,6 +216,32 @@ a:hover {
 	margin-top: 20px;
 	float: left;
 	border: 1px solid #f0f0f0;
+}
+
+#o1 {
+	width: 100px;
+	font-size: 15px;
+	height: 40px;
+}
+
+#o2 {
+	width: 120px;
+	font-size: 15px;
+}
+
+#o3 {
+	width: 150px;
+	font-size: 15px;
+}
+
+#o4 {
+	width: 90px;
+	font-size: 15px;
+}
+
+#o5 {
+	width: 200px;
+	font-size: 15px;
 }
 </style>
 </head>
@@ -220,15 +259,19 @@ a:hover {
 		</div>
 		<div id="adminopt">
 			<div class="opt">
-				<h3 style="text-align: center; font-size: 30px;">가입회원 리스트</h3>
-				<div class="btnArray" id="normal">
-					<button id="Lbtn1" class="btn2">일반회원 리스트</button>
-				</div>
-				<div class="btnArray" id="writer">
-					<button id="Lbtn2" class="btn2">작가회원 리스트</button>
-				</div>
-				<div class="btnArray" id="blkmember">
-					<button id="Lbtn3" class="btn2">블랙회원 리스트</button>
+				<h3
+					style="text-align: center; font-size: 30px; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">가입회원
+					리스트</h3>
+				<div id="btnarr">
+					<div class="btnArray" id="normal">
+						<button id="Lbtn1" class="btn2">일반회원 리스트</button>
+					</div>
+					<div class="btnArray" id="writer">
+						<button id="Lbtn2" class="btn2">작가회원 리스트</button>
+					</div>
+					<div class="btnArray" id="blkmember">
+						<button id="Lbtn3" class="btn2">블랙회원 리스트</button>
+					</div>
 				</div>
 				<div id="declarelist">
 					<div id="ListView1"></div>
@@ -239,7 +282,7 @@ a:hover {
 			</div>
 		</div>
 		<div id="footer">
-					<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 	</div>
@@ -263,83 +306,94 @@ a:hover {
 		$("#ListView3").css("display", "block");
 		val3();
 	});
-	$(document).ready(
-			function val1() {
-				$.ajax({
-					url : 'memberseclist',
-					type : 'post',
-					contentType : "application/json; charset=utf-8;",
-					dataType : 'json',
-					//contentType:'application/json',
-					success : function(data) {
-						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>이름</td><td>회원등급</td><td>경고횟수</td><td>상세보기</td></tr>";
-						console.log("성공");
-						
-						for(var i in data) {
-							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
-									+ data[i].mb_name + "</td><td>";
-									var test = data[i].mb_grade
-									switch(test) {
-									case 'N':
-										result+="일반</td><td>";
-										break;
-									case 'W':
-										result+="작가</td><td>"
-										break;
-									case 'S':
-										result+="임시</td><td>"
-										break;
-									case 'X':
-										result+="전환</td><td>"
-										break;
+	$(document)
+			.ready(
+					function val1() {
+						$
+								.ajax({
+									url : 'memberseclist',
+									type : 'post',
+									contentType : "application/json; charset=utf-8;",
+									dataType : 'json',
+									//contentType:'application/json',
+									success : function(data) {
+										var result = "<div id='best'><table><tr class='object'><td id='o1'>아이디</td><td id='o2'>이름</td><td id='o3'>회원등급</td><td id='o4'>경고횟수</td><td id='o5'>상세보기</td></tr>";
+										console.log("성공");
+
+										for ( var i in data) {
+											result += "<tr class='contents'><td id='o1'>"
+													+ data[i].mb_id
+													+ "</td><td id='o2'>"
+													+ data[i].mb_name
+													+ "</td><td id='o3'>";
+											var test = data[i].mb_grade
+											switch (test) {
+											case 'N':
+												result += "일반</td><td id='o4'>";
+												break;
+											case 'W':
+												result += "작가</td><td id='o4'>"
+												break;
+											case 'S':
+												result += "임시</td><td id='o4'>"
+												break;
+											case 'X':
+												result += "전환</td><td id='o4'>"
+												break;
+											}
+											result += data[i].mb_ccnt
+													+ "</td><td id='o5'>"
+													+ "<a href='memberListMM?mb_id="
+													+ data[i].mb_id
+													+ "'>클릭</a></td></tr>";
+										}
+										result += "</table></div>";
+
+										$("#ListView1").html(result);
+									},
+									error : function(error) {
+										console.log("실패");
+										console.log(error);
 									}
-									result += data[i].mb_ccnt + "</td><td>"
-									+ "<a href='memberListMM?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
-						}
-						result+="</table></div>";
-						
-						$("#ListView1").html(result);
-					},
-					error : function(error) {
-						console.log("실패");
-						console.log(error);
-					}
-				});
-			});
-			function val2() {
-				$.ajax({
+								});
+					});
+	function val2() {
+		$
+				.ajax({
 					url : 'memberAuthorlist',
 					type : 'post',
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>이름</td><td>회원등급</td><td>경고횟수</td><td>상세보기</td></tr>";
+						var result = "<div id='best'><table><tr class='object'><td id='o1'>아이디</td><td id='o2'>이름</td><td id='o3'>회원등급</td><td id='o4'>경고횟수</td><td id='o5'>상세보기</td></tr>";
 						console.log("성공");
-						
-						for(var i in data) {
-							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
-									+ data[i].mb_name + "</td><td>";
-									var test = data[i].mb_grade
-									switch(test) {
-									case 'N':
-										result+="일반</td><td>";
-										break;
-									case 'W':
-										result+="작가</td><td>"
-										break;
-									case 'S':
-										result+="임시</td><td>"
-										break;
-									case 'X':
-										result+="전환</td><td>"
-										break;
-									}
-									result += data[i].mb_ccnt + "</td><td>"
-									+ "<a href='memberListMM?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
+
+						for ( var i in data) {
+							result += "<tr class='contents'><td id='o1'>"
+									+ data[i].mb_id + "</td><td id='o2'>"
+									+ data[i].mb_name + "</td><td id='o3'>";
+							var test = data[i].mb_grade
+							switch (test) {
+							case 'N':
+								result += "일반</td><td id='o4'>";
+								break;
+							case 'W':
+								result += "작가</td><td id='o4'>"
+								break;
+							case 'S':
+								result += "임시</td><td id='o4'>"
+								break;
+							case 'X':
+								result += "전환</td><td id='o4'>"
+								break;
+							}
+							result += data[i].mb_ccnt + "</td><td id='o4'>"
+									+ "<a href='memberListMM?mb_id="
+									+ data[i].mb_id + "'>클릭</a></td></tr>";
 						}
-						result+="</table></div>";
-						
+						result += "</table></div>";
+
 						$("#ListView2").html(result);
 					},
 					error : function(error) {
@@ -347,41 +401,44 @@ a:hover {
 						console.log(error);
 					}
 				});
-			}
-			function val3() {
-				$.ajax({
+	}
+	function val3() {
+		$
+				.ajax({
 					url : 'memberBlacklist',
 					type : 'post',
 					contentType : "application/json; charset=utf-8;",
 					dataType : 'json',
 					//contentType:'application/json',
 					success : function(data) {
-						var result = "<div id='best'><table><tr class='object'><td>아이디</td><td>이름</td><td>회원등급</td><td>경고횟수</td><td>상세보기</td></tr>";
+						var result = "<div id='best'><table><tr class='object'><td id='o1'>아이디</td><td id='o2'>이름</td><td id='o3'>회원등급</td><td id='o4'>경고횟수</td><td id='o5'>상세보기</td></tr>";
 						console.log("성공");
-						
-						for(var i in data) {
-							result += "<tr class='contents'><td>"+data[i].mb_id+"</td><td>"
-									+ data[i].mb_name + "</td><td>";
-									var test = data[i].mb_grade
-									switch(test) {
-									case 'N':
-										result+="일반</td><td>";
-										break;
-									case 'W':
-										result+="작가</td><td>"
-										break;
-									case 'S':
-										result+="임시</td><td>"
-										break;
-									case 'X':
-										result+="전환</td><td>"
-										break;
-									}
-									result += data[i].mb_ccnt + "</td><td>"
-									+ "<a href='memberListMM?mb_id=" + data[i].mb_id + "'>클릭</a></td></tr>";
+
+						for ( var i in data) {
+							result += "<tr class='contents'><td id='o1'>"
+									+ data[i].mb_id + "</td><td id='o2'>"
+									+ data[i].mb_name + "</td><td id='o3'>";
+							var test = data[i].mb_grade
+							switch (test) {
+							case 'N':
+								result += "일반</td><td id='o4'>";
+								break;
+							case 'W':
+								result += "작가</td><td id='o4'>"
+								break;
+							case 'S':
+								result += "임시</td><td id='o4'>"
+								break;
+							case 'X':
+								result += "전환</td><td id='o4'>"
+								break;
+							}
+							result += data[i].mb_ccnt + "</td><td id='o5'>"
+									+ "<a href='memberListMM?mb_id="
+									+ data[i].mb_id + "'>클릭</a></td></tr>";
 						}
-						result+="</table></div>";
-						
+						result += "</table></div>";
+
 						$("#ListView3").html(result);
 					},
 					error : function(error) {
@@ -389,6 +446,6 @@ a:hover {
 						console.log(error);
 					}
 				});
-			}
+	}
 </script>
 </html>
