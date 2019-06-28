@@ -8,6 +8,31 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #F5BCA9;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #F5BCA9;
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+	{
+	width: 0px;
+	height: 0px;
+	background: coral;
+}
+
 #main {
 	width: 1520px;
 	height: 170px;
@@ -60,7 +85,7 @@
 	margin-top: 10px;
 	margin:auto;
 	width: 700px;
-	height: 980px;
+	height: 800px;
 	overflow: auto;
 }
 
