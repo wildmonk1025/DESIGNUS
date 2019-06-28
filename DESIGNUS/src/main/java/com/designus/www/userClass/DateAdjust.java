@@ -28,8 +28,8 @@ public class DateAdjust {
 		//LocalDateTime targetDateTime = LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond);
 
 		//DB로 부터 받아온 시간에 1일을 더함. 1일 뒤 종료하는것으로 구성
-		original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
-		//original_setDate = original_setDate.plusHours(15); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusDays(2); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusHours(13); //예: original_setDate.minusDays(1);
 		
 		String val = null;
 		if(original_setDate.isAfter(currentDateTime)) {
@@ -132,8 +132,8 @@ public class DateAdjust {
 			
 		LocalDateTime currentDateTime = LocalDateTime.now();
 		
-		original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
-		//original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusDays(2); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusHours(13); //예: original_setDate.minusDays(1);
 		
 		if(original_setDate.isAfter(currentDateTime)) {
 			return true;
