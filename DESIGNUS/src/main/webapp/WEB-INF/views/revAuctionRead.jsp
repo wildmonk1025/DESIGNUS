@@ -650,7 +650,7 @@ $(".subtn").click(function() {
  		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
- 		timer = setInterval(showRemaining, 100);
+ 		timer = setInterval(showRemaining, 1000);
  		}
  		// Source: stackoverflow
  		

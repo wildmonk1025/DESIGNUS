@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>memberListMM.jsp</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <style>
-    #main {
+<title>신고내역상세보기</title>
+<meta charset="utf-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+ 
+#main {
 	width: 1520px;
 	height: 170px;
 	position: relative;
@@ -20,123 +22,70 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+}
+
+#middle {
+	width: 1520px;
+	height: auto;
+	margin-top: 60px;
+}
+
+ul {
+	list-style: none;
+}
+
+#adminmenu {
+	float: left;
+	width: 300px;
+	height: 500px;
+}
+
+#adminopt {
+	float: left;
+	align-content: center;
+	width: 1216px;
+	height: 1000px;
+}
+
+.opt {
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
 	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 }
-        body {
-            margin: auto;
-            width: 1520px;
-            height: auto;
-            overflow: auto;
-        }
-	
 
-        ul {
-            list-style: none;
-        }
-
-        #mainheader {
-            width: 1518px;
-            height: 170px;
-        }
-        #middle {
-            float: left;
-            width: 1518px;
-            height: auto;
-            overflow: auto;
-        }
-        #adminmenu {
-            float: left;
-            width: 300px;
-            height: 500px;
-        }
-
-        #adminopt {
-            float: left;
-            align-content: center;
-            width: 1214px;
-            height: 500px;
-        }
-
-        .opt {
-            padding: inherit;
-            position: relative;
-            margin-top: 5px;
-            width: 1000px;
-            height: 450px;
-
-        }
-
-        #declarelist {
-            margin-left: 20px;
-            width: 820px;
-            height: 340px;
-            float: left;
-        }
-
-        .declareinfo {
-            width: 820px;
-            height: 340px;
-        }
-
-        .btnArray {
-            margin-left: 10px;
-            position: absolute;
-            float: left;
-            width: 120px;
-        }
-
-        #btn1 {
-            bottom: 100px;
-            left: 850px;
-        }
-
-        #btn2 {
-            bottom: 60px;
-            left: 850px;
-        }
-
-        #btn3 {
-            bottom: 17px;
-            left: 850px;
-        }
-
-        .btnArray>input {
-            width: 120px;
-            height: 30px;
-        }
-
-#customers {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 820px;
-	border-collapse: collapse;
+#declarelist {
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 20px;
+	width: 900px;
+	height: 650px;
+	float: left;
 }
 
-#customers td, #customers th {
-	font-size: 1em;
-	padding: 3px 7px 2px 7px;
+#paper {
+	color: black;
+	background-color:#FAFAFA;
+	box-shadow: 1px -1px 6px 0px rgba(0,0,0,0.31);
 }
 
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color: #A7C942;
-	color: #ffffff;
+#btngrp {
+	margin-left: 310px;
+	margin-right: 190px;
+	margin-top: 20px;
+	width: 700px;
+	height: 70px;
+	float: left;	
 }
 
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
-tr{
-width: 300px;
-height: 60px;
-}
+
 .btn2{
-margin-top: 10px;
+	margin-top: 10px;
+	margin-left: 40px;
 	/*General*/
-	display: inline-block;
+	float: left;
 	text-decoration: none;
 	/*Text*/
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -192,125 +141,97 @@ margin-top: 10px;
 	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
 		rgb(237, 237, 237) 100%);
 }
-#atag{
-	width: 120px;
-	height: 30px;
-}
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
 
 
-}
-
-#footercheck {
-	width: 1520px;
-	height: 150px;
-}
-.best {
-	display : inline;
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
 	float: left;
-	width: 100%;
-	heigth: 150px;
-	size: 20px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-	margin:5px 5px 5px 5px;
-	
+	border: 1px solid #f0f0f0;
 }
-    </style>
+
+</style>
 </head>
 
 <body>
-   <div id="main">
-   <div id="mainheader">
-		<jsp:include page="main.jsp"/>
+	<div id="main">
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
+		</div>
 	</div>
+	
+	<div id="middle">
+	<div id="adminmenu">
+		<jsp:include page="admininclud.jsp"></jsp:include>
 	</div>
-    <div id="adminmenu">
-        <ul>
-                <jsp:include page="admininclud.jsp"></jsp:include>
 
-        </ul>
-    </div>
-    <div id="adminopt">
-    <div id="adminopt">
-            <div class="opt"><br/><br/>
-            <form action="membercaution" method="post" id="form1">
-                <h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:820px; ">회원 상세보기</h3>
-                <hr><br/>
-                <div id="declarelist">
-                <div class="best">
-                    <table id="customers">
-                        <tr  class="alt">
-                            <td colspan="6" width="600" height="20">회원등급 : ${mbInfo.mb_grade}</td>
-                        </tr>
-                        <tr>
-                            <td width="100" height="20">ID</td>
-                            <td width="100" height="20">이름</td>
-                            <td width="100" height="20">생년월일</td>
-                            <td width="100" height="20">이메일</td>
-                            <td width="100" height="20">포인트</td>
-                            <td width="100" height="20">경고횟수</td>
-                        </tr>
-                        <tr  class="alt">
-                            <td width="100" height="20">${mbInfo.mb_id}</td>
-                            <td width="100" height="20">${mbInfo.mb_name}</td>
-                            <td width="100" height="20">${mbInfo.mb_birth}</td>
-                            <td width="100" height="20">${mbInfo.mb_email}</td>
-                            <td width="100" height="20">${mbInfo.mb_point}</td>
-                            <td width="100" height="20">${mbInfo.mb_ccnt}</td>
-                        </tr>
-                        
-                        <tr  >
-                            <td colspan="6" width="600" height="170"> <br>
-                                주소 : ${mbInfo.mb_address}<br>
-                        </tr>
-                    </table>
-                    </div>
-                </div>
-                <input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
-                <div class="btnArray" id="btn1"><input type="submit" value="경고" class="btn2" ></div>
-                 </form>
-                 <form action="membercautioncnt" method="post" id="form">
-                 <input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
-                <div class="btnArray" id="btn2"><input type="submit" value="해제" id="dd" class="btn2"></div>
-                </form>
-                <div class="btnArray" id="btn3">
-                	<a href="memberList" class="btn2" id="atag">돌아가기</a>
-                </div>
-                <!--<div class="btnArray" id="btn3"><button onclick="goBack()">돌아가기</button></div>-->
-            </div>
-       
-        </div>
-    </div>
-    	<div id="footercheck">
+	<div id="adminopt">
+		<form name="formName" method="post">
+			<div class="opt">
+				<h3	style="text-align: center; font-size: 30px;">회원정보 상세보기</h3>
+				<div id="btngrp">
+				<div class="btnArray">
+					<input type="button" value="적합" onclick="b();" class="btn2" />
+				</div>
+
+				<div class="btnArray">
+					<input type="button" value="부적합" onclick="a();" class="btn2" />
+				</div>
+				<div class="btnArray">
+					<a href="declareWrite" class="btn2" id="atag">돌아가기</a>
+				</div>
+				</div>
+				<div id="declarelist">
+					<table id="paper">
+						<tr>
+							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">회원등급</th>
+							<th colspan="5" width="800" height="40" style="font-size: 15px;  padding-left: 10px;">${mbInfo.mb_grade}</th>
+						</tr>
+						<tr>
+							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">아이디</th>
+							<th width="100" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">이름</th>
+							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">생년월일</th>
+							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">이메일</th>
+							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">보유 포인트</th>
+							<th width="300" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">경고횟수</th>
+						</tr>
+
+						<tr>
+							<td width="200" height="30" style="font-size: 15px; text-align: center;">${mbInfo.mb_id}</td>
+							<td width="100" height="30" style="font-size: 15px; text-align: center;">${mbInfo.mb_name}</td>
+							<td width="200" height="30" style="font-size: 15px; text-align: center;">${mbInfo.mb_birth}</td>
+							<td width="200" height="30" style="font-size: 15px; text-align: center;">${mbInfo.mb_email}</td>
+							<td width="200" height="30" style="font-size: 15px; text-align: center;">${mbInfo.mb_point}</td>
+							<td width="300" height="30" style="font-size: 15px; text-align: center;">${mbInfo.mb_ccnt}</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<div id="footer">
+		<hr style="width: 100%; border: 2px solid coral; align: center;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+	</div>
+
 </body>
 <script>
-
-$("#btn2").on("click", function(){
-	var dd = ${mbInfo.mb_ccnt};
-	console.log(dd);
-	if(dd<1){
-		swal("경고횟수를 0이하로 누를 수 없습니다.");
-		return false;
-	} else{
-		swal("해당회원이 경고되었습니다.");
-		return true;
+	function a() {
+		var f = document.formName;
+		f.action = "declarenonpermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
+		// 파일 전송이 필요할 경우만 씀.
+		f.submit();
 	}
-});
-$("#btn1").on("click", function(){
-	var dd = ${mbInfo.mb_ccnt};
-	console.log(dd);
-	if(dd>=3){
-		
-		swal("경고횟수를 3이상으로 누를 수 없습니다.");
-		return false;
-	} else{
-		swal("해당회원이 경고되었습니다.");
-		return true;
+	function b() {
+		var f = document.formName;
+		f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
+		f.submit();
 	}
-});
-
+	function goBack() {
+		window.history.forward();
+	}
 </script>
 </html>
