@@ -86,67 +86,35 @@ input[type=submit] {
 	float:right;
 }
 
-.btn2{
-	margin-top: 20px;
-	margin-left: 30px;
-	/*General*/
-	float: left;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 148px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
+.btn2 {
+	background-color: #dceefa;
+	width: 160px;
+	height: 50px;
+	margin-top: 5px;
+	margin-right: 10px; -moz-border-radius : 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
 	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	text-align: center; text-decoration : none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
 }
 
+.btn2:hover {
+	background-color: #476e9e;
+	color: white;
+}
+
+.btn2:active {
+	position: relative;
+	top: 1px;
+}
 
 #footer {
 	width: 1518px;
@@ -210,7 +178,7 @@ input[type=submit] {
 							<td colspan="3"><textarea rows="30" cols="20" name="qr_contents" style="margin:5px; width:650px; height: 200px; resize: none;" placeholder="여기에 답글 입력하세요."></textarea>
 							<div id="btngrp">
 							<input type="submit" value="답변하기" class="btn2">
-				 			<a href="questionList" class="btn2">돌아가기</a>
+				 			<input type="button" onclick="location.href='questionList'" class="btn2" value="돌아가기">
 				 			</div>
 							</td>
 						</tr>					
