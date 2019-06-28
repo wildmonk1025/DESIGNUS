@@ -115,17 +115,18 @@ div {
 }
 
 #lightbox {
-	border: 1px solid orange;
+	border: 1px solid gray;
 	position: absolute;
+	border-radius: 30px;
 	top: 200px;
 	left: 600px;
 	width: 800px;
 	height: 700px;
 	margin: auto;
-	background: #fff;
+	/* 	background: #fff; */
 	z-index: 1001;
 	display: none;
-	background-color: orange;
+	background-color: white;
 	text-align: center;
 }
 
@@ -142,18 +143,22 @@ div {
 }
 
 #lightbox1 {
-	border: 1px solid orange;
+	border: 1px solid gray; position : absolute; border-radius : 30px; top :
+	200px; left : 600px; width : 800px; height : 700px; margin : auto;
+	/* 	background: #fff; */ z-index : 1001; display : none;
+	background-color : white;
+	text-align: center;
 	position: absolute;
+	border-radius: 30px;
 	top: 200px;
 	left: 600px;
 	width: 800px;
 	height: 700px;
 	margin: auto;
-	background: #fff;
+	/* 	background: #fff; */
 	z-index: 1001;
 	display: none;
-	background-color: orange;
-	text-align: center;
+	background-color: white;
 }
 
 #lightbox-shadow1 {
@@ -169,18 +174,22 @@ div {
 }
 
 #lightbox2 {
-	border: 1px solid orange;
+	border: 1px solid gray; position : absolute; border-radius : 30px; top :
+	200px; left : 600px; width : 800px; height : 700px; margin : auto;
+	/* 	background: #fff; */ z-index : 1001; display : none;
+	background-color : white;
+	text-align: center;
 	position: absolute;
+	border-radius: 30px;
 	top: 200px;
 	left: 600px;
 	width: 800px;
 	height: 700px;
 	margin: auto;
-	background: #fff;
+	/* 	background: #fff; */
 	z-index: 1001;
 	display: none;
-	background-color: orange;
-	text-align: center;
+	background-color: white;
 }
 
 #lightbox-shadow2 {
@@ -344,39 +353,39 @@ a:hover {
 }
 
 #l1 {
-	border: 3px solid orange;
+	border: 3px solid gray;
 	position: absolute;
 	width: 600px;
 	height: 430px;
-	border-radius: 100px;
+	border-radius: 50px;
 	z-index: 1002;
 	padding-top: 30px;
 	text-align: center;
 	background-color: white;
-	display: none;
 	font-size: 22px;
+	display: none; top : 500px;
+	left: 700px;
 	top: 500px;
-	left: 900px;
 }
 
 #l3 {
-	border: 3px solid orange;
+	border: 3px solid gray;
 	position: absolute;
 	width: 600px;
-	height: 530px;
-	border-radius: 100px;
+	height: 430px;
+	border-radius: 50px;
 	z-index: 1002;
 	padding-top: 30px;
 	text-align: center;
 	background-color: white;
-	display: none;
 	font-size: 22px;
+	display: none;
 	top: 500px;
-	left: 900px;
+	left: 700px;
 }
 
 #w3 {
-	border: 3px solid orange;
+	border: 3px solid gray;
 	position: absolute;
 	width: 430px;
 	height: 400px;
@@ -388,17 +397,18 @@ a:hover {
 	display: none;
 	font-size: 22px;
 	top: 500px;
-	left: 900px;
+	left: 700px;
 }
 
-#Q1 {
+# {
 	width: 500px;
 	height: 330px;
-	border-radius: 100px;
+	border-radius: 50px;
 	z-index: 1002;
 	padding-top: 70px;
 	text-align: center;
-	background-color: #FFE08C;
+	background-color: white;
+	border: 1px solid gray;
 	display: none;
 	font-size: 22px;
 }
@@ -698,7 +708,10 @@ textarea {
 	</div>
 </body>
 <script>
-	var apList = ${apList};
+	var apList = $
+	{
+		apList
+	};
 	console.log(11, apList);
 
 	var main = "";
@@ -813,7 +826,8 @@ textarea {
 			aup_ptnum : even
 		}
 		var sub = "";
-		$.ajax({
+		$
+				.ajax({
 					url : 'enter',
 					type : 'post',
 					data : JSON.stringify(form),
@@ -896,7 +910,8 @@ textarea {
 			aup_ptnum : even
 		}
 		var bb = "";
-		$.ajax({
+		$
+				.ajax({
 					url : 'reviewboard',
 					type : 'post',
 					data : JSON.stringify(form),
@@ -976,7 +991,8 @@ textarea {
 			aup_ptnum : even
 		}
 		var cc = "";
-		$.ajax({
+		$
+				.ajax({
 					url : 'auccancelDelete',
 					type : 'post',
 					data : JSON.stringify(form),

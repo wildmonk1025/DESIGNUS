@@ -37,7 +37,7 @@ div {
 #List {
 	border-radius: 10px;
 	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
-	margin: 40px 20px 20px 20px;
+	margin: 50px 20px 20px 20px;
 	width: 1480px;
 	height: auto;
 }
