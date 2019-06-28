@@ -167,26 +167,38 @@ ul {
 	</div>
 
 	<div id="adminopt">
-		<form name="formName" method="post">
 			<div class="opt">
 				<h3	style="text-align: center; font-size: 30px;">회원정보 상세보기</h3>
 				<div id="btngrp">
-				<div class="btnArray">
-					<input type="button" value="적합" onclick="b();" class="btn2" />
+				<form action="membercaution" method="post" id="form1">
+				<div class="btnArray" id="btn1">
+					<input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
+					<input type="submit" value="경고" class="btn2" />
 				</div>
-
-				<div class="btnArray">
-					<input type="button" value="부적합" onclick="a();" class="btn2" />
+				</form>
+				<form action="membercautioncnt" method="post" id="form">
+				<div class="btnArray" id="btn2">
+                 <input type="hidden" name="mb_id" value="${mbInfo.mb_id}">
+				<input type="submit" value="해제" class="btn2" />
 				</div>
+                </form>
 				<div class="btnArray">
-					<a href="declareWrite" class="btn2" id="atag">돌아가기</a>
+					<a href="memberList" class="btn2" id="atag">돌아가기</a>
 				</div>
 				</div>
 				<div id="declarelist">
 					<table id="paper">
 						<tr>
 							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">회원등급</th>
-							<th colspan="5" width="800" height="40" style="font-size: 15px;  padding-left: 10px;">${mbInfo.mb_grade}</th>
+							<c:set var="test" value="${mbInfo.mb_grade}"/>
+							<c:if test="${test eq 'N'}">
+							<th colspan="5" width="800" height="40" style="font-size: 15px;  padding-left: 10px;">일반</th></c:if>
+							<c:if test="${test eq 'W'}">
+							<th colspan="5" width="800" height="40" style="font-size: 15px;  padding-left: 10px;">작가</th></c:if>
+							<c:if test="${test eq 'S'}">
+							<th colspan="5" width="800" height="40" style="font-size: 15px;  padding-left: 10px;">임시</th></c:if>
+							<c:if test="${test eq 'X'}">
+							<th colspan="5" width="800" height="40" style="font-size: 15px;  padding-left: 10px;">전환</th></c:if>
 						</tr>
 						<tr>
 							<th width="200" height="40" style="font-size: 20px; text-align: center; background-color:#c8e7ea;">아이디</th>
@@ -207,9 +219,7 @@ ul {
 						</tr>
 					</table>
 				</div>
-
 			</div>
-		</form>
 	</div>
 	<div id="footer">
 		<hr style="width: 100%; border: 2px solid coral; align: center;">
@@ -219,19 +229,28 @@ ul {
 
 </body>
 <script>
-	function a() {
-		var f = document.formName;
-		f.action = "declarenonpermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
-		// 파일 전송이 필요할 경우만 씀.
-		f.submit();
+$("#btn2").on("click", function(){
+	var dd = ${mbInfo.mb_ccnt};
+	console.log(dd);
+	if(dd<1){
+		swal("경고횟수를 0이하로 누를 수 없습니다.");
+		return false;
+	} else{
+		swal("해당회원이 경고되었습니다.");
+		return true;
 	}
-	function b() {
-		var f = document.formName;
-		f.action = "declarepermit?rp_num=${rp_num}&mb_id=${rp_mbid_a}";
-		f.submit();
+});
+$("#btn1").on("click", function(){
+	var dd = ${mbInfo.mb_ccnt};
+	console.log(dd);
+	if(dd>=3){
+		
+		swal("경고횟수를 3이상으로 누를 수 없습니다.");
+		return false;
+	} else{
+		swal("해당회원이 경고되었습니다.");
+		return true;
 	}
-	function goBack() {
-		window.history.forward();
-	}
+});
 </script>
 </html>
