@@ -261,7 +261,7 @@ a:hover {
 		<div id="adminopt">
 			<div class="opt">
 				<h3
-					style="text-align: center; font-size: 30px; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">가입회원
+					style="text-align: center; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">가입회원
 					리스트</h3>
 				<div id="btnarr">
 					<div class="btnArray" id="normal">
