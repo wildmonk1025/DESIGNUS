@@ -373,26 +373,23 @@ button:hover:before, button:hover:after {
 }
 
 .atag:hover {
-	color: white;
-	font-weight: 900;
+	text-decoration: none;
+	color: #646464;
 }
 
 .atag:active {
 	text-decoration: none;
-	color: white;
-	font-weight: 900;
+	color: #646464;
 }
 
 .atag:visited {
 	text-decoration: none;
 	color: #646464;
-	font-weight: 900;
 }
 
 .atag:link {
 	text-decoration: none;
-	color: white;
-	font-weight: 900;
+	color: #646464;
 }
 
 #fontcolor {
