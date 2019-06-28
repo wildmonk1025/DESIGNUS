@@ -25,6 +25,13 @@ div {
 		border-radius: 50px;
 }
 
+#joinimg.tilt {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+  }
+
 #joinimg2 {
 	float: right;
 	margin-left: 30px;
@@ -70,10 +77,10 @@ div {
 		<a href="home"><img src="resources/images/logo2.png" width="450px" height="100%" style="margin-top:10px;"></a>
 		</div>
 		<div id="joinimg">
-		<img src="resources/images/normal3.png" width="80%" height="85%" style="margin-top:20px;" onclick="location.href='norJoinFrm'">
+		<img src="resources/images/normal3.png" width="80%" height="90%" style="margin-top:20px;" onclick="location.href='norJoinFrm'">
 		</div>
 		<div id="joinimg2">
-		<img src="resources/images/writer3.png" width="80%" height="85%" style="margin-top:20px;" onclick="location.href='wriJoinFrm'">
+		<img src="resources/images/writer3.png" width="80%" height="90%" style="margin-top:20px;" onclick="location.href='wriJoinFrm'">
 		</div>
 	</div>
 </body>
