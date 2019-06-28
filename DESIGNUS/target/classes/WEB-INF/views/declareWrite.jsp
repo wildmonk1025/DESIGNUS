@@ -8,7 +8,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-
 ::-webkit-scrollbar {
 	width: 4px;
 }
@@ -83,22 +82,24 @@
 
 #declarelist {
 	margin-top: 10px;
-	margin:auto;
-	width: 700px;
+	margin: auto;
+	width: 1000px;
 	height: 800px;
 	overflow: auto;
 }
 
-#best { 
-margin-left:100px;
+#best {
+	margin-left: 100px;
 	margin: auto;
-	width: 700px;
+	width: 1000px;
 	height: auto;
 	margin: 5px 5px 5px 5px;
+	margin: auto;
 }
 
 .object {
 	background-color: #dceefa;
+	font-weight: 600;
 	width: 1100px;
 }
 
@@ -110,7 +111,6 @@ margin-left:100px;
 
 .contents {
 	font-size: 18px;
-	font-weight: 600;
 	width: 1100px;
 }
 
@@ -152,7 +152,7 @@ ul {
 }
 
 #o2 {
-	width: 120px;
+	width: 140px;
 	font-size: 15px;
 }
 
@@ -173,6 +173,11 @@ ul {
 
 #o6 {
 	width: 120px;
+	font-size: 15px;
+}
+
+#o7 {
+	width: 300px;
 	font-size: 15px;
 }
 
@@ -206,7 +211,9 @@ ul {
 		<form action="" enctype="multipart/form-data">
 			<div id="adminopt">
 				<div class="opt">
-					<h3 style="text-align: center; font-size: 25px; margin-top:20px; margin-bottom: 30px;">회원 신고내역</h3>
+					<h3
+						style="text-align: center; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">회원
+						신고내역</h3>
 					<div id="declarelist"></div>
 				</div>
 			</div>
@@ -230,7 +237,7 @@ ul {
 									dataType : 'json',
 									//contentType:'application/json',
 									success : function(data) {
-										var result = "<div id='best'><table><tr class='object'><td id='o1'>글 번호</td><td id='o2'>신고자 아이디</td><td id='o3'>신고대상 아이디</td><td id='o4'>신고유형</td><td id='o5'>신고일자</td><td id='o6'>상세보기</td></tr>";
+										var result = "<div id='best'><table><tr class='object'><td id='o1'>글 번호</td><td id='o2'>신고자 아이디</td><td id='o3'>신고대상 아이디</td><td id='o4'>신고유형</td><td id='o7'>신고 제목</td><td id='o5'>신고일자</td><td id='o6'>상세보기</td></tr>";
 										console.log("성공");
 										for ( var i in data) {
 											result += "<tr class='contents'><td id='o1'>"
@@ -241,6 +248,8 @@ ul {
 													+ data[i].rp_mbid_a
 													+ "</td><td id='o4'>"
 													+ data[i].rp_locate
+													+ "</td><td id='o7'>"
+													+ data[i].rp_title
 													+ "</td><td id='o5'>"
 													+ data[i].rp_date
 													+ "</td><td id='o6'>"

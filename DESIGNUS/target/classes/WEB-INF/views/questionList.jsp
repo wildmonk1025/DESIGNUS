@@ -105,6 +105,7 @@ ul {
 }
 
 .object {
+	font-weight: 600;
 	background-color: #dceefa;
 	width: 1100px;
 }
@@ -117,7 +118,7 @@ ul {
 
 .contents {
 	font-size: 18px;
-	font-weight: 600;
+
 	width: 1100px;
 }
 
@@ -166,6 +167,13 @@ ul {
 	width: 120px;
 	font-size: 15px;
 }
+
+
+#07 {
+	width: 300px;
+	font-size:15px;
+}
+
 </style>
 </head>
 
