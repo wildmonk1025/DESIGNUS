@@ -245,9 +245,8 @@ font-size: 17pt;
 }
 #sixth{
  position: absolute;
- width:300px;
-  top: 1100px;
-  left: 1000px;  
+  top: 1130px;
+  left: 800px;  
 }
 #total {
 	position: absolute;
