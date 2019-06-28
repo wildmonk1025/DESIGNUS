@@ -37,7 +37,6 @@
 	height: 500px;
 }
 
-
 .writerjoinfrm {
 	padding: inherit;
 	margin-top: 30px;
@@ -52,28 +51,26 @@
 	height: 1000px;
 	border: 1px solid #f0f0f0;
 	border-radius: 5px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 #writercatecontents {
 	margin-left: 20px;
 	margin-top: 20px;
-	width: 630px;
-	height: 940px;
+	width: 580px;
+	height: 700px;
 	float: left;
 	overflow: auto;
 }
 
 .opt button {
-	margin: 5px;
-	width: 290px;
-	height: 100px;
+	margin: 7px; 
+	width: 250px;
+	height: 80px;
 	float: left;
-	background-color: #c8e7ea;
-	border: 1px solid #f0f0f0;
+	background-color: #dceefa;
+	border: 1px solid gray;
 	border-radius: 5px;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-	
 }
 
 #writercatecontents2 {
@@ -82,8 +79,6 @@
 	height: 920px;
 	float: left;
 }
-
-
 
 #cateup, #catedown, #catechange {
 	margin: 10px 0px 10px 40px;
@@ -101,111 +96,66 @@
 }
 
 }
-
 .btn1 {
-	margin-top: 10px;
-	/*General*/
+	background-color: #dceefa;
+	margin: 10px 50px 20px 30px;
+	width: 160px;
+	height: 50px;
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
 	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
 	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: coral;
-	width: 220px;
-	height: 70px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	color: white;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
 }
 
 .btn2 {
-	margin-top: 10px;
-	padding-bottom: 10px;
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 23px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 200px;
+	background-color: #dceefa;
+	margin: 10px 50px 20px 30px;
+	width: 160px;
 	height: 50px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
 	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+}
+
+.btn2:hover {
+	background-color: #476e9e;
+	color: white;
+}
+
+.btn2:active {
+	position: relative;
+	top: 1px;
 }
 
 .signUpInput {
 	width: 200px;
 	height: 50px;
-	float:left;
+	float: left;
 	margin-left: 20px;
 	margin-bottom: 25px;
 	font-size: 15px;
@@ -243,17 +193,23 @@ ul {
 			</ul>
 		</div>
 		<div id="admincatefrm">
-				<h3 style="text-align: center; font-size: 30px;">카테고리 관리</h3>
-				<div id="writercatecontents">현재 카테고리</div>
-				
-				<div id="writercatecontents2">
+			<h3
+				style="text-align: center; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">카테고리
+				관리</h3>
+			<div id="writercatecontents">현재 카테고리</div>
+
+			<div id="writercatecontents2">
 				<form action="categoryadd" method="post">
 					<div id="cateup">
-					<input type="submit" value="카테고리추가" class="btn2"></div>
+						<input type="submit" value="카테고리추가" class="btn2">
+					</div>
 
 					<div id="cateupload">
-						<input type="text" name="cg_code" class="signUpInput" placeholder="추가할 코드입력" autofocus required>
-						<input type="text" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
+
+						<input type="text" name="cg_code" class="signUpInput"
+							placeholder="추가할 코드입력" autofocus required> <input
+							type="text" name="cg_name" class="signUpInput"
+							placeholder="카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				<form action="categorydelete" method="post">
@@ -261,7 +217,8 @@ ul {
 						<input type="submit" value="카테고리삭제" class="btn2">
 					</div>
 					<div id="catedownload">
-						<input type="text" id="change1" name="cg_name" class="signUpInput" placeholder="카테고리명 입력" autofocus required>
+						<input type="text" id="change1" name="cg_name" class="signUpInput"
+							placeholder="카테고리명 입력" autofocus required>
 					</div>
 				</form>
 				<form action="categorychange" method="post">
@@ -269,11 +226,13 @@ ul {
 						<input type="submit" value="카테고리변경" class="btn2">
 					</div>
 					<div id="cateone">
-						<input type="text" id="change2" name="cg_name" class="signUpInput" placeholder="변경전 카테고리명 입력" autofocus required>
-						<input type="text" name="cg_cname" class="signUpInput" placeholder="변경후 카테고리명 입력" autofocus required>
+						<input type="text" id="change2" name="cg_name" class="signUpInput"
+							placeholder="변경전 카테고리명 입력" autofocus required> <input
+							type="text" name="cg_cname" class="signUpInput"
+							placeholder="변경후 카테고리명 입력" autofocus required>
 					</div>
 				</form>
-				</div>
+			</div>
 		</div>
 		<div id="footer">
 			<hr style="width: 100%; border: 2px solid coral; align: center;">
@@ -282,30 +241,38 @@ ul {
 	</div>
 </body>
 <script>
-	$(document).ready(
-			function() {
-				$.ajax({
-					url : 'categorycurrent',
-					type : 'post',
-					contentType : "application/json; charset=utf-8;",
-					dataType : 'json',
-					//contentType:'application/json',
-					success : function(data) {
-						var result = '';
-						console.log("성공");
-						for ( var i in data) {
-							result += "<div class='opt'><button class='btn1' onclick=\"catap('" + data[i].cg_name + "')\">"
-										+ "카테고리 번호:" + data[i].cg_code + "<br>"
-										+ "카테고리 종류:" + data[i].cg_name + "</button></div>";
-						}
-						$("#writercatecontents").html(result);
-					},
-					error : function(error) {
-						console.log("실패");
-						console.log(error);
-					}
-				});
-			});
+	$(document)
+			.ready(
+					function() {
+						$
+								.ajax({
+									url : 'categorycurrent',
+									type : 'post',
+									contentType : "application/json; charset=utf-8;",
+									dataType : 'json',
+									//contentType:'application/json',
+									success : function(data) {
+										var result = '';
+										console.log("성공");
+										for ( var i in data) {
+											result += "<div class='opt'><button class='btn1' onclick=\"catap('"
+													+ data[i].cg_name
+													+ "')\">"
+													+ "카테고리 번호:"
+													+ data[i].cg_code
+													+ "<br>"
+													+ "카테고리 종류:"
+													+ data[i].cg_name
+													+ "</button></div>";
+										}
+										$("#writercatecontents").html(result);
+									},
+									error : function(error) {
+										console.log("실패");
+										console.log(error);
+									}
+								});
+					});
 
 	function catap(num) {
 		console.log(num);
