@@ -54,7 +54,7 @@ div {
 	height: 40px;
 	align: center;
 	background-color: none;
-	border: 2px solid coral;
+	border: 2px solid #44adda;
 }
 
 #searchtxt:focus {
@@ -130,7 +130,7 @@ div {
 	margin-top: 14px;
 	width: 50px;
 	height: 50px;
-	background-color: coral;
+	background-color: #44adda;
 	color: white;
 	font-size: 30px;
 	float: left;
@@ -192,7 +192,7 @@ div {
 	height: 25px;
 	margin-left: auto;
 	margin-top: auto;
-	color: coral;
+	color: #3fabd9;
 	font-size: 15px;
 	font-weight: 700;
 }
@@ -237,6 +237,7 @@ div {
 nav {
 	font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: 13px;
+	color:white;
 	line-height: 1.5;
 	margin: 50px auto;
 	width: 200px;
@@ -246,7 +247,7 @@ nav {
 }
 
 .menu-item {
-	background: coral;
+	background: #44adda;
 	width: 200px;
 }
 
@@ -258,7 +259,7 @@ nav {
 
 /*ul Styles*/
 .menu-item ul {
-	background: #FFC19E;
+	background: #196180;
 	font-size: 13px;
 	font-weight: 400;
 	line-height: 30px;
@@ -295,13 +296,13 @@ nav {
 
 .menu-item li:hover {
 	font-weight: 900;
-	background-color: white;
+	background-color: #cabff2;
 }
 
 .revauctionbtn, .auctionbtn, .sponsorbtn {
 	margin-top: 20px;
 	margin-right: 10px;
-	background: coral;
+	background: #44adda;
 	float: right;
 	color: #fff;
 	border: none;
@@ -324,7 +325,7 @@ nav {
 
 .revauctionbtn:hover, .auctionbtn:hover, .sponsorbtn:hover {
 	background: #fff;
-	color: coral;
+	color:#44adda;
 }
 
 .revauctionbtn:before, .auctionbtn:before, .sponsorbtn:before,
@@ -374,22 +375,22 @@ button:hover:before, button:hover:after {
 
 .atag:hover {
 	text-decoration: none;
-	color: #646464;
+	color: white;
 }
 
 .atag:active {
 	text-decoration: none;
-	color: #646464;
+	color: white;
 }
 
 .atag:visited {
 	text-decoration: none;
-	color: #646464;
+	color: white;
 }
 
 .atag:link {
 	text-decoration: none;
-	color: #646464;
+	color: white;
 }
 
 #fontcolor {
