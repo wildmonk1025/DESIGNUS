@@ -126,14 +126,14 @@ td {
 		<div id="contents"
 			style="width: 640px; margin-top: 10px; text-align: left; margin-bottom: 10px; height: auto;">
 			<div id="spid"
-				style="font-weight: border; width: 215px; float:left; height: 40px; margin-top: 10px;">
+				style="font-weight: border; width: 215px; float: left; height: 40px; margin-top: 10px;">
 				<span> 작성자 </span>
-			</div> 
+			</div>
 			<div id="spid2"
 				style="width: 320px; float: left; font-size: 17px; margin-top: 10px; text-align: left;">
 				${ss_mbid_w}</div>
-			
-			<div id="spprice" style="float:left;">
+
+			<div id="spprice" style="float: left;">
 				<div id="spprice"
 					style="font-weight: bord; width: 150px; height: 40px; margin-top: 3px; float: left;">
 					<span>가격</span>
@@ -173,15 +173,20 @@ td {
 			<div id="btn1" style="float: left; width: 320px;">
 				<c:choose>
 					<c:when test="${ss_mbid_w == id}">
-						<button class="bt21" onclick="sponEnd3()"
+						<button class="bt21" id="bt21" onclick="sponEnd3()"
+							style="background-color: gray">밀어주기</button>
+					</c:when>
+					<c:when test="distance le 0">
+						<button class="bt21" id="bt21" onclick="sponEnd2()"
 							style="background-color: gray">밀어주기</button>
 					</c:when>
 					<c:when test="${ss_goalqty == st_count}">
-						<button class="bt21" onclick="sponEnd()"
+						<button class="bt21" id="bt21" onclick="sponEnd()"
 							style="background-color: gray">밀어주기</button>
 					</c:when>
+
 					<c:when test="${ss_goalqty != st_count}">
-						<button class="bt21" onclick="sponAj(${ss_num})"
+						<button class="bt21" id="bt21" onclick="sponAj(${ss_num})"
 							style="cursor: pointer; background: linear-gradient(to bottom, white, #a7e4f6)">밀어주기</button>
 					</c:when>
 				</c:choose>
@@ -273,6 +278,7 @@ td {
 		swal("마감이 완료된 후원입니다!");
 	}
 
+
 	function sponAj(even) {
 		console.log(2, even)
 		var form = {
@@ -305,8 +311,8 @@ td {
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
- 	 	end.setDate(end.getDate()+7);
- 	 	//end.setMinutes(end.getMinutes()+10);
+ 		end.setDate(end.getDate()+7);
+ 	 	/* end.setMinutes(end.getMinutes()+10);  */
  		var _second = 1000;
  		var _minute = _second * 60;
  		var _hour = _minute * 60;
@@ -319,12 +325,13 @@ td {
 
  		if (distance < 0) {
  		clearInterval(timer);
- 		$(id).html("경매가 마감되었습니다.");
+ 		$('#spdate2').html("후원 시간이 마감되었습니다.");
 /* 		$("#btn1").css("pointer-events","none");
-		$("#btn2").css("pointer-events","none");
-		$(".submitbtn").css("background-color","gray"); */
-		$("#bt21").click(function() {
-			swal("시간이 마감되어 밀어주기가 불가능 해요!");
+		$("#btn2").css("pointer-events","none");*/
+		$('#bt21').css("background","gray"); 
+		$('#bt21').ready(function() {  
+			$('#bt21').removeAttr("onclick");
+			$('#bt21').html('종료된 후원입니다.');
 		});
  		if (!location.hash) { 
  			location.hash = '#reload';
