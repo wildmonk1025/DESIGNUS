@@ -651,10 +651,7 @@ hr {
 
 </body>
 <script type="text/javascript">
-	var revAList = $
-	{
-		revAList
-	};
+	var revAList = ${revAList};
 	console.log(revAList);
 
 	var main = "";
@@ -714,11 +711,9 @@ hr {
 		} else if (revAList[i].rap_step == 3) {
 			main += "<div class='first'><div class='second'>"
 			if (revAList[i].ra_oc == "O") {
-				main += "<div class='p1'>공개</div><div class='p2'>운송장번호 :"
-						+ revList[i].rap_track + "</div></div>"
+				main += "<div class='p1'>공개</div><div class='p2'>운송장번호 :"+ revAList[i].rap_track + "</div></div>"
 			} else {
-				main += "<div class='p1'>비공개</div><div class='p2'>운송장번호 :"
-						+ revList[i].rap_track + "</div></div>"
+				main += "<div class='p1'>비공개</div><div class='p2'>운송장번호 :"+ revAList[i].rap_track + "</div></div>"
 			}
 			main += "<div class='third'><a href='revauctionread?ra_num="
 					+ revAList[i].rap_ranum
@@ -740,10 +735,10 @@ hr {
 			main += "<div class='first'><div class='second'>"
 			if (revAList[i].ra_oc == "O") {
 				main += "<div class='p1'>공개</div><div class='p2'>운송장번호 :"
-						+ revList[i].rap_track + "</div></div>"
+						+ revAList[i].rap_track + "</div></div>"
 			} else {
 				main += "<div class='p1'>비공개</div><div class='p2'>운송장번호 :"
-						+ revList[i].rap_track + "</div></div>"
+						+ revAList[i].rap_track + "</div></div>"
 			}
 			main += "<div class='third'><a href='revauctionread?ra_num="
 					+ revAList[i].rap_ranum
