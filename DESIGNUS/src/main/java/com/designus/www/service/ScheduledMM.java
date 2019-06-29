@@ -40,22 +40,20 @@ public class ScheduledMM {
 		List<AuctionTender> autList = aDao.EndTenderAuction();
 		AuctionTender at = new AuctionTender();
 		System.out.println("검토할 Aut 리스트 개수=" + autList.size());
-		System.out.println(autList.get(0).getAut_mbid());
-		System.out.println(autList.get(0));
 		
 		for (int j = 0; j < autList.size(); j++) {
 			at.setAut_aunum(autList.get(j).getAut_aunum());
-			at.setAut_mbid(autList.get(j).getAut_mbid());
 			at.setAut_price(autList.get(j).getAut_price());
+			at.setAut_mbid(autList.get(j).getAut_mbid());
 			at.setAut_date(autList.get(j).getAut_date().substring(0, 19).replace("-", "/"));
 			System.out.println("[][][][][][][] num j = " + j);
-			System.out.println(" id = "+at.getAut_mbid());
-			System.out.println(" date = "+at.getAut_date());
-			boolean a=aDao.setInsertAUP(at);
-			if(a) {
-				System.out.println("성공???");
+			if(aDao.getAUPsel(at) == 0 ) {
+				boolean a = aDao.setInsertAUP(at);
+				if(a) {
+					System.out.println("성공???");
+				}
+				aDao.updateAUTkind(at);
 			}
-			aDao.updateAUTkind(at);
 
 		} 
 	}

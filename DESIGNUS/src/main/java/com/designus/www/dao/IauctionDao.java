@@ -110,6 +110,8 @@ public interface IauctionDao {
 
 	void updateAUTkind(AuctionTender at);
 
+	int getAUPsel(AuctionTender at);
+
 
 	
   

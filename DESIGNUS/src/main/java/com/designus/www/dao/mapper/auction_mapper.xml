@@ -259,13 +259,13 @@
 
 	<select id="EndTenderAuction" resultType="auctiontender">
 		<![CDATA[
-			select * from (
-			select AUT.AUT_AUNUM,AUT.AUT_MBID,AUMAX.AUT_PRICE,AUT.AUT_KIND,AUT.AUT_DATE, 
-			ROW_NUMBER() OVER(PARTITION BY AUT.AUT_AUNUM ORDER BY AUT.AUT_AUNUM DESC) AS AUM
-			from AUCTIONTENDER AUT JOIN (SELECT AUT_AUNUM,MAX(AUT_PRICE) AS AUT_PRICE   
-			FROM AUT WHERE AUT_KIND = 'T' GROUP BY AUT_AUNUM) AUMAX
-			ON AUT.AUT_AUNUM = AUMAX.AUT_AUNUM
-			where AUT_KIND='T' ) where aum = 1
+			select * from(
+			select aut_aunum,aut_mbid,aut_date, aut_price,aut_kind, ROW_NUMBER() 
+			over(partition by aut_aunum order by aut_aunum )as rnum
+			from( select aut_aunum,aut_mbid,aut_date, aut_price, aut_kind 
+			from aut where aut_kind = 'T'
+			) order by aut_aunum, aut_price desc
+			) where rnum = 1
 		]]>
 	</select>
 	
@@ -278,5 +278,13 @@
         VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,to_date(#{aut_date}, 'RR/MM/DD
       HH24:MI:SS'))
 	</insert>
+	
+	<select id="getAUPsel" resultType="Integer">
+		<![CDATA[
+		select NVL(max(aut_aunum),0) as aut_aunum from aut 
+		where aut_aunum = ${aut_aunum} and aut_kind ='O'
+		]]>
+	</select>
+	
 	
 </mapper>
