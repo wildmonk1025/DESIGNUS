@@ -375,24 +375,42 @@ button:hover:before, button:hover:after {
 
 .atag:hover {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 .atag:active {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 .atag:visited {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 .atag:link {
 	text-decoration: none;
+	color: black;
+}
+.htag:hover {
+	text-decoration: none;
 	color: white;
 }
 
+.htag:active {
+	text-decoration: none;
+	color: white;
+}
+
+.htag:visited {
+	text-decoration: none;
+	color: white;
+}
+
+.htag:link {
+	text-decoration: none;
+	color: white;
+}
 #fontcolor {
 	color: white;
 	font-size: 35px;
@@ -609,7 +627,7 @@ button:hover:before, button:hover:after {
 						var str = '';
 						for ( var i in data) {
 							str += "<li><a href='auctionList?cgcode="
-									+ data[i].cg_code + "' class='atag'>"
+									+ data[i].cg_code + "' class='htag'>"
 									+ data[i].cg_name + "</a></li>";
 						}
 						$("#subcategory ul").html(str);
