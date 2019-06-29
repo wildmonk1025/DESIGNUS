@@ -453,6 +453,9 @@ div {
 			<div id="middle_contents1_lv4">
 				<h2>TOP3 입찰내역</h2>
 				<div id="middle_Person">
+					<script>
+						<% int i = 1;%>
+					</script>
 					<c:forEach var="at" items="${atList}">
 						<table class="atList">
 							<tr style="height: 40px">
@@ -460,7 +463,7 @@ div {
 								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px"><input class="price" type="hidden"
+								<td style="width: 100px"><input class="price<%=i++%>" type="hidden"
 									value="${at.aut_price}"> <fmt:formatNumber
 										value="${at.aut_price}" pattern="#,###" /></td>
 								<td style="width: 30px">원</td>
@@ -560,8 +563,6 @@ div {
 	if(even<tender){
 		swal("포인트가 없습니다.");
 		return false;
-	}else{
-		return true;
 	}
 }
 	
@@ -702,13 +703,13 @@ div {
  			if (!$("#tenderInput").val()) {
  				swal(" 입찰가 를 입력해 주세요 ");
  				return false;
- 			}
+ 			} else
  			if ($("#tenderInput").val() < ${auInfo.au_minprice} ) {
  				swal(" 최소 입찰가 이상을 입력해 주세요  ");
  				return false;
- 			};
- 			if ($("#tenderInput").val() < $(".price").val() ){
- 				swal(" 최대 입찰가 이하는 입력하실수 없습니다. ");
+ 			} else
+ 			if ($("#tenderInput").val() < $(".price1").val() ){
+ 				swal(" 11111111111111111  ");
  				return false;
  			}
  		});

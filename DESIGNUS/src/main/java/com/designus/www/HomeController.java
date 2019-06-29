@@ -168,7 +168,7 @@ public class HomeController {
 		mav = new ModelAndView();
 		session.invalidate();
 		mav.addObject("logout", 1);
-		mav.setViewName("home");
+		mav.setViewName("redirect:/home");
 		return mav;
 	}
 

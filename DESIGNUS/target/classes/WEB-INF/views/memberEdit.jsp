@@ -411,7 +411,7 @@ a:hover {
 						</tr>
 						<tr>
 							<td>비밀번호 확인</td>
-							<td><input type="password" />&nbsp;비밀번호 확인 메세지</td>
+							<td><input type="password" /></td>
 						</tr>
 						<tr>
 						<th>주소</th>
