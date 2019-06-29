@@ -176,6 +176,7 @@ a{
 		<jsp:include page="main.jsp" />
 	</div>
 
+
 	<div id="homeMain">
 		
 		<div id="List">
