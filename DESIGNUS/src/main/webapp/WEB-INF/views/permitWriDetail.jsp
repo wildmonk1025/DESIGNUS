@@ -152,10 +152,10 @@ border-bottom:0.5px solid gray;
 						가입/전환신청 상세</h3>
 					<div id="btngrp">
 						<div class="btnArray">
-							<input type="button" value="전환승인" onclick="a();" class="btn2" />
+							<input type="button" value="전환거절" onclick="a();" class="btn2" />
 						</div>
 						<div class="btnArray">
-							<input type="button" value="전환거절" onclick="b();" class="btn2" />
+							<input type="button" value="전환승인" onclick="b();" class="btn2" />
 						</div>
 						<div class="btnArray">
 							<input type="button" onclick="location.href='permitWriApply'"
