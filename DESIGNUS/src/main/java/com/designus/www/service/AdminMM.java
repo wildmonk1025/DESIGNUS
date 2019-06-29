@@ -19,6 +19,7 @@ import com.designus.www.bean.Question;
 import com.designus.www.bean.QuestionReply;
 import com.designus.www.bean.Report;
 import com.designus.www.dao.IadminDao;
+import com.designus.www.dao.IauctionDao;
 import com.designus.www.userClass.UploadFile;
 import com.google.gson.Gson;
 
@@ -30,6 +31,8 @@ public class AdminMM {
 	private ModelAndView mav;
 	@Autowired
 	private IadminDao iDao;
+	@Autowired
+	private IauctionDao aDao;
 	@Autowired
 	private UploadFile upload;
 
@@ -95,6 +98,7 @@ public class AdminMM {
 		MemberSearch ms = new MemberSearch();
 		// rp.setRp_num(rp_num);
 		Member mb = new Member();
+		List<Category> cgList = null;
 		ms = iDao.permitWriDetail(mb_id);
 		mb = iDao.getmmInfo(mb_id);
 		ms.setMb_id(mb_id);
@@ -102,6 +106,8 @@ public class AdminMM {
 			System.out.println("ffffffff ㅋㅋㅋㅋ");
 			mav.addObject("mb_id", ms.getMb_id());
 			mav.addObject("mj_cgcode", ms.getMj_cgcode());
+			cgList = aDao.getcgCode();
+			mav.addObject("cgList",cgList);
 			mav.addObject("mj_contents", ms.getMj_contents());
 			mav.addObject("mj_portf", ms.getMj_portf());
 			mav.addObject("mbInfo", mb);
@@ -219,6 +225,7 @@ public class AdminMM {
 		mav.addObject("aq_title", n.getAq_title());
 		mav.addObject("aq_contents", n.getAq_contents());
 		mav.addObject("aqi_img", n.getAqi_img());
+		mav.addObject("aq_date", n.getAq_date());
 		view = "questionWriteCheck";
 		mav.setViewName(view);
 		return mav;

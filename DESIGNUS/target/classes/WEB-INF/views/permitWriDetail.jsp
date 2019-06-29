@@ -1,21 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-
 <head>
-<meta charset="UTF-8">
-<title>permitWriDetail.jsp</title>
+<title>신고내역상세보기</title>
+<meta charset="utf-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	
 <style>
-#footercheck {
-	width: 1520px;
-	height: 150px;
-}
 #main {
 	width: 1520px;
 	height: 170px;
@@ -29,247 +21,236 @@
 	position: fixed;
 	background-color: white;
 	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
-body {
-	margin: auto;
+
+#middle {
 	width: 1520px;
+	height: auto;
+	margin-top: 60px;
 }
-
-
 
 ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
-}
-
-
-
-#adminwriterjoinfrm {
+#adminmenu {
 	float: left;
-	align-content: center;
-	width: 1216px;
+	width: 300px;
 	height: 500px;
 }
 
-.writerjoinfrm {
-	padding: inherit;
-	margin-top: 30px;
-	width: 1000px;
-	height: 600px;
+#adminopt {
+	float: left;
+	align-content: center;
+	width: 1216px;
+	height: 1000px;
 }
 
-#writerjointitlefrm {
-	margin: 10px;
-	width: 230px;
-	padding-left: 20px;
+.btnArray {
+	width: 180px;
 	float: left;
-	background-color: orange;
+}
+
+.opt {
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+}
+
+#declarelist {
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 20px;
+	width: 900px;
+	height: 650px;
+	float: left;
+}
+
+#paper {
+	color: black;
+	background-color: #FAFAFA;
+	border: 0.5px solid gray;
+}
+
+#btngrp {
+	margin-left: 310px;
+	margin-right: 190px;
+	margin-top: 20px;
+	width: 700px;
+	height: 70px;
+	float: left;
+}
+
+.btn2 {
+	background-color: #dceefa;
+	margin: 10px 50px 20px 30px;
+	width: 160px;
+	height: 50px;
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+}
+
+.btn2:hover {
+	background-color: #476e9e;
 	color: white;
 }
 
-#writerjoinlist {
+.btn2:active {
+	position: relative;
+	top: 1px;
+}
+
+#footer {
+	width: 1518px;
+	height: 180px;
+	margin-top: 20px;
 	float: left;
-	margin: 25px;
-	left: 40px;
-	float: left;
-	width: 900px;
-	height: 320px;
+	border: 1px solid #f0f0f0;
 }
 
-#writerjoincontents {
-	width: 99%;
-	height:600px;
+.line{
+
+border-bottom:0.5px solid gray;
 }
-
-
-
-
-
-
-#customers {
-	width: 900px;
-	border-collapse: collapse;
-}
-
-#customers td, #customers th {
-	font-size: 1em;
-}
-
-#customers th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color: #A7C942;
-	color: #ffffff;
-}
-
-#customers tr.alt td {
-	color: #000000;
-	background-color:#F6D8CE;
-}
-tr{
-width: 300px;
-height: 60px;
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-}
-.btn2{
-margin-top: 10px;
-	/*General*/
-	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
-	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-}
-#dd{
-box-shadow: 3px 0px 8px -3px rgba(0,0,0,0.56);
-text-align: center;
-}
-
 </style>
 </head>
 
 <body>
 	<div id="main">
-	<div id="mainheader">
-		<jsp:include page="main.jsp" />
-	</div>
-	</div>
-	<div id="adminmenu">
-		<ul>
-			<jsp:include page="admininclud.jsp"></jsp:include>
-
-		</ul>
-	</div>
-	<div id="adminwriterjoinfrm">
-	<form name="formName" method="post">
-		<div class="writerjoinfrm"><br/>
-		
-			
-				<h3	id="dd" style="margin-left: 20px; font-size: 25px;  background-color:#F6D8CE; width:870px; ">작가 신청
-					상세내역</h3><br/>
-			<div id="writerjoincontents">
-				<table id="customers">
-					<tr  class="alt">
-						<td >전문분야:${mj_cgcode}</td>
-						<td>아이디 : ${mb_id}</td>
-					</tr>
-				
-					<tr >
-						<td colspan="1" rowspan="3">설명 :</td>
-						<td colspan="1" rowspan="3">${mj_contents}</td>
-					</tr>
-					</table>
-				
-					<table id="customers">
-					<tr class="alt">
-						<td>포트폴리오</td>
-						<td >${mj_portf}</td>
-					</tr>
-					<tr >
-						<td>이름:${mbInfo.mb_name}</td>
-						<td >생년월일:${mbInfo.mb_birth}</td>
-					</tr>
-					<tr class="alt">
-						<td>주소:${mbInfo.mb_address}</td>
-						<td >경고횟수:${mbInfo.mb_ccnt}</td>
-					</tr>
-					
-				</table>
-			<input type="button" value="가입 거절" onclick="a();" class="btn2"/>
-			<input type="button" value="가입 승인" onclick="b();" class="btn2"/>
-			</div>
-		
-			
-			
+		<div id="mainheader">
+			<jsp:include page="main.jsp" />
 		</div>
-		</form>
 	</div>
-	 	<div id="footercheck">
-		<jsp:include page="footer.jsp"></jsp:include>
+
+	<div id="middle">
+		<div id="adminmenu">
+			<jsp:include page="admininclud.jsp"></jsp:include>
+		</div>
+
+		<div id="adminopt">
+			<form name="formName" method="post">
+				<div class="opt">
+					<h3
+						style="text-align: center; font-size: 25px; margin-top: 20px; margin-bottom: 30px;">작가
+						가입/전환신청 상세</h3>
+					<div id="btngrp">
+						<div class="btnArray">
+							<input type="button" value="전환승인" onclick="a();" class="btn2" />
+						</div>
+						<div class="btnArray">
+							<input type="button" value="전환거절" onclick="b();" class="btn2" />
+						</div>
+						<div class="btnArray">
+							<input type="button" onclick="location.href='permitWriApply'"
+								value="돌아가기" class="btn2" id="atag">
+						</div>
+					</div>
+					<div id="declarelist">
+						<table id="paper">
+							<tr>
+								<th width="100" height="50"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">구분</th>
+								<c:set var="test" value="${mbInfo.mb_grade}" />
+								<c:if test="${test eq 'S'}">
+									<th colspan="4" width="800" height="50"
+										style="font-size: 15px; padding-left: 10px;">임시</th>
+								</c:if>
+								<c:if test="${test eq 'X'}">
+									<th colspan="4" width="800" height="50"
+										style="font-size: 15px; padding-left: 10px;">전환</th>
+								</c:if>
+							</tr>
+							<tr>
+								<th width="100" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">아이디</th>
+								<th width="100" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">이름</th>
+								<th width="200" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">생년월일</th>
+								<th width="200" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">경고횟수</th>
+								<th width="300" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">전문분야</th>
+							</tr>
+
+							<tr>
+								<td width="100" height="30"
+									style="font-size: 15px; text-align: center;">${mb_id}</td>
+								<td width="100" height="30"
+									style="font-size: 15px; text-align: center;" class="line">${mbInfo.mb_name}</td>
+								<td width="200" height="30"
+									style="font-size: 15px; text-align: center;" class="line">${mbInfo.mb_birth}</td>
+								<td width="200" height="30"
+									style="font-size: 15px; text-align: center;" class="line">${mbInfo.mb_ccnt}</td>
+								<c:forEach var="cg" items="${cgList}">
+									<c:if test="${cg.cg_code eq mj_cgcode}">
+										<td width="300" height="30"
+											style="font-size: 15px; text-align: center;" class="line">${cg.cg_name}</td>
+									</c:if>
+								</c:forEach>
+
+
+							</tr>
+							<tr>
+								<th width="100" height="50"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">포트폴리오</th>
+								<td width="800" colspan="4" height="50"
+									style="font-size: 15px; text-align: center;"  class="line"><a
+									style="color: #dceefa;"
+									href="mjfiledownload?mj_portf=${mj_portf}">${mj_portf}</a></td>
+							</tr>
+							<tr>
+								<th width="100" height="400"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">내용</th>
+								<td width="800" colspan="4" height="400"
+									style="font-size: 15px; text-align: center;">${mj_contents}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="footer">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
+
 </body>
 <script>
-function a() {
-	var f = document.formName;
-	setTimeout(function(){
-		swal("해당회원의 작가 신청을 거부 하였습니다.");
-
-	
-	
-	}, 1500);
-	f.action = "tcommentandrefuse?mb_id=${mb_id}";
-	// 파일 전송이 필요할 경우만 씀.
-	f.submit();
-}
-function b() {
-	var f = document.formName;
-	setTimeout(function(){
-		swal("해당회원의 작가 신청을 승인 하였습니다.");
-
-	
-	
-	}, 1500);
-	f.action = "tcommentandapply?mb_id=${mb_id}";
-	f.submit();
-}
-
+	function a() {
+		var f = document.formName;
+		setTimeout(function() {
+			swal("해당회원의 요청을 거절 하였습니다.");
+		}, 1500);
+		f.action = "tcommentandrefuse?mb_id=${mb_id}";
+		// 파일 전송이 필요할 경우만 씀.
+		f.submit();
+	}
+	function b() {
+		var f = document.formName;
+		setTimeout(function() {
+			swal("해당회원의 요청을 승인 하였습니다.");
+		}, 1500);
+		f.action = "tcommentandapply?mb_id=${mb_id}";
+		f.submit();
+	}
 </script>
-
 </html>

@@ -25,7 +25,7 @@ public class UserService {
 
 	}
 
-	@Scheduled(cron="0 0/1 * * * * ")
+	@Scheduled(cron="0 0/30 * * * * ")
 	public void adExpirePeriod() throws ParseException {
 		System.out.println("스케쥴러 : adExpirePeriod ");
 		sm.revAuctionCompleteTask();

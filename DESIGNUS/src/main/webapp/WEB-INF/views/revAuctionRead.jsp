@@ -617,7 +617,8 @@ $(".subtn").click(function() {
 
  		function CountDownTimer(date,id) {
  		var end = new Date(date);
- 	 	end.setDate(end.getDate()+1);
+ 	 	end.setDate(end.getDate()+2);
+ 	 	end.setHours(end.getHours()+13);
  	 	//end.setMinutes(end.getMinutes()+10);
  		var _second = 1000;
  		var _minute = _second * 60;
@@ -649,7 +650,7 @@ $(".subtn").click(function() {
  		$(id).html("남은 시간: "+days + "일 " + hours + "시간 " + minutes +"분 " + seconds + "초 남음");
  		}
  		
- 		timer = setInterval(showRemaining, 100);
+ 		timer = setInterval(showRemaining, 1000);
  		}
  		// Source: stackoverflow
  		

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-
 <head>
-<meta charset="UTF-8">
-<title>questionWriteCheck.jsp</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>신고내역상세보기</title>
+<meta charset="utf-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 #main {
 	width: 1520px;
@@ -34,142 +34,103 @@ ul {
 	list-style: none;
 }
 
-#mainheader {
-	width: 1518px;
-	height: 170px;
-}
-
 #adminmenu {
 	float: left;
 	width: 300px;
 	height: 500px;
 }
 
-
-#onequestionmain {
+#adminopt {
 	float: left;
 	align-content: center;
 	width: 1216px;
-	height: 500px;
+	height: 1000px;
 }
 
-#questiontitle {
+.opt {
+	width: 1200px;
+	height: 990px;
+	border: 1px solid #f0f0f0;
+	border-radius: 5px;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
+}
+
+#declarelist {
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 40px;
+	width: 900px;
+	height: 650px;
 	float: left;
-	margin: 5px;
-	width: 800px;
-	height: 30px;
 }
 
-#questioncontents {
-	float: left;
-	margin: 5px;
-	width: 800px;
-	height: 200px;
-}
-
-#questionfile {
-	float: left;
-	margin: 5px;
-	width: 800px;
-	height: 30px;
-}
-
-.button {
-	margin: 10px 10px 10px 10px;
-	width: 200px;
-	height: 50px;
-	background-color: orange;
-	position: static;
-	color: white;
+#paper {
+	color: black;
+	background-color: #FAFAFA;
+	border: 0.5px solid gray;
 }
 
 input[type=submit] {
-	margin: 10px 100px 0px 0px;
-	float: right;;
-	width: 100px;
-	height: 40px;
-	background-color: orange;
-	color: white;
-}
-a:active {
+	background-color: #dceefa;
+	margin: 10px 50px 20px 30px;
+	width: 160px;
+	height: 50px;
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
+	text-align: center;
 	text-decoration: none;
-	color: rgb(223, 192, 86);
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
 }
 
-a:visited {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
+#btngrp {
+margin-top:50px;
+	width: 230px;
+	height: 100px;
+	float: right;
 }
-a:link {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
-}
-a:hover {
-	text-decoration: none;
-	color: rgb(223, 192, 86);
-} 
-.btn2{
-margin-top: 10px;
-	/*General*/
+
+.btn2 {
+	background-color: #dceefa;
+	margin: 10px 50px 20px 30px;
+	width: 160px;
+	height: 50px;
+	margin-top: 5px;
+	margin-right: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #4e6096;
 	display: inline-block;
-	text-decoration: none;
-	/*Text*/
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 240%;
-	color: rgb(162, 136, 44);
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 17px;
 	text-align: center;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	/*Button*/
-	background-color: #FFE79E;
-	background-image: -moz-linear-gradient(53% 100% 90deg, rgb(212, 212, 212)
-		0%, rgb(237, 237, 237) 100%);
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	width: 150px;
-	height: 40px;
-	border-color: rgb(223, 192, 86);
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border-style: solid;
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px
-		0px rgba(255, 255, 255, 0.25);
-	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px
-		rgba(255, 255, 255, 0.25);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3)";
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffefbf,
-		endColorstr=#ffffe185, GradientType=0) progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,
-		Strength=3);
-	display: inline-block;
-	background-image: -webkit-gradient(linear, 53% 100%, 53% 3%, color-stop(0, rgb(212, 212,
-		212)), color-stop(1, rgb(237, 237, 237)));
-	background-image: -webkit-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -o-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: -ms-linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
-	background-image: linear-gradient(90deg, rgb(212, 212, 212) 0%,
-		rgb(237, 237, 237) 100%);
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-decoration: none;
+	-moz-border-radius: 5px;
 }
-#atag{
-	width: 120px;
-	height: 30px;
+
+.btn2:hover {
+	background-color: #476e9e;
+	color: white;
+}
+
+.btn2:active {
+	position: relative;
+	top: 1px;
 }
 
 #footer {
@@ -179,6 +140,9 @@ margin-top: 10px;
 	float: left;
 	border: 1px solid #f0f0f0;
 }
+
+.line{
+border-bottom: 0.5px solid gray;}
 </style>
 </head>
 
@@ -188,41 +152,86 @@ margin-top: 10px;
 			<jsp:include page="main.jsp" />
 		</div>
 	</div>
+
 	<div id="middle">
-	<div id="adminmenu">
-		<ul>
+		<div id="adminmenu">
 			<jsp:include page="admininclud.jsp"></jsp:include>
-		</ul>
-	</div>
-	<form name="formName"  action="questionreply" method="post">
-	<div id="onequestionmain">
-	
-		<h3 style="text-align: center; font-size: 30px;">1:1문의 접수 내역</h3>
-		
-			<div id="questiontitle" class="dd">글 제목: ${aq_title}</div>
-			<div id="questioncontents"  class="dd">글 내용: ${aq_contents}</div>
-			<div id="questionfile"  class="dd">첨부파일 : ${aqi_img}</div>
-			<input type="hidden" name="aq_num" id="aq_num" value="${aq_num}">
-			
-				<textarea rows="30" cols="20"
-					style="margin: 5px; width: 800px; height: 100px;" id="ff"
-					placeholder="여기에 답글을 달 수 있습니다" name="qr_contents"></textarea>
-				<input type="submit" value="답변하기" class="btn2">
-				 <a href="questionList" class="btn2">돌아가기</a>
-				
-				
 		</div>
-			</form>
-			
-	<div id="footer">
-		<hr style="width: 100%; border: 2px solid coral; align: center;">
-		<jsp:include page="footer.jsp"></jsp:include>
+
+		<div id="adminopt">
+			<div class="opt">
+				<h3 style="text-align: center;  font-size: 25px; margin-top: 20px; margin-bottom: 30px;">1:1문의 접수내역</h3>
+				<form name="formName" action="questionreply" method="post">
+					<div id="declarelist">
+						<input type="hidden" name="aq_num" id="aq_num" value="${aq_num}">
+						<table id="paper">
+							<tr>
+								<th width="100" height="50"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">문의번호</th>
+								<th colspan="2" width="800" height="50"
+									style="font-size: 15px; padding-left: 10px;">${aq_num}번</th>
+
+							</tr>
+							<tr>
+								<th width="100" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">문의유형</th>
+								<th width="300" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">문의
+									아이디</th>
+								<th width="500" height="40"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">등록일</th>
+							</tr>
+
+							<tr>
+								<td width="100" height="30"
+									style="font-size: 15px; text-align: center;">${aq_tye}</td>
+								<td width="300" height="30"
+									style="font-size: 15px; text-align: center;" class="line">${aq_mbid}</td>
+								<td width="500" height="30"
+									style="font-size: 15px; text-align: center;" class="line">${aq_date}</td>
+							</tr>
+							<tr>
+								<th width="100" height="50"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">제목</th>
+								<td width="800" colspan="2" height="50"
+									style="font-size: 15px; text-align: center;" class="line">${aq_title}</td>
+							</tr>
+							<tr>
+								<th width="100" height="200"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">내용</th>
+								<td width="800" colspan="2" height="200"
+									style="font-size: 15px; text-align: center;" class="line">${aq_contents}</td>
+							</tr>
+							<tr>
+								<th width="100" height="200"
+									style="font-size: 20px; text-align: center; background-color: #dceefa;">첨부사진</th>
+								<td width="800" height="200" colspan="2"><img
+									src="/board/${aqi_img}" width="200px" height="200px"></td>
+							</tr>
+							<tr>
+								<td colspan="3"><textarea rows="30" cols="20"
+										name="qr_contents"
+										style="margin: 5px; width: 650px; height: 200px; resize: none;"
+										placeholder="여기에 답글 입력하세요."></textarea>
+									<div id="btngrp">
+										<input type="submit" value="답변하기" class="btn2"> <input
+											type="button" onclick="location.href='questionList'"
+											class="btn2" value="돌아가기">
+									</div></td>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="footer">
+			<hr style="width: 100%; border: 2px solid coral; align: center;">
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
-</div>
 
 </body>
 <script>
-
+	
 </script>
-
 </html>

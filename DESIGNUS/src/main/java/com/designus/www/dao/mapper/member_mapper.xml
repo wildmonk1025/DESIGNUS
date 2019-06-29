@@ -78,5 +78,8 @@
 	<select id="funmemberNpoint" parameterType="sponpro" resultType="Integer">
 		SELECT MB_POINT FROM MB WHERE MB_ID=#{ssp_mbid_n}
 	</select>
+	<select id="getMemclc" parameterType="member" resultType="member">
+		SELECT * FROM MB WHERE MB_ID=#{mb_id}
+	</select>
 	
 </mapper>

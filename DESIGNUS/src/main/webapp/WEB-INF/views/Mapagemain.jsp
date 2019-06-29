@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-body * {
-  box-sizing: border-box;
-}
 
 .header {
   background-color: #327a81;

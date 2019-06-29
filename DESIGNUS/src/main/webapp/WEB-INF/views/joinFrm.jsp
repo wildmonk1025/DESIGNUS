@@ -11,31 +11,37 @@ body{
 background-color: coral;
 }
 div {
-	border-radius: 50px;
 	margin: auto;
 }
 
 #joinimg {
 	float: left;
-	padding-top: 60px;
 	text-align: center;
 	width: 340px;
-	height: 250px;
+	height: 340px;
 	border: 1px solid white;
-		background-color: white;
-	
+	background-color: white;
+	box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+		border-radius: 50px;
 }
 
+#joinimg.tilt {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+  }
+
 #joinimg2 {
-	float: left;
-	padding-top: 60px;
+	float: right;
 	margin-left: 30px;
 	text-align: center;
 	width: 340px;
-	height: 250px;
+	height: 340px;
 	border: 1px solid white;
-		background-color: white;
-	
+	background-color: white;
+	box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+		border-radius: 50px;
 }
 
 #joinbtz {
@@ -52,38 +58,28 @@ div {
 	
 }
 
-.img {
-	width: 70px;
-	height: 70px;
+#logo {
+	margin-bottom: 100px;
 }
-
 #full {
 	margin-top: 90px;
 	border: none;
 	width: 750px;
-	height: 400px;
+	height: 800px;
 }
 </style>
 
 </head>
 <body>
-
 	<div id="full" align="center">
-	
-		<a href="home"><img src="resources/images/logo.png"
-				width="450px" height="200px"></a>
-	<br/><br/><br/><br/><br/><br/><br/>
+		<div id="logo">
+		<a href="home"><img src="resources/images/logo2.png" width="450px" height="100%" style="margin-top:10px;"></a>
+		</div>
 		<div id="joinimg">
-			<form action="norJoinFrm" method="get">
-				<img class="img" src="./images/normal.png" /><br /> <br />
-				<button id="joinbtz">일반 회원</button>
-			</form>
+		<img src="resources/images/normal3.png" width="80%" height="90%" style="margin-top:20px;" onclick="location.href='norJoinFrm'">
 		</div>
 		<div id="joinimg2">
-			<form action="wriJoinFrm" method="get">
-				<img class="img" src="./images/writer.png" /><br /> <br />
-				<button id="joinbtz2">작가 회원</button>
-			</form>
+		<img src="resources/images/writer3.png" width="80%" height="90%" style="margin-top:20px;" onclick="location.href='wriJoinFrm'">
 		</div>
 	</div>
 </body>

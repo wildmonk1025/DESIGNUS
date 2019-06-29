@@ -28,8 +28,8 @@ public class DateAdjust {
 		//LocalDateTime targetDateTime = LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond);
 
 		//DB로 부터 받아온 시간에 1일을 더함. 1일 뒤 종료하는것으로 구성
-		original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
-		//original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusDays(2); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusHours(13); //예: original_setDate.minusDays(1);
 		
 		String val = null;
 		if(original_setDate.isAfter(currentDateTime)) {
@@ -46,7 +46,7 @@ public class DateAdjust {
 			long s = currentDateTime.until(original_setDate, ChronoUnit.SECONDS);
 	
 			val = "남은시간 : "+d + "일 " + h + "시간 " + m +"분 " + s + "초 남음";
-
+			System.out.println("남은시간 나타내기="+val);
 		} else {
 			val = "경매가 마감되었습니다.";
 		}
@@ -85,6 +85,7 @@ public class DateAdjust {
 		return val;
 	}
 	
+	//후원
 	public String changeDateToString2(String date) throws ParseException {
 		LocalDateTime original_setDate = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
 		
@@ -100,7 +101,7 @@ public class DateAdjust {
 		//LocalDateTime targetDateTime = LocalDateTime.of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond);
 
 		//DB로 부터 받아온 시간에 1일을 더함. 1일 뒤 종료하는것으로 구성
-		original_setDate = original_setDate.plusDays(7); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusDays(3); //예: original_setDate.minusDays(1);
 		//original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
 		
 		String val = null;
@@ -131,8 +132,8 @@ public class DateAdjust {
 			
 		LocalDateTime currentDateTime = LocalDateTime.now();
 		
-		original_setDate = original_setDate.plusDays(1); //예: original_setDate.minusDays(1);
-		//original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusDays(2); //예: original_setDate.minusDays(1);
+		original_setDate = original_setDate.plusHours(13); //예: original_setDate.minusDays(1);
 		
 		if(original_setDate.isAfter(currentDateTime)) {
 			return true;

@@ -9,8 +9,21 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style type="text/css">
-body * {
-  box-sizing: border-box;
+
+#main {
+	width: 1520px;
+	height: 170px;
+	position: relative;
+}
+
+#mainheader {
+	border: 1px solid #F5BCA9;
+	width: 1518px;
+	height: 170px;
+	position: fixed;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
 }
 
 .header {
@@ -239,24 +252,6 @@ table tr:nth-child(2n+1) {
 /* 	height: 250px; */
 }
 
-#main {
-	width: 1518px;
-	height: 170px;
-	position: relative;
-}
-
-#mainheader {
-	border: 1px solid #F5BCA9;
-	background-color: white;
-	width: 1520px;
-	height: 170px;
-	z-index: 1000;
-	box-shadow: 3px 0px 8px -3px rgba(0, 0, 0, 0.56);
-	position: fixed;
-}
-
-
-
 #img {
 	margin-top: 20px;
 	margin: 20px 10px 10px 10px;
@@ -342,9 +337,15 @@ a:hover {
 	margin-left: 10px;
 }
 #mypagemain {
-	width: 1530px;
-	height: 1200px;
-	margin-top: 50px;
+	width: 1520px;
+	height: auto;
+	margin-top: 60px;
+}
+
+#rightmain {
+	width: 1190px;
+	height: 900px;
+	float: left;
 }
 
 #full {
@@ -421,27 +422,23 @@ text-align: center;
 	<jsp:include page="main.jsp" />
 	</div>
 </div>
+
 	<div id="mypagemain">
 		<jsp:include page="Mapagemain.jsp" />
 
-
 		<div id="rightmain">
-		
 			<div id="notice"></div>
-			
-			<div id="spon">
-				
-			</div>
+			<div id="spon"></div>
 			<div id="auction">
 				<h1>참여중인경매</h1>
 			</div>
-
 		</div>
+
 		<div id="footer">
 		<hr style="width: 100%; border: 2px solid coral; align: center;">
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
-	</div>
+		</div>
 </body>
 <script type="text/javascript">
 var w="${zz}";
