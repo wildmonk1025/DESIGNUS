@@ -147,7 +147,7 @@ public class DateAdjust {
 	      
 	      LocalDateTime currentDateTime = LocalDateTime.now();
 	      
-	      original_setDate = original_setDate.plusDays(3); //예: original_setDate.minusDays(1);
+	      original_setDate = original_setDate.plusDays(6); //예: original_setDate.minusDays(1);
 	      //original_setDate = original_setDate.plusMinutes(10); //예: original_setDate.minusDays(1);
 	      
 	      if(original_setDate.isAfter(currentDateTime)) {
