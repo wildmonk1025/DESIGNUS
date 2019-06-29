@@ -474,6 +474,7 @@ $("#notice").html(main)
 
 var check=${check}
 console.log(1,check);
+/*
 $('#nod').click(function() {
 	if(check==1){
 		alert("삭제 성공 했습니다.");
@@ -481,7 +482,7 @@ $('#nod').click(function() {
 		alert("삭제 도중 오류가 발생 했습니다 1:1문의로 문의하세요.");
 	}
 });
-
+*/
 var toMap=${toMap};
 var maxList=${maxList};
 var today="${today}";

@@ -354,8 +354,8 @@ div {
 		<form action="auctioninbuy" method="post"
 			onsubmit="return checkk(${auInfo.au_qty -1})">
 			<input type="hidden" name="inbuyNum" value="${au_num}"> 구입수량
-			:<input type="number" id="inbuyInput" name="inbuyQty" max="999"
-				min="1" placeholder="최대  999EA" maxlength="3"
+			:<input type="number" id="inbuyInput" name="inbuyQty" max="99"
+				min="1" placeholder="최대  99EA" maxlength="3"
 				oninput="maxLengthCheck(this)"><br> <br> <input
 				type="submit" id="submBtnB" class="btn11" value="구입"> <input
 				type="reset" class="btn11" value="취소">
@@ -453,6 +453,9 @@ div {
 			<div id="middle_contents1_lv4">
 				<h2>TOP3 입찰내역</h2>
 				<div id="middle_Person">
+					<script>
+						<% int i = 1;%>
+					</script>
 					<c:forEach var="at" items="${atList}">
 						<table class="atList">
 							<tr style="height: 40px">
@@ -460,7 +463,7 @@ div {
 								<td style="width: 70px">${at.aut_mbid }</td>
 								<td style="width: 30px">님</td>
 								<th style="width: 100px">금액 :</th>
-								<td style="width: 100px"><input class="price" type="hidden"
+								<td style="width: 100px"><input class="price<%=i++%>" type="hidden"
 									value="${at.aut_price}"> <fmt:formatNumber
 										value="${at.aut_price}" pattern="#,###" /></td>
 								<td style="width: 30px">원</td>
@@ -552,8 +555,6 @@ div {
 	if(even<inbuy){
 		swal("구입수량이 없습니다.");
 		return false;
-	}else{
-		return true;
 	}
 }
  function check2(even) {
@@ -562,8 +563,6 @@ div {
 	if(even<tender){
 		swal("포인트가 없습니다.");
 		return false;
-	}else{
-		return true;
 	}
 }
 	
@@ -692,19 +691,25 @@ div {
  				swal(" 최대 수량보다 많은 값을 구입하실수 없습니다. ");
  				return false;
  			}
+ 			if ($("#inbuyInput").val()*${auInfo.au_inprice} > ${point} ) {
+ 				swal("보유중인 포인트가 부족합니다. "
+ 					+ "\n 필요한 포인트 : "+ $("#inbuyInput").val()*${auInfo.au_inprice} 
+ 					+ "\n 보유중인 포인트 : "+${point});
+ 				return false;
+ 			}
  		});
  		
  		$("#submBtnT").click(function() {
  			if (!$("#tenderInput").val()) {
  				swal(" 입찰가 를 입력해 주세요 ");
  				return false;
- 			}
+ 			} else
  			if ($("#tenderInput").val() < ${auInfo.au_minprice} ) {
  				swal(" 최소 입찰가 이상을 입력해 주세요  ");
  				return false;
- 			};
- 			if ($("#tenderInput").val() < $(".price").val() ){
- 				swal(" 최대 입찰가 이하는 입력하실수 없습니다. ");
+ 			} else
+ 			if ($("#tenderInput").val() < $(".price1").val() ){
+ 				swal(" 11111111111111111  ");
  				return false;
  			}
  		});
