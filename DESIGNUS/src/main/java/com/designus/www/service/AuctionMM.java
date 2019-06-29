@@ -193,7 +193,7 @@ public class AuctionMM {
 
 	}
 
-	public ModelAndView auctionRead(int au_num) {
+	public ModelAndView auctionRead(int au_num)  {
 		mav = new ModelAndView();
 		String view = null;
 		String Wid = null;
@@ -208,6 +208,7 @@ public class AuctionMM {
 		Basket bk = new Basket();
 		Member mb = new Member();
 		AuctionTender at = new AuctionTender();
+		DateAdjust da = new DateAdjust();
 		cgList = aDao.getcgCode();
 		at.setAut_aunum(au_num);
 		mb.setMb_id(id);

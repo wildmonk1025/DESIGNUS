@@ -29,6 +29,8 @@ public class UserService {
 	public void adExpirePeriod() throws ParseException {
 		System.out.println("스케쥴러 : adExpirePeriod ");
 		sm.revAuctionCompleteTask();
+		sm.updateautkind();
 	}
+
 	
 }

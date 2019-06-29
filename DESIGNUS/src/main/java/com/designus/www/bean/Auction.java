@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Alias("auction")
-@Getter
-@Setter
+ @Data
 public class Auction {
 	int    au_num;
 	String au_mbid_w;

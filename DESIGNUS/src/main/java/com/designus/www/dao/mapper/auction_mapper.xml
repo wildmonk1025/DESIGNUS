@@ -256,6 +256,27 @@
 		SELECT * FROM CG
 	</select>
 	
+
+	<select id="EndTenderAuction" resultType="auctiontender">
+		<![CDATA[
+			select * from (
+			select AUT.AUT_AUNUM,AUT.AUT_MBID,AUMAX.AUT_PRICE,AUT.AUT_KIND,AUT.AUT_DATE, 
+			ROW_NUMBER() OVER(PARTITION BY AUT.AUT_AUNUM ORDER BY AUT.AUT_AUNUM DESC) AS AUM
+			from AUCTIONTENDER AUT JOIN (SELECT AUT_AUNUM,MAX(AUT_PRICE) AS AUT_PRICE   
+			FROM AUT WHERE AUT_KIND = 'T' GROUP BY AUT_AUNUM) AUMAX
+			ON AUT.AUT_AUNUM = AUMAX.AUT_AUNUM
+			where AUT_KIND='T' ) where aum = 1
+		]]>
+	</select>
 	
+	<update id="updateAUTkind" parameterType="auctiontender">
+		UPDATE AUT SET AUT_KIND = 'O' WHERE AUT_AUNUM = ${aut_aunum} AND AUT_MBID = #{aut_mbid}
+	</update>
 		
+	<insert id="setInsertAUP" parameterType="auctiontender">
+		INSERT INTO AUCTION_PROGRESS
+        VALUES(AUP_SEQ.NEXTVAL,${aut_aunum},#{aut_mbid},DEFAULT,DEFAULT,DEFAULT,1,${aut_price},DEFAULT,1,to_date(#{aut_date}, 'RR/MM/DD
+      HH24:MI:SS'))
+	</insert>
+	
 </mapper>

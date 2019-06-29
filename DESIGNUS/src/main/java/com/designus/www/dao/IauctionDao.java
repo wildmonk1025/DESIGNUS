@@ -104,6 +104,12 @@ public interface IauctionDao {
 
 	void AuctionEndproduct(@Param("au_num") int au_num);
 
+	List<AuctionTender> EndTenderAuction();
+
+	boolean setInsertAUP(AuctionTender at);
+
+	void updateAUTkind(AuctionTender at);
+
 
 	
   
