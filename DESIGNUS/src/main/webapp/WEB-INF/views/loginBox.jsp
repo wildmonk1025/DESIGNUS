@@ -395,6 +395,10 @@ var gg='${msg2}';
 if(gg == 'nono'){
 	swal(" 비밀번호가 틀렸습니다. ");
 }
+var jj='${msg6}';
+if(jj == 'zzzz'){
+	swal(" 회원님은 작가 심사중입니다.");
+}
 
 </script>
 </head>

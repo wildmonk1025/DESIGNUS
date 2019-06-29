@@ -150,6 +150,13 @@ public class MemberMM {
 		mav.addObject("ccnt", d.getMb_ccnt());
 
 		System.out.println("Asdasd" + d.getMb_ccnt());
+		Member c = mDao.getMemclc(mb.getMb_id());
+		if (c.getMb_grade().equals("S")) {
+			System.out.println("경고횟수:" + c.getMb_grade());
+			
+			mav.addObject("msg6", "zzzz");
+			view = "loginBox";
+		}
 		if (d.getMb_ccnt() >= 3) {
 
 			System.out.println("경고횟수:" + d.getMb_ccnt());

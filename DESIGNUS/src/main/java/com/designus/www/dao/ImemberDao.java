@@ -3,6 +3,8 @@ package com.designus.www.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.designus.www.bean.Auction;
 import com.designus.www.bean.AuctionProgress;
 import com.designus.www.bean.Major;
@@ -55,6 +57,8 @@ public interface ImemberDao {
 	Member getMemberclick(String mb_id);
 
 	Integer funmemberNpoint(SponsorProgress sp);
+
+	Member getMemclc(@Param("mb_id") String mb_id);
 
 
 
